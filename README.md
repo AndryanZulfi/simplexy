@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="ui/public/simplexy-logo.png" alt="Simplexy Logo" width="160" />
+</p>
+
 # Simplexy
 
 **AI Business Operations Assistant** — orkestrasi AI agent untuk operasional bisnis melalui percakapan.
