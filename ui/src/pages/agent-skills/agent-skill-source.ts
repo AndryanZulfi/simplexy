@@ -104,7 +104,7 @@ export function buildAgentSkillSourceMeta(skill: SourceSkill): AgentSkillSourceM
   }
 
   if (skill.sourceBadge === "paperclip") {
-    return { icon: Simplixy, label: skill.sourceLabel?.trim() || "Simplixy managed" };
+    return { icon: Paperclip, label: skill.sourceLabel?.trim() || "Simplixy managed" };
   }
 
   if (skill.sourceBadge === "catalog" || skill.sourceType === "catalog") {

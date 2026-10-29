@@ -279,7 +279,7 @@ export function IssueAttachmentsSection({
     >
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-2">
-          <Simplixy className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />
+          <Paperclip className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />
           <h3 className="text-sm font-medium text-muted-foreground">Attachments</h3>
           <span className="text-xs text-muted-foreground">{attachments.length}</span>
         </div>

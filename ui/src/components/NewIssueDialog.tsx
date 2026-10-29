@@ -1647,7 +1647,7 @@ function AccountNewIssueDialog({ ignoreDefaults }: { ignoreDefaults: boolean }) 
                                 >
                                   <div className="min-w-0">
                                     <div className="flex items-center gap-2">
-                                      <Simplixy className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
+                                      <Paperclip className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
                                       <span className="truncate text-sm">{file.file.name}</span>
                                     </div>
                                     <div className="mt-1 text-(length:--text-micro) text-muted-foreground">

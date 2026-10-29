@@ -357,7 +357,7 @@ import {
   MessageSquare,
   MoreHorizontal,
   MoreVertical,
-  Simplixy,
+  Paperclip,
   Plus,
   Repeat,
   SlidersHorizontal,
@@ -7356,7 +7356,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
           attachmentDragActive && "border-primary bg-primary/5",
         )}
       >
-        <Simplixy className="h-3.5 w-3.5 mr-1.5" />
+        <Paperclip className="h-3.5 w-3.5 mr-1.5" />
         {uploadAttachment.isPending || importMarkdownDocument.isPending ? (
           "Uploading..."
         ) : (

@@ -256,7 +256,7 @@ import {
   Hammer,
   Loader2,
   MoreHorizontal,
-  Simplixy,
+  Paperclip,
   PauseCircle,
   Search,
   Square,
@@ -3682,7 +3682,7 @@ function SystemNoticeCommentContent({
               {copiedLink ? (
                 <Check className="h-3.5 w-3.5" />
               ) : (
-                <Simplixy className="h-3.5 w-3.5" />
+                <Paperclip className="h-3.5 w-3.5" />
               )}
             </button>
           ) : null}
@@ -5493,7 +5493,7 @@ const IssueChatComposer = forwardRef<
         >
           <div className="flex max-w-md items-center gap-3 rounded-md bg-background/80 px-3 py-2 text-left shadow-sm ring-1 ring-border/60">
             <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
-              <Simplixy className="h-4 w-4" />
+              <Paperclip className="h-4 w-4" />
             </span>
             <div className="min-w-0">
               <div className="text-sm font-medium text-foreground">

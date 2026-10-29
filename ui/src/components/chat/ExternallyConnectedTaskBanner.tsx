@@ -632,7 +632,7 @@ function ConnectedTaskComposer({
               disabled={uploadDisabled}
               onClick={() => fileInput.current?.click()}
             >
-              <Simplixy />
+              <Paperclip />
               {uploading ? "Uploading…" : "Attach file"}
             </Button>
             <p className="text-xs text-muted-foreground">
@@ -700,7 +700,7 @@ function ConnectedTaskComposer({
                           publish.reset();
                         }}
                       />
-                      <Simplixy className="h-3.5 w-3.5 text-muted-foreground" />
+                      <Paperclip className="h-3.5 w-3.5 text-muted-foreground" />
                       <span className="truncate">{label}</span>
                     </label>
                   );

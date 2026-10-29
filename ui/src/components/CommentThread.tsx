@@ -1050,7 +1050,7 @@ export function CommentThread({
                   disabled={attaching}
                   title="Attach image"
                 >
-                  <Simplixy className="h-4 w-4" />
+                  <Paperclip className="h-4 w-4" />
                 </Button>
               </div>
             )}

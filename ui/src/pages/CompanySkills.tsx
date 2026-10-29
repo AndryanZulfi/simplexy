@@ -157,7 +157,7 @@ import {
   ExternalLink,
   FlaskConical,
   MoreHorizontal,
-  Simplixy,
+  Paperclip,
   Pause,
   Pencil,
   Pin,
@@ -284,7 +284,7 @@ function sourceMeta(sourceBadge: CompanySkillSourceBadge, sourceLabel: string | 
     case "local":
       return { icon: Folder, label: sourceLabel ?? "Folder", managedLabel: "Folder managed" };
     case "paperclip":
-      return { icon: Simplixy, label: sourceLabel ?? "Simplixy", managedLabel: "Simplixy managed" };
+      return { icon: Paperclip, label: sourceLabel ?? "Simplixy", managedLabel: "Simplixy managed" };
     default:
       return { icon: Boxes, label: sourceLabel ?? "Catalog", managedLabel: "Catalog managed" };
   }
