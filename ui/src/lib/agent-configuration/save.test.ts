@@ -109,7 +109,7 @@ describe("complete agent configuration", () => {
   it("rejects ignored managed-root changes and impossible task-assignment permissions", async () => {
     const saved = await snapshot(); const doc = copy(saved.document);
     doc.spec.instructions!.rootPath = "/ignored/root";
-    await expect(saveAgentConfiguration(saved, doc, receipt, progress)).rejects.toThrow("assigned by Paperclip");
+    await expect(saveAgentConfiguration(saved, doc, receipt, progress)).rejects.toThrow("assigned by Simplixy");
     doc.spec.instructions = saved.document.spec.instructions;
     doc.spec.permissions!.canCreateAgents = true;
     await expect(saveAgentConfiguration(saved, doc, receipt, progress)).rejects.toThrow("task assignment authority");

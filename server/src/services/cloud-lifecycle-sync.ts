@@ -8,7 +8,7 @@ import {
 /**
  * Cloud lifecycle doorbell: when the Cloud-pinned primary company is
  * archived or unarchived on a managed instance, ring the harness
- * (`POST /v1/tenant/lifecycle-changed`) so Paperclip Cloud can converge the
+ * (`POST /v1/tenant/lifecycle-changed`) so Simplixy Cloud can converge the
  * stack — an org whose only company is archived should not keep running,
  * and should read "Archived" on /orgs rather than "Live".
  *

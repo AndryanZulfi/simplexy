@@ -13,7 +13,7 @@ import {
 import { paperclipCloudConnectorConfigFromEnv } from "./paperclip-cloud-connector.js";
 import { reconcilePaperclipCloudConnectorEnrollmentStatus } from "./paperclip-cloud-connector-status.js";
 
-describe("Paperclip Cloud self-host enrollment", () => {
+describe("Simplixy Cloud self-host enrollment", () => {
   let root = "";
   let previousHome: string | undefined;
   let previousInstance: string | undefined;
@@ -488,7 +488,7 @@ describe("Paperclip Cloud self-host enrollment", () => {
     expect(loadPaperclipCloudConnectorIdentity()).toEqual(pendingIdentity);
   });
 
-  it("does not treat legacy Paperclip ID keys as a Cloud enrollment", () => {
+  it("does not treat legacy Simplixy ID keys as a Cloud enrollment", () => {
     expect(paperclipCloudConnectorEnrollmentStatus({
       PAPERCLIP_ID_CONNECTOR_INSTANCE_ID: "legacy-instance",
       PAPERCLIP_ID_CONNECTOR_SIGN_PRIVATE_KEY: "legacy-signing-key",

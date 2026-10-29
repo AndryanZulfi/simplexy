@@ -368,7 +368,7 @@ describe("server-owned Codex runner selection", () => {
     expect(state.sandboxQualification).not.toHaveBeenCalled();
     expect(state.ssh).not.toHaveBeenCalled();
   });
-  it("rejects explicit Paperclip execution on an unqualified forced Kubernetes target without provisioning", async () => {
+  it("rejects explicit Simplixy execution on an unqualified forced Kubernetes target without provisioning", async () => {
     state.settings = { general: { executionMode: "kubernetes" } };
     await expect(resolveNewAgentRunnerForCompany({} as never, "company", { adapterType: "codex_local", runner: "paperclip" }))
       .rejects.toMatchObject({ status: 422, message: expect.stringContaining("Legacy runner"), details: { code: "agent_runner_unavailable" } });
@@ -474,7 +474,7 @@ describe("server-owned Codex runner selection", () => {
   it.each(["codex_local", "claude_local", "opencode_local"])("selects %s on a managed Cloud image without saved platform qualification", async adapterType => {
     vi.stubEnv("PAPERCLIP_MANAGED_CONFIG", JSON.stringify({ ...managedCloudConfig, environments: [{ name: "Paperclip Computer", provider: "daytona", config: {} }] }));
     state.getEnvironment.mockResolvedValue({ id: "sandbox", driver: "sandbox", status: "active",
-      config: { provider: "daytona", snapshot: "replacement-snapshot" }, metadata: { managedByPaperclip: true } });
+      config: { provider: "daytona", snapshot: "replacement-snapshot" }, metadata: { managedBySimplixy: true } });
     state.resolveEnvironment.mockRejectedValue(new Error("Saved provider secret is unavailable."));
     const selected = await resolveAgentRunnerTargetForCompany({} as never, "company", "sandbox");
     expect(agentRunnerAvailability(adapterType, selected).defaultRunner).toBe("paperclip");
@@ -488,7 +488,7 @@ describe("server-owned Codex runner selection", () => {
   });
   it.each(["self-hosted", "custom-environment", "captured-template", "stale-marker"])("keeps qualification for a %s sandbox", async kind => {
     vi.stubEnv("PAPERCLIP_MANAGED_CONFIG", kind === "self-hosted" ? undefined : JSON.stringify({ ...managedCloudConfig,
-      environments: kind === "stale-marker" ? [] : [{ name: "Paperclip Computer", provider: "daytona", config: {} }] }));
+      environments: kind === "stale-marker" ? [] : [{ name: "Simplixy Computer", provider: "daytona", config: {} }] }));
     vi.stubEnv("PAPERCLIP_CLOUD_TENANT_SERVER_TOKEN", undefined);
     state.getEnvironment.mockResolvedValue({ id: "sandbox", driver: "sandbox", status: "active",
       config: { provider: "daytona", snapshot: "custom-snapshot" },
@@ -501,7 +501,7 @@ describe("server-owned Codex runner selection", () => {
   it("ignores a stale captured image and preserves a matching custom image without resolving credentials", async () => {
     vi.stubEnv("PAPERCLIP_MANAGED_CONFIG", JSON.stringify({ ...managedCloudConfig, environments: [{ name: "Paperclip Computer", provider: "daytona", config: {} }] }));
     const config = { provider: "daytona", snapshot: "replacement-snapshot", reuseLease: false, apiKey: "a6b9e7d0-f886-471a-b461-640dd03e8d0f" };
-    state.getEnvironment.mockResolvedValue({ id: "sandbox", driver: "sandbox", status: "active", config, metadata: { managedByPaperclip: true } });
+    state.getEnvironment.mockResolvedValue({ id: "sandbox", driver: "sandbox", status: "active", config, metadata: { managedBySimplixy: true } });
     state.resolveEnvironment.mockRejectedValue(new Error("Saved provider secret is unavailable."));
     const template = { id: "template", provider: "daytona", templateRef: "custom-snapshot",
       sourceEnvironmentConfigFingerprint: fingerprint({ ...config, snapshot: "previous-snapshot" }, { excludePaths: ["apiKey"] }) };
@@ -515,7 +515,7 @@ describe("server-owned Codex runner selection", () => {
     const custom = await resolveAgentRunnerTargetForCompany({} as never, "company", "sandbox");
     expect(agentRunnerAvailability("codex_local", custom).defaultRunner).toBe("legacy");
     expect(state.sandboxQualification).toHaveBeenCalled();
-    state.getEnvironment.mockResolvedValue({ id: "sandbox", driver: "sandbox", status: "active", config: { ...config, timeoutMs: "invalid" }, metadata: { managedByPaperclip: true } });
+    state.getEnvironment.mockResolvedValue({ id: "sandbox", driver: "sandbox", status: "active", config: { ...config, timeoutMs: "invalid" }, metadata: { managedBySimplixy: true } });
     const invalid = await resolveAgentRunnerTargetForCompany({} as never, "company", "sandbox");
     expect(agentRunnerAvailability("codex_local", invalid).defaultRunner).toBe("legacy");
     expect(state.resolveEnvironment).not.toHaveBeenCalled();
@@ -523,7 +523,7 @@ describe("server-owned Codex runner selection", () => {
   it("checks company access before trusting a managed Cloud image", async () => {
     vi.stubEnv("PAPERCLIP_MANAGED_CONFIG", "{}");
     state.getEnvironment.mockResolvedValue({ id: "sandbox", driver: "sandbox", status: "active",
-      config: { provider: "daytona" }, metadata: { managedByPaperclip: true } });
+      config: { provider: "daytona" }, metadata: { managedBySimplixy: true } });
     state.bindings.mockResolvedValue(["another-company"]);
     await expect(resolveAgentRunnerTargetForCompany({} as never, "company", "sandbox"))
       .rejects.toMatchObject({ status: 403, details: { code: "environment_company_mismatch" } });
@@ -622,7 +622,7 @@ describe("Runner-only plugin environments", () => {
     state.kubernetesEnvironment.mockReset().mockResolvedValue(null); state.ssh.mockReset(); state.sandboxQualification.mockReset();
     state.pluginByKey.mockReset().mockResolvedValue(plugin({ supportsTasks: true }));
   });
-  it("offers only Paperclip Runner for Codex and Claude without a platform", async () => {
+  it("offers only Simplixy Runner for Codex and Claude without a platform", async () => {
     const target = await resolveAgentRunnerTargetForCompany({} as never, "company", "computer");
     expect(target).toEqual({ driver: "plugin", runnerTasks: true });
     expect(state.pluginByKey).toHaveBeenCalledWith("acme.computers");
@@ -650,7 +650,7 @@ describe("Runner-only plugin environments", () => {
       .rejects.toThrow("The fake sandbox provider cannot execute runs.");
   });
 
-  it("saves a Claude agent on the plugin environment as Paperclip Runner", async () => {
+  it("saves a Claude agent on the plugin environment as Simplixy Runner", async () => {
     const saved = await resolveNewAgentRunnerForCompany({} as never, "company", { adapterType: "claude_local", defaultEnvironmentId: "computer" });
     expect(saved).toMatchObject({ adapterType: "paperclip_runner", adapterConfig: { provider: "acpx", acpxAgent: "claude" } });
     const explicit = await resolveNewAgentRunnerForCompany({} as never, "company", { adapterType: "claude_local", runner: "paperclip", defaultEnvironmentId: "computer" });

@@ -487,7 +487,7 @@ function parseTelegramLifecycle(
 /**
  * Parse provider installation and membership events only after the native
  * adapter has verified the webhook. The returned effects contain no provider
- * credentials and are safe to persist in Paperclip's lifecycle ledger.
+ * credentials and are safe to persist in Simplixy's lifecycle ledger.
  */
 export function parseChatProviderLifecycle(
   input: ParseChatProviderLifecycleInput,

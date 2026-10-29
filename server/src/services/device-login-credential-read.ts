@@ -56,7 +56,7 @@ export const DEVICE_LOGIN_AUTH_READ_ERROR =
 /**
  * The fixed helper program. The server reads the helper from its own script file
  * and runs it in the sandbox as `node -e <script> <sessionHome> <maxBytes>
- * [<expectedUid>]`. The sandbox already runs node for the Paperclip bridge, so the
+ * [<expectedUid>]`. The sandbox already runs node for the Simplixy bridge, so the
  * helper needs no extra runtime. The helper source lives in
  * `scripts/adapter-auth-read.cjs`, so no large script stays as a string literal in
  * this module.

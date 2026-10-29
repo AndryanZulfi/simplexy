@@ -159,7 +159,7 @@ function createMuseBroker(db:Db, publicOrigin?:string) {
   const broker={
     enabled:identity.enabled,
     async createPairing(input:{companyId:string;agentId:string;operatorId:string;replaceBindingId?:string;expectedRevision?:number}):Promise<MusePairing> {
-      if(!await identity.enabled())throw forbidden("Enable Muse and Paperclip Runner before connecting.");
+      if(!await identity.enabled())throw forbidden("Enable Muse and Simplixy Runner before connecting.");
       const ticket=randomBytes(32).toString("base64url"),bindingId=randomUUID();
       // Validate the public assets before changing any existing invitation.
       const [scopeAgent]=await db.select({id:agents.id,name:agents.name}).from(agents).where(and(eq(agents.id,input.agentId),eq(agents.companyId,input.companyId)));

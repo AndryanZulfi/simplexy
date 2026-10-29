@@ -231,7 +231,7 @@ export function createProviderEffects(db: Db, options: ProviderEffectsOptions) {
     return {
       kind: "delivery_unknown" as const,
       reason:
-        "Provider effect completed, but Paperclip could not confirm its durable result",
+        "Provider effect completed, but Simplixy could not confirm its durable result",
     };
   }
 

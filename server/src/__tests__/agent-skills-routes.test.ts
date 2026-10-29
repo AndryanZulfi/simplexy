@@ -831,7 +831,7 @@ describe("agent skill routes", () => {
     expect(mockAdapter.syncSkills).toHaveBeenCalled();
   });
 
-  it("ignores the reserved legacy Paperclip skill for paperclip_runner", async () => {
+  it("ignores the reserved legacy Simplixy skill for paperclip_runner", async () => {
     mockAgentService.getById.mockResolvedValue(makeAgent("paperclip_runner"));
 
     const res = await requestApp(await createApp(), (baseUrl) => request(baseUrl)
@@ -854,7 +854,7 @@ describe("agent skill routes", () => {
     );
   });
 
-  it("allows paperclip_runner to remove a pre-existing legacy Paperclip skill", async () => {
+  it("allows paperclip_runner to remove a pre-existing legacy Simplixy skill", async () => {
     mockAgentService.getById.mockResolvedValue({
       ...makeAgent("paperclip_runner"),
       adapterConfig: {
@@ -1173,7 +1173,7 @@ describe("agent skill routes", () => {
           adapterType: "claude_local",
         }),
         expect.objectContaining({
-          "AGENTS.md": "You are an agent in a Paperclip company.\n",
+          "AGENTS.md": "You are an agent in a Simplixy company.\n",
         }),
         { entryFile: "AGENTS.md", replaceExisting: false },
       );

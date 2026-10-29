@@ -177,7 +177,7 @@ export function createOAuthClientProtocol({ fetchRemoteHttpUrl, assertOAuthEndpo
       // Some DCR servers restrict client_name to alphanumeric characters,
       // hyphens and spaces. Keep the deployment host recognizable without
       // sending punctuation such as dots, colons or parentheses.
-      client_name: `Paperclip ${clientNameHost}`,
+      client_name: `Simplixy ${clientNameHost}`,
       redirect_uris: [input.redirectUri],
       grant_types: [
         "authorization_code",

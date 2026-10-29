@@ -29,7 +29,7 @@ if (!support.supported) console.warn(`Skipping native routine status tests: ${su
       const pluginKey = `paperclip.routine-status-${randomUUID()}`, originId = `operation:${randomUUID()}`;
       const [plugin] = await db.insert(plugins).values({ pluginKey, packageName: pluginKey, version: "0.1.0",
         manifestJson: { id: pluginKey, apiVersion: 1, version: "0.1.0", displayName: "Routine fixture", description: "Routine fixture",
-          author: "Paperclip", categories: ["automation"], capabilities: ["routines.managed"], entrypoints: { worker: "./worker.js" } } }).returning();
+          author: "Simplixy", categories: ["automation"], capabilities: ["routines.managed"], entrypoints: { worker: "./worker.js" } } }).returning();
       await db.insert(pluginManagedResources).values({ companyId, pluginId: plugin!.id, pluginKey, resourceKind: "routine", resourceKey: "summary",
         resourceId: routine!.id, defaultsJson: { issueTemplate: { originId } } });
       const invocation = await routineService(db, { heartbeat: { wakeup: async () => undefined } }).runRoutine(routine!.id, { source: "manual", idempotencyKey: randomUUID() });

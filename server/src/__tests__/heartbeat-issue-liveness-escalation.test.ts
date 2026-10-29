@@ -151,7 +151,7 @@ describeEmbeddedPostgres("heartbeat resolved dependency wake reconciliation", ()
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Paperclip",
+      name: "Simplixy",
       issuePrefix,
       requireBoardApprovalForNewAgents: false,
     });
@@ -243,7 +243,7 @@ describeEmbeddedPostgres("heartbeat resolved dependency wake reconciliation", ()
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Paperclip",
+      name: "Simplixy",
       issuePrefix,
       requireBoardApprovalForNewAgents: false,
     });

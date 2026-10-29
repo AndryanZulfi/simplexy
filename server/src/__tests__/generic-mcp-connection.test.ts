@@ -178,7 +178,7 @@ function headerRecord(init: RequestInit | undefined): Record<string, string> {
 /**
  * A single fetch implementation standing in for an MCP server plus its
  * authorization server. Returns the request log so tests can assert on the exact
- * protocol parameters Paperclip sent (RFC 8707 `resource`, DCR metadata, PKCE).
+ * protocol parameters Simplixy sent (RFC 8707 `resource`, DCR metadata, PKCE).
  */
 function installMcpOAuthFixture(options: FixtureOptions = {}) {
   const auth = options.auth ?? "public";
@@ -611,7 +611,7 @@ describeEmbeddedPostgres("generic remote MCP connections", () => {
         iss: ISSUER, redirectUri: REDIRECT_URI, actor });
     };
     const completed = await authorize();
-    expect(completed.connection).toMatchObject({ name: "Paperclip Notebook", credentialPolicy: "per_user" });
+    expect(completed.connection).toMatchObject({ name: "Simplixy Notebook", credentialPolicy: "per_user" });
     expect(completed.catalog).toHaveLength(5);
     expect(completed.catalog.every(entry => entry.status === "active")).toBe(true);
     const [grant] = await db.select().from(connectionGrants).where(eq(connectionGrants.connectionId, connected.connectionId));
@@ -682,7 +682,7 @@ describeEmbeddedPostgres("generic remote MCP connections", () => {
     await expect(gateway.approveActionRequest({ companyId: company.id, actionRequestId: action!.id, actor: { userId: "board-user" } })).rejects.toMatchObject({ reasonCode: "tool_not_found" });
     const intents = connectionIntentService(db);
     const claims = { sub: agent!.id, company_id: company.id, run_id: run!.id, responsible_user_id: "board-user" };
-    expect((await intents.search(claims, "Paperclip Notebook")).results.some(item => item.service === "paperclip-notebook")).toBe(false);
+    expect((await intents.search(claims, "Simplixy Notebook")).results.some(item => item.service === "paperclip-notebook")).toBe(false);
     await expect(intents.request(claims, "paperclip-notebook")).rejects.toMatchObject({ status: 404 });
     expect(fixture.requestsTo("/mcp")).toHaveLength(callsBeforeDisabledDispatch);
     const tokenRequestsWhileOff = fixture.requestsTo("/token").length;
@@ -1109,7 +1109,7 @@ describeEmbeddedPostgres("generic remote MCP connections", () => {
     expect(serialized).toContain("X-Api-Key");
   });
 
-  it("rejects header names Paperclip refuses to send", async () => {
+  it("rejects header names Simplixy refuses to send", async () => {
     installMcpOAuthFixture({ auth: "public" });
     const company = await createCompany(db);
     const service = toolAccessService(db);
@@ -2106,7 +2106,7 @@ describeEmbeddedPostgres("generic remote MCP connections", () => {
    */
   const PROVIDER_CANARY = "canary-sk-live-9f3a2b7c";
   const HOSTILE_ERROR_DESCRIPTION =
-    `\u001b[31mFATAL\u001b[0m **Paperclip needs your recovery key**: ${PROVIDER_CANARY} <script>alert(1)</script>`;
+    `\u001b[31mFATAL\u001b[0m **Simplixy needs your recovery key**: ${PROVIDER_CANARY} <script>alert(1)</script>`;
   const HOSTILE_ERROR_BODY = {
     error_description: HOSTILE_ERROR_DESCRIPTION,
     error_uri: `https://attacker.fixture.test/why?leak=${PROVIDER_CANARY}`,
@@ -2233,7 +2233,7 @@ describeEmbeddedPostgres("generic remote MCP connections", () => {
 
     expect(thrown).toMatchObject({
       status: 502,
-      message: "The authorization server rejected Paperclip's callback URL.",
+      message: "The authorization server rejected Simplixy's callback URL.",
       details: {
         code: "oauth_dynamic_client_registration_failed",
         providerError: "invalid_redirect_uri",
@@ -2627,7 +2627,7 @@ describeEmbeddedPostgres("generic remote MCP connections", () => {
   });
 
   /**
-   * PAP-17099 — the authorization endpoint is the one discovered value Paperclip
+   * PAP-17099 — the authorization endpoint is the one discovered value Simplixy
    * hands to the operator's browser as a top-level navigation, so a hostile
    * server must not be able to advertise a scheme that runs code in the board's
    * origin, reads a local file, or downgrades the authorization request.

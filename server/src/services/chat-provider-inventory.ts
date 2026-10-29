@@ -167,7 +167,7 @@ export async function getSlackBotChannel(input: {
 /**
  * Exchange a GitHub App JWT for a short-lived installation token and list the
  * repositories selected for that installation. The token never leaves this
- * function and is never persisted in Paperclip.
+ * function and is never persisted in Simplixy.
  */
 export async function listGitHubInstallationRepositories(input: {
   appJwt: string;

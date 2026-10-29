@@ -70,8 +70,8 @@ describe("lifecycle failure diagnostics", () => {
   it.each([
     ["host", "harness_model_unavailable", "Execution configuration check failed. The selected model is unavailable."],
     ["plugin", "required_plugin_unavailable", "Execution configuration check: required plugin step failed. A required plugin is unavailable."],
-    ["select_plugins", "unknown private code", "Execution configuration check: finding required plugins failed. Paperclip could not complete this step."],
-    ["transition", "40P01", "Execution configuration check: saving progress failed. Paperclip could not complete this step."],
+    ["select_plugins", "unknown private code", "Execution configuration check: finding required plugins failed. Simplixy could not complete this step."],
+    ["transition", "40P01", "Execution configuration check: saving progress failed. Simplixy could not complete this step."],
   ] as const)("persists safe actionable errors for %s", async (stage, code, expected) => {
     const { store, driver, worker } = fixture();
     const error = Object.assign(new Error("secret provider output"), { code });
@@ -88,7 +88,7 @@ describe("lifecycle failure diagnostics", () => {
 
   it("does not treat prototype properties as allowed failure codes", () => {
     expect(lifecycleFailureMessage({ stage: "host", phase: "verifying" }, { code: "toString" }))
-      .toContain("Paperclip could not complete this step");
+      .toContain("Simplixy could not complete this step");
   });
 
   it.each(["host", "plugin", "claim", "renew", "scan", "defer"] as const)("reports %s failures with the available context", async stage => {

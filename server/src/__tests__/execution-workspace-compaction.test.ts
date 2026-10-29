@@ -59,7 +59,7 @@ async function writeFile(filePath: string, contents: string) {
 async function createRepo() {
   const repoRoot = await fs.realpath(await fs.mkdtemp(path.join(os.tmpdir(), "paperclip-compaction-")));
   await git(repoRoot, ["init"]);
-  await git(repoRoot, ["config", "user.name", "Paperclip Test"]);
+  await git(repoRoot, ["config", "user.name", "Simplixy Test"]);
   await git(repoRoot, ["config", "user.email", "test@paperclip.local"]);
   await writeFile(path.join(repoRoot, "README.md"), "# Test repo\n");
   await writeFile(
@@ -138,7 +138,7 @@ describeEmbeddedPostgres("terminal workspace compaction", () => {
     const issuePrefix = `C${companyId.slice(0, 7).toUpperCase()}`;
     await db.insert(companies).values({
       id: companyId,
-      name: "Paperclip",
+      name: "Simplixy",
       issuePrefix,
       requireBoardApprovalForNewAgents: false,
     });

@@ -9,7 +9,7 @@ function asRecord(value: unknown): Record<string, unknown> {
 
 /**
  * Did this error come from the OAuth endpoint gate (PAP-17099)? Such a refusal
- * is Paperclip's own decision about an unsafe address, so it must keep its code
+ * is Simplixy's own decision about an unsafe address, so it must keep its code
  * and its 422 instead of being folded into a generic upstream failure.
  */
 export function isOAuthEndpointRejection(error: unknown): boolean {

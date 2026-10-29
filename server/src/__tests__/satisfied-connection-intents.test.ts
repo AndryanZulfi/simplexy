@@ -107,7 +107,7 @@ describePostgres("already available connection requests", () => {
     const publications = await db.select().from(chatPublications).where(eq(chatPublications.endpointId, endpointId));
     expect(publications).toHaveLength(2);
     const terminal = publications.find(row => row.id !== original.id);
-    expect(terminal?.payload.card?.body).toBe("Expired in Paperclip");
+    expect(terminal?.payload.card?.body).toBe("Expired in Simplixy");
     expect(terminal?.payload.card?.actions).toBeUndefined();
   });
 

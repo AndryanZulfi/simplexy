@@ -206,8 +206,8 @@ export function createChatInteractionCallbacks(db: Db, options: InteractionCallb
             authorizationMode: "safe_notice",
             threadId: event.event.threadId,
             userId: event.event.user.userId,
-            text: "This action is no longer available. Open the linked Paperclip task or ask an operator to link this account.",
-            fallbackText: "This Paperclip action is no longer available.",
+            text: "This action is no longer available. Open the linked Simplixy task or ask an operator to link this account.",
+            fallbackText: "This Simplixy action is no longer available.",
             settleDelivery: false,
           } as const)
         : null;
@@ -249,7 +249,7 @@ export function createChatInteractionCallbacks(db: Db, options: InteractionCallb
             },
             state: "filtered",
             attempts: 1,
-            redactedError: "External action denied by Paperclip authorization",
+            redactedError: "External action denied by Simplixy authorization",
             processedAt,
             updatedAt: processedAt,
           })
@@ -347,8 +347,8 @@ export function createChatInteractionCallbacks(db: Db, options: InteractionCallb
             authorizationMode: "safe_notice",
             threadId: event.event.threadId,
             userId: event.event.user.userId,
-            text: "Paperclip could not open this form. Try the action again or open the linked Paperclip task.",
-            fallbackText: "Paperclip could not open this form.",
+            text: "Simplixy could not open this form. Try the action again or open the linked Simplixy task.",
+            fallbackText: "Simplixy could not open this form.",
             settleDelivery: false,
           } as const)
         : null;
@@ -535,7 +535,7 @@ export function createChatInteractionCallbacks(db: Db, options: InteractionCallb
           },
           state: "filtered",
           attempts: 1,
-          redactedError: "External chat modal submission denied by Paperclip",
+          redactedError: "External chat modal submission denied by Simplixy",
           processedAt,
           updatedAt: processedAt,
         })
@@ -563,7 +563,7 @@ export function createChatInteractionCallbacks(db: Db, options: InteractionCallb
       ["active"],
     );
     if (!record) {
-      throw forbidden("This chat action is not a current Paperclip question");
+      throw forbidden("This chat action is not a current Simplixy question");
     }
     const deny = async (safelyKnown?: {
       conversationId?: string | null;
@@ -584,7 +584,7 @@ export function createChatInteractionCallbacks(db: Db, options: InteractionCallb
         // adapter can withhold that misleading acknowledgement. The runtime,
         // not raw JSON or discord.js methods, supplies the ingress context.
         throw Object.assign(
-          new Error("Discord Gateway action was not admitted by Paperclip"),
+          new Error("Discord Gateway action was not admitted by Simplixy"),
           { code: "chat_discord_gateway_action_rejected" },
         );
       }
@@ -1431,7 +1431,7 @@ export function createChatInteractionCallbacks(db: Db, options: InteractionCallb
     runtimeContext: RuntimeContext,
   ): Promise<ModalResponse> {
     const denialError = () =>
-      forbidden("This chat form is not a current Paperclip question");
+      forbidden("This chat form is not a current Simplixy question");
     const record = await runtimeCallbackRecord(
       event.endpointId,
       runtimeContext,

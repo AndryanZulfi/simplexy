@@ -302,8 +302,8 @@ export function AgentBasicsDialog({
                       placeholder="Choose a native harness…"
                       onValueChange={provider => { setRunnerProvider(provider); setAdapterType("paperclip_runner"); }}
                       options={[
-                        { value: "grok", label: "Grok Build (Paperclip Runner)" },
-                        { value: "opencode", label: "OpenCode (Paperclip Runner)" },
+                        { value: "grok", label: "Grok Build (Simplixy Runner)" },
+                        { value: "opencode", label: "OpenCode (Simplixy Runner)" },
                       ]} />
                   </div>
                 </details>}

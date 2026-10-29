@@ -106,7 +106,7 @@ const credential = live ? process.env.OP_SERVICE_ACCOUNT_TOKEN! : "ops_fixture-c
     const vaultId = data[0]!.id;
     let itemId: string | undefined;
     try {
-      const created = await f.call("onepassword_create_item", { vaultId, title: `Paperclip disposable connector proof ${randomUUID()}`,
+      const created = await f.call("onepassword_create_item", { vaultId, title: `Simplixy disposable connector proof ${randomUUID()}`,
         category: "SecureNote", notes: "Synthetic connector test data", fields: [{ id: "test_secret", title: "Test secret", fieldType: "Concealed", value: "disposable-secret" }] });
       itemId = (created.result?.data?.structuredContent as { id: string }).id;
       expect(typeof itemId === "string").toBe(true);

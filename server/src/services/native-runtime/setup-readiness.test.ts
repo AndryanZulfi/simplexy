@@ -371,9 +371,9 @@ describe("Codex selected native account verification", () => {
     expect(sshExecute).not.toHaveBeenCalled(); expect(nativeArtifacts).not.toHaveBeenCalled(); expect(nativeProbe).not.toHaveBeenCalled();
   });
   it("reports an unavailable SSH target daemon before probing credentials or switching runtimes", async () => {
-    selectedRemoteRunner.mockRejectedValue(new Error("runner_remote_artifact_unavailable: install the matching linux-arm64 Paperclip release"));
+    selectedRemoteRunner.mockRejectedValue(new Error("runner_remote_artifact_unavailable: install the matching linux-arm64 Simplixy release"));
     const result = await testNativeRunnerAuthentication(sshContext, "codex", null);
-    expect(result.status).toBe("fail"); expect(result.checks[0].message).toContain("matching linux-arm64 Paperclip release");
+    expect(result.status).toBe("fail"); expect(result.checks[0].message).toContain("matching linux-arm64 Simplixy release");
     expect(nativeArtifacts).not.toHaveBeenCalled(); expect(nativeProbe).not.toHaveBeenCalled();
     expect(selectedRunner).not.toHaveBeenCalled(); expect(execute).not.toHaveBeenCalled();
   });

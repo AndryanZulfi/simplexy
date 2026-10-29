@@ -23,7 +23,7 @@ const manifest: PaperclipPluginManifestV1 = {
   version: "1.0.0",
   displayName: "Capability Sandbox Provider",
   description: "Sandbox provider that declares fine-grained capabilities.",
-  author: "Paperclip",
+  author: "Simplixy",
   categories: ["automation"],
   capabilities: ["environment.drivers.register"],
   entrypoints: { worker: "dist/worker.js" },

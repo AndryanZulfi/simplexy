@@ -110,7 +110,7 @@ describe("durable Dot Runner integration", () => {
     expect(resolveNativeRuntimeMode({ ...input, enabled: false, dotEnabled: true })).toMatchObject({ kind: "native", profile: { backend: "openai_dot_mcp" } });
     expect(() => resolveNativeRuntimeMode({ ...input, enabled: false, dotEnabled: true,
       adapterConfig: { provider: "acpx", acpxAgent: "grok", model: "anthropic/claude-sonnet-4-6" },
-    })).toThrow("Paperclip Runner is experimental and disabled");
+    })).toThrow("Simplixy Runner is experimental and disabled");
     expect(resolveHeartbeatNativeRuntimeMode({ ...input, enabled: false, dotEnabled: false,
       persisted: { runtimeMode: "native", runtimeModeReason: null, runtimeModeResolvedAt: new Date(), driverKind: "openai_dot_mcp" },
     })).toMatchObject({ kind: "native", profile: { backend: "openai_dot_mcp" } });
@@ -604,7 +604,7 @@ describe("durable Dot Runner integration", () => {
     const cancelRun = vi.fn().mockResolvedValue(null);
     const broker = dotRunnerBroker(db, { heartbeat: { wakeup: vi.fn(), cancelRun } });
     expect(await broker.stopGrokWork(f.company.id, f.agent.id, f.userId, run!.id)).toMatchObject({ stopped: true, remoteTerminationConfirmed: false });
-    expect(cancelRun).toHaveBeenCalledWith(run!.id, "Paperclip work stopped; Grok execution unconfirmed");
+    expect(cancelRun).toHaveBeenCalledWith(run!.id, "Simplixy work stopped; Grok execution unconfirmed");
     expect(await grokRoutineService(db).recoveryNeeded(f.company.id, f.agent.id)).toBe(status === "running");
     expect(await db.select().from(dotRunnerAssignments).where(eq(dotRunnerAssignments.runId, run!.id))).toHaveLength(0);
     const other = await fixture({ provider: "grok_bot" });
@@ -620,7 +620,7 @@ describe("durable Dot Runner integration", () => {
     const broker = dotRunnerBroker(db, { heartbeat: { wakeup: vi.fn(), cancelRun } });
     await broker.stopGrokWork(f.company.id, f.agent.id, f.userId, queued!.id);
     expect(cancelRun).toHaveBeenCalledTimes(1);
-    expect(cancelRun).toHaveBeenCalledWith(queued!.id, "Paperclip work stopped; Grok execution unconfirmed");
+    expect(cancelRun).toHaveBeenCalledWith(queued!.id, "Simplixy work stopped; Grok execution unconfirmed");
     expect((await db.select().from(dotRunnerAssignments).where(eq(dotRunnerAssignments.id, active.assignment.id)))[0]!.status).toBe("offered");
     expect(await grokRoutineService(db).recoveryNeeded(f.company.id, f.agent.id)).toBe(false);
     await f.events.stop();
@@ -917,7 +917,7 @@ describe("durable Dot Runner integration", () => {
       const [boundRun] = await db.select().from(heartbeatRuns).where(eq(heartbeatRuns.id, run!.id));
       const [contract] = await db.select().from(completionContracts).where(eq(completionContracts.id, boundRun!.completionContractId!));
       const runtimeContext = nativeRuntimeContextFixture();
-      await writeFile(join(root, "AGENTS.md"), "Use Paperclip tools to save the report.");
+      await writeFile(join(root, "AGENTS.md"), "Use Simplixy tools to save the report.");
       runtimeContext.instructions.bundle.rootPath = root;
       runtimeContext.aggregateDigest = canonicalNativeRuntimeContextDigest(runtimeContext);
       const execution = buildNativeExecutionInput({ companyId: f.company.id, agentId: f.agent.id, runId: run!.id, issue: issue!,

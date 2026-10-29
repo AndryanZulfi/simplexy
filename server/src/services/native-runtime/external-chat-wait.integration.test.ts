@@ -263,7 +263,7 @@ describe("native external-chat response wait", () => {
         provider === "github" ? "paperclip/test-repository" : "telegram-user",
       label:
         provider === "github"
-          ? "Paperclip test repository"
+          ? "Simplixy test repository"
           : "Telegram direct message",
       availability: "available",
       enabled: true,
@@ -941,11 +941,11 @@ describe("native external-chat response wait", () => {
     },
   );
 
-  it("resumes an oversized Slack multi-select answered through its Paperclip handoff", async () => {
+  it("resumes an oversized Slack multi-select answered through its Simplixy handoff", async () => {
     const fixture = await seedBoardAnsweredTurn(true, "slack", true);
     const [publication] = await db.select().from(chatPublications).where(eq(chatPublications.id, fixture.publicationId));
     expect(publication!.payload.card?.actions).toEqual([
-      { type: "link", label: "Open in Paperclip", url: expect.stringContaining(fixture.issueId) },
+      { type: "link", label: "Open in Simplixy", url: expect.stringContaining(fixture.issueId) },
     ]);
     expect(publication!.payload.card?.selection).toBeUndefined();
     await expect(db.select().from(chatActions).where(eq(chatActions.companyId, fixture.companyId))).resolves.toEqual([]);

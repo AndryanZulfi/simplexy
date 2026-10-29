@@ -101,7 +101,7 @@ describeEmbeddedPostgres("heartbeat task-drain admission release", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Paperclip",
+      name: "Simplixy",
       issuePrefix: `T${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
     });
@@ -324,7 +324,7 @@ describeEmbeddedPostgres("heartbeat task-drain admission release", () => {
         categories: ["automation"], status: "ready",
         manifestJson: {
           id: pluginKey, apiVersion: 1, version: "1.0.0", displayName: "Drain sandbox",
-          description: "Task-drain release fixture", author: "Paperclip", categories: ["automation"],
+          description: "Task-drain release fixture", author: "Simplixy", categories: ["automation"],
           capabilities: ["environment.drivers.register"], entrypoints: { worker: "worker.js" },
           environmentDrivers: [{ driverKey: provider, kind: "sandbox_provider", displayName: "Drain sandbox", configSchema: { type: "object" } }],
         },

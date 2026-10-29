@@ -42,7 +42,7 @@ export interface InstanceGeneralSettings {
 export interface InstanceExperimentalSettings {
   enableEnvironments: boolean;
   /**
-   * Exposes the experimental Paperclip Runner adapter for new selections.
+   * Exposes the experimental Simplixy Runner adapter for new selections.
    * Existing native runs ignore later flag changes so they remain recoverable.
    */
   enableNativeRunner: boolean;
@@ -106,7 +106,7 @@ export interface InstanceExperimentalSettings {
   enableFastResponses: boolean;
   enableGoalsSidebarLink: boolean;
   enableServerInfoDebugView: boolean;
-  /** Shows internal Paperclip maintainer tools and observability links. */
+  /** Shows internal Simplixy maintainer tools and observability links. */
   enablePaperclipDeveloperMode: boolean;
   /**
    * Instructs agents to write user-interaction content (confirmations,

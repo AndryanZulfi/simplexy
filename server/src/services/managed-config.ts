@@ -1,7 +1,7 @@
 /**
  * Cloud managed-config bootstrap (harness → app contract).
  *
- * Instances managed by the Paperclip Cloud harness receive one environment
+ * Instances managed by the Simplixy Cloud harness receive one environment
  * variable, `PAPERCLIP_MANAGED_CONFIG`, holding a single JSON document:
  *
  *   {
@@ -263,7 +263,7 @@ export function parseManagedConfigEnv(env: ManagedConfigEnv): ManagedInstanceCon
     // here provisions that row, so a longer list can never be satisfied.
     if (doc.environments.length > 1) {
       fail(
-        `"environments" supports at most one entry: each entry provisions the single Paperclip-managed sandbox environment (DB invariant environments_managed_sandbox_idx)`,
+        `"environments" supports at most one entry: each entry provisions the single Simplixy-managed sandbox environment (DB invariant environments_managed_sandbox_idx)`,
       );
     }
     for (const [index, entry] of doc.environments.entries()) {

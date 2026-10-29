@@ -137,10 +137,10 @@ export type ChatQuestionFormValidationResult =
     };
 
 const CHAT_QUESTION_FORM_DENIAL_MESSAGE =
-  "This form is no longer authorized. Close it and open the linked Paperclip task.";
+  "This form is no longer authorized. Close it and open the linked Simplixy task.";
 
 /**
- * Provider callbacks must be acknowledged after Paperclip has durably denied a
+ * Provider callbacks must be acknowledged after Simplixy has durably denied a
  * stale or unauthorized submission. When the opaque form token is known, keep
  * the modal open with a safe field-level explanation; otherwise clear the
  * untrusted view without reflecting any callback details.
@@ -658,7 +658,7 @@ function invalid(
 }
 
 /**
- * Converts opaque submitted values to canonical Paperclip answers. Provider
+ * Converts opaque submitted values to canonical Simplixy answers. Provider
  * labels, question ids, option ids, private metadata, and extra form fields are
  * never trusted as canonical identifiers.
  */

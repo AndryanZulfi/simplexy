@@ -15,7 +15,7 @@ export interface IssueCreatedFromNoteProps {
 }
 
 /**
- * "Created from PAP-168 by Paperclip QA": the task a run was executing when it
+ * "Created from PAP-168 by Simplixy QA": the task a run was executing when it
  * created this one. Provenance only; it is not the structural parent and it is
  * not a blocker. Renders nothing when the viewer may not see the source.
  */

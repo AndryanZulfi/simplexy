@@ -1283,7 +1283,7 @@ describe("claude execute", () => {
         context: {},
         runtimeMcp: {
           getServers: () => [{
-            name: "Paperclip projects",
+            name: "Simplixy projects",
             url: "http://localhost:3100/api/mcp/project-tools",
             connectionId: "paperclip-project-tools",
             token: "run-jwt-token",
@@ -1369,7 +1369,7 @@ describe("claude execute", () => {
         },
         runtimeMcp: {
           getServers: () => change === "removed" ? [] : [{
-            name: "Paperclip projects",
+            name: "Simplixy projects",
             url: "http://localhost:3100/api/mcp/project-tools",
             connectionId: "paperclip-project-tools",
             token: "next-run-jwt-token",
@@ -1413,7 +1413,7 @@ describe("claude execute", () => {
         expect(capture2.mcpConfigContents).not.toContain('"run-jwt-token"');
         if (change === "added") expect(capture2.mcpConfigContents).toContain("fresh-github-token");
       }
-      expect(capture2.prompt).toContain("## Paperclip Resume Delta");
+      expect(capture2.prompt).toContain("## Simplixy Resume Delta");
       expect(capture2.prompt).not.toContain("Follow the paperclip heartbeat.");
     } finally {
       if (previousHome === undefined) delete process.env.HOME;

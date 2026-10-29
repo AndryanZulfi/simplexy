@@ -124,7 +124,7 @@ describe("on-demand agent avatars", () => {
     }
     expect(data[(256 * info.width + 256) * info.channels + 3]).toBe(255);
   }, 20_000);
-  it("serves Slack exports on the Paperclip dark-mode color in a separate cache", async () => {
+  it("serves Slack exports on the Simplixy dark-mode color in a separate cache", async () => {
     const css = await readFile(new URL("../../../ui/src/index.css", import.meta.url), "utf8");
     const lightness = Number(css.match(/\.dark\s*\{\s*--background:\s*oklch\(([\d.]+) 0 0\)/)?.[1]);
     // Neutral OKLCH converts to equal sRGB channels; PNG rounds to 8-bit color.

@@ -193,7 +193,7 @@ export function createGitHubPublicationPolicy(db: Db, options: GitHubPublication
       if (prepared) return publication.payload.text;
       const text = publication.payload.text.includes(taskUrl)
         ? publication.payload.text
-        : `${publication.payload.text}\n\n[Open this Paperclip task](${taskUrl})`;
+        : `${publication.payload.text}\n\n[Open this Simplixy task](${taskUrl})`;
       await tx.insert(chatActions).values({
         companyId: publication.companyId,
         endpointId: publication.endpointId,

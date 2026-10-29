@@ -849,7 +849,7 @@ function fakeSlackFetch(botId = `U-BOT-${randomUUID()}`) {
           JSON.stringify({
             ok: true,
             team_id: "T-PAPERCLIP",
-            team: "Paperclip Test",
+            team: "Simplixy Test",
             user_id: botId,
             user: `maya-${botId.slice(-8)}`,
           }),
@@ -956,7 +956,7 @@ function fakeTelegramFetch(
           result: {
             id: botId,
             username: `paperclip_${botId}_bot`,
-            first_name: "Paperclip Test",
+            first_name: "Simplixy Test",
           },
         }),
         { status: 200, headers: { "content-type": "application/json" } },
@@ -2296,7 +2296,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
           JSON.stringify({
             id: appRegistrationId,
             slug: `maya-${fixture.companyId.slice(0, 8)}`,
-            name: "Maya Paperclip",
+            name: "Maya Simplixy",
             owner: { login: "paperclipai" },
             permissions: appPermissions,
             events: appEvents,
@@ -6446,7 +6446,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       const registration = await service.startGitHubRegistration(
         endpoint.id,
         "owner-user",
-        "Paperclip Review QA",
+        "Simplixy Review QA",
       );
       expect(registration.manifest.redirect_url).toBe(
         "https://reviews.example.test/api/chat-github/manifest/callback",
@@ -8044,7 +8044,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       expect(
         mutations.find((m) => m.body.conclusion === "failure")?.body,
       ).toMatchObject({
-        name: "Paperclip Review",
+        name: "Simplixy Review",
         head_sha: head,
         conclusion: "failure",
         details_url: `https://current-vanity.example/${company.issuePrefix}/issues/${conversation.issueId}`,
@@ -9627,7 +9627,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
         await expect(f.service.sendSlackTestMessage(f.endpoint.id, actor, { requestId: randomUUID() })).rejects.toThrow("Enable direct messages");
         await db.update(chatEndpoints).set({ allowDirectMessages: true }).where(eq(chatEndpoints.id, f.endpoint.id));
         await db.update(companyMemberships).set({ status: "inactive" }).where(and(eq(companyMemberships.companyId, f.companyId), eq(companyMemberships.principalId, actor.userId)));
-        await expect(f.service.sendSlackTestMessage(f.endpoint.id, actor, { requestId: randomUUID() })).rejects.toThrow("active Paperclip account");
+        await expect(f.service.sendSlackTestMessage(f.endpoint.id, actor, { requestId: randomUUID() })).rejects.toThrow("active Simplixy account");
         expect(posts(f)).toHaveLength(0);
       });
       it("redacts provider failures and never retries an ambiguous send", async () => {
@@ -10118,7 +10118,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       await db.update(authUsers).set({ image: null }).where(eq(authUsers.id, actor.userId));
       const [, welcome] = f.provider.mock.calls.find(([url]) => String(url).endsWith("chat.postMessage"))!;
       expect(new URLSearchParams(String(welcome!.body)).get("channel")).toBe(f.installerId);
-      expect(new URLSearchParams(String(welcome!.body)).get("text")).toMatch(/^Hi, I’m .+\. Your Slack account is connected to Paperclip\.$/);
+      expect(new URLSearchParams(String(welcome!.body)).get("text")).toMatch(/^Hi, I’m .+\. Your Slack account is connected to Simplixy\.$/);
       const [row] = await db.select().from(chatSlackRegistrations).where(eq(chatSlackRegistrations.endpointId, f.endpoint.id));
       expect(Object.keys(row.secretIds)).toEqual(["clientSecret"]);
       await request(f.app).patch(`/api/chat-endpoints/${f.endpoint.id}`).send({ slackSetupMethod: "manual" }).expect(409);
@@ -10166,7 +10166,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       const messages = f.provider.mock.calls.filter(([url]) => String(url).endsWith("chat.postMessage"));
       expect(messages).toHaveLength(2);
       expect(new URLSearchParams(String(messages[0][1]!.body)).get("text")).not.toContain("/event-subscriptions");
-      expect(new URLSearchParams(String(messages[1][1]!.body)).get("text")).toBe("Your Slack connection is working! Now ask me a question about your Paperclip instance.");
+      expect(new URLSearchParams(String(messages[1][1]!.body)).get("text")).toBe("Your Slack connection is working! Now ask me a question about your Simplixy instance.");
     });
     it.each(["failManifestUpdate", "timeoutManifestUpdate"] as const)("recovers %s on the same saved app after restart without exposing provider echoes", async failure => {
       const f = await fixture();
@@ -10629,7 +10629,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     expect(provider).toHaveBeenCalledTimes(1);
   });
 
-  it("mirrors Paperclip messages with user attribution and returns only the selected Slack reply", async () => {
+  it("mirrors Simplixy messages with user attribution and returns only the selected Slack reply", async () => {
     await instanceSettingsService(db).updateExperimental({ enableChatConnectors: true });
     const fixture = await seedCompany();
     const { callbacks, endpoint, runtime, service, wakeup } = await configuredSlackEndpoint(fixture);
@@ -10652,7 +10652,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       { authorType: "user", mirrorToSlack: true, clientRequestId })).id).toBe(comment.id);
     await service.processPendingPublications();
     expect(runtime.endpoints.get(endpoint.id)!.posts).toEqual([
-      { threadId: channel.thread.id, text: "**Owner User (via Paperclip)**\n\nPlease make the plan" },
+      { threadId: channel.thread.id, text: "**Owner User (via Simplixy)**\n\nPlease make the plan" },
     ]);
     const runId = randomUUID();
     await db.insert(heartbeatRuns).values({ id: runId, companyId: fixture.companyId, agentId: fixture.assignedAgentId,
@@ -10667,7 +10667,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     await service.processPendingPublications();
     await service.processPendingPublications();
     expect(runtime.endpoints.get(endpoint.id)!.posts.map(post => post.text)).toEqual([
-      "**Owner User (via Paperclip)**\n\nPlease make the plan", "The plan is ready.",
+      "**Owner User (via Simplixy)**\n\nPlease make the plan", "The plan is ready.",
     ]);
     // The explicit Board composer uses the same mirror and a durable wakeup.
     workWake.mockClear();
@@ -10740,7 +10740,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     await service.processPendingPublications();
     if (change === "later-cancelled") {
       expect(runtime.endpoints.get(endpoint.id)!.posts.map(post => post.text)).toEqual([
-        "**Owner User (via Paperclip)**\n\nQueued before access changed", "Queued final before access changed",
+        "**Owner User (via Simplixy)**\n\nQueued before access changed", "Queued final before access changed",
       ]);
     } else {
       expect(runtime.endpoints.get(endpoint.id)!.posts).toEqual([]);
@@ -10852,7 +10852,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     await worker.processPendingDeliveries();
     await worker.processPendingPublications();
     expect(smallWake).toHaveBeenCalledTimes(1);
-    expect(runtime.endpoints.get(endpoint.id)!.posts.map(post => post.text)).toEqual(["**Owner User (via Paperclip)**\n\nSmall pool work"]);
+    expect(runtime.endpoints.get(endpoint.id)!.posts.map(post => post.text)).toEqual(["**Owner User (via Simplixy)**\n\nSmall pool work"]);
   }, 15_000);
 
   it("refreshes Slack tool guidance without restoring disabled catalog policies", async () => {
@@ -12386,7 +12386,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
             JSON.stringify({
               id: appRegistrationId,
               slug: "shared-paperclip-app",
-              name: "Shared Paperclip App",
+              name: "Shared Simplixy App",
               owner: { login: owner },
               permissions: {
                 issues: "write",
@@ -12558,7 +12558,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
             JSON.stringify({
               id: appRegistrationId,
               slug: "maya-paperclip",
-              name: "Maya Paperclip",
+              name: "Maya Simplixy",
               owner: { login: "paperclipai" },
               permissions: {
                 issues: "write",
@@ -13873,7 +13873,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
 
     const [reply] = await db.select().from(chatActions).where(and(eq(chatActions.endpointId, endpoint.id), eq(chatActions.kind, "github_review_publication")));
     await db.update(chatActions).set({ status: "processing" }).where(eq(chatActions.id, reply.id));
-    await expect(service.test(endpoint.id)).rejects.toThrow("Wait for the Paperclip agent to reply");
+    await expect(service.test(endpoint.id)).rejects.toThrow("Wait for the Simplixy agent to reply");
     await db.update(chatActions).set({ status: "processed" }).where(eq(chatActions.id, reply.id));
     const activated = await service.test(endpoint.id);
     expect(activated).toMatchObject({
@@ -14493,7 +14493,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     const [filtered] = await readChatDeliveriesByEndpointId(endpoint.id);
     expect(filtered).toMatchObject({
       state: "filtered",
-      redactedError: "External identity must be linked to a Paperclip account",
+      redactedError: "External identity must be linked to a Simplixy account",
       normalizedEvent: { deduplication: { duplicateCount: 1 } },
     });
 
@@ -14576,7 +14576,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       .then((rows) => rows[0]);
     expect(suspendedDelivery).toMatchObject({
       state: "filtered",
-      redactedError: "Linked Paperclip account is not currently permitted",
+      redactedError: "Linked Simplixy account is not currently permitted",
     });
   });
 
@@ -16578,7 +16578,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
         status: "received",
         summary: "GitHub webhook received after recovery request",
         detail:
-          "Paperclip received this callback. Its normal access checks and processing still apply.",
+          "Simplixy received this callback. Its normal access checks and processing still apply.",
         replayable: false,
         resolutionActions: [],
       });
@@ -17295,7 +17295,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       eventKind: "message",
       conversationId: null,
       principalId: null,
-      redactedError: "Destination is not enabled in Paperclip",
+      redactedError: "Destination is not enabled in Simplixy",
       normalizedEvent: {
         kind: "message",
         filtering: {
@@ -17320,7 +17320,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
         id: rows[0]!.id,
         status: "filtered",
         summary: "message ignored",
-        detail: "Destination is not enabled in Paperclip",
+        detail: "Destination is not enabled in Simplixy",
         replayable: false,
       }),
     );
@@ -19168,7 +19168,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
             providerThreadCreated: false,
           },
         }),
-        redactedError: "Destination is not enabled in Paperclip",
+        redactedError: "Destination is not enabled in Simplixy",
         state: "filtered",
       },
     ]);
@@ -20172,9 +20172,9 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
         commands: [
           {
             command: "task",
-            description: "Start or continue a Paperclip task",
+            description: "Start or continue a Simplixy task",
           },
-          { command: "status", description: "Show the active Paperclip task" },
+          { command: "status", description: "Show the active Simplixy task" },
           {
             command: "new",
             description: "Start a new task after the current one",
@@ -20258,7 +20258,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
             result: {
               id: botId,
               username: "paperclip_maintenance_bot",
-              first_name: "Paperclip Maintenance",
+              first_name: "Simplixy Maintenance",
             },
           }),
           { status: 200, headers: { "content-type": "application/json" } },
@@ -20496,7 +20496,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
             result: {
               id: botId,
               username: "paperclip_maintenance_race_bot",
-              first_name: "Paperclip Maintenance Race",
+              first_name: "Simplixy Maintenance Race",
             },
           }),
           { status: 200, headers: { "content-type": "application/json" } },
@@ -21232,7 +21232,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       },
       channelData: {
         tenant: { id: teamsTenantId },
-        team: { id: "team-1", name: "Paperclip" },
+        team: { id: "team-1", name: "Simplixy" },
         channel: { id: "channel-1", name: "Engineering" },
       },
     });
@@ -24698,7 +24698,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       expect.objectContaining({ state: "active", sessionGeneration: 1 }),
     ]);
     expect(runtime.endpoints.get(endpoint.id)?.posts[0]?.text).toBe(
-      "Send your request to start a new Paperclip task.",
+      "Send your request to start a new Simplixy task.",
     );
     // Command-only acknowledgements have no run whose final reply can retire
     // a processing reaction. The subsequent task message has its own receipt.
@@ -24872,7 +24872,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       state: "filtered",
       attempts: 0,
       principalId: null,
-      redactedError: "Destination is not enabled in Paperclip",
+      redactedError: "Destination is not enabled in Simplixy",
       normalizedEvent: {
         filtering: { contentRetained: false },
         message: { providerMessageId: "teams-setup-group-disabled" },
@@ -25273,7 +25273,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       { allowDirectMessages: false },
       "owner-user",
     );
-    await send("teams-direct-disabled", "This must remain outside Paperclip");
+    await send("teams-direct-disabled", "This must remain outside Simplixy");
     expect(await service.listConversations(endpoint.id)).toEqual([]);
     expect(wakeup).not.toHaveBeenCalled();
     await expect(
@@ -25289,7 +25289,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     ).resolves.toEqual([
       {
         state: "filtered",
-        redactedError: "Destination is not enabled in Paperclip",
+        redactedError: "Destination is not enabled in Simplixy",
         normalizedEvent: expect.objectContaining({
           providerEventId: `${directThread.thread.id}:teams-direct-disabled`,
           kind: "direct_message",
@@ -25314,7 +25314,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       .where(eq(chatDeliveries.endpointId, endpoint.id))
       .then((rows) => rows[0]);
     expect(JSON.stringify(disabledDelivery)).not.toContain(
-      "This must remain outside Paperclip",
+      "This must remain outside Simplixy",
     );
     expect(JSON.stringify(disabledDelivery)).not.toContain(
       "6c4dd0ef-f027-4b75-93d9-04d97424220e",
@@ -25726,7 +25726,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       expect(delivery).toMatchObject({
         state: "filtered",
         principalId: null,
-        redactedError: "Destination is not enabled in Paperclip",
+        redactedError: "Destination is not enabled in Simplixy",
         normalizedEvent: {
           filtering: { contentRetained: false },
           message: { providerMessageId: rootMessageId },
@@ -25829,7 +25829,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     expect(delivery).toMatchObject({
       state: "filtered",
       principalId: null,
-      redactedError: "Destination is not enabled in Paperclip",
+      redactedError: "Destination is not enabled in Simplixy",
       normalizedEvent: {
         filtering: { contentRetained: false },
         message: { providerMessageId: messageId },
@@ -25974,8 +25974,8 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
         state: "filtered",
         redactedError:
           authorizationChange === "viewer"
-            ? "Linked Paperclip account is not currently permitted"
-            : "External identity must be linked to a Paperclip account",
+            ? "Linked Simplixy account is not currently permitted"
+            : "External identity must be linked to a Simplixy account",
         normalizedEvent: {
           filtering: { contentRetained: false },
           message: { providerMessageId: messageId },
@@ -26155,7 +26155,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     expect(delivery).toMatchObject({
       state: "filtered",
       principalId: null,
-      redactedError: "Destination is not enabled in Paperclip",
+      redactedError: "Destination is not enabled in Simplixy",
       normalizedEvent: {
         filtering: { contentRetained: false },
         message: { providerMessageId: messageId },
@@ -26753,7 +26753,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     const posts = runtime.endpoints.get(endpoint.id)?.posts ?? [];
     const channelAttachmentPost = posts.find((post) =>
       post.text.includes(
-        "File saved on the Paperclip task: channel-report.txt.",
+        "File saved on the Simplixy task: channel-report.txt.",
       ),
     );
     expect(channelAttachmentPost?.text).toContain(
@@ -26765,7 +26765,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     expect(channelAttachmentPost?.files).toBeUndefined();
     const personalAttachmentPost = posts.find((post) =>
       post.text.includes(
-        "File saved on the Paperclip task: personal-report.txt.",
+        "File saved on the Simplixy task: personal-report.txt.",
       ),
     );
     expect(personalAttachmentPost?.text).toContain(
@@ -30074,7 +30074,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     expect(deliveries[2]).toMatchObject({
       eventKind: "action",
       state: "filtered",
-      redactedError: "External chat modal submission denied by Paperclip",
+      redactedError: "External chat modal submission denied by Simplixy",
       processedAt: expect.any(Date),
     });
     expect(JSON.stringify(await service.get(endpoint.id))).not.toContain(
@@ -32376,7 +32376,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     ).resolves.toEqual([{ state: "filtered" }]);
   });
 
-  it("keeps one Paperclip account mapping for the same provider principal across endpoints", async () => {
+  it("keeps one Simplixy account mapping for the same provider principal across endpoints", async () => {
     const fixture = await seedCompany();
     const firstContext = createService(
       new FakeChatSdkRuntime(),
@@ -32450,7 +32450,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     await db.insert(authUsers).values([
       {
         id: "paperclip-user-a",
-        name: "Paperclip User A",
+        name: "Simplixy User A",
         email: `identity-a-${fixture.companyId}@example.com`,
         emailVerified: true,
         createdAt: now,
@@ -32458,7 +32458,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       },
       {
         id: "paperclip-user-b",
-        name: "Paperclip User B",
+        name: "Simplixy User B",
         email: `identity-b-${fixture.companyId}@example.com`,
         emailVerified: true,
         createdAt: now,
@@ -33584,7 +33584,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
             method: "sendMessage",
             body: {
               chat_id: "-100123",
-              text: "This Paperclip action is no longer available. Open the linked task or ask an operator to link this account.",
+              text: "This Simplixy action is no longer available. Open the linked task or ask an operator to link this account.",
               ephemeral_message_parameters: {
                 receiver_user_id: 456,
                 callback_query_id: "native-private-callback-1",
@@ -33793,7 +33793,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
             method: "sendMessage",
             body: {
               chat_id: "456",
-              text: "This Paperclip action is no longer available. Open the linked task or ask an operator to link this account.",
+              text: "This Simplixy action is no longer available. Open the linked task or ask an operator to link this account.",
             },
           },
         ]);
@@ -34157,7 +34157,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       runtime.endpoints.get(endpoint.id)?.posts.map((post) => post.text),
     ).toEqual([
       "old-generation-final",
-      "Send your request to start a new Paperclip task.",
+      "Send your request to start a new Simplixy task.",
     ]);
     await expect(service.listConversations(endpoint.id)).resolves.toEqual([
       expect.objectContaining({ id: oldConversation.id, state: "completed" }),
@@ -34223,7 +34223,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       runtime.endpoints.get(endpoint.id)?.posts.map((post) => post.text),
     ).toEqual([
       "old-generation-final",
-      "Send your request to start a new Paperclip task.",
+      "Send your request to start a new Simplixy task.",
       "new-generation-final",
     ]);
     expect(
@@ -36726,7 +36726,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     ).toMatchObject({
       progressState: "failed",
       text: expect.stringContaining(
-        "Ask a Paperclip admin to create a private identity link for this account or enable isolated guest execution, then start a new task.",
+        "Ask a Simplixy admin to create a private identity link for this account or enable isolated guest execution, then start a new task.",
       ),
     });
   });
@@ -38305,7 +38305,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
             result: {
               id: 884422,
               username: "paperclip_lease_reclaim_bot",
-              first_name: "Paperclip Lease Reclaim",
+              first_name: "Simplixy Lease Reclaim",
             },
           }),
           { status: 200, headers: { "content-type": "application/json" } },
@@ -38481,7 +38481,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
             result: {
               id: 884423,
               username: "paperclip_removal_reclaim_bot",
-              first_name: "Paperclip Removal Reclaim",
+              first_name: "Simplixy Removal Reclaim",
             },
           }),
           { status: 200, headers: { "content-type": "application/json" } },
@@ -40127,7 +40127,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
         expect.objectContaining({
           state: "filtered",
           attempts: 1,
-          redactedError: "External action denied by Paperclip authorization",
+          redactedError: "External action denied by Simplixy authorization",
           normalizedEvent: {
             providerEventId: expect.stringMatching(
               /^action-denied:[a-f0-9]{64}$/,
@@ -40155,7 +40155,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       });
       expect(gatewayInteraction.reply).toHaveBeenLastCalledWith({
         content:
-          "This action is no longer available. Open the linked Paperclip task or ask an operator to link this account.",
+          "This action is no longer available. Open the linked Simplixy task or ask an operator to link this account.",
         flags: 64,
       });
     } finally {
@@ -41301,7 +41301,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
           expect(callback.reply.mock.calls[0]![0].content).toBe(
             submittedText === winnerText
               ? "Your response was received."
-              : "This response was not accepted. Open the linked Paperclip task or reopen the question to try again.",
+              : "This response was not accepted. Open the linked Simplixy task or reopen the question to try again.",
           );
         }
         expect(answered).toMatchObject({
@@ -41929,7 +41929,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     expect(providerRuntime.posts).toHaveLength(1);
     const delivered = providerRuntime.posts[0]!;
     expect(delivered.text).toBe(
-      "Paperclip attached the complete response because it exceeds Discord’s message limit.",
+      "Simplixy attached the complete response because it exceeds Discord’s message limit.",
     );
     expect(delivered.text).not.toContain("...");
     expect(delivered.files).toHaveLength(1);
@@ -42083,7 +42083,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       );
     expect(definiteFailureNotices).toHaveLength(1);
     const rejectedAttachmentNotice =
-      "Paperclip could not send the response attachment. The complete response remains on its Paperclip task for an operator to retry." +
+      "Simplixy could not send the response attachment. The complete response remains on its Simplixy task for an operator to retry." +
       ` Open task: https://paperclip.example/issues/${conversation.issueId}`;
     expect(definiteFailureNotices[0]).toMatchObject({
       commentId: null,
@@ -42656,7 +42656,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     expect(completed).toMatchObject({ state: "published", attempts: 2 });
     expect(providerRuntime.posts).toHaveLength(1);
     expect(providerRuntime.posts[0]?.text).toBe(
-      "Paperclip attached the complete response to preserve its Markdown formatting.",
+      "Simplixy attached the complete response to preserve its Markdown formatting.",
     );
     const attachment = providerRuntime.posts[0]?.attachments?.[0] as {
       data: Buffer;
@@ -43699,7 +43699,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     );
     expect(channel.postEphemeral).toHaveBeenCalledWith(
       unlinkedAction.event.user.userId,
-      "This action is no longer available. Open the linked Paperclip task or ask an operator to link this account.",
+      "This action is no longer available. Open the linked Simplixy task or ask an operator to link this account.",
       { fallbackToDM: false },
     );
     const deniedSlackActions = await db
@@ -43717,7 +43717,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
         principalId: expect.any(String),
         state: "filtered",
         attempts: 1,
-        redactedError: "External action denied by Paperclip authorization",
+        redactedError: "External action denied by Simplixy authorization",
         normalizedEvent: {
           providerEventId: expect.stringMatching(
             /^action-denied:[a-f0-9]{64}$/,
@@ -43738,7 +43738,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
           kind: "delivery",
           status: "filtered",
           summary: "action ignored",
-          detail: "External action denied by Paperclip authorization",
+          detail: "External action denied by Simplixy authorization",
           replayable: false,
         }),
       ]),
@@ -43753,7 +43753,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     );
     await vi.waitFor(() =>
       expect(channel.post).toHaveBeenCalledWith(
-        "This Paperclip action is no longer available.",
+        "This Simplixy action is no longer available.",
       ),
     );
     expect(channel.postEphemeral).toHaveBeenCalledTimes(2);
@@ -44230,7 +44230,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       ([userId, text]) =>
         userId === externalUserId &&
         text ===
-          "This action is no longer available. Open the linked Paperclip task or ask an operator to link this account.",
+          "This action is no longer available. Open the linked Simplixy task or ask an operator to link this account.",
     ).length;
     await callbacks.onAction(actionEvent());
     expect(
@@ -44238,7 +44238,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
         ([userId, text]) =>
           userId === externalUserId &&
           text ===
-            "This action is no longer available. Open the linked Paperclip task or ask an operator to link this account.",
+            "This action is no longer available. Open the linked Simplixy task or ask an operator to link this account.",
       ),
     ).toHaveLength(staleNoticeCount);
     expect(
@@ -44674,7 +44674,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
         response_action: "errors",
         errors: {
           [select.block_id]:
-            "This form is no longer authorized. Close it and open the linked Paperclip task.",
+            "This form is no longer authorized. Close it and open the linked Simplixy task.",
         },
       });
       expect(await submissionState()).toEqual(before);
@@ -45075,7 +45075,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       await vi.waitFor(() =>
         expect(channel.postEphemeral).toHaveBeenCalledWith(
           modalUser.userId,
-          "This action is no longer available. Open the linked Paperclip task or ask an operator to link this account.",
+          "This action is no longer available. Open the linked Simplixy task or ask an operator to link this account.",
           { fallbackToDM: false },
         ),
       );
@@ -45185,7 +45185,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
         await vi.waitFor(() =>
           expect(channel.postEphemeral).toHaveBeenCalledWith(
             modalUser.userId,
-            "Paperclip could not open this form. Try the action again or open the linked Paperclip task.",
+            "Simplixy could not open this form. Try the action again or open the linked Simplixy task.",
             { fallbackToDM: false },
           ),
         );
@@ -45396,7 +45396,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
         action: "errors",
         errors: {
           [selectField.id]:
-            "This form is no longer authorized. Close it and open the linked Paperclip task.",
+            "This form is no longer authorized. Close it and open the linked Simplixy task.",
         },
       };
       await expect(
@@ -45699,7 +45699,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
           expect.objectContaining({
             kind: "delivery",
             status: "filtered",
-            detail: "External chat modal submission denied by Paperclip",
+            detail: "External chat modal submission denied by Simplixy",
             replayable: false,
           }),
         ]),
@@ -46271,7 +46271,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
               result: {
                 id: botId,
                 username: "paperclip_denial_test_bot",
-                first_name: "Paperclip Denial Test",
+                first_name: "Simplixy Denial Test",
               },
             }),
             { status: 200, headers: { "content-type": "application/json" } },
@@ -46320,7 +46320,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
                   type: "private",
                   first_name: "Telegram User",
                 },
-                text: "This Paperclip action is no longer available.",
+                text: "This Simplixy action is no longer available.",
               },
             }),
             { status: 200, headers: { "content-type": "application/json" } },
@@ -46459,7 +46459,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       expect(notices).toHaveLength(1);
       expect(JSON.parse(notices[0]!.body)).toMatchObject({
         chat_id: "417200359",
-        text: "This Paperclip action is no longer available. Open the linked task or ask an operator to link this account.",
+        text: "This Simplixy action is no longer available. Open the linked task or ask an operator to link this account.",
       });
       expect(notices[0]!.body).not.toContain(actionId);
       expect(notices[0]!.body).not.toContain(callbackData);
@@ -46480,7 +46480,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       expect(denials[0]).toMatchObject({
         state: "filtered",
         attempts: 1,
-        redactedError: "External action denied by Paperclip authorization",
+        redactedError: "External action denied by Simplixy authorization",
         normalizedEvent: {
           providerEventId: expect.stringMatching(
             /^action-denied:[a-f0-9]{64}$/,
@@ -46742,7 +46742,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
         principalId: principal.id,
         state: "filtered",
         attempts: 1,
-        redactedError: "External action denied by Paperclip authorization",
+        redactedError: "External action denied by Simplixy authorization",
         normalizedEvent: {
           providerEventId: expect.stringMatching(
             /^action-denied:[a-f0-9]{64}$/,
@@ -46765,7 +46765,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
           kind: "delivery",
           status: "filtered",
           summary: "action ignored",
-          detail: "External action denied by Paperclip authorization",
+          detail: "External action denied by Simplixy authorization",
           replayable: false,
         }),
       ]),
@@ -48422,7 +48422,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     ).toHaveLength(0);
   });
 
-  it("publishes complex question sets as non-executable Paperclip fallbacks", async () => {
+  it("publishes complex question sets as non-executable Simplixy fallbacks", async () => {
     const fixture = await seedCompany();
     const { callbacks, endpoint, service } =
       await configuredSlackEndpoint(fixture);
@@ -48501,7 +48501,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       ) ?? [],
     ).toEqual([]);
     expect(publication.payload.text).toContain(
-      "Open the task in Paperclip to respond",
+      "Open the task in Simplixy to respond",
     );
     expect(callbacks.onModalSubmit).toBeTypeOf("function");
     expect(callbacks.onModalClose).toBeUndefined();
@@ -48578,7 +48578,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
             actions: [
               {
                 type: "link",
-                label: "Open in Paperclip",
+                label: "Open in Simplixy",
                 url: `https://paperclip.example/issues/${conversation!.issueId}`,
               },
             ],
@@ -48709,7 +48709,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
           card: {
             actions: [
               expect.objectContaining({
-                label: "Open in Paperclip",
+                label: "Open in Simplixy",
                 type: "link",
               }),
             ],
@@ -48921,12 +48921,12 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       {
         publicBaseUrl: "https://board.paperclip.example",
         expectedFallback: (issueId: string) =>
-          `File saved on the Paperclip task: report.txt. This GitHub App connection cannot upload file bytes into comments. Download it: https://board.paperclip.example/issues/${issueId}`,
+          `File saved on the Simplixy task: report.txt. This GitHub App connection cannot upload file bytes into comments. Download it: https://board.paperclip.example/issues/${issueId}`,
       },
       {
         publicBaseUrl: "http://127.0.0.1:3103",
         expectedFallback: () =>
-          "File saved on the private Paperclip task: report.txt. This GitHub App connection cannot upload file bytes into comments.",
+          "File saved on the private Simplixy task: report.txt. This GitHub App connection cannot upload file bytes into comments.",
       },
     ]) {
       const fixture = await seedCompany();
@@ -49087,7 +49087,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
 
     expect(failed).toMatchObject({ state: "failed" });
     const selectedAttachmentNotice =
-      "Paperclip could not send an attachment. The file remains on its Paperclip task for an operator to retry." +
+      "Simplixy could not send an attachment. The file remains on its Simplixy task for an operator to retry." +
       ` Open task: https://paperclip.example/issues/${conversation.issueId}`;
     const publications = await db
       .select()
@@ -49109,7 +49109,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     expect(publications).toEqual([
       expect.objectContaining({
         state: "published",
-        payload: { text: "**Owner User (via Paperclip)**\n\nThe selected PNG should follow." },
+        payload: { text: "**Owner User (via Simplixy)**\n\nThe selected PNG should follow." },
       }),
       expect.objectContaining({
         id: failed.id,
@@ -49127,7 +49127,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     expect(providerRuntime.posts).toEqual([
       {
         threadId: channel.thread.id,
-        text: "**Owner User (via Paperclip)**\n\nThe selected PNG should follow.",
+        text: "**Owner User (via Simplixy)**\n\nThe selected PNG should follow.",
       },
       {
         threadId: channel.thread.id,
@@ -49718,7 +49718,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     expect(publications).toEqual([
       expect.objectContaining({
         state: "published",
-        payload: { text: "**Owner User (via Paperclip)**\n\nVisible board update" },
+        payload: { text: "**Owner User (via Simplixy)**\n\nVisible board update" },
       }),
       expect.objectContaining({
         id: first.id,
@@ -49733,7 +49733,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
         .where(eq(issueAttachments.id, attachment.id)),
     ).resolves.toEqual([{ issueCommentId: comments[0].id }]);
     expect(runtime.endpoints.get(endpoint.id)?.posts).toEqual([
-      { threadId: channel.thread.id, text: "**Owner User (via Paperclip)**\n\nVisible board update" },
+      { threadId: channel.thread.id, text: "**Owner User (via Simplixy)**\n\nVisible board update" },
       {
         threadId: channel.thread.id,
         text: "",
@@ -49997,7 +49997,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
         ).toEqual([
           {
             threadId: "slack:C-BOARD-REJECTION:4410.1",
-            text: "**Owner User (via Paperclip)**\n\nCorrected separately keyed send",
+            text: "**Owner User (via Simplixy)**\n\nCorrected separately keyed send",
           },
         ]);
       } finally {
@@ -51010,7 +51010,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
         ).toEqual([[], ...attachmentIds.map((id) => [id])]);
         expect(initialBatch[2]!.id).toBe(blocked.id);
         expect(initialRuntime.posts).toEqual([
-          { threadId: channel.thread.id, text: provider === "slack" ? `**Owner User (via Paperclip)**\n\n${text}` : text },
+          { threadId: channel.thread.id, text: provider === "slack" ? `**Owner User (via Simplixy)**\n\n${text}` : text },
           {
             threadId: channel.thread.id,
             text: provider === "slack" ? "" : "Shared selected-1.txt.",
@@ -52011,7 +52011,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       expect(providerRuntime.posts).toEqual([
         {
           threadId: damagedChannel.thread.id,
-          text: "**Owner User (via Paperclip)**\n\nDamaged attachment send",
+          text: "**Owner User (via Simplixy)**\n\nDamaged attachment send",
         },
       ]);
 
@@ -52030,11 +52030,11 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       expect(providerRuntime.posts).toEqual([
         {
           threadId: damagedChannel.thread.id,
-          text: "**Owner User (via Paperclip)**\n\nDamaged attachment send",
+          text: "**Owner User (via Simplixy)**\n\nDamaged attachment send",
         },
         {
           threadId: healthyChannel.thread.id,
-          text: "**Owner User (via Paperclip)**\n\nHealthy attachment send",
+          text: "**Owner User (via Simplixy)**\n\nHealthy attachment send",
         },
         {
           threadId: healthyChannel.thread.id,
@@ -52148,7 +52148,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       expect(providerRuntime.posts).toEqual([
         {
           threadId: channel.thread.id,
-          text: "**Owner User (via Paperclip)**\n\nMissing storage attachment send",
+          text: "**Owner User (via Simplixy)**\n\nMissing storage attachment send",
         },
       ]);
 
@@ -54461,7 +54461,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
           if (legacyCopy) {
             const prior = structuredClone(remoteCommands[0]!);
             (prior.options as Array<{ description: string }>)[2]!.description =
-              "Close the current Paperclip task";
+              "Close the current Simplixy task";
             remoteCommands[0] = prior;
             const {
               id: _id,
@@ -56329,7 +56329,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     expect((await service.listPrincipals(other.id))[0]?.lastConnectAt).toBeNull();
     const notice = String((postEphemeral.mock.calls[0] as unknown[])[1]);
     const token = /token=([A-Za-z0-9_-]+)/.exec(notice)![1];
-    expect(notice).toContain("Connect your Paperclip account");
+    expect(notice).toContain("Connect your Simplixy account");
     expect((postEphemeral.mock.calls[0] as unknown[])[2]).toEqual({ fallbackToDM: false });
     expect(await service.previewIdentityLink(token, "owner-user")).toMatchObject({ selfService: true, canConfirm: true, externalLabel: "Connect Person" });
     expect(await service.setupTestStatus(endpoint.id, "owner-user")).toEqual({ messageReceivedAt: null });
@@ -56387,7 +56387,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     expect(await service.setupTestStatus(endpoint.id, "someone-else")).toEqual({ messageReceivedAt: null });
   });
 
-  it("turns a Slack slash command into a new native thread and one Paperclip task", async () => {
+  it("turns a Slack slash command into a new native thread and one Simplixy task", async () => {
     const fixture = await seedCompany();
     const { callbacks, endpoint, runtime, service } =
       await configuredSlackEndpoint(fixture);
@@ -56771,7 +56771,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
           }),
         }),
         principalId: null,
-        redactedError: "Destination is not enabled in Paperclip",
+        redactedError: "Destination is not enabled in Simplixy",
       },
     ]);
     await expect(
@@ -57354,10 +57354,10 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
         principalId: null,
         redactedError:
           authorizationChange === "resource_disabled"
-            ? "Destination is not enabled in Paperclip"
+            ? "Destination is not enabled in Simplixy"
             : authorizationChange === "viewer"
-              ? "Linked Paperclip account is not currently permitted"
-              : "External identity must be linked to a Paperclip account",
+              ? "Linked Simplixy account is not currently permitted"
+              : "External identity must be linked to a Simplixy account",
         state: "filtered",
       });
       expect(JSON.stringify(delivery?.normalizedEvent)).not.toContain(
@@ -57566,7 +57566,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
           filtering: { contentRetained: false },
         }),
         principalId: null,
-        redactedError: "Destination is not enabled in Paperclip",
+        redactedError: "Destination is not enabled in Simplixy",
         state: "filtered",
       }),
     ]);
@@ -58296,7 +58296,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       expect.objectContaining({
         state: "filtered",
         principalId: null,
-        redactedError: "Destination is not enabled in Paperclip",
+        redactedError: "Destination is not enabled in Simplixy",
         normalizedEvent: expect.objectContaining({
           filtering: { contentRetained: false },
         }),
@@ -58517,7 +58517,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       },
       {
         threadId: dm.thread.id,
-        text: "Send your request to start a new Paperclip task.",
+        text: "Send your request to start a new Simplixy task.",
       },
       {
         threadId: dm.thread.id,
@@ -58693,7 +58693,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     await vi.waitFor(() => expect(postEphemeral).toHaveBeenCalledTimes(3));
     for (const call of postEphemeral.mock.calls) {
       expect(call[1]).toBe(
-        "Use status, new, and close in a direct message with this agent. In a channel, open the Paperclip task from its Slack thread.",
+        "Use status, new, and close in a direct message with this agent. In a channel, open the Simplixy task from its Slack thread.",
       );
       expect(call[2]).toEqual({ fallbackToDM: false });
     }
@@ -59632,7 +59632,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
               result: {
                 id: botId,
                 username: "paperclip_guidance_test_bot",
-                first_name: "Paperclip Guidance Test",
+                first_name: "Simplixy Guidance Test",
               },
             }),
             { status: 200, headers: { "content-type": "application/json" } },
@@ -59822,7 +59822,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
           state: "filtered",
           attempts: 0,
           conversationId: null,
-          redactedError: "Destination is not enabled in Paperclip",
+          redactedError: "Destination is not enabled in Simplixy",
           normalizedEvent: expect.objectContaining({
             deduplication: expect.objectContaining({ duplicateCount: 1 }),
           }),
@@ -59962,13 +59962,13 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     ).toEqual([
       expect.stringMatching(/— todo$/),
       expect.stringContaining(
-        "Open a new Telegram forum topic to start a new Paperclip task.",
+        "Open a new Telegram forum topic to start a new Simplixy task.",
       ),
-      "This chat conversation is closed. A later message here will continue the same Paperclip task.",
+      "This chat conversation is closed. A later message here will continue the same Simplixy task.",
     ]);
   });
 
-  it("keeps successive Telegram DM messages on one active Paperclip task", async () => {
+  it("keeps successive Telegram DM messages on one active Simplixy task", async () => {
     const fixture = await seedCompany();
     const { callbacks, endpoint, service, wakeup } =
       await configuredTelegramEndpoint(fixture);
@@ -60150,7 +60150,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     await vi.waitFor(() =>
       expect(postEphemeral).toHaveBeenCalledWith(
         "U-COMMANDER",
-        "This channel or account is not allowed to start Paperclip work.",
+        "This channel or account is not allowed to start Simplixy work.",
         { fallbackToDM: false },
       ),
     );
@@ -62361,7 +62361,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
               edit_date: 1_788_620_390,
               chat: { id: Number(chatId), type: "private" },
               from: { id: Number(chatId), first_name: "Telegram User" },
-              text: "Edit whose original never reached Paperclip",
+              text: "Edit whose original never reached Simplixy",
             },
           }),
         }),
@@ -63104,7 +63104,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       .from(issueComments)
       .where(eq(issueComments.issueId, conversation.issueId))
       .then((rows) => rows.length);
-    const secretEdit = "Revoked Telegram edit must not enter Paperclip";
+    const secretEdit = "Revoked Telegram edit must not enter Simplixy";
     await expect(
       service.handleWebhook(
         endpoint.publicId,
@@ -63216,7 +63216,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       {
         threadId: dm.thread.id,
         messageId: "outbound-2",
-        text: "Maya needs a Paperclip admin to safely recover this turn before more work can start. Open the task in Paperclip for details.",
+        text: "Maya needs a Simplixy admin to safely recover this turn before more work can start. Open the task in Simplixy for details.",
       },
     ]);
     expect(JSON.stringify(providerRuntime?.edits)).not.toContain(
@@ -63278,7 +63278,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
           errorCode: terminal
             ? "adapter_failed"
             : "native_execution_ownership_unverified",
-          error: "Private diagnostic must not leave Paperclip",
+          error: "Private diagnostic must not leave Simplixy",
           updatedAt: new Date(),
         })
         .where(eq(heartbeatRuns.id, runId));
@@ -63418,7 +63418,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       {
         threadId: dm.thread.id,
         messageId: "outbound-2",
-        text: "Maya has no final response to show yet. Open the task in Paperclip for details.",
+        text: "Maya has no final response to show yet. Open the task in Simplixy for details.",
       },
     ]);
     expect(
@@ -63561,7 +63561,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
           messageId: "outbound-2",
           text: publishesComment
             ? `Explicit Telegram reply via ${authorizationReason}`
-            : "Maya has no final response to show yet. Open the task in Paperclip for details.",
+            : "Maya has no final response to show yet. Open the task in Simplixy for details.",
         },
       ]);
       await expect(
@@ -64603,7 +64603,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       expect(current).toMatchObject({ status: "queued" });
       await initializeRunIdentity(db, { companyId, runId: current!.id, issueId, responsibleUserId: "owner-user",
         parentRunId: f.runId, messageIds: [comment.id], cause: "issue_reopened_via_comment" });
-      const diagnostic = 'Failed to acquire lease for environment "Managed computer" (sandbox): sandbox_snapshot_qualification_required: The snapshot qualification is missing or stale. Test this environment again before running Paperclip Runner.';
+      const diagnostic = 'Failed to acquire lease for environment "Managed computer" (sandbox): sandbox_snapshot_qualification_required: The snapshot qualification is missing or stale. Test this environment again before running Simplixy Runner.';
       await db.update(heartbeatRuns).set({ status: "failed", finishedAt: new Date(), runtimeMode: "legacy",
         errorCode: "setup_failed", error: diagnostic, sessionIdBefore: "prior-provider-session-hint",
         runnerProfileJson: { adapterDispatch: { adapterType: "paperclip_runner" } },
@@ -67134,7 +67134,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
         await vi.advanceTimersByTimeAsync(10);
         expect(await readChatPublicationsByEndpointId(context.endpoint.id)).toEqual([expect.objectContaining({
           payload: mode === "disabled"
-            ? { text: "This retry was not started. Open the task in Paperclip for details.", progressState: "failed" }
+            ? { text: "This retry was not started. Open the task in Simplixy for details.", progressState: "failed" }
             : { text: "Your retry is queued.", progressState: "queued" },
         })]);
         expect(coordinator.nextWakeAt()).toBeNull(); expect(idleWorkSnapshot().active).toBe(0);
@@ -67319,7 +67319,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       await settle();
       expect((await readAgentWakeupRequestsById(staged.actionId))[0].status).toBe("cancelled");
       expect(await readChatPublicationsByEndpointId(context.endpoint.id)).toEqual(expect.arrayContaining([expect.objectContaining({
-        payload: { text: "This retry was not started. Open the task in Paperclip for details.", progressState: "failed" },
+        payload: { text: "This retry was not started. Open the task in Simplixy for details.", progressState: "failed" },
       })]));
       const select = vi.spyOn(db, "select"), transaction = vi.spyOn(db, "transaction");
       try {
@@ -67478,7 +67478,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       expect(await context.service.reconcileFailedRetryNotices({ scope }))
         .toEqual({ inserted: 1, contended: false, nextCursor: null });
       expect(await readChatPublicationsByEndpointId(context.endpoint.id)).toEqual(expect.arrayContaining([expect.objectContaining({
-        payload: { text: "This retry was not started. Open the task in Paperclip for details.", progressState: "failed" },
+        payload: { text: "This retry was not started. Open the task in Simplixy for details.", progressState: "failed" },
       })]));
       expect(await context.service.reconcileFailedRetryNotices({ scope }))
         .toEqual({ inserted: 0, contended: false, nextCursor: null });
@@ -68507,7 +68507,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
         agentId: fixture.assignedAgentId,
         seq,
         eventType,
-        message: "PRIVATE native event prose must stay in Paperclip",
+        message: "PRIVATE native event prose must stay in Simplixy",
         payload: {
           toolName: "secret_internal_tool",
           arguments: { token: "PRIVATE-NATIVE-TOKEN" },
@@ -68955,7 +68955,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
         {
           threadId: context.thread.thread.id,
           messageId: originalWorking!.providerMessageId,
-          text: "Maya stopped before completing this turn. Open the task in Paperclip for details.",
+          text: "Maya stopped before completing this turn. Open the task in Simplixy for details.",
         },
       ]);
 
@@ -69003,7 +69003,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
           providerMessageId: originalWorking!.providerMessageId,
           payload: {
             progressState: "failed",
-            text: "Maya stopped before completing this turn. Open the task in Paperclip for details.",
+            text: "Maya stopped before completing this turn. Open the task in Simplixy for details.",
           },
         }),
       ]);
@@ -72831,7 +72831,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       state: "filtered",
       attempts: 0,
       principalId: null,
-      redactedError: "Destination is not enabled in Paperclip",
+      redactedError: "Destination is not enabled in Simplixy",
       normalizedEvent: {
         filtering: { contentRetained: false },
         message: { providerMessageId: `${chatId}:10` },
@@ -73539,7 +73539,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       const [conversation] = await service.listConversations(endpoint.id);
       if (!conversation)
         throw new Error("Expected Telegram attachment failure conversation");
-      const visibleFailure = `Paperclip could not safely import the attached Telegram file. Please resend it as a supported file under ${formatAttachmentSize(MAX_ATTACHMENT_BYTES)} or include text describing the request.`;
+      const visibleFailure = `Simplixy could not safely import the attached Telegram file. Please resend it as a supported file under ${formatAttachmentSize(MAX_ATTACHMENT_BYTES)} or include text describing the request.`;
       await expect(
         db
           .select({ body: issueComments.body })
@@ -76772,7 +76772,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     }, { timeout: 10_000 });
     const notices = () => readChatPublicationsByEndpointId(context.endpoint.id);
     const expectedText = change === "source removal" ? "This queued message was removed."
-      : "This follow-up was not started. Open the task in Paperclip for details.";
+      : "This follow-up was not started. Open the task in Simplixy for details.";
     const retire = async (database: typeof db) => {
       if (change === "source removal") return issueService(database).tombstoneComment(String(context.action.payload.commentId), {
         actorType: "user", userId: String(context.action.payload.requestedByActorId),
@@ -76907,7 +76907,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
         .toEqual([expect.objectContaining({ status: "processed", result: expect.objectContaining({ code: "slack_session_stop_cancelled" }) })]);
       expect(await readAgentWakeupRequestsById(context.action.id)).toEqual([expect.objectContaining({ status: "cancelled" })]);
       expect(await readChatPublicationsByEndpointId(context.endpoint.id)).toEqual(expect.arrayContaining([expect.objectContaining({
-        payload: { text: "This follow-up was not started. Open the task in Paperclip for details.", progressState: "failed" },
+        payload: { text: "This follow-up was not started. Open the task in Simplixy for details.", progressState: "failed" },
       })]));
       expect(errors).toEqual([]);
     } finally { await coordinator.stop(); vi.useRealTimers(); await context.service.shutdown(); }
@@ -77493,7 +77493,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
           issueId: context.conversation.issueId,
           idempotencyKey: `run:${runId}:failed:${context.endpoint.id}`,
           payload: {
-            text: "Maya stopped before completing this turn. Open the task in Paperclip for details.",
+            text: "Maya stopped before completing this turn. Open the task in Simplixy for details.",
             progressState: "failed",
           },
         });
@@ -77507,7 +77507,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
           {
             threadId: context.thread.thread.id,
             messageId: queued.providerMessageId,
-            text: "Maya stopped before completing this turn. Open the task in Paperclip for details.",
+            text: "Maya stopped before completing this turn. Open the task in Simplixy for details.",
           },
         ]);
         expect(JSON.stringify(runtime.edits)).not.toContain("was not started");
@@ -77603,7 +77603,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
         {
           threadId: context.thread.thread.id,
           messageId: queued.providerMessageId,
-          text: "This follow-up was not started. Open the task in Paperclip for details.",
+          text: "This follow-up was not started. Open the task in Simplixy for details.",
         },
       ]);
       expect(JSON.stringify(runtime.edits)).not.toMatch(
@@ -81561,7 +81561,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
           for (let drain = 0; drain < 20; drain++)
             await service.processPendingPublications();
           expect(publication?.commentId).toBeTruthy();
-          const expectedText = provider === "slack" && source === "new" ? `**Owner User (via Paperclip)**\n\n${body}` : body;
+          const expectedText = provider === "slack" && source === "new" ? `**Owner User (via Simplixy)**\n\n${body}` : body;
           const rows = await orderedBatch(publication!.commentId!);
           expect(rows.every((row) => row.state === "published")).toBe(true);
           expect(rows.map((row) => row.payload.text).join("") === expectedText).toBe(
@@ -81611,7 +81611,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
             "@here ".repeat(1_000) +
             "END-OF-RICH-BOARD";
           expect(body.length).toBeLessThanOrEqual(100_000);
-          const safe = projectSafeChatPublicationText(provider === "slack" ? `**Owner User (via Paperclip)**\n\n${body}` : body);
+          const safe = projectSafeChatPublicationText(provider === "slack" ? `**Owner User (via Simplixy)**\n\n${body}` : body);
           const publication = await service.publishBoardMessage(
             endpoint.id,
             conversation.id,
@@ -81702,7 +81702,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
         let restarted: ChatChannelService | undefined;
         try {
           const body = "a".repeat(99_990) + "FINAL-TAIL";
-          const expectedText = provider === "slack" ? `**Owner User (via Paperclip)**\n\n${body}` : body;
+          const expectedText = provider === "slack" ? `**Owner User (via Simplixy)**\n\n${body}` : body;
           let attempts = 0;
           transport.postHook = async () => {
             if (++attempts === 2)

@@ -1,9 +1,9 @@
 /**
- * @deprecated Paperclip ID is identity-only. Import the Paperclip Cloud
+ * @deprecated Simplixy ID is identity-only. Import the Simplixy Cloud
  * connector names from `paperclip-cloud-connector.ts` for new code.
  *
  * These aliases keep source compatibility while deployments and persisted app
- * definitions move from the former Paperclip ID broker prototype.
+ * definitions move from the former Simplixy ID broker prototype.
  */
 export {
   GMAIL_CONNECTOR_SCOPES,

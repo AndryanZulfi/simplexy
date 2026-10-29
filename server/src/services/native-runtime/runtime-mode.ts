@@ -132,19 +132,19 @@ export function resolveNativeRuntimeMode(input: {
   }
   // Dot has its own rollout; enabling it does not opt in other Runner providers.
   if (runnerProfile.provider === "muse") {
-    if (!input.enabled) throw ineligible("paperclip_runner_rollout_disabled", "Paperclip Runner is experimental and disabled on this instance.");
+    if (!input.enabled) throw ineligible("paperclip_runner_rollout_disabled", "Simplixy Runner is experimental and disabled on this instance.");
     if (input.museEnabled !== true) throw ineligible("paperclip_runner_muse_disabled", "Enable Muse personal-agent connections in experimental settings before assigning new work.");
   } else if (runnerProfile.provider === "openai_dot") {
     if (input.dotEnabled !== true) throw ineligible("paperclip_runner_dot_disabled", "Enable OpenAI Dot and Assistant connections (MCP) in experimental settings before assigning new work.");
   } else if (runnerProfile.provider === "grok_bot" && (input.grokEnabled !== true || !input.enabled)) {
-    throw ineligible("paperclip_runner_grok_disabled", "Enable Grok Bot, Paperclip Runner, and Assistant connections (MCP) before assigning new work.");
+    throw ineligible("paperclip_runner_grok_disabled", "Enable Grok Bot, Simplixy Runner, and Assistant connections (MCP) before assigning new work.");
   } else if (runnerProfile.provider !== "codex" && runnerProfile.provider !== "opencode"
     && !(runnerProfile.provider === "acpx"
       && (["claude", "copilot", "pi"].includes(runnerProfile.acpxAgent ?? "")))
     && !input.enabled) {
     throw ineligible(
       "paperclip_runner_rollout_disabled",
-      "Paperclip Runner is experimental and disabled on this instance.",
+      "Simplixy Runner is experimental and disabled on this instance.",
     );
   }
   if (
@@ -153,14 +153,14 @@ export function resolveNativeRuntimeMode(input: {
   ) {
     throw ineligible(
       "paperclip_runner_agent_ineligible",
-      "Paperclip Runner requires an active agent.",
+      "Simplixy Runner requires an active agent.",
     );
   }
   const allowedWorkModes = ["standard", "planning", "ask"];
   if (!input.issue || !allowedWorkModes.includes(input.issue.workMode)) {
     throw ineligible(
       "paperclip_runner_issue_ineligible",
-      "Paperclip Runner requires a standard, planning, or ask task.",
+      "Simplixy Runner requires a standard, planning, or ask task.",
     );
   }
   const rollout = resolveNativeMigrationStatus({
@@ -302,7 +302,7 @@ export function resolveHeartbeatNativeRuntimeMode(input: {
       if (input.agent.adapterType !== "paperclip_runner") {
         throw ineligible(
           "paperclip_runner_adapter_binding_mismatch",
-          "A persisted native run must remain bound to the Paperclip Runner adapter.",
+          "A persisted native run must remain bound to the Simplixy Runner adapter.",
         );
       }
       if (
@@ -311,7 +311,7 @@ export function resolveHeartbeatNativeRuntimeMode(input: {
       ) {
         throw ineligible(
           "paperclip_runner_agent_ineligible",
-          "A persisted Paperclip Runner run cannot recover through a non-invokable agent.",
+          "A persisted Simplixy Runner run cannot recover through a non-invokable agent.",
         );
       }
       const driverKind = input.persisted.driverKind;
@@ -335,7 +335,7 @@ export function resolveHeartbeatNativeRuntimeMode(input: {
       if (backend === null) {
         throw ineligible(
           "paperclip_runner_driver_unsupported",
-          `Persisted Paperclip Runner driver is unsupported: ${driverKind}`,
+          `Persisted Simplixy Runner driver is unsupported: ${driverKind}`,
         );
       }
       return {

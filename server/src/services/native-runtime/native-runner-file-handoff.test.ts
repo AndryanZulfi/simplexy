@@ -1016,7 +1016,7 @@ describe("native runner file handoff", () => {
     });
     const currentComment = await issueService(db).addComment(
       issueId,
-      "Inspect the current attachment if Paperclip imported it.",
+      "Inspect the current attachment if Simplixy imported it.",
       { userId: "inbound-user" },
     );
     await db
@@ -1028,7 +1028,7 @@ describe("native runner file handoff", () => {
             comments: [
               {
                 id: currentComment.id,
-                body: "Inspect the current attachment if Paperclip imported it.",
+                body: "Inspect the current attachment if Simplixy imported it.",
                 attachments: [],
               },
             ],

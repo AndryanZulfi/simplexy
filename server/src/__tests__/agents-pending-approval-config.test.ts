@@ -58,7 +58,7 @@ describeEmbeddedPostgres("pending approval agent config integrity", () => {
     const companyId = randomUUID();
     await db.insert(companies).values({
       id: companyId,
-      name: "Paperclip",
+      name: "Simplixy",
       issuePrefix: issuePrefix(companyId),
       requireBoardApprovalForNewAgents: true,
     });

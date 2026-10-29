@@ -76,7 +76,7 @@ describe.skipIf(!support.supported)("public MCP OAuth and tool boundary", () => 
     let standby = true;
     const app = express();
     const ui = express.Router();
-    ui.get(/.*/, (_req, res) => res.type("html").send("Paperclip UI"));
+    ui.get(/.*/, (_req, res) => res.type("html").send("Simplixy UI"));
     app.use(cloudWarmStandbyMiddleware(() => standby, express.Router(), ui));
     app.use(publicMcpIngressRoutes(oauth, vi.fn()));
     const select = vi.spyOn(db, "select");

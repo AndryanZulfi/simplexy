@@ -31,7 +31,7 @@ async function commit(cwd: string, file: string, message: string) {
   return (await git(cwd, "rev-parse", "HEAD")).trim();
 }
 
-describe("assertReproducibleGitFiles with Paperclip-managed files", () => {
+describe("assertReproducibleGitFiles with Simplixy-managed files", () => {
   let root: string;
   let work: string;
   let projectSeed: string;

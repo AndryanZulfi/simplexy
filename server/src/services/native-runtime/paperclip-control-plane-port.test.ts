@@ -570,7 +570,7 @@ describe("PaperclipControlPlanePort conformance", () => {
     }
   });
 
-  it("runs the unchanged package conformance suite against Paperclip persistence", async () => {
+  it("runs the unchanged package conformance suite against Simplixy persistence", async () => {
     const identity = CONTROL_PLANE_CONFORMANCE_OPEN.identity;
     const committedEventIds: string[] = [];
     const duplicateEventIds: string[] = [];
@@ -1788,7 +1788,7 @@ describe("PaperclipControlPlanePort conformance", () => {
     await db.insert(authUsers).values({ id: userId, name: "First-task board", email: `${userId}@example.test`, createdAt: new Date(), updatedAt: new Date() });
     await db.insert(companyMemberships).values({ companyId, principalType: "user", principalId: userId, status: "active", membershipRole: "member" });
     await db.insert(agents).values({ id: agentId, companyId, name: "First-task agent", adapterType: "codex_local", status: "running" });
-    await db.insert(issues).values({ id: issueId, companyId, title: onboarding ? "Paperclip onboarding" : "Ordinary low-risk task",
+    await db.insert(issues).values({ id: issueId, companyId, title: onboarding ? "Simplixy onboarding" : "Ordinary low-risk task",
       description: onboarding ? "/first-task\nSingle-task proposal mode: confirmation" : "Complete the requested ordinary task. Mentioning /first-task does not grant the server-owned onboarding origin.",
       originKind: onboarding ? ONBOARDING_FIRST_TASK_ORIGIN_KIND : "manual", status: "in_progress", assigneeAgentId: agentId,
       responsibleUserId: userId, workMode: "standard" });

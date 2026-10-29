@@ -65,7 +65,7 @@ type DiscordQuestionFormsOptions = {
 };
 export function createDiscordQuestionForms(db: Db, options: DiscordQuestionFormsOptions) {
   const { requireCurrentExternalActionAuthorization, isExternalActionAuthorizationChange, persistence } = options;
-  const denialError = () => forbidden("This chat form is not a current Paperclip question");
+  const denialError = () => forbidden("This chat form is not a current Simplixy question");
   async function handleDiscordFormCorrection(input: DiscordFormCorrectionInput) {
     const { record, event, runtimeContext, conversation, principal, loaded, originalPublication, providerMessageId, interaction, payload, validation, deny } = input;
 

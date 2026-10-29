@@ -21,7 +21,7 @@ export function projectToolRoutes(db: Db) {
     try {
       if (!definitions.some(tool => tool.name === params?.name)) throw forbidden("Tool is unavailable in this mode");
       const apiUrl = process.env.PAPERCLIP_API_URL;
-      if (!apiUrl) throw new Error("Paperclip API origin is unavailable");
+      if (!apiUrl) throw new Error("Simplixy API origin is unavailable");
       const result = await callProjectTool({
         name: params.name, arguments: params.arguments ?? {}, apiUrl,
         token: req.header("authorization")!.replace(/^Bearer\s+/i, ""),

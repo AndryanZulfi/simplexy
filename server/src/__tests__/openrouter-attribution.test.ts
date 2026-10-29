@@ -4,7 +4,7 @@ import type { AiProviderRouting } from "@paperclipai/shared";
 import { OPENROUTER_ATTRIBUTION_HEADERS } from "@paperclipai/shared/openrouter-attribution";
 import { managedProviderRouting } from "../services/ai-provider-routing.js";
 
-describe("Paperclip OpenRouter connection attribution", () => {
+describe("Simplixy OpenRouter connection attribution", () => {
   it("keeps the standalone Runner policy identical to the control-plane policy", async () => {
     const shared = await readFile(new URL("../../../packages/shared/src/openrouter-attribution.ts", import.meta.url), "utf8");
     const runner = await readFile(new URL("../../../packages/paperclip-runner/src/drivers/openrouter-attribution.ts", import.meta.url), "utf8");

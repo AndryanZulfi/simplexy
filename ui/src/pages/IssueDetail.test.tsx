@@ -269,7 +269,7 @@ vi.mock("../context/CompanyContext", () => ({
     companies: [
       {
         id: "company-1",
-        name: "Paperclip",
+        name: "Simplixy",
         issuePrefix: "PAP",
         status: "active",
       },
@@ -277,7 +277,7 @@ vi.mock("../context/CompanyContext", () => ({
     selectedCompanyId: "company-1",
     selectedCompany: {
       id: "company-1",
-      name: "Paperclip",
+      name: "Simplixy",
       issuePrefix: "PAP",
       status: "active",
     },
@@ -2784,7 +2784,7 @@ describe("IssueDetail", () => {
     const createdFrom: Issue["createdFrom"] = {
       issue: { id: "origin-task", identifier: "PAP-168", title: "Origin task", status: "in_progress" },
       run: { id: "run-1", agentId: "qa-agent" },
-      agent: { id: "qa-agent", name: "Paperclip QA" },
+      agent: { id: "qa-agent", name: "Simplixy QA" },
     };
     const source = createIssue({ ancestors, createdFrom });
     const child = createIssue({ id: "manual-child", parentId: source.id, title: "Manual child" });
@@ -5190,7 +5190,7 @@ describe("IssueDetail", () => {
       { id: "run-queued-2", agentId: "agent-2", status: "queued", runtimeMode: "native", issueId: "issue-1", adapterType: "paperclip_runner" },
     ]);
     await act(async () => { renderIssueView(); });
-    await waitForAssertion(() => expect(mockIssueChatThreadRender.mock.calls.at(-1)?.[0]).toMatchObject({ stopRunLabel: "Stop Paperclip work" }));
+    await waitForAssertion(() => expect(mockIssueChatThreadRender.mock.calls.at(-1)?.[0]).toMatchObject({ stopRunLabel: "Stop Simplixy work" }));
     await act(async () => { await mockIssueChatThreadRender.mock.calls.at(-1)![0].onStopRun("run-queued-2"); });
     expect(mockGrokBotApi.stop).toHaveBeenCalledExactlyOnceWith("company-1", "agent-2", "run-queued-2");
     expect(mockHeartbeatsApi.cancel).not.toHaveBeenCalled();
@@ -6168,7 +6168,7 @@ describe("IssueDetail", () => {
     });
   });
 
-  it("keeps the authoritative Paperclip queue mounted after handoff promotion", async () => {
+  it("keeps the authoritative Simplixy queue mounted after handoff promotion", async () => {
     mockIssuesApi.get.mockResolvedValue(
       createIssue({
         status: "in_progress",

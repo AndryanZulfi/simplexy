@@ -28,7 +28,7 @@
  * pair there under an open lease with no listener bound, which is the exact
  * incident this file reproduces, so a scan that starts there could seize a
  * pair a live instance still owns. The scan also rejects a port that any
- * local Paperclip instance's on-disk service registry still names, even with
+ * local Simplixy instance's on-disk service registry still names, even with
  * no listener bound — the same open-lease shape, for a real instance instead
  * of this suite's own fixture, which a listener-only probe cannot see. Guests
  * do bind the two selected pairs on loopback, so the readiness and exposure
@@ -96,7 +96,7 @@ let NEXT_APP_PORT: number;
 let NEXT_HMR_PORT: number;
 
 /**
- * The real, unredirected Paperclip home directory. `beforeEach` later points
+ * The real, unredirected Simplixy home directory. `beforeEach` later points
  * `PAPERCLIP_HOME` at a throwaway temp dir for the suite under test, so this
  * must be read before that happens. Mirrors the default in
  * `resolvePaperclipHomeDir`.
@@ -106,8 +106,8 @@ const REAL_PAPERCLIP_HOME = process.env.PAPERCLIP_TEST_HOST_HOME?.trim()
   || path.join(os.homedir(), ".paperclip");
 
 /**
- * Every port a local Paperclip instance's on-disk service registry currently
- * records, read once per case from the real, unredirected Paperclip home. A
+ * Every port a local Simplixy instance's on-disk service registry currently
+ * records, read once per case from the real, unredirected Simplixy home. A
  * registry record survives a stopped process with no listener, so it can
  * still name the port even after the exact "listener-free lease" condition
  * this suite reproduces. A listener-only scan cannot see that: it would treat
@@ -366,11 +366,11 @@ const GUEST_COMMAND =
 
       await db.insert(companies).values({
         id: companyId,
-        name: "Paperclip",
+        name: "Simplixy",
         issuePrefix: `Q${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
         requireBoardApprovalForNewAgents: false,
       });
-      await db.insert(projects).values({ id: projectId, companyId, name: "Paperclip App", status: "in_progress" });
+      await db.insert(projects).values({ id: projectId, companyId, name: "Simplixy", status: "in_progress" });
       await db.insert(projectWorkspaces).values({
         id: projectWorkspaceId,
         companyId,
@@ -435,7 +435,7 @@ const GUEST_COMMAND =
     function startInput(seed: Awaited<ReturnType<typeof seedIncident>>, executionWorkspaceId: string) {
       return {
         invocationId: "pap-17419-reservation",
-        actor: { id: null, name: "Paperclip", companyId: seed.companyId },
+        actor: { id: null, name: "Simplixy", companyId: seed.companyId },
         issue: null,
         db,
         workspace: {

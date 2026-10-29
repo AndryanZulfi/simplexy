@@ -273,7 +273,7 @@ describe("auth routes", () => {
     });
   });
 
-  it("accepts Paperclip asset paths for avatars", async () => {
+  it("accepts Simplixy asset paths for avatars", async () => {
     const app = await createApp(
       {
         type: "board",

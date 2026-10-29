@@ -23,7 +23,7 @@ type AuthenticationOptions = Pick<Parameters<typeof createGitHubWebhookIngress>[
 };
 export function retryableGitHubWebhookResponse(): Response {
   return new Response(
-    "Paperclip could not durably accept the event in time",
+    "Simplixy could not durably accept the event in time",
     {
       status: 503,
       headers: {

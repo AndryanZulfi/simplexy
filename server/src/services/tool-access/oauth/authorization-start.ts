@@ -307,7 +307,7 @@ export function createOAuthAuthorizationStart(db: Db, dependencies: Dependencies
       const cloudConnector = currentCloudConnector();
       if (!cloudConnector) {
         throw unprocessable(
-          `${providerName} connections through Paperclip are not available on this instance yet`,
+          `${providerName} connections through Simplixy are not available on this instance yet`,
           {
             code: "paperclip_cloud_connector_unavailable",
           },
@@ -365,7 +365,7 @@ export function createOAuthAuthorizationStart(db: Db, dependencies: Dependencies
         state,
         companyId,
         connectionId: connection.id,
-        // Paperclip Cloud owns PKCE for this flow. The local state row remains the
+        // Simplixy Cloud owns PKCE for this flow. The local state row remains the
         // single-use browser correlator and never stores broker token material.
         codeVerifier: "paperclip-cloud-connector",
         createdByActorType: binding.actorType,

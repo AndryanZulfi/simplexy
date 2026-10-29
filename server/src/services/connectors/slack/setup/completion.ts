@@ -55,8 +55,8 @@ export function createSlackCompletion(store: SlackRegistrationStore) {
       await lease.assertOwned();
       if (!await options.canWelcome(row.endpointId, account)) throw forbidden("Slack account access changed");
       const sent = await api("chat.postMessage", { channel: account.dmChannelId ?? account.externalUserId,
-        text: kind === "verification" ? "Your Slack connection is working! Now ask me a question about your Paperclip instance."
-          : `Hi, I’m ${current.agentName}. Your Slack account is connected to Paperclip.`,
+        text: kind === "verification" ? "Your Slack connection is working! Now ask me a question about your Simplixy instance."
+          : `Hi, I’m ${current.agentName}. Your Slack account is connected to Simplixy.`,
         unfurl_links: "false", unfurl_media: "false" }, await options.runtimeBotToken(row.endpointId));
       if (typeof sent.channel !== "string" || !/^D[A-Z0-9]+$/.test(sent.channel)) throw new Error("Incomplete message response");
       result = { ...account, [field]: "sent", dmChannelId: sent.channel };

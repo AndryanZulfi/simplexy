@@ -1658,7 +1658,7 @@ describe("rebindNativeSessionCheckpoint", () => {
       );
       expect(result.execution.task.prompt).toContain("Full task instructions");
       expect(result.execution.task.prompt).not.toContain(
-        "Paperclip Resume Delta",
+        "Simplixy Resume Delta",
       );
       expect(result.execution.task.prompt).not.toContain("Compact context");
     },
@@ -1729,7 +1729,7 @@ describe("rebindNativeSessionCheckpoint", () => {
           task: {
             ...current.task,
             prompt: options.resumedSession
-              ? "Paperclip Resume Delta"
+              ? "Simplixy Resume Delta"
               : "Full task instructions",
           },
         };
@@ -1787,7 +1787,7 @@ describe("rebindNativeSessionCheckpoint", () => {
         "sha256:b64efcd063a575925aa95dbd2a20953386eaa760f05b0e0e73b4ae04a97679b0",
     },
   ])(
-    "refreshes retained $contract without changing the Paperclip task or prior history",
+    "refreshes retained $contract without changing the Simplixy task or prior history",
     ({ contract, retainedFingerprint }) => {
       if (contract === "explicit chat-attachment invocation guidance") {
         expect(LIST_CHAT_ATTACHMENTS_TOOL_DEFINITION.description).toContain("Call with {}");
@@ -1816,8 +1816,8 @@ describe("rebindNativeSessionCheckpoint", () => {
             task: {
               ...current.task,
               prompt: options.resumedSession
-                ? "Paperclip Resume Delta"
-                : "Full context for the same Paperclip task",
+                ? "Simplixy Resume Delta"
+                : "Full context for the same Simplixy task",
             },
           };
         },
@@ -1835,7 +1835,7 @@ describe("rebindNativeSessionCheckpoint", () => {
         execution(currentRunId).workspace,
       );
       expect(result.execution.task.prompt).toBe(
-        "Full context for the same Paperclip task",
+        "Full context for the same Simplixy task",
       );
       // No deletion/reset of the existing provider checkpoint or Paperclip history.
       expect(prior).toEqual(priorSnapshot);
@@ -2276,7 +2276,7 @@ describe("buildNativeExecutionInput wake projection", () => {
         workMode: "standard",
       },
       taskPrompt: [
-        "Paperclip task context:",
+        "Simplixy task context:",
         `- Title: ${JSON.stringify(staleRootTitle)}`,
         "Latest wake comment:",
         "```text",
@@ -2521,7 +2521,7 @@ describe("buildNativeExecutionInput wake projection", () => {
         description: "Use the child result.",
         workMode: "standard",
       },
-      taskPrompt: "Paperclip task context:\n- Issue: DOT-146",
+      taskPrompt: "Simplixy task context:\n- Issue: DOT-146",
       wakePayload: {
         reason: "issue_children_completed",
         issue: {
@@ -2576,14 +2576,14 @@ describe("buildNativeExecutionInput wake projection", () => {
     expect(input.task.prompt).not.toContain("Execution contract:");
     expect(input.task.prompt).not.toContain("Use child issues");
     // Full bootstrap stays available if provider recovery fails after admission.
-    expect(input.task.prompt).toContain("## Paperclip Wake Payload");
+    expect(input.task.prompt).toContain("## Simplixy Wake Payload");
     expect(input.task.prompt).toContain("reason: issue_children_completed");
     expect(input.task.prompt).toContain("DOT-147 Build utility (done)");
     expect(input.task.prompt).toContain(
       "Created three files and passed 7/7 tests.",
     );
     expect(input.task.prompt).toContain(
-      "Paperclip task context:\n- Issue: DOT-146",
+      "Simplixy task context:\n- Issue: DOT-146",
     );
     expect(input.task.prompt).not.toContain("Use the child result.");
   });

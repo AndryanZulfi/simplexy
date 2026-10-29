@@ -19,7 +19,7 @@ afterEach(() => {
   vi.mocked(readConfigFile).mockReturnValue(null);
 });
 
-describe("external Paperclip task links", () => {
+describe("external Simplixy task links", () => {
   it("resolves a newly claimed Cloud origin at use time ahead of pool configuration", () => {
     vi.stubEnv("PAPERCLIP_AUTH_PUBLIC_BASE_URL", "https://pool.example");
     expect(publicChatTaskUrl("issue-1")).toBe("https://pool.example/issues/issue-1");
@@ -63,7 +63,7 @@ describe("external Paperclip task links", () => {
           publicBaseUrl: baseUrl,
         }),
       ).toBe(
-        "Maya stopped before completing this turn. Open the task in Paperclip for details.",
+        "Maya stopped before completing this turn. Open the task in Simplixy for details.",
       );
     },
   );

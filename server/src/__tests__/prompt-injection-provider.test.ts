@@ -19,7 +19,7 @@ describe("prompt injection provider", () => {
     expect(await runPromptInjectionProvider(input, { fetch })).toMatchObject({ verdict: { violation: false, findings: [] }, receipt: { costStatus: "reported", inputTokens: 100, outputTokens: 20 } });
     const [url, init] = fetch.mock.calls[0] as unknown as [string, RequestInit];
     expect(url).toBe("https://openrouter.ai/api/v1/chat/completions");
-    expect(new Headers(init.headers).get("x-openrouter-title")).toBe("Paperclip");
+    expect(new Headers(init.headers).get("x-openrouter-title")).toBe("Simplixy");
     expect(JSON.parse(String(init.body))).toMatchObject({ model: input.model, max_tokens: 4096, usage: { include: true }, messages: [
       { role: "system", content: [{ type: "text", text: expect.stringContaining("tool-result-v1") }] }, { role: "user", content: input.prompt },
     ] });

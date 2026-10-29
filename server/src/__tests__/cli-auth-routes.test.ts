@@ -261,7 +261,7 @@ describe("cli auth routes", () => {
 
     expect(res.status).toBe(200);
     expect(res.headers["content-type"]).toContain("text/markdown");
-    expect(res.text).toContain("# Paperclip Skill");
+    expect(res.text).toContain("# Simplixy Skill");
   });
 
   it("marks challenge status as requiring sign-in for anonymous viewers", async () => {

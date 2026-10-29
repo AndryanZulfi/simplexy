@@ -27,14 +27,14 @@ export const KUBERNETES_PROVIDER_KEY = "kubernetes" as const;
  * - `executionMode` `"kubernetes"`: force the Kubernetes sandbox provider;
  *   deny local, ssh, and any non-kubernetes sandbox provider.
  * - `managedSandboxOnly`: deny the `local` driver so untrusted agent code
- *   never executes on the tenant's Paperclip-operated container. Unlike
+ *   never executes on the tenant's Simplixy-operated container. Unlike
  *   the kubernetes mode this does NOT pin a single provider — the tenant
  *   may still run on the platform-managed sandbox or on their own
  *   sandbox/ssh infrastructure; only in-process/local execution is
  *   refused. This is the run-time backstop behind the local-hiding UI and
  *   the resolver's local→managed redirect: even if selection or a
  *   tenant-set env var reached a `local` environment, the run fails here
- *   rather than executing on Paperclip compute.
+ *   rather than executing on Simplixy compute.
  */
 export interface ExecutionPolicy {
   executionMode?: "kubernetes" | "any";

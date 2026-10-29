@@ -144,7 +144,7 @@ describe("chat question forms", () => {
     else expect(draft).toBeNull();
   });
 
-  it("keeps an oversized editable starting value in the complete Paperclip form", () => {
+  it("keeps an oversized editable starting value in the complete Simplixy form", () => {
     const current = interaction();
     current.payload.questionSet!.questions[1]!.initialText = "a".repeat(3001);
     expect(createChatQuestionFormDraft(current)).toBeNull();
@@ -401,7 +401,7 @@ describe("chat question forms", () => {
     },
   );
 
-  it("keeps a credential-bearing starting draft in Paperclip instead of exposing it to a chat modal", () => {
+  it("keeps a credential-bearing starting draft in Simplixy instead of exposing it to a chat modal", () => {
     const current = interaction();
     current.payload.questionSet!.questions[1]!.initialText = "xoxb-123456789012345678901234567890";
     expect(createChatQuestionFormDraft(current)).toBeNull();
@@ -746,7 +746,7 @@ describe("chat question forms", () => {
       action: "errors",
       errors: {
         [payload.fields[0]!.fieldId]:
-          "This form is no longer authorized. Close it and open the linked Paperclip task.",
+          "This form is no longer authorized. Close it and open the linked Simplixy task.",
       },
     });
     expect(chatQuestionFormDenialResponse()).toEqual({ action: "clear" });

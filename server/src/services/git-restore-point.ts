@@ -17,10 +17,10 @@ const SEALED_MAGIC = Buffer.from("PCRP1");
 const KEY_SCHEMA = "paperclip.git-restore-point-key.v1";
 const SHA = /^[0-9a-f]{40}$/;
 const SNAPSHOT_IDENTITY = {
-  GIT_AUTHOR_NAME: "Paperclip",
+  GIT_AUTHOR_NAME: "Simplixy",
   GIT_AUTHOR_EMAIL: "restore-point@paperclip.invalid",
   GIT_AUTHOR_DATE: "@0 +0000",
-  GIT_COMMITTER_NAME: "Paperclip",
+  GIT_COMMITTER_NAME: "Simplixy",
   GIT_COMMITTER_EMAIL: "restore-point@paperclip.invalid",
   GIT_COMMITTER_DATE: "@0 +0000",
 };

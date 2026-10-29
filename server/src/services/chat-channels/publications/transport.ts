@@ -201,7 +201,7 @@ function safeCardForPublication(
       const receipt = await githubResponseCommentService(db, fetchImpl).failRun({
         companyId: input.publication.companyId, endpointId: input.endpoint.id,
         issueId: input.publication.issueId, runId, body: input.payload.progressState === "completed"
-          ? "This turn ended without publishing a final response. See the Paperclip task for details."
+          ? "This turn ended without publishing a final response. See the Simplixy task for details."
           : renderPublicationTransportText(input.payload),
       });
       if (!receipt) throw conflict("GitHub response publication is busy");
@@ -267,21 +267,21 @@ function safeCardForPublication(
               : "Direct file delivery isn't available for this Teams conversation.";
           if (generatedFileLabel) {
             const saved = taskUrl
-              ? `File saved on the Paperclip task: ${generatedFileLabel}.`
-              : `File saved on the private Paperclip task: ${generatedFileLabel}.`;
+              ? `File saved on the Simplixy task: ${generatedFileLabel}.`
+              : `File saved on the private Simplixy task: ${generatedFileLabel}.`;
             text = taskUrl
               ? `${saved} ${limitation} Download it: ${taskUrl}`
               : `${saved} ${limitation}`;
           } else {
             const handoff = taskUrl
-              ? `Open the file on its Paperclip task: ${taskUrl}`
-              : "The file remains available only on the private Paperclip task.";
+              ? `Open the file on its Simplixy task: ${taskUrl}`
+              : "The file remains available only on the private Simplixy task.";
             text = `${text}\n\n${limitation} ${handoff}`;
           }
         } else {
           const attachmentFallback = taskUrl
-            ? `Open the task in Paperclip: ${taskUrl}`
-            : "Open the task in Paperclip to download the attachment.";
+            ? `Open the task in Simplixy: ${taskUrl}`
+            : "Open the task in Simplixy to download the attachment.";
           text = `${text}\n\n${attachmentFallback}`;
         }
       }
@@ -297,7 +297,7 @@ function safeCardForPublication(
       text =
         input.payload.transportPart.count > 1
           ? "Complete response attached."
-          : "Paperclip attached the complete response because it exceeds Discord’s message limit.";
+          : "Simplixy attached the complete response because it exceeds Discord’s message limit.";
     }
     if (
       input.endpoint.provider === "telegram" &&
@@ -307,7 +307,7 @@ function safeCardForPublication(
       text =
         input.payload.transportPart.count > 1
           ? "Complete response attached."
-          : "Paperclip attached the complete response to preserve its Markdown formatting.";
+          : "Simplixy attached the complete response to preserve its Markdown formatting.";
     }
     if (card && CAPABILITIES[input.endpoint.provider].cards) {
       return await attemptProviderPublication(async () =>

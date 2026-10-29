@@ -366,7 +366,7 @@ describe("instance settings routes", () => {
       status: "active",
       config: {},
       envVars: {},
-      metadata: { managedByPaperclip: true, managedDefaultStamped: true },
+      metadata: { managedBySimplixy: true, managedDefaultStamped: true },
     });
     const app = await createApp(localAdminActor());
 
@@ -377,7 +377,7 @@ describe("instance settings routes", () => {
     expect(patchRes.status).toBe(200);
     expect(mockEnvironmentService.update).toHaveBeenCalledWith(
       "managed-env-1",
-      { metadata: { managedByPaperclip: true } },
+      { metadata: { managedBySimplixy: true } },
       { db: TX_SENTINEL },
     );
     // Both writes commit in ONE transaction — each receives the SAME tx —
@@ -400,7 +400,7 @@ describe("instance settings routes", () => {
       status: "active",
       config: {},
       envVars: {},
-      metadata: { managedByPaperclip: true, managedDefaultStamped: true },
+      metadata: { managedBySimplixy: true, managedDefaultStamped: true },
     });
     mockEnvironmentService.update.mockRejectedValue(new Error("metadata write failed"));
     const app = await createApp(localAdminActor());

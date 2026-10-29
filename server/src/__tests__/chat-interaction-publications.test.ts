@@ -317,7 +317,7 @@ describeEmbeddedPostgres(
         expect(tokens.map(token => token.kind).sort()).toEqual(["question_answer", "question_answer", "question_form_open", "question_form_submit"].sort());
       }
       if (shape === "oversized") {
-        expect(publication.payload.card?.actions).toEqual([{ type: "link", label: "Open in Paperclip", url: expect.stringContaining(fixture.issueId) }]);
+        expect(publication.payload.card?.actions).toEqual([{ type: "link", label: "Open in Simplixy", url: expect.stringContaining(fixture.issueId) }]);
       } else if (shape !== "multi_select") {
         expect(publication.payload.card?.actions?.every(action => action.type === "callback")).toBe(true);
       }
@@ -345,7 +345,7 @@ describeEmbeddedPostgres(
       } else {
         expect(publication.payload.card?.selection).toBeUndefined();
         expect(publication.payload.card?.actions).toEqual([
-          { type: "link", label: "Open in Paperclip", url: expect.stringContaining(fixture.issueId) },
+          { type: "link", label: "Open in Simplixy", url: expect.stringContaining(fixture.issueId) },
         ]);
         expect(tokens).toEqual([]);
         await markInteractionCardsPublished(fixture.companyId, interaction.id);
@@ -528,7 +528,7 @@ describeEmbeddedPostgres(
       expect(original?.endpointId).toBe(fixture.endpointIds.slack);
       expect(original?.payload.card?.body).toContain(expected);
       expect(original?.payload.card?.body).toContain("Verify preserved configuration");
-      expect(original?.payload.card?.actions).toEqual(kind === "request_item_verdicts" ? [{ type: "callback", actionId: expect.any(String), label: "Review decisions", style: "primary" }] : [{ type: "callback", actionId: expect.any(String), label: "Create task", style: "primary" }, { type: "callback", actionId: expect.any(String), label: "Dismiss", style: "default" }, { type: "link", label: "Revise in Paperclip", url: expect.stringContaining(fixture.issueId) }]);
+      expect(original?.payload.card?.actions).toEqual(kind === "request_item_verdicts" ? [{ type: "callback", actionId: expect.any(String), label: "Review decisions", style: "primary" }] : [{ type: "callback", actionId: expect.any(String), label: "Create task", style: "primary" }, { type: "callback", actionId: expect.any(String), label: "Dismiss", style: "default" }, { type: "link", label: "Revise in Simplixy", url: expect.stringContaining(fixture.issueId) }]);
       await markInteractionCardsPublished(fixture.companyId, interaction.id);
       if (kind === "request_item_verdicts") {
         await service.submitItemVerdicts(issue, interaction.id, { verdicts: [{ id: "docs", verdict: "approve" }] }, { userId: "board-user" });
@@ -553,7 +553,7 @@ describeEmbeddedPostgres(
       expect(expired[0].status).toBe("expired");
       const publications = await publicationsForInteraction(fixture.companyId, interaction.id);
       expect(publications).toHaveLength(2);
-      expect(publications.find(row => row.id !== original.id)?.payload.card?.body).toBe("Expired in Paperclip");
+      expect(publications.find(row => row.id !== original.id)?.payload.card?.body).toBe("Expired in Simplixy");
     });
 
     it.each(["decline", "reassign"] as const)("delivers, deduplicates and settles an addressed connection request on %s without a second wake owner", async outcome => {
@@ -575,7 +575,7 @@ describeEmbeddedPostgres(
       else await db.transaction(async tx => issueThreadInteractionService(tx as unknown as typeof db).expireConnectionIntentsForOwnershipChange(issue));
       const settled = await publicationsForInteraction(fixture.companyId, interaction.id);
       expect(settled).toHaveLength(2);
-      expect(settled.find(row => row.id !== original.id)?.payload.card?.body).toBe(outcome === "decline" ? "Declined: Notion. No access was granted." : "Expired in Paperclip");
+      expect(settled.find(row => row.id !== original.id)?.payload.card?.body).toBe(outcome === "decline" ? "Declined: Notion. No access was granted." : "Expired in Simplixy");
       expect((await db.select().from(chatActions).where(eq(chatActions.companyId, fixture.companyId))).filter(action => action.kind === "interaction_wakeup")).toEqual([]);
     });
 
@@ -781,7 +781,7 @@ describeEmbeddedPostgres(
           "do-not-publish-this",
         );
         expect(JSON.stringify(settlement.payload)).not.toContain(
-          "Answered in Paperclip",
+          "Answered in Simplixy",
         );
       }
     });
@@ -917,7 +917,7 @@ describeEmbeddedPostgres(
       expect(skippedSettlements).toHaveLength(2);
       expect(
         skippedSettlements.every(
-          (row) => row.payload.card?.body === "Skipped in Paperclip.",
+          (row) => row.payload.card?.body === "Skipped in Simplixy.",
         ),
       ).toBe(true);
       expect(

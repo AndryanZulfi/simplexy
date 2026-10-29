@@ -72,7 +72,7 @@ export function createSlackRegistrationStore(db: Db, options: SlackSetupOptions)
     return row;
   }
   function assertOrigins(row: Registration, publicId: string) {
-    if (row.callbackUri !== callbackUri()) throw conflict("The Paperclip URL changed. Restore its configured address or update the Slack app and use manual setup.");
+    if (row.callbackUri !== callbackUri()) throw conflict("The Simplixy URL changed. Restore its configured address or update the Slack app and use manual setup.");
     const expected = `${origin(options.webhookOrigin())}/api/chat-webhooks/${publicId}/slack`;
     if (object(object(row.manifest.settings).event_subscriptions).request_url !== expected)
       throw conflict("The Slack webhook address changed. Restore its configured address or update the Slack app and use manual setup.");

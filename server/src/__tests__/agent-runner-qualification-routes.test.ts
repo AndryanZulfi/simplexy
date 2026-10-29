@@ -43,7 +43,7 @@ describe.skipIf(!support.supported)("agent-scoped runner qualification", () => {
     await db.insert(authUsers).values({ id: userId, name: "Company owner", email: `${userId}@example.test`, emailVerified: true, createdAt: new Date(), updatedAt: new Date() });
     await db.insert(companyMemberships).values({ companyId, principalType: "user", principalId: userId, membershipRole: "owner", status: "active" });
     await db.insert(principalPermissionGrants).values(grantsForHumanRole("owner").map(grant => ({ ...grant, companyId, principalType: "user" as const, principalId: userId })));
-    await db.insert(environments).values({ id: environmentId, name: `Paperclip Computer ${environmentId}`, driver: "sandbox", status: "active", config: { provider: "daytona", snapshot: "managed-snapshot" } });
+    await db.insert(environments).values({ id: environmentId, name: `Simplixy Computer ${environmentId}`, driver: "sandbox", status: "active", config: { provider: "daytona", snapshot: "managed-snapshot" } });
     await db.insert(agents).values({ id: agentId, companyId, name: "Amy fixture", adapterType: "claude_local", defaultEnvironmentId: environmentId,
       adapterConfig: { model: "claude-opus-5-5", effort: "high", maxTurnsPerRun: 1000, dangerouslySkipPermissions: true } });
     app = express(); app.use(express.json());
@@ -146,7 +146,7 @@ describe.skipIf(!support.supported)("agent-scoped runner qualification", () => {
   });
   it.each(["instance", "managed", "kubernetes"])("resolves the %s computer with the same policy as runner saving", async mode => {
     await db.update(agents).set({ defaultEnvironmentId: null }).where(eq(agents.id, agentId));
-    await db.update(environments).set({ metadata: { managedByPaperclip: true, managedKubernetesSandbox: mode === "kubernetes" },
+    await db.update(environments).set({ metadata: { managedBySimplixy: true, managedKubernetesSandbox: mode === "kubernetes" },
       ...(mode === "kubernetes" ? { config: { provider: "kubernetes" } } : {}) }).where(eq(environments.id, environmentId));
     await db.insert(instanceSettings).values({ defaultEnvironmentId: mode === "instance" ? environmentId : null,
       experimental: { enableManagedSandboxOnly: mode === "managed" }, general: { executionMode: mode === "kubernetes" ? "kubernetes" : "local" } });

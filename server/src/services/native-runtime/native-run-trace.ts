@@ -194,7 +194,7 @@ function safeAttributes(
 }
 
 /**
- * Run-scoped tracing for the native Paperclip runner path.
+ * Run-scoped tracing for the native Simplixy runner path.
  *
  * A scope owns a real OpenTelemetry parent context. While work runs inside a
  * scope, nested native measurements and the existing sandbox/provider tracing

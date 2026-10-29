@@ -272,7 +272,7 @@ describeEmbeddedPostgres("environmentRuntimeService", () => {
         version: "1.0.0",
         displayName: input.displayName ?? "Fake Plugin Sandbox Provider",
         description: input.description ?? "Test fake plugin provider",
-        author: input.author ?? "Paperclip",
+        author: input.author ?? "Simplixy",
         categories: ["automation"],
         capabilities: ["environment.drivers.register"],
         entrypoints: { worker: "dist/worker.js" },
@@ -331,7 +331,7 @@ describeEmbeddedPostgres("environmentRuntimeService", () => {
 
   it.each(["missing", "stale", "invalidated", "qualified", "provider-failure", "unowned-marker"])("uses the current managed Cloud snapshot with %s qualification", async qualification => {
     vi.stubEnv("PAPERCLIP_MANAGED_CONFIG", JSON.stringify({ ...managedCloudConfig,
-      environments: qualification === "unowned-marker" ? [] : [{ name: "Paperclip Computer", provider: "daytona", config: {} }] }));
+      environments: qualification === "unowned-marker" ? [] : [{ name: "Simplixy Computer", provider: "daytona", config: {} }] }));
     const pluginId = randomUUID();
     const { companyId, environment: baseEnvironment, runId } = await seedEnvironment();
     const config = { provider: "daytona", snapshot: "replacement-snapshot", timeoutMs: 1234 };
@@ -340,7 +340,7 @@ describeEmbeddedPostgres("environmentRuntimeService", () => {
     const parsed = await resolveEnvironmentDriverConfigForRuntime(db, companyId, { ...baseEnvironment, driver: "sandbox", config });
     const runtimeFingerprint = createHash("sha256").update(stableStringify(parsed.config)).digest("hex");
     await db.update(environments).set({ driver: "sandbox", config, metadata: {
-      managedByPaperclip: true,
+      managedBySimplixy: true,
       ...(qualification === "missing" ? {} : { paperclipSandboxPlatformProbes: { [companyId]: {
         v: 2, companyId, snapshot: "previous-snapshot", template: null,
         baseConfigFingerprint: qualification === "qualified" ? fingerprint : "previous-config",
@@ -3478,7 +3478,7 @@ describeEmbeddedPostgres("environmentRuntimeService", () => {
         version: "1.0.0",
         displayName: "Secret Plugin Sandbox Provider",
         description: "Test plugin provider with a secret-ref config field",
-        author: "Paperclip",
+        author: "Simplixy",
         categories: ["automation"],
         capabilities: ["environment.drivers.register"],
         entrypoints: { worker: "dist/worker.js" },
@@ -6604,7 +6604,7 @@ describeEmbeddedPostgres("environmentRuntimeService", () => {
           version: "1.0.0",
           displayName: "Reusable Sandbox Provider",
           description: "Owner plugin that denies reusable leases",
-          author: "Paperclip",
+          author: "Simplixy",
           categories: ["automation"],
           capabilities: ["environment.drivers.register"],
           entrypoints: { worker: "dist/worker.js" },
@@ -6729,7 +6729,7 @@ describeEmbeddedPostgres("environmentRuntimeService", () => {
           version: "1.0.0",
           displayName: "Reusable Sandbox Provider",
           description: "Owner plugin that no longer declares the provider key",
-          author: "Paperclip",
+          author: "Simplixy",
           categories: ["automation"],
           capabilities: ["environment.drivers.register"],
           entrypoints: { worker: "dist/worker.js" },
@@ -6789,7 +6789,7 @@ describeEmbeddedPostgres("environmentRuntimeService", () => {
           version: "1.0.0",
           displayName: "Reusable Sandbox Provider",
           description: "Owner plugin that omits the capability declaration",
-          author: "Paperclip",
+          author: "Simplixy",
           categories: ["automation"],
           capabilities: ["environment.drivers.register"],
           entrypoints: { worker: "dist/worker.js" },

@@ -112,7 +112,7 @@ describe("resolveNativeRuntimeMode", () => {
     })).toMatchObject({ kind: "native", profile: { backend: "acpx_runtime" } });
   });
 
-  it("rejects unknown Paperclip Runner providers", () => {
+  it("rejects unknown Simplixy Runner providers", () => {
     expect(() => resolveNativeRuntimeMode({
       ...eligible,
       runtimeConfig: {},

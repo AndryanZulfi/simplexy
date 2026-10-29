@@ -634,7 +634,7 @@ async function createBrokerConnection(
     .values({
       companyId,
       applicationKey: "paperclip-pages",
-      name: `Paperclip Pages ${randomUUID()}`,
+      name: `Simplixy Pages ${randomUUID()}`,
       type: "mcp_http",
       status: "active",
     })
@@ -1101,7 +1101,7 @@ describeEmbeddedPostgres("tool access service", () => {
       .post(
         `/api/agents/me/connections/${encodeURIComponent(connection.uid)}/token`,
       )
-      .set("X-Paperclip-Run-Id", run.id)
+      .set("X-Simplixy-Run-Id", run.id)
       .send({ scope: "pages:publish:ns/dotta", requestedTtlSeconds: 5000 });
 
     expect(res.status).toBe(200);
@@ -1138,7 +1138,7 @@ describeEmbeddedPostgres("tool access service", () => {
       .post(
         `/api/agents/me/connections/${encodeURIComponent(connection.uid)}/token`,
       )
-      .set("X-Paperclip-Run-Id", run.id)
+      .set("X-Simplixy-Run-Id", run.id)
       .send({ scope: "pages:publish:ns/dotta" });
     expect(revoked.status).toBe(403);
     expect(revoked.body.error).toContain("no longer authorized");
@@ -1295,7 +1295,7 @@ describeEmbeddedPostgres("tool access service", () => {
       .post(
         `/api/agents/me/connections/${encodeURIComponent(connection.uid)}/token`,
       )
-      .set("X-Paperclip-Run-Id", run.id)
+      .set("X-Simplixy-Run-Id", run.id)
       .send({ scope: "pages:publish:ns/dotta" });
 
     expect(res.status).toBe(403);
@@ -1338,7 +1338,7 @@ describeEmbeddedPostgres("tool access service", () => {
       .post(
         `/api/agents/me/connections/${encodeURIComponent(connection.uid)}/token`,
       )
-      .set("X-Paperclip-Run-Id", run.id)
+      .set("X-Simplixy-Run-Id", run.id)
       .send({ scope: "pages:publish:ns/dotta" });
 
     expect(res.status).toBe(409);
@@ -2238,7 +2238,7 @@ describeEmbeddedPostgres("tool access service", () => {
 
     const res = await request(app)
       .post(`/api/agents/me/connections/${connection.id}/token`)
-      .set("X-Paperclip-Run-Id", run.id)
+      .set("X-Simplixy-Run-Id", run.id)
       .send({ scope: "pages:publish:ns/dotta" });
 
     expect(res.status).toBe(403);
@@ -6184,7 +6184,7 @@ describeEmbeddedPostgres("tool access service", () => {
       getConnectorMetadata: vi.fn(async () => ({
         id: "scl_posthog",
         uid: "posthog-paperclip",
-        name: "Paperclip PostHog",
+        name: "Simplixy PostHog",
         type: "api-key",
         service: "mcp.posthog.com/mcp",
         createdAt: Date.now(),
@@ -6369,7 +6369,7 @@ describeEmbeddedPostgres("tool access service", () => {
         getConnectorMetadata: vi.fn(async () => ({
           id: "scl_notion",
           uid: "notion-paperclip",
-          name: "Paperclip Notion",
+          name: "Simplixy Notion",
           type: "oauth",
           service: "notion",
           createdAt: Date.now(),
@@ -6923,7 +6923,7 @@ describeEmbeddedPostgres("tool access service", () => {
     expect(reconnected.connection.config.headerPolicy).toEqual({ metadata: { forward: [] } });
   });
 
-  it("forwards Paperclip context headers by default for a Telem.AI connection", async () => {
+  it("forwards Simplixy context headers by default for a Telem.AI connection", async () => {
     const company = await createCompany(db);
     const service = createTestToolAccessService(db);
     mockToolsList([{ name: "telem_search" }]);
@@ -9525,7 +9525,7 @@ describeEmbeddedPostgres("tool access service", () => {
       await service.completePaperclipCloudConnectorCallback({ state: new URL(started.authorizationUrl).searchParams.get("state")!, claimId: "initial", actor });
       const [grant] = await db.select().from(connectionGrants).where(and(eq(connectionGrants.connectionId, connected.connectionId), eq(connectionGrants.subjectUserId, userId)));
       vi.mocked(connector.refresh).mockRejectedValueOnce(new PaperclipCloudConnectorError(
-        "Paperclip Cloud connector rejected the request (operation=refresh, status=409, reason=PROVIDER_REAUTHORIZATION_REQUIRED)",
+        "Simplixy Cloud connector rejected the request (operation=refresh, status=409, reason=PROVIDER_REAUTHORIZATION_REQUIRED)",
         "REAUTHORIZATION_REQUIRED",
         409,
       ));
@@ -12020,7 +12020,7 @@ describeEmbeddedPostgres("tool access service", () => {
     });
 
     expect(registrationBody).toMatchObject({
-      client_name: "Paperclip localhost-3105",
+      client_name: "Simplixy localhost-3105",
       redirect_uris: [redirectUri],
       grant_types: ["authorization_code", "refresh_token"],
       response_types: ["code"],
@@ -12447,7 +12447,7 @@ describeEmbeddedPostgres("tool access service", () => {
     expect(connectRes.body).toMatchObject({
       code: "oauth_redirect_origin_unsupported",
       error:
-        "This Paperclip needs a browser-reachable HTTPS address (or loopback HTTP) before browser sign-in can start.",
+        "This Simplixy needs a browser-reachable HTTPS address (or loopback HTTP) before browser sign-in can start.",
     });
   });
 
@@ -12893,7 +12893,7 @@ describeEmbeddedPostgres("tool access service", () => {
     ).toBe("notion-dcr-client");
     expect(registrationBodies).toEqual([
       {
-        client_name: "Paperclip paperclip-dev-tail29c1aa-ts-net",
+        client_name: "Simplixy paperclip-dev-tail29c1aa-ts-net",
         redirect_uris: [redirectUri],
         grant_types: ["authorization_code", "refresh_token"],
         response_types: ["code"],
@@ -19769,7 +19769,7 @@ describeEmbeddedPostgres("tool access service", () => {
           transport: "mcp_remote",
           status: "draft",
           config: { url: "https://mcp.example/github" },
-          warnings: [expect.stringContaining("Paperclip secret")],
+          warnings: [expect.stringContaining("Simplixy secret")],
         }),
         expect.objectContaining({
           name: "local",
@@ -19779,7 +19779,7 @@ describeEmbeddedPostgres("tool access service", () => {
             importedCommand: "npx",
             importedArgs: ["-y", "@example/local-mcp"],
           },
-          warnings: [expect.stringContaining("approved Paperclip template")],
+          warnings: [expect.stringContaining("approved Simplixy template")],
         }),
       ]),
     );

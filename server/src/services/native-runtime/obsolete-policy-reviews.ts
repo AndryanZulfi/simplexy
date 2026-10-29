@@ -86,7 +86,7 @@ async function dismissCandidates(db: Db, candidates: Awaited<ReturnType<typeof f
         const now = new Date();
         const [cancelled] = await tx.update(issueThreadInteractions).set({
           status: "cancelled",
-          result: { version: 1, outcome: "withdrawn", reason: "A Paperclip upgrade does not require completion review." },
+          result: { version: 1, outcome: "withdrawn", reason: "A Simplixy upgrade does not require completion review." },
           resolvedAt: now,
           updatedAt: now,
         }).where(and(

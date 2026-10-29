@@ -252,7 +252,7 @@ describe("interaction resolution replay", () => {
       error: "Interaction has already been resolved",
       code: "interaction_already_resolved",
     });
-  const outage = () => new ApiError("Paperclip is restarting", 503, { error: "tenant_app_unavailable" });
+  const outage = () => new ApiError("Simplixy is restarting", 503, { error: "tenant_app_unavailable" });
 
   beforeEach(() => {
     mockApi.get.mockReset();

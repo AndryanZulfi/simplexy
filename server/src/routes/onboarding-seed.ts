@@ -6,7 +6,7 @@ import { onboardingSeedService } from "../services/onboarding-seed.js";
 import { assertCompanyAccess, getActorInfo } from "./authz.js";
 
 /**
- * Receiver for the onboarding seed Paperclip Cloud collects at signup and
+ * Receiver for the onboarding seed Simplixy Cloud collects at signup and
  * pushes into the stack at activation.
  *
  * Authentication is the trusted Cloud envelope, resolved exactly as it is for

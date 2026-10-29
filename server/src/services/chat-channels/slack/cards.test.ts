@@ -6,7 +6,7 @@ import { isPassiveSlackAction, normalizeSlackSelectionAction, slackPublicationCa
 describe("Slack interaction card wire payloads", () => {
   it.each([120, 32000, 100000])("renders a %i-character request within Slack limits", length => {
     const payload = projectSafeChatPublication({
-      classification: "external", source: "issue_interaction", text: "Read this request in Paperclip",
+      classification: "external", source: "issue_interaction", text: "Read this request in Simplixy",
       interaction: { id: "interaction-1", card: {
         kind: "question", title: "😀".repeat(160), body: "Q".repeat(length),
         actions: [{ type: "link", label: "😀".repeat(80), url: "https://paperclip.example/issues/task-1" }],

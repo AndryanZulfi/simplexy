@@ -155,7 +155,7 @@ export function createDiscordRootThreads(db: Db, options: DiscordRootThreadsOpti
               (resource.enabled || setupDestination)
             )
           ) {
-            reason = "Destination is not enabled in Paperclip";
+            reason = "Destination is not enabled in Simplixy";
           }
 
           if (!reason && endpoint) {
@@ -207,10 +207,10 @@ export function createDiscordRootThreads(db: Db, options: DiscordRootThreadsOpti
             }
             if (!allowed) {
               reason = linkedDenied
-                ? "Linked Paperclip account is not currently permitted"
+                ? "Linked Simplixy account is not currently permitted"
                 : endpoint.allowUnlinkedPeople
                   ? "Endpoint sponsor can no longer authorize external guests"
-                  : "External identity must be linked to a Paperclip account";
+                  : "External identity must be linked to a Simplixy account";
             }
           }
           if (!reason) {
@@ -443,7 +443,7 @@ export function createDiscordRootThreads(db: Db, options: DiscordRootThreadsOpti
             content:
               typeof normalized.message?.text === "string"
                 ? normalized.message.text
-                : "Paperclip task",
+                : "Simplixy task",
           });
           return await db.transaction(async (tx) => {
             await credentialLease.assertOwned(tx);

@@ -113,7 +113,7 @@ export function createSlackCommands(db: Db, options: SlackCommandsOptions) {
       scheduleProviderEffect(effect.id, event.event.channel);
     };
     if (!["verifying", "active"].includes(record.endpoint.status)) {
-      await queueSlackNotice("This Paperclip connection is not active.");
+      await queueSlackNotice("This Simplixy connection is not active.");
       return;
     }
     const expectedCommand =
@@ -155,7 +155,7 @@ export function createSlackCommands(db: Db, options: SlackCommandsOptions) {
         const currentLink = await tx.select().from(chatIdentityLinks).where(and(
           eq(chatIdentityLinks.endpointId, event.endpointId), eq(chatIdentityLinks.principalId, principal.principal.id),
         )).then((rows) => rows[0]);
-        let notice = "Your Slack account is already connected to Paperclip. You can return to Slack and message the agent.";
+        let notice = "Your Slack account is already connected to Simplixy. You can return to Slack and message the agent.";
         if (currentLink?.status !== "linked") {
           const token = randomBytes(32).toString("base64url");
           const tokenHash = createHash("sha256").update(token).digest("hex");
@@ -172,8 +172,8 @@ export function createSlackCommands(db: Db, options: SlackCommandsOptions) {
           } }).where(eq(chatActions.id, inserted[0].id));
           const url = `${getPublicBaseUrl()}/chat-identity/confirm?token=${encodeURIComponent(token)}`;
           notice = getPublicBaseUrl()
-            ? `[Connect your Paperclip account](${url}) — sign in and confirm this Slack identity. This private link expires in 15 minutes and works once. You can also confirm in the setup wizard. No agent work has started.`
-            : "Return to the Paperclip setup wizard to confirm your Slack account. No agent work has started.";
+            ? `[Connect your Simplixy account](${url}) — sign in and confirm this Slack identity. This private link expires in 15 minutes and works once. You can also confirm in the setup wizard. No agent work has started.`
+            : "Return to the Simplixy setup wizard to confirm your Slack account. No agent work has started.";
         }
         await logActivity(tx as unknown as Db, {
           companyId: record.endpoint.companyId, actorType: "system", actorId: `chat:${principal.principal.id}`,
@@ -221,7 +221,7 @@ export function createSlackCommands(db: Db, options: SlackCommandsOptions) {
           (await sponsorAllowsGuest(record.endpoint))));
     if (!authorized) {
       await queueSlackNotice(
-        "This channel or account is not allowed to start Paperclip work.",
+        "This channel or account is not allowed to start Simplixy work.",
         principal.principal.id,
       );
       return;
@@ -237,7 +237,7 @@ export function createSlackCommands(db: Db, options: SlackCommandsOptions) {
         // task-management surface there; the control vocabulary is exact only
         // in a DM, whose provider channel identity is stable.
         await queueSlackNotice(
-          "Use status, new, and close in a direct message with this agent. In a channel, open the Paperclip task from its Slack thread.",
+          "Use status, new, and close in a direct message with this agent. In a channel, open the Simplixy task from its Slack thread.",
           principal.principal.id,
         );
         return;
