@@ -25,7 +25,7 @@ function renderSection(permissions: Partial<AgentPermissions>, withProjectEditor
           permissions={permissions}
           onChange={onChange}
           companyId="company-1"
-          projectCandidates={[{ id: "project-1", label: "Simplixy App" }]}
+          projectCandidates={[{ id: "project-1", label: "Simplexy App" }]}
           issueCandidates={[{ id: "issue-1", label: "PAP-1 · Review PR" }]}
         />
       </TooltipProvider>,
@@ -49,7 +49,7 @@ describe("TrustPresetSection", () => {
 
     expect(view.text()).toContain("Trust preset");
     expect(view.text()).not.toContain("Boundary type");
-    expect(view.text()).not.toContain("Get Simplixy EE.");
+    expect(view.text()).not.toContain("Get Simplexy EE.");
   });
 
   it("shows a selectable CE boundary editor for low-trust review", () => {
@@ -68,8 +68,8 @@ describe("TrustPresetSection", () => {
 
     expect(view.text()).toContain("Containment active");
     expect(view.text()).toContain("Boundary type");
-    expect(view.text()).toContain("Simplixy App");
-    expect(view.text()).toContain("Get Simplixy EE.");
+    expect(view.text()).toContain("Simplexy App");
+    expect(view.text()).toContain("Get Simplexy EE.");
     expect(view.text()).not.toContain("Managed by EE/API");
   });
 

@@ -37,7 +37,7 @@ describe("project creation receipt recovery", () => {
     vi.stubGlobal("fetch", fetch);
     expect(await callProjectTool(create)).toBeUndefined();
     expect(fetch).toHaveBeenCalledWith("http://paperclip.test/api/companies/company/projects", expect.objectContaining({
-      method: "POST", headers: expect.objectContaining({ "X-Simplixy-Receipt-Only": "true" }),
+      method: "POST", headers: expect.objectContaining({ "X-Simplexy-Receipt-Only": "true" }),
       body: expect.any(String),
     }));
     expect(JSON.parse(fetch.mock.calls[0]![1].body as string)).toMatchObject(create.arguments);

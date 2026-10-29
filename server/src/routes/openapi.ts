@@ -1698,7 +1698,7 @@ function applyDocumentFixups(document: any): any {
       in: "cookie",
       name: "paperclip_session",
       description:
-        "Board session cookie in authenticated mode. Simplixy uses Better Auth; cookie transport may vary by deployment.",
+        "Board session cookie in authenticated mode. Simplexy uses Better Auth; cookie transport may vary by deployment.",
     },
     [BOARD_API_KEY_AUTH_SCHEME]: {
       type: "http",
@@ -1712,7 +1712,7 @@ function applyDocumentFixups(document: any): any {
       scheme: "bearer",
       bearerFormat: "Agent API Key or Agent JWT",
       description:
-        "Agent API key or Simplixy-issued local agent JWT presented in the Authorization bearer header.",
+        "Agent API key or Simplexy-issued local agent JWT presented in the Authorization bearer header.",
     },
     [RUNTIME_TOOLS_BEARER_AUTH_SCHEME]: {
       type: "http",
@@ -1725,7 +1725,7 @@ function applyDocumentFixups(document: any): any {
       type: "http",
       scheme: "bearer",
       bearerFormat: "Task-bound agent JWT",
-      description: "Simplixy-issued JWT bound to an active task run. Agent API keys, board sessions, and connection-only tokens are rejected.",
+      description: "Simplexy-issued JWT bound to an active task run. Agent API keys, board sessions, and connection-only tokens are rejected.",
     },
   };
   document.security = AUTHENTICATED_SECURITY;
@@ -2302,7 +2302,7 @@ registry.registerPath({
   tags: ["chat-channels"],
   summary: "Create a chat endpoint",
   description:
-    "Creates one provider bot endpoint bound permanently to one Simplixy agent. Provider setup and verification happen in later calls.",
+    "Creates one provider bot endpoint bound permanently to one Simplexy agent. Provider setup and verification happen in later calls.",
   request: {
     params: z.object({ companyId: z.string().uuid() }),
     body: jsonBody(createChatEndpointSchema),
@@ -2397,8 +2397,8 @@ const githubBotOperations: Array<{
     response: chatEndpointResponseSchema,
   },
   {
-    method: "get", suffix: "reviews", summary: "List review evidence attached to Simplixy tasks",
-    description: "Returns up to 100 newest review records for this endpoint. Each review references ordinary Simplixy tasks and runs; it is not an independent scheduler.",
+    method: "get", suffix: "reviews", summary: "List review evidence attached to Simplexy tasks",
+    description: "Returns up to 100 newest review records for this endpoint. Each review references ordinary Simplexy tasks and runs; it is not an independent scheduler.",
     response: z.array(githubReviewResponseSchema),
   },
   {
@@ -2436,7 +2436,7 @@ const githubBotOperations: Array<{
   },
   {
     method: "post", suffix: "repositories/refresh", summary: "Refresh repositories available to the bot installation",
-    description: "Fetches current installation access from GitHub and reconciles resources while preserving Simplixy repository enablement. Return parameters alone never prove installation access.",
+    description: "Fetches current installation access from GitHub and reconciles resources while preserving Simplexy repository enablement. Return parameters alone never prove installation access.",
     response: z.array(chatEndpointResourceResponseSchema),
   },
   {
@@ -2506,7 +2506,7 @@ registry.registerPath({
   tags: ["chat-channels"],
   summary: "Configure or change chat endpoint lifecycle state",
   description:
-    "Runs a setup or lifecycle action. `configure` and `reconnect` accept provider credentials (Slack: `botToken`, `signingSecret`; GitHub: `appId`, `privateKey` after Simplixy generates the webhook secret; Discord: `applicationId`, `guildId`, `botToken`; Microsoft Teams: `clientId`, `tenantId`, `clientSecret`; Telegram: `botToken`; iMessage Photon: `projectSecret`, with nonsecret `photon.projectId` and `photon.lineId` configuration). Agent-supplied signing secrets, webhook secrets, private keys, client secrets, and project secrets return a saved human credential-entry handoff without changing credentials. Authorized write-only bot tokens and API keys remain supported. Credentials are stored as Simplixy secret references and are never returned. Other actions do not require credentials.",
+    "Runs a setup or lifecycle action. `configure` and `reconnect` accept provider credentials (Slack: `botToken`, `signingSecret`; GitHub: `appId`, `privateKey` after Simplexy generates the webhook secret; Discord: `applicationId`, `guildId`, `botToken`; Microsoft Teams: `clientId`, `tenantId`, `clientSecret`; Telegram: `botToken`; iMessage Photon: `projectSecret`, with nonsecret `photon.projectId` and `photon.lineId` configuration). Agent-supplied signing secrets, webhook secrets, private keys, client secrets, and project secrets return a saved human credential-entry handoff without changing credentials. Authorized write-only bot tokens and API keys remain supported. Credentials are stored as Simplexy secret references and are never returned. Other actions do not require credentials.",
   request: {
     params: z.object({ endpointId: z.string().uuid() }),
     body: jsonBody(configureChatEndpointSchema),
@@ -2578,7 +2578,7 @@ for (const action of ["registration", "install", "resume"] as const) {
 registry.registerPath({
   method: "get", path: "/api/chat-slack/oauth/callback", tags: ["chat-channels"],
   summary: "Complete Slack bot installation and return to the saved wizard",
-  description: "Authenticated, actor/session-bound OAuth callback. State is claimed once before exchanging the code. Installation links the Slack installer to the initiating Simplixy account; reauthorization preserves an established account link. Cross-site browser navigation may receive a same-origin continuation before exchange.",
+  description: "Authenticated, actor/session-bound OAuth callback. State is claimed once before exchanging the code. Installation links the Slack installer to the initiating Simplexy account; reauthorization preserves an established account link. Cross-site browser navigation may receive a same-origin continuation before exchange.",
   request: { query: z.object({ state: z.string(), code: z.string().optional(), error: z.string().optional() }) },
   responses: { 200: { description: "Same-origin continuation page" }, 303: { description: "Return to saved Slack setup" }, 400: r.badRequest, 401: r.unauthorized, 403: r.forbidden, 409: r.conflict },
 });
@@ -2674,7 +2674,7 @@ registry.registerPath({
   tags: ["chat-channels"],
   summary: "Complete a chat endpoint setup test",
   description:
-    "Activates a verifying endpoint only after Simplixy has received a real provider event since the server-issued setup test boundary. iMessage Photon additionally requires a fresh linked sender's task and a successful outbound agent publication.",
+    "Activates a verifying endpoint only after Simplexy has received a real provider event since the server-issued setup test boundary. iMessage Photon additionally requires a fresh linked sender's task and a successful outbound agent publication.",
   request: { params: z.object({ endpointId: z.string().uuid() }) },
   responses: {
     200: r.ok(chatEndpointResponseSchema),
@@ -2735,7 +2735,7 @@ registry.registerPath({
   tags: ["chat-channels"],
   summary: "List external identities seen by a chat endpoint",
   description:
-    "Lists provider identities and their explicit Simplixy identity-link status for this endpoint's provider account.",
+    "Lists provider identities and their explicit Simplexy identity-link status for this endpoint's provider account.",
   request: { params: z.object({ endpointId: z.string().uuid() }) },
   responses: {
     200: r.ok(z.array(chatPrincipalLinkResponseSchema)),
@@ -2753,7 +2753,7 @@ registry.registerPath({
   tags: ["chat-channels"],
   summary: "Create an external identity-link intent",
   description:
-    "Creates a short-lived confirmation URL for a human external identity belonging to this endpoint. The signed-in Simplixy user must confirm the link separately.",
+    "Creates a short-lived confirmation URL for a human external identity belonging to this endpoint. The signed-in Simplexy user must confirm the link separately.",
   request: {
     params: z.object({
       endpointId: z.string().uuid(),
@@ -2820,7 +2820,7 @@ registry.registerPath({
   tags: ["chat-channels"],
   summary: "Confirm an external identity link",
   description:
-    "Links the token's external identity to the currently signed-in Simplixy user after rechecking active company membership and canonical-link conflicts.",
+    "Links the token's external identity to the currently signed-in Simplexy user after rechecking active company membership and canonical-link conflicts.",
   request: { body: jsonBody(confirmChatIdentityLinkSchema) },
   responses: {
     200: r.ok(chatIdentityLinkConfirmationResponseSchema),
@@ -2840,7 +2840,7 @@ registry.registerPath({
   tags: ["chat-channels"],
   summary: "List external conversations and bound tasks",
   description:
-    "Lists each durable provider conversation-to-Simplixy-task binding for the endpoint, including provider and task links and the latest publication state.",
+    "Lists each durable provider conversation-to-Simplexy-task binding for the endpoint, including provider and task links and the latest publication state.",
   request: { params: z.object({ endpointId: z.string().uuid() }) },
   responses: {
     200: r.ok(z.array(chatConversationResponseSchema)),
@@ -2944,7 +2944,7 @@ registry.registerPath({
   tags: ["chat-channels"],
   summary: "Resolve an unconfirmed provider action",
   description:
-    "After checking the provider, an operator may mark an ambiguous durable provider reply delivered, retry it while accepting duplicate risk, or cancel it. Slack slash-command task starts support explicit retry or cancel only. Simplixy never replays an ambiguous provider action automatically, and every resolution is audited.",
+    "After checking the provider, an operator may mark an ambiguous durable provider reply delivered, retry it while accepting duplicate risk, or cancel it. Slack slash-command task starts support explicit retry or cancel only. Simplexy never replays an ambiguous provider action automatically, and every resolution is audited.",
   request: {
     params: z.object({
       endpointId: z.string().uuid(),
@@ -2967,9 +2967,9 @@ registry.registerPath({
   method: "post",
   path: "/api/chat-endpoints/{endpointId}/conversations/{conversationId}/publications",
   tags: ["chat-channels"],
-  summary: "Publish a Simplixy task comment to an external conversation",
+  summary: "Publish a Simplexy task comment to an external conversation",
   description:
-    "Explicitly projects an eligible comment from the bound Simplixy task into the provider conversation. The endpoint, conversation, and comment must belong to the same binding. A Board send with an already-bound attachment returns 409 with code chat_board_send_attachments_already_bound and request-scoped details (endpointId, conversationId, idempotencyKey, attachmentIds). This durable rejection queues no publication and is replayed for the same key even if the file later becomes unbound. Correcting it requires an explicit new send identity. Other errors do not establish non-delivery.",
+    "Explicitly projects an eligible comment from the bound Simplexy task into the provider conversation. The endpoint, conversation, and comment must belong to the same binding. A Board send with an already-bound attachment returns 409 with code chat_board_send_attachments_already_bound and request-scoped details (endpointId, conversationId, idempotencyKey, attachmentIds). This durable rejection queues no publication and is replayed for the same key even if the file later becomes unbound. Correcting it requires an explicit new send identity. Other errors do not establish non-delivery.",
   request: {
     params: z.object({
       endpointId: z.string().uuid(),
@@ -3124,7 +3124,7 @@ registry.registerPath({
   path: "/api/agent-avatars/{version}/{palette}/{file}",
   tags: ["agents"],
   summary: "Render or retrieve a public preset agent portrait",
-  description: "On-demand PNG artwork; no agent or company lookup. Logical size determines face detail independently of density. Background defaults to transparent; paperclip-dark supplies the opaque Simplixy dark-mode background for Slack exports. Successful URLs are immutable for one year and return a content-derived ETag. Cache entries regenerate after deletion.",
+  description: "On-demand PNG artwork; no agent or company lookup. Logical size determines face detail independently of density. Background defaults to transparent; paperclip-dark supplies the opaque Simplexy dark-mode background for Slack exports. Successful URLs are immutable for one year and return a content-derived ETag. Cache entries regenerate after deletion.",
   request: {
     params: z.object({
       version: z.literal("cap-v1"),
@@ -3974,7 +3974,7 @@ registry.registerPath({
   tags: ["agents"],
   summary: "Wake up an agent",
   description:
-    "Board failed-run retries supply failedRunId with reason retry_failed_run. Simplixy derives the exact request and current authorization; a chat retry may return a durable queued/deferred receipt before a run exists. Caller task/comment markers and fresh-session overrides do not authorize replay.",
+    "Board failed-run retries supply failedRunId with reason retry_failed_run. Simplexy derives the exact request and current authorization; a chat retry may return a durable queued/deferred receipt before a run exists. Caller task/comment markers and fresh-session overrides do not authorize replay.",
   request: {
     params: z.object({ id: z.string() }),
     body: jsonBody(wakeAgentSchema),
@@ -5769,7 +5769,7 @@ registry.registerPath({
   path: "/api/companies/{companyId}/agent-commentary",
   tags: ["agents"],
   summary: "Submit internally attributed agent feedback",
-  description: "Requires an active legacy agent run: a run-bound agent JWT, or an agent API key with X-Simplixy-Run-Id. Attribution is derived from authority; ownership fields are rejected. Equivalent replay returns the existing acknowledgement. Native runs use their bound feedback tools. Failure must not interrupt the primary task or trigger retries.",
+  description: "Requires an active legacy agent run: a run-bound agent JWT, or an agent API key with X-Simplexy-Run-Id. Attribution is derived from authority; ownership fields are rejected. Equivalent replay returns the existing acknowledgement. Native runs use their bound feedback tools. Failure must not interrupt the primary task or trigger retries.",
   request: {
     params: z.object({ companyId: z.string() }),
     body: jsonBody(submitAgentCommentarySchema),
@@ -7796,7 +7796,7 @@ registry.registerPath({
   method: "post",
   path: "/api/heartbeat-runs/{runId}/runtime-requests/{requestId}/resolve",
   tags: ["runs"],
-  summary: "Resolve a pending Simplixy runner runtime request",
+  summary: "Resolve a pending Simplexy runner runtime request",
   request: {
     params: z.object({ runId: heartbeatRunIdParamSchema, requestId: z.string() }),
     body: jsonBody(
@@ -8437,7 +8437,7 @@ registry.registerPath({
   method: "post",
   path: "/api/companies/{companyId}/onboarding-seed",
   tags: ["companies"],
-  summary: "Apply the onboarding seed Simplixy Cloud collected at signup",
+  summary: "Apply the onboarding seed Simplexy Cloud collected at signup",
   request: { params: z.object({ companyId: z.string() }) },
   responses: { 200: r.ok(), 401: r.unauthorized, 422: r.unprocessable },
 });
@@ -11939,28 +11939,28 @@ registerCurrentRoute({
   method: "get",
   path: "/api/tools/oauth/cloud-connector/callback",
   tags: ["tool-access"],
-  summary: "Handle a brokered Simplixy Cloud OAuth callback",
+  summary: "Handle a brokered Simplexy Cloud OAuth callback",
 });
 
 registerCurrentRoute({
   method: "get",
   path: "/api/tools/oauth/paperclip-id/callback",
   tags: ["tool-access"],
-  summary: "Handle a legacy brokered Simplixy ID OAuth callback",
+  summary: "Handle a legacy brokered Simplexy ID OAuth callback",
 });
 
 registerCurrentRoute({
   method: "get",
   path: "/api/tools/oauth/cloud-connector/enrollment",
   tags: ["tool-access"],
-  summary: "Get Simplixy Cloud connector enrollment status",
+  summary: "Get Simplexy Cloud connector enrollment status",
 });
 
 registerCurrentRoute({
   method: "post",
   path: "/api/tools/oauth/cloud-connector/enrollment",
   tags: ["tool-access"],
-  summary: "Start Simplixy Cloud connector enrollment",
+  summary: "Start Simplexy Cloud connector enrollment",
   body: z
     .object({ companyId: z.string().min(1), label: z.string().optional() })
     .strict(),
@@ -11977,7 +11977,7 @@ registerCurrentRoute({
   method: "get",
   path: "/api/tools/oauth/cloud-connector/enrollment-callback",
   tags: ["tool-access"],
-  summary: "Complete Simplixy Cloud connector enrollment",
+  summary: "Complete Simplexy Cloud connector enrollment",
   query: z
     .object({
       enrollment_id: z.string().min(1),
@@ -12602,7 +12602,7 @@ registerCurrentRoute({
 });
 registerCurrentRoute({
   method: "delete", path: "/api/companies/{companyId}/agents/{agentId}/dot-binding", tags: ["agents"],
-  summary: "Revoke a Dot connection and fence its active Simplixy assignments",
+  summary: "Revoke a Dot connection and fence its active Simplexy assignments",
   responses: { 204: { description: "Dot connection revoked; external stop is unconfirmed" },
     400: r.badRequest, 401: r.unauthorized, 403: r.forbidden, 404: r.notFound },
 });
@@ -12656,7 +12656,7 @@ registerCurrentRoute({
 });
 registerCurrentRoute({
   method: "post", path: "/api/companies/{companyId}/agents/{agentId}/grok-binding/stop", tags: ["agents"],
-  summary: "Revoke Simplixy work-session authority without confirming remote termination",
+  summary: "Revoke Simplexy work-session authority without confirming remote termination",
   body: stopGrokWorkSchema,
   responses: { 200: r.ok(),
     400: r.badRequest, 401: r.unauthorized, 403: r.forbidden, 404: r.notFound, 409: r.conflict },
@@ -12993,9 +12993,9 @@ export function buildOpenApiDocument(): any {
   return applyDocumentFixups({
     openapi: "3.0.0",
     info: {
-      title: "Simplixy API",
+      title: "Simplexy API",
       version: "1.0.0",
-      description: "REST API for the Simplixy AI agent management platform",
+      description: "REST API for the Simplexy AI agent management platform",
     },
     servers: [{ url: "/" }],
     components: registry.buildComponents(),

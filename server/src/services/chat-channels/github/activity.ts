@@ -27,7 +27,7 @@ export async function githubRecoveryActivity(
         : value?.outcome === "callback_mismatch"
           ? "The GitHub App's callback no longer matches this connection. Reconnect the App to repair it; repository access will not change."
           : value?.outcome === "scan_failed"
-            ? "Simplixy could not check GitHub's failed deliveries. The check will retry with backoff; normal callbacks are still processed."
+            ? "Simplexy could not check GitHub's failed deliveries. The check will retry with backoff; normal callbacks are still processed."
             : null;
     return detail
       ? [

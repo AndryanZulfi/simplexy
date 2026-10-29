@@ -50,7 +50,7 @@ describeEmbeddedPostgres("GET /companies/:companyId/invites", () => {
     companyId = randomUUID();
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `T${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
     });

@@ -221,7 +221,7 @@ function buildConnectionErrorMessage(input: {
 }): string {
   const healthUrl = buildHealthCheckUrl(input.url);
   const lines = [
-    "Could not reach the Simplixy API.",
+    "Could not reach the Simplexy API.",
     "",
     `Request: ${input.method} ${input.url}`,
   ];
@@ -230,10 +230,10 @@ function buildConnectionErrorMessage(input: {
   }
   lines.push(
     "",
-    "This usually means the Simplixy server is not running, the configured URL is wrong, or the request is being blocked before it reaches Simplixy.",
+    "This usually means the Simplexy server is not running, the configured URL is wrong, or the request is being blocked before it reaches Simplexy.",
     "",
     "Try:",
-    "- Start Simplixy with `pnpm dev` (from a source checkout) or `npx paperclipai run`.",
+    "- Start Simplexy with `pnpm dev` (from a source checkout) or `npx paperclipai run`.",
     `- Verify the server is reachable with \`curl ${healthUrl}\`.`,
     `- If Paperclip is running elsewhere, pass \`--api-base ${input.apiBase.replace(/\/+$/, "")}\` or set \`PAPERCLIP_API_URL\`.`,
   );

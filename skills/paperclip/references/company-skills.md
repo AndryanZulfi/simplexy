@@ -58,7 +58,7 @@ Agent attach and hire/create composition:
 - `POST /api/companies/:companyId/agents`
 
 If a board user, CEO, or manager is driving locally, prefer the
-`paperclipai skills` CLI documented in `doc/CLI.md` — it wraps every endpoint
+`simplexy skills` CLI documented in `doc/CLI.md` — it wraps every endpoint
 above, accepts company skill or catalog refs by `id`/`key`/`slug`, and prints
 the same JSON these endpoints return when called with `--json`.
 
@@ -255,7 +255,7 @@ curl -sS -X POST "$PAPERCLIP_API_URL/api/companies/$PAPERCLIP_COMPANY_ID/agents"
 
 ## Notes
 
-- Built-in Paperclip runtime skills are still added automatically when required by the adapter.
+- Built-in Simplexy runtime skills are still added automatically when required by the adapter.
 - If a reference is missing or ambiguous, the API returns `422`.
 - Prefer linking back to the relevant issue, approval, and agent when you comment about skill changes.
 - Use company portability routes when you need whole-package import/export, not just a skill:

@@ -1,13 +1,13 @@
-# Paperclip Runner compatibility and rollout
+# Simplexy Runner compatibility and rollout
 
 - Status: Proposed
 - Date: 2026-08-24
-- Parent decision: [Paperclip Runner architecture](paperclip-runner.md)
+- Parent decision: [Simplexy Runner architecture](paperclip-runner.md)
 
 ## Purpose
 
 This document defines compatibility rules for introducing the experimental
-Paperclip Runner. These rules are acceptance criteria for each implementation
+Simplexy Runner. These rules are acceptance criteria for each implementation
 change. They are not a migration plan for existing adapters.
 
 ## Compatibility invariants
@@ -106,7 +106,7 @@ This rule applies to every built-in and plugin direct adapter. It includes:
 - gateway adapters; and
 - external adapter plugins.
 
-Adding Paperclip Runner must not add runner imports or runner branches inside a
+Adding Simplexy Runner must not add runner imports or runner branches inside a
 direct adapter implementation. The heartbeat coordinator may select the
 explicit runner adapter at one narrow seam. All other adapters continue through
 their existing code.

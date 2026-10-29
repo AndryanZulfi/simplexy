@@ -1,15 +1,15 @@
-# Public Paperclip MCP connection
+# Public Simplexy MCP connection
 
 The first-release implementation connects an external assistant **as a person**
 to one explicitly selected company. It exposes first-party task operations and
-keeps normal Paperclip authorization, scheduling, attribution, budgets and
+keeps normal Simplexy authorization, scheduling, attribution, budgets and
 approvals. The existing named agent gateways and native runner checks remain
 separate. The accepted roadmap is in
 [the implementation plan](plans/2026-09-30-paperclip-public-mcp-and-plugins.md).
 
 ## Enable an instance
 
-Apply database migrations with the normal instance upgrade workflow. In Paperclip,
+Apply database migrations with the normal instance upgrade workflow. In Simplexy,
 open **Settings → Experimental → Assistant connections (MCP)** and turn it on.
 Instance administrators can change this setting. It is off by default and takes
 effect immediately without restarting the server.
@@ -47,7 +47,7 @@ authorization.
 ## Start from Connections
 
 Inside your organization, open **Connectors → Assistant Connection (MCP) → Set up**.
-This connects an outside assistant to Paperclip using your human account; no agent
+This connects an outside assistant to Simplexy using your human account; no agent
 is selected or impersonated. The entry is discoverable while disabled, but its
 setup instructions require the experimental setting. Follow **Open Experimental
 settings**, enable **Assistant connections (MCP)**, then return to setup.
@@ -66,7 +66,7 @@ connectors and headless clients. Browser clients may require adding a connector
 in their settings; reading an invitation cannot install one. A running client may
 need a restart or a fresh conversation to load its tools. Verify the organization
 with `paperclip_connection` before doing work. Keep existing client configuration,
-and use a distinct server name when another Paperclip instance is already present.
+and use a distinct server name when another Simplexy instance is already present.
 
 For OpenCode, merge the displayed `mcp.paperclip` entry into your project’s
 `opencode.json`, run `opencode mcp auth paperclip` there, approve the organization,
@@ -115,7 +115,7 @@ For Claude Code:
 claude mcp add --transport http paperclip https://YOUR-PAPERCLIP-HOST/mcp/paperclip
 ```
 
-Open Claude Code's `/mcp` menu and authenticate the Paperclip server. Both flows
+Open Claude Code's `/mcp` menu and authenticate the Simplexy server. Both flows
 open browser sign-in and consent: review the selected organization (or choose one for a direct instance connection) and review the write-access checkbox. It starts checked when the assistant requests
 writes and your organization role allows them; uncheck it for read-only access. Read-only consent cannot delegate work.
 
@@ -123,7 +123,7 @@ Ask the assistant to identify the connected organization and list its agents, th
 it to delegate a small task to an available agent. The returned task link is the
 durable reference. In a later conversation, ask for that task's progress and
 report. Configure the agent's provider credentials, execution environment and
-budget in Paperclip before expecting it to run; the assistant connection does
+budget in Simplexy before expecting it to run; the assistant connection does
 not supply them. Revocation is available at `/assistant-connections`.
 
 The optional [workflow packages](../integrations/assistant-plugins/README.md)
@@ -194,7 +194,7 @@ clients. CIMD uses an HTTPS client ID URL with an exact matching `client_id`,
 required registered redirects, a 32 KiB response limit, a bounded cache, and
 guarded DNS/HTTP fetching that rejects private networks and redirects. Supplied
 names are not proof of a brand identity. Client documents can list capabilities
-used with other servers; Paperclip retains only its implemented grants. Extra
+used with other servers; Simplexy retains only its implemented grants. Extra
 capabilities such as Claude web’s JWT-bearer grant do not enable that grant here.
 Verified native loopback callbacks may vary only their port; the exact authorized
 callback remains bound to code redemption. Authorization responses include `iss`.
@@ -214,7 +214,7 @@ Expired credentials remain expired.
 Replaying a consumed refresh token still revokes its entire grant. Tokens and codes
 are hashed at rest. `paperclip:read` is required; `paperclip:write` adds only task
 work and attachment mutations on direct connections. The `paperclip:configure`
-scope covers allowed configuration operations. One **Write all of your Paperclip
+scope covers allowed configuration operations. One **Write all of your Simplexy
 data** consent checkbox approves both requested mutation scopes. Scope expansion
 requires a new consent flow; the directory broker retains its original operations.
 
@@ -231,7 +231,7 @@ registration. Clients with grants are retained, preserving their connections and
 audit/mutation history.
 
 Revocation blocks future calls; it does not cancel already delegated work or
-undo in-flight mutations. Manage existing tasks and execution in Paperclip.
+undo in-flight mutations. Manage existing tasks and execution in Simplexy.
 Audit records identify the human caller and connection/client for mutations.
 OAuth credential bodies and redirect locations are redacted from HTTP logs.
 
@@ -377,7 +377,7 @@ expired/stopped subscription. Use task history and document tools to recover
 missed changes. In-flight requests may finish during unsubscribe/revocation;
 subsequent attempts recheck access. Events are data, and may be duplicated or
 out of order. Do not post comments merely to acknowledge comments or documents,
-which would risk a feedback loop. Approval decisions remain in Paperclip.
+which would risk a feedback loop. Approval decisions remain in Simplexy.
 
 See [OpenAI's MCP Events guide](https://developers.openai.com/plugins/build/mcp-events)
 for currently supported client surfaces. Actual staging ChatGPT subscription,
@@ -407,12 +407,12 @@ interactive product preview; Reset this screen restores that step’s fixture.
 Each screen starts fresh, so sample state does not persist between chapters.
 
 The Cloud walkthrough covers sign-in, choosing or creating an organization,
-readiness, and the handoff. The Paperclip walkthrough covers the experimental
+readiness, and the handoff. The Simplexy walkthrough covers the experimental
 setting, organization consent, example delegation and retrieval conversations, and
 revocation. Assistant conversations are explicitly illustrative; product
 screens use isolated service fixtures. No paid work or real OAuth runs here.
 
-Local cross-links expect Paperclip Storybook on port 6106 and Cloud on 6107.
+Local cross-links expect Simplexy Storybook on port 6106 and Cloud on 6107.
 The default scripts use port 6006; launch these in separate terminals with
 explicit overrides:
 
@@ -431,7 +431,7 @@ story so the presentation itself never advances automatically.
 ### One organization from Cloud through consent
 
 Cloud selects an organization once and sends its registry company ID as the
-optional OAuth `company_id` parameter. Paperclip persists it as
+optional OAuth `company_id` parameter. Simplexy persists it as
 `mcp_oauth_requests.requested_company_id`, filters the consent response to that
 company, and rejects approval for any other company even if the user belongs to
 both. It is a scope restriction, never a substitute for active membership or
@@ -441,7 +441,7 @@ with cancel/reconnect guidance if it is unavailable.
 
 Direct instance requests without `company_id` retain their organization picker.
 There is no separate “team” entity in this flow. Cloud’s organization maps to its
-stack’s primary Paperclip company; the stack is hosting infrastructure. The hosted
+stack’s primary Simplexy company; the stack is hosting infrastructure. The hosted
 walkthrough uses **Consent → Hosted organization**; direct selection, read-only,
 and unavailable-organization variants remain separately inspectable.
 
@@ -454,17 +454,17 @@ Existing direct requests and grants are unchanged.
 Direct instance connections expose 37 explicitly registered operations. The central
 public directory broker retains its original ten tools and rejects expanded calls.
 The existing experimental setting gates both surfaces; sharing a setup link still
-conveys no authority. Consent has one **Write all of your Paperclip data** checkbox,
+conveys no authority. Consent has one **Write all of your Simplexy data** checkbox,
 checked by default for eligible roles. It approves the requested work and
 configuration scopes together; unchecking it grants read-only access. Clients must
 request `paperclip:configure` to configure agents, projects and skills. Existing
 write connections do not acquire this scope, including after refresh; reconnect
 with the expanded scopes to approve it.
-Normal Paperclip permissions are required in addition to the connection scope.
+Normal Simplexy permissions are required in addition to the connection scope.
 
 - Work (`paperclip:write`): update, finish or block tasks; write Markdown documents;
   register or update deliverables; upload attachments. Assignment and status changes
-  can schedule agents. Pending execution reviews must be decided in Paperclip.
+  can schedule agents. Pending execution reviews must be decided in Simplexy.
 - Configuration (`paperclip:configure`): edit existing agents, model/budget and
   existing connection bindings; edit instructions; create/update projects and choose
   accessible repositories; create/update organization skills and their files.
@@ -491,7 +491,7 @@ Replacing a binary deliverable uses a new attachment and updates its reference.
 
 File URLs are ten-minute, transfer-specific credentials: keep them out of chat and
 logs. Only their hashes are stored. Use host HTTP/file tools to send/receive bytes;
-if unavailable, upload/download through the Paperclip task page manually. The server
+if unavailable, upload/download through the Simplexy task page manually. The server
 never fetches a supplied remote URL or reads a supplied local path. Existing file
 type and size limits apply (10 MB default). Grants, membership, organization,
 experimental availability and write authority are checked again during transfer.
@@ -502,7 +502,7 @@ remain durable. Cloud deployments also need the narrowly scoped transfer proxy.
 Instruction edits require a managed instruction file with a current revision/hash.
 The legacy `promptTemplate.legacy.md` entry has no version protection, so MCP
 rejects edits to it with `MCP_LEGACY_INSTRUCTIONS_UNVERSIONED`. Migrate the legacy
-prompt to a managed instruction file in Paperclip first; native runner behavior
+prompt to a managed instruction file in Simplexy first; native runner behavior
 is unchanged.
 
 Client-side tool approval remains separate from OAuth consent. For example, a

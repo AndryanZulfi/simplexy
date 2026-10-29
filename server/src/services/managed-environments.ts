@@ -4,7 +4,7 @@
  * Managed-cloud instances may declare sandbox environments in the
  * `environments` section of `PAPERCLIP_MANAGED_CONFIG` (parsed fail-closed in
  * `managed-config.ts`). On boot, each declared environment is idempotently
- * ensured as the instance-level Simplixy-managed sandbox row via the
+ * ensured as the instance-level Simplexy-managed sandbox row via the
  * provider-agnostic `ensureManagedSandboxEnvironment` — the control plane
  * provisions, tenants use, for any bundled sandbox provider plugin.
  *

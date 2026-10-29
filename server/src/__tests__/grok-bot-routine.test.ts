@@ -544,7 +544,7 @@ describe("Grok inspection of historical workspace-less Stop", () => {
       runnerProfileJson: { nativeExecutionInput: { schema: "paperclip.native-execution-input.v6",
         binding: { runId: run.id, companyId: f.company.id, agentId: f.agent.id, issueId: task.id },
         provider: { kind: "grok_bot" }, workspace: { access: "none", cwd: null } } },
-      resultJson: { ...fileHold, cancellation: { source: "user", reason: "Simplixy work stopped" } },
+      resultJson: { ...fileHold, cancellation: { source: "user", reason: "Simplexy work stopped" } },
     }).where(eq(heartbeatRuns.id, run.id));
     await db.update(issues).set({ status: "blocked", executionRunId: null, checkoutRunId: null }).where(eq(issues.id, task.id));
     await db.update(nativeRunFinalizations).set({ phase: "terminal_failure", leaseOwner: null,
@@ -607,7 +607,7 @@ describe("Grok inspection of historical workspace-less Stop", () => {
       status: "running", invocationSource: "assignment", triggerDetail: "system" }).returning();
     await db.insert(dotRunnerAssignments).values({ ...f.work, id: randomUUID(), runId: other!.id,
       normalizedSessionId: randomUUID(), turnId: randomUUID(), status: "accepted" });
-    await expect(f.service.recover(f.company.id, f.agent.id, f.principal.grant.userId)).rejects.toThrow("current Simplixy work session");
+    await expect(f.service.recover(f.company.id, f.agent.id, f.principal.grant.userId)).rejects.toThrow("current Simplexy work session");
     const [run] = await db.select().from(heartbeatRuns).where(eq(heartbeatRuns.id, f.run.id));
     expect(hasRequiredWorkspaceRecovery(run!.resultJson)).toBe(true);
     expect(await f.service.recoveryNeeded(f.company.id, f.agent.id)).toBe(true);

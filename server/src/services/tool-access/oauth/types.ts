@@ -22,7 +22,7 @@ export type OAuthProviderEndpoints = {
   /**
    * RFC 8707 resource indicator: the MCP endpoint the token is for. Sent on both
    * authorization and token requests so the authorization server can audience-
-   * restrict the access token to this server rather than to everything Simplixy
+   * restrict the access token to this server rather than to everything Simplexy
    * has ever connected.
    */
   resource?: string | null;

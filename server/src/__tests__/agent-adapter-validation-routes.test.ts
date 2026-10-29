@@ -1492,7 +1492,7 @@ describe("agent routes adapter validation", () => {
       "paperclip_runner_codex_permission_mode_unqualified",
     ],
   ])(
-    "rejects a same-provider Simplixy Runner edit with %s",
+    "rejects a same-provider Simplexy Runner edit with %s",
     async (_label, existingAdapterConfig, adapterConfigPatch, expectedCode) => {
       const existing = await mockAgentService.getById();
       mockAgentService.getById.mockResolvedValue({

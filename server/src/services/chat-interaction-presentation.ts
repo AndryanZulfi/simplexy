@@ -60,7 +60,7 @@ export function chatInteractionPresentation(interaction: IssueThreadInteraction,
     case "connection_intent": {
       const { payload } = interaction;
       context.push(`${payload.requestingAgentName} needs ${payload.serviceName}${payload.accessRequest ? ` (${payload.accessRequest.connectionName})` : ""}.`);
-      context.push("The addressed user must review this connection request in Simplixy.");
+      context.push("The addressed user must review this connection request in Simplexy.");
       return { title: interaction.title ?? `Connect ${payload.serviceName}`, body: context.join("\n\n") };
     }
   }

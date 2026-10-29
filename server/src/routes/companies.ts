@@ -1196,7 +1196,7 @@ export function companyRoutes(db: Db, storage?: StorageService, options?: Compan
   router.post("/", (req, _res, next) => {
     assertBoard(req);
     if (isCloudManagedInstance()) {
-      throw forbidden("Company creation is managed by Simplixy Cloud", {
+      throw forbidden("Company creation is managed by Simplexy Cloud", {
         code: "cloud_managed",
       });
     }

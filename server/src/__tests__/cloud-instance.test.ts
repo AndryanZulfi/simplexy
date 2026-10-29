@@ -60,7 +60,7 @@ describe("isCloudStagingInstance", () => {
 });
 
 describe("getCloudStackContext", () => {
-  it("returns null outside Simplixy Cloud even when stray stack metadata exists", () => {
+  it("returns null outside Simplexy Cloud even when stray stack metadata exists", () => {
     expect(getCloudStackContext({ PAPERCLIP_STACK_SLUG: "stray-stack" })).toBeNull();
   });
 

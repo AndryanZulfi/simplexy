@@ -404,7 +404,7 @@ async function throwProviderWriteOrReservedRowRollbackError(input: {
       },
       "remote secret provider write failed and reserved secret rollback failed",
     );
-    throw new HttpError(500, "Secret create failed and Simplixy could not roll back the local secret reservation.", {
+    throw new HttpError(500, "Secret create failed and Simplexy could not roll back the local secret reservation.", {
       code: "secret_create_rollback_failed",
       provider: input.provider,
       operation: input.operation,
@@ -450,7 +450,7 @@ async function deleteLocalSecretCreateReservationOrThrow(input: {
       },
       "secret create failed and local reserved secret rollback failed",
     );
-    throw new HttpError(500, "Secret create failed and Simplixy could not roll back the local secret reservation.", {
+    throw new HttpError(500, "Secret create failed and Simplexy could not roll back the local secret reservation.", {
       code: "secret_create_rollback_failed",
       provider: input.provider,
       operation: input.operation,
@@ -467,7 +467,7 @@ function throwProviderCleanupFailedAfterCreateRollback(input: {
   operation: string;
 }): never {
   const providerConfigId = providerConfigIdentifier(input);
-  throw new HttpError(500, "Secret create failed and Simplixy could not clean up the remote provider secret.", {
+  throw new HttpError(500, "Secret create failed and Simplexy could not clean up the remote provider secret.", {
     code: "secret_create_provider_cleanup_failed",
     provider: input.provider,
     operation: input.operation,
@@ -500,14 +500,14 @@ function safeRemoteProviderErrorDetails(
     };
     const region = safeString(context.providerConfig?.region);
     if (region) details.region = region;
-    details.credentialPath = "Simplixy server runtime/provider credential path";
+    details.credentialPath = "Simplexy server runtime/provider credential path";
     if (error?.code === "access_denied") {
       if (context.operation === "secret.create") {
         details.requiredCapability = "secretsmanager:CreateSecret";
         details.actionableMessage =
-          "Ensure the Simplixy server runtime can resolve valid AWS credentials, then grant them secretsmanager:CreateSecret in the selected region for this provider vault. If the vault config uses a KMS key, those credentials also need KMS write permissions for that key.";
+          "Ensure the Simplexy server runtime can resolve valid AWS credentials, then grant them secretsmanager:CreateSecret in the selected region for this provider vault. If the vault config uses a KMS key, those credentials also need KMS write permissions for that key.";
         details.safeAlternative =
-          "If the secret already exists in AWS, link it as an external reference instead of creating a Simplixy-managed value.";
+          "If the secret already exists in AWS, link it as an external reference instead of creating a Simplexy-managed value.";
       } else if (context.operation === "secret.rotate") {
         details.requiredCapability = "secretsmanager:PutSecretValue";
         details.actionableMessage =
@@ -525,11 +525,11 @@ function safeRemoteProviderErrorDetails(
   const region = safeString(context.providerConfig?.region);
   if (region) details.region = region;
   details.providerVaultContext = context.providerConfigId === "discovery-preview" ? "draft_config" : "provider_config";
-  details.credentialPath = "Simplixy server runtime/provider credential path";
+  details.credentialPath = "Simplexy server runtime/provider credential path";
   if (error?.code === "access_denied") {
     details.requiredCapability = "secretsmanager:ListSecrets";
     details.actionableMessage =
-      "AWS discovery preview needs secretsmanager:ListSecrets in the selected region for the Simplixy server runtime/provider credential path.";
+      "AWS discovery preview needs secretsmanager:ListSecrets in the selected region for the Simplexy server runtime/provider credential path.";
     details.safeAlternative =
       "If the operator already knows the exact AWS Secrets Manager ARN, paste/link that ARN instead of using discovery. Exact-resource DescribeSecret and runtime read permissions are still required.";
   }

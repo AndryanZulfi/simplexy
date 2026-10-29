@@ -1,5 +1,5 @@
 /**
- * Links out of a tenant instance and into the Simplixy Cloud app.
+ * Links out of a tenant instance and into the Simplexy Cloud app.
  *
  * The base always comes from the health `cloud` block (derived from
  * `PAPERCLIP_CLOUD_API_ORIGIN`) — the cloud domain is never hardcoded, because

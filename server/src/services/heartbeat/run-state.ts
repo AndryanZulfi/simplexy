@@ -1465,7 +1465,7 @@ export function createHeartbeatRunState(db: Db) {
       readNonEmptyString(summarizeRunErrorForModel(latestRun.error, latestRun.terminalFailureCategory));
 
     const handoffMarkdown = [
-      "Simplixy session handoff:",
+      "Simplexy session handoff:",
       `- Previous session: ${sessionId}`,
       issueId ? `- Issue: ${issueId}` : "",
       `- Rotation reason: ${reason}`,

@@ -1497,7 +1497,7 @@ describe("issue comment reopen routes", () => {
       authorType: "user",
       authorAgentId: null,
       authorUserId: "local-board",
-      body: "Simplixy needs a disposition before this issue can continue.",
+      body: "Simplexy needs a disposition before this issue can continue.",
       presentation: {
         kind: "system_notice",
         tone: "warning",
@@ -1540,7 +1540,7 @@ describe("issue comment reopen routes", () => {
     const res = await request(app)
       .post("/api/issues/11111111-1111-4111-8111-111111111111/comments")
       .send({
-        body: "Simplixy needs a disposition before this issue can continue.",
+        body: "Simplexy needs a disposition before this issue can continue.",
         presentation,
         metadata,
       });
@@ -1548,7 +1548,7 @@ describe("issue comment reopen routes", () => {
     expect(res.status).toBe(201);
     expect(mockIssueService.addComment).toHaveBeenCalledWith(
       "11111111-1111-4111-8111-111111111111",
-      "Simplixy needs a disposition before this issue can continue.",
+      "Simplexy needs a disposition before this issue can continue.",
       {
         agentId: undefined,
         userId: "local-board",

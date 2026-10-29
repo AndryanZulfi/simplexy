@@ -774,7 +774,7 @@ export async function resyncGitHubAppWebhook(input: {
     (config.insecure_ssl !== "0" && config.insecure_ssl !== 0)
   ) {
     throw new Error(
-      "GitHub did not confirm the expected secure Simplixy webhook. Reconnect to retry.",
+      "GitHub did not confirm the expected secure Simplexy webhook. Reconnect to retry.",
     );
   }
 }

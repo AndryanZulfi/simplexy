@@ -31,7 +31,7 @@ function readInstanceId(configPath: string, label: "source" | "target"): string 
     if (path.basename(path.dirname(configDir)) === "instances") {
       return resolvePaperclipInstanceId(path.basename(configDir));
     }
-    throw new Error(`Registered ${label} Simplixy config is missing its adjacent .env instance pointer.`);
+    throw new Error(`Registered ${label} Simplexy config is missing its adjacent .env instance pointer.`);
   }
   const contents = readFileSync(envPath, "utf8");
   for (const rawLine of contents.split(/\r?\n/)) {
@@ -60,7 +60,7 @@ function inspectDeclaredEntry(entryPath: string, configPath: string, detail?: st
   } catch (error) {
     if (errorCode(error) === "ENOENT") return null;
     throw new Error(
-      `Registered base project workspace Simplixy config at ${configPath} cannot be inspected (${errorCode(error)}${detail ?? ""}).`,
+      `Registered base project workspace Simplexy config at ${configPath} cannot be inspected (${errorCode(error)}${detail ?? ""}).`,
     );
   }
 }
@@ -87,7 +87,7 @@ export function baseWorkspaceDeclaresInstanceConfig(baseWorkspaceCwd: string): b
       statSync(configDir);
     } catch (error) {
       throw new Error(
-        `Registered base project workspace Simplixy config at ${configPath} cannot be inspected (${errorCode(error)} on its .paperclip symlink target).`,
+        `Registered base project workspace Simplexy config at ${configPath} cannot be inspected (${errorCode(error)} on its .paperclip symlink target).`,
       );
     }
   }
@@ -148,36 +148,36 @@ export function resolveRegisteredWorktreeSeedSource(
   const selectedPath = registeredConfigPath ?? explicitSource;
   if (!selectedPath) {
     throw new Error(
-      "Registered base project workspace has no Simplixy config of its own and no explicit source was provided.",
+      "Registered base project workspace has no Simplexy config of its own and no explicit source was provided.",
     );
   }
-  const canonicalSourceConfigPath = canonicalRegularFile(selectedPath, "Registered source Simplixy config");
+  const canonicalSourceConfigPath = canonicalRegularFile(selectedPath, "Registered source Simplexy config");
   if (registeredConfigPath && canonicalSourceConfigPath !== registeredConfigPath) {
-    throw new Error("Registered source Simplixy config escapes the base project workspace or uses a symlink alias.");
+    throw new Error("Registered source Simplexy config escapes the base project workspace or uses a symlink alias.");
   }
 
   if (explicitSource) {
-    const canonicalExplicitSource = canonicalRegularFile(explicitSource, "Explicit source Simplixy config");
+    const canonicalExplicitSource = canonicalRegularFile(explicitSource, "Explicit source Simplexy config");
     if (canonicalExplicitSource !== canonicalSourceConfigPath) {
-      throw new Error("Explicit source Simplixy config does not match the registered base project workspace.");
+      throw new Error("Explicit source Simplexy config does not match the registered base project workspace.");
     }
   }
 
   const canonicalTargetConfigPath = canonicalRegularFile(
     input.targetConfigPath,
-    "Target worktree Simplixy config",
+    "Target worktree Simplexy config",
   );
   if (canonicalSourceConfigPath === canonicalTargetConfigPath) {
-    throw new Error("Source and target Simplixy configs are the same canonical file.");
+    throw new Error("Source and target Simplexy configs are the same canonical file.");
   }
 
   const sourceInstanceId = readInstanceId(canonicalSourceConfigPath, "source");
   const targetInstanceId = readInstanceId(canonicalTargetConfigPath, "target");
   if (targetInstanceId !== input.expectedTargetInstanceId) {
-    throw new Error("Target Simplixy instance does not match the registered worktree instance.");
+    throw new Error("Target Simplexy instance does not match the registered worktree instance.");
   }
   if (sourceInstanceId === targetInstanceId) {
-    throw new Error("Source and target Simplixy configs name the same instance.");
+    throw new Error("Source and target Simplexy configs name the same instance.");
   }
 
   return {

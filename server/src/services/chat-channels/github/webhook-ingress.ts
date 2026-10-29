@@ -493,7 +493,7 @@ export function createGitHubWebhookIngress(db: Db, options: GitHubWebhookIngress
                   eventKind,
                   state: "filtered",
                   processedAt: new Date(),
-                  redactedError: "Destination is not enabled in Simplixy",
+                  redactedError: "Destination is not enabled in Simplexy",
                   normalizedEvent: {
                     providerEventId,
                     kind: eventKind,

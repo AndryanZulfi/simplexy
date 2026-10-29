@@ -6,7 +6,7 @@ instrumentation contracts; see the
 [Telemetry Data Contract](../packages/shared/src/telemetry/README.md) for the
 separate first-party event system.
 
-Paperclip ships with **opt-in** OpenTelemetry auto-instrumentation for the
+Simplexy ships with **opt-in** OpenTelemetry auto-instrumentation for the
 server process. When activated it produces **traces only** — no metrics and no
 logs are exported by this integration.
 
@@ -30,7 +30,7 @@ server tests against; install that exact version. Our Dependabot cannot bump
 these versions: its npm parser reads only `dependencies`, `devDependencies`,
 and `optionalDependencies`, never `peerDependencies`. A peer version here is a
 compatibility claim, not an installed version, so raising it is a human
-decision. `@opentelemetry/api` is the one OpenTelemetry package Paperclip
+decision. `@opentelemetry/api` is the one OpenTelemetry package Simplexy
 maintains as a dependency; once you install the packages below, they become
 normal dependencies of **your own** project, and your own Dependabot updates
 them.
@@ -59,7 +59,7 @@ The closed attribute list is `budget.policy_count` (number of applicable
 policies) and `budget.enforcement.queue_delay_ms` (time since the pending policy's
 last intent or retry timestamp). These spans contain no tool content, usage
 receipt bodies, credentials, or provider error bodies. They do not change
-Paperclip's separate first-party Telemetry contract.
+Simplexy's separate first-party Telemetry contract.
 
 ## Slack receipt reactions
 
@@ -72,7 +72,7 @@ cleanup when the final response is published.
 
 The Slack adapter also skips the SDK's two-second polling wait for optional link
 unfurls before message dispatch. Text, formatted content, link URLs and file
-download handles remain available. Paperclip does not consume that optional
+download handles remain available. Simplexy does not consume that optional
 preview metadata for task admission.
 
 With an operator OTLP endpoint, the `paperclip.chat` tracer records
@@ -186,14 +186,14 @@ returns a value:
    stamp. A failure here is not fatal.
 3. **The `OTEL_SERVICE_VERSION` environment variable.** This is the fallback
    for a build with no stamp and no reachable git — for example a tarball
-   build. `OTEL_SERVICE_VERSION` is a Paperclip-specific variable, not an
-   OpenTelemetry SDK variable, so Paperclip controls this precedence.
+   build. `OTEL_SERVICE_VERSION` is a Simplexy-specific variable, not an
+   OpenTelemetry SDK variable, so Simplexy controls this precedence.
 4. **`"unknown"`** when no source returns a value.
 
 The server logs the resolved `service.version` once at startup, so an operator
 can confirm the value.
 
-If `OTEL_EXPORTER_OTLP_PROTOCOL` is set to an unrecognized value, Paperclip
+If `OTEL_EXPORTER_OTLP_PROTOCOL` is set to an unrecognized value, Simplexy
 logs a single warning and falls back to gRPC.
 
 Before it imports any OTel package, the server checks the four common
@@ -746,7 +746,7 @@ run-log copy is unaffected.
 
 ## Sentry Error Monitoring
 
-Paperclip ships with **opt-in** Sentry error monitoring for the server
+Simplexy ships with **opt-in** Sentry error monitoring for the server
 process and the browser app. The operator activates it with two
 environment variables: `SENTRY_DSN_FRONTEND` for the browser and
 `SENTRY_DSN_BACKEND` for the server. Each variable is optional. A
@@ -875,7 +875,7 @@ Both runtimes use Sentry's privacy options. The server also adds saved-run
 navigation links through a bounded `beforeSend` hook.
 
 - `sendDefaultPii` is `false`, on both runtimes.
-- `tracesSampleRate` is `0`, on both runtimes. Paperclip sends no
+- `tracesSampleRate` is `0`, on both runtimes. Simplexy sends no
   performance trace and no profile.
 - The server hook reads only saved run and company metadata for navigation.
   It copies no request data and preserves the event if the lookup fails.
@@ -893,7 +893,7 @@ server event captured inside a real HTTP request handler carries no
 request field").
 
 The reason is `skipOpenTelemetrySetup: true`. This feature sets that
-option so it never fights Paperclip's separate, independently opt-in
+option so it never fights Simplexy's separate, independently opt-in
 OpenTelemetry feature for control of the global tracer. The same option
 turns off Sentry's per-request context tracking. Sentry's built-in
 `RequestData` integration needs that tracking to find a URL, a method, a
@@ -967,7 +967,7 @@ The optional indexed metadata lookup has a one-second reporting deadline and a
 limit of eight unfinished reads. A failed or slow lookup preserves the original
 event without navigation links.
 URLs longer than Sentry's 200-character tag limit remain in context only.
-Links require the viewer's normal Paperclip access and apply to newly captured
+Links require the viewer's normal Simplexy access and apply to newly captured
 events; existing Sentry events are not rewritten.
 
 The bot should use the exact run ID to read `GET /api/heartbeat-runs/{runId}`,
@@ -983,7 +983,7 @@ passes through the existing secret redaction and size limits.
 
 Use the Sentry group to combine repeated investigations, and the instance and
 run ID to identify each occurrence. Automated retries or proposed code fixes
-must use normal Paperclip authority and approval checks. Receiving an event
+must use normal Simplexy authority and approval checks. Receiving an event
 does not authorize a bot to replay a run. This change provides the reporting
 contract; it does not install a bot or configure Sentry alerts.
 
@@ -1275,10 +1275,10 @@ own tool calls instead. Other ACP agents are watched only when
 The engine also observes ACP permission requests without deciding them; ACPX's
 permission mode still decides each one. A stalled run records
 `acpStalledToolPermissionRequested` (whether the stalled call's permission
-request reached Paperclip) and `acpPendingToolPermissionRequestedCount` (how many
+request reached Simplexy) and `acpPendingToolPermissionRequestedCount` (how many
 pending calls had one). These fields record only that a request arrived, not
 that the reply reached the agent. A call whose request never arrived stalled
-before the request reached Paperclip. A call whose request arrived stalled
+before the request reached Simplexy. A call whose request arrived stalled
 later: on the reply's return trip, or after the agent received the decision.
 Both fields hold only a boolean and a count.
 
@@ -1291,7 +1291,7 @@ the call stalled. The ACP kind is coarse, so peers of the same kind can be
 different tools with different permission rules. Read them this way:
 
 - All or nearly all finished peers sent a request, and the stalled call did not:
-  this supports a stall before the request reached Paperclip.
+  this supports a stall before the request reached Simplexy.
 - No finished peer sent a request: calls of that kind may skip the request, so
   its absence on the stalled call says nothing about where it stalled.
 - Some finished peers sent a request and others did not: the counts do not show
@@ -1636,13 +1636,13 @@ Two controls belong to the operator. This feature ships neither one.
 
 ## Sandbox Startup Trace Spans
 
-Paperclip opens OpenTelemetry spans on the sandbox start path. These spans are
-an Observability surface. They are not Paperclip Telemetry events. The
+Simplexy opens OpenTelemetry spans on the sandbox start path. These spans are
+an Observability surface. They are not Simplexy Telemetry events. The
 generated telemetry contract does not cover them, so this section is their
 canonical contract.
 
-The spans are opt-in. Paperclip exports them only when an OTLP endpoint is
-configured. With no endpoint the whole span path is a no-op. Paperclip opens the
+The spans are opt-in. Simplexy exports them only when an OTLP endpoint is
+configured. With no endpoint the whole span path is a no-op. Simplexy opens the
 spans only for a run that targets a remote sandbox. A local run and an SSH run
 stay out of these spans.
 
@@ -1657,7 +1657,7 @@ value:
 - An image id, a sandbox id, and a lease id ride only as a non-reversible short
   hash.
 
-Each numeric attribute is finite. Paperclip omits an attribute when its value is
+Each numeric attribute is finite. Simplexy omits an attribute when its value is
 absent, never a misleading `0`.
 
 ### Spans
@@ -1675,7 +1675,7 @@ absent, never a misleading `0`.
 | `stage.asset.<key>`                   | One inbound asset stage task inside `stage.sync`. It packs and uploads one managed-home asset. The `<key>` segment is the asset key.                       | `stage.sync`                    |
 | `stage.project.<id>`                  | One inbound referenced-project stage task inside `stage.sync`. It uploads one referenced project. The `<id>` segment is the project id.                    | `stage.sync`                    |
 | `pack`                                | Host-side workspace tarball build inside the `stage.workspace` task.                                                                                       | `stage.workspace`               |
-| `bridge.paperclip`                    | Paperclip bridge start step.                                                                                                                               | `sandbox.startup`               |
+| `bridge.paperclip`                    | Simplexy bridge start step.                                                                                                                               | `sandbox.startup`               |
 | `bridge.process-session`              | Process-session bridge start step.                                                                                                                         | `sandbox.startup`               |
 | `acp.handshake`                       | ACP session handshake step.                                                                                                                                | `sandbox.startup`               |
 | `sandbox.syncBack`                    | The settlement sync-back that restores the managed home at teardown.                                                                                       | the active run span             |
@@ -1683,7 +1683,7 @@ absent, never a misleading `0`.
 | `restore.asset.<key>`                 | One outbound asset restore task at teardown. It reads one asset back to its host store. The `<key>` segment is the asset key.                              | `sandbox.syncBack`              |
 | `sandbox.agentSession.sendInput`      | One outbound ACP message to the agent — the socket handler's one `writeTextFile` exec.                                                                     | the active run span             |
 | `sandbox.agentSession.pollOutput`     | One 100 ms poll tick — `list`, then `read`+`remove` per file found (`1 + 2n` execs).                                                                       | the active run span             |
-| `sandbox.callbackBridge.relayRequest` | One Paperclip-API callback request — read the request, write the response, remove it.                                                                      | the active run span             |
+| `sandbox.callbackBridge.relayRequest` | One Simplexy-API callback request — read the request, write the response, remove it.                                                                      | the active run span             |
 | `sandbox.agentProcess`                | The persistent streamed agent process the process-session bridge launches; open until the process settles or the bridge tears down, whichever comes first. | the active run span             |
 | `sandbox.exec`                        | One host-to-sandbox execution.                                                                                                                             | the active step or wrapper span |
 
@@ -1773,7 +1773,7 @@ per-execution `sandbox.exec` child spans carry that detail.
 
 ### `sandbox.exec` span attributes
 
-The `sandbox.exec` span uses this closed attribute allowlist. Paperclip omits a
+The `sandbox.exec` span uses this closed attribute allowlist. Simplexy omits a
 numeric attribute when the provider does not report the value.
 
 | Attribute                                       | Type    | Optional | Meaning                                                                    |
@@ -1790,7 +1790,7 @@ numeric attribute when the provider does not report the value.
 | `paperclip.sandbox.startup.outcome`             | string  | no       | The execution outcome (`ok` or `failed`).                                  |
 
 The plugin decides the cache hit at the sandbox-handle lookup. The span no
-longer infers a cache hit from `wait_before_ms == 0`. Paperclip omits the
+longer infers a cache hit from `wait_before_ms == 0`. Simplexy omits the
 `cache_hit` attribute when the provider does not report the value.
 
 To add a span attribute, extend the `SANDBOX_STARTUP_SPAN_ATTRS` allowlist in
@@ -1877,8 +1877,8 @@ This section documents one duplex transport with three sinks: an
 OpenTelemetry span, a counter in the `tool_runtime_metric_counters` table, and
 one run-log event.
 
-Paperclip opens a fixed observability surface for the sandbox duplex transport.
-This instrumentation is separate from Paperclip Telemetry events and from the
+Simplexy opens a fixed observability surface for the sandbox duplex transport.
+This instrumentation is separate from Simplexy Telemetry events and from the
 sandbox startup trace spans above. The generated telemetry contract does not
 cover it, so this section is its canonical contract. The code owner is
 `packages/adapter-utils/src/duplex-observability.ts`. That module holds each name and

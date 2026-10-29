@@ -352,7 +352,7 @@ describeEmbeddedPostgres("heartbeat dependency-aware queued run selection", () =
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `N${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
     });
@@ -479,7 +479,7 @@ describeEmbeddedPostgres("heartbeat dependency-aware queued run selection", () =
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `R${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
     });
@@ -575,7 +575,7 @@ describeEmbeddedPostgres("heartbeat dependency-aware queued run selection", () =
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `T${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
       defaultResponsibleUserId: "responsible-user",
@@ -832,7 +832,7 @@ describeEmbeddedPostgres("heartbeat dependency-aware queued run selection", () =
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `D${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
     });
@@ -965,7 +965,7 @@ describeEmbeddedPostgres("heartbeat dependency-aware queued run selection", () =
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `T${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
       defaultResponsibleUserId: "responsible-user",
@@ -1103,7 +1103,7 @@ describeEmbeddedPostgres("heartbeat dependency-aware queued run selection", () =
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `T${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
       defaultResponsibleUserId: "responsible-user",
@@ -1304,7 +1304,7 @@ describeEmbeddedPostgres("heartbeat dependency-aware queued run selection", () =
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `T${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
       defaultResponsibleUserId: "responsible-user",
@@ -1437,7 +1437,7 @@ describeEmbeddedPostgres("heartbeat dependency-aware queued run selection", () =
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `T${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
       defaultResponsibleUserId: "responsible-user",

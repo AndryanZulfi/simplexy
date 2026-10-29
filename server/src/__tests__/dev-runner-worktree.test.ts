@@ -86,7 +86,7 @@ describe("dev-runner worktree env bootstrap", () => {
     expect(isLinkedGitWorktreeCheckout(root)).toBe(true);
   });
 
-  it("loads repo-local Simplixy env for initialized worktrees without overriding explicit env", () => {
+  it("loads repo-local Simplexy env for initialized worktrees without overriding explicit env", () => {
     const root = createTempRoot("paperclip-dev-runner-worktree-env-");
     fs.mkdirSync(path.join(root, ".paperclip"), { recursive: true });
     fs.writeFileSync(path.join(root, ".git"), "gitdir: /tmp/paperclip/.git/worktrees/feature\n", "utf8");

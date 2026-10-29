@@ -85,7 +85,7 @@ describe("chat publication projection", () => {
 
   it("uses a safe fallback if only private material remains", () => {
     expect(projectSafeChatPublicationText("<thinking>all private</thinking>")).toBe(
-      "Update available in Simplixy.",
+      "Update available in Simplexy.",
     );
   });
 
@@ -107,7 +107,7 @@ describe("chat publication projection", () => {
             { type: "callback", actionId: "choice.one", label: "First", style: "primary" },
             {
               type: "link",
-              label: "Open Simplixy",
+              label: "Open Simplexy",
               url: "https://paperclip.example/tasks/123?handoff=secret#private",
             },
             { type: "link", label: "Unsafe", url: "javascript:alert(1)" },
@@ -130,7 +130,7 @@ describe("chat publication projection", () => {
           { type: "callback", actionId: "choice.one", label: "First", style: "primary" },
           {
             type: "link",
-            label: "Open Simplixy",
+            label: "Open Simplexy",
             url: "https://paperclip.example/tasks/123",
           },
         ],

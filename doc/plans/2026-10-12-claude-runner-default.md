@@ -50,7 +50,7 @@ Experience findings: the Connectors announcement covered part of the first-task 
 
 ## Delivery checkpoint — 2026-10-15
 
-New Claude agents use Paperclip Runner and ordinary Opus 5.5 defaults on the four qualified installed targets. Saved Legacy/native choices, explicit models, provider routing, and the latest Codex defaults remain intact. Runtime source is `0670b85392a0be51745f1ba7ca84f998bf122c07`, integrated with master through `7420af26fc9a80d6252ababd879e2fc991eebd07`. Required source CI passed, with exact-source Greptile 5/5 and zero unresolved threads. The final record changes evidence only; the linked PRs show current-head checks.
+New Claude agents use Simplexy Runner and ordinary Opus 5.5 defaults on the four qualified installed targets. Saved Legacy/native choices, explicit models, provider routing, and the latest Codex defaults remain intact. Runtime source is `0670b85392a0be51745f1ba7ca84f998bf122c07`, integrated with master through `7420af26fc9a80d6252ababd879e2fc991eebd07`. Required source CI passed, with exact-source Greptile 5/5 and zero unresolved threads. The final record changes evidence only; the linked PRs show current-head checks.
 
 | Target | Completed evidence |
 | --- | --- |
@@ -67,7 +67,7 @@ Known rate-card estimates total **$4.810616600**, excluding unknown charges. Agg
 
 ## Finish line and baseline
 
-New Claude agents created through ordinary product entry points select Paperclip Runner automatically, use `claude-opus-5-5` unless an explicit model/provider override exists, and complete a useful task plus revision. Saved Legacy/native choices remain stable. Deliver tested, reviewable PRs; merge and production rollout remain separate.
+New Claude agents created through ordinary product entry points select Simplexy Runner automatically, use `claude-opus-5-5` unless an explicit model/provider override exists, and complete a useful task plus revision. Saved Legacy/native choices remain stable. Deliver tested, reviewable PRs; merge and production rollout remain separate.
 
 Planning baseline fetched from origin/master: `7fc2dc8b3236e1149ae32756b6153a503623404b`. Implementation later integrated master through `7420af26fc9a80d6252ababd879e2fc991eebd07`; see the current evidence below.
 Clean baseline checkout: `/private/tmp/claude-default-master-plan`, branch `codex/claude-default-master-plan`. Existing three PR branches and installed preview are preserved. This planning checkout is current master plus this record; it does not yet contain the Claude implementation.
@@ -259,7 +259,7 @@ Local Apple Silicon API-key task and follow-up are the first gate. Keep existing
 - The user redirected the remaining live checks to API keys. Subscription login remains supported, but no further attended subscription qualification is required; subscription follow-up is not claimed.
 - Shared runner controls passed light/dark, 390-pixel mobile and keyboard opening/closing checks. The walkthrough found native Command/Extra args controls; they are now hidden for native execution. The saved Claude preservation test covers this path. Agent form 111 tests, UI TypeScript and token gates passed.
 - Four-target cloud producers and required source checks are running on 9788c05; clean-install consumers are still pending. The existing authorized SSH development host is Linux ARM64 with GNU libc 2.39; qualification will use an isolated directory and preserve its other services.
-- Reviewed source chat “Make Paperclip Runner the default”; source worktree remains separate and active.
+- Reviewed source chat “Make Simplexy Runner the default”; source worktree remains separate and active.
 - Isolated feature branch starts at the exact requested SHA.
 - Workspace dependencies installed with pinned pnpm 9.15.4 and lifecycle scripts disabled.
 - Local key source exists; no credentials retained here.
@@ -304,7 +304,7 @@ Reconcile the latest Codex dependency (`dcdf09a0f3`, direct descendant of the re
 
 Frozen runtime candidate: `5f0b898e9ecef77afefe309a230e04d7fef66cde`. [Cloud daemon and clean-install qualification](https://github.com/paperclipai/paperclip/actions/runs/38273229107) uses the reconciled source's four-target release matrix. [Cloud required-source verification](https://github.com/paperclipai/paperclip/actions/runs/38273238920) resolves the branch to an immutable target under the trusted master workflow. Both are in progress; no passing claim yet. Image publication is disabled. All Docker/Rust compilation is remote.
 
-Subscription setup is prepared through the ordinary Claude Code wizard. The existing host CLI account is Paperclip Team (`claude.ai`, Team subscription), but the provider browser requires fresh reauthentication after selecting that organization. The user has been asked to complete that sign-in; no credential was extracted from the host or pasted into chat. The API-key preview/artifacts remain available while the subscription draft is pending.
+Subscription setup is prepared through the ordinary Claude Code wizard. The existing host CLI account is Simplexy Team (`claude.ai`, Team subscription), but the provider browser requires fresh reauthentication after selecting that organization. The user has been asked to complete that sign-in; no credential was extracted from the host or pasted into chat. The API-key preview/artifacts remain available while the subscription draft is pending.
 
 ## Cold-resume diagnosis and corrective candidate
 
@@ -486,7 +486,7 @@ automatic Linux selection. Final broad source checks run in the cloud on
 reconciled `06c4f5e5a0`: [campaign 38296110502](https://github.com/paperclipai/paperclip/actions/runs/38296110502).
 The behavior head `2874232d25` received 5/5 after its three settings fixes.
 
-Installed Mac proof is available as a Paperclip
+Installed Mac proof is available as a Simplexy
 [acceptance report](http://127.0.0.1:3105/api/attachments/61653e0a-3ae0-459c-b1d1-20b5d1db73d6/content?download=1)
 and [screenshot](http://127.0.0.1:3105/api/attachments/bce37c56-3984-45b9-a995-b6a23cc9a85d/content?download=1),
 with artifact work products on CLAA-2. The actual native SDK is the server's
@@ -668,7 +668,7 @@ saved native configuration by applying actual form changes. Explicit empty
 model/effort and account-binding removal remain removals. Mounted Codex and
 Claude import cases cover ordinary edits, model/effort clears, connection-binding
 removal, Legacy selection and harness changes. Switching a Legacy Claude import
-to Paperclip preserves deny-all/approve-reads through the native builder.
+to Simplexy preserves deny-all/approve-reads through the native builder.
 Current import/builder controls: 123 passed; mounted existing-agent form controls:
 121 passed, including hydration and explicit Auto clearing for both harnesses
 and all three effort aliases. Server/UI noemit, token gates and capability-map
@@ -1246,7 +1246,7 @@ heartbeat scheduling and zero live runs are verified. Receipts:
 `/private/tmp/claude-ad5875-local-installed-identity.json` and
 `/private/tmp/claude-ad5875-preview-health-receipt.json`.
 
-The actual creation UI selected Claude Code and displayed Paperclip Runner as
+The actual creation UI selected Claude Code and displayed Simplexy Runner as
 the default with the existing saved API-key account. Setup then failed before
 authentication with `acpx_runtime_unavailable`: the default installed verifier
 did not carry its owning server's package authority. The SDK and qualified
@@ -1362,7 +1362,7 @@ complete data backed up to /private/tmp/claude-qa-before-js-treatment-snapshot,
 and the private treatment started at 3105 with scheduling and ambient Claude
 credentials disabled. This is explicitly a treatment, not a final package.
 
-The real creation UI displays Paperclip Runner (default) for Claude Code. Both
+The real creation UI displays Simplexy Runner (default) for Claude Code. Both
 native readiness and the existing supplementary credential check pass with the
 saved personal Anthropic API key. Three bounded setup walkthroughs were used:
 the first browser harness waited on the wrong Configure label; the corrected
@@ -1580,7 +1580,7 @@ A replacement package campaign waits for fresh review of the corrected runtime.
 
 The existing Product E2E browser helper exercised UI source 7069077274 against
 the retained older backend at 3115 through New Agent, Claude Code and Advanced.
-The runner shows Paperclip Runner (default); keyboard Legacy/native selection
+The runner shows Simplexy Runner (default); keyboard Legacy/native selection
 passes. Stable light/dark screenshots at 1440 and 390 px show no horizontal page
 overflow. The inherited Custom Gateway subtitle clips on 390 px; Claude API-key
 controls remain visible. Every API mutation was blocked by the browser guard;
@@ -1682,7 +1682,7 @@ source Release Smoke artifact set. It validates repository/workflow/source,
 artifact archive digests, canonical paths, package authority, daemon architecture
 and daemon bytes before constructing the image. The release pack must equal the
 manifest inside the public server tarball. This mode copies the producer's pack
-and daemon over an immutable Paperclip base image without rebuilding either or
+and daemon over an immutable Simplexy base image without rebuilding either or
 resolving dependencies. The resulting image is read back to compare pack and
 daemon identities. Existing source-build mode remains available. Fifteen focused
 negative/positive controls and 71 existing release workflow controls pass; full
@@ -1795,8 +1795,8 @@ private Cloud UI plugins are excluded. All image builds ran in cloud infrastruct
 A fresh strict browser journey started at `https://test.paperclip.app`, selected
 the test organization, created Claude Hosted Writer through New Agent, reused
 the saved personal Claude API connection, and submitted default model/runner
-settings. The saved Runtime form showed Paperclip Runner (default), Claude
-Opus 5.5, effort Auto, and Paperclip Computer. No runner or model override was
+settings. The saved Runtime form showed Simplexy Runner (default), Claude
+Opus 5.5, effort Auto, and Simplexy Computer. No runner or model override was
 submitted. The native experimental flag remained at its disabled app default.
 Prior interface familiarity and the preconfigured $2 project are disclosed.
 

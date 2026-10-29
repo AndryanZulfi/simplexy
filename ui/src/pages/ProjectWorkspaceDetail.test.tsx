@@ -132,7 +132,7 @@ function project(overrides: Partial<Project> = {}): Project {
     goalId: null,
     goalIds: [],
     goals: [],
-    name: "Simplixy",
+    name: "Simplexy",
     description: null,
     status: "in_progress",
     leadAgentId: null,

@@ -192,7 +192,7 @@ type Binding = {
   dotRuntime?: boolean;
   museRuntime?: boolean;
   externalAuthorizingUserId?: string;
-  /** Grok retains its provider apps; this release exposes first-party Simplixy tools only. */
+  /** Grok retains its provider apps; this release exposes first-party Simplexy tools only. */
   firstPartyOnly?: boolean;
   /** Operator-approved Dot attachment access, pinned when the turn opens. */
   taskAttachmentRead?: boolean;
@@ -296,7 +296,7 @@ function hireAgentApiRequest(input: Record<string, unknown>, binding: Pick<Bindi
 }
 
 function hireAgentResult(value: unknown, provider: unknown) {
-  return { ...apiToolResult(value), ...(provider === "openai_dot" ? { setupRequired: "This creates a separate Simplixy Dot agent. Its operator must pair a separate OpenAI Dot before it can run. The existing Dot binding and workspace permission are never inherited." } : {}) };
+  return { ...apiToolResult(value), ...(provider === "openai_dot" ? { setupRequired: "This creates a separate Simplexy Dot agent. Its operator must pair a separate OpenAI Dot before it can run. The existing Dot binding and workspace permission are never inherited." } : {}) };
 }
 
 export class PaperclipRunnerToolAuthority {
@@ -346,7 +346,7 @@ export class PaperclipRunnerToolAuthority {
         name: descriptor.operationId,
         description:
           descriptor.operationId === "register_deliverable"
-            ? "Prepare one verified workspace file for Simplixy's final task or external-chat response. This records the attachment, work product, and explicit same-run selection; it does not confirm provider delivery."
+            ? "Prepare one verified workspace file for Simplexy's final task or external-chat response. This records the attachment, work product, and explicit same-run selection; it does not confirm provider delivery."
             : descriptor.description,
         inputSchema:
           descriptor.operationId === "register_deliverable"
@@ -509,7 +509,7 @@ export class PaperclipRunnerToolAuthority {
       await this.binding.assertBridgeAuthority?.();
       if (!MUSE_NATIVE_OPERATIONS.has(tool)) throw forbidden("This operation is outside the Muse first-party runtime profile");
     }
-    if (this.binding.firstPartyOnly && (EXTERNAL_WORKSPACE_OPERATIONS.has(tool) || tool.startsWith("workspace_"))) throw forbidden("Simplixy workspace access is unavailable to this Grok Bot session.");
+    if (this.binding.firstPartyOnly && (EXTERNAL_WORKSPACE_OPERATIONS.has(tool) || tool.startsWith("workspace_"))) throw forbidden("Simplexy workspace access is unavailable to this Grok Bot session.");
     if (this.binding.nativeReview && tool !== "resolve_review" && !NATIVE_REVIEW_READ_TOOLS.has(tool)) {
       throw forbidden("This review run may only inspect the assigned task and resolve its review.");
     }
@@ -608,7 +608,7 @@ export class PaperclipRunnerToolAuthority {
       return apiToolResult(await this.#callApi(call.callId, taskBridgeApiRequest(call.tool, input)));
     }
     if (this.binding.firstPartyOnly && (call.tool === READ_TOOL_RESULT || this.binding.assignedMcpTools?.has(call.tool) || isConnectorTool(call.tool)
-      || RUNTIME_CONNECTION_TOOL_DEFINITIONS.some(tool => tool.name === call.tool))) throw forbidden("This Grok Bot connection exposes first-party Simplixy operations. Use your own provider apps under their existing permissions.");
+      || RUNTIME_CONNECTION_TOOL_DEFINITIONS.some(tool => tool.name === call.tool))) throw forbidden("This Grok Bot connection exposes first-party Simplexy operations. Use your own provider apps under their existing permissions.");
     if (call.tool === READ_TOOL_RESULT) return this.#readToolResult(call.arguments);
     if (this.binding.assignedMcpTools?.has(call.tool)) {
       const current = await this.#boundContext();
@@ -1014,7 +1014,7 @@ export class PaperclipRunnerToolAuthority {
     };
     const caseCaptureId = dedicatedCaseRoute ? options!.caseId
       : await caseIdForApiCapture(this.db, this.binding.companyId, operation.path, input.pathParams);
-    if (this.binding.firstPartyOnly && /\/(?:workspaces|workspace-runtime|repositories|tool-gateway|tool-connections|tool-profiles|tools|connection-intents|connections|plugins)(?:\/|$)/.test(operation.path)) throw forbidden("Third-party tools through Simplixy are unavailable for this Grok Bot connection.");
+    if (this.binding.firstPartyOnly && /\/(?:workspaces|workspace-runtime|repositories|tool-gateway|tool-connections|tool-profiles|tools|connection-intents|connections|plugins)(?:\/|$)/.test(operation.path)) throw forbidden("Third-party tools through Simplexy are unavailable for this Grok Bot connection.");
     const sensitiveResponse = runnerApiSensitiveResponse(operation.method, operation.path);
     await this.#assertDotApiFileAccess(operation.path, input);
     if (options?.receiptOnly) {
@@ -1022,9 +1022,9 @@ export class PaperclipRunnerToolAuthority {
       return this.#completedApiReceipt(bound.run.resultJson?.apiToolReceipts, callId, input);
     }
     const apiUrl = this.binding.apiUrl ?? process.env.PAPERCLIP_API_URL;
-    if (!apiUrl) throw new Error("Simplixy API origin is unavailable");
+    if (!apiUrl) throw new Error("Simplexy API origin is unavailable");
     const token = this.#apiToken(bound);
-    if (!token) throw new Error("Simplixy run authentication is unavailable");
+    if (!token) throw new Error("Simplexy run authentication is unavailable");
     const execute = async () => {
       const current = await this.#boundContext();
       assertAvailable(current.issue.workMode);
@@ -1114,7 +1114,7 @@ export class PaperclipRunnerToolAuthority {
     await authorize();
     const apiUrl = this.binding.apiUrl ?? process.env.PAPERCLIP_API_URL;
     const token = this.#apiToken(context);
-    if (!apiUrl || !token) throw new Error("Simplixy run authentication is unavailable");
+    if (!apiUrl || !token) throw new Error("Simplexy run authentication is unavailable");
     // This dedicated read grants only a saved result from this task. It remains
     // available without generic call_api and uses the same authenticated asset
     // route, range/UTF-8 decoding, and responsible-user checks as API reads.
@@ -1453,7 +1453,7 @@ export class PaperclipRunnerToolAuthority {
     // wakes and request-changes continuation have one implementation.
     const response = await fetch(`${apiUrl.replace(/\/$/, "")}/api/issues/${this.binding.issueId}/interactions/${review.interaction.id}/${input.decision}`, {
       method: "POST", redirect: "error", signal: AbortSignal.timeout(30_000),
-      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json", "X-Simplixy-Run-Id": this.binding.runId },
+      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json", "X-Simplexy-Run-Id": this.binding.runId },
       body: JSON.stringify(input.decision === "reject" ? { reason } : {}),
     });
     if (!response.ok) throw new Error(`Review decision was not accepted (${response.status}): ${(await response.text()).slice(0, 2_000)}`);

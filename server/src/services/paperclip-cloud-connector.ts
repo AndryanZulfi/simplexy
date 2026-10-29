@@ -216,7 +216,7 @@ export function paperclipCloudConnectorConfigFromEnv(
   const hasActiveLocalIdentity = localIdentity?.status === "active" && localStatus?.configured === true;
   if (!hasManagedIdentityOverride && !hasActiveLocalIdentity && legacyConfigured) {
     throw new PaperclipCloudConnectorError(
-      "Simplixy ID connector settings use an incompatible legacy protocol; enroll this instance with Simplixy Cloud",
+      "Simplexy ID connector settings use an incompatible legacy protocol; enroll this instance with Simplexy Cloud",
       "CONNECTOR_MIGRATION_REQUIRED",
     );
   }
@@ -248,7 +248,7 @@ export function paperclipCloudConnectorConfigFromEnv(
     || (brokerHost === "test.paperclip.app" && environment !== "test")
     || (brokerHost === "my-staging.paperclip.app" && environment !== "staging")) {
     throw new PaperclipCloudConnectorError(
-      "Simplixy Cloud connector broker and environment do not match",
+      "Simplexy Cloud connector broker and environment do not match",
       "CONNECTOR_CONFIG_INVALID",
     );
   }
@@ -324,7 +324,7 @@ export function createPaperclipCloudConnector(input: {
     if (!response.ok) {
       const reason = await readBrokerRejectionReason(response);
       throw new PaperclipCloudConnectorError(
-        `Simplixy Cloud connector rejected the request (operation=${operation}, status=${response.status}, reason=${reason})`,
+        `Simplexy Cloud connector rejected the request (operation=${operation}, status=${response.status}, reason=${reason})`,
         response.status === 409 ? "REAUTHORIZATION_REQUIRED" : "CONNECTOR_REQUEST_FAILED",
         response.status,
       );
@@ -584,7 +584,7 @@ function parseCloudHandoff(value: unknown): { kind: "paperclip_cloud"; session: 
 export type PaperclipCloudConnector = ReturnType<typeof createPaperclipCloudConnector>;
 export type PaperclipCloudGoogleWorkspaceConnector = PaperclipCloudConnector;
 
-/** Accept persisted Simplixy ID-era records while all new records use the Cloud strategy. */
+/** Accept persisted Simplexy ID-era records while all new records use the Cloud strategy. */
 export function isPaperclipCloudConnectorStrategy(value: unknown): boolean {
   return value === "paperclip_cloud_connector" || value === "paperclip_id_connector";
 }

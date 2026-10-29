@@ -201,9 +201,9 @@ has different lock/contention behavior and must not inherit that conclusion.
 
 Parent #17592 at `f53ae3d6d27c2642e7dfe647a2c0a9bbf2d582ac` now has passing
 Actions/security/Greptile gates, no inline review findings, and a neutral
-Paperclip Review result. Neutral is not a completed positive review. #17590 at
-`e501d6c99d721d6428f8c490206417765c76f4f6` has passing gates with Paperclip Review
-queued at inspection. #17586 also has a neutral Paperclip Review. Final review
+Simplexy Review result. Neutral is not a completed positive review. #17590 at
+`e501d6c99d721d6428f8c490206417765c76f4f6` has passing gates with Simplexy Review
+queued at inspection. #17586 also has a neutral Simplexy Review. Final review
 acceptance remains separate. Refreshed master is `2e47c42fad`; stack reconciliation
 remains required. No stack PR was merged.
 
@@ -721,7 +721,7 @@ instead of manufacturing a missing signal for an unsupported ordering.
 
 Remote gates refreshed at this checkpoint: #17490 at `31bcd1988823` still has
 failed E2E shard 3 and aggregate checks; #17590 at `e501d6c99d72` still has queued
-Paperclip Review; #17592 at `f53ae3d6d27c` still has neutral Paperclip Review.
+Simplexy Review; #17592 at `f53ae3d6d27c` still has neutral Simplexy Review.
 These are not claimed ready and no merge was attempted.
 
 ## Publication outcome and operator-resolution checkpoint

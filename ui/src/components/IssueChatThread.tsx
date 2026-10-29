@@ -2925,7 +2925,7 @@ function IssueChatFeedbackButtons({
           <DialogHeader>
             <DialogTitle>Save your feedback sharing preference</DialogTitle>
             <DialogDescription>
-              Choose whether voted AI outputs can be shared with Simplixy Labs.
+              Choose whether voted AI outputs can be shared with Simplexy Labs.
               This answer becomes the default for future thumbs up and thumbs
               down votes.
             </DialogDescription>
@@ -3547,14 +3547,14 @@ function SystemNoticeCommentContent({
       ? (agentMap?.get(runAgentId)?.name ?? null)
       : null;
     if (authorType === "system") {
-      const label = runAgentName ?? "Simplixy";
+      const label = runAgentName ?? "Simplexy";
       if (runAgentId && runId)
         return { label, href: `/agents/${runAgentId}/runs/${runId}` };
       return { label };
     }
     if (runAgentId && runId) {
       return {
-        label: authorName ?? runAgentName ?? "Simplixy",
+        label: authorName ?? runAgentName ?? "Simplexy",
         href: `/agents/${runAgentId}/runs/${runId}`,
       };
     }

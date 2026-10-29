@@ -39,15 +39,15 @@ describe("buildInviteOnboardingTextDocument", () => {
       allowedHostnames: [],
     });
 
-    expect(text).toContain("Simplixy Agent Onboarding");
+    expect(text).toContain("Simplexy Agent Onboarding");
     expect(text).toContain("use your existing Slack connection");
     expect(text).toContain("Setup or test restrictions apply only to their stated scope");
-    expect(text).toContain("Never use another Simplixy connection or identity to bypass a denial");
+    expect(text).toContain("Never use another Simplexy connection or identity to bypass a denial");
     expect(text).toContain("/api/invites/token-123/accept");
     expect(text).toContain("/api/join-requests/{requestId}/claim-api-key");
     expect(text).toContain("/api/invites/token-123/onboarding.txt");
     expect(text).toContain("/api/invites/token-123/skills/paperclip");
-    expect(text).toContain("Suggested Simplixy base URLs to try");
+    expect(text).toContain("Suggested Simplexy base URLs to try");
     expect(text).toContain("http://localhost:3100");
     expect(text).toContain("host.docker.internal");
     expect(text).toContain("paperclipApiUrl");
@@ -64,14 +64,14 @@ describe("buildInviteOnboardingTextDocument", () => {
     expect(text).toContain("agentDefaultsPayload.apiBaseUrl");
     expect(text).toContain("agentDefaultsPayload.paperclipApiUrl");
     expect(text).toContain("hermes_local");
-    expect(text).toContain("Hermes-originated Simplixy API usage");
+    expect(text).toContain("Hermes-originated Simplexy API usage");
     expect(text).toContain("http://127.0.0.1:8642");
     expect(text).toContain("http://127.0.0.1:9119");
     expect(text).toContain("http://127.0.0.1:9119/chat");
     expect(text).toContain("map to /api");
     expect(text).toContain("/chat and the dashboard root are browser UI routes");
     expect(text).toContain("/api/v1/runs");
-    expect(text).toContain("Do not rotate or invent a Simplixy key manually");
+    expect(text).toContain("Do not rotate or invent a Simplexy key manually");
     expect(text).toContain("http://192.168.1.25:8642");
     expect(text).toContain("tailnet-name.ts.net:8642");
     expect(text).toContain("http://host.docker.internal:8642");
@@ -83,7 +83,7 @@ describe("buildInviteOnboardingTextDocument", () => {
     expect(text).toContain("The response body includes the full token exactly once");
     expect(text).toContain("Do not persist displayed previews containing literal ... or [redacted]");
     expect(text).toContain("Use your runtime's normal skill or instruction installation path.");
-    expect(text).toContain("Decide which Simplixy adapter type matches your runtime.");
+    expect(text).toContain("Decide which Simplexy adapter type matches your runtime.");
   });
 
   it("includes loopback diagnostics for authenticated/private onboarding", () => {

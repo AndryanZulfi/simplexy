@@ -11,7 +11,7 @@ Connection intents let an agent ask the responsible user for a known service con
 
 Provider-specific setup must stay in the shared feature and `AppDefinition` metadata. Do not add provider forms or connection mutations to either host.
 
-When a task connection needs Paperclip Cloud enrollment, the shared dialog opens enrollment in a separate window. The task keeps its access selection and interaction ID. A new-tab link is available if the window does not open. The dialog reads server enrollment status and refreshes the provider catalog after approval; enrollment alone does not mark the app connected. OAuth retains the interaction ID even if setup resumes in the page host, so the verified callback can resolve the task card and queue its continuation.
+When a task connection needs Simplexy Cloud enrollment, the shared dialog opens enrollment in a separate window. The task keeps its access selection and interaction ID. A new-tab link is available if the window does not open. The dialog reads server enrollment status and refreshes the provider catalog after approval; enrollment alone does not mark the app connected. OAuth retains the interaction ID even if setup resumes in the page host, so the verified callback can resolve the task card and queue its continuation.
 
 ## Agent tools
 
@@ -20,7 +20,7 @@ Every active heartbeat with a responsible user receives two run-bound tools:
 - `connections_search({ query })` searches catalog names and descriptions, plus authorized configured MCP connections and indexed tool descriptions and returns `ready`, `needs_user_action`, `available`, or `unavailable` from the requesting agent's perspective.
 - `connection_request({ service })` returns immediately when the service is already usable. Otherwise it creates or reuses a `connection_intent` and instructs the agent to finish independent work, then yield pending continuation.
 
-The native Paperclip Runner advertises both tools through its server-owned tool authority even with an empty MCP assignment. It captures the current responsible identity at each call. Legacy Claude and Codex receive the tools through a managed MCP server. Local/process adapters receive `PAPERCLIP_RUNTIME_TOOLS_*` environment variables and CLI guidance. Cloud, HTTP, gateway, and external adapters receive the typed runtime descriptor in their invocation context; compatible adapters may also project it into their remote environment.
+The native Simplexy Runner advertises both tools through its server-owned tool authority even with an empty MCP assignment. It captures the current responsible identity at each call. Legacy Claude and Codex receive the tools through a managed MCP server. Local/process adapters receive `PAPERCLIP_RUNTIME_TOOLS_*` environment variables and CLI guidance. Cloud, HTTP, gateway, and external adapters receive the typed runtime descriptor in their invocation context; compatible adapters may also project it into their remote environment.
 
 Legacy delivery uses the same intent service, setup card, and fresh-session resolution wake. Environment and descriptor delivery require the receiving harness to consume them; they do not establish support in every third-party runtime. The default legacy prompt includes the canonical discovery guidance. A custom `promptTemplate` replaces that default and should retain the connection guidance if proactive discovery is desired.
 
@@ -31,7 +31,7 @@ paperclipai connections search notion
 paperclipai connections request notion
 ```
 
-The manually configured Paperclip MCP server also advertises `connections_search` and `connection_request`. Both helper surfaces require the narrow runtime token and fail outside an active heartbeat.
+The manually configured Simplexy MCP server also advertises `connections_search` and `connection_request`. Both helper surfaces require the narrow runtime token and fail outside an active heartbeat.
 
 ## Security and lifecycle
 

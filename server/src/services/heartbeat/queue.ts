@@ -1780,7 +1780,7 @@ export function createHeartbeatQueue(db: Db, dependencies: HeartbeatQueueDepende
   ) {
     const now = new Date();
     const reason =
-      "Cancelled because issue dependencies are still blocked; Simplixy will wake the assignee when blockers resolve";
+      "Cancelled because issue dependencies are still blocked; Simplexy will wake the assignee when blockers resolve";
     const cancelled = await setRunStatus(run.id, "cancelled", {
       finishedAt: now,
       error: reason,
@@ -3886,7 +3886,7 @@ export function createHeartbeatQueue(db: Db, dependencies: HeartbeatQueueDepende
                 issue.id,
               );
               const blockedComment = [
-                `Simplixy blocked ${issueLabel} before dispatch because its workspace settings are not runnable.`,
+                `Simplexy blocked ${issueLabel} before dispatch because its workspace settings are not runnable.`,
                 "",
                 `- Code: \`${WORKSPACE_WORKTREE_REQUIRES_PROJECT_CODE}\``,
                 `- Reason: ${WORKSPACE_WORKTREE_REQUIRES_PROJECT_MESSAGE}`,

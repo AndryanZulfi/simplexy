@@ -57,7 +57,7 @@ function trustedOriginsForRequest(req: Request) {
 }
 
 /**
- * Return the browser origin only when it is the same origin Simplixy's CSRF
+ * Return the browser origin only when it is the same origin Simplexy's CSRF
  * guard accepts for this request. Callers may use this as browser-reachability
  * evidence, but must still apply any protocol-specific constraints (for
  * example OAuth requiring HTTPS outside loopback).

@@ -108,7 +108,7 @@ describeEmbeddedPostgres("heartbeat plugin environments", () => {
     ]);
     await db.insert(plugins).values({ id: pluginId, pluginKey, packageName: "@test/tasks", version: "1.0.0", apiVersion: 1,
       categories: ["automation"], status: "ready", manifestJson: { id: pluginKey, apiVersion: 1, version: "1.0.0",
-        displayName: "Tasks", description: "Task fixture", author: "Simplixy", categories: ["automation"],
+        displayName: "Tasks", description: "Task fixture", author: "Simplexy", categories: ["automation"],
         capabilities: ["environment.drivers.register", "workspaces.manage", "events.subscribe"], resourceLifecycle: ["project"],
         workspaceProvider: { modes: ["shared_workspace", "isolated_workspace", "operator_branch"], strategies: ["project_primary", "git_worktree"] },
         entrypoints: { worker: "worker.js" },

@@ -118,7 +118,7 @@ export function createOAuthClientRegistration(db: Db, { now, options, store, get
 
   /**
    * Adopt a Client ID Metadata Document as this connection's client: the
-   * `client_id` *is* the https URL of Simplixy's published client metadata, so
+   * `client_id` *is* the https URL of Simplexy's published client metadata, so
    * there is nothing to register with the authorization server. Still recorded on
    * the connection so the issuer/resource/callback binding is enforced on reuse
    * exactly like a dynamically registered client.
@@ -189,7 +189,7 @@ async function adoptClientIdMetadataDocument(input: {
   /**
    * How the client already stored on this connection was obtained. Anything
    * unrecognised (including connections written before this field existed) reads
-   * as `manual`, which is the conservative answer: Simplixy will not silently
+   * as `manual`, which is the conservative answer: Simplexy will not silently
    * re-register over client material it cannot prove it minted.
    */
 function storedOAuthClientRegistrationSource(
@@ -343,7 +343,7 @@ async function stampOAuthClientBinding(
   }
 
   /**
-   * May Simplixy mint client material for this connection without an operator
+   * May Simplexy mint client material for this connection without an operator
    * pasting client credentials?
    *
    * A curated app opts in through its `ownershipModes`. A generic remote MCP

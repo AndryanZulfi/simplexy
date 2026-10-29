@@ -11756,7 +11756,7 @@ describe("runnerd provider runtime wiring", () => {
       cleanup,
     });
     state.renderNativeRunnerStagedAttachmentPrompt.mockReturnValueOnce(
-      "Simplixy native attachment access: staged.",
+      "Simplexy native attachment access: staged.",
     );
     state.execute.mockReset().mockResolvedValueOnce({
       result: { summary: "completed" },

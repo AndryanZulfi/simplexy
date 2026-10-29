@@ -70,7 +70,7 @@ describeEmbeddedPostgres("issue create deduplication routes", () => {
     const companyId = randomUUID();
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `D${companyId.replace(/-/g, "").slice(0, 5).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
     });
@@ -314,7 +314,7 @@ describeEmbeddedPostgres("issue create deduplication routes", () => {
 
     const response = await request(app)
       .post(`/api/companies/${companyId}/issues`)
-      .set("X-Simplixy-Run-Id", runId)
+      .set("X-Simplexy-Run-Id", runId)
       .send({ parentId: parent.id, title: "Attributed create" })
       .expect(201);
     const [created] = await db.select().from(issues).where(eq(issues.id, response.body.id));

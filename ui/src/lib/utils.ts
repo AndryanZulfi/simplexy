@@ -213,7 +213,7 @@ export function visibleRunTokenTotal(usage: Record<string, unknown> | null | und
   return input + output + (inputExcludesCached ? cached : 0);
 }
 
-/** Muse exposes Simplixy bridge events, not raw private provider traffic. */
+/** Muse exposes Simplexy bridge events, not raw private provider traffic. */
 export function supportsRawProviderTrace(adapterType: string, adapterConfig: Record<string, unknown> | null | undefined): boolean {
   return adapterType !== "paperclip_runner" || adapterConfig?.provider !== "muse";
 }

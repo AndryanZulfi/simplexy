@@ -102,7 +102,7 @@ export type EnvironmentDeleteBlockedReason =
 /**
  * One reusable sandbox lease that blocks an environment delete, with the
  * workspace/issue that holds it. Closing the workspace (or removing the issue)
- * lets Simplixy destroy the sandbox and release the lease. The workspace and
+ * lets Simplexy destroy the sandbox and release the lease. The workspace and
  * issue references are nullable because the lease FKs use `on delete set null`.
  */
 export interface EnvironmentDeleteReusableLeaseHolder {

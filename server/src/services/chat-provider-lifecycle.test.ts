@@ -227,7 +227,7 @@ describe("chat provider lifecycle normalization", () => {
         isGroup: true,
       },
       channelData: {
-        team: { id: "team-1", name: "Simplixy Test" },
+        team: { id: "team-1", name: "Simplexy Test" },
         channel: { id: "channel-1", name: "Bots" },
       },
     };

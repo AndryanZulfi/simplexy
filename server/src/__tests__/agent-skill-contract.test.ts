@@ -16,7 +16,7 @@ describe("agent skill contract", () => {
       originLabel: "User-installed",
       locationLabel: "~/.claude/skills",
       readOnly: true,
-      detail: "Installed outside Simplixy management.",
+      detail: "Installed outside Simplexy management.",
     })).toMatchObject({
       origin: "user_installed",
       locationLabel: "~/.claude/skills",

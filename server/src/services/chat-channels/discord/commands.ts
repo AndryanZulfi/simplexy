@@ -514,18 +514,18 @@ export function createDiscordCommands(db: Db, options: DiscordCommandsOptions) {
                     2000,
                   )
                 : invocation.sourceKind === "guild_channel"
-                  ? "Open the Discord task thread to view its Simplixy status."
+                  ? "Open the Discord task thread to view its Simplexy status."
                   : "No task is active in this conversation.";
           } else if (
             invocation.command === "new" &&
             invocation.sourceKind !== "direct_message"
           ) {
             content =
-              "Open a new Discord thread by mentioning this agent in a new channel message. This thread stays bound to its current Simplixy task.";
+              "Open a new Discord thread by mentioning this agent in a new channel message. This thread stays bound to its current Simplexy task.";
           } else if (!active || !conversation || !issue) {
             content =
               invocation.sourceKind === "direct_message"
-                ? "No task is active. Send a message to start a new Simplixy task."
+                ? "No task is active. Send a message to start a new Simplexy task."
                 : "No active task is bound here. Open its Discord thread to manage it.";
           } else if (
             (await readChatControlChronology(
@@ -548,10 +548,10 @@ export function createDiscordCommands(db: Db, options: DiscordCommandsOptions) {
           } else {
             const publicText =
               invocation.command === "new"
-                ? "Send your request to start a new Simplixy task."
+                ? "Send your request to start a new Simplexy task."
                 : invocation.sourceKind === "direct_message"
                   ? "This chat conversation is closed. Send another message to start a new task."
-                  : "This chat conversation is closed. A later message here will continue the same Simplixy task.";
+                  : "This chat conversation is closed. A later message here will continue the same Simplexy task.";
             const publication = await stageAuthorizedTaskControlPublication(
               tx,
               {

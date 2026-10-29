@@ -1,6 +1,6 @@
 # Docker Quickstart
 
-Run Paperclip in Docker without installing Node or pnpm locally.
+Run Simplexy in Docker without installing Node or pnpm locally.
 
 All commands below assume you are in the **project root** (the directory containing `package.json`), not inside `docker/`.
 
@@ -147,13 +147,13 @@ Pass `OPENAI_API_KEY` and/or `ANTHROPIC_API_KEY` to enable local adapter runs.
 
 ### Full stack (with PostgreSQL)
 
-Paperclip server + PostgreSQL 17. The database is health-checked before the server starts.
+Simplexy server + PostgreSQL 17. The database is health-checked before the server starts.
 
 ```sh
 docker compose -f docker/docker-compose.yml up --build
 ```
 
-PostgreSQL data persists in a named Docker volume (`pgdata`). Paperclip data persists in `paperclip-data`.
+PostgreSQL data persists in a named Docker volume (`pgdata`). Simplexy data persists in `paperclip-data`.
 
 Both Compose files pass `PAPERCLIP_TOOL_ACTION_SIGNING_SECRET` to the server.
 When configured, keep it independent from `BETTER_AUTH_SECRET`. When unset,
@@ -173,7 +173,7 @@ docker compose -f docker/docker-compose.untrusted-review.yml run --rm --service-
 
 ## Authenticated Compose (Single Public URL)
 
-For authenticated deployments, set one canonical public URL and let Paperclip derive auth/callback defaults:
+For authenticated deployments, set one canonical public URL and let Simplexy derive auth/callback defaults:
 
 ```yaml
 services:
@@ -193,7 +193,7 @@ services:
 
 For fresh `authenticated/private` Docker or appliance-style installs, the first
 admin can now be claimed entirely from the browser after sign-in. Open the
-Paperclip URL, sign in or create an account, then choose `Claim this instance`
+Simplexy URL, sign in or create an account, then choose `Claim this instance`
 on the setup screen. This browser claim is disabled for `authenticated/public`;
 public deployments should run the high-entropy CLI invite fallback instead:
 
@@ -257,16 +257,16 @@ docker run --name paperclip \
 Notes:
 
 - The image provides the CLI and Python prerequisites for local subscription sign-in.
-- Adapter environment checks in Paperclip surface missing authentication or CLI prerequisites.
+- Adapter environment checks in Simplexy surface missing authentication or CLI prerequisites.
 
 ## Podman Quadlet (systemd)
 
-The `docker/quadlet/` directory contains unit files to run Paperclip + PostgreSQL as systemd services via Podman Quadlet.
+The `docker/quadlet/` directory contains unit files to run Simplexy + PostgreSQL as systemd services via Podman Quadlet.
 
 | File | Purpose |
 |------|---------|
 | `docker/quadlet/paperclip.pod` | Pod definition — groups containers into a shared network namespace |
-| `docker/quadlet/paperclip.container` | Paperclip server — joins the pod, connects to Postgres at `127.0.0.1` |
+| `docker/quadlet/paperclip.container` | Simplexy server — joins the pod, connects to Postgres at `127.0.0.1` |
 | `docker/quadlet/paperclip-db.container` | PostgreSQL 17 — joins the pod, health-checked |
 
 ### Setup
@@ -321,16 +321,16 @@ systemctl --user stop paperclip-pod      # Stop all
 ### Quadlet notes
 
 - **First boot**: Unlike Docker Compose's `condition: service_healthy`, Quadlet's `After=` only waits for the DB unit to *start*, not for PostgreSQL to be ready. On a cold first boot you may see one or two restart attempts in `journalctl --user -u paperclip` while PostgreSQL initialises — this is expected and resolves automatically via `Restart=on-failure`.
-- Containers in a pod share `localhost`, so Paperclip reaches Postgres at `127.0.0.1:5432`.
+- Containers in a pod share `localhost`, so Simplexy reaches Postgres at `127.0.0.1:5432`.
 - PostgreSQL data persists in the `paperclip-pgdata` named volume.
-- Paperclip data persists at `~/.local/share/paperclip`.
+- Simplexy data persists at `~/.local/share/paperclip`.
 - For rootful quadlet deployment, remove `%h` prefixes and use absolute paths.
 
 ## Onboard Smoke Test (Ubuntu + npm only)
 
 Use this when you want to mimic a fresh machine that only has Ubuntu + npm and verify:
 
-- `npx paperclipai onboard --yes` completes
+- `npx simplexy onboard --yes` completes
 - the server binds to `0.0.0.0:3100` so host access works
 - onboard/run banners and startup logs are visible in your terminal
 
@@ -355,9 +355,9 @@ Notes:
 - Persistent data is mounted at `./data/docker-onboard-smoke` by default.
 - Container runtime user id defaults to your local `id -u` so the mounted data dir stays writable while avoiding root runtime.
 - Smoke script defaults to `authenticated/private` mode so `HOST=0.0.0.0` can be exposed to the host.
-- Smoke script defaults host port to `3131` to avoid conflicts with local Paperclip on `3100`.
+- Smoke script defaults host port to `3131` to avoid conflicts with local Simplexy on `3100`.
 - Smoke script also defaults `PAPERCLIP_PUBLIC_URL` to `http://localhost:<HOST_PORT>` so bootstrap invite URLs and auth callbacks use the reachable host port instead of the container's internal `3100`.
-- In authenticated mode, the smoke script defaults `SMOKE_AUTO_BOOTSTRAP=true` and drives the real bootstrap path automatically: it signs up a real user, runs `paperclipai auth bootstrap-ceo` inside the container to mint a real bootstrap invite, accepts that invite over HTTP, and verifies board session access.
+- In authenticated mode, the smoke script defaults `SMOKE_AUTO_BOOTSTRAP=true` and drives the real bootstrap path automatically: it signs up a real user, runs `simplexy auth bootstrap-ceo` inside the container to mint a real bootstrap invite, accepts that invite over HTTP, and verifies board session access.
 - Run the script in the foreground to watch the onboarding flow; stop with `Ctrl+C` after validation.
 - Set `SMOKE_DETACH=true` to leave the container running for automation and optionally write shell-ready metadata to `SMOKE_METADATA_FILE`.
 - Set `SMOKE_CONTAINER_NAME` to fix the container's name up front. Automation that has to collect diagnostics when the script *fails* needs a name it already knows, rather than one it can only read back out of a successful run. Defaults to the image name.
@@ -369,7 +369,7 @@ Notes:
 - The `docker-entrypoint.sh` adjusts the container `node` user UID/GID at startup to match the values passed via `USER_UID`/`USER_GID`, avoiding permission issues on bind-mounted volumes.
 - Before it drops privileges, the entrypoint makes sure `PAPERCLIP_HOME` is owned by the `node` user. Each boot checks only the home directory and its first three levels. The first boot (and any boot after a UID/GID change) also checks the full tree, and then writes `PAPERCLIP_HOME/.paperclip-ownership-verified`. While that marker is current, later boots skip the full-tree walk, which can take minutes on homes with many files. A mismatch triggers a recursive `chown`. If files deep in the tree get the wrong owner (for example, after a restore as root), delete the marker and restart to force a full check. If a check fails (for example, with an I/O error), the entrypoint does not write the marker, so the next boot checks again.
 - The entrypoint writes timestamped lines when it starts, around the full ownership check or any repair (with the duration), and just before it starts the server, so you can measure the pre-start time from the container log.
-- Paperclip data persists via Docker volumes/bind mounts (compose) or at `~/.local/share/paperclip` (quadlet).
+- Simplexy data persists via Docker volumes/bind mounts (compose) or at `~/.local/share/paperclip` (quadlet).
 
 ## Native Runner build cache
 

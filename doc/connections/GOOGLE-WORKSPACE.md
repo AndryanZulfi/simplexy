@@ -1,7 +1,7 @@
 # Google Workspace connections
 
 New Google Workspace setup uses one `google-workspace` connection and the
-`workspace.all` OAuth profile. Paperclip first offers Gmail, Drive (including
+`workspace.all` OAuth profile. Simplexy first offers Gmail, Drive (including
 Docs, Sheets, and Slides), and Calendar. All three start enabled with read and
 write access. Users can disable a group or choose read-only access. New setup
 does not offer Chat, Contacts/directory, or cross-service Search.
@@ -32,9 +32,9 @@ robot-account method remains separate because it uses explicitly shared files,
 not the user's Google OAuth identity.
 
 Google's hosted Workspace MCP servers are Developer Preview services. The app
-endpoints remain separate. Paperclip namespaces actions by service and routes them
+endpoints remain separate. Simplexy namespaces actions by service and routes them
 to a closed endpoint registry using the combined grant. It does not create child
-connections or send provider tokens through Paperclip ID.
+connections or send provider tokens through Simplexy ID.
 
 The catalog reuses the existing reviewed Google mark (`google-people.svg`),
 registered under its own `google-workspace` brand identity. No new artwork is
@@ -107,7 +107,7 @@ Enrollment does not authorize every user of an OAuth client. Additional tester
 emails and Cloud projects must be added through Google's member request forms.
 Google's preview terms also prohibit making a pre-GA integration available to
 end users outside the enrolled company or domain unless Google grants explicit
-permission. Consequently, Paperclip-managed Google OAuth is limited to
+permission. Consequently, Simplexy-managed Google OAuth is limited to
 registered internal testers during preview. Other companies must enroll their
 own Workspace testers and Cloud project and use a customer-owned OAuth app until
 Google makes Workspace MCP generally available.
@@ -131,18 +131,18 @@ Workspace setup has one capability and asks for service groups before Google
 consent. The endpoint table also documents legacy connections; it is not the
 new-account service list.
 When the managed method is
-available, it uses Paperclip by default. A small **Use your own Google OAuth app**
-link reveals the custom client fields; **Use Paperclip instead** returns to the
+available, it uses Simplexy by default. A small **Use your own Google OAuth app**
+link reveals the custom client fields; **Use Simplexy instead** returns to the
 managed method. The available authentication methods are:
 
-- **Connect with Paperclip** uses the Paperclip Cloud broker when that exact
+- **Connect with Simplexy** uses the Simplexy Cloud broker when that exact
   profile is returned for this enrolled instance by the signed
   `POST https://my.paperclip.app/v1/connector/instance-status` request. The
   anonymous capabilities document is global discovery only and never enables
   an internal-pilot method locally.
 - **Use your own Google OAuth app** uses customer-supplied OAuth credentials and
   the app definition's exact reviewed scopes.
-- **Use the Paperclip robot account** remains an additional Google Sheets-only
+- **Use the Simplexy robot account** remains an additional Google Sheets-only
   option for explicitly shared spreadsheets.
 
 Before Google consent, the setup flow shows the credential's human and agent
@@ -162,11 +162,11 @@ owner when the new method supports that owner.
 
 ## Legacy product-specific broker profiles
 
-The Paperclip-managed method signs every broker request with one explicit
+The Simplexy-managed method signs every broker request with one explicit
 profile. The broker binds that profile into sessions, one-time claims, sealed
 token envelopes, and refresh. Per-profile removal is local-only for managed
 Google grants. Google's revocation endpoint can invalidate all grants for the
-same user and managed client, so Paperclip does not call it while removing one
+same user and managed client, so Simplexy does not call it while removing one
 Workspace profile.
 
 | App | Read profile | Write profile |
@@ -186,7 +186,7 @@ whose provider, profile, or exact scope set does not match its closed registry.
 
 ## Instance configuration
 
-All Paperclip-managed Google methods use the existing enrolled-instance keys:
+All Simplexy-managed Google methods use the existing enrolled-instance keys:
 
 ```dotenv
 PAPERCLIP_CLOUD_CONNECTOR_BASE_URL=https://my.paperclip.app
@@ -196,7 +196,7 @@ PAPERCLIP_CLOUD_CONNECTOR_SIGN_PRIVATE_KEY=...
 PAPERCLIP_CLOUD_CONNECTOR_SEAL_PRIVATE_KEY=...
 ```
 
-No per-app client secret is stored on the Paperclip instance for the managed
+No per-app client secret is stored on the Simplexy instance for the managed
 path. For customer-owned OAuth, the setup flow collects that customer's Google
 OAuth client ID and secret and stores them through the normal instance-vault
 path.
@@ -208,11 +208,11 @@ directory. The setup page supplies its authenticated same-origin HTTPS address
 to enrollment, so a normal Tailscale-hosted self-hoster does not need to edit
 `config.json` or set `PAPERCLIP_PUBLIC_URL`; the enrolled origin becomes the
 durable callback binding. The former `PAPERCLIP_ID_CONNECTOR_*` values use an incompatible
-Paperclip ID protocol and are not read aliases. Enroll with Paperclip Cloud and
+Simplexy ID protocol and are not read aliases. Enroll with Simplexy Cloud and
 reconnect legacy grants before their old access tokens expire.
 
 The gallery requests the broker capability document with a short cache. A
-Paperclip-managed method is omitted unless its exact profile is enabled at the
+Simplexy-managed method is omitted unless its exact profile is enabled at the
 broker; the independent app card and customer-owned OAuth method remain
 available. This supports profile-by-profile rollout and rollback without
 collapsing the nine cards into one app.

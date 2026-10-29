@@ -10,7 +10,7 @@ const ROWS = [
     key: "agent-browser",
     name: "agent-browser",
     slug: "agent-browser",
-    author: "Simplixy",
+    author: "Simplexy",
     tagline: "Drive a real browser",
     description: "Inspect and interact with web pages",
     categories: ["automation", "web"],

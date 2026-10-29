@@ -1,8 +1,8 @@
 /** Public product identity only: never include company, user, run, or credential data. */
 export const OPENROUTER_ATTRIBUTION_HEADERS = Object.freeze({
   "HTTP-Referer": "https://paperclip.ing",
-  "X-Title": "Simplixy",
-  "X-OpenRouter-Title": "Simplixy",
+  "X-Title": "Simplexy",
+  "X-OpenRouter-Title": "Simplexy",
   "X-OpenRouter-Categories": "cloud-agent,programming-app",
 });
 

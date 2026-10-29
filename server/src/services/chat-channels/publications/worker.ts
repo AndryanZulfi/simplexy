@@ -539,7 +539,7 @@ export function createChatPublicationWorker(db: Db, options: PublicationWorkerOp
                 .update(chatPublications)
                 .set({
                   state: "cancelled",
-                  redactedError: "Direct messages are disabled in Simplixy",
+                  redactedError: "Direct messages are disabled in Simplexy",
                   updatedAt: new Date(),
                 })
                 .where(
@@ -574,7 +574,7 @@ export function createChatPublicationWorker(db: Db, options: PublicationWorkerOp
                 .update(chatPublications)
                 .set({
                   state: "cancelled",
-                  redactedError: "Destination is disabled in Simplixy",
+                  redactedError: "Destination is disabled in Simplexy",
                   updatedAt: new Date(),
                 })
                 .where(

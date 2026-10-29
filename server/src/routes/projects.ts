@@ -384,7 +384,7 @@ export function projectRoutes(db: Db) {
     };
 
     const { workspace, repositoryIds, repositoryUrls, idempotencyKey, ...projectData } = req.body as CreateProjectPayload & { idempotencyKey?: string; repositoryUrls?: string[] };
-    const receiptOnly = req.get("X-Simplixy-Receipt-Only") === "true";
+    const receiptOnly = req.get("X-Simplexy-Receipt-Only") === "true";
     if (receiptOnly && !idempotencyKey) throw unprocessable("Project receipt recovery requires an idempotency key");
     projectData.privacyOwnerUserId = req.actor.type === "board" ? req.actor.userId ?? null : req.actor.type === "agent" ? req.actor.onBehalfOfUserId ?? null : null;
     const runContext = req.actor.type === "agent" && req.actor.source === "agent_jwt" && req.actor.runId
@@ -776,7 +776,7 @@ export function projectRoutes(db: Db) {
 
     const workspaceCwd = workspace.cwd;
     if (!workspaceCwd) {
-      res.status(422).json({ error: "Project workspace needs a local path before Simplixy can run workspace commands" });
+      res.status(422).json({ error: "Project workspace needs a local path before Simplexy can run workspace commands" });
       return;
     }
 

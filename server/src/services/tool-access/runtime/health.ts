@@ -82,7 +82,7 @@ function buildRuntimeAlerts(input: {
       description:
         "Tool gateway calls are timing out or being runtime-deferred at an elevated rate.",
       firstResponderAction:
-        "Check upstream MCP health, Simplixy runtime capacity, and recent gateway audit failures before retrying workloads.",
+        "Check upstream MCP health, Simplexy runtime capacity, and recent gateway audit failures before retrying workloads.",
       runbookSection,
     }),
     runtimeAlert({

@@ -1,8 +1,8 @@
-# Paperclip Plugin System Specification
+# Simplexy Plugin System Specification
 
 Status: proposed complete spec for the post-V1 plugin system
 
-This document is the complete specification for Paperclip's plugin and extension architecture.
+This document is the complete specification for Simplexy's plugin and extension architecture.
 It expands the brief plugin notes in [doc/SPEC.md](../SPEC.md) and should be read alongside the comparative analysis in [doc/plugins/ideas-from-opencode.md](./ideas-from-opencode.md).
 
 This is not part of the V1 implementation contract in [doc/SPEC-implementation.md](../SPEC-implementation.md).
@@ -20,8 +20,8 @@ Today, the practical deployment model is:
 
 Current limitations to keep in mind:
 
-- Plugin UI bundles currently run as same-origin JavaScript inside the main Paperclip app. Treat plugin UI as trusted code, not a sandboxed frontend capability boundary.
-- Manifest capabilities currently gate worker-side host RPC calls. They do not prevent plugin UI code from calling ordinary Paperclip HTTP APIs directly.
+- Plugin UI bundles currently run as same-origin JavaScript inside the main Simplexy app. Treat plugin UI as trusted code, not a sandboxed frontend capability boundary.
+- Manifest capabilities currently gate worker-side host RPC calls. They do not prevent plugin UI code from calling ordinary Simplexy HTTP APIs directly.
 - Runtime installs assume a writable local filesystem for the plugin package directory and plugin data directory.
 - Runtime npm installs assume `npm` is available in the running environment and that the host can reach the configured package registry.
 - Published npm packages are the intended install artifact for deployed plugins.
@@ -65,12 +65,12 @@ This spec does not cover:
 
 ## 2. Core Assumptions
 
-Paperclip plugin design is based on the following assumptions:
+Simplexy plugin design is based on the following assumptions:
 
-1. Paperclip is single-tenant and self-hosted.
+1. Simplexy is single-tenant and self-hosted.
 2. Plugin installation is global to the instance.
-3. "Companies" remain core Paperclip business objects, but they are not plugin trust boundaries.
-4. Board governance, approval gates, budget hard-stops, and core task invariants remain owned by Paperclip core.
+3. "Companies" remain core Simplexy business objects, but they are not plugin trust boundaries.
+4. Board governance, approval gates, budget hard-stops, and core task invariants remain owned by Simplexy core.
 5. Projects already have a real workspace model via `project_workspaces`, and local/runtime plugins should build on that instead of inventing a separate workspace abstraction.
 
 ## 3. Goals
@@ -78,7 +78,7 @@ Paperclip plugin design is based on the following assumptions:
 The plugin system must:
 
 1. Let operators install global instance-wide plugins.
-2. Let plugins add major capabilities without editing Paperclip core.
+2. Let plugins add major capabilities without editing Simplexy core.
 3. Keep core governance and auditing intact.
 4. Support both local/runtime plugins and external SaaS connectors.
 5. Support future plugin categories such as:
@@ -105,11 +105,11 @@ The first plugin system must not:
 
 ### 5.1 Instance
 
-The single Paperclip deployment an operator installs and controls.
+The single Simplexy deployment an operator installs and controls.
 
 ### 5.2 Company
 
-A first-class Paperclip business object inside the instance.
+A first-class Simplexy business object inside the instance.
 
 ### 5.3 Project Workspace
 
@@ -118,7 +118,7 @@ Plugins resolve workspace paths from this model to locate local directories for 
 
 ### 5.4 Platform Module
 
-A trusted in-process extension loaded directly by Paperclip core.
+A trusted in-process extension loaded directly by Simplexy core.
 
 Examples:
 
@@ -129,7 +129,7 @@ Examples:
 
 ### 5.5 Plugin
 
-An installable instance-wide extension package loaded through the Paperclip plugin runtime.
+An installable instance-wide extension package loaded through the Simplexy plugin runtime.
 
 Examples:
 
@@ -153,7 +153,7 @@ Plugins may only call host APIs that are covered by granted capabilities.
 
 ## 6. Extension Classes
 
-Paperclip has two extension classes.
+Simplexy has two extension classes.
 
 ## 6.1 Platform Modules
 
@@ -201,7 +201,7 @@ A plugin may declare more than one category.
 
 ## 7. Project Workspaces
 
-Paperclip already has a concrete workspace model:
+Simplexy already has a concrete workspace model:
 
 - projects expose `workspaces`
 - projects expose `primaryWorkspace`
@@ -227,7 +227,7 @@ Examples:
 
 ## 8.1 On-Disk Layout
 
-Plugins live under the Paperclip instance directory.
+Plugins live under the Simplexy instance directory.
 
 Suggested layout:
 
@@ -242,13 +242,13 @@ This on-disk model is the reason the current implementation expects a persistent
 
 ## 8.2 Operator Commands
 
-Paperclip should add CLI commands:
+Simplexy should add CLI commands:
 
-- `pnpm paperclipai plugin list`
-- `npx paperclipai plugin install <package[@version]>`
-- `npx paperclipai plugin uninstall <plugin-id>`
-- `npx paperclipai plugin upgrade <plugin-id> [version]`
-- `npx paperclipai plugin doctor <plugin-id>`
+- `pnpm simplexy plugin list`
+- `npx simplexy plugin install <package[@version]>`
+- `npx simplexy plugin uninstall <plugin-id>`
+- `npx simplexy plugin upgrade <plugin-id> [version]`
+- `npx simplexy plugin doctor <plugin-id>`
 
 These commands are instance-level operations.
 
@@ -408,7 +408,7 @@ Rules:
 
 ## 11. Agent Tools
 
-Plugins may contribute tools that Paperclip agents can use during runs.
+Plugins may contribute tools that Simplexy agents can use during runs.
 
 ### 11.1 Tool Declaration
 
@@ -454,7 +454,7 @@ Third-party plugins run out-of-process by default.
 
 Default runtime:
 
-- Paperclip server starts one worker process per installed plugin
+- Simplexy server starts one worker process per installed plugin
 - the worker process is a Node process
 - host and worker communicate over JSON-RPC on stdio
 
@@ -578,7 +578,7 @@ If the worker implements this method, it applies the new config without restarti
 
 ### 13.5 `onEvent`
 
-Receives one typed Paperclip domain event.
+Receives one typed Simplexy domain event.
 
 Delivery semantics:
 
@@ -678,9 +678,9 @@ Plugins that need filesystem, git, terminal, or process operations handle those 
 
 ## 14.1 Issue Orchestration APIs
 
-Trusted orchestration plugins can create and update Paperclip issues through `ctx.issues` instead of importing server internals. The public issue contract includes parent/project/goal links, board or agent assignees, blocker IDs, labels, billing code, request depth, execution workspace inheritance, and plugin origin metadata.
+Trusted orchestration plugins can create and update Simplexy issues through `ctx.issues` instead of importing server internals. The public issue contract includes parent/project/goal links, board or agent assignees, blocker IDs, labels, billing code, request depth, execution workspace inheritance, and plugin origin metadata.
 
-Plugins that perform durable work should declare managed Paperclip resources rather than using private plugin state:
+Plugins that perform durable work should declare managed Simplexy resources rather than using private plugin state:
 
 - `agents` + `ctx.agents.managed.*` for named, invokable operators (`agents.managed` required)
 - `projects` + `ctx.projects.managed.*` for stable, scoped issue/workspace ownership (`projects.managed` required)
@@ -985,7 +985,7 @@ Job rules:
 3. The host prevents overlapping execution of the same plugin/job combination unless explicitly allowed later.
 4. Every job run is recorded in Postgres.
 5. Failed jobs are retryable.
-6. For recurring business workflows that should create visible Paperclip work, prefer managed routines and managed resources over jobs. Jobs remain useful for private plugin-runtime maintenance tasks.
+6. For recurring business workflows that should create visible Simplexy work, prefer managed routines and managed resources over jobs. Jobs remain useful for private plugin-runtime maintenance tasks.
 
 ## 18. Webhooks
 
@@ -1076,14 +1076,14 @@ The SDK includes a `ui` subpath export that plugin frontends import. This subpat
 Plugins are encouraged but not required to use the shared components. A plugin may render entirely custom UI as long as it communicates through the bridge.
 
 `useHostNavigation()` is the supported way for plugin UI to navigate to
-Paperclip-internal pages. It exposes `resolveHref(to)`, `navigate(to,
+Simplexy-internal pages. It exposes `resolveHref(to)`, `navigate(to,
 options?)`, and `linkProps(to, options?)`. Plugin links should prefer
 `linkProps()` so anchors keep real `href` values for copy-link, modifier-click,
 middle-click, and open-in-new-tab behavior while plain left-clicks route through
 the host SPA router. The host resolves company-scoped paths against the active
 company prefix without double-prefixing already-prefixed paths. Plugin UI should
 not use raw same-origin `href`s or `window.location.assign()` for internal
-Paperclip navigation because those can force a full document reload.
+Simplexy navigation because those can force a full document reload.
 
 ### 19.0.2 Bundle Isolation
 
@@ -1239,7 +1239,7 @@ The auto-generated form supports:
 - text inputs, number inputs, toggles, select dropdowns derived from schema types and enums
 - nested objects rendered as fieldsets
 - arrays rendered as repeatable field groups with add/remove controls
-- secret ref fields: any schema property annotated with `"format": "secret-ref"` renders as a secret picker that stores the shared `{ type: "secret_ref", secretId, version? }` object shape and resolves through the Paperclip secret provider system rather than a plain text input
+- secret ref fields: any schema property annotated with `"format": "secret-ref"` renders as a secret picker that stores the shared `{ type: "secret_ref", secretId, version? }` object shape and resolves through the Simplexy secret provider system rather than a plain text input
 - validation messages derived from schema constraints (`required`, `minLength`, `pattern`, `minimum`, etc.)
 - a "Test Connection" action if the plugin declares a `validateConfig` RPC method — the host calls it and displays the result inline
 
@@ -1261,19 +1261,19 @@ This keeps the host lean — it does not need to maintain a parallel API surface
 
 ## 21.1 Database Principles
 
-1. Core Paperclip data stays in first-party tables.
+1. Core Simplexy data stays in first-party tables.
 2. Most plugin-owned data starts in generic extension tables.
-3. Plugin data should scope to existing Paperclip objects before new tables are introduced.
+3. Plugin data should scope to existing Simplexy objects before new tables are introduced.
 4. Arbitrary third-party schema migrations are out of scope for the first plugin system.
 
 ## 21.2 Core Table Reuse
 
-If data becomes part of the actual Paperclip product model, it should become a first-party table.
+If data becomes part of the actual Simplexy product model, it should become a first-party table.
 
 Examples:
 
 - `project_workspaces` is already first-party
-- if Paperclip later decides git state is core product data, it should become a first-party table too
+- if Simplexy later decides git state is core product data, it should become a first-party table too
 
 ## 21.3 Required Tables
 
@@ -1449,7 +1449,7 @@ Rules:
 
 1. Plugin config stores shared `{ type: "secret_ref", secretId, version? }` refs only. Legacy UUID string refs are rejected.
 2. Save-time validation rejects refs to secrets outside the selected company.
-3. Secret refs resolve through the existing Paperclip secret provider system using explicit `companyId`.
+3. Secret refs resolve through the existing Simplexy secret provider system using explicit `companyId`.
 4. Plugin workers receive resolved secrets only at execution time, and resolution writes `secret_access_events` with `consumerType: "plugin_worker"`.
 5. Secret values must never be written to:
    - plugin config JSON
@@ -1523,7 +1523,7 @@ When a plugin is uninstalled, the host must handle plugin-owned data explicitly.
 3. Plugin-owned data (`plugin_state`, `plugin_entities`, `plugin_jobs`, `plugin_job_runs`, `plugin_webhook_deliveries`, `plugin_config`) is retained for a configurable grace period (default: 30 days).
 4. During the grace period, the operator can reinstall the same plugin and recover its state.
 5. After the grace period, the host purges all plugin-owned data for the uninstalled plugin.
-6. The operator may force-purge immediately via CLI: `npx paperclipai plugin purge <plugin-id>`.
+6. The operator may force-purge immediately via CLI: `npx simplexy plugin purge <plugin-id>`.
 
 ### 25.2 Upgrade Data Considerations
 
@@ -1545,7 +1545,7 @@ When upgrading a plugin:
 
 ### 25.4 Hot Plugin Lifecycle
 
-Plugin install, uninstall, upgrade, and config changes **must** take effect without restarting the Paperclip server. This is a normative requirement, not optional.
+Plugin install, uninstall, upgrade, and config changes **must** take effect without restarting the Simplexy server. This is a normative requirement, not optional.
 
 The architecture already supports this — plugins run as out-of-process workers with dynamic ESM imports, IPC bridges, and host-managed routing tables. This section makes the requirement explicit so implementations do not regress.
 
@@ -1685,9 +1685,9 @@ expect(data.syncedCount).toBeGreaterThan(0);
 
 ### 27.2 Local Plugin Development
 
-For developing a plugin against a running Paperclip instance:
+For developing a plugin against a running Simplexy instance:
 
-- The operator installs the plugin from a local path: `npx paperclipai plugin install ./path/to/plugin`
+- The operator installs the plugin from a local path: `npx simplexy plugin install ./path/to/plugin`
 - The host watches the plugin directory for changes and restarts the worker on rebuild.
 - `devUiUrl` in plugin config can point to a local Vite dev server for UI hot-reload.
 - The plugin settings page shows real-time logs from the worker for debugging.
@@ -1828,9 +1828,9 @@ Workspace plugins (file browser, terminal, git, process tracking) do not require
 
 ## 31. Final Design Decision
 
-Paperclip should not implement a generic in-process hook bag modeled directly after local coding tools.
+Simplexy should not implement a generic in-process hook bag modeled directly after local coding tools.
 
-Paperclip should implement:
+Simplexy should implement:
 
 - trusted platform modules for low-level host integration
 - globally installed out-of-process plugins for additive instance-wide capabilities
@@ -1847,7 +1847,7 @@ Paperclip should implement:
 - test harness and starter template for low authoring friction
 - strict preservation of core governance and audit rules
 
-That is the complete target design for the Paperclip plugin system.
+That is the complete target design for the Simplexy plugin system.
 
 ### Browser WebSocket API routes
 

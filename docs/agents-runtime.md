@@ -2,11 +2,11 @@
 
 Status: User-facing guide
 Last updated: 2026-03-26
-Audience: Operators setting up and running agents in Paperclip
+Audience: Operators setting up and running agents in Simplexy
 
 ## 1. What this system does
 
-Agents in Paperclip do not run continuously.  
+Agents in Simplexy do not run continuously.  
 They run in **heartbeats**: short execution windows triggered by a wakeup.
 
 Each heartbeat:
@@ -83,7 +83,7 @@ Templates support variables like `{{agent.id}}`, `{{agent.name}}`, and run conte
 
 ## 4. Session resume behavior
 
-Paperclip stores session IDs for resumable adapters.
+Simplexy stores session IDs for resumable adapters.
 
 - Next heartbeat reuses the saved session automatically.
 - This gives continuity across heartbeats.
@@ -108,7 +108,7 @@ In local/dev setups, full logs are stored on disk under the configured run-log p
 
 ## 6. Live updates in the UI
 
-Paperclip pushes runtime/activity updates to the browser in real time.
+Simplexy pushes runtime/activity updates to the browser in real time.
 
 You should see live changes for:
 
@@ -162,7 +162,7 @@ Typical failure causes:
 
 Claude-specific note:
 
-- If `ANTHROPIC_API_KEY` is set in adapter env or host environment, Claude uses API-key auth instead of subscription login. Paperclip surfaces this as a warning in environment tests, not a hard error.
+- If `ANTHROPIC_API_KEY` is set in adapter env or host environment, Claude uses API-key auth instead of subscription login. Simplexy surfaces this as a warning in environment tests, not a hard error.
 
 ## 9. Security and risk notes
 

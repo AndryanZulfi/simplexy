@@ -35,7 +35,7 @@ describe("chat run milestone projection", () => {
         publicBaseUrl: "https://paperclip.example/path",
       }),
     ).toBe(
-      "Maya couldn't safely start this turn because this task was started for an unlinked external guest and isolated guest execution isn't available. Ask a Simplixy admin to create a private identity link for this account or enable isolated guest execution, then start a new task. Open the task in Simplixy: https://paperclip.example/issues/issue-1",
+      "Maya couldn't safely start this turn because this task was started for an unlinked external guest and isolated guest execution isn't available. Ask a Simplexy admin to create a private identity link for this account or enable isolated guest execution, then start a new task. Open the task in Simplexy: https://paperclip.example/issues/issue-1",
     );
     expect(
       safeMilestoneText({
@@ -46,7 +46,7 @@ describe("chat run milestone projection", () => {
         publicBaseUrl: null,
       }),
     ).toBe(
-      "Maya couldn't safely start this turn because this task was started for an unlinked external guest and isolated guest execution isn't available. Ask a Simplixy admin to create a private identity link for this account or enable isolated guest execution, then start a new task. Open the task in Simplixy for details.",
+      "Maya couldn't safely start this turn because this task was started for an unlinked external guest and isolated guest execution isn't available. Ask a Simplexy admin to create a private identity link for this account or enable isolated guest execution, then start a new task. Open the task in Simplexy for details.",
     );
   });
 
@@ -58,12 +58,12 @@ describe("chat run milestone projection", () => {
       issueId: "issue-1",
     });
     expect(text).toBe(
-      "Maya couldn't safely continue this turn. A Simplixy admin needs to review the run before it can be retried. Open the task in Simplixy for details.",
+      "Maya couldn't safely continue this turn. A Simplexy admin needs to review the run before it can be retried. Open the task in Simplexy for details.",
     );
     expect(text).not.toMatch(/digest|source.seq|semantic|replay.conflict/i);
   });
 
-  it("keeps every other run failure generic outside Simplixy", () => {
+  it("keeps every other run failure generic outside Simplexy", () => {
     expect(
       safeMilestoneText({
         agentName: "Maya",
@@ -72,15 +72,15 @@ describe("chat run milestone projection", () => {
         issueId: "issue-1",
       }),
     ).toBe(
-      "Maya stopped before completing this turn. Open the task in Simplixy for details.",
+      "Maya stopped before completing this turn. Open the task in Simplexy for details.",
     );
   });
 
   it.each([
-    [null, " Open the task in Simplixy for details."],
+    [null, " Open the task in Simplexy for details."],
     [
       "https://paperclip.example",
-      " Open the task in Simplixy: https://paperclip.example/issues/issue-1",
+      " Open the task in Simplexy: https://paperclip.example/issues/issue-1",
     ],
   ])(
     "explains retained-session recovery without encouraging duplicate requests (%s)",
@@ -93,7 +93,7 @@ describe("chat run milestone projection", () => {
         publicBaseUrl,
       });
       expect(text).toBe(
-        "Maya couldn't start this turn because an earlier session needs recovery. Your request is saved. Ask a Simplixy admin to recover that session before retrying; sending the request again won't repair it." +
+        "Maya couldn't start this turn because an earlier session needs recovery. Your request is saved. Ask a Simplexy admin to recover that session before retrying; sending the request again won't repair it." +
           suffix,
       );
       expect(text).not.toMatch(
@@ -119,12 +119,12 @@ describe("chat run milestone projection", () => {
         issueId: "issue-1",
       }),
     ).toBe(
-      "Maya needs a Simplixy admin to safely recover this turn before more work can start. Open the task in Simplixy for details.",
+      "Maya needs a Simplexy admin to safely recover this turn before more work can start. Open the task in Simplexy for details.",
     );
   });
 
   it.each(["server_shutdown_interrupted", "lease_released_before_terminal"])(
-    "keeps interruption bookkeeping for %s inside Simplixy",
+    "keeps interruption bookkeeping for %s inside Simplexy",
     (errorCode) => {
       expect(
         safeMilestoneText({
@@ -134,7 +134,7 @@ describe("chat run milestone projection", () => {
           issueId: "issue-1",
         }),
       ).toBe(
-        "Maya stopped before completing this turn. Open the task in Simplixy for details.",
+        "Maya stopped before completing this turn. Open the task in Simplexy for details.",
       );
     },
   );
@@ -148,7 +148,7 @@ describe("chat run milestone projection", () => {
         issueId: "issue-1",
       }),
     ).toBe(
-      "Maya couldn't complete this turn because the model provider's usage allowance is exhausted. A Simplixy admin needs to restore capacity before retrying. Open the task in Simplixy for details.",
+      "Maya couldn't complete this turn because the model provider's usage allowance is exhausted. A Simplexy admin needs to restore capacity before retrying. Open the task in Simplexy for details.",
     );
   });
 
@@ -170,7 +170,7 @@ describe("chat run milestone projection", () => {
         milestone: "completed",
         issueId: "issue-1",
       }),
-    ).toBe("Maya has no final response to show yet. Open the task in Simplixy for details.");
+    ).toBe("Maya has no final response to show yet. Open the task in Simplexy for details.");
   });
 });
 
@@ -207,7 +207,7 @@ describe("chat agent comment publication authorization", () => {
     "",
     null,
   ])(
-    "keeps an internal agent comment with reason %s inside Simplixy",
+    "keeps an internal agent comment with reason %s inside Simplexy",
     (reason) => {
       expect(isExplicitExternalAgentComment(metadata(reason))).toBe(false);
     },

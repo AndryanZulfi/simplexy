@@ -21,14 +21,14 @@ Create a service account with access only to the vaults the selected agents need
 Grant **Read Items** and **Write Items** for reading and managing items. An existing
 read-only token can connect; provider permissions still deny its writes. Vault
 access and permissions are immutable: create a replacement service account and
-reconnect in Paperclip to change them. Built-in Personal, Private, Employee, and
+reconnect in Simplexy to change them. Built-in Personal, Private, Employee, and
 default Shared vaults cannot be selected. Creating a service account requires a
 1Password subscription and the appropriate account permissions.
 
 The method is `1password/service-account`. Its configured URL
 `https://my.1password.com/` is a routing identity, not a public REST or MCP endpoint.
 The SDK uses the account address in the token and handles regional API access.
-Paperclip accepts only HTTPS account addresses under `1password.com`,
+Simplexy accepts only HTTPS account addresses under `1password.com`,
 `1password.ca`, or `1password.eu`, without custom ports, paths, or URL credentials.
 There are no OAuth metadata, registration, callback, refresh, or revocation
 endpoints in this method. Reconnect replaces the token through the normal vault
@@ -137,7 +137,7 @@ Official source: 1Password's product site, retrieved 2026-10-22:
 - Dark theme: `https://1password.com/favicon/icon-v2-light.svg`
 
 The native icon shapes and colors are preserved. Each SVG adds only an explicit
-matching `viewBox` so the official icon scales inside Paperclip's standard gray
+matching `viewBox` so the official icon scales inside Simplexy's standard gray
 frame. The browser-served manifest contains asset paths only.
 
 ## Shared changes

@@ -30,7 +30,7 @@ export function normalizeMicrosoftTeamsCredentialIds(
 
 /**
  * Bot Framework can vary the casing of the same Entra object id between
- * activities. Keep that case-insensitive identity on one Simplixy principal,
+ * activities. Keep that case-insensitive identity on one Simplexy principal,
  * while retaining the adapter's opaque user id when the activity omits a
  * usable Entra id (for example, some federated or anonymous participants).
  */

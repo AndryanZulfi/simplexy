@@ -29,7 +29,7 @@ export function workspaceRecoveryDisplay(evidence: Record<string, unknown>, runI
     canRetry: state.status === "blocked" && state.retryable === true,
     message: state.status === "queued" || state.status === "recovering" ? "Recovering saved work…"
       : state.status === "recovered" ? "Saved work recovered. Send a message to continue."
-        : state.message ?? "Simplixy couldn’t safely recover this task. This task needs service attention.",
+        : state.message ?? "Simplexy couldn’t safely recover this task. This task needs service attention.",
   };
 }
 

@@ -42,15 +42,15 @@ export class VercelConnectClientError extends Error {
 export function vercelConnectFailureMessage(code: VercelConnectFailureCode): string {
   switch (code) {
     case "vercel_connect_unavailable":
-      return "Vercel Connect is not configured on this Simplixy instance.";
+      return "Vercel Connect is not configured on this Simplexy instance.";
     case "vercel_connect_auth_failed":
-      return "Simplixy could not authenticate to Vercel Connect. Repair or refresh the instance's Vercel authority.";
+      return "Simplexy could not authenticate to Vercel Connect. Repair or refresh the instance's Vercel authority.";
     case "vercel_connect_connector_not_found":
       return "Vercel Connect could not find an attached connector with that UID.";
     case "vercel_connect_authorization_required":
       return "This Vercel Connect identity needs authorization.";
     case "vercel_connect_installation_required":
-      return "This connector must be installed or attached in Vercel before Simplixy can use it.";
+      return "This connector must be installed or attached in Vercel before Simplexy can use it.";
     default:
       return "Vercel Connect could not complete the credential request.";
   }
@@ -97,7 +97,7 @@ export function vercelConnectIntegrationStatus(env: NodeJS.ProcessEnv = process.
 
 /**
  * Vercel permits plaintext callbacks only on the literal `localhost` host.
- * Simplixy's local board commonly runs on 127.0.0.1, which is the same
+ * Simplexy's local board commonly runs on 127.0.0.1, which is the same
  * loopback boundary but Vercel rejects it before authorization starts.
  */
 export function vercelConnectCallbackUrl(redirectUri: string, state: string): string {

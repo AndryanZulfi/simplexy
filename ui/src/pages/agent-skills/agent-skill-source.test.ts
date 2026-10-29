@@ -27,10 +27,10 @@ describe("buildAgentSkillSourceMeta", () => {
   it("keeps human-readable project scan labels for local skills", () => {
     expect(source({
       sourceBadge: "local",
-      sourceLabel: "Simplixy App / Engineering workspace",
+      sourceLabel: "Simplexy App / Engineering workspace",
       sourceLocator: null,
       sourceType: "local_path",
-    })).toBe("Simplixy App / Engineering workspace");
+    })).toBe("Simplexy App / Engineering workspace");
   });
 
   it("does not surface long filesystem labels for catalog skills", () => {

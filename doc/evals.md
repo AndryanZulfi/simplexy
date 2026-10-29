@@ -1,4 +1,4 @@
-# Paperclip evaluation guide
+# Simplexy evaluation guide
 
 The public directory calls full-product testing **E2E tests**. Suites describe
 what is tested; deployment targets describe which app instance was tested.
@@ -109,7 +109,7 @@ Product E2E campaign. Synthetic receiver tests cannot qualify personal Muse;
 real setup, clarification and fresh-conversation collaboration remain separate
 release gates.
 
-Paperclip has two live eval families with different questions, owners, and
+Simplexy has two live eval families with different questions, owners, and
 evidence. Choose the family before selecting a model, profile, or case.
 
 The explicit-only [native instruction consolidation comparison](plans/2026-10-03-native-completion-consolidation.md)
@@ -123,7 +123,7 @@ behavior.
 - **Runner Evals:** real Runner/provider behavior against a seeded mock control
   plane. Definitions live in `paperclip-evals/evals/paperclip-runner`; see the
   [direct live protocol evals](../packages/paperclip-runner/docs/runner-protocol-live-evals.md).
-- **Product E2E Evals:** real browser, Paperclip server, database, Runner,
+- **Product E2E Evals:** real browser, Simplexy server, database, Runner,
   provider, and (where selected) Daytona, using an isolated instance and
   grading oracle. See [`tests/runner-e2e`](../tests/runner-e2e/README.md) and
   [Everyday Workflows](../tests/runner-e2e/EVERYDAY-WORKFLOWS.md).
@@ -137,7 +137,7 @@ are not registered runnable cells and contribute no passing coverage or scores.
 Runner Evals answer whether a real runner/provider can perform a bounded
 protocol operation against the expected control-plane contract. Product E2E
 Evals answer whether a person can complete a product workflow through the real
-Paperclip surfaces and whether the resulting artifact and state are usable.
+Simplexy surfaces and whether the resulting artifact and state are usable.
 The names describe the system under test; “headless” is an execution option,
 not an eval category.
 
@@ -184,13 +184,13 @@ Use **Product E2E Evals** for browser interaction, issue/task lifecycle,
 approval and clarification UI, project/repository selection, persistence over a
 controller restart, artifact delivery, billing/evidence behavior, or runner
 continuity in local or Daytona environments. The harness creates a fresh
-Paperclip instance per cell and uses public APIs and the production browser
+Simplexy instance per cell and uses public APIs and the production browser
 surface. The suite's [Everyday Workflows](../tests/runner-e2e/EVERYDAY-WORKFLOWS.md)
 are Product E2E even when their results are imported into Evalbook.
 
 Do not combine a partial Runner campaign and a partial Product E2E campaign into
 one score. A campaign is comparable when its definition/grader, model/profile,
-environment, and contract match. The evaluated Paperclip revision may
+environment, and contract match. The evaluated Simplexy revision may
 intentionally differ for a before/after fix comparison; record it as a
 comparison axis.
 
@@ -310,7 +310,7 @@ the user's stated scope when selecting them.
 
 Record the primary failure class and preserve the evidence that supports it.
 
-- **Product failure:** evidence shows Paperclip or Runner behavior violates the
+- **Product failure:** evidence shows Simplexy or Runner behavior violates the
   authored case or a hard invariant, such as wrong task state, missing approval
   gate, lost persistence, bad artifact, or incorrect protocol operation.
 - **Model/provider behavior failure:** the provider turn completed with usable
@@ -324,7 +324,7 @@ Record the primary failure class and preserve the evidence that supports it.
   unavailability, transport admission failure, service startup failure, a
   missing credential/image, or inability to produce usable evidence. Startup,
   transport, and timeout symptoms can instead be product defects when evidence
-  implicates Paperclip or Runner; classify from the observed failure and
+  implicates Simplexy or Runner; classify from the observed failure and
   supported cause, rather than the symptom name alone. Preserve the artifact.
 
 Missing usage or price data means unknown, not free. Keep provider-reported
@@ -352,7 +352,7 @@ The private archive is not a dependency of app test execution. Keep large logs,
 traces, and videos in the existing campaign artifact storage.
 
 An Evalbook report is a presentation of immutable attempt records, not the
-source of truth. Keep the campaign ID, Paperclip commit, `paperclip-evals`
+source of truth. Keep the campaign ID, Simplexy commit, `paperclip-evals`
 commit, catalog/roster or definition fingerprint, model/profile, environment,
 grader version, selected cells, retries, and provider/runtime usage with the
 report. Public projections follow each family's reviewed allowlist and may
@@ -469,7 +469,7 @@ fresh attempt for a retryable failure.
 
 The reviewable sources live in this repository's `.agents/skills`. For a
 multi-repository workspace, install the three skills at
-`~/paperclipai/.agents/skills` (not `~/paperclipai/skills`). From the Paperclip
+`~/paperclipai/.agents/skills` (not `~/paperclipai/skills`). From the Simplexy
 checkout, run:
 
 ```sh
@@ -504,7 +504,7 @@ For offline checks, pass `--history-dir <directory>` containing
 For a pre-merge preview, pass `--docs-ref <branch-or-sha>` to link the guide
 at that revision. The default guide link uses `master`.
 
-Publish with the [Paperclip page helper](../.agents/skills/paperclip-page/SKILL.md)
+Publish with the [Simplexy page helper](../.agents/skills/paperclip-page/SKILL.md)
 and the configured page-uploader credentials. Use Bash 4 or newer; macOS's
 system Bash 3 cannot run this helper. On macOS with Homebrew Bash installed,
 put `$(brew --prefix bash)/bin` first in `PATH` before these commands:

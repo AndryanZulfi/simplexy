@@ -93,7 +93,7 @@ describe("resolveCanonicalWorktreeSeedSource", () => {
       expectedTargetInstanceId: target.instanceId,
       manifestSource: { configPath: source.configPath, instanceId: source.instanceId },
       manifestTargetInstanceId: target.instanceId,
-    })).toThrow(/Registered source Simplixy config does not exist/);
+    })).toThrow(/Registered source Simplexy config does not exist/);
   });
 
   it("fails closed when the declared config cannot be inspected", () => {
@@ -162,7 +162,7 @@ describe("resolveCanonicalWorktreeSeedSource", () => {
       expectedTargetInstanceId: target.instanceId,
       manifestSource: { configPath: target.configPath, instanceId: target.instanceId },
       manifestTargetInstanceId: target.instanceId,
-    })).toThrow(/no Simplixy config of its own/);
+    })).toThrow(/no Simplexy config of its own/);
   });
 
   it("fails closed without registration and when source equals target", () => {

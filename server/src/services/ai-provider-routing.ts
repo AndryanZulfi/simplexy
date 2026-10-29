@@ -59,7 +59,7 @@ export function managedProviderRouting(
       provider: {
         [provider]: {
           ...(provider === "paperclip"
-            ? { npm: "@ai-sdk/openai-compatible", name: "Simplixy connection" }
+            ? { npm: "@ai-sdk/openai-compatible", name: "Simplexy connection" }
             : {}),
           options: { baseURL: baseUrl, apiKey: credential, ...(openrouter ? { headers: OPENROUTER_ATTRIBUTION_HEADERS } : {}) },
           models: id ? { [id]: { name: id } } : {},

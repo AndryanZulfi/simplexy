@@ -1,8 +1,8 @@
-# Adding a harness to Paperclip Runner
+# Adding a harness to Simplexy Runner
 
 Last reviewed: 2026-10-19. Source baseline: `c6a0cf4bce42449f617fb1cfbe25b8500d8a9fb9`.
 
-This playbook adds a new harness/provider to **native Paperclip Runner**, the new
+This playbook adds a new harness/provider to **native Simplexy Runner**, the new
 Runner execution system. It takes that integration from requirements and protocol
 research to installation, real product acceptance, and a bounded release. It
 distills the Pi, Cursor, and GitHub Copilot integrations, including failed attempts and
@@ -10,7 +10,7 @@ later corrections. It is a procedure for future work, not a certification of
 today's binaries or a requirement to repeat every historical test.
 
 All reusable principles and acceptance criteria are written here and in the
-templates. No private Codex session, Paperclip task, historical evidence archive,
+templates. No private Codex session, Simplexy task, historical evidence archive,
 or separate private repository is a prerequisite. Links point to code and docs
 in this checkout or public provider documentation. The matching skill is
 [create-runner-adapter](../.agents/skills/create-runner-adapter/SKILL.md).
@@ -89,7 +89,7 @@ adding filesystem, process, database, or network work to shared paths.
 ## 2. Define the release before implementing it
 
 Create a dated plan under `doc/plans/` when a repository plan is needed. If the
-task lives in Paperclip and requests a plan, use its issue plan document. Keep
+task lives in Simplexy and requests a plan, use its issue plan document. Keep
 one current acceptance ledger; append historical results without allowing them
 to masquerade as the current decision.
 
@@ -170,7 +170,7 @@ actual field or capability to find its callers, serializers, snapshots, tests,
 UI, and packaging. Some historical filenames still say `codex` while carrying
 shared ACPX behavior. Do not infer ownership solely from a filename.
 
-Keep business authority in Paperclip: company access, task ownership, approval
+Keep business authority in Simplexy: company access, task ownership, approval
 policy, budget stops, semantic action acceptance, and final task state. Keep
 provider protocol translation, native mode names, CLI flags, credentials, and
 version-specific quirks in provider code. The runner owns process supervision,
@@ -223,7 +223,7 @@ Cover:
 - File edits, diffs, images, attachments, artifacts, and inbound media.
 - Usage, cached tokens, retries, subagent usage, cost provenance, and subscription limits.
 - Idle behavior, autonomous retry/cache warming, shutdown, EOF, and process cleanup.
-- Config/command discovery and useful native events that Paperclip does not yet display.
+- Config/command discovery and useful native events that Simplexy does not yet display.
 
 For every partial or dropped field, name the field, loss boundary, impact,
 reason, and next action. “ACP does not support it” is too broad if the wrapper
@@ -266,7 +266,7 @@ Implement in this order unless a demonstrated dependency requires another:
 2. Start the real provider through a minimal owned harness. Establish exact
    model/instruction admission and a clean stop with no product UI yet.
 3. Complete one semantic tool round trip through the real wrapper/sidecar.
-4. Run an actual task through Paperclip: context → file change → validation →
+4. Run an actual task through Simplexy: context → file change → validation →
    artifact → accepted completion → durable Done → cleanup.
 5. Add the blocking human interactions and lifecycle controls promised for
    the first environment. Exercise their failures, not only successful replies.
@@ -395,12 +395,12 @@ cannot replace the managed context.
 
 ### 7.2 Bridge tools with the correct authority
 
-Trace assigned MCP tools and Paperclip semantic actions from current company/run
+Trace assigned MCP tools and Simplexy semantic actions from current company/run
 authority through discovery and invocation. The provider receives only the
 scoped tool bridge and explicitly granted credentials. Do not give the native
 runner a broad control-plane credential to simplify integration.
 
-Distinguish native tools, Paperclip semantic tools, and assigned external tools.
+Distinguish native tools, Simplexy semantic tools, and assigned external tools.
 Verify discovery, schema, invocation, result, and accepted control-plane mutation
 separately. Inspect the schema actually sent to the model: a validator may accept
 a schema that presents required fields poorly to a real model. Preserve runtime
@@ -492,7 +492,7 @@ notification does not prove a usable image was delivered. Compare downloaded
 bytes with an independent expected result.
 
 Inbound media is a separate capability from artifact output. A provider's
-advertised image support does not prove Paperclip's text-only turn path forwards
+advertised image support does not prove Simplexy's text-only turn path forwards
 attachments. Do not expose an affordance until the complete conversion path exists.
 
 ### Usage and costs
@@ -533,7 +533,7 @@ merely because a callback resolved locally.
 | Interaction | Required details and negative cases |
 | --- | --- |
 | Native question | Native question/option identity, required fields, selection cardinality, supported text/editor forms, explicit skip/cancel. Reject missing, duplicate, forged, or cross-question selections. |
-| Semantic Paperclip question | Durable tool-backed product interaction; prove its continuation independently of native question support. |
+| Semantic Simplexy question | Durable tool-backed product interaction; prove its continuation independently of native question support. |
 | Permission | Only offered and policy-supported decisions; correlate with the exact tool operation. Denial must precede side effects. An “always” choice requires a proven scope. |
 | Native plan | Complete plan, correct revision, reject with feedback, revised display, accept/cancel, exact response delivery, and defined post-accept state. Reject oversize plans instead of approving a truncated document. |
 | Stale/duplicate answer | Reject wrong task/company/run/revision, late answer after Stop, repeated submission, and provider-loss answer. No second mutation or replacement run. |
@@ -597,7 +597,7 @@ Cursor's. Advertise unsupported controls honestly.
 ### 10.3 Prove terminal behavior and cleanup
 
 Separate provider prompt completion, native background-work settlement, accepted
-Paperclip result, task-state finalization, and resource retirement. Pi historically
+Simplexy result, task-state finalization, and resource retirement. Pi historically
 required `agent_settled`; a partial tool JSON fragment or final-looking assistant
 message cannot substitute for the native terminal boundary.
 
@@ -651,7 +651,7 @@ must not make a stale provider pack compatible with a newer controller.
 ### 11.2 Prove ordinary installation
 
 Exercise the actual public-package lifecycle in a clean consumer as the OS user
-who will run Paperclip. Use the published-layout package/tarball path; a local
+who will run Simplexy. Use the published-layout package/tarball path; a local
 source loader, private store, borrowed `dist`, or candidate environment override
 does not establish normal installation.
 
@@ -1116,7 +1116,7 @@ and cleanup. Use existing observability and run logs; classify any new data by
 path under the repository's Telemetry/Observability/run-log rules. Do not send
 private prompts, credentials, or reasoning into a new reporting channel.
 
-For Paperclip issue work, upload deliverable files and register work products
+For Simplexy issue work, upload deliverable files and register work products
 before final status, following the [artifact guide](AGENT-ARTIFACTS.md). Keep raw
 private evidence in its proper store; public summaries use sanitized evidence
 and immutable references. A local `/tmp` directory is not a release handoff.

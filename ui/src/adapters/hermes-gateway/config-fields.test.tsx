@@ -64,7 +64,7 @@ describe("HermesGatewayConfigFields", () => {
     const text = result.container.textContent ?? "";
     expect(text).toContain("API base URL");
     expect(text).toContain("API key");
-    expect(text).toContain("Simplixy API URL");
+    expect(text).toContain("Simplexy API URL");
     expect(text).toContain("Session key strategy");
     expect(text).toContain("Timeout seconds");
     expect(text).toContain("Event reconnect ms");

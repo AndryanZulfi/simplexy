@@ -1640,7 +1640,7 @@ export async function synchronizeCompletedProviderPlan(input: {
         idempotencyKey: `runner-plan-approval:v1:${input.execution.binding.runId}:${planId}:${providerRevision}:${digest}`,
         sourceRunId: input.execution.binding.runId,
         title: `Review plan revision ${revision.revisionNumber}`,
-        summary: "Review the synchronized Simplixy plan.",
+        summary: "Review the synchronized Simplexy plan.",
         continuationPolicy: "wake_assignee",
         payload: {
           version: 1,
@@ -6752,7 +6752,7 @@ export function nativeSessionFailureSourceCode(
 }
 
 const NATIVE_CLEANUP_OPERATOR_RECOVERY_MESSAGE =
-  "Send a new message to continue after Simplixy verifies that the previous provider and its tools have stopped. If cleanup cannot be verified, inspect the run and its environment. Clearing a task session does not resolve this quarantine. Automatic retries are stopped.";
+  "Send a new message to continue after Simplexy verifies that the previous provider and its tools have stopped. If cleanup cannot be verified, inspect the run and its environment. Clearing a task session does not resolve this quarantine. Automatic retries are stopped.";
 
 const PROVIDER_DURABLE_EVENT_TYPES = new Set([
   "harness.ready",
@@ -7761,7 +7761,7 @@ export async function executePaperclipNativeSession(input: {
   /** Test seam at the provider boundary; production uses a qualified package backend. */
   backend?: NativeSessionBackend;
   useRunnerd?: boolean;
-  /** Simplixy adapter identity used to scope the durable goal projection. */
+  /** Simplexy adapter identity used to scope the durable goal projection. */
   adapterType?: string;
   /** Internal, run-owned file inspection lifetime; never supplied by tool arguments. */
   chatAttachmentReadScope?: NativeChatAttachmentReadScope;
@@ -10723,7 +10723,7 @@ export function assertRemoteRunnerBuildMetadata(
   // Reject them before launch so preparation stages the bundled runner instead.
   if (requiredExternalProvider && (!Array.isArray(metadata.externalProviderCapabilities)
       || !metadata.externalProviderCapabilities.includes(requiredExternalProvider))) {
-    throw new Error(requiredExternalProvider === "muse_external_v1" ? "runner_remote_muse_capability_missing: install the current Simplixy Runner artifact" : "runner_remote_dot_capability_missing: install the current Simplixy Runner artifact");
+    throw new Error(requiredExternalProvider === "muse_external_v1" ? "runner_remote_muse_capability_missing: install the current Simplexy Runner artifact" : "runner_remote_dot_capability_missing: install the current Simplexy Runner artifact");
   }
   const sessionCapabilities = Array.isArray(metadata.durableSessionCapabilities)
     ? metadata.durableSessionCapabilities
@@ -12638,7 +12638,7 @@ async function createRunnerdBackendWithinSessionClaim(
         }),
         stageAndVerify: async () => {
           if (!configuredProviderPackRoot) {
-            throw new Error("runner_remote_provider_artifact_incompatible: install the matching Simplixy package and Daytona image; the image provider pack did not match the bundled release identity");
+            throw new Error("runner_remote_provider_artifact_incompatible: install the matching Simplexy package and Daytona image; the image provider pack did not match the bundled release identity");
           }
           if (!remoteCommandRunner.syncIn) {
             throw new Error(

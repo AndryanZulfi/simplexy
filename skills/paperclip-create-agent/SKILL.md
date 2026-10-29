@@ -1,12 +1,12 @@
 ---
 name: paperclip-create-agent
 description: >
-  Create new agents in Paperclip with governance-aware hiring. Use when you need
+  Create new agents in Simplexy with governance-aware hiring. Use when you need
   to inspect adapter configuration options, compare existing agent configs,
   draft a new agent prompt/config, and submit a hire request.
 ---
 
-# Paperclip Create Agent Skill
+# Simplexy Create Agent Skill
 
 Use this skill when you are asked to hire/create an agent.
 
@@ -31,14 +31,14 @@ does not itself grant permission: recheck authorization before any hire.
 
 ### Choose the API transport
 
-On **Paperclip Runner**, use the advertised Paperclip tools. Use `get_task_context`
+On **Simplexy Runner**, use the advertised Simplexy tools. Use `get_task_context`
 and `list_agents` for identity and team context, then `search_api` to discover the
 configuration, instruction-template, icon, and `agent-hires` endpoints used below.
 Call the discovered operations with `call_api`; the server supplies company and
 authentication context. Read the returned schemas before drafting the hire.
 
 The shell examples below apply to adapters that receive `PAPERCLIP_API_URL` and
-`PAPERCLIP_API_KEY`. Paperclip Runner does not supply those variables. Do not
+`PAPERCLIP_API_KEY`. Simplexy Runner does not supply those variables. Do not
 search workspace files for a server address or credentials to recreate that path.
 If `search_api` / `call_api` are unavailable, report that hiring requires the
 operator to enable runner API tools for this company. Preserve the proposed hire
@@ -52,7 +52,7 @@ curl -sS "$PAPERCLIP_API_URL/api/agents/me" \
   -H "Authorization: Bearer $PAPERCLIP_API_KEY"
 ```
 
-### 2. Discover adapter configuration for this Paperclip instance
+### 2. Discover adapter configuration for this Simplexy instance
 
 ```sh
 curl -sS "$PAPERCLIP_API_URL/llms/agent-configuration.txt" \
@@ -81,7 +81,7 @@ optional starting points; for other roles, use the
 
 Company-specific instructions supplied by the requester take precedence. Do not
 expand a role description into a generic operating manual. The harness supplies
-Paperclip coordination, skill discovery, and task lifecycle guidance; repository
+Simplexy coordination, skill discovery, and task lifecycle guidance; repository
 instructions and installed skills carry applicable work procedures. Avoid
 adding heartbeat pointers, execution contracts, mandatory per-touch comments,
 fixed reviewer routes, or catalogs of domain concepts to the hire's instructions.
@@ -190,8 +190,8 @@ For each linked issue, either:
 ## Harness and runner selection
 
 Choose the underlying harness in `adapterType`, such as `codex_local` or
-`claude_local`. New Codex agents use Paperclip Runner automatically on supported
-execution targets. New Claude Code agents use Paperclip Runner on Apple Silicon,
+`claude_local`. New Codex agents use Simplexy Runner automatically on supported
+execution targets. New Claude Code agents use Simplexy Runner on Apple Silicon,
 Intel Mac, Linux x64 and Linux ARM64 with supported glibc. Unknown or unsupported
 targets retain Legacy. Darwin SSH also defaults to Legacy; native execution
 requires an explicit runner choice and matching remote assets. The native Claude profile is
@@ -209,5 +209,5 @@ Existing agents keep their saved execution after unrelated edits. An approved
 hire uses the configuration reviewed by the board. `inheritRuntimeFrom: caller`
 keeps its existing runtime inheritance and credential restrictions.
 
-CLI equivalents: `paperclipai agent create --runner legacy --payload-json ...`
-and `paperclipai agent hire --runner legacy --payload-json ...`.
+CLI equivalents: `simplexy agent create --runner legacy --payload-json ...`
+and `simplexy agent hire --runner legacy --payload-json ...`.

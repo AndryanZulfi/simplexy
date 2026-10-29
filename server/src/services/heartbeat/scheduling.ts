@@ -249,7 +249,7 @@ export function createHeartbeatScheduling(
         ? "its timeout was reached"
         : "its maximum attempt count was reached";
     return [
-      `Simplixy cleared the scheduled external-service monitor for ${label} because ${reason}.`,
+      `Simplexy cleared the scheduled external-service monitor for ${label} because ${reason}.`,
       "",
       `- Attempt count: ${input.nextAttemptCount}`,
       `- Recovery policy: ${input.recoveryPolicy}`,

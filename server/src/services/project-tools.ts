@@ -56,7 +56,7 @@ export async function callProjectTool(input: {
   const response = await fetch(`${input.apiUrl.replace(/\/+$/, "").replace(/\/api$/, "")}/api${path}`, {
     method: input.name === "set_task_title" ? "PUT" : body ? "POST" : "GET",
     headers: { Authorization: `Bearer ${input.token}`, "Content-Type": "application/json",
-      ...(input.receiptOnly ? { "X-Simplixy-Receipt-Only": "true" } : {}),
+      ...(input.receiptOnly ? { "X-Simplexy-Receipt-Only": "true" } : {}),
     },
     ...(body ? { body: JSON.stringify(body) } : {}),
     signal: AbortSignal.timeout(60_000),

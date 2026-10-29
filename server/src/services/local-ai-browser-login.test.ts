@@ -158,7 +158,7 @@ describe.skipIf(process.platform === "win32")("local browser subscription login"
     process.env.PATH = "/usr/bin:/bin";
     const login = startLocalBrowserLogin("openai", home);
     await vi.waitFor(() => expect(login.outcome).toBe("failure"), { timeout: 5000 });
-    expect(login.error).toMatch(/requires the Codex CLI.*Install Codex.*Simplixy's PATH/);
+    expect(login.error).toMatch(/requires the Codex CLI.*Install Codex.*Simplexy's PATH/);
     expect(JSON.stringify(login)).not.toContain(process.env.PATH);
     expect(resolveCodexCommand).not.toHaveBeenCalled();
   });

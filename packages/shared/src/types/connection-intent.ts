@@ -61,7 +61,7 @@ export interface ConnectionsSearchResult {
   version: 1;
   query: string;
   results: ConnectionSearchResultItem[];
-  /** Simplixy-authored next step; provider content must never supply this field. */
+  /** Simplexy-authored next step; provider content must never supply this field. */
   instruction?: string;
   providerQuestion?: AskUserQuestionsQuestion;
   /** Canonical native form of the same provider choice; IDs and disclosure are identical. */

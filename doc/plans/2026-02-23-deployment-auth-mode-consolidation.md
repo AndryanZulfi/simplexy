@@ -6,7 +6,7 @@ Date: 2026-02-23
 
 ## Goal
 
-Keep Paperclip low-friction while making the mode model simpler and safer:
+Keep Simplexy low-friction while making the mode model simpler and safer:
 
 1. `local_trusted` remains the default and easiest path.
 2. one authenticated runtime mode supports both private-network local use and public cloud use.
@@ -209,9 +209,9 @@ This change is a clean cut:
 
 ## Acceptance Criteria
 
-1. `pnpm paperclipai onboard` is interactive-first and defaults to `local_trusted`.
+1. `pnpm simplexy onboard` is interactive-first and defaults to `local_trusted`.
 2. authenticated mode is one runtime mode with `private/public` exposure guidance.
-3. `pnpm paperclipai doctor` works flagless with mode-aware checks.
+3. `pnpm simplexy doctor` works flagless with mode-aware checks.
 4. no extra compatibility aliases for dropped naming variants.
 5. Board identity is represented by real DB user/role/membership integration points, enabling consistent task assignment and permission behavior.
 

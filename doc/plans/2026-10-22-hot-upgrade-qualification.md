@@ -112,7 +112,7 @@ cannot extend the original five-second backlog deadline. Existing protocol,
 checkpoint and canonical-log ownership is unchanged. Updated CI, review and
 browser evidence remain attributed to their candidate revisions on the PRs.
 
-The separate Paperclip review found premature local expiry after a delayed
+The separate Simplexy review found premature local expiry after a delayed
 successful renewal and unlimited retries in opportunistic startup retention.
 The renewal owner now samples a monotonic deadline immediately before UPDATE,
 after acquiring the connection and row lock, while still deducting UPDATE/commit
@@ -1105,7 +1105,7 @@ presentation recovery only; it has no checkpoint, execution or accounting effect
 
 ### Completion-only recovery review (2026-10-27)
 
-A later Paperclip review identifies completion inputs that would remain pending
+A later Simplexy review identifies completion inputs that would remain pending
 when a standalone caller omits its ordinary-tool outcome lookup. Runner
 correction `bcc0785946` wires completion recovery independently in both the
 Codex transport and shared external driver. The three restart regressions fail
@@ -1211,7 +1211,7 @@ One native Codex/Daytona pilot per arm completes 20 steps, with independent
 hash-chain and exclusive-effect file checks. The candidate retains 80 encrypted
 checkpoint parts totaling 466,260 bytes. This is not a growth-rate measurement.
 Both test companies subsequently pause because gateway model usage is unpriced
-to Paperclip. The scaled native comparison remains unexecuted; budget enforcement
+to Simplexy. The scaled native comparison remains unexecuted; budget enforcement
 is not qualified by these pilots. The immutable report SHA-256 is
 `8ccde5cd71fd1076c9046135fdb9a46d7256c863672f63dee3b614b123615bc6`;
 the metrics-only evidence archive SHA-256 is
@@ -1678,7 +1678,7 @@ comparison, or A/B upgrade qualification was run.
 PR #17439 source `5de803c2cdbdd24d88e411add590edc21954516a` merged into
 master as `09ad9adce2cf4742944353a3707a2f908e9bb35e` after all 60 current-head
 checks completed cleanly, legacy status passed, Greptile completed at 5/5, the
-formal Paperclip review completed at 5/5, and actionable feedback was resolved.
+formal Simplexy review completed at 5/5, and actionable feedback was resolved.
 Qualification now targets master. Its diff contains only qualification code and
 this evidence document; the server implementation is not repeated in its scope.
 

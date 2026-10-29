@@ -1,6 +1,6 @@
-# Releasing Paperclip
+# Releasing Simplexy
 
-Maintainer runbook for shipping Paperclip across npm, GitHub, and the website-facing changelog surface.
+Maintainer runbook for shipping Simplexy across npm, GitHub, and the website-facing changelog surface.
 
 The release model is now commit-driven:
 
@@ -20,7 +20,7 @@ The user-facing guide to the channels is [`CHANNELS.md`](CHANNELS.md).
 
 ## Versioning Model
 
-Paperclip uses calendar versions that still fit semver syntax:
+Simplexy uses calendar versions that still fit semver syntax:
 
 - stable: `YYYY.MDD.P`
 - canary: `YYYY.MDD.P-canary.N`
@@ -52,7 +52,7 @@ Important constraints:
 Every stable release has four separate surfaces:
 
 1. **Verification** — the exact git SHA passes typecheck, tests, and build
-2. **npm** — `paperclipai` and public workspace packages are published
+2. **npm** — `simplexy` and public workspace packages are published
 3. **GitHub** — the stable release gets a git tag and GitHub Release
 4. **Website / announcements** — the stable changelog is published externally and announced
 
@@ -101,9 +101,9 @@ It:
 - computes the canary version for the current UTC date
 - publishes workspace packages dependency-first under npm dist-tag `canary`
 - waits for each package version to become registry-visible before continuing
-- publishes the user-facing `paperclipai` package last, so `paperclipai@canary` does not advance before the full package set exists
+- publishes the user-facing `simplexy` package last, so `simplexy@canary` does not advance before the full package set exists
 - verifies that `canary` resolves to the just-published version and that published internal dependencies exist on npm
-- installs `paperclipai@canary` into a clean temporary prefix as the final npm gate
+- installs `simplexy@canary` into a clean temporary prefix as the final npm gate
 - starts the exact published canary through a separate fresh npm install for the onboarding smoke; npm `ETARGET` and verified canary tarball availability failures retry, up to three attempts within two minutes, before onboarding runs once under the existing five-minute startup deadline
 - fails by default if npm leaves `latest` pointing at a canary; use `--allow-canary-latest` only when that state is intentional
 - creates a git tag `canary/vYYYY.MDD.P-canary.N`
@@ -117,7 +117,7 @@ pending, without resolving new dependencies in the smoke job. The smoke still in
 the exact published canary version, not a workspace build.
 
 The tarball retry applies only to an unambiguous npm `E404` for a canonical
-public-registry tarball of a CI-published Paperclip package at that exact canary
+public-registry tarball of a CI-published Simplexy package at that exact canary
 version. The helper queries npm's effective global and applicable scoped registry
 in the failed install's prefix, working directory, and environment. A custom or
 unknown effective registry fails. Configuration output stays private in memory.
@@ -444,7 +444,7 @@ post-publish verification.
 
 Minimum checks:
 
-- `npx paperclipai@canary onboard` installs
+- `npx simplexy@canary onboard` installs
 - onboarding completes without crashes
 - authenticated login works with the smoke credentials
 - the browser lands in onboarding on a fresh instance

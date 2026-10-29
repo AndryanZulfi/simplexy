@@ -286,7 +286,7 @@ export function InstanceGeneralSettings({ embedded = false }: { embedded?: boole
             <h2 className="text-sm font-semibold">AI feedback sharing</h2>
             <p className="max-w-2xl text-sm text-muted-foreground">
               Control whether thumbs up and thumbs down votes can send the voted AI output to
-              Simplixy Labs. Votes are always saved locally.
+              Simplexy Labs. Votes are always saved locally.
             </p>
             {FEEDBACK_TERMS_URL ? (
               <a
@@ -364,7 +364,7 @@ export function InstanceGeneralSettings({ embedded = false }: { embedded?: boole
           <div className="space-y-1.5">
             <h2 className="text-sm font-semibold">Sign out</h2>
             <p className="max-w-2xl text-sm text-muted-foreground">
-              Sign out of this Simplixy instance. You will be redirected to the login page.
+              Sign out of this Simplexy instance. You will be redirected to the login page.
             </p>
           </div>
           <Button

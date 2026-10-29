@@ -92,7 +92,7 @@ databaseSuite("Core plugin Runner task lifecycle", () => {
     const environmentId = randomUUID(), pluginId = randomUUID(), projectId = randomUUID();
     const manifest: PaperclipPluginManifestV1 = {
       id: "test.runner-tasks", apiVersion: 1, version: "1.0.0", displayName: "Runner tasks",
-      description: "Synthetic task provider", author: "Simplixy", categories: ["automation"],
+      description: "Synthetic task provider", author: "Simplexy", categories: ["automation"],
       capabilities: ["environment.drivers.register"], entrypoints: { worker: "dist/worker.js" },
       environmentDrivers: [{ driverKey: "tasks", displayName: "Tasks", supportsTasks: true, configSchema: { type: "object" } }],
     };

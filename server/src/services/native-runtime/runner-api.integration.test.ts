@@ -460,7 +460,7 @@ else if(m.id!==undefined) send({id:m.id,result:{}});
     const [peerRun] = await server.db.insert(heartbeatRuns).values({ companyId: fixture.companyId, agentId: otherAgentId, status: "running", runtimeMode: "native", nativeIssueId: fixture.blockerId, contextSnapshot: { issueId: fixture.blockerId } }).returning();
     await server.db.update(issues).set({ assigneeAgentId: otherAgentId, status: "in_progress", executionRunId: peerRun.id }).where(eq(issues.id, fixture.blockerId));
     const token = createLocalAgentJwt(otherAgentId, fixture.companyId, "paperclip_runner", peerRun.id);
-    expect((await fetch(`${fixture.apiUrl}/api/agents/me/secrets/${secret.key}/value`, { method: "POST", headers: { Authorization: `Bearer ${token}`, "X-Simplixy-Run-Id": peerRun.id } })).status).toBe(403);
+    expect((await fetch(`${fixture.apiUrl}/api/agents/me/secrets/${secret.key}/value`, { method: "POST", headers: { Authorization: `Bearer ${token}`, "X-Simplexy-Run-Id": peerRun.id } })).status).toBe(403);
   });
 
   it.each([
@@ -515,7 +515,7 @@ else if(m.id!==undefined) send({id:m.id,result:{}});
     const token = createLocalAgentJwt(fixture.agentId, fixture.companyId, "paperclip_runner", fixture.runId,
       fixture.responsibleUserId, { kind: "skill_test", issueId: fixture.issueId });
     const direct = await fetch(`${fixture.apiUrl}/api/agents/me/secret-proposals`, {
-      method: "POST", headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json", "X-Simplixy-Run-Id": fixture.runId }, body: JSON.stringify(body),
+      method: "POST", headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json", "X-Simplexy-Run-Id": fixture.runId }, body: JSON.stringify(body),
     });
     expect(direct.status).toBe(403);
     const result = await fixture.authority.execute({ tool: "call_api", callId: "skill-test-secret-denied", arguments: {
@@ -596,7 +596,7 @@ else if(m.id!==undefined) send({id:m.id,result:{}});
       ["POST /api/execution-workspaces/{id}/runtime-services/{action}", `/api/execution-workspaces/${randomUUID()}/runtime-services/stop`, {}],
       ["POST /api/companies/{companyId}/skills/{skillId}/test-runs", `/api/companies/${fixture.companyId}/skills/${randomUUID()}/test-runs`, { agentId: fixture.agentId, content: "Test input" }],
     ] as const) {
-      const direct = await fetch(`${fixture.apiUrl}${path}`, { method: "POST", headers: { Authorization: `Bearer ${token}`, "X-Simplixy-Run-Id": fixture.runId, "Content-Type": "application/json" }, body: JSON.stringify(body) });
+      const direct = await fetch(`${fixture.apiUrl}${path}`, { method: "POST", headers: { Authorization: `Bearer ${token}`, "X-Simplexy-Run-Id": fixture.runId, "Content-Type": "application/json" }, body: JSON.stringify(body) });
       const names = [...operationId.matchAll(/\{([^}]+)\}/g)].map(([, name]) => name);
       const template = operationId.slice(5).split("/");
       const actual = path.split("/");

@@ -1,23 +1,23 @@
 # Hermes Gateway Onboarding
 
-Use this guide when a Hermes runtime should join Paperclip as an external
+Use this guide when a Hermes runtime should join Simplexy as an external
 `hermes_gateway` employee. This mirrors the OpenClaw gateway invite path, but
 Hermes uses the generic agent invite/onboarding flow instead of the
 OpenClaw-specific invite prompt endpoint.
 
 ## Choose The Adapter
 
-Paperclip ships both Hermes adapters as built-ins:
+Simplexy ships both Hermes adapters as built-ins:
 
 - `hermes_local` runs the local `hermes` CLI as a child process on the
-  Paperclip host.
+  Simplexy host.
 - `hermes_gateway` calls an already-running Hermes API server over HTTP/SSE.
 
 No Adapter manager installation is required for normal use. Adapter manager is
 only needed when you intentionally install an external
 `@paperclipai/hermes-paperclip-adapter` package to override or shadow a built-in
 adapter while developing the Hermes package. If the external override is paused
-or removed, Paperclip restores the built-in `hermes_local` / `hermes_gateway`
+or removed, Simplexy restores the built-in `hermes_local` / `hermes_gateway`
 adapter.
 
 ## Required Credentials
@@ -27,15 +27,15 @@ Keep these credentials distinct:
 - Hermes inference provider key: set at least one provider key for Hermes, such
   as `OPENROUTER_API_KEY`, `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`,
   `GEMINI_API_KEY`, `GOOGLE_API_KEY`, or `MISTRAL_API_KEY`.
-- Hermes gateway key: set `API_SERVER_KEY` before starting Hermes. Paperclip
+- Hermes gateway key: set `API_SERVER_KEY` before starting Hermes. Simplexy
   stores the same value as `agentDefaultsPayload.apiKey` so it can call Hermes.
-- Paperclip agent key: created after the board approves the join request and
+- Simplexy agent key: created after the board approves the join request and
   claimed once by the Hermes agent. Hermes uses this key as
-  `PAPERCLIP_API_KEY` when it calls Paperclip.
+  `PAPERCLIP_API_KEY` when it calls Simplexy.
 
-Do not reuse the Hermes gateway key as the Paperclip agent key. The Hermes
-gateway key authenticates Paperclip-to-Hermes traffic; the claimed Paperclip key
-authenticates Hermes-to-Paperclip traffic.
+Do not reuse the Hermes gateway key as the Simplexy agent key. The Hermes
+gateway key authenticates Simplexy-to-Hermes traffic; the claimed Simplexy key
+authenticates Hermes-to-Simplexy traffic.
 
 ## Start Hermes Gateway
 
@@ -49,15 +49,15 @@ API_SERVER_ENABLED=true hermes gateway run --replace --accept-hooks
 ```
 
 The default Hermes API server port is `8642`. For local loopback testing,
-Paperclip can usually store `http://127.0.0.1:8642` as the gateway URL. For
+Simplexy can usually store `http://127.0.0.1:8642` as the gateway URL. For
 Docker, LAN, tailnet, or reverse-proxy setups, use a URL reachable by the
-Paperclip server process.
+Simplexy server process.
 
 If a run reports a loopback connection refusal, check the listener from the
-Paperclip server's host or container. Its loopback address does not refer to
+Simplexy server's host or container. Its loopback address does not refer to
 your browser's machine or an agent sandbox. `hermes_gateway` does not start
 Hermes: start the API server at the configured address, or set `apiBaseUrl`
-to its reachable address. Choose `hermes_local` when Paperclip should launch
+to its reachable address. Choose `hermes_local` when Simplexy should launch
 the Hermes CLI itself. Connection guidance does not prove whether a remote
 run was accepted before a redirect failed; the task remains failed and the
 normal failure reporting and retry rules still apply.
@@ -68,7 +68,7 @@ development only, the join payload can set
 `dangerouslyAllowInsecureRemoteHttp: true`, and the smoke scripts expose the
 same escape hatch as `HERMES_GATEWAY_ALLOW_INSECURE_HTTP=1`.
 
-## Invite From Paperclip
+## Invite From Simplexy
 
 In the board UI:
 
@@ -113,18 +113,18 @@ Hermes should submit a join request with `requestType: "agent"` and
 
 Important URL roles:
 
-- `agentDefaultsPayload.apiBaseUrl` is the Hermes gateway URL that Paperclip
+- `agentDefaultsPayload.apiBaseUrl` is the Hermes gateway URL that Simplexy
   calls.
-- `agentDefaultsPayload.paperclipApiUrl` is the Paperclip base URL that Hermes
+- `agentDefaultsPayload.paperclipApiUrl` is the Simplexy base URL that Hermes
   can call after approval and key claim.
 - `PAPERCLIP_API_URL` / `PAPERCLIP_API_KEY` are injected runtime values for
-  Hermes-originated Paperclip API calls after the agent is approved.
+  Hermes-originated Simplexy API calls after the agent is approved.
 
 ## Approve And Claim
 
 After Hermes submits the join request:
 
-1. In Paperclip, review the pending agent join request.
+1. In Simplexy, review the pending agent join request.
 2. Approve it from the board UI, or use:
 
    ```sh
@@ -138,16 +138,16 @@ After Hermes submits the join request:
    npx paperclipai join claim-key <request-id> --claim-secret <secret>
    ```
 
-4. Store the claimed Paperclip key in Hermes runtime state or secrets. The claim
+4. Store the claimed Simplexy key in Hermes runtime state or secrets. The claim
    secret and claimed key are sensitive and should not be pasted into issue
    comments, logs, or prompt text.
 
 Once the key is claimed, create an issue assigned to the new Hermes gateway
-agent and wake it through the normal Paperclip heartbeat path.
+agent and wake it through the normal Simplexy heartbeat path.
 
 ## Local Fresh-State Smoke
 
-For a fresh Docker-backed Hermes gateway and end-to-end Paperclip join/run
+For a fresh Docker-backed Hermes gateway and end-to-end Simplexy join/run
 verification, use:
 
 ```sh
@@ -162,10 +162,10 @@ The E2E smoke:
 - seeds a minimal non-secret Hermes model config
 - passes provider keys from the host environment without printing them
 - verifies Hermes `/health`, `/v1/capabilities`, `/v1/runs`, SSE, and stop
-- creates and approves a Paperclip agent-only invite
+- creates and approves a Simplexy agent-only invite
 - joins as `hermes_gateway`
 - wakes the agent on a smoke issue
-- removes Paperclip and Docker test state on success
+- removes Simplexy and Docker test state on success
 
 If a Hermes gateway is already running and you only need to validate the invite
 and stored adapter config, use the join-only helper:
@@ -191,7 +191,7 @@ Use these entry points depending on who is driving setup:
   onboarding prompt.
 - Invite API: `GET /api/invites/:token/onboarding.txt` for the generated
   llm.txt-style setup instructions.
-- CLI invite flow: `npx paperclipai invite create`, `invite show`,
+- CLI invite flow: `npx simplexy invite create`, `invite show`,
   `invite onboarding:text`, `join approve`, and `join claim-key`.
 - Smoke helpers: `pnpm smoke:hermes-gateway-e2e` for fresh-state Docker
   verification and `pnpm smoke:hermes-gateway-join` for an already-running

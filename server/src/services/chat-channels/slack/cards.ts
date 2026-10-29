@@ -19,7 +19,7 @@ export function slackPublicationCard(payload: SafeChatPublicationPayload): CardE
   for (let offset = 0; offset < visibleBody.length; offset += 2000) {
     children.push(CardText(visibleBody.slice(offset, offset + 2000).join("")));
   }
-  if (body.length > MAX_CARD_BODY_LENGTH) children.push(CardText("This request is too long for Slack. Open it in Simplixy to read the complete request and respond."));
+  if (body.length > MAX_CARD_BODY_LENGTH) children.push(CardText("This request is too long for Slack. Open it in Simplexy to read the complete request and respond."));
   const actions = (card.actions ?? []).map(action => {
     const label = Array.from(action.label).slice(0, 75).join("");
     return action.type === "callback"

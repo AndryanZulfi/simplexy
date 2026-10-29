@@ -1433,7 +1433,7 @@ describe.each(["unchanged", "newer_active", "stale_idle"] as const)(
           .where(eq(statusDecisions.issueId, issueId)),
       ).resolves.toHaveLength(1);
 
-      // The persisted Simplixy Runner run above remains recoverable while the
+      // The persisted Simplexy Runner run above remains recoverable while the
       // flag is off. Switching the agent back to a direct adapter now proves a
       // fresh run ignores the stale native profile and stays on the legacy path.
       await db

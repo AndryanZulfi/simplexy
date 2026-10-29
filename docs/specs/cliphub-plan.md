@@ -1,18 +1,18 @@
-# ClipHub: Marketplace for Paperclip Team Configurations
+# ClipHub: Marketplace for Simplexy Team Configurations
 
 > Supersession note: this marketplace plan predates the markdown-first company package direction. For the current package-format and import/export rollout plan, see `doc/plans/2026-03-13-company-import-export-v2.md` and `docs/companies/companies-spec.md`.
 
-> The "app store" for whole-company AI teams — pre-built Paperclip configurations, agent blueprints, skills, and governance templates that ship real work from day one.
+> The "app store" for whole-company AI teams — pre-built Simplexy configurations, agent blueprints, skills, and governance templates that ship real work from day one.
 
 ## 1. Vision & Positioning
 
-**ClipHub** sells **entire team configurations** — org charts, agent roles, inter-agent workflows, governance rules, and project templates — for Paperclip-managed companies.
+**ClipHub** sells **entire team configurations** — org charts, agent roles, inter-agent workflows, governance rules, and project templates — for Simplexy-managed companies.
 
 | Dimension | ClipHub |
 |---|---|
 | Unit of sale | Team blueprint (multi-agent org) |
 | Buyer | Founder / team lead spinning up an AI company |
-| Install target | Paperclip company (agents, projects, governance) |
+| Install target | Simplexy company (agents, projects, governance) |
 | Value prop | "Skip org design — get a shipping team in minutes" |
 | Price range | $0–$499 per blueprint (+ individual add-ons) |
 
@@ -22,7 +22,7 @@
 
 ### 2.1 Team Blueprints (primary product)
 
-A complete Paperclip company configuration:
+A complete Simplexy company configuration:
 
 - **Org chart**: Agents with roles, titles, reporting chains, capabilities
 - **Agent configs**: Adapter type, model, prompt templates, instructions paths
@@ -38,7 +38,7 @@ A complete Paperclip company configuration:
 
 ### 2.2 Agent Blueprints (individual agents within a team context)
 
-Single-agent configurations designed to plug into a Paperclip org:
+Single-agent configurations designed to plug into a Simplexy org:
 
 - Role definition, prompt template, adapter config
 - Reporting chain expectations (who they report to)
@@ -52,11 +52,11 @@ Single-agent configurations designed to plug into a Paperclip org:
 
 ### 2.3 Skills (modular capabilities)
 
-Portable skill files that any Paperclip agent can use:
+Portable skill files that any Simplexy agent can use:
 
 - Markdown skill files with instructions
 - Tool configurations and shell scripts
-- Compatible with Paperclip's skill loading system
+- Compatible with Simplexy's skill loading system
 
 **Examples:**
 - "Git PR Workflow" — standardized PR creation and review (Free)
@@ -286,7 +286,7 @@ interface Review {
 | `PATCH` | `/api/listings/:id` | Update listing |
 | `DELETE` | `/api/listings/:id` | Archive listing |
 | `POST` | `/api/listings/:id/purchase` | Purchase listing (Stripe checkout) |
-| `POST` | `/api/listings/:id/install` | Install to Paperclip company |
+| `POST` | `/api/listings/:id/install` | Install to Simplexy company |
 | `GET` | `/api/listings/:id/reviews` | Get reviews |
 | `POST` | `/api/listings/:id/reviews` | Submit review |
 | `GET` | `/api/creators/:slug` | Creator profile |
@@ -331,7 +331,7 @@ Sign up as creator → Connect Stripe
   → Track installs, revenue, reviews on creator dashboard
 ```
 
-### 5.3 Creator: Export from Paperclip → Publish
+### 5.3 Creator: Export from Simplexy → Publish
 
 ```
 Running Paperclip company → "Export as Blueprint" (CLI or UI)
@@ -351,7 +351,7 @@ Running Paperclip company → "Export as Blueprint" (CLI or UI)
 
 ### 6.1 Visual Language
 
-- **Color palette**: Dark ink primary, warm sand backgrounds, accent color for CTAs (Paperclip brand blue/purple)
+- **Color palette**: Dark ink primary, warm sand backgrounds, accent color for CTAs (Simplexy brand blue/purple)
 - **Typography**: Clean sans-serif, strong hierarchy, monospace for technical details
 - **Cards**: Rounded corners, subtle shadows, clear pricing badges
 - **Org chart visuals**: Interactive tree/graph showing agent relationships in team blueprints
@@ -362,7 +362,7 @@ Running Paperclip company → "Export as Blueprint" (CLI or UI)
 |---|---|
 | Product card | Org chart mini-preview + agent count badge |
 | Detail page | Interactive org chart + per-agent breakdown |
-| Install flow | One-click deploy to Paperclip company |
+| Install flow | One-click deploy to Simplexy company |
 | Social proof | "X companies running this blueprint" |
 | Preview | Live demo sandbox (stretch goal) |
 
@@ -455,20 +455,20 @@ The install handler:
 
 ### 9.1 Stack
 
-- **Frontend**: Next.js (React), Tailwind CSS, same UI framework as Paperclip
-- **Backend**: Node.js API (or extend Paperclip server)
-- **Database**: Postgres (can share Paperclip's DB or separate)
+- **Frontend**: Next.js (React), Tailwind CSS, same UI framework as Simplexy
+- **Backend**: Node.js API (or extend Simplexy server)
+- **Database**: Postgres (can share Simplexy's DB or separate)
 - **Payments**: Stripe Connect (marketplace mode)
 - **Storage**: S3/R2 for listing bundles and images
-- **Auth**: Shared with Paperclip auth (or OAuth2)
+- **Auth**: Shared with Simplexy auth (or OAuth2)
 
-### 9.2 Integration with Paperclip
+### 9.2 Integration with Simplexy
 
 ClipHub can be:
-- **Option A**: A separate app that calls Paperclip's API to install blueprints
-- **Option B**: A built-in section of the Paperclip UI (`/marketplace` route)
+- **Option A**: A separate app that calls Simplexy's API to install blueprints
+- **Option B**: A built-in section of the Simplexy UI (`/marketplace` route)
 
-Option B is simpler for MVP — adds routes to the existing Paperclip UI and API.
+Option B is simpler for MVP — adds routes to the existing Simplexy UI and API.
 
 ### 9.3 Bundle Format
 
@@ -508,14 +508,14 @@ blueprint/
 - [ ] Listing detail page with org chart visualization
 - [ ] Creator registration and listing creation wizard
 - [ ] Free installs only (no payments yet)
-- [ ] Install flow: blueprint → Paperclip company
+- [ ] Install flow: blueprint → Simplexy company
 
 ### Phase 2: Payments & Social
 - [ ] Stripe Connect integration
 - [ ] Purchase flow
 - [ ] Review system
 - [ ] Creator analytics dashboard
-- [ ] "Export from Paperclip" CLI command
+- [ ] "Export from Simplexy" CLI command
 
 ### Phase 3: Growth
 - [ ] Search with relevance ranking

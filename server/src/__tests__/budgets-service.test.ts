@@ -64,7 +64,7 @@ describeEmbeddedPostgres("budgetService release gate enforcement", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `B${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
     });

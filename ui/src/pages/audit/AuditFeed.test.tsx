@@ -214,7 +214,7 @@ describe("AuditFeed", () => {
     expect(container.textContent).toContain("Looks good to me");
     expect(container.textContent).toContain("on behalf of Dotta");
     expect(container.querySelector('a[href="/agents/agent-1/runs/run-1"]')).toBeTruthy();
-    expect(container.textContent).toContain("Recorded by Simplixy");
+    expect(container.textContent).toContain("Recorded by Simplexy");
   });
 
   it("filters and renders connection tests in the same audit row shape", async () => {
@@ -311,10 +311,10 @@ describe("AuditFeed", () => {
     );
     await render();
 
-    expect(container.textContent).toContain("Simplixy Enterprise view");
+    expect(container.textContent).toContain("Simplexy Enterprise view");
     expect(container.textContent).toContain("audit:view_agent_actions");
     // The feed chrome (filters, footer) is not rendered in the denied state.
-    expect(container.textContent).not.toContain("Recorded by Simplixy");
+    expect(container.textContent).not.toContain("Recorded by Simplexy");
   });
 
   it("hides attribution filters and export for a basic all-actors reader", async () => {
@@ -370,7 +370,7 @@ describe("AuditFeed", () => {
         expect.objectContaining({ actorScope: "all", agentId: undefined }),
       );
       expect(container.textContent).toContain("commented on");
-      expect(container.textContent).not.toContain("Simplixy Enterprise view");
+      expect(container.textContent).not.toContain("Simplexy Enterprise view");
       expect(container.textContent).not.toContain("All agents");
       expect(container.textContent).not.toContain("Export CSV");
     });
@@ -597,7 +597,7 @@ describe("AuditFeed", () => {
     await render({ mode: "agents", onModeChange });
 
     expect(onModeChange).toHaveBeenCalledWith("all");
-    expect(container.textContent).not.toContain("Simplixy Enterprise view");
+    expect(container.textContent).not.toContain("Simplexy Enterprise view");
     expect(container.textContent).toContain("Refreshing audit access…");
   });
 
@@ -607,7 +607,7 @@ describe("AuditFeed", () => {
     );
     await render({ mode: "agents" });
 
-    expect(container.textContent).toContain("Simplixy Enterprise view");
+    expect(container.textContent).toContain("Simplexy Enterprise view");
   });
 
   it("renders a flat activity list with clearly labeled filters", async () => {

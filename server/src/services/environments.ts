@@ -48,7 +48,7 @@ type EnvironmentRow = typeof environments.$inferSelect;
 type EnvironmentLeaseRow = typeof environmentLeases.$inferSelect;
 const DEFAULT_LOCAL_ENVIRONMENT_NAME = "Local";
 const DEFAULT_LOCAL_ENVIRONMENT_DESCRIPTION =
-  "Default execution environment for Simplixy runs on this machine.";
+  "Default execution environment for Simplexy runs on this machine.";
 
 const DEFAULT_KUBERNETES_ENVIRONMENT_NAME = "Kubernetes Sandbox";
 const DEFAULT_KUBERNETES_ENVIRONMENT_DESCRIPTION =
@@ -334,7 +334,7 @@ function preserveInvalidatedSnapshotProofs(replacement: SQL): SQL {
 
 export function environmentService(db: Db) {
   /**
-   * Idempotently ensure THE Simplixy-managed sandbox environment for this
+   * Idempotently ensure THE Simplexy-managed sandbox environment for this
    * instance, configured for an arbitrary sandbox provider plugin. Mirrors
    * `ensureLocalEnvironment`; the partial unique index
    * `environments_managed_sandbox_idx` enforces at most one managed sandbox
@@ -355,7 +355,7 @@ export function environmentService(db: Db) {
       provider: input.provider,
     };
     const desiredMetadata: Record<string, unknown> = {
-      managedBySimplixy: true,
+      managedBySimplexy: true,
       managedSandboxProvider: input.provider,
       ...(input.extraMetadata ?? {}),
     };
@@ -765,7 +765,7 @@ export function environmentService(db: Db) {
   };
 
   /**
-   * Archive the Simplixy-managed sandbox row when its provider became
+   * Archive the Simplexy-managed sandbox row when its provider became
    * unavailable (plugin missing, not ready, or its worker not running), so
    * run scheduling stops selecting an environment whose lease acquisition
    * cannot succeed (`resolveEnvironment` rejects non-active rows).
@@ -946,7 +946,7 @@ export function environmentService(db: Db) {
      * instance.
      *
      * On a cloud-managed instance an existing row is additionally ADOPTED —
-     * stamped `managedBySimplixy: true` (other metadata preserved) — so the
+     * stamped `managedBySimplexy: true` (other metadata preserved) — so the
      * single local slot is platform-owned there by construction, mirroring
      * `ensureManagedSandboxEnvironment`'s adoption of the sandbox slot. This
      * is what lets the environment-routes write floor treat a local row's
@@ -968,7 +968,7 @@ export function environmentService(db: Db) {
             config: {},
             envVars: {},
             metadata: {
-              managedBySimplixy: true,
+              managedBySimplexy: true,
               defaultForInstance: true,
             },
             createdAt: now,
@@ -1001,7 +1001,7 @@ export function environmentService(db: Db) {
         const adopted = await db
           .update(environments)
           .set({
-            metadata: { ...existingMetadata, managedBySimplixy: true },
+            metadata: { ...existingMetadata, managedBySimplexy: true },
             updatedAt: new Date(),
           })
           .where(eq(environments.id, existing.id))

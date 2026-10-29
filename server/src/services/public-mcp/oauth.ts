@@ -395,9 +395,9 @@ export function createPublicMcpOAuth(db: Db, config: PublicMcpConfig, options: {
         .innerJoin(companies, eq(companies.id, mcpOauthGrants.companyId))
         .where(and(eq(mcpOauthTokens.tokenHash, hashMcpSecret(token)), eq(mcpOauthTokens.kind, "access"),
           gt(mcpOauthTokens.expiresAt, new Date()), isNull(mcpOauthGrants.revokedAt)));
-      if (!row) throw new McpOAuthError("invalid_token", "Connect Simplixy again.", 401);
+      if (!row) throw new McpOAuthError("invalid_token", "Connect Simplexy again.", 401);
       try { return { grant: row.grant, company: row.company, actor: await actorForGrant(row.grant), accessTokenId: row.token.id }; }
-      catch (error) { if (museAgentConnection && !(error instanceof McpOAuthError) && !(error instanceof HttpError && [401,403,404,410].includes(error.status))) throw error; throw new McpOAuthError("invalid_token", "Simplixy access is no longer available.", 401); }
+      catch (error) { if (museAgentConnection && !(error instanceof McpOAuthError) && !(error instanceof HttpError && [401,403,404,410].includes(error.status))) throw error; throw new McpOAuthError("invalid_token", "Simplexy access is no longer available.", 401); }
   }
 
   const authenticateAccess=(token:string)=>authenticateToken(token);
@@ -416,9 +416,9 @@ export function createPublicMcpOAuth(db: Db, config: PublicMcpConfig, options: {
       if (museAgentConnection) throw new McpOAuthError("unsupported_grant_type", "Muse requires public-client PKCE authorization.");
       await assertEnabled();
       const p = z.object({ client_id: z.string().min(1).max(2048), resource: z.literal(config.resource), scope: z.string().max(200).default(requiredScope), company_id: z.uuid().optional() }).safeParse(input);
-      if (!p.success) throw new McpOAuthError("invalid_request", "Supply a registered client and the exact Simplixy resource.");
+      if (!p.success) throw new McpOAuthError("invalid_request", "Supply a registered client and the exact Simplexy resource.");
       const scopes = [...new Set(p.data.scope.split(/\s+/).filter(Boolean))];
-      if (!scopes.includes(requiredScope) || scopes.some(s => !(scopesSupported as readonly string[]).includes(s))) throw new McpOAuthError("invalid_scope", "Unsupported Simplixy scope.");
+      if (!scopes.includes(requiredScope) || scopes.some(s => !(scopesSupported as readonly string[]).includes(s))) throw new McpOAuthError("invalid_scope", "Unsupported Simplexy scope.");
       const client = await resolveClient(p.data.client_id, source);
       if (!client?.grantTypes.includes(DEVICE_GRANT)) throw new McpOAuthError("unauthorized_client", "Register a device authorization client.");
       const deviceCode = secret("pcmcp_device_");
@@ -481,10 +481,10 @@ export function createPublicMcpOAuth(db: Db, config: PublicMcpConfig, options: {
       const parsed = authorizeSchema.extend({ scope: z.string().max(200).default(defaultScope), pairing_ticket: z.string().min(20).max(200).optional() }).safeParse(withResource(input));
       if (!parsed.success) throw new McpOAuthError("invalid_request", "A registered client, exact redirect URI, resource, and S256 PKCE challenge are required.");
       const p = parsed.data;
-      if (p.resource !== config.resource) throw new McpOAuthError("invalid_target", "Resource does not match this Simplixy MCP endpoint.");
+      if (p.resource !== config.resource) throw new McpOAuthError("invalid_target", "Resource does not match this Simplexy MCP endpoint.");
       const scopes = [...new Set(p.scope.split(/\s+/).filter(Boolean))];
       if (!scopes.includes(requiredScope) || (museAgentConnection && !scopes.includes("offline_access")) || scopes.some((s) => !(scopesSupported as readonly string[]).includes(s))) {
-        throw new McpOAuthError("invalid_scope", "Unsupported Simplixy scope.");
+        throw new McpOAuthError("invalid_scope", "Unsupported Simplexy scope.");
       }
       if (museAgentConnection && p.client_id.startsWith("https://")) throw new McpOAuthError("invalid_request", "Muse requires a registered public PKCE client.");
       const client = await resolveClient(p.client_id, source);

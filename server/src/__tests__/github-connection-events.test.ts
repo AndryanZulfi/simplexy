@@ -59,7 +59,7 @@ describeEmbeddedPostgres("GitHub connection event delivery", () => {
     const applicationId = randomUUID();
     const connectionId = randomUUID();
     const grantId = randomUUID();
-    await db.insert(companies).values({ id: companyId, name: "Simplixy", issuePrefix: "GHE" });
+    await db.insert(companies).values({ id: companyId, name: "Simplexy", issuePrefix: "GHE" });
     await db.insert(toolApplications).values({
       id: applicationId,
       companyId,
@@ -250,7 +250,7 @@ describeEmbeddedPostgres("GitHub connection event delivery", () => {
     const applicationId = randomUUID();
     const connectionId = randomUUID();
     const grantId = randomUUID();
-    await db.insert(companies).values({ id: companyId, name: "Simplixy", issuePrefix: "GHI" });
+    await db.insert(companies).values({ id: companyId, name: "Simplexy", issuePrefix: "GHI" });
     await db.insert(toolApplications).values({
       id: applicationId,
       companyId,

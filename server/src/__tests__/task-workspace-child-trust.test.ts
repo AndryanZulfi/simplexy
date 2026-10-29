@@ -62,7 +62,7 @@ const support = await getEmbeddedPostgresTestSupport();
     const previous = await settings.getExperimental();
     await settings.updateExperimental({ enableIsolatedWorkspaces: true });
     try {
-      const response = await request(app).patch(`/api/issues/${child.id}`).set("X-Simplixy-Run-Id", f.runId)
+      const response = await request(app).patch(`/api/issues/${child.id}`).set("X-Simplexy-Run-Id", f.runId)
         .send({ executionWorkspaceSettings: { mode: "isolated_workspace", workspaceStrategy: { type: "git_worktree", baseRef: "main" } } });
       expect({ status: response.status, body: response.body }).toMatchObject({ status: 200, body: {
         id: child.id, executionWorkspaceId: f.workspace.id,

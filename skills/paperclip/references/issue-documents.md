@@ -1,6 +1,6 @@
 # Issue documents through the API
 
-Use this procedure for requested Paperclip task documents in API-based runtimes.
+Use this procedure for requested Simplexy task documents in API-based runtimes.
 Honor a destination explicitly chosen by the requester. Native Runner runtimes
 use their document tool and its contract. Downloadable files follow
 [artifacts.md](artifacts.md).
@@ -8,7 +8,7 @@ use their document tool and its contract. Downloadable files follow
 ## Create a document
 
 Use the injected `PAPERCLIP_API_URL` and bearer `PAPERCLIP_API_KEY`. Include
-`X-Paperclip-Run-Id: $PAPERCLIP_RUN_ID` on the write and send JSON with
+`X-Simplexy-Run-Id: $PAPERCLIP_RUN_ID` on the write and send JSON with
 `Content-Type: application/json`.
 
 Choose a descriptive document key such as `report`; keys use lowercase letters,

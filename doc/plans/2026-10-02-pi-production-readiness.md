@@ -665,7 +665,7 @@ remains deferred and no prior-source live result transfers to this candidate.
 This branch merges `origin/master` through `a9a20fb5c6c080884ced7ee0a4e3b04f9cbf3a6e`.
 The original integration point was `a6306ba606eb87c89b9ef0344e9fe8e0025580f9`;
 two additional master commits are included in the final merge.
-Pi accepts the operator's explicit provider/model ID without a Paperclip model
+Pi accepts the operator's explicit provider/model ID without a Simplexy model
 allowlist. Catalog discovery does not gate selection. Exact native model
 acknowledgment remains required before prompting. API credentials for built-in
 providers and explicit native custom-provider configurations remain session-bound.
@@ -1946,7 +1946,7 @@ is claimed. No automatic paid retry, fallback key, model change, workflow edit,
 or lockfile commit occurs.
 
 Normal installed Mac-to-Linux authority now passes the documented
-`paperclipai runtime import-remote` path. The companion comes from immutable
+`simplexy runtime import-remote` path. The companion comes from immutable
 image `sha256:342f1fd5cb8cabfa2242f38f4f686608b28b6536aa879c54b0cb0da6fba9ef47`,
 contains 24,352 inventoried entries, and has manifest SHA256
 `2c9d337c7d3753db6b8c44c5b347e195a2544b574670af7f32e5dfaffc0b4017`.
@@ -2633,9 +2633,9 @@ the database status. Drain or recover recorded cleanup before rolling back to
 a release that cannot interpret its metadata, and preserve the provider handle
 and receipts throughout that operation.
 
-1. Record `paperclipai --version`, the prior CLI/server package versions, the
+1. Record `simplexy --version`, the prior CLI/server package versions, the
    current company configuration and the exact retained package set. Run
-   `paperclipai db:backup --json` against the intended instance. Retain the
+   `simplexy db:backup --json` against the intended instance. Retain the
    reported backup path and size. Record the backup file SHA256 before updating.
    Drain active native runs on every platform before updating. On Linux, also
    drain before crossing between ctime-based and kernel-birth receipts. Never

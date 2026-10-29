@@ -582,7 +582,7 @@ describe("applyManagedEnvironments", () => {
     // the managed row AND carrying the reconciliation stamp reverts.
     const stampedRow = environmentRow({
       status: "archived",
-      metadata: { managedBySimplixy: true, managedDefaultStamped: true },
+      metadata: { managedBySimplexy: true, managedDefaultStamped: true },
     });
     const stamped = instanceSettingsSeam({
       get: vi.fn().mockResolvedValue({ defaultEnvironmentId: "env-1" }) as InstanceSettingsSeam["get"],
@@ -607,7 +607,7 @@ describe("applyManagedEnvironments", () => {
     // The marker clears with the revert so a later deliberate tenant
     // selection of the managed row is never mistaken for a stamp.
     expect(stampedEnvironments.update).toHaveBeenCalledWith("env-1", {
-      metadata: { managedBySimplixy: true },
+      metadata: { managedBySimplexy: true },
     });
 
     // The tenant's own deliberate managed-row default (no stamp marker)
@@ -617,7 +617,7 @@ describe("applyManagedEnvironments", () => {
     });
     const unmarkedEnvironments = environmentsSeam({
       findManagedSandboxEnvironment: vi.fn().mockResolvedValue(
-        environmentRow({ metadata: { managedBySimplixy: true } }),
+        environmentRow({ metadata: { managedBySimplexy: true } }),
       ),
     });
     await applyManagedEnvironments(noDb, config, {

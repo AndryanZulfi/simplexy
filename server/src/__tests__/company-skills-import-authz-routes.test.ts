@@ -88,7 +88,7 @@ describeEmbeddedPostgres("company skill import authorization routes", () => {
   }
 
   async function writeSkillFixture(companyId: string) {
-    if (!paperclipHome) throw new Error("Expected Simplixy test home");
+    if (!paperclipHome) throw new Error("Expected Simplexy test home");
     // Local imports must originate from an approved root (managed-skill
     // directory or a configured workspace); a bare tmpdir is rejected with
     // skill_workspace_boundary_denied.
@@ -186,7 +186,7 @@ describeEmbeddedPostgres("company skill import authorization routes", () => {
     const res = await request(authenticatedApp())
       .post(`/api/companies/${companyId}/skills/import`)
       .set("Authorization", `Bearer ${token}`)
-      .set("X-Simplixy-Run-Id", runId)
+      .set("X-Simplexy-Run-Id", runId)
       .send({ source: skillDir });
 
     expect(res.status, JSON.stringify(res.body)).toBe(201);

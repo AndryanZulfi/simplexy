@@ -31,7 +31,7 @@ export function createChatReceiverOwnership(db: Db, options: OwnershipOptions) {
   const { runtime, runtimeVersions, runtimeCallbackEndpoint, redactError, leasedChatProvider, discordGatewayOwnerships, discordGatewayStopTasks } = options;
   function discordGatewayNotOwnedError() {
     return conflict(
-      "Another Simplixy server owns this Discord Gateway connection; retry shortly",
+      "Another Simplexy server owns this Discord Gateway connection; retry shortly",
       { code: "chat_discord_gateway_not_owned" },
     );
   }

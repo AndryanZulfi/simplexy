@@ -158,7 +158,7 @@ Follow the map with prose that defines its named outcomes:
 Use stable state IDs matching agent phase names and map every active phase to its
 actual agent ID. Define each transition's trigger, evidence, destination and any
 wait/resume, correction or escalation rules; a diagram alone is insufficient.
-Arrow labels are not executable guards. Paperclip stores this document as
+Arrow labels are not executable guards. Simplexy stores this document as
 task data and does not parse or enforce its graph. Human waits use existing
 question/review/approval mechanisms, and `done` still requires accepted normal
 task completion. See [Mermaid state diagrams](https://mermaid.js.org/syntax/stateDiagram.html).
@@ -266,7 +266,7 @@ and verification. Operate on the case's primary task throughout:
    existing case and current versions, then completes the same task normally.
    Monitoring may create a new case for a new incident.
 
-Routing belongs in these instructions. Paperclip does not require a pipeline or
+Routing belongs in these instructions. Simplexy does not require a pipeline or
 preconfigured phase graph to execute them.
 
 ## Read And Search
@@ -439,8 +439,8 @@ Roles:
 - `work`: an issue/run that changed the case
 - `reference`: related issue context
 
-Agent run writes auto-link the run's issue when Paperclip can resolve it from
-the run JWT or `X-Paperclip-Run-Id`. Creation/upsert writes use `origin`; later
+Agent run writes auto-link the run's issue when Simplexy can resolve it from
+the run JWT or `X-Simplexy-Run-Id`. Creation/upsert writes use `origin`; later
 document, patch, and attachment writes use `work` when no link already exists.
 You do not need to manually link the current issue before writing the case.
 

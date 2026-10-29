@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Paperclip assembles a task brief and a wake event for several adapter lanes.
+Simplexy assembles a task brief and a wake event for several adapter lanes.
 Each task description or current comment has one automatic model-facing owner
 when its source can be verified. This contract makes the source explicit while keeping the existing
 task, wake, continuation, attachment, and custom-template fields intact.
@@ -95,12 +95,12 @@ the adapter selects the full brief, history, bootstrap and instructions again.
 The repair does not add a retry or decide whether an external action is safe to
 repeat. Existing session and recovery checks still make those decisions.
 
-Pi carries its default Paperclip rules in its system extension. The user prompt
+Pi carries its default Simplexy rules in its system extension. The user prompt
 does not carry another default copy. Explicit custom templates retain their
 existing carriers and variables. A gateway with a separate execution-contract
 carrier can suppress the wake copy while retaining the current event delta.
 
-Paperclip owns task content and its source authority. The harness and execution
+Simplexy owns task content and its source authority. The harness and execution
 environment own filesystem and command permissions. A working directory is not
 filesystem confinement. The approved removal of the workspace-only prompt line
 does not add confinement or change permission flags. Local harnesses retain the

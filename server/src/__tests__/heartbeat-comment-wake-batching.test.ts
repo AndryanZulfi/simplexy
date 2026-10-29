@@ -207,7 +207,7 @@ describeEmbeddedPostgres("heartbeat comment wake batching", () => {
   ): typeof companies.$inferInsert {
     return {
       id: rowId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix,
       requireBoardApprovalForNewAgents: false,
       defaultResponsibleUserId: "responsible-user",
@@ -1924,7 +1924,7 @@ describeEmbeddedPostgres("heartbeat comment wake batching", () => {
           "Preserve the original request's exact-output constraints literally.",
         );
         expect(String(gateway.getAgentPayloads()[0]?.message ?? "")).toContain(
-          "Do not narrate Simplixy workflow, checkout, status, or completion bookkeeping.",
+          "Do not narrate Simplexy workflow, checkout, status, or completion bookkeeping.",
         );
         const continuationWake = await readGatewayWakePayload(
           gateway.getAgentPayloads()[0] ?? {},
@@ -2613,7 +2613,7 @@ describeEmbeddedPostgres("heartbeat comment wake batching", () => {
       const firstPayload = gateway.getAgentPayloads()[0] ?? {};
       expect(firstPayload.paperclip).toBeUndefined();
       expect(String(firstPayload.message ?? "")).toContain(
-        "## Simplixy Wake Payload",
+        "## Simplexy Wake Payload",
       );
       expect(String(firstPayload.message ?? "")).toContain(
         "Do not switch to another issue until you have handled this wake.",
@@ -3238,14 +3238,14 @@ describeEmbeddedPostgres("heartbeat comment wake batching", () => {
     await db.insert(companies).values([
       {
         id: companyId,
-        name: "Simplixy",
+        name: "Simplexy",
         issuePrefix,
         requireBoardApprovalForNewAgents: false,
         defaultResponsibleUserId: "responsible-user",
       },
       {
         id: otherCompanyId,
-        name: "Other Simplixy",
+        name: "Other Simplexy",
         issuePrefix: otherIssuePrefix,
         requireBoardApprovalForNewAgents: false,
       },
@@ -3485,7 +3485,7 @@ describeEmbeddedPostgres("heartbeat comment wake batching", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix,
       requireBoardApprovalForNewAgents: false,
       // No defaultResponsibleUserId: the company default must not resolve this wake.

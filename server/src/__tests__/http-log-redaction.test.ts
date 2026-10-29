@@ -508,7 +508,7 @@ describe("HTTP logger redaction", () => {
 
     await request(app)
       .post("/runtime-tools/github/credentials")
-      .set("X-Simplixy-Github-Capability", capability)
+      .set("X-Simplexy-Github-Capability", capability)
       .send({})
       .expect(status);
 
@@ -522,10 +522,10 @@ describe("HTTP logger redaction", () => {
 
   it.each([200, 403, 500])("redacts cloud credentials and assertions from HTTP %i logs", async (status) => {
     const headers = {
-      "X-Simplixy-Cloud-Tenant-Token": "cloud-tenant-token-canary",
-      "X-Simplixy-Cloud-Session-Id": "cloud-session-id-canary",
-      "X-Simplixy-Cloud-Runtime-Identity": "cloud-runtime-identity-canary",
-      "X-Simplixy-Cloud-Control": "cloud-control-canary",
+      "X-Simplexy-Cloud-Tenant-Token": "cloud-tenant-token-canary",
+      "X-Simplexy-Cloud-Session-Id": "cloud-session-id-canary",
+      "X-Simplexy-Cloud-Runtime-Identity": "cloud-runtime-identity-canary",
+      "X-Simplexy-Cloud-Control": "cloud-control-canary",
     };
     const chunks: string[] = [];
     const stream = new Writable({

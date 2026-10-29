@@ -28,10 +28,10 @@ export async function githubResponseExecution(db: Db, input: GitHubResponseExecu
   const presentationPending = !!run && ownsLatestRequest && run.nativePresentationPending && reply === "none";
   const passiveResponseWait = !!run && ownsLatestRequest && run.passiveResponseWait && reply === "none";
   const body = presentationPending ? undefined : run ? reply === "confirmed" ? "This request has been handled. See the response in this conversation."
-    : paused ? "Work is paused. Your request is saved. See the Simplixy task for details."
-    : run.status === "succeeded" ? "This turn ended without publishing a final response. See the Simplixy task for details."
-    : "This turn stopped before completing. See the Simplixy task for details."
-    : paused ? "Work is paused. Your request is saved. See the Simplixy task for details." : undefined;
+    : paused ? "Work is paused. Your request is saved. See the Simplexy task for details."
+    : run.status === "succeeded" ? "This turn ended without publishing a final response. See the Simplexy task for details."
+    : "This turn stopped before completing. See the Simplexy task for details."
+    : paused ? "Work is paused. Your request is saved. See the Simplexy task for details." : undefined;
   return {
     body, paused, reply, running: requestRunning, presentationPending, passiveResponseWait,
     versionAt: run ? new Date(Math.max(run.updatedAt.getTime(), input.deliveryCreatedAt.getTime()))

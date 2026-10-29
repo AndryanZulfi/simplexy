@@ -1233,12 +1233,12 @@ describe("MarkdownEditor", () => {
   });
 
   it("keeps mention queries active across spaces", () => {
-    expect(findMentionMatch("Ping @Simplixy App", "Ping @Simplixy App".length)).toEqual({
+    expect(findMentionMatch("Ping @Simplexy App", "Ping @Simplexy App".length)).toEqual({
       trigger: "mention",
       marker: "@",
-      query: "Simplixy App",
+      query: "Simplexy App",
       atPos: 5,
-      endPos: "Ping @Simplixy App".length,
+      endPos: "Ping @Simplexy App".length,
     });
   });
 
@@ -1398,12 +1398,12 @@ describe("MarkdownEditor", () => {
       {
         id: "project:project-123",
         kind: "project" as const,
-        name: "Simplixy",
+        name: "Simplexy",
         projectId: "project-123",
         projectColor: "#336699",
       },
     ],
-    matchText = "Simplixy App",
+    matchText = "Simplexy App",
   ): Promise<{ option: HTMLButtonElement; root: ReturnType<typeof createRoot>; menu: HTMLElement }> {
     const root = createRoot(container);
 
@@ -1457,7 +1457,7 @@ describe("MarkdownEditor", () => {
     });
 
     expect(handleChange).toHaveBeenCalledWith(
-      `[@Simplixy App](${buildProjectMentionHref("project-123", "#336699")}) `,
+      `[@Simplexy App](${buildProjectMentionHref("project-123", "#336699")}) `,
     );
 
     await act(async () => {
@@ -1558,7 +1558,7 @@ describe("MarkdownEditor", () => {
     const mentions = Array.from({ length: 12 }, (_, index) => ({
       id: `project:project-${index}`,
       kind: "project" as const,
-      name: `Simplixy App ${index}`,
+      name: `Simplexy App ${index}`,
       projectId: `project-${index}`,
       projectColor: "#336699",
     }));
@@ -1586,7 +1586,7 @@ describe("MarkdownEditor", () => {
     const mentions = Array.from({ length: 12 }, (_, index) => ({
       id: `project:project-${index}`,
       kind: "project" as const,
-      name: `Simplixy App ${index}`,
+      name: `Simplexy App ${index}`,
       projectId: `project-${index}`,
       projectColor: "#336699",
     }));
@@ -1644,7 +1644,7 @@ describe("MarkdownEditor", () => {
     const mentions = Array.from({ length: 60 }, (_, index) => ({
       id: `project:project-${index}`,
       kind: "project" as const,
-      name: `Simplixy App ${index}`,
+      name: `Simplexy App ${index}`,
       projectId: `project-${index}`,
       projectColor: "#336699",
     }));
@@ -1670,7 +1670,7 @@ describe("MarkdownEditor", () => {
     const mentions = Array.from({ length: 12 }, (_, index) => ({
       id: `project:project-${index}`,
       kind: "project" as const,
-      name: `Simplixy App ${index}`,
+      name: `Simplexy App ${index}`,
       projectId: `project-${index}`,
       projectColor: "#336699",
     }));

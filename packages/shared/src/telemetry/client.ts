@@ -112,7 +112,7 @@ export class TelemetryClient {
   }
 
   /**
-   * Tracks first-party Simplixy telemetry events registered in the generated
+   * Tracks first-party Simplexy telemetry events registered in the generated
    * backend event schema.
    */
   track<K extends TelemetryEventName>(eventName: K, ...args: TrackArgs<K>): void {

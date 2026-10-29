@@ -138,7 +138,7 @@ Changing the mode, root, or entry file is a separate save from editing file
 contents. That save loads the destination files without writing the old YAML's
 contents over them. The native bundle service may seed an empty destination or
 a missing entry file from the previous bundle. Review the freshly loaded files
-before editing them. A managed root is assigned by Paperclip; choose `external`
+before editing them. A managed root is assigned by Simplexy; choose `external`
 mode to select another directory.
 
 Skills accept a key string or `{ key, versionId }`; `versionId: null` follows

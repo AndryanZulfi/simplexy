@@ -1,6 +1,6 @@
 import type { CompanyUserProfile } from "./company-members";
 
-/** Task messages load uploaded Simplixy avatars automatically, never remote URLs. */
+/** Task messages load uploaded Simplexy avatars automatically, never remote URLs. */
 export function paperclipHumanAvatarUrl(value: string | null | undefined): string | null {
   return value && /^\/api\/assets\/[^/?#]+\/content$/.test(value) ? value : null;
 }

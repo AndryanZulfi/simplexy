@@ -100,7 +100,7 @@ async function createBuiltPluginFixture(parentDir: string, nameSuffix: string): 
     version: "0.1.0",
     displayName: "Install Guard Fixture",
     description: "Plugin fixture for install-route security floor coverage.",
-    author: "Simplixy",
+    author: "Simplexy",
     categories: ["automation"],
     capabilities: ["companies.read"],
     entrypoints: {

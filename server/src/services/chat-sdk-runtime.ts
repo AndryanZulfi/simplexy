@@ -133,7 +133,7 @@ const DISCORD_GATEWAY_SESSION_MS = 24 * 60 * 60_000;
 const DISCORD_GATEWAY_RESTART_MAX_DELAY_MS = 60_000;
 const DISCORD_GATEWAY_HEALTHY_SESSION_MS = 60_000;
 
-/** Public Simplixy provider ids. The Teams SDK name remains an internal detail. */
+/** Public Simplexy provider ids. The Teams SDK name remains an internal detail. */
 export type ChatSdkProvider =
   "slack" | "github" | "discord" | "microsoft-teams" | "telegram" | "imessage-photon";
 type ChatSdkAdapterKey = "slack" | "github" | "discord" | "teams" | "telegram" | "imessage-photon";
@@ -385,7 +385,7 @@ function microsoftTeamsTenantIds(raw: unknown): string[] {
   );
 }
 
-/** Chat SDK-normalized inbound message plus Simplixy endpoint identity. */
+/** Chat SDK-normalized inbound message plus Simplexy endpoint identity. */
 export interface ChatSdkMessageCallbackEvent {
   context?: MessageContext;
   endpointId: string;
@@ -461,7 +461,7 @@ export interface DiscordGatewayCallbackEvent extends ChatSdkCallbackEvent<Discor
 }
 
 /**
- * Provider-neutral callbacks consumed by the Simplixy control-plane service.
+ * Provider-neutral callbacks consumed by the Simplexy control-plane service.
  * All provider events have already passed the installed adapter's verifier and
  * normalization. Raw provider payloads remain available only through the
  * Chat SDK event escape hatches; callers must never publish them directly.
@@ -736,9 +736,9 @@ function installDiscordNativeCommands(
   const snowflake = (value: unknown): value is string =>
     typeof value === "string" && /^[1-9][0-9]{16,19}$/.test(value);
   const denied =
-    "This command is not available here. Open the Simplixy task or ask an operator to check your chat access.";
+    "This command is not available here. Open the Simplexy task or ask an operator to check your chat access.";
   const unconfirmed =
-    "This command could not be confirmed. Check the Simplixy task before trying again.";
+    "This command could not be confirmed. Check the Simplexy task before trying again.";
   discord.handleGatewayInteraction = async (interaction) => {
     if (!interaction.isChatInputCommand()) return await original(interaction);
     const startedAt = Date.now();
@@ -882,7 +882,7 @@ function assertDiscordAdapterCompatibility(adapter: Adapter, chat: Chat): void {
   const discord = adapter as unknown as DiscordAdapterInternals;
   if (discord.paperclipCompatibilityRevision !== "paperclip-discord-v6") {
     throw new DiscordAdapterCompatibilityError(
-      "Simplixy patch revision paperclip-discord-v6 is unavailable",
+      "Simplexy patch revision paperclip-discord-v6 is unavailable",
     );
   }
   if (typeof discord.startGatewayListener !== "function") {
@@ -1765,9 +1765,9 @@ async function telegramWebhookUpdateId(
 
 /**
  * Chat SDK's message and provider-level retry markers are written before the
- * application callback runs. That ordering is unsafe for Simplixy: if the
+ * application callback runs. That ordering is unsafe for Simplexy: if the
  * `chat_deliveries` insert fails, a provider retry can be discarded by the SDK
- * even though Simplixy never durably accepted it. Simplixy's delivery ledger
+ * even though Simplexy never durably accepted it. Simplexy's delivery ledger
  * is the authoritative dedupe boundary, so these early SDK markers are
  * deliberately bypassed while subscriptions and all other adapter state stay
  * durable.
@@ -2004,7 +2004,7 @@ function registerCallbacks(
   }
 }
 
-/** One isolated Chat instance and provider adapter for one Simplixy endpoint. */
+/** One isolated Chat instance and provider adapter for one Simplexy endpoint. */
 export class ChatSdkEndpointRuntime {
   readonly companyId: string;
   readonly endpointId: string;
@@ -2411,7 +2411,7 @@ export class ChatSdkEndpointRuntime {
       responseDeadlineAt ?? Number.POSITIVE_INFINITY,
     );
     const retryableTimeout = () =>
-      new Response("Simplixy could not durably accept the event in time", {
+      new Response("Simplexy could not durably accept the event in time", {
         status: 503,
         headers: {
           "content-type": "text/plain; charset=utf-8",
@@ -2472,7 +2472,7 @@ export class ChatSdkEndpointRuntime {
           return retryableTimeout();
       }
       if (response.ok && attempt.callbackError !== undefined) {
-        return new Response("Simplixy could not durably accept the event", {
+        return new Response("Simplexy could not durably accept the event", {
           status: 503,
           headers: {
             "content-type": "text/plain; charset=utf-8",
@@ -2685,7 +2685,7 @@ export class ChatSdkEndpointRuntime {
   /**
    * Reuse the pinned provider parser when a Telegram slash command also
    * carries media in its caption. The Chat SDK exposes slash-command fields
-   * separately from the parsed Message, so without this bridge Simplixy
+   * separately from the parsed Message, so without this bridge Simplexy
    * would silently discard a captioned document/photo/audio/video.
    */
   parseTelegramCommandMessage(raw: unknown): Message | null {
@@ -3174,7 +3174,7 @@ export class ChatSdkEndpointNotRegisteredError extends Error {
   }
 }
 
-/** Process-local lifecycle registry; durable state remains in Simplixy persistence. */
+/** Process-local lifecycle registry; durable state remains in Simplexy persistence. */
 export class ChatSdkRuntime {
   private readonly endpoints = new Map<string, ChatSdkEndpointRuntime>();
   private readonly retiringEndpoints = new Map<

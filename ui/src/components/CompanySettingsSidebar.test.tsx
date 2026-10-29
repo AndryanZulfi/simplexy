@@ -44,7 +44,7 @@ vi.mock("@/lib/router", () => ({
 vi.mock("@/context/CompanyContext", () => ({
   useCompany: () => ({
     selectedCompanyId: "company-1",
-    selectedCompany: { id: "company-1", issuePrefix: "PAP", name: "Simplixy" },
+    selectedCompany: { id: "company-1", issuePrefix: "PAP", name: "Simplexy" },
   }),
 }));
 
@@ -145,7 +145,7 @@ describe("CompanySettingsSidebar", () => {
     });
     await flushReact();
 
-    expect(container.textContent).not.toContain("Simplixy");
+    expect(container.textContent).not.toContain("Simplexy");
     expect(container.textContent).not.toContain("Settings");
     expect(container.querySelector('[aria-label="Back from Settings"]')).toBeNull();
     const settingsSurface = container.querySelector('[data-contextual-sidebar="settings"]');

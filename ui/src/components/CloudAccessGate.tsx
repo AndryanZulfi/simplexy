@@ -36,7 +36,7 @@ export function CloudAccessError({
       <RefreshCw className="size-6 text-muted-foreground" aria-hidden="true" />
       <div className="flex flex-col gap-2" role="status">
         <h1 className="text-xl font-semibold">
-          {temporary ? "Reconnecting to Simplixy" : "Unable to load Simplixy"}
+          {temporary ? "Reconnecting to Simplexy" : "Unable to load Simplexy"}
         </h1>
         <p className="text-sm text-muted-foreground">
           {temporary
@@ -60,7 +60,7 @@ function NoBoardAccessPage() {
         <h1 className="text-xl font-semibold">No organization access</h1>
         <p className="mt-2 text-sm text-muted-foreground">
           This account is signed in, but it does not have an active organization membership or instance-admin access on
-          this Simplixy instance.
+          this Simplexy instance.
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
           Use an organization invite or sign in with an account that already belongs to this org.

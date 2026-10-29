@@ -123,10 +123,10 @@ export function telegramGuidanceResponse(
 
 export function telegramForumControlResponse(command: "new" | "close", taskLabel: string, hasIssue: boolean, hasConversation: boolean): string {
   if (command === "new") return hasIssue
-    ? `${taskLabel} stays bound to this forum topic. Open a new Telegram forum topic to start a new Simplixy task.`
-    : "Open a new Telegram forum topic to start a new Simplixy task.";
+    ? `${taskLabel} stays bound to this forum topic. Open a new Telegram forum topic to start a new Simplexy task.`
+    : "Open a new Telegram forum topic to start a new Simplexy task.";
   return hasConversation
-    ? "This chat conversation is closed. A later message here will continue the same Simplixy task."
+    ? "This chat conversation is closed. A later message here will continue the same Simplexy task."
     : "No task is active. Send a message to start one.";
 }
 

@@ -56,9 +56,9 @@ export const INSTANCE_FEATURE_CATALOG: Record<InstanceFeatureKey, FeatureCatalog
     tier: "managed", cloudDefault: false, selfHostedDefault: false,
   },
   enableNativeRunner: {
-    title: "Simplixy Runner",
+    title: "Simplexy Runner",
     description:
-      "Allow explicitly configured local Codex, OpenCode, and qualified ACPX agents to use the experimental Rust Simplixy Runner, including authenticated sandbox ingress when required. Onboarding remains on legacy adapters.",
+      "Allow explicitly configured local Codex, OpenCode, and qualified ACPX agents to use the experimental Rust Simplexy Runner, including authenticated sandbox ingress when required. Onboarding remains on legacy adapters.",
     tier: "managed",
     cloudDefault: false,
     // On by default for self-hosted instances. Requires a Rust toolchain (or
@@ -136,14 +136,14 @@ export const INSTANCE_FEATURE_CATALOG: Record<InstanceFeatureKey, FeatureCatalog
   },
   enableGrokBot: {
     title: "Grok Bot",
-    description: "Connect an existing Grok Bot as an experimental Simplixy agent. Requires Assistant connections (MCP), Simplixy Runner, and an authenticated public HTTPS instance. Provider spending is not reported.",
+    description: "Connect an existing Grok Bot as an experimental Simplexy agent. Requires Assistant connections (MCP), Simplexy Runner, and an authenticated public HTTPS instance. Provider spending is not reported.",
     tier: "managed",
     cloudDefault: false,
     selfHostedDefault: false,
   },
   enableMuse: {
     title: "Muse — Personal agent",
-    description: "Connect your personal Meta Muse through its managed background receiver and the external Simplixy Runner. Experimental; requires authenticated public HTTPS and Simplixy Runner.",
+    description: "Connect your personal Meta Muse through its managed background receiver and the external Simplexy Runner. Experimental; requires authenticated public HTTPS and Simplexy Runner.",
     tier: "managed", cloudDefault: false, selfHostedDefault: false,
   },
   enableChatConnectors: {
@@ -162,8 +162,8 @@ export const INSTANCE_FEATURE_CATALOG: Record<InstanceFeatureKey, FeatureCatalog
     selfHostedDefault: false,
   },
   enablePaperclipNotebook: {
-    title: "Simplixy Notebook",
-    description: "Allow Simplixy Notebook connections and publishing through an explicitly enabled instance rollout.",
+    title: "Simplexy Notebook",
+    description: "Allow Simplexy Notebook connections and publishing through an explicitly enabled instance rollout.",
     tier: "managed",
     cloudDefault: false,
     selfHostedDefault: false,
@@ -265,14 +265,14 @@ export const INSTANCE_FEATURE_CATALOG: Record<InstanceFeatureKey, FeatureCatalog
   enableBuiltInAgents: {
     title: "Built-in Agents",
     description:
-      "Show Simplixy-managed built-in agent surfaces, including roster badges, the Built-in agents tab, and setup controls.",
+      "Show Simplexy-managed built-in agent surfaces, including roster badges, the Built-in agents tab, and setup controls.",
     tier: "managed",
     cloudDefault: false,
     selfHostedDefault: false,
   },
   enableBetaSkills: {
     title: "Beta skills",
-    description: "Allow agents to pin beta releases of the Simplixy core skill.",
+    description: "Allow agents to pin beta releases of the Simplexy core skill.",
     tier: "preference",
     cloudDefault: false,
     selfHostedDefault: false,
@@ -325,9 +325,9 @@ export const INSTANCE_FEATURE_CATALOG: Record<InstanceFeatureKey, FeatureCatalog
     selfHostedDefault: false,
   },
   enablePaperclipDeveloperMode: {
-    title: "Simplixy Developer Mode",
+    title: "Simplexy Developer Mode",
     description:
-      "Show internal Simplixy maintainer tools and observability links, including Honeycomb trace queries on run pages.",
+      "Show internal Simplexy maintainer tools and observability links, including Honeycomb trace queries on run pages.",
     tier: "preference",
     cloudDefault: false,
     selfHostedDefault: false,
@@ -375,7 +375,7 @@ export const INSTANCE_FEATURE_CATALOG: Record<InstanceFeatureKey, FeatureCatalog
   enableRunnerPreviewIngress: {
     title: "Runner Preview Ingress (Deprecated)",
     description:
-      "Compatibility-only key retained for older managed configs. Runner ingress follows the Simplixy Runner setting.",
+      "Compatibility-only key retained for older managed configs. Runner ingress follows the Simplexy Runner setting.",
     tier: "managed",
     cloudDefault: false,
     selfHostedDefault: false,

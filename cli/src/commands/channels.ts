@@ -98,7 +98,7 @@ export async function channelsCommand(
     return;
   }
 
-  console.log(pc.bold("Simplixy release channels"));
+  console.log(pc.bold("Simplexy release channels"));
   console.log("");
   for (const entry of state) {
     const version = entry.version ?? pc.yellow("unavailable");

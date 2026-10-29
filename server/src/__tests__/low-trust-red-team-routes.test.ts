@@ -2151,7 +2151,7 @@ describeEmbeddedPostgres(
           },
         });
         expect(String(payload.message ?? "")).toContain(
-          "## Simplixy Wake Payload",
+          "## Simplexy Wake Payload",
         );
         expect(String(payload.message ?? "")).toContain(LOW_TRUST_QUARANTINED_BODY);
         expect(String(payload.message ?? "")).toContain("Continue from the sanitized quarantine stub only.");

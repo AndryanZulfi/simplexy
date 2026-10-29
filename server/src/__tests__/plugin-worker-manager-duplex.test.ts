@@ -19,7 +19,7 @@ const TEST_MANIFEST: PaperclipPluginManifestV1 = {
   version: "1.0.0",
   displayName: "Test plugin",
   description: "Test plugin",
-  author: "Simplixy",
+  author: "Simplexy",
   categories: ["automation"],
   capabilities: [],
   entrypoints: { worker: "dist/worker.js" },

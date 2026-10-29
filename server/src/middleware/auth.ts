@@ -383,7 +383,7 @@ export function actorMiddleware(db: Db, opts: ActorMiddlewareOptions): RequestHa
           url: req.originalUrl,
         });
         next(
-          unprocessable("X-Simplixy-Run-Id does not match signed agent JWT run_id", {
+          unprocessable("X-Simplexy-Run-Id does not match signed agent JWT run_id", {
             code: "agent_jwt_run_id_mismatch",
             claimRunId: claims.run_id,
             headerRunId: normalizedRunIdHeader,
@@ -904,7 +904,7 @@ function legacyProvisionedIssuePrefix(stackId: string): string {
 }
 
 /** The placeholder description that pre-name-derivation builds wrote. */
-const LEGACY_PROVISIONED_DESCRIPTION_PREFIX = "Provisioned by Simplixy Cloud for stack ";
+const LEGACY_PROVISIONED_DESCRIPTION_PREFIX = "Provisioned by Simplexy Cloud for stack ";
 
 /**
  * One-time repair for companies claimed by a pre-name-derivation build.

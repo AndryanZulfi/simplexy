@@ -1,6 +1,6 @@
 # Plugin Authoring Guide
 
-This guide describes the current, implemented way to create a Paperclip plugin in this repo.
+This guide describes the current, implemented way to create a Simplexy plugin in this repo.
 
 It is intentionally narrower than [PLUGIN_SPEC.md](./PLUGIN_SPEC.md). The spec includes future ideas; this guide only covers the alpha surface that exists now.
 
@@ -9,7 +9,7 @@ It is intentionally narrower than [PLUGIN_SPEC.md](./PLUGIN_SPEC.md). The spec i
 ## Current reality
 
 - Treat plugin workers and plugin UI as trusted code.
-- Plugin UI runs as same-origin JavaScript inside the main Paperclip app.
+- Plugin UI runs as same-origin JavaScript inside the main Simplexy app.
 - Worker-side host APIs are capability-gated.
 - Plugin UI is not sandboxed by manifest capabilities.
 - External object reference providers are trusted-install only in the MVP.
@@ -200,7 +200,7 @@ objectReferences: [
 Implement `onDetectExternalObjects()` in the worker to recognize sanitized URL
 candidates and return provider-stable identities. Implement
 `onResolveExternalObject()` to return normalized board-safe status metadata.
-Paperclip owns inline markdown rendering; plugins must not return React, HTML,
+Simplexy owns inline markdown rendering; plugins must not return React, HTML,
 or `dangerouslySetInnerHTML` content for inline references.
 
 ## Scaffold a plugin
@@ -226,7 +226,7 @@ Outside this monorepo, the scaffold snapshots `@paperclipai/plugin-sdk` from the
 
 ## Local development workflow
 
-See the short [Local Plugin Development guide](./LOCAL_PLUGIN_DEVELOPMENT.md) for the full happy path (`pnpm dev` → `paperclipai plugin install <absolute-path>` → `paperclipai plugin list`) and reload semantics.
+See the short [Local Plugin Development guide](./LOCAL_PLUGIN_DEVELOPMENT.md) for the full happy path (`pnpm dev` → `simplexy plugin install <absolute-path>` → `simplexy plugin list`) and reload semantics.
 
 Minimum verification from the generated plugin folder:
 
@@ -337,14 +337,14 @@ handler. The worker receives sanitized headers, route params, query, parsed JSON
 body, actor context, and company id. Do not use plugin routes to claim core
 paths; they always remain under `/api/plugins/:pluginId/api/*`.
 
-## Managed Paperclip resources
+## Managed Simplexy resources
 
-Plugins that provide durable Paperclip business objects should declare them in
+Plugins that provide durable Simplexy business objects should declare them in
 the manifest and let the host create or relink the actual records per company.
 Do this for plugin-owned agents, projects, routines, and skills.
 Do not hide long-lived work behind private plugin state when it should be visible
 to the board, scoped to a company, audited, budgeted, and assigned like normal
-Paperclip work.
+Simplexy work.
 
 Content-oriented plugins, such as LLM Wiki-style ingestion or durable knowledge
 systems, should use the same pattern: managed projects for operation issues,
@@ -356,7 +356,7 @@ Use these surfaces:
 - Managed agents: declare top-level `agents[]` and require
   `agents.managed`. Use this when the plugin provides a named worker the board
   should see in the org, budget, pause, invoke, and inspect. Managed agents are
-  normal Paperclip agents with plugin ownership metadata, not background plugin
+  normal Simplexy agents with plugin ownership metadata, not background plugin
   workers.
 - Managed projects: declare top-level `projects[]` and require
   `projects.managed`. Use this when the plugin needs a stable company-scoped
@@ -364,12 +364,12 @@ Use these surfaces:
   in a project instead of scattering generated issues across unrelated projects.
 - Managed routines: declare top-level `routines[]` and require
   `routines.managed`. Use this for scheduled, webhook, or manually triggered
-  jobs that should create visible Paperclip issues. Prefer managed routines over
+  jobs that should create visible Simplexy issues. Prefer managed routines over
   plugin `jobs[]` for recurring business work; plugin jobs are for plugin
   runtime maintenance that does not need a board-visible task trail.
 - Managed skills: declare top-level `skills[]` and require `skills.managed`.
   Use this for reusable plugin capabilities that should be surfaced to operators and
-  synced into Paperclip managed agents.
+  synced into Simplexy managed agents.
 
 Managed resources are resolved by stable plugin keys, not hardcoded database
 ids. In a worker action or data handler, call `ctx.agents.managed.reconcile()`,
@@ -503,7 +503,7 @@ Authoring rules:
   the operator or resolved from `ctx.agents.managed`.
 - Use managed routines for recurring or externally triggered work that should
   produce tasks. Schedule, webhook, and API triggers are visible routine
-  triggers, and each run has the normal Paperclip issue/audit trail.
+  triggers, and each run has the normal Simplexy issue/audit trail.
 - Use managed skills for reusable operator-visible capabilities that are shared
   by managed agents. Reconcile skill declarations by `skillKey` and keep the
   declared skill markdown and files in sync with agent behavior.
@@ -511,7 +511,7 @@ Authoring rules:
   project-scoped plugin UI a stable home. For filesystem access inside a
   project, still resolve project workspaces through `ctx.projects`.
 - Keep defaults conservative. Managed declarations are suggestions owned by the
-  plugin, but the resulting resources are normal Paperclip records that the
+  plugin, but the resulting resources are normal Simplexy records that the
   operator can inspect, pause, and adjust.
 
 UI:
@@ -561,11 +561,11 @@ the user chose as soon as they navigate away.
 ## Shared host components
 
 Use shared components from `@paperclipai/plugin-sdk/ui` when the plugin needs a
-Paperclip-native control. The host owns the implementation, so plugins inherit
+Simplexy-native control. The host owns the implementation, so plugins inherit
 the board's current styling, ordering, recent selections, and dark-mode behavior
 without importing `ui/src` internals.
 
-Prefer shared components for common Paperclip UX patterns to reduce drift and
+Prefer shared components for common Simplexy UX patterns to reduce drift and
 deprecation risk, especially for task/assignment flows and routine or sidebar-like
 plugin screens.
 

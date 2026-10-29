@@ -53,8 +53,8 @@ interface EnvironmentDescriptor {
 
 const localEnvironmentDescriptor: EnvironmentDescriptor = {
   label: "Local",
-  detail: "Simplixy host",
-  title: "Local - Simplixy host",
+  detail: "Simplexy host",
+  title: "Local - Simplexy host",
 };
 
 const loadingEnvironmentDescriptor: EnvironmentDescriptor = {
@@ -115,11 +115,11 @@ function describeEnvironment(
   capabilities?: EnvironmentCapabilities | null,
 ): EnvironmentDescriptor {
   const detail = isPlatformManagedEnvironment(environment)
-    ? "Managed by Simplixy"
+    ? "Managed by Simplexy"
     : environment.driver === "sandbox"
       ? `${getSandboxProviderLabel(environment, capabilities)} sandbox provider`
       : environment.driver === "local"
-        ? "Simplixy host"
+        ? "Simplexy host"
         : formatEnvironmentDriver(environment.driver);
 
   return {

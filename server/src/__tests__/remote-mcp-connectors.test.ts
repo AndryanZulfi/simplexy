@@ -230,7 +230,7 @@ describe("remote connector lifecycle", () => {
     await callback();
     expect((await service.listConnectionInstalls(connected.connectionId))).toHaveLength(0);
   });
-  it("enforces agent and action permissions before dispatch, and preserves provider resume after Simplixy approval", async () => {
+  it("enforces agent and action permissions before dispatch, and preserves provider resume after Simplexy approval", async () => {
     const org = await company();
     const [allowed, denied] = await db.insert(agents).values(["Allowed", "Denied"].map((name) => ({ companyId: org.id, name, role: "engineer", adapterType: "process", adapterConfig: {}, runtimeConfig: {} }))).returning();
     const calls: { name: string; arguments: unknown; session: string | null }[] = [];

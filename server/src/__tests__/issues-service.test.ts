@@ -63,7 +63,7 @@ const describeEmbeddedPostgres = embeddedPostgresSupport.supported ? describe : 
 async function seedIssueCompany(db: ReturnType<typeof createDb>, companyId: string) {
   await db.insert(companies).values({
     id: companyId,
-    name: "Simplixy",
+    name: "Simplexy",
     issuePrefix: `T${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
     requireBoardApprovalForNewAgents: false,
   });
@@ -126,7 +126,7 @@ describeEmbeddedPostgres("issueService run attachment artifacts", () => {
     const runId = randomUUID();
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "ART",
       requireBoardApprovalForNewAgents: false,
     });
@@ -1838,7 +1838,7 @@ describeEmbeddedPostgres("issueService.list participantAgentId", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PC1A2",
       requireBoardApprovalForNewAgents: false,
     });
@@ -3961,8 +3961,8 @@ describeEmbeddedPostgres("issueService.create workspace inheritance", () => {
     await instanceSettingsService(db).updateExperimental({ enableIsolatedWorkspaces: true });
 
     await db.insert(projects).values([
-      { id: parentProjectId, companyId, name: "Simplixy", status: "in_progress" },
-      { id: targetProjectId, companyId, name: "Simplixy ID", status: "in_progress" },
+      { id: parentProjectId, companyId, name: "Simplexy", status: "in_progress" },
+      { id: targetProjectId, companyId, name: "Simplexy ID", status: "in_progress" },
     ]);
 
     await db.insert(projectWorkspaces).values([
@@ -3997,7 +3997,7 @@ describeEmbeddedPostgres("issueService.create workspace inheritance", () => {
     });
 
     const { issue: child } = await svc.createChild(parentIssueId, {
-      title: "Implement the Simplixy ID connect broker",
+      title: "Implement the Simplexy ID connect broker",
       status: "todo",
       priority: "medium",
       projectId: targetProjectId,
@@ -4060,7 +4060,7 @@ describeEmbeddedPostgres("issueService.create workspace inheritance", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `T${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
     });
@@ -4963,8 +4963,8 @@ describeEmbeddedPostgres("issueService.create workspace inheritance", () => {
     await instanceSettingsService(db).updateExperimental({ enableIsolatedWorkspaces: true });
 
     await db.insert(projects).values([
-      { id: parentProjectId, companyId, name: "Simplixy", status: "in_progress" },
-      { id: targetProjectId, companyId, name: "Simplixy ID", status: "in_progress" },
+      { id: parentProjectId, companyId, name: "Simplexy", status: "in_progress" },
+      { id: targetProjectId, companyId, name: "Simplexy ID", status: "in_progress" },
     ]);
 
     await db.insert(projectWorkspaces).values([
@@ -5012,7 +5012,7 @@ describeEmbeddedPostgres("issueService.create workspace inheritance", () => {
     const child = await svc.create(companyId, {
       parentId: parentIssueId,
       projectId: targetProjectId,
-      title: "Implement the Simplixy ID connect broker",
+      title: "Implement the Simplexy ID connect broker",
     });
 
     expect(child.parentId).toBe(parentIssueId);
@@ -5425,7 +5425,7 @@ describeEmbeddedPostgres("issueService.findMentionedProjectIds", () => {
     await db.insert(companies).values([
       {
         id: companyId,
-        name: "Simplixy",
+        name: "Simplexy",
         issuePrefix: `T${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
         requireBoardApprovalForNewAgents: false,
       },

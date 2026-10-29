@@ -14,7 +14,7 @@ import {
   type MutationErrorToast,
 } from "./query-client";
 
-const gatewayDown = () => new ApiError("Simplixy is restarting", 503, { error: "tenant_app_unavailable" });
+const gatewayDown = () => new ApiError("Simplexy is restarting", 503, { error: "tenant_app_unavailable" });
 
 describe("retry policy", () => {
   it("retries transient errors for about 30 seconds", () => {
@@ -236,7 +236,7 @@ describe("createAppQueryClient", () => {
     await observer.mutate().catch(() => undefined);
     expect(notifyMutationError).toHaveBeenCalledWith({
       title: "Connection interrupted",
-      body: "Simplixy is temporarily unavailable. Please try again in a moment.",
+      body: "Simplexy is temporarily unavailable. Please try again in a moment.",
     });
   });
 

@@ -68,7 +68,7 @@ export function SlackIdentityStep({ endpointId, command, testStartedAt, onConnec
         <div className={`space-y-3 rounded-lg border p-4 ${linkedToMe
           ? "border-(--status-task-done)/30 bg-(--status-task-done)/10"
           : "border-(--status-task-todo)/30 bg-(--status-task-todo)/10"}`}>
-          <p className="text-sm">Choose your Slack account below to link it to <strong>{userLabel ?? "your Simplixy account"}</strong>. Only confirm an account that belongs to you. Future messages will use your Simplixy permissions.</p>
+          <p className="text-sm">Choose your Slack account below to link it to <strong>{userLabel ?? "your Simplexy account"}</strong>. Only confirm an account that belongs to you. Future messages will use your Simplexy permissions.</p>
           {candidates.map((identity) => {
             const mine = identity.status === "linked" && identity.paperclipUserId === userId;
             return (
@@ -78,8 +78,8 @@ export function SlackIdentityStep({ endpointId, command, testStartedAt, onConnec
                   <p className="text-xs text-muted-foreground">{identity.externalDetail}</p>
                 </div>
                 {mine ? <p role="status" className="flex items-center gap-2 text-sm"><CheckCircle2 className="size-4 text-(--status-task-done)" />Linked to you</p>
-                  : identity.status === "linked" ? <p className="text-sm text-muted-foreground">Linked to {identity.paperclipUserLabel ?? "another Simplixy account"}</p>
-                  : <Button variant="outline" disabled={!userId || link.isPending} onClick={() => link.mutate(identity.principalId)} aria-label={`Link ${identity.externalLabel} to my Simplixy account`}>
+                  : identity.status === "linked" ? <p className="text-sm text-muted-foreground">Linked to {identity.paperclipUserLabel ?? "another Simplexy account"}</p>
+                  : <Button variant="outline" disabled={!userId || link.isPending} onClick={() => link.mutate(identity.principalId)} aria-label={`Link ${identity.externalLabel} to my Simplexy account`}>
                     {link.isPending && link.variables === identity.principalId && <Loader2 className="size-4 animate-spin" />}This is my Slack account
                   </Button>}
               </div>
@@ -87,7 +87,7 @@ export function SlackIdentityStep({ endpointId, command, testStartedAt, onConnec
           })}
         </div>
       )}
-      {!userId && !session.isPending && !health.isPending && <p role="alert" className="text-sm text-destructive">Sign in to Simplixy to link your Slack account. Refresh this page after signing in.</p>}
+      {!userId && !session.isPending && !health.isPending && <p role="alert" className="text-sm text-destructive">Sign in to Simplexy to link your Slack account. Refresh this page after signing in.</p>}
       {link.isError && <p role="alert" className="text-sm text-destructive">Couldn&apos;t link your account. Check that you are a member of this company and try again.</p>}
       <div className="flex items-center justify-between gap-3">
         <Button variant="ghost" className="text-muted-foreground" onClick={onSaveExit}>Save &amp; exit</Button>

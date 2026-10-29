@@ -123,7 +123,7 @@ describeEmbeddedPostgres("issue create onboarding first-task routes", () => {
     const companyId = randomUUID();
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `D${companyId.replace(/-/g, "").slice(0, 5).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
     });

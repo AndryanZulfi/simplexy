@@ -155,7 +155,7 @@ export function createDiscordRootThreads(db: Db, options: DiscordRootThreadsOpti
               (resource.enabled || setupDestination)
             )
           ) {
-            reason = "Destination is not enabled in Simplixy";
+            reason = "Destination is not enabled in Simplexy";
           }
 
           if (!reason && endpoint) {
@@ -207,10 +207,10 @@ export function createDiscordRootThreads(db: Db, options: DiscordRootThreadsOpti
             }
             if (!allowed) {
               reason = linkedDenied
-                ? "Linked Simplixy account is not currently permitted"
+                ? "Linked Simplexy account is not currently permitted"
                 : endpoint.allowUnlinkedPeople
                   ? "Endpoint sponsor can no longer authorize external guests"
-                  : "External identity must be linked to a Simplixy account";
+                  : "External identity must be linked to a Simplexy account";
             }
           }
           if (!reason) {
@@ -443,7 +443,7 @@ export function createDiscordRootThreads(db: Db, options: DiscordRootThreadsOpti
             content:
               typeof normalized.message?.text === "string"
                 ? normalized.message.text
-                : "Simplixy task",
+                : "Simplexy task",
           });
           return await db.transaction(async (tx) => {
             await credentialLease.assertOwned(tx);

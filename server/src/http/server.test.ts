@@ -5,7 +5,7 @@ import type { DurablePrpControlPlane } from "../vendor/paperclip-runner/index.js
 import { registerRunnerPrpAuthority, runnerPrpWebSocketInternals } from "../realtime/runner-prp-ws.js";
 import { createPaperclipHttpServer } from "./server.js";
 
-describe("Simplixy HTTP server runner transport", () => {
+describe("Simplexy HTTP server runner transport", () => {
   afterEach(() => runnerPrpWebSocketInternals.resetForTests());
 
   it("registers native runner authority without a separate startup call", async () => {

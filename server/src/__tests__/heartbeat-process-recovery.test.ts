@@ -507,7 +507,7 @@ describeEmbeddedPostgres("heartbeat orphaned process recovery", () => {
   ) {
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix,
       defaultResponsibleUserId: "responsible-user",
       requireBoardApprovalForNewAgents: false,
@@ -1387,7 +1387,7 @@ describeEmbeddedPostgres("heartbeat orphaned process recovery", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix,
       requireBoardApprovalForNewAgents: false,
     });
@@ -4802,7 +4802,7 @@ describeEmbeddedPostgres("heartbeat orphaned process recovery", () => {
     ]);
   });
 
-  it("suspends native Simplixy Runner ownership on graceful restart without cancelling or creating a retry run", async () => {
+  it("suspends native Simplexy Runner ownership on graceful restart without cancelling or creating a retry run", async () => {
     const { agentId, runId, issueId, wakeupRequestId } = await seedRunFixture({
       adapterType: "paperclip_runner",
       agentStatus: "running",
@@ -5407,7 +5407,7 @@ describeEmbeddedPostgres("heartbeat orphaned process recovery", () => {
         displayName: "Kubernetes Sandbox Provider",
         description:
           "Test Kubernetes sandbox provider whose worker is mid-restart",
-        author: "Simplixy",
+        author: "Simplexy",
         categories: ["automation"],
         capabilities: ["environment.drivers.register"],
         entrypoints: { worker: "dist/worker.js" },
@@ -5616,7 +5616,7 @@ describeEmbeddedPostgres("heartbeat orphaned process recovery", () => {
         version: "1.0.0",
         displayName: "Kubernetes Sandbox Provider",
         description: "Test Kubernetes sandbox provider stuck in error",
-        author: "Simplixy",
+        author: "Simplexy",
         categories: ["automation"],
         capabilities: ["environment.drivers.register"],
         entrypoints: { worker: "dist/worker.js" },
@@ -6171,7 +6171,7 @@ describeEmbeddedPostgres("heartbeat orphaned process recovery", () => {
     await db.insert(projects).values({
       id: projectId,
       companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       status: "in_progress",
     });
     await db.insert(projectWorkspaces).values({
@@ -9725,7 +9725,7 @@ describeEmbeddedPostgres("heartbeat orphaned process recovery", () => {
       issueId,
       authorAgentId: agentId,
       authorType: "agent",
-      body: "Welcome to Simplixy!",
+      body: "Welcome to Simplexy!",
     });
     const heartbeat = heartbeatService(db);
 

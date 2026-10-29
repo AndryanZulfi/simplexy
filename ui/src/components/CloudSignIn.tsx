@@ -20,15 +20,15 @@ export function CloudSignIn({ cloud, returnTo }: { cloud: CloudInstanceHealthSta
 
   return (
     <div className="mx-auto max-w-xl space-y-4 p-6">
-      <h1 className="text-xl font-semibold">Sign in to Simplixy Cloud</h1>
+      <h1 className="text-xl font-semibold">Sign in to Simplexy Cloud</h1>
       <p role="alert" className="text-sm text-muted-foreground">
         {entryUrl
-          ? "We couldn't restore your session. Continue to Simplixy Cloud to try again."
+          ? "We couldn't restore your session. Continue to Simplexy Cloud to try again."
           : "Cloud sign-in is unavailable for this workspace. Please contact your administrator."}
       </p>
       {entryUrl && (
         <Button asChild>
-          <a href={entryUrl} onClick={clearCloudSignInAttempt}>Continue to Simplixy Cloud</a>
+          <a href={entryUrl} onClick={clearCloudSignInAttempt}>Continue to Simplexy Cloud</a>
         </Button>
       )}
     </div>

@@ -85,13 +85,13 @@ export async function verifyGitHubCredentials(
           ? `GitHub App needs the documented minimum access for: ${missingPermissions.join(", ")}`
           : null,
         excessivePermissions.length > 0
-          ? `GitHub App has broader permissions than Simplixy needs: ${excessivePermissions.join(", ")}`
+          ? `GitHub App has broader permissions than Simplexy needs: ${excessivePermissions.join(", ")}`
           : null,
         missingEvents.length > 0
           ? `GitHub App must subscribe to: ${missingEvents.join(", ")}`
           : null,
         excessiveEvents.length > 0
-          ? `GitHub App subscribes to broader events than Simplixy needs: ${excessiveEvents.join(", ")}`
+          ? `GitHub App subscribes to broader events than Simplexy needs: ${excessiveEvents.join(", ")}`
           : null,
       ]
         .filter(Boolean)

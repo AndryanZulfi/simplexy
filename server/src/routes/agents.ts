@@ -1881,13 +1881,13 @@ export function agentRoutes(
       } else if (asRecord(config)?.provider === "muse") {
         if (experimental.enableMuse !== true || experimental.enableNativeRunner !== true) throw unprocessable("Muse is experimental and disabled on this instance.", { code: "paperclip_runner_muse_disabled" });
       } else if (asRecord(config)?.provider === "grok_bot" && (experimental.enableGrokBot !== true || experimental.enablePublicMcp !== true || experimental.enableNativeRunner !== true)) {
-        throw unprocessable("Enable Grok Bot, Assistant connections (MCP), and Simplixy Runner before connecting this agent.", { code: "paperclip_runner_grok_disabled" });
+        throw unprocessable("Enable Grok Bot, Assistant connections (MCP), and Simplexy Runner before connecting this agent.", { code: "paperclip_runner_grok_disabled" });
       } else if (!([undefined, "codex", "opencode"].includes(asRecord(config)?.provider as string | undefined)) &&
         !(asRecord(config)?.provider === "acpx" && asRecord(config)?.acpxAgent === "copilot") &&
         !["claude_local", "pi_local", "grok_local"].includes(agentHarnessType("paperclip_runner", asRecord(config) ?? {})) &&
         experimental.enableNativeRunner !== true) {
         throw unprocessable(
-          "Simplixy Runner is experimental and disabled on this instance.",
+          "Simplexy Runner is experimental and disabled on this instance.",
           { code: "paperclip_runner_rollout_disabled" },
         );
       }
@@ -1957,7 +1957,7 @@ export function agentRoutes(
     const defaults = paperclipRunnerTransitionConfig(input.previousAdapterType, input.previousAdapterConfig.model, input.nextAdapterConfig.provider);
     if (!["claude_local", "codex_local", "opencode_local", "pi_local", "grok_local"].includes(input.previousAdapterType)
       && !isPaperclipRunnerProvider(input.nextAdapterConfig.provider)) {
-      throw unprocessable("Select a Simplixy Runner provider before converting this agent.");
+      throw unprocessable("Select a Simplexy Runner provider before converting this agent.");
     }
     const next = { ...defaults, ...input.nextAdapterConfig };
     if (next.provider === "acpx" && next.acpxAgent === "pi") {
@@ -3099,7 +3099,7 @@ export function agentRoutes(
       return;
     }
     if (type === "paperclip_runner" && provider && !isPaperclipRunnerProvider(provider)) {
-      throw unprocessable("Unknown Simplixy Runner provider");
+      throw unprocessable("Unknown Simplexy Runner provider");
     }
     const modelAdapterType = type === "paperclip_runner"
       ? provider === "acpx" && req.query.acpxAgent === "grok" ? "grok_local"
@@ -3243,7 +3243,7 @@ export function agentRoutes(
       // Fail closed on a foreign environment before any secret resolution, env
       // merge, target resolution, sandbox lease, or adapter test runs. The
       // driver check waits for runner selection: a Claude harness on a plugin
-      // environment is only allowed once it resolves to Simplixy Runner.
+      // environment is only allowed once it resolves to Simplexy Runner.
       const requestedEnvironment = requestedEnvironmentId
         ? await assertAdapterTestEnvironmentBinding(companyId, requestedEnvironmentId)
         : null;
@@ -5173,7 +5173,7 @@ export function agentRoutes(
 
   router.put("/agents/:id/instructions-bundle/file", validate(upsertAgentInstructionsFileSchema), async (req, res) => {
     if (req.actor.source === "mcp_oauth" && req.body.path === "promptTemplate.legacy.md") {
-      throw unprocessable("Migrate legacy prompt instructions to a managed instruction file in Simplixy before editing through an assistant", { code: "MCP_LEGACY_INSTRUCTIONS_UNVERSIONED" });
+      throw unprocessable("Migrate legacy prompt instructions to a managed instruction file in Simplexy before editing through an assistant", { code: "MCP_LEGACY_INSTRUCTIONS_UNVERSIONED" });
     }
     const id = req.params.id as string;
     const existing = await getAccessibleResource(req, res, svc.getById(id), "Agent not found");
@@ -6520,7 +6520,7 @@ export function agentRoutes(
   /**
    * Assesses the setup-token confidential transport. The product
    * owner set a non-negotiable requirement: do not force TLS. Many users run
-   * Simplixy over plain HTTP on a home server or a Tailscale tailnet. So the
+   * Simplexy over plain HTTP on a home server or a Tailscale tailnet. So the
    * route does not block a non-confidential transport. It returns a non-blocking
    * advisory instead, and the route attaches it to the confidential response.
    * The client shows a visible disclaimer and lets the login proceed. The

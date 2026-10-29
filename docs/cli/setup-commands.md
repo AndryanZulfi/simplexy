@@ -5,7 +5,7 @@ summary: Onboard, run, doctor, and configure
 
 Instance setup and diagnostics commands.
 
-## `paperclipai run`
+## `simplexy run`
 
 One-command bootstrap and start:
 
@@ -16,7 +16,7 @@ pnpm paperclipai run
 Does:
 
 1. Auto-onboards if config is missing
-2. Runs `paperclipai doctor` with repair enabled
+2. Runs `simplexy doctor` with repair enabled
 3. Starts the server when checks pass
 
 Choose a specific instance:
@@ -25,7 +25,7 @@ Choose a specific instance:
 npx paperclipai run --instance dev
 ```
 
-## `paperclipai onboard`
+## `simplexy onboard`
 
 Interactive first-time setup:
 
@@ -33,7 +33,7 @@ Interactive first-time setup:
 pnpm paperclipai onboard
 ```
 
-If Paperclip is already configured, rerunning `onboard` keeps the existing config in place. Use `paperclipai configure` to change settings on an existing install.
+If Simplexy is already configured, rerunning `onboard` keeps the existing config in place. Use `simplexy configure` to change settings on an existing install.
 
 First prompt:
 
@@ -52,7 +52,7 @@ Quickstart defaults + immediate start:
 pnpm paperclipai onboard --yes
 ```
 
-When onboarding starts Paperclip from an interactive terminal, it opens the
+When onboarding starts Simplexy from an interactive terminal, it opens the
 onboarding page in your browser once. Non-interactive terminals stay silent.
 Suppress browser opening explicitly for headless or automated runs with either
 environment variable:
@@ -62,9 +62,9 @@ PAPERCLIP_NO_BROWSER=1 pnpm paperclipai onboard --yes
 PAPERCLIP_OPEN_ON_LISTEN=false pnpm paperclipai onboard --yes
 ```
 
-On an existing install, `--yes` now preserves the current config and just starts Paperclip with that setup.
+On an existing install, `--yes` now preserves the current config and just starts Simplexy with that setup.
 
-## `paperclipai doctor`
+## `simplexy doctor`
 
 Health checks with optional auto-repair:
 
@@ -82,7 +82,7 @@ Validates:
 - Storage configuration
 - Missing key files
 
-## `paperclipai configure`
+## `simplexy configure`
 
 Update configuration sections:
 
@@ -99,7 +99,7 @@ coming-soon GCP/Vault) live in the board UI under
 `Company Settings → Secrets → Provider vaults` and the
 `/api/companies/{companyId}/secret-provider-configs` API.
 
-## `paperclipai env`
+## `simplexy env`
 
 Show resolved environment configuration:
 
@@ -109,7 +109,7 @@ pnpm paperclipai env
 
 This now includes bind-oriented deployment settings such as `PAPERCLIP_BIND` and `PAPERCLIP_BIND_HOST` when configured.
 
-## `paperclipai allowed-hostname`
+## `simplexy allowed-hostname`
 
 Allow a private hostname for authenticated/private mode:
 

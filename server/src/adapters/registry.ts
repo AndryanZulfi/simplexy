@@ -225,7 +225,7 @@ The standalone ACPX adapter has been retired. Use:
 - claude_local with adapterConfig.engine="acp" for Claude ACP execution.
 - codex_local with adapterConfig.engine="acp" for Codex ACP execution.
 
-Simplixy keeps this tombstone registered so stale acpx_local rows fail clearly instead of falling back to the process adapter.
+Simplexy keeps this tombstone registered so stale acpx_local rows fail clearly instead of falling back to the process adapter.
 `;
 
 // The Claude interactive login capability. Claude runs `claude setup-token` on a
@@ -423,7 +423,7 @@ const paperclipRunnerAdapter: ServerAdapterModule = {
         ? error
         : new PaperclipRunnerProviderProfileError(
             "paperclip_runner_provider_unsupported",
-            "Simplixy Runner provider configuration is invalid.",
+            "Simplexy Runner provider configuration is invalid.",
           );
       return {
         adapterType: "paperclip_runner",
@@ -441,11 +441,11 @@ const paperclipRunnerAdapter: ServerAdapterModule = {
     }
     if (profile.provider === "muse") {
       return { adapterType: "paperclip_runner", status: "warn" as const, testedAt: new Date().toISOString(),
-        checks: [{ code: "muse_background_test_required", level: "warn" as const, message: "Muse manages its model and billing. Verify the paired receiver and independent background reply in Simplixy; this read-only check does not wake Muse." }] };
+        checks: [{ code: "muse_background_test_required", level: "warn" as const, message: "Muse manages its model and billing. Verify the paired receiver and independent background reply in Simplexy; this read-only check does not wake Muse." }] };
     }
     if (profile.provider === "openai_dot") {
       return { adapterType: "paperclip_runner", status: "warn" as const, testedAt: new Date().toISOString(),
-        checks: [{ code: "dot_event_test_required", level: "warn" as const, message: "Dot manages its model and billing. Validate the dedicated agent binding and event round trip in Simplixy; this read-only check does not wake the Dot." }] };
+        checks: [{ code: "dot_event_test_required", level: "warn" as const, message: "Dot manages its model and billing. Validate the dedicated agent binding and event round trip in Simplexy; this read-only check does not wake the Dot." }] };
     }
     if (profile.provider === "acpx") {
       try {
@@ -583,7 +583,7 @@ const paperclipRunnerAdapter: ServerAdapterModule = {
         )
       : buildNpmRuntimeCommandSpec(config, "codex", "@openai/codex@0.160.0"),
   agentConfigurationDoc:
-    "# Simplixy Runner\n\nAdapter: paperclip_runner\n\nRuns Codex, OpenCode, Claude Managed, AWS AgentCore, or ACPX Claude/Grok Build/Cursor/Pi through the Rust Simplixy runner and authenticated PRP transport. Pi accepts an explicit provider/model ID and uses the company credentials bound to the agent environment. GitHub Copilot requires a saved GitHub token and an explicitly selected available model. Managed providers use company-scoped qualified profiles, explicit retention acknowledgement, and spend limits.\n",
+    "# Simplexy Runner\n\nAdapter: paperclip_runner\n\nRuns Codex, OpenCode, Claude Managed, AWS AgentCore, or ACPX Claude/Grok Build/Cursor/Pi through the Rust Simplexy runner and authenticated PRP transport. Pi accepts an explicit provider/model ID and uses the company credentials bound to the agent environment. GitHub Copilot requires a saved GitHub token and an explicitly selected available model. Managed providers use company-scoped qualified profiles, explicit retention acknowledgement, and spend limits.\n",
   getConfigSchema: () => ({
     fields: [
       {
@@ -697,7 +697,7 @@ const paperclipRunnerAdapter: ServerAdapterModule = {
         label: "Estimated session ceiling (USD)",
         type: "number" as const,
         default: 1,
-        hint: "Simplixy estimate; AWS does not provide a per-session currency hard stop.",
+        hint: "Simplexy estimate; AWS does not provide a per-session currency hard stop.",
         meta: { visibleWhen: { key: "provider", value: "aws_agentcore" } },
       },
       {

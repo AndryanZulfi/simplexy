@@ -3,7 +3,7 @@
 Status: Canonical deployment and auth mode model  
 Date: 2026-02-23
 
-### Paperclip Cloud sign-in
+### Simplexy Cloud sign-in
 
 Cloud-managed instances use Cloud for human sign-in. The instance `/auth`
 route waits for deployment metadata before rendering; it never renders the
@@ -33,7 +33,7 @@ production retains its managed feature policy.
 
 ## 1. Purpose
 
-Paperclip supports two runtime modes:
+Simplexy supports two runtime modes:
 
 1. `local_trusted`
 2. `authenticated`
@@ -45,7 +45,7 @@ Paperclip supports two runtime modes:
 
 This keeps one authenticated auth stack while still separating low-friction private-network defaults from internet-facing hardening requirements.
 
-Paperclip now treats **bind** as a separate concern from auth:
+Simplexy now treats **bind** as a separate concern from auth:
 
 - auth model: `local_trusted` vs `authenticated`, plus `private/public`
 - reachability model: `server.bind = loopback | lan | tailnet | custom`
@@ -92,18 +92,18 @@ Paperclip now treats **bind** as a separate concern from auth:
 - recommended bind is `loopback` behind a reverse proxy; direct `lan/custom` is advanced
 - local stdio MCP runtime slots fail closed by default; set `PAPERCLIP_TRUSTED_MCP_RUNTIME_HOST` only when a trusted worker/runtime host is configured to supervise those processes. Remote HTTP MCP remains the preferred public-hosted path.
 
-### Paperclip Cloud warm-pool identity
+### Simplexy Cloud warm-pool identity
 
 A Cloud-managed warm-pool process initially boots under a `pool-*` origin. It
 receives only Cloud's public verification set in
 `PAPERCLIP_CLOUD_RUNTIME_IDENTITY_JWKS`. Before Cloud activates a claimed stack,
 the existing server-to-server health request carries a short-lived Ed25519 JWS
 that binds the immutable `PAPERCLIP_CLOUD_STACK_ID`, pool claim, previous
-origin, canonical HTTPS origin, and slug. Paperclip verifies and persists that
+origin, canonical HTTPS origin, and slug. Simplexy verifies and persists that
 one-time assertion, updates its live public/API URL provider, and acknowledges
 the exact origin in `/api/health` before the first user request is admitted.
 
-The Harness signing private key is never present in Paperclip, browsers, or
+The Harness signing private key is never present in Simplexy, browsers, or
 other tenant stacks. A different claim or destination cannot replace the
 persisted identity. On restart, the durable identity is loaded before auth,
 routes, and child-runtime configuration, even when provider variables are
@@ -163,7 +163,7 @@ This is required because user assignment paths validate active membership for `a
 
 ## 7. Local Trusted -> Authenticated Claim Flow
 
-When running `authenticated` mode, if the only instance admin is `local-board`, Paperclip emits a startup warning with a one-time high-entropy claim URL.
+When running `authenticated` mode, if the only instance admin is `local-board`, Simplexy emits a startup warning with a one-time high-entropy claim URL.
 
 - URL format: `/board-claim/<token>?code=<code>`
 - intended use: signed-in human claims board ownership
@@ -179,10 +179,10 @@ This prevents lockout when a user migrates from long-running local trusted usage
 Fresh authenticated installs start in `bootstrap_pending` until the first
 `instance_admin` exists.
 
-For `authenticated/private`, Paperclip supports a browser-first setup path:
+For `authenticated/private`, Simplexy supports a browser-first setup path:
 
-1. open the Paperclip URL from the private network or appliance UI
-2. sign in or create a Paperclip account
+1. open the Simplexy URL from the private network or appliance UI
+2. sign in or create a Simplexy account
 3. choose `Claim this instance` on the setup screen
 
 That browser claim promotes the signed-in session user to the first instance

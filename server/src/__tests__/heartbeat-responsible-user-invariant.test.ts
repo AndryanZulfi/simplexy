@@ -137,7 +137,7 @@ describeEmbeddedPostgres("heartbeat responsible-user invariant", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `R${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       defaultResponsibleUserId: ownerUserId,
     });

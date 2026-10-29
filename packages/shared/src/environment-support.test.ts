@@ -7,7 +7,7 @@ import {
 } from "./environment-support.js";
 
 describe("isSandboxProviderSupportedForAdapter", () => {
-  it("treats Simplixy Runner as a remote-managed adapter", () => {
+  it("treats Simplexy Runner as a remote-managed adapter", () => {
     expect(adapterSupportsRemoteManagedEnvironments("paperclip_runner")).toBe(true);
     expect(supportedEnvironmentDriversForAdapter("paperclip_runner")).toEqual([
       "local",

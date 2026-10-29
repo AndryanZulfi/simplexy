@@ -409,7 +409,7 @@ describeEmbeddedPostgres("cases routes", () => {
     const createResponse = await http
       .post(`/api/companies/${company.id}/cases`)
       .set("Authorization", `Bearer ${token}`)
-      .set("X-Simplixy-Run-Id", runId)
+      .set("X-Simplexy-Run-Id", runId)
       .send({
         caseType: "blog_post",
         key: "launch-post",
@@ -422,14 +422,14 @@ describeEmbeddedPostgres("cases routes", () => {
     await http
       .put(`/api/cases/${createResponse.body.identifier}/documents/body`)
       .set("Authorization", `Bearer ${token}`)
-      .set("X-Simplixy-Run-Id", runId)
+      .set("X-Simplexy-Run-Id", runId)
       .send({ body: "# Launch\n\nDraft body." })
       .expect(200);
 
     await http
       .patch(`/api/cases/${caseId}`)
       .set("Authorization", `Bearer ${token}`)
-      .set("X-Simplixy-Run-Id", runId)
+      .set("X-Simplexy-Run-Id", runId)
       .send({
         status: "in_review",
         fields: { slug: "launch-post", target_audience: "operators", publish_url: "https://example.com/launch" },
@@ -439,7 +439,7 @@ describeEmbeddedPostgres("cases routes", () => {
     await http
       .post(`/api/cases/${caseId}/attachments`)
       .set("Authorization", `Bearer ${token}`)
-      .set("X-Simplixy-Run-Id", runId)
+      .set("X-Simplexy-Run-Id", runId)
       .attach("file", Buffer.from("asset"), "asset.txt")
       .expect(201);
 
@@ -456,7 +456,7 @@ describeEmbeddedPostgres("cases routes", () => {
     const detail = await http
       .get(`/api/cases/${createResponse.body.identifier}`)
       .set("Authorization", `Bearer ${token}`)
-      .set("X-Simplixy-Run-Id", runId)
+      .set("X-Simplexy-Run-Id", runId)
       .expect(200);
     expect(detail.body.status).toBe("in_review");
     expect(detail.body.documents).toHaveLength(1);

@@ -120,7 +120,7 @@ async function editFields(
   }
 }
 
-describe("Simplixy Runner Codex configuration", () => {
+describe("Simplexy Runner Codex configuration", () => {
   it.each(["", "--sandbox,read-only"])("shows actual automatic Legacy policy and preserves the explicit toggle (%s)", async (extraArgs) => {
     const container = document.createElement("div");
     document.body.appendChild(container);
@@ -237,8 +237,8 @@ describe("Simplixy Runner Codex configuration", () => {
   });
   it.each([
     [undefined, "Full auto (approve all)"],
-    ["approve-paperclip", "Automatic Simplixy actions"],
-    ["approve-reads", "Allow Simplixy reads"],
+    ["approve-paperclip", "Automatic Simplexy actions"],
+    ["approve-reads", "Allow Simplexy reads"],
     ["deny-all", "Deny all"],
   ])("displays Grok's default or saved permission mode %s", async (acpxPermissionMode, label) => {
     const html = await renderRunner({ provider: "acpx", acpxAgent: "grok", acpxPermissionMode });
@@ -294,7 +294,7 @@ describe("Simplixy Runner Codex configuration", () => {
     expect(html).not.toContain("Codex via ACPX");
     expect(html).not.toContain("ACPX Codex");
     expect(html).not.toContain("Pi via ACPX");
-    expect(html).toContain("Allow Simplixy reads");
+    expect(html).toContain("Allow Simplexy reads");
   });
 
   it.each([undefined, "agent", "plan", "ask"])("displays saved Cursor mode %s", async acpxSessionMode => {
@@ -323,7 +323,7 @@ describe("Simplixy Runner Codex configuration", () => {
     const html = await renderRunner({ codexPermissionMode: "unrestricted" });
 
     expect(html).toContain("Unsupported saved mode — select a qualified mode");
-    expect(html).toContain("cannot start or recover a Simplixy Runner run");
+    expect(html).toContain("cannot start or recover a Simplexy Runner run");
     expect(html).toContain("Select Automatic (isolated) to remediate it");
     expect(html).not.toContain("Full auto (never ask)");
   });

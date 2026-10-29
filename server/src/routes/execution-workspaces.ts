@@ -304,7 +304,7 @@ export function executionWorkspaceRoutes(db: Db, opts: { pluginWorkerManager?: P
 
     const workspaceCwd = existing.cwd;
     if (!workspaceCwd) {
-      res.status(422).json({ error: "Execution workspace needs a local path before Simplixy can run workspace commands" });
+      res.status(422).json({ error: "Execution workspace needs a local path before Simplexy can run workspace commands" });
       return;
     }
 
@@ -448,7 +448,7 @@ export function executionWorkspaceRoutes(db: Db, opts: { pluginWorkerManager?: P
             ? [cliDist]
             : null;
         if (!repairCliArgs) {
-          throw new Error("Workspace repair cannot find a runnable Simplixy CLI in the base workspace.");
+          throw new Error("Workspace repair cannot find a runnable Simplexy CLI in the base workspace.");
         }
       } catch (error) {
         throw unprocessable(
@@ -597,7 +597,7 @@ export function executionWorkspaceRoutes(db: Db, opts: { pluginWorkerManager?: P
           }
           const availableWorkspace = await ensureWorkspaceAvailable();
           if (!availableWorkspace) {
-            throw new Error("Execution workspace needs a local path before Simplixy can run workspace commands");
+            throw new Error("Execution workspace needs a local path before Simplexy can run workspace commands");
           }
           return await runWorkspaceJobForControl({
             actor: {
@@ -828,7 +828,7 @@ export function executionWorkspaceRoutes(db: Db, opts: { pluginWorkerManager?: P
             if (repairRestartsRuntimeServices) {
               const availableWorkspace = await ensureWorkspaceAvailable();
               if (!availableWorkspace) {
-                throw new Error("Execution workspace needs a local path before Simplixy can restart it.");
+                throw new Error("Execution workspace needs a local path before Simplexy can restart it.");
               }
               startedServices = await startRuntimeServicesForWorkspaceControl({
                 db,
@@ -884,7 +884,7 @@ export function executionWorkspaceRoutes(db: Db, opts: { pluginWorkerManager?: P
         if (action === "start" || action === "restart") {
           const availableWorkspace = await ensureWorkspaceAvailable();
           if (!availableWorkspace) {
-            throw new Error("Execution workspace needs a local path before Simplixy can manage local runtime services");
+            throw new Error("Execution workspace needs a local path before Simplexy can manage local runtime services");
           }
           let startedServices;
           try {

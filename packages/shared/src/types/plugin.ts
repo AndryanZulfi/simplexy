@@ -41,12 +41,12 @@ import type { Routine, RoutineTrigger, RoutineVariable } from "./routine.js";
  * A JSON Schema object used for plugin config schemas and tool parameter schemas.
  * Plugins provide these as plain JSON Schema compatible objects.
  *
- * The Simplixy extension keywords below are recognised by the Simplixy UI
+ * The Simplexy extension keywords below are recognised by the Simplexy UI
  * but are otherwise ignored by standard JSON Schema validators.
  */
 export type JsonSchema = {
   /**
-   * When true, the Simplixy config UI hides this property behind an
+   * When true, the Simplexy config UI hides this property behind an
    * "Advanced options" disclosure. Defaults to false (always visible).
    */
   "x-paperclip-advanced"?: boolean;
@@ -243,7 +243,7 @@ export interface PluginEnvironmentDriverDeclaration {
   /** Kind of template reference returned by the provider's capture hook. */
   templateRefKind?: "snapshot" | "image" | "provider_template" | "unknown" | (string & {});
   /**
-   * How Simplixy should apply a captured template ref back into this provider's
+   * How Simplexy should apply a captured template ref back into this provider's
    * runtime config. Omit to use the standard key for `templateRefKind`.
    */
   templateConfigBinding?: PluginEnvironmentTemplateConfigBinding;
@@ -277,7 +277,7 @@ export interface PluginEnvironmentDriverDeclaration {
 }
 
 /**
- * Declares a normal Simplixy agent that a plugin can provision and later
+ * Declares a normal Simplexy agent that a plugin can provision and later
  * resolve by stable key within each company.
  */
 export interface PluginManagedAgentDeclaration {
@@ -303,7 +303,7 @@ export interface PluginManagedAgentDeclaration {
   adapterPreference?: Array<AgentAdapterType | string>;
   /** Suggested adapter configuration. */
   adapterConfig?: Record<string, unknown>;
-  /** Suggested Simplixy runtime configuration. */
+  /** Suggested Simplexy runtime configuration. */
   runtimeConfig?: Record<string, unknown>;
   /** Suggested permissions object. Normalized by the host on create/reset. */
   permissions?: Record<string, unknown>;
@@ -342,7 +342,7 @@ export interface PluginLocalFolderDeclaration {
 }
 
 /**
- * Declares a normal Simplixy project that a plugin can provision and later
+ * Declares a normal Simplexy project that a plugin can provision and later
  * resolve by stable key within each company.
  */
 export interface PluginManagedProjectDeclaration {
@@ -586,7 +586,7 @@ export interface PluginLauncherDeclaration {
 }
 
 /**
- * Lower-bound semver requirement for the Simplixy host.
+ * Lower-bound semver requirement for the Simplexy host.
  *
  * The host should reject installation when its running version is lower than
  * the declared minimum.

@@ -91,7 +91,7 @@ export function splitTranscriptAtAnchors(
  * The live parent row's nesting rule (PAP-354, narrowed by PAP-361): only tool
  * calls, provider-supplied reasoning summaries, and usage readouts nest inside
  * the expandable live turn. The classic parent-row surface may flatten a live
- * interstitial into its status line; the Simplixy Runner task surface instead
+ * interstitial into its status line; the Simplexy Runner task surface instead
  * projects commentary as durable chronological phase boundaries. The run's
  * final reply is resolved separately into the turn's durable response slot or
  * its posted comment bubble. Markers, statuses and interaction cards stay in
@@ -1201,7 +1201,7 @@ export function paperclipRunnerHistoryItems(
 }
 
 /**
- * Semantic rows for the Simplixy runner's Codex-style activity disclosure.
+ * Semantic rows for the Simplexy runner's Codex-style activity disclosure.
  *
  * This is intentionally narrower than the stored transcript and the runner
  * inspector: it keeps work a person can understand or act on while excluding
@@ -1279,7 +1279,7 @@ export function paperclipRunnerActivityItems(
 }
 
 /**
- * Ordered input for the Simplixy Runner task-turn timeline. This keeps the
+ * Ordered input for the Simplexy Runner task-turn timeline. This keeps the
  * semantic activity filter above, but retains runtime-request lifecycles so
  * the shared projector can use each request as a phase boundary and place its
  * terminal receipt at the request's first-seen position.
@@ -1642,12 +1642,12 @@ function phaseSummary(
         case "paperclip_read":
           text =
             count === 1
-              ? "Read from Simplixy"
-              : `Read from Simplixy ${count} times`;
+              ? "Read from Simplexy"
+              : `Read from Simplexy ${count} times`;
           break;
         case "task_operation":
           text =
-            count === 1 ? "Used Simplixy" : `Used Simplixy ${count} times`;
+            count === 1 ? "Used Simplexy" : `Used Simplexy ${count} times`;
           break;
         default:
           text = count === 1 ? "Used a tool" : `Used ${count} tools`;

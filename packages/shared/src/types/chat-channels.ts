@@ -5,7 +5,7 @@ export interface ChatExecutionDefaults {
   workspace?: TaskWorkspaceSelection | null;
 }
 
-/** Provider-neutral contracts for Simplixy's native external chat subsystem. */
+/** Provider-neutral contracts for Simplexy's native external chat subsystem. */
 export const CHAT_PROVIDERS = [
   "slack",
   "github",

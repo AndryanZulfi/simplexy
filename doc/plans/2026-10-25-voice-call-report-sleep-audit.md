@@ -153,7 +153,7 @@ and reviews are required for the final pushed head. Parent #17580's company
 deletion finding remains unresolved; denial latency finding is resolved.
 
 
-## Paperclip review: report window index and writer scope
+## Simplexy review: report window index and writer scope
 
 Review findings 4370594150 and 4370594357 identified deployment-contract clarity
 and expensive report reconstruction. The supported writer model is now explicit:

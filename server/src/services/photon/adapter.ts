@@ -376,7 +376,7 @@ export class PhotonChatAdapter implements Adapter<PhotonThread, PhotonMessage> {
     _message: AdapterPostableMessage,
   ): Promise<never> {
     throw new Error(
-      "Photon sends require an immutable Simplixy publication identity",
+      "Photon sends require an immutable Simplexy publication identity",
     );
   }
   async editMessage(
@@ -385,7 +385,7 @@ export class PhotonChatAdapter implements Adapter<PhotonThread, PhotonMessage> {
     _message: AdapterPostableMessage,
   ): Promise<never> {
     throw new Error(
-      "Photon edits require an immutable Simplixy publication identity",
+      "Photon edits require an immutable Simplexy publication identity",
     );
   }
   async deleteMessage(): Promise<never> {

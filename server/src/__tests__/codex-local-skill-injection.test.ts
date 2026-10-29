@@ -40,7 +40,7 @@ describe("codex local adapter skill injection", () => {
     cleanupDirs.clear();
   });
 
-  it("repairs a Codex Simplixy skill symlink that still points at another live checkout", async () => {
+  it("repairs a Codex Simplexy skill symlink that still points at another live checkout", async () => {
     const currentRepo = await makeTempDir("paperclip-codex-current-");
     const oldRepo = await makeTempDir("paperclip-codex-old-");
     const skillsHome = await makeTempDir("paperclip-codex-home-");
@@ -95,7 +95,7 @@ describe("codex local adapter skill injection", () => {
     );
   });
 
-  it("preserves a custom Codex skill symlink outside Simplixy repo checkouts", async () => {
+  it("preserves a custom Codex skill symlink outside Simplexy repo checkouts", async () => {
     const currentRepo = await makeTempDir("paperclip-codex-current-");
     const customRoot = await makeTempDir("paperclip-codex-custom-");
     const skillsHome = await makeTempDir("paperclip-codex-home-");
@@ -121,7 +121,7 @@ describe("codex local adapter skill injection", () => {
     );
   });
 
-  it("prunes broken symlinks for unavailable Simplixy repo skills before Codex starts", async () => {
+  it("prunes broken symlinks for unavailable Simplexy repo skills before Codex starts", async () => {
     const currentRepo = await makeTempDir("paperclip-codex-current-");
     const oldRepo = await makeTempDir("paperclip-codex-old-");
     const skillsHome = await makeTempDir("paperclip-codex-home-");
@@ -161,7 +161,7 @@ describe("codex local adapter skill injection", () => {
     );
   });
 
-  it("preserves other live Simplixy skill symlinks in the shared workspace skill directory", async () => {
+  it("preserves other live Simplexy skill symlinks in the shared workspace skill directory", async () => {
     const currentRepo = await makeTempDir("paperclip-codex-current-");
     const skillsHome = await makeTempDir("paperclip-codex-home-");
     cleanupDirs.add(currentRepo);

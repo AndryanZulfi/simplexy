@@ -829,7 +829,7 @@ describe("TaskChatComposer", () => {
     render(<TaskChatComposer onAdd={vi.fn()} workMode="standard" onAttachImage={onAttachImage} />);
     pasteFiles([new File(["bytes"], "notes.txt", { type: "text/plain" })]);
     await flushAsync();
-    expect(container.textContent).toContain("Simplixy is restarting or updating");
+    expect(container.textContent).toContain("Simplexy is restarting or updating");
     expect(container.textContent).not.toContain("tenant_app_unavailable");
     await new Promise((resolve) => setTimeout(resolve, 50));
     expect(onAttachImage).toHaveBeenCalledTimes(1);
@@ -838,7 +838,7 @@ describe("TaskChatComposer", () => {
     await flushAsync();
     expect(onAttachImage).toHaveBeenCalledTimes(2);
     expect(container.querySelector('button[aria-label="Retry notes.txt"]')).toBeNull();
-    expect(container.textContent).not.toContain("Simplixy is restarting or updating");
+    expect(container.textContent).not.toContain("Simplexy is restarting or updating");
     expect(sendButton().disabled).toBe(false);
   });
 

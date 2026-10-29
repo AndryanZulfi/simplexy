@@ -242,7 +242,7 @@ export function SidebarAccountMenu({
               ) : null}
               <MenuAction
                 label="Documentation"
-                description="Open Simplixy docs in a new tab."
+                description="Open Simplexy docs in a new tab."
                 icon={BookOpen}
                 href={DOCS_URL}
                 external

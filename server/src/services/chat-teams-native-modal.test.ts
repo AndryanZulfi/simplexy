@@ -303,7 +303,7 @@ describe("Teams native task module adapter-to-runtime boundary", () => {
     return { runtime, check, dispatch, onMessage };
   }
 
-  it("round-trips the Simplixy form through task/fetch and task/submit with exact opaque fields and source", async () => {
+  it("round-trips the Simplexy form through task/fetch and task/submit with exact opaque fields and source", async () => {
     const form = questionForm();
     const onAction = vi.fn<ActionCallback>(async ({ event }) => {
       await event.openModal(form.modal);

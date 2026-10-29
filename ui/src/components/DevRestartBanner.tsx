@@ -52,8 +52,8 @@ export function DevRestartBanner({ devServer }: { devServer?: DevServerHealthSta
   async function requestRestartNow() {
     const warning =
       currentDevServer.activeRunCount > 0
-        ? `Restart Simplixy now? This may interrupt ${activeRunLabel}.`
-        : "Restart Simplixy now?";
+        ? `Restart Simplexy now? This may interrupt ${activeRunLabel}.`
+        : "Restart Simplexy now?";
     if (!window.confirm(warning)) return;
 
     setRestartPending(true);

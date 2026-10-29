@@ -108,7 +108,7 @@ function harness(config: Record<string, unknown> = {}) {
   return { adapter, chat, client, handlers, logger };
 }
 
-describe("Simplixy Discord adapter patch", () => {
+describe("Simplexy Discord adapter patch", () => {
   afterEach(() => {
     vi.useRealTimers();
     vi.unstubAllGlobals();
@@ -476,7 +476,7 @@ describe("Simplixy Discord adapter patch", () => {
     expect(threadId).toBe("discord:@me:dm-1");
   });
 
-  it("never logs inbound message content before Simplixy admission", async () => {
+  it("never logs inbound message content before Simplexy admission", async () => {
     const { adapter, chat, client, handlers, logger } = harness();
     await adapter.initialize(chat as never);
     (
@@ -871,7 +871,7 @@ describe("Simplixy Discord adapter patch", () => {
     );
   });
 
-  it("checks Simplixy admission before creating a root provider thread", async () => {
+  it("checks Simplexy admission before creating a root provider thread", async () => {
     const shouldCreateThread = vi.fn().mockResolvedValue(false);
     const { adapter, chat } = harness({ shouldCreateThread });
     await adapter.initialize(chat as never);
@@ -1243,7 +1243,7 @@ describe("Simplixy Discord adapter patch", () => {
     );
   });
 
-  it("does not acknowledge an action that Simplixy durably rejects", async () => {
+  it("does not acknowledge an action that Simplexy durably rejects", async () => {
     const { adapter, chat, client, handlers, logger } = harness();
     chat.handleActionEvent.mockRejectedValueOnce(
       Object.assign(new Error("action rejected"), {
@@ -1267,11 +1267,11 @@ describe("Simplixy Discord adapter patch", () => {
     expect(interaction.deferUpdate).not.toHaveBeenCalled();
     expect(interaction.reply).toHaveBeenCalledWith({
       content:
-        "This action is no longer available. Open the linked Simplixy task or ask an operator to link this account.",
+        "This action is no longer available. Open the linked Simplexy task or ask an operator to link this account.",
       flags: 64,
     });
     expect(logger.info).toHaveBeenCalledWith(
-      "Discord Gateway action was not acknowledged after Simplixy rejected it",
+      "Discord Gateway action was not acknowledged after Simplexy rejected it",
       expect.objectContaining({
         event: "interaction",
         messageId: "message-2",
@@ -1279,7 +1279,7 @@ describe("Simplixy Discord adapter patch", () => {
     );
   });
 
-  it("acknowledges a duplicate that Simplixy reports as already durable", async () => {
+  it("acknowledges a duplicate that Simplexy reports as already durable", async () => {
     const { adapter, chat, client, handlers } = harness();
     await adapter.initialize(chat as never);
     (
@@ -1365,7 +1365,7 @@ describe("Simplixy Discord adapter patch", () => {
     expect(interaction.deferUpdate).not.toHaveBeenCalled();
     expect(interaction.reply).not.toHaveBeenCalled();
     expect(logger.info).toHaveBeenCalledWith(
-      "Discord Gateway action was not acknowledged after Simplixy rejected it",
+      "Discord Gateway action was not acknowledged after Simplexy rejected it",
       expect.objectContaining({
         event: "interaction",
         messageId: "message-2",

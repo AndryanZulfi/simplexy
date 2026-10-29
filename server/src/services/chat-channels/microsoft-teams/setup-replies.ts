@@ -32,7 +32,7 @@ export async function deferTeamsSetupReply(
               principalId: null,
               nextAttemptAt: null,
               processedAt: resolutionAt,
-              redactedError: "Destination is not enabled in Simplixy",
+              redactedError: "Destination is not enabled in Simplexy",
               updatedAt: resolutionAt,
             },
       )

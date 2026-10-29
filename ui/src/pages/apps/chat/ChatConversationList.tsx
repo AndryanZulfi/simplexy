@@ -73,7 +73,7 @@ export function ChatConversationList({
                   className="break-words font-medium hover:underline"
                   to={`/issues/${row.issueId}`}
                 >
-                  {row.issueTitle ?? row.issueIdentifier ?? "Simplixy task"}
+                  {row.issueTitle ?? row.issueIdentifier ?? "Simplexy task"}
                 </Link>
               ) : (
                 <span className="font-medium">

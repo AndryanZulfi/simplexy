@@ -640,9 +640,9 @@ else needs it and everything in it is reproducible:
 - no other workspace or project workspace refers to it (a workspace already expired with its
   worktree removed does not count) and no runtime service runs in it;
 - after `git worktree prune`, it has no worktree besides its own checkout;
-- its own checkout has no tracked changes and no untracked files (only Paperclip's
+- its own checkout has no tracked changes and no untracked files (only Simplexy's
   compaction trash is allowed, even inside a directory with a regenerable name), and its
-  ignored files are only inside regenerable directories (such as `node_modules`) or Paperclip's compaction
+  ignored files are only inside regenerable directories (such as `node_modules`) or Simplexy's compaction
   trash. Empty directories, such as the `.paperclip/worktrees` parent left by the old
   worktree, do not count;
 - it has only branch, tag and remote-tracking refs (no stash, notes or replacement refs);

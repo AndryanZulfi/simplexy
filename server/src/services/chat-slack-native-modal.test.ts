@@ -282,9 +282,9 @@ describe("Slack native multi-question modal adapter-to-runtime boundary", () => 
           user: {
             id: params.get("user"),
             name: "paperclip-agent",
-            real_name: "Simplixy Agent",
+            real_name: "Simplexy Agent",
             is_bot: true,
-            profile: { display_name: "Simplixy Agent" },
+            profile: { display_name: "Simplexy Agent" },
           },
         };
       } else if (method === "views.open") {
@@ -413,7 +413,7 @@ describe("Slack native multi-question modal adapter-to-runtime boundary", () => 
     expect(test.validations).toEqual([{ ok: true, answers: expect.any(Array) }]);
   });
 
-  it("round-trips the actual Simplixy modal, opaque metadata and Slack state into canonical answers", async () => {
+  it("round-trips the actual Simplexy modal, opaque metadata and Slack state into canonical answers", async () => {
     const test = await harness();
     const view = await test.open();
     expect(view.callback_id).toBe(test.form.draft.submitActionId);

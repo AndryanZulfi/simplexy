@@ -286,7 +286,7 @@ describeEmbeddedPostgres("shared-workspace run serialization", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix,
       requireBoardApprovalForNewAgents: false,
       defaultResponsibleUserId: "responsible-user",
@@ -576,7 +576,7 @@ describeEmbeddedPostgres("shared-workspace run serialization", () => {
     if (state === "archived") {
       await db.insert(environments).values({
         name: "Unavailable managed sandbox", driver: "sandbox", status: "archived",
-        config: { provider: "fake" }, metadata: { managedBySimplixy: true },
+        config: { provider: "fake" }, metadata: { managedBySimplexy: true },
       });
     }
     await instanceSettingsService(db).updateExperimental({ enableManagedSandboxOnly: true });
@@ -597,7 +597,7 @@ describeEmbeddedPostgres("shared-workspace run serialization", () => {
     const fixture = await seedWorkspaceFixture({ agentEnvironmentDriver: "local" });
     await db.insert(environments).values({
       name: "Managed sandbox", driver: "sandbox", status: "active",
-      config: { provider: "fake" }, metadata: { managedBySimplixy: true },
+      config: { provider: "fake" }, metadata: { managedBySimplexy: true },
     });
     await instanceSettingsService(db).updateExperimental({ enableManagedSandboxOnly: true });
 

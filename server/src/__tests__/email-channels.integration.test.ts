@@ -1432,7 +1432,7 @@ describe("AgentMail durable email pipeline", () => {
       username: "ralph", domain: "agentmail.to", receiveMode: "websocket", idempotencyKey: id };
     const route = `/api/companies/${f.companyId}/email/inboxes`;
     const failure = await request(server).post(route).send(input).expect(failedOperation === "address_taken" ? 409 : 422);
-    expect(failure.body.error).toContain(failedOperation === "address_taken" ? "already in use" : "AgentMail did not allow Simplixy");
+    expect(failure.body.error).toContain(failedOperation === "address_taken" ? "already in use" : "AgentMail did not allow Simplexy");
     expect(failure.body.details).toMatchObject({ providerStatus: 403, operation: failedOperation === "address_taken" ? "create_inbox" : failedOperation });
     expect(failure.text).not.toMatch(/private provider denial|organization-test-key|Internal server error/);
     const [draft] = await db.select().from(chatEndpoints).where(eq(chatEndpoints.id, id));

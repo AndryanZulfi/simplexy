@@ -1,6 +1,6 @@
 # Release Automation Setup
 
-This document covers the GitHub and npm setup required for the current Paperclip release model:
+This document covers the GitHub and npm setup required for the current Simplexy release model:
 
 - automatic canaries from `master`
 - manual stable promotion from a chosen source ref
@@ -29,11 +29,11 @@ Required files:
 
 ## 2. Configure npm Trusted Publishing
 
-Do this for every public package that Paperclip publishes.
+Do this for every public package that Simplexy publishes.
 
 At minimum that includes:
 
-- `paperclipai`
+- `simplexy`
 - `@paperclipai/server`
 - `@paperclipai/ui`
 - public packages under `packages/`
@@ -104,7 +104,7 @@ Only after that should you remove old token-based access.
 After trusted publishing works:
 
 1. revoke any repository or organization `NPM_TOKEN` secrets used for publish
-2. revoke any personal automation token that used to publish Paperclip
+2. revoke any personal automation token that used to publish Simplexy
 3. if npm offers a package-level setting to restrict publishing to trusted publishers, enable it
 
 Goal:
@@ -266,7 +266,7 @@ npm install --prefix "$(mktemp -d)" paperclipai@canary --no-audit --no-fund
 ```
 
 The release script runs this clean-prefix install after publishing every workspace
-package dependency-first and publishing `paperclipai` last. A package that is not
+package dependency-first and publishing `simplexy` last. A package that is not
 yet registry-visible stops the train before the channel entrypoint can advance.
 
 ## 12. Verify the Stable Workflow
@@ -338,7 +338,7 @@ Check:
 
 ## Runner verification dependency cache
 
-`release-verify.yml` runs `Verify Paperclip Runner` on two independent runners.
+`release-verify.yml` runs `Verify Simplexy Runner` on two independent runners.
 The protocol lane runs `check:eval-kernel` and `check:protocol`. The Rust lane
 runs `check:runner` and `check:api-authority`. Together they retain every check
 in `check:all`; both lanes must pass before Cloud source verification or
@@ -404,7 +404,7 @@ checks and the debug warm-up. It looks the key up first and, on a miss, runs
 `cargo clean --release -p paperclip-runner-core` and then the package's
 `build:binary` (the exact command the readers run) before saving, so the entry
 carries no test-profile variants. In the trusted PR workflow, the Typecheck,
-Build and Canary Dry Run jobs and the two Verify Paperclip Runner lanes that
+Build and Canary Dry Run jobs and the two Verify Simplexy Runner lanes that
 build the crate (`rust` and the final vitest shard) restore the entry
 read-only right after the dependency restore. On a hit, `mark-current` sets
 the mtime of every restored artifact to now, so cargo's freshness check sees

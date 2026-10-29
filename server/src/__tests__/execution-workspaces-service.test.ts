@@ -184,7 +184,7 @@ async function readGit(cwd: string, args: string[]) {
 async function createTempRepo() {
   const repoRoot = await fs.mkdtemp(path.join(os.tmpdir(), "paperclip-execution-workspace-"));
   await runGit(repoRoot, ["init"]);
-  await runGit(repoRoot, ["config", "user.name", "Simplixy Test"]);
+  await runGit(repoRoot, ["config", "user.name", "Simplexy Test"]);
   await runGit(repoRoot, ["config", "user.email", "test@paperclip.local"]);
   await fs.writeFile(path.join(repoRoot, "README.md"), "# Test repo\n", "utf8");
   await runGit(repoRoot, ["add", "README.md"]);
@@ -429,7 +429,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
     const headSha = await readGit(worktreePath, ["rev-parse", "HEAD"]);
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix,
       requireBoardApprovalForNewAgents: false,
     });
@@ -886,7 +886,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
     const issuePrefix = `P${companyId.slice(0, 8).toUpperCase()}`;
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix,
       requireBoardApprovalForNewAgents: false,
     });
@@ -1016,7 +1016,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
         state: "blocked",
         isDestructiveCloseAllowed: false,
         blockingReasons: [
-          "Simplixy could not verify the workspace git status. Retry before destructive cleanup.",
+          "Simplexy could not verify the workspace git status. Retry before destructive cleanup.",
         ],
       });
 
@@ -1092,7 +1092,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
     const issuePrefix = `P${companyId.slice(0, 8).toUpperCase()}`;
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix,
       requireBoardApprovalForNewAgents: false,
     });
@@ -1533,7 +1533,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
     expect(readiness?.git).toMatchObject({ hasUntrackedFiles: true, untrackedEntryCount: 5_000 });
     expect(readiness?.warnings).toContain("The workspace has 5000 untracked files.");
     expect(readiness?.blockingReasons).not.toContain(
-      "Simplixy could not verify the workspace git status. Retry before destructive cleanup.",
+      "Simplexy could not verify the workspace git status. Retry before destructive cleanup.",
     );
     expect(await svc.sweepTerminalWorkspaces()).toMatchObject({ archived: 0, skippedUndelivered: 1 });
     await expect(fs.access(seeded.worktreePath)).resolves.toBeUndefined();
@@ -2349,7 +2349,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -2425,7 +2425,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -2522,7 +2522,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -2619,7 +2619,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -2727,7 +2727,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -2794,7 +2794,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -2853,7 +2853,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -2918,7 +2918,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -3039,7 +3039,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -3143,7 +3143,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -3295,7 +3295,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
       await db.insert(companies).values({
         id: companyId,
-        name: "Simplixy",
+        name: "Simplexy",
         issuePrefix: "PAP",
         requireBoardApprovalForNewAgents: false,
       });
@@ -3452,7 +3452,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -3530,7 +3530,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -3608,7 +3608,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -3705,7 +3705,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -3791,7 +3791,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -3913,7 +3913,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -4105,7 +4105,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -4169,7 +4169,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -4261,7 +4261,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -4426,7 +4426,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -4599,7 +4599,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
     await db.insert(companies).values([
       {
         id: companyId,
-        name: "Simplixy",
+        name: "Simplexy",
         issuePrefix: "PAP",
         requireBoardApprovalForNewAgents: false,
       },
@@ -4819,7 +4819,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -4914,7 +4914,7 @@ describeEmbeddedPostgres("executionWorkspaceService.getCloseReadiness", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });

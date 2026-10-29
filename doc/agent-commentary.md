@@ -24,7 +24,7 @@ Submit before finishing the run.
 Instructions closely adapt Warp's
 [complain](https://github.com/warpdotdev/common-skills/blob/main/.agents/skills/complain/SKILL.md)
 and [suggestion-box](https://github.com/warpdotdev/common-skills/blob/main/.agents/skills/suggestion-box/SKILL.md)
-skills, with their MIT notices included. Paperclip changes the transport,
+skills, with their MIT notices included. Simplexy changes the transport,
 attribution, suggestion form, and size limit. Agents submit proactively when
 warranted, without routine previews or announcements, then continue working.
 Answer truthfully if a user asks about feedback or submitted content. Operators
@@ -35,7 +35,7 @@ Do not report the same incident through both paths or retry failed submissions.
 ## HTTP contract
 
 `POST /api/companies/:companyId/agent-commentary` accepts an authenticated agent
-and its active run (`Authorization: Bearer …`, `X-Paperclip-Run-Id: …`):
+and its active run (`Authorization: Bearer …`, `X-Simplexy-Run-Id: …`):
 
 ```json
 {"kind":"suggestion","body":"The tool returned before persistence completed. Wait for the write before returning success.","idempotencyKey":"write-completion-1"}

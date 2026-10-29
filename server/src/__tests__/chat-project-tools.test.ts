@@ -437,12 +437,12 @@ const support = await getEmbeddedPostgresTestSupport();
     expect(await f.authority.recover(request)).toBeNull();
     const token = createLocalAgentJwt(f.agentId, f.companyId, "paperclip_runner", f.runId, f.responsibleUserId)!;
     const response = await fetch(`${server.apiUrl}/api/companies/${f.companyId}/projects`, {
-      method: "POST", headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json", "X-Simplixy-Receipt-Only": "true" },
+      method: "POST", headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json", "X-Simplexy-Receipt-Only": "true" },
       body: JSON.stringify(request.arguments),
     });
     expect(response.status).toBe(204);
     const missingKey = await fetch(`${server.apiUrl}/api/companies/${f.companyId}/projects`, {
-      method: "POST", headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json", "X-Simplixy-Receipt-Only": "true" },
+      method: "POST", headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json", "X-Simplexy-Receipt-Only": "true" },
       body: JSON.stringify({ name: "Missing receipt key" }),
     });
     expect(missingKey.status).toBe(422);

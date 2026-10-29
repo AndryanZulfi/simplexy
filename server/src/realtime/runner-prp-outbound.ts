@@ -255,7 +255,7 @@ export interface RunnerPrpOutboundHandle {
 }
 
 /**
- * Keep a Simplixy-originated provider-ingress WebSocket attached to one PRP
+ * Keep a Simplexy-originated provider-ingress WebSocket attached to one PRP
  * authority. Authentication is the readiness signal; HTTP success alone is not.
  */
 export function connectRunnerPrpIngress(input: {

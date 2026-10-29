@@ -53,7 +53,7 @@ describe("native chat question eligibility", () => {
     });
   });
 
-  it("keeps an explicitly open question on the Simplixy-only response path", () => {
+  it("keeps an explicitly open question on the Simplexy-only response path", () => {
     expect(nativeChatQuestion(closedQuestion(true))).toBeNull();
   });
 });

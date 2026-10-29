@@ -63,7 +63,7 @@ const DECISIONS_TOGGLE_SELECTOR =
 const SERVER_INFO_TOGGLE_SELECTOR =
   'button[aria-label="Toggle server info debug view experimental setting"]';
 const PAPERCLIP_DEVELOPER_MODE_TOGGLE_SELECTOR =
-  'button[aria-label="Toggle Simplixy developer mode experimental setting"]';
+  'button[aria-label="Toggle Simplexy developer mode experimental setting"]';
 const BUILT_IN_AGENTS_TOGGLE_SELECTOR =
   'button[aria-label="Toggle built-in agents experimental setting"]';
 const BETA_SKILLS_TOGGLE_SELECTOR =
@@ -73,7 +73,7 @@ const SUMMARIES_TOGGLE_SELECTOR =
 const STATUS_CARDS_TOGGLE_SELECTOR =
   'button[aria-label="Toggle status cards experimental setting"]';
 const PAPERCLIP_RUNNER_TOGGLE_SELECTOR =
-  'button[aria-label="Toggle Simplixy Runner experimental setting"]';
+  'button[aria-label="Toggle Simplexy Runner experimental setting"]';
 
 function defaultExperimentalSettings(): InstanceExperimentalSettingsPayload {
   return {
@@ -393,10 +393,10 @@ describe("InstanceExperimentalSettings — Conference Room Chat card (PAP-11233)
     )).toBeNull();
   });
 
-  it("keeps Simplixy Runner default-off and exposes an explicit opt-in", async () => {
+  it("keeps Simplexy Runner default-off and exposes an explicit opt-in", async () => {
     await renderPage();
 
-    expect(container.textContent).toContain("Simplixy Runner");
+    expect(container.textContent).toContain("Simplexy Runner");
     expect(container.textContent).toContain("First-run setup offers qualified GitHub Copilot");
     const toggle = container.querySelector<HTMLButtonElement>(
       PAPERCLIP_RUNNER_TOGGLE_SELECTOR,
@@ -687,7 +687,7 @@ describe("InstanceExperimentalSettings — Conference Room Chat card (PAP-11233)
     await renderPage();
 
     expect(container.textContent).toContain("Built-in Agents");
-    expect(container.textContent).toContain("Show Simplixy-managed built-in agent surfaces");
+    expect(container.textContent).toContain("Show Simplexy-managed built-in agent surfaces");
 
     const toggle = container.querySelector<HTMLButtonElement>(BUILT_IN_AGENTS_TOGGLE_SELECTOR);
     expect(toggle?.getAttribute("aria-checked")).toBe("false");
@@ -707,7 +707,7 @@ describe("InstanceExperimentalSettings — Conference Room Chat card (PAP-11233)
     await renderPage();
 
     expect(container.textContent).toContain("Beta skills");
-    expect(container.textContent).toContain("pin beta releases of the Simplixy core skill");
+    expect(container.textContent).toContain("pin beta releases of the Simplexy core skill");
 
     const toggle = container.querySelector<HTMLButtonElement>(BETA_SKILLS_TOGGLE_SELECTOR);
     expect(toggle?.getAttribute("aria-checked")).toBe("false");
@@ -813,10 +813,10 @@ describe("InstanceExperimentalSettings — Conference Room Chat card (PAP-11233)
     expect(toggle?.getAttribute("aria-checked")).toBe("true");
   });
 
-  it("renders and patches Simplixy Developer Mode", async () => {
+  it("renders and patches Simplexy Developer Mode", async () => {
     await renderPage();
 
-    expect(container.textContent).toContain("Simplixy Developer Mode");
+    expect(container.textContent).toContain("Simplexy Developer Mode");
     expect(container.textContent).toContain("including Honeycomb trace queries on run pages");
 
     const toggle = container.querySelector<HTMLButtonElement>(
@@ -838,7 +838,7 @@ describe("InstanceExperimentalSettings — Conference Room Chat card (PAP-11233)
 });
 
 describe("InstanceExperimentalSettings — cloud-managed keys", () => {
-  const MANAGED_BADGE_TEXT = "Managed by Simplixy Cloud";
+  const MANAGED_BADGE_TEXT = "Managed by Simplexy Cloud";
 
   let container: HTMLDivElement;
   let root: Root | null = null;
@@ -1045,7 +1045,7 @@ describe("InstanceExperimentalSettings — card ordering and headings (PAP-393)"
     );
     expect(headings).toEqual([
       "Experimental features",
-      "Simplixy Developer Mode",
+      "Simplexy Developer Mode",
       "Legacy",
     ]);
 
@@ -1161,8 +1161,8 @@ describe("InstanceExperimentalSettings — operator-hidden cards", () => {
       managedKeys: { enablePaperclipNotebook: { managed: true, managedBy: "paperclip-cloud" } },
     });
     expect(container.textContent).toContain("Experimental features");
-    expect(container.textContent).not.toContain("Simplixy Notebook");
-    expect(container.querySelector('button[aria-label="Toggle Simplixy Notebook experimental setting"]')).toBeNull();
+    expect(container.textContent).not.toContain("Simplexy Notebook");
+    expect(container.querySelector('button[aria-label="Toggle Simplexy Notebook experimental setting"]')).toBeNull();
     expect(mockInstanceSettingsApi.updateExperimental).not.toHaveBeenCalled();
   });
 
@@ -1205,7 +1205,7 @@ describe("InstanceExperimentalSettings — operator-hidden cards", () => {
   it("retains a section when one of its controls is visible", async () => {
     const visible = new Set(["enablePaperclipDeveloperMode", "enableGoalsSidebarLink"]);
     await renderPage(INSTANCE_FEATURE_KEYS.filter((key) => !visible.has(key)).map((key) => `instance.experimental.${key}`));
-    expect(container.querySelector('[aria-labelledby="developer-mode-heading"] h3')?.textContent).toBe("Simplixy Developer Mode");
+    expect(container.querySelector('[aria-labelledby="developer-mode-heading"] h3')?.textContent).toBe("Simplexy Developer Mode");
     expect(container.querySelector('[aria-labelledby="legacy-heading"] h3')?.textContent).toBe("Goals Sidebar Link");
   });
 

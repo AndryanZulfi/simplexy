@@ -1,6 +1,6 @@
 # Database
 
-Paperclip uses PostgreSQL via [Drizzle ORM](https://orm.drizzle.team/). There are three ways to run the database, from simplest to most production-ready.
+Simplexy uses PostgreSQL via [Drizzle ORM](https://orm.drizzle.team/). There are three ways to run the database, from simplest to most production-ready.
 
 ### Persistent case handoffs
 
@@ -382,7 +382,7 @@ If you need to apply pending migrations manually, run:
 pnpm db:migrate
 ```
 
-When `DATABASE_URL` is unset, this command targets the current embedded PostgreSQL instance for your active Paperclip config/instance.
+When `DATABASE_URL` is unset, this command targets the current embedded PostgreSQL instance for your active Simplexy config/instance.
 
 Issue reference mentions follow the normal migration path: the schema migration creates the tracking table, but it does not backfill historical issue titles, descriptions, comments, or documents automatically.
 
@@ -463,7 +463,7 @@ For the application runtime, use a direct PostgreSQL connection unless the datab
 DATABASE_URL=postgres://postgres.[PROJECT-REF]:[PASSWORD]@aws-0-[REGION].pooler.supabase.com:5432/postgres
 ```
 
-If you later run the app with a pooled runtime URL, set `DATABASE_MIGRATION_URL` to the direct connection URL. Paperclip uses it for startup schema checks/migrations and plugin namespace migrations, while the app continues to use `DATABASE_URL` for runtime queries:
+If you later run the app with a pooled runtime URL, set `DATABASE_MIGRATION_URL` to the direct connection URL. Simplexy uses it for startup schema checks/migrations and plugin namespace migrations, while the app continues to use `DATABASE_URL` for runtime queries:
 
 ```sh
 DATABASE_URL=postgres://postgres.[PROJECT-REF]:[PASSWORD]@aws-0-[REGION].pooler.supabase.com:6543/postgres
@@ -579,7 +579,7 @@ pool. Callers may retry only when the complete operation is idempotent or has
 a durable receipt that prevents duplicate effects. Some transient statement
 failures therefore reach the caller instead of being retried automatically.
 
-When a database connection closes, its transaction fails. Paperclip does not
+When a database connection closes, its transaction fails. Simplexy does not
 replay that transaction. New requests can use a fresh connection from the pool.
 Queries from the failed transaction must keep failing, even after the pool
 reconnects.
@@ -698,7 +698,7 @@ When authoring migrations or one-time backfills:
 - Treat the `check:migrations` CI gate as the enforcement backstop for these rules. If it flags a migration, rewrite the migration or add a suppression comment with the indexed predicate, batch bound, and reason the remaining scan is safe.
 
 Private-task migrations `0313` and `0314` are explicitly allowlisted in the
-Paperclip executor to run outside a file-wide transaction. Their idempotent
+Simplexy executor to run outside a file-wide transaction. Their idempotent
 keyset batches commit every 1,000 rows, and migration history is recorded only
 when all batches finish. The executor repairs invalid concurrent indexes on
 retry. A reserved connection holds a session advisory lock across all batch
@@ -776,7 +776,7 @@ feedback sharing and retry behavior.
 
 ## Resource membership tables
 
-Paperclip stores current-user sidebar membership state in:
+Simplexy stores current-user sidebar membership state in:
 
 - `project_memberships`
 - `agent_memberships`
@@ -874,7 +874,7 @@ endpoint has no additional instructions.
 
 `chat_telegram_draft_ids` is a content-free, instance-wide PostgreSQL sequence,
 not a company-owned record. Telegram's native Stop callback carries a draft ID
-but no actor or Paperclip generation. IDs therefore must not be recycled when
+but no actor or Simplexy generation. IDs therefore must not be recycled when
 a transaction rolls back or an endpoint/company is deleted and its bot is
 connected again. The sequence allocates positive 31-bit IDs without cycling;
 exhaustion refuses new draft allocation rather than wrapping or falling back to
@@ -923,10 +923,10 @@ The plugin runtime tracks plugin-owned database namespaces and migrations in `pl
 
 ## Backups
 
-Paperclip supports automatic and manual logical database backups. These dumps include
+Simplexy supports automatic and manual logical database backups. These dumps include
 non-system database schemas such as `public`, the Drizzle migration journal, and
 plugin-owned database schemas. See `doc/DEVELOPING.md` for the current
-`paperclipai db:backup` / `pnpm db:backup` commands and backup retention
+`simplexy db:backup` / `pnpm db:backup` commands and backup retention
 configuration.
 
 Database backups do not include non-database instance files such as local-disk
@@ -935,7 +935,7 @@ up separately when you need full instance disaster recovery.
 
 ## Secret storage
 
-Paperclip stores secret metadata and versions in:
+Simplexy stores secret metadata and versions in:
 
 - `user_secret_definitions`
 - `user_secret_declarations`
@@ -1171,7 +1171,7 @@ bound before icon upload; an interrupted upload never triggers another app
 creation. This JSON state stores no token, image URL, or provider error payload.
 
 `chat_endpoints.setup.slackAccount` stores the OAuth installer’s Slack ID, the
-initiating Paperclip user ID, pending/linked status, durable welcome-DM and
+initiating Simplexy user ID, pending/linked status, durable welcome-DM and
 optional verification-DM status, and the returned DM channel ID. It stores no
 user OAuth token or provider payload.
 The account uses the existing company-scoped `chat_identity_links` table; it
@@ -1185,7 +1185,7 @@ in setup state, and the fingerprint is excluded from endpoint responses.
 For automatically registered apps, `webhookVerifiedAt` also records successful
 delivery of an authenticated message/app-mention event to the current callback
 URL. The current signing secret, saved app/workspace/bot binding, active connection,
-and runtime generation are checked before recording it. This is Paperclip's
+and runtime generation are checked before recording it. This is Simplexy's
 connection evidence, not Slack's settings-page URL-verification flag. Activity
 identifies this evidence as `authenticated_event`; no message body is recorded.
 
@@ -1200,7 +1200,7 @@ credential-mutation lease used by configuration.
 ### Slack manager workspace grants
 
 `chat_slack_manager_grants` stores a personal workspace authorization, scoped by
-company, Paperclip user, Slack user, workspace and manager app. Access/refresh
+company, Simplexy user, Slack user, workspace and manager app. Access/refresh
 credentials are references to user-scoped vault entries, never plaintext columns.
 Revision fencing protects reauthorization from concurrent revocation. Per-method
 rate-limit deadlines retain Slack's Retry-After across setup retries.

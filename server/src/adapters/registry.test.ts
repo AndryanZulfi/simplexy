@@ -165,7 +165,7 @@ describe("native ACPX environment checks", () => {
   });
 
   it("identifies an incomplete installation and gives the operator a repair", async () => {
-    probeInstallation.mockRejectedValue(Object.assign(new Error("The Claude ACP runtime package is missing. Reinstall or rebuild Simplixy."), { code: "ACPX_RUNTIME_PACKAGE_MISSING" }));
+    probeInstallation.mockRejectedValue(Object.assign(new Error("The Claude ACP runtime package is missing. Reinstall or rebuild Simplexy."), { code: "ACPX_RUNTIME_PACKAGE_MISSING" }));
     const result = await requireServerAdapter("paperclip_runner").testEnvironment!(context);
     expect(result.status).toBe("fail");
     expect(result.checks[0]).toMatchObject({ code: "acpx_runtime_package_missing", message: expect.stringContaining("Reinstall or rebuild") });

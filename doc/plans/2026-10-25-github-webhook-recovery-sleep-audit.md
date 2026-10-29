@@ -344,7 +344,7 @@ complete attachment receipt journeys pass**, retries zero, in 38.7 seconds.
 Every journey body, receipt/content assertion, 60-second test budget and
 120-second startup budget is unchanged. The full run uses a fresh database on
 the existing local PostgreSQL 17 test server and the canonical throwaway
-Paperclip home, CLI onboarding, server, UI, storage and HTTP paths. An earlier
+Simplexy home, CLI onboarding, server, UI, storage and HTTP paths. An earlier
 full-run attempt failed during embedded PostgreSQL initialization before any
 browser test started; host semaphore usage was near capacity. That startup
 failure is retained and is not counted as a test pass. No shared host resources

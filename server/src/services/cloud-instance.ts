@@ -59,7 +59,7 @@ function normalizeOptionalEnvValue(value: string | undefined): string | null {
 }
 
 /**
- * The canonical Simplixy Cloud instance predicate.
+ * The canonical Simplexy Cloud instance predicate.
  *
  * The tenant token is the signal injected on live cloud stacks. The managed
  * config document is the legacy/bootstrap signal used by managed feature and
@@ -81,7 +81,7 @@ export function isCloudStagingInstance(env: CloudInstanceEnv = process.env): boo
 }
 
 /**
- * Public stack metadata injected by the Simplixy Cloud provisioner.
+ * Public stack metadata injected by the Simplexy Cloud provisioner.
  *
  * A managed signal can exist briefly before every metadata value is available,
  * so absent or blank values are represented as null rather than making health

@@ -60,7 +60,7 @@ describe("readConfigFile", () => {
     fs.writeFileSync(configPath, "{");
 
     expect(() => readConfigFile()).toThrow(
-      new RegExp(`Invalid Simplixy config at ${escapeRegExp(configPath)}: failed to read or parse JSON`),
+      new RegExp(`Invalid Simplexy config at ${escapeRegExp(configPath)}: failed to read or parse JSON`),
     );
   });
 
@@ -72,7 +72,7 @@ describe("readConfigFile", () => {
 
     writeConfig(configPath, config);
 
-    expect(() => readConfigFile()).toThrow(/Invalid Simplixy config .* \$meta\.source:/);
+    expect(() => readConfigFile()).toThrow(/Invalid Simplexy config .* \$meta\.source:/);
   });
 
   it("parses a valid config file", () => {

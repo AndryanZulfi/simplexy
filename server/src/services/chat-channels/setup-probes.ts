@@ -282,7 +282,7 @@ export function createSetupProbes(db: Db, options: SetupProbesOptions) {
           }
           if (!finalPublication && !githubToolReply) {
             throw conflict(
-              "Wait for the Simplixy agent to reply to the setup turn before completing setup",
+              "Wait for the Simplexy agent to reply to the setup turn before completing setup",
               {
                 code: "chat_test_round_trip_incomplete",
               },

@@ -94,7 +94,7 @@ export function ExecutionWorkspaceCloseDialog({
           <DialogTitle>{actionLabel}</DialogTitle>
           <DialogDescription className="break-words">
             Archive <span className="font-medium text-foreground">{workspaceName}</span> and clean up any owned workspace
-            artifacts. Simplixy keeps the workspace record and task history, but removes it from active workspace views.
+            artifacts. Simplexy keeps the workspace record and task history, but removes it from active workspace views.
           </DialogDescription>
         </DialogHeader>
 

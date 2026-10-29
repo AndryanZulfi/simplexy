@@ -1,14 +1,14 @@
-# Simplixy
+# Simplexy
 
 **AI Business Operations Assistant** — orkestrasi AI agent untuk operasional bisnis melalui percakapan.
 
-> Built on top of [Paperclip](https://github.com/paperclipai/paperclip) (MIT License). Simplixy adalah fork komersial yang diadaptasi untuk kebutuhan operasional UMKM dan tim kecil.
+> Built on top of [Paperclip](https://github.com/paperclipai/paperclip) (MIT License). Simplexy adalah fork komersial yang diadaptasi untuk kebutuhan operasional UMKM dan tim kecil.
 
 ---
 
-## Apa itu Simplixy?
+## Apa itu Simplexy?
 
-Simplixy membantu bisnis mengelola pekerjaan operasional melalui percakapan — mulai dari cek stok, pencatatan pesanan, hingga laporan harian — langsung dari WhatsApp, tanpa perlu membuka spreadsheet atau aplikasi terpisah.
+Simplexy membantu bisnis mengelola pekerjaan operasional melalui percakapan — mulai dari cek stok, pencatatan pesanan, hingga laporan harian — langsung dari WhatsApp, tanpa perlu membuka spreadsheet atau aplikasi terpisah.
 
 ```
 WhatsApp → AI Agent → Google Sheets / Data Bisnis → Jawaban
@@ -26,7 +26,7 @@ WhatsApp → AI Agent → Google Sheets / Data Bisnis → Jawaban
 
 ## Arsitektur
 
-Simplixy mewarisi seluruh control plane Paperclip:
+Simplexy mewarisi seluruh control plane Paperclip:
 
 | Layer | Komponen |
 |---|---|
@@ -91,8 +91,8 @@ doc/             Docs teknis dan product specs
 
 ## Lisensi
 
-Simplixy adalah fork dari [Paperclip](https://github.com/paperclipai/paperclip) yang dilisensikan di bawah **MIT License**.
+Simplexy adalah fork dari [Paperclip](https://github.com/paperclipai/paperclip) yang dilisensikan di bawah **MIT License**.
 
 Copyright (c) 2025 Paperclip AI — lihat [LICENSE](LICENSE) untuk teks lengkap.
 
-Modifikasi dan tambahan untuk Simplixy: Copyright (c) 2026 Simplixy Team.
+Modifikasi dan tambahan untuk Simplexy: Copyright (c) 2026 Simplexy Team.

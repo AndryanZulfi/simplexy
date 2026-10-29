@@ -139,7 +139,7 @@ describeEmbeddedPostgres("issue watchdog routes", () => {
     });
   }
 
-  async function seedCompany(name = "Simplixy") {
+  async function seedCompany(name = "Simplexy") {
     const companyId = randomUUID();
     await db.insert(companies).values({
       id: companyId,
@@ -561,7 +561,7 @@ describeEmbeddedPostgres("issue watchdog routes", () => {
       .post(`/api/companies/${companyId}/issues`)
       .send({
         title: "Fix watchdog source-tree pollution",
-        description: "Watchdog found a Simplixy follow-up routing bug.",
+        description: "Watchdog found a Simplexy follow-up routing bug.",
         parentId: watchedChildId,
         watchdogDiscovery: {
           kind: "product_bug",

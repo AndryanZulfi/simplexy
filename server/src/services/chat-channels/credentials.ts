@@ -233,7 +233,7 @@ export function createChatCredentials(db: Db, options: ChatCredentialsOptions) {
     });
     if (conflictEndpoint) {
       throw conflict(
-        `This ${PROVIDER_LABELS[endpoint.provider]} bot already represents another Simplixy agent connection`,
+        `This ${PROVIDER_LABELS[endpoint.provider]} bot already represents another Simplexy agent connection`,
         conflictEndpoint.companyId === endpoint.companyId
           ? {
               code: "chat_bot_identity_in_use",
@@ -260,7 +260,7 @@ export function createChatCredentials(db: Db, options: ChatCredentialsOptions) {
 
   function nativeBotIdentityConflict(provider: ChatProvider) {
     return conflict(
-      `This ${PROVIDER_LABELS[provider]} bot already represents another Simplixy agent connection`,
+      `This ${PROVIDER_LABELS[provider]} bot already represents another Simplexy agent connection`,
       { code: "chat_bot_identity_in_use" },
     );
   }

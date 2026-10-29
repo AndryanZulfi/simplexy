@@ -576,7 +576,7 @@ export function ProjectProperties({ project, repositories, onUpdate, onFieldUpda
             */}
             {hideHostPaths ? (
               codebase.origin === "managed_checkout" ? (
-                <div className="text-(length:--text-micro) text-muted-foreground">Simplixy-managed folder.</div>
+                <div className="text-(length:--text-micro) text-muted-foreground">Simplexy-managed folder.</div>
               ) : null
             ) : (
               <div className="space-y-1">
@@ -587,7 +587,7 @@ export function ProjectProperties({ project, repositories, onUpdate, onFieldUpda
                       {codebase.effectiveLocalFolder}
                     </div>
                     {codebase.origin === "managed_checkout" && (
-                      <div className="text-(length:--text-micro) text-muted-foreground">Simplixy-managed folder.</div>
+                      <div className="text-(length:--text-micro) text-muted-foreground">Simplexy-managed folder.</div>
                     )}
                   </div>
                   <div className="flex items-center gap-1">
@@ -620,7 +620,7 @@ export function ProjectProperties({ project, repositories, onUpdate, onFieldUpda
 
             {hasAdditionalLegacyWorkspaces && (
               <div className="text-(length:--text-micro) text-muted-foreground">
-                Additional legacy workspace records exist on this project. Simplixy is using the primary workspace as the codebase view.
+                Additional legacy workspace records exist on this project. Simplexy is using the primary workspace as the codebase view.
               </div>
             )}
 

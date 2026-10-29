@@ -135,7 +135,7 @@ describeEmbeddedPostgres("issue scheduled retry routes", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix,
       requireBoardApprovalForNewAgents: false,
     });
@@ -823,7 +823,7 @@ describeEmbeddedPostgres("issue scheduled retry routes", () => {
     const issueId = randomUUID();
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "NONE",
       requireBoardApprovalForNewAgents: false,
     });

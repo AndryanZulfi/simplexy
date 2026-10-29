@@ -151,7 +151,7 @@ async function createGitRepo() {
   const repoRoot = await realpath(await mkdtemp(path.join(os.tmpdir(), "paperclip-branch-containment-repo-")));
   await runGit(repoRoot, ["init"]);
   await runGit(repoRoot, ["config", "user.email", "paperclip-test@example.com"]);
-  await runGit(repoRoot, ["config", "user.name", "Simplixy Test"]);
+  await runGit(repoRoot, ["config", "user.name", "Simplexy Test"]);
   await writeFile(path.join(repoRoot, "README.md"), "branch containment\n", "utf8");
   await runGit(repoRoot, ["add", "README.md"]);
   await runGit(repoRoot, ["commit", "-m", "initial"]);

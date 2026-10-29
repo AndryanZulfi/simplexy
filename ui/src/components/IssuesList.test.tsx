@@ -806,7 +806,7 @@ describe("IssuesList", () => {
     });
     const project = {
       id: "project-1",
-      name: "Simplixy",
+      name: "Simplexy",
       color: null,
       workspaces: [{ id: "project-workspace-1", name: "Primary workspace" }],
       primaryWorkspace: { id: "project-workspace-1" },

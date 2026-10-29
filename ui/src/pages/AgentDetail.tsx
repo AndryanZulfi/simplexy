@@ -1359,7 +1359,7 @@ export function AgentDetail() {
             </Button>
           }
         >
-          Ships with Simplixy and powers <strong>{builtInFeatureLabel}</strong>. Configure it like
+          Ships with Simplexy and powers <strong>{builtInFeatureLabel}</strong>. Configure it like
           any agent — model, instructions, budget. It can be paused but not deleted; pausing it
           pauses {builtInFeatureLabel}.
         </InlineBanner>
@@ -2739,7 +2739,7 @@ export function PromptsTab({
                       <HelpCircle className="h-3 w-3 text-muted-foreground cursor-help" />
                     </TooltipTrigger>
                     <TooltipContent side="right" sideOffset={4}>
-                      Managed: Simplixy stores and serves the instructions bundle. External: you provide a path on disk where the instructions live.
+                      Managed: Simplexy stores and serves the instructions bundle. External: you provide a path on disk where the instructions live.
                     </TooltipContent>
                   </Tooltip>
                 </span>
@@ -2794,7 +2794,7 @@ export function PromptsTab({
                       <HelpCircle className="h-3 w-3 text-muted-foreground cursor-help" />
                     </TooltipTrigger>
                     <TooltipContent side="right" sideOffset={4}>
-                      The absolute directory on disk where the instructions bundle lives. In managed mode this is set by Simplixy automatically.
+                      The absolute directory on disk where the instructions bundle lives. In managed mode this is set by Simplexy automatically.
                     </TooltipContent>
                   </Tooltip>
                 </span>
@@ -3670,7 +3670,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
           break-glass handlers as the task detail page. */}
       <RunWorkspaceRecoverySurface run={run} />
       <AiConnectionPoolRunDetails context={run.contextSnapshot} />
-      {grokWork && <p className="text-sm text-muted-foreground">Runs in Grok Bot. Usage not reported. Stopping this session revokes Simplixy authority; remote execution may continue. Open the Grok Bot desktop app to inspect it. This view contains Simplixy-reported activity.</p>}
+      {grokWork && <p className="text-sm text-muted-foreground">Runs in Grok Bot. Usage not reported. Stopping this session revokes Simplexy authority; remote execution may continue. Open the Grok Bot desktop app to inspect it. This view contains Simplexy-reported activity.</p>}
       {/* Run summary card */}
       <div className="border border-border rounded-lg overflow-hidden">
         <div className="flex flex-col sm:flex-row">
@@ -3691,7 +3691,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
                   onClick={() => cancelRun.mutate()}
                   disabled={cancelRun.isPending}
                 >
-                  {grokWork ? cancelRun.isPending ? "Stopping Simplixy work…" : "Stop Simplixy work" : cancelRun.isPending ? "Cancelling…" : "Cancel"}
+                  {grokWork ? cancelRun.isPending ? "Stopping Simplexy work…" : "Stop Simplexy work" : cancelRun.isPending ? "Cancelling…" : "Cancel"}
                 </Button>
               )}
               {canResumeLostRun && (
@@ -4727,7 +4727,7 @@ export function KeysTab({ agentId, companyId }: { agentId: string; companyId?: s
           Create API Key
         </h3>
         <p className="text-xs text-muted-foreground">
-          API keys allow this agent to authenticate calls to the Simplixy server.
+          API keys allow this agent to authenticate calls to the Simplexy server.
         </p>
         <div className="flex items-center gap-2">
           <Input

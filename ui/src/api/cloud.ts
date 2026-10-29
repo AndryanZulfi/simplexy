@@ -1,7 +1,7 @@
 import { api } from "./client";
 
 /**
- * One entry of the Simplixy Cloud stack portfolio, proxied by
+ * One entry of the Simplexy Cloud stack portfolio, proxied by
  * `GET /api/cloud/stacks`. The payload deliberately carries no icon URL, so
  * stack rows render the same deterministic monogram treatment companies use.
  */

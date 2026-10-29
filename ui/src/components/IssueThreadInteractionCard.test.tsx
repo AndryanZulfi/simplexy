@@ -814,7 +814,7 @@ describe("IssueThreadInteractionCard", () => {
 
     expect(
       host.querySelector('[data-testid="interaction-action-error"]')?.textContent,
-    ).toBe("Simplixy is temporarily unavailable. Please try again in a moment.");
+    ).toBe("Simplexy is temporarily unavailable. Please try again in a moment.");
   });
 
   it("surfaces a denied suggested-task acceptance instead of failing silently", async () => {
@@ -1075,7 +1075,7 @@ describe("IssueThreadInteractionCard", () => {
     expect((resumeFailed.firstElementChild as HTMLElement).className).toContain("border-amber-500/70");
     expect(resumeFailed.textContent).toContain("Approved — agent resume failed");
     expect(resumeFailed.textContent).toContain("Agent resume failed");
-    expect(resumeFailed.textContent).toContain("Simplixy needs attention before the agent can resume this approved work.");
+    expect(resumeFailed.textContent).toContain("Simplexy needs attention before the agent can resume this approved work.");
     expect(resumeFailed.textContent).toContain("adapter_failed");
 
     act(() => root?.unmount());

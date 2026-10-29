@@ -66,8 +66,8 @@ const STANDALONE_BUNDLED_PLUGIN_SDK_PACKAGE = "@paperclipai/plugin-sdk";
 // ---------------------------------------------------------------------------
 
 /**
- * Naming convention for npm-published Simplixy plugins.
- * Packages matching this pattern are considered Simplixy plugins.
+ * Naming convention for npm-published Simplexy plugins.
+ * Packages matching this pattern are considered Simplexy plugins.
  *
  * @see PLUGIN_SPEC.md §10 — Package Contract
  */
@@ -495,7 +495,7 @@ export interface PluginLoader {
   discoverFromLocalFilesystem(dir?: string): Promise<PluginDiscoveryResult>;
 
   /**
-   * Discover Simplixy plugins installed as npm packages in the current
+   * Discover Simplexy plugins installed as npm packages in the current
    * Node.js environment matching the "paperclip-plugin-*" naming convention.
    *
    * Looks for packages in node_modules that match the naming convention.
@@ -511,8 +511,8 @@ export interface PluginLoader {
    * the "paperclipPlugin.manifest" key, loads the manifest module, and
    * validates it against the plugin manifest schema.
    *
-   * Returns null if the package is not a Simplixy plugin.
-   * Throws if the package is a Simplixy plugin but the manifest is invalid.
+   * Returns null if the package is not a Simplexy plugin.
+   * Throws if the package is a Simplexy plugin but the manifest is invalid.
    *
    * @see PLUGIN_SPEC.md §10 — Package Contract
    */
@@ -659,7 +659,7 @@ export interface PluginLoader {
 // ---------------------------------------------------------------------------
 
 /**
- * Check whether a package name matches the Simplixy plugin naming convention.
+ * Check whether a package name matches the Simplexy plugin naming convention.
  * Accepts both the "paperclip-plugin-" prefix and scoped "@scope/plugin-" packages.
  *
  * @see PLUGIN_SPEC.md §10 — Package Contract
@@ -1296,7 +1296,7 @@ export function pluginLoader(
         ? formatLocalPluginManualBuildHint(resolvedPackagePath, pkgJson)
         : "";
       throw new Error(
-        `Package ${resolvedPackageName} at ${resolvedPackagePath} does not appear to be a Simplixy plugin (no manifest found).${manualBuildHint}`,
+        `Package ${resolvedPackageName} at ${resolvedPackagePath} does not appear to be a Simplexy plugin (no manifest found).${manualBuildHint}`,
       );
     }
 
@@ -1389,7 +1389,7 @@ export function pluginLoader(
   ): Promise<PluginRecord> {
     const manifest = await loadManifestFromPackageRoot(packageRoot);
     if (!manifest) {
-      throw new Error(`Plugin package ${plugin.packageName} no longer exposes a Simplixy manifest`);
+      throw new Error(`Plugin package ${plugin.packageName} no longer exposes a Simplexy manifest`);
     }
     if (manifest.id !== plugin.pluginKey) {
       throw new Error(
@@ -1419,7 +1419,7 @@ export function pluginLoader(
 
   /**
    * Build a DiscoveredPlugin from a resolved package directory, or null
-   * if the package is not a Simplixy plugin.
+   * if the package is not a Simplexy plugin.
    */
   async function buildDiscoveredPlugin(
     packagePath: string,

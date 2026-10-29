@@ -1,4 +1,4 @@
-# Test audit: remove unreferenced Paperclip Runner test fixtures
+# Test audit: remove unreferenced Simplexy Runner test fixtures
 
 Date: 2026-10-16
 Branch: `PAP-458-nightly-test-gardening`

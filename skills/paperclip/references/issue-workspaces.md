@@ -18,7 +18,7 @@ Read `currentExecutionWorkspace`:
 - `status` / `closedAt` — whether the workspace is usable
 - `runtimeServices[]` — current services, including `serviceName`, `status`, `healthStatus`, `url`, `port`, and `runtimeServiceId`
 
-If `currentExecutionWorkspace` is `null`, the issue does not currently have a realized execution workspace. For child/follow-up work, create the child with `parentId` or use `inheritExecutionWorkspaceFromIssueId` so Paperclip preserves workspace continuity.
+If `currentExecutionWorkspace` is `null`, the issue does not currently have a realized execution workspace. For child/follow-up work, create the child with `parentId` or use `inheritExecutionWorkspaceFromIssueId` so Simplexy preserves workspace continuity.
 
 ## Choose Files and Repositories
 
@@ -36,7 +36,7 @@ Root selections and repository preparation return `next_normal_admission`. The a
 
 ## Control Services
 
-Prefer Paperclip-managed runtime service controls over manual `pnpm dev &` or ad-hoc background processes. These endpoints keep service state, URLs, logs, and ownership visible to other agents and the board.
+Prefer Simplexy-managed runtime service controls over manual `pnpm dev &` or ad-hoc background processes. These endpoints keep service state, URLs, logs, and ownership visible to other agents and the board.
 
 ```sh
 # Start all configured services; waits for configured readiness checks.
@@ -85,7 +85,7 @@ For QA/browser checks, use the service whose `status` is `running` and whose `he
 
 ## MCP Tools
 
-When the Paperclip MCP tools are available, prefer these issue-scoped tools:
+When the Simplexy MCP tools are available, prefer these issue-scoped tools:
 
 - `paperclipGetIssueWorkspaceRuntime` — reads `currentExecutionWorkspace` and service URLs for an issue.
 - `paperclipControlIssueWorkspaceServices` — starts, stops, or restarts the current issue workspace services.

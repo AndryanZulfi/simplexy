@@ -1,6 +1,6 @@
 # In-app announcements
 
-Paperclip displays one optional announcement card in the board UI. Its feed is
+Simplexy displays one optional announcement card in the board UI. Its feed is
 `https://pages.paperclip.ing/announcements/v1/current.json`. The instance fetches
 JSON on demand and renders it with native components.
 
@@ -13,7 +13,7 @@ JSON on demand and renders it with native components.
 Announcements are independent of telemetry. Feed/media requests originate from
 the instance without account IDs, company data, cookies or event tracking. The
 host sees ordinary server network request metadata. The browser requests only
-its own Paperclip API.
+its own Simplexy API.
 
 ## Authoring and publishing
 
@@ -86,7 +86,7 @@ ETags improve fetching but never determine redisplay.
 
 An announcement can show a self-contained **HTML/CSS animation** in its hero
 area. The headline, description, close button and actions remain native
-Paperclip controls. Add an `animation` alongside the required static `image`:
+Simplexy controls. Add an `animation` alongside the required static `image`:
 
 ```json
 "image": { "path": "assets/<image-sha256>.png", "alt": "A team working together" },
@@ -105,7 +105,7 @@ requests and imports are blocked by CSP; keep all styling self-contained.
 The publisher and server use the same strict DOMPurify allowlist and reject
 unsupported markup rather than publishing a silently changed animation.
 
-Paperclip verifies the digest, validates the HTML, and renders the result in an
+Simplexy verifies the digest, validates the HTML, and renders the result in an
 opaque sandboxed iframe with no permissions. A Content Security Policy blocks
 scripts and network resources both inside the card and on direct API visits.
 The browser fetches HTML from its own authenticated instance; it never loads
@@ -115,12 +115,12 @@ See [iframe sandboxing](https://developer.mozilla.org/en-US/docs/Web/HTML/Refere
 
 The animation plays automatically without playback controls. The static image
 stays visible while loading and on failure. With reduced motion enabled,
-Paperclip does not request or play the animation. Also include a
+Simplexy does not request or play the animation. Also include a
 `prefers-reduced-motion` CSS rule in authored documents for standalone previews.
 Animations share the feed's constrained host, three-second server timeout,
 bounded cache, request deduplication and fifteen-minute failure cooldown.
 Dismissal and ID reuse rules are identical for animated and static cards.
-Older Paperclip builds that do not recognize `animation` treat that feed as
+Older Simplexy builds that do not recognize `animation` treat that feed as
 unsupported and quietly show no card.
 
 The complete authoring example is `announcements/examples/animated/`. Preview
@@ -147,7 +147,7 @@ cannot overwrite the production manifest. With no source directory it uses
 `announcements/examples/staging/`, including a sample banner. Commands default
 to dry-run unless `--publish` is supplied.
 
-For Paperclip's existing preview host, use the branch preview area that
+For Simplexy's existing preview host, use the branch preview area that
 CloudFront already has permission to read:
 
 ```sh
@@ -248,7 +248,7 @@ removes a visible card when its deadline arrives.
 
 ## Timing and persistence
 
-Show after three seconds when opening or returning to Paperclip, after company
+Show after three seconds when opening or returning to Simplexy, after company
 selection and onboarding. Dialogs and toasts take priority. Phones show it above
 bottom navigation. No automatic timeout, outside-click dismissal or carousel.
 Tab visibility controls the return check: moving focus to the address bar or

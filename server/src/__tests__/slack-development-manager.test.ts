@@ -44,9 +44,9 @@ describe("local managed Slack qualification", () => {
   });
   it("exchanges the code against the exact callback and preserves actor/workspace identity", async () => {
     const { env } = fixture();
-    const fetcher = vi.fn().mockResolvedValue(response({ ok: true, app_id: "A123", team: { id: "T123", name: "Simplixy" }, authed_user: user }));
+    const fetcher = vi.fn().mockResolvedValue(response({ ok: true, app_id: "A123", team: { id: "T123", name: "Simplexy" }, authed_user: user }));
     const result = await developmentSlackManager(origin, env, fetcher)!.claim({ ...identity, claimId: "code-canary", redemptionId: "once" });
-    expect(result.slackManager).toEqual({ appId: "A123", workspaceId: "T123", workspaceName: "Simplixy", userId: "U123" });
+    expect(result.slackManager).toEqual({ appId: "A123", workspaceId: "T123", workspaceName: "Simplexy", userId: "U123" });
     expect(result.subject).toBe("actor"); expect(result.companyId).toBe("company");
     const [url, request] = fetcher.mock.calls[0];
     expect(url).toBe("https://slack.com/api/oauth.v2.access");
@@ -56,7 +56,7 @@ describe("local managed Slack qualification", () => {
   });
   it.each(["wrong-app", "missing-scope", "provider-echo"])("rejects %s without echoing secrets", async reason => {
     const { env } = fixture();
-    const value = reason === "provider-echo" ? { ok: false, error: "client-secret-canary code-canary" } : { ok: true, app_id: reason === "wrong-app" ? "AOTHER" : "A123", team: { id: "T123", name: "Simplixy" }, authed_user: { ...user, scope: reason === "missing-scope" ? "" : user.scope } };
+    const value = reason === "provider-echo" ? { ok: false, error: "client-secret-canary code-canary" } : { ok: true, app_id: reason === "wrong-app" ? "AOTHER" : "A123", team: { id: "T123", name: "Simplexy" }, authed_user: { ...user, scope: reason === "missing-scope" ? "" : user.scope } };
     const client = developmentSlackManager(origin, env, vi.fn().mockResolvedValue(response(value)))!;
     const error = await client.claim({ ...identity, claimId: "code-canary", redemptionId: "once" }).catch(error => error);
     expect(error).toBeInstanceOf(Error);

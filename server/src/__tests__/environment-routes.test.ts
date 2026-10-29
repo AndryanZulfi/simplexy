@@ -521,7 +521,7 @@ describe("environment routes", () => {
           apiKey: "config-credential-must-never-echo",
         },
         envVars: { MY_AGENT_TOOL_SETTING: "tenant-env-value" },
-        metadata: { managedBySimplixy: true, managedSandboxProvider: "daytona" },
+        metadata: { managedBySimplexy: true, managedSandboxProvider: "daytona" },
         createdAt: now,
         updatedAt: now,
       };
@@ -569,7 +569,7 @@ describe("environment routes", () => {
         image: "custom-image:latest",
         target: "us",
       });
-      expect(res.body.metadata).toMatchObject({ managedBySimplixy: true });
+      expect(res.body.metadata).toMatchObject({ managedBySimplexy: true });
       expect(JSON.stringify(res.body)).not.toContain("config-credential-must-never-echo");
     });
 
@@ -579,7 +579,7 @@ describe("environment routes", () => {
       mockEnvironmentService.getById.mockResolvedValue({
         ...createPlatformSandboxEnvironment(),
         metadata: {
-          managedBySimplixy: true,
+          managedBySimplexy: true,
           managedSandboxProvider: "kubernetes",
           managedKubernetesSandbox: true,
         },
@@ -614,7 +614,7 @@ describe("environment routes", () => {
       // Tenant env vars can carry pasted credentials, so restricted readers
       // get the same blank envVars posture as on every other environment.
       expect(res.body[0].envVars).toEqual({});
-      expect(res.body[0].metadata).toMatchObject({ managedBySimplixy: true });
+      expect(res.body[0].metadata).toMatchObject({ managedBySimplexy: true });
     });
 
     it("rejects updates to platform-provisioned rows, including for instance admins", async () => {
@@ -744,7 +744,7 @@ describe("environment routes", () => {
       mockEnvironmentService.getById.mockResolvedValue({
         ...createPlatformSandboxEnvironment(),
         metadata: {
-          managedBySimplixy: true,
+          managedBySimplexy: true,
           managedSandboxProvider: "kubernetes",
           managedKubernetesSandbox: true,
         },
@@ -771,7 +771,7 @@ describe("environment routes", () => {
         driver: "local",
         config: {},
         envVars: {},
-        metadata: { managedBySimplixy: true, defaultForInstance: true },
+        metadata: { managedBySimplexy: true, defaultForInstance: true },
       };
       mockEnvironmentService.list.mockResolvedValue([localRow, createPlatformSandboxEnvironment()]);
       const app = createApp(ownerAdminActor);
@@ -793,7 +793,7 @@ describe("environment routes", () => {
         driver: "local",
         config: {},
         envVars: {},
-        metadata: { managedBySimplixy: true },
+        metadata: { managedBySimplexy: true },
       };
       mockEnvironmentService.list.mockResolvedValue([localRow]);
       const app = createApp(ownerAdminActor);
@@ -831,7 +831,7 @@ describe("environment routes", () => {
         ...createPlatformSandboxEnvironment(),
         id: "env-stale-ssh-1",
         driver: "ssh",
-        metadata: { managedBySimplixy: true },
+        metadata: { managedBySimplexy: true },
       };
       mockEnvironmentService.getById.mockResolvedValue(staleRow);
       mockEnvironmentService.update.mockResolvedValue({ ...staleRow, metadata: {} });
@@ -918,7 +918,7 @@ describe("environment routes", () => {
       mockEnvironmentService.getById.mockResolvedValue({
         ...createPlatformSandboxEnvironment(),
         metadata: {
-          managedBySimplixy: true,
+          managedBySimplexy: true,
           managedSandboxProvider: "kubernetes",
           managedKubernetesSandbox: true,
         },
@@ -961,7 +961,7 @@ describe("environment routes", () => {
         ...createPlatformSandboxEnvironment(),
         id: "env-local-1",
         driver: "local",
-        metadata: { managedBySimplixy: true, defaultForInstance: true },
+        metadata: { managedBySimplexy: true, defaultForInstance: true },
       });
       const app = createApp(ownerAdminActor);
 
@@ -1008,7 +1008,7 @@ describe("environment routes", () => {
           name: "Fake managed",
           driver: "sandbox",
           config: { provider: "daytona" },
-          metadata: { managedBySimplixy: true },
+          metadata: { managedBySimplexy: true },
         });
 
       expect(res.status).toBe(422);
@@ -1044,7 +1044,7 @@ describe("environment routes", () => {
       mockEnvironmentService.getById.mockResolvedValue(existing);
       mockEnvironmentService.update.mockResolvedValue({
         ...existing,
-        metadata: { source: "manual", managedBySimplixy: true },
+        metadata: { source: "manual", managedBySimplexy: true },
       });
       const app = createApp({
         type: "board",
@@ -1055,7 +1055,7 @@ describe("environment routes", () => {
 
       const res = await request(app)
         .patch("/api/environments/env-tenant-1")
-        .send({ metadata: { source: "manual", managedBySimplixy: true } });
+        .send({ metadata: { source: "manual", managedBySimplexy: true } });
 
       expect(res.status).toBe(200);
       expect(mockEnvironmentService.update).toHaveBeenCalled();
@@ -1614,7 +1614,7 @@ describe("environment routes", () => {
 
     expect(res.status).toBe(409);
     expect(res.body.error).toBe(
-      "Cannot delete this environment while it has a reusable sandbox lease. Remove the associated execution workspace or issue so Simplixy can destroy the sandbox, then retry.",
+      "Cannot delete this environment while it has a reusable sandbox lease. Remove the associated execution workspace or issue so Simplexy can destroy the sandbox, then retry.",
     );
     expect(res.body.details).toEqual({ deleteBlockedReasons: ["reusable_sandbox_lease"] });
     expect(mockEnvironmentService.removeIfDeletable).not.toHaveBeenCalled();

@@ -7,7 +7,7 @@ import type { Command } from "commander";
 /** Resolve the public server dependency, without importing/starting the server. */
 export async function resolvePiProvisioner(serverUrl: string): Promise<string> {
   const url = new URL(serverUrl);
-  if (url.protocol !== "file:" || url.search || url.hash) throw new Error("Pi setup requires an installed Simplixy server");
+  if (url.protocol !== "file:" || url.search || url.hash) throw new Error("Pi setup requires an installed Simplexy server");
   const entry = await realpath(fileURLToPath(url));
   if (!entry.endsWith("/dist/index.js")) throw new Error("Pi setup requires the published server layout");
   const root = resolve(dirname(entry), "..");
@@ -61,7 +61,7 @@ export async function setupPiRuntime(): Promise<void> {
 /** Resolve the installed public dependency without importing or starting it. */
 export async function resolveCursorProvisioner(serverUrl: string): Promise<string> {
   const url = new URL(serverUrl);
-  if (url.protocol !== "file:" || url.search || url.hash) throw new Error("Cursor setup requires an installed Simplixy server");
+  if (url.protocol !== "file:" || url.search || url.hash) throw new Error("Cursor setup requires an installed Simplexy server");
   const entry = await realpath(fileURLToPath(url));
   if (!entry.endsWith("/dist/index.js")) throw new Error("Cursor setup requires the published server layout");
   const root = resolve(dirname(entry), "..");

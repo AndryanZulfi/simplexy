@@ -6,7 +6,7 @@ interface PaperclipLockupProps extends Omit<SVGProps<SVGSVGElement>, "children">
 }
 
 /**
- * The full Simplixy lockup — mark plus wordmark — from the brand asset
+ * The full Simplexy lockup — mark plus wordmark — from the brand asset
  * (`paperclip_lockup_dark_mode alt.svg`). The export is white-filled for dark
  * chrome; here every path fills `currentColor`, so the one geometry follows
  * the theme the way the brand system expects ("one vocabulary, two surfaces").
@@ -17,7 +17,7 @@ interface PaperclipLockupProps extends Omit<SVGProps<SVGSVGElement>, "children">
  */
 export function PaperclipLockup({
   decorative = false,
-  title = "Simplixy",
+  title = "Simplexy",
   className,
   ...rest
 }: PaperclipLockupProps) {

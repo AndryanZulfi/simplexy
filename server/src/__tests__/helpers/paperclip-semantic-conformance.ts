@@ -502,15 +502,15 @@ class PaperclipRouteSemanticPort {
   }
 
   private post(path: string, body: unknown) {
-    return request(this.app).post(path).set("X-Simplixy-Run-Id", this.binding.runId).send(body);
+    return request(this.app).post(path).set("X-Simplexy-Run-Id", this.binding.runId).send(body);
   }
 
   private put(path: string, body: unknown) {
-    return request(this.app).put(path).set("X-Simplixy-Run-Id", this.binding.runId).send(body);
+    return request(this.app).put(path).set("X-Simplexy-Run-Id", this.binding.runId).send(body);
   }
 
   private patch(path: string, body: unknown) {
-    return request(this.app).patch(path).set("X-Simplixy-Run-Id", this.binding.runId).send(body);
+    return request(this.app).patch(path).set("X-Simplexy-Run-Id", this.binding.runId).send(body);
   }
 }
 
@@ -534,7 +534,7 @@ function createProductionAuthorityApp(db: Db, ids: PaperclipSemanticConformanceI
       type: "agent",
       agentId: ids.actorId,
       companyId: ids.companyId,
-      runId: req.header("X-Simplixy-Run-Id") ?? undefined,
+      runId: req.header("X-Simplexy-Run-Id") ?? undefined,
       source: "agent_jwt",
     };
     next();

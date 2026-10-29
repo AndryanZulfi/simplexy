@@ -10,7 +10,7 @@ function manifest(capabilities: PaperclipPluginManifestV1["capabilities"]): Pape
     version: "0.1.0",
     displayName: "Test Orchestration",
     description: "Test plugin",
-    author: "Simplixy",
+    author: "Simplexy",
     categories: ["automation"],
     capabilities,
     entrypoints: { worker: "./dist/worker.js" },

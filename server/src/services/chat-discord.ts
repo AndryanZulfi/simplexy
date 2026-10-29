@@ -35,7 +35,7 @@ const discordFormatConverter = new DiscordFormatConverter();
 
 /**
  * Discord applies its content limit after the chat adapter has normalized
- * Markdown and expanded bare mentions. Use that exact formatter so Simplixy
+ * Markdown and expanded bare mentions. Use that exact formatter so Simplexy
  * can move an oversized response to a lossless file before the adapter's
  * defensive truncation would discard its tail.
  */

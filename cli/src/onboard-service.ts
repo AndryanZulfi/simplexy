@@ -98,7 +98,7 @@ export async function handoffToOnboardedService(
   const deps = { ...defaultDashboardDependencies, ...dependencies };
   const runtime = await deps.waitUntilReady();
   const dashboardUrl = resolveOnboardServiceDashboardUrl(config, runtime);
-  deps.info(`Simplixy dashboard: ${pc.cyan(dashboardUrl)}`);
+  deps.info(`Simplexy dashboard: ${pc.cyan(dashboardUrl)}`);
 
   if (!runtime) {
     deps.warn(
@@ -111,7 +111,7 @@ export async function handoffToOnboardedService(
   if (!deps.isInteractive() || envDisablesBrowser()) return;
 
   if (await deps.openDashboard(dashboardUrl)) {
-    deps.success("Sent the Simplixy dashboard to your browser.");
+    deps.success("Sent the Simplexy dashboard to your browser.");
   } else {
     deps.warn(`Could not open a browser automatically. Open ${dashboardUrl} manually.`);
   }
@@ -206,14 +206,14 @@ const defaultDependencies: OnboardServiceDependencies = {
   ensureServiceShim: () => ensureServiceShim(),
   confirm: async () => {
     const answer = await p.confirm({
-      message: "Install Simplixy as a background service?",
+      message: "Install Simplexy as a background service?",
       initialValue: true,
     });
     return !p.isCancel(answer) && answer === true;
   },
   confirmLinger: async () => {
     const answer = await p.confirm({
-      message: "Allow Simplixy to keep running after logout? This may request system authorization.",
+      message: "Allow Simplexy to keep running after logout? This may request system authorization.",
       initialValue: false,
     });
     return !p.isCancel(answer) && answer === true;

@@ -1,6 +1,6 @@
 import type { AiAuthMethod, AiProvider } from "./ai-connections.js";
 
-/** A provider observation, never an estimate from Simplixy's run costs. */
+/** A provider observation, never an estimate from Simplexy's run costs. */
 export interface AiConnectionUsageLimit {
   id: string;
   label: string;

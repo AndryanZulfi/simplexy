@@ -31,7 +31,7 @@ function finishManagedConnectionTest(adapterType: string, context: AdapterEnviro
     || !result.checks.some(check => check.code === "acpx_remote_runtime_unverified" && check.level === "warn")) return result;
   const checks = result.checks.map(check => check.code === "acpx_remote_runtime_unverified" && check.level === "warn"
     ? { ...check, code: "acpx_remote_runtime_managed", level: "info" as const,
-        message: "The remote platform is supported. Simplixy manages Runner preparation and verifies its runtime before execution." }
+        message: "The remote platform is supported. Simplexy manages Runner preparation and verifies its runtime before execution." }
     : check);
   return { ...result, checks, status: checks.some(check => check.level === "error") ? "fail" : checks.some(check => check.level === "warn") ? "warn" : "pass" };
 }
@@ -55,7 +55,7 @@ export function agentEnvironmentTestService(db: Db, pluginWorkerManager?: Plugin
     if ((await instanceSettings.getExperimental()).enableManagedSandboxOnly === true) {
       const managed = await environmentsSvc.findManagedSandboxEnvironment(companyId);
       if (!managed) {
-        throw unprocessable("The managed sandbox is unavailable. Restore Simplixy Computer and retry.", {
+        throw unprocessable("The managed sandbox is unavailable. Restore Simplexy Computer and retry.", {
           code: "managed_sandbox_unavailable",
         });
       }
@@ -68,7 +68,7 @@ export function agentEnvironmentTestService(db: Db, pluginWorkerManager?: Plugin
    * Resolve the execution target the adapter should run its test probes against.
    *
    * - No environmentId / local environment → returns a local target so the
-   *   adapter probes the Simplixy host (legacy behavior).
+   *   adapter probes the Simplexy host (legacy behavior).
    * - SSH environment → builds an SSH execution target from the environment
    *   config so the adapter probes the remote box. No lease is required:
    *   the SSH spec is fully derived from the saved environment config.

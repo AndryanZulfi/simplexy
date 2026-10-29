@@ -89,7 +89,7 @@ describeEmbeddedPostgres("feedbackService.saveIssueVote", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `F${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
     });
@@ -149,7 +149,7 @@ describeEmbeddedPostgres("feedbackService.saveIssueVote", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `R${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
     });
@@ -160,8 +160,8 @@ describeEmbeddedPostgres("feedbackService.saveIssueVote", () => {
         companyId,
         key: "paperclipai/paperclip/paperclip",
         slug: "paperclip",
-        name: "Simplixy",
-        markdown: "# Simplixy",
+        name: "Simplexy",
+        markdown: "# Simplexy",
         sourceType: "catalog",
         sourceLocator: null,
         sourceRef: null,
@@ -293,7 +293,7 @@ describeEmbeddedPostgres("feedbackService.saveIssueVote", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `D${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
     });
@@ -362,7 +362,7 @@ describeEmbeddedPostgres("feedbackService.saveIssueVote", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `T${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
     });
@@ -972,7 +972,7 @@ describeEmbeddedPostgres("feedbackService.saveIssueVote", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `H${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
     });

@@ -267,12 +267,12 @@ export function githubChatWizardService(
         endpointId: id,
         state: "enrollment",
         message:
-          "Use Simplixy Cloud to receive GitHub events for this local instance.",
+          "Use Simplexy Cloud to receive GitHub events for this local instance.",
       } satisfies GitHubAppWizardState;
     }
     if (!(await cloud.githubAppsAvailable()))
       throw conflict(
-        "GitHub App setup is not enabled on your Simplixy Cloud connector yet.",
+        "GitHub App setup is not enabled on your Simplexy Cloud connector yet.",
       );
     const trustedOrigin = origin();
     const session = await db.transaction(async (tx) => {
@@ -418,7 +418,7 @@ export function githubChatWizardService(
   ) {
     const cloud = connector();
     if (!cloud || !session.handoff)
-      throw conflict("Restore Simplixy Cloud enrollment");
+      throw conflict("Restore Simplexy Cloud enrollment");
     const material = await cloud.claimGitHubApp({
       subject: session.userId,
       companyId: session.companyId,
@@ -517,7 +517,7 @@ export function githubChatWizardService(
     await managementContext?.reauthorize();
     const bot = await endpoint(id, userId);
     const cloud = connector();
-    if (!cloud) throw conflict("Restore Simplixy Cloud enrollment before continuing");
+    if (!cloud) throw conflict("Restore Simplexy Cloud enrollment before continuing");
     const trustedOrigin = origin();
     const created = await db.transaction(async (tx) => {
       const [locked] = await tx.select().from(chatEndpoints)
@@ -605,7 +605,7 @@ export function githubChatWizardService(
       throw forbidden("The configuring member must recover this registration");
     if (!cloud)
       throw conflict(
-        "Restore Simplixy Cloud enrollment before reconnecting this App",
+        "Restore Simplexy Cloud enrollment before reconnecting this App",
       );
     const binding = { subject: userId, companyId: bot.companyId };
     const state = await cloud.githubApp({
@@ -730,7 +730,7 @@ export function githubChatWizardService(
           endpointId: id,
           state: "enrollment",
           message:
-            "Restore this instance's Simplixy Cloud enrollment to resume.",
+            "Restore this instance's Simplexy Cloud enrollment to resume.",
         };
       const [connection] = await db
         .select({ refs: toolConnections.credentialSecretRefs })
@@ -1184,7 +1184,7 @@ export function githubChatWizardService(
     const challenge = createHash("sha256").update(verifier).digest("base64url");
     if (session.handoff?.cloudId) {
       const cloud = connector();
-      if (!cloud) throw conflict("Restore Simplixy Cloud enrollment");
+      if (!cloud) throw conflict("Restore Simplexy Cloud enrollment");
       const result = await cloud.githubApp({
         subject: userId,
         companyId: bot.companyId,
@@ -1389,7 +1389,7 @@ export function githubChatWizardService(
       throw forbidden("GitHub return did not match this instance");
     const managementContext = await authorizeBrowserReturn(session, actor, session.handoff.identityStateHash === hash(state));
     const cloud = connector();
-    if (!cloud) throw conflict("Restore Simplixy Cloud enrollment");
+    if (!cloud) throw conflict("Restore Simplexy Cloud enrollment");
     const opened = await cloud.claimGitHubApp({
       subject: session.userId,
       companyId: session.companyId,

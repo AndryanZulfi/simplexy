@@ -50,7 +50,7 @@ describe("tool activity vocabulary", () => {
       icon: McpIcon,
       runningLabel: "Searching tasks",
       completedLabel: "Searched tasks",
-      sourceLabel: "Simplixy",
+      sourceLabel: "Simplexy",
       confidence: "exact",
     });
   });
@@ -91,7 +91,7 @@ describe("tool activity vocabulary", () => {
     }
   });
 
-  it("gives anticipated provider tools and Simplixy operations purpose-specific labels", () => {
+  it("gives anticipated provider tools and Simplexy operations purpose-specific labels", () => {
     const anticipated = [
       "ToolSearch", "NotebookRead", "NotebookEdit", "TaskOutput", "TaskStop", "SendMessage",
       "EnterPlanMode", "ExitPlanMode", "LSP", "TodoWrite", "ReportFindings", "Skill",

@@ -106,9 +106,9 @@ Purpose:
 ### Semantics
 
 - `local`
-  - Paperclip may create host-local worktrees, processes, and paths
+  - Simplexy may create host-local worktrees, processes, and paths
 - `cloud`
-  - Paperclip should assume no durable host-local execution workspace management
+  - Simplexy should assume no durable host-local execution workspace management
   - adapter-managed and cloud-sandbox flows should be treated as first-class
 - `hybrid`
   - both local and remote execution strategies may exist

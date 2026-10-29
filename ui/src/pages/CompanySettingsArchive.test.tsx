@@ -39,7 +39,7 @@ const ARCHIVING_COMPANY = {
 const SIBLING_COMPANY = {
   ...ARCHIVING_COMPANY,
   id: "company-pap",
-  name: "Simplixy",
+  name: "Simplexy",
   issuePrefix: "PAP",
 };
 
@@ -188,7 +188,7 @@ describe("CompanySettings archive departure", () => {
       expect(mockPushToast).toHaveBeenCalledWith(
         expect.objectContaining({
           title: "Old Co is archived",
-          body: "Switched to Simplixy.",
+          body: "Switched to Simplexy.",
         }),
       );
       expect(mockNavigateTopLevel).not.toHaveBeenCalled();

@@ -235,7 +235,7 @@ describe("OnboardingWizard adapter selection", () => {
     });
   });
 
-  it("normalizes a saved Simplixy Runner draft before adapter discovery resolves", async () => {
+  it("normalizes a saved Simplexy Runner draft before adapter discovery resolves", async () => {
     mockAdapterRegistry.loaded = false;
     mockAdapterRegistry.list = [{ type: "codex_local" }];
     window.localStorage.setItem(

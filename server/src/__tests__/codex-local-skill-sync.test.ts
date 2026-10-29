@@ -20,7 +20,7 @@ describe("codex local skill sync", () => {
     cleanupDirs.clear();
   });
 
-  it("defaults the operational Simplixy skill for workspace injection on the next run", async () => {
+  it("defaults the operational Simplexy skill for workspace injection on the next run", async () => {
     const codexHome = await makeTempDir("paperclip-codex-skill-sync-");
     cleanupDirs.add(codexHome);
 
@@ -55,7 +55,7 @@ describe("codex local skill sync", () => {
     expect(snapshot.entries.find((entry) => entry.key === paperclipKey)?.state).toBe("available");
   });
 
-  it("does not persist Simplixy skills into CODEX_HOME during sync", async () => {
+  it("does not persist Simplexy skills into CODEX_HOME during sync", async () => {
     const codexHome = await makeTempDir("paperclip-codex-skill-prune-");
     cleanupDirs.add(codexHome);
 
@@ -81,7 +81,7 @@ describe("codex local skill sync", () => {
     });
   });
 
-  it("normalizes legacy flat Simplixy skill refs before reporting configured state", async () => {
+  it("normalizes legacy flat Simplexy skill refs before reporting configured state", async () => {
     const codexHome = await makeTempDir("paperclip-codex-legacy-skill-sync-");
     cleanupDirs.add(codexHome);
 

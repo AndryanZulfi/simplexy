@@ -258,7 +258,7 @@ describe("company portability", () => {
     companySvc.list.mockResolvedValue([]);
     companySvc.getById.mockResolvedValue({
       id: "company-1",
-      name: "Simplixy",
+      name: "Simplexy",
       description: null,
       issuePrefix: "PAP",
       logoAssetId: null,
@@ -267,7 +267,7 @@ describe("company portability", () => {
     });
     companySvc.create.mockResolvedValue({
       id: "company-imported",
-      name: "Imported Simplixy",
+      name: "Imported Simplexy",
       requireBoardApprovalForNewAgents: false,
     });
     agentSvc.list.mockResolvedValue([
@@ -421,8 +421,8 @@ describe("company portability", () => {
         key: paperclipKey,
         slug: "paperclip",
         name: "paperclip",
-        description: "Simplixy coordination skill",
-        markdown: "---\nname: paperclip\ndescription: Simplixy coordination skill\n---\n\n# Simplixy\n",
+        description: "Simplexy coordination skill",
+        markdown: "---\nname: paperclip\ndescription: Simplexy coordination skill\n---\n\n# Simplexy\n",
         sourceType: "github",
         sourceLocator: "https://github.com/paperclipai/paperclip/tree/master/skills/paperclip",
         sourceRef: "0123456789abcdef0123456789abcdef01234567",
@@ -485,7 +485,7 @@ describe("company portability", () => {
         path: relativePath,
         kind: relativePath === "SKILL.md" ? "skill" : "reference",
         content: relativePath === "SKILL.md"
-          ? "---\nname: paperclip\ndescription: Simplixy coordination skill\n---\n\n# Simplixy\n"
+          ? "---\nname: paperclip\ndescription: Simplexy coordination skill\n---\n\n# Simplexy\n"
           : "# API\n",
         language: "markdown",
         markdown: true,
@@ -590,7 +590,7 @@ describe("company portability", () => {
     });
   });
 
-  it("exports referenced skills as stubs by default with sanitized Simplixy extension data", async () => {
+  it("exports referenced skills as stubs by default with sanitized Simplexy extension data", async () => {
     const portability = companyPortabilityService({} as any);
 
     const exported = await portability.exportBundle("company-1", {
@@ -603,7 +603,7 @@ describe("company portability", () => {
       },
     });
 
-    expect(asTextFile(exported.files["COMPANY.md"])).toContain('name: "Simplixy"');
+    expect(asTextFile(exported.files["COMPANY.md"])).toContain('name: "Simplexy"');
     expect(asTextFile(exported.files["COMPANY.md"])).toContain('schema: "agentcompanies/v1"');
     expect(asTextFile(exported.files["agents/claudecoder/AGENTS.md"])).toContain("You are ClaudeCoder.");
     expect(asTextFile(exported.files["agents/claudecoder/AGENTS.md"])).toContain("skills:");
@@ -698,7 +698,7 @@ describe("company portability", () => {
     expect(agentInstructionsSvc.exportFiles).toHaveBeenCalledTimes(1);
   });
 
-  it("exports agent permission grants through the Simplixy extension and manifest", async () => {
+  it("exports agent permission grants through the Simplexy extension and manifest", async () => {
     const db = {
       select: vi.fn((selection: Record<string, unknown>) => ({
         from: vi.fn(() => ({
@@ -745,7 +745,7 @@ describe("company portability", () => {
 
     companySvc.getById.mockResolvedValueOnce({
       id: "company-1",
-      name: "Simplixy",
+      name: "Simplexy",
       description: null,
       issuePrefix: "PAP",
       logoAssetId: null,
@@ -851,7 +851,7 @@ describe("company portability", () => {
     });
   });
 
-  it("exports default sidebar order into the Simplixy extension and manifest", async () => {
+  it("exports default sidebar order into the Simplexy extension and manifest", async () => {
     const portability = companyPortabilityService({} as any);
 
     projectSvc.list.mockResolvedValue([
@@ -923,12 +923,12 @@ describe("company portability", () => {
       expandReferencedSkills: true,
     });
 
-    expect(asTextFile(exported.files["skills/paperclipai/paperclip/paperclip/SKILL.md"])).toContain("# Simplixy");
+    expect(asTextFile(exported.files["skills/paperclipai/paperclip/paperclip/SKILL.md"])).toContain("# Simplexy");
     expect(asTextFile(exported.files["skills/paperclipai/paperclip/paperclip/SKILL.md"])).toContain("metadata:");
     expect(asTextFile(exported.files["skills/paperclipai/paperclip/paperclip/references/api.md"])).toContain("# API");
   });
 
-  it("exports catalog skill provenance in portable Simplixy frontmatter", async () => {
+  it("exports catalog skill provenance in portable Simplexy frontmatter", async () => {
     const portability = companyPortabilityService({} as any);
     const catalogKey = "paperclipai/bundled/software-development/review";
     const originHash = "sha256:catalog-origin";
@@ -1066,7 +1066,7 @@ describe("company portability", () => {
 
   it.each(["namespace", "reservation"])("excludes a private API snapshot used as a company logo (%s)", async kind => {
     const storage = { getObject: vi.fn() };
-    companySvc.getById.mockResolvedValue({ id: "company-1", name: "Simplixy", issuePrefix: "PAP", logoAssetId: "private-logo" });
+    companySvc.getById.mockResolvedValue({ id: "company-1", name: "Simplexy", issuePrefix: "PAP", logoAssetId: "private-logo" });
     assetSvc.getById.mockResolvedValue({ id: "private-logo", companyId: "company-1",
       objectKey: kind === "namespace" ? "company-1/runner-api/run/private.json" : "assets/companies/private-logo", contentType: "image/png" });
     const db = responseAssetDb(kind === "reservation" ? [{ id: "capture-reservation" }] : []);
@@ -1086,7 +1086,7 @@ describe("company portability", () => {
     };
     companySvc.getById.mockResolvedValue({
       id: "company-1",
-      name: "Simplixy",
+      name: "Simplexy",
       description: null,
       issuePrefix: "PAP",
       logoAssetId: "logo-1",
@@ -1439,7 +1439,7 @@ describe("company portability", () => {
 
     companySvc.create.mockResolvedValue({
       id: "company-imported",
-      name: "Imported Simplixy",
+      name: "Imported Simplexy",
     });
     accessSvc.ensureMembership.mockResolvedValue(undefined);
     agentSvc.list.mockResolvedValue([]);
@@ -1495,7 +1495,7 @@ describe("company portability", () => {
       },
       target: {
         mode: "new_company",
-        newCompanyName: "Imported Simplixy",
+        newCompanyName: "Imported Simplexy",
       },
       collisionStrategy: "rename",
     }, "user-1");
@@ -1532,7 +1532,7 @@ describe("company portability", () => {
 
     companySvc.create.mockResolvedValue({
       id: "company-imported",
-      name: "Imported Simplixy",
+      name: "Imported Simplexy",
     });
     accessSvc.ensureMembership.mockResolvedValue(undefined);
     agentSvc.list.mockResolvedValue([]);
@@ -1547,7 +1547,7 @@ describe("company portability", () => {
       "COMPANY.md": [
         "---",
         'schema: "agentcompanies/v1"',
-        'name: "Imported Simplixy"',
+        'name: "Imported Simplexy"',
         "---",
         "",
       ].join("\n"),
@@ -1569,7 +1569,7 @@ describe("company portability", () => {
     await portability.importBundle({
       source: { type: "inline", rootPath: "paperclip-demo", files },
       include: { company: true, agents: false, projects: true, issues: false },
-      target: { mode: "new_company", newCompanyName: "Imported Simplixy" },
+      target: { mode: "new_company", newCompanyName: "Imported Simplexy" },
       collisionStrategy: "rename",
     }, "user-1");
 
@@ -1591,7 +1591,7 @@ describe("company portability", () => {
     projectSvc.list.mockResolvedValue([
       {
         id: "project-1",
-        name: "Simplixy",
+        name: "Simplexy",
         urlKey: "paperclip-app",
         description: "Ship it",
         leadAgentId: null,
@@ -1811,7 +1811,7 @@ describe("company portability", () => {
       },
       target: {
         mode: "new_company",
-        newCompanyName: "Imported Simplixy",
+        newCompanyName: "Imported Simplexy",
       },
       agents: "all",
       collisionStrategy: "rename",
@@ -2234,7 +2234,7 @@ describe("company portability", () => {
           "COMPANY.md": [
             "---",
             'schema: "agentcompanies/v1"',
-            'name: "Imported Simplixy"',
+            'name: "Imported Simplexy"',
             "includes:",
             "  - agents/cto/AGENTS.md",
             "  - agents/qa/AGENTS.md",
@@ -2389,7 +2389,7 @@ describe("company portability", () => {
       },
       target: {
         mode: "new_company",
-        newCompanyName: "Imported Simplixy",
+        newCompanyName: "Imported Simplexy",
       },
       agents: "all",
       collisionStrategy: "rename",
@@ -2408,7 +2408,7 @@ describe("company portability", () => {
     });
   });
 
-  it("exports routines as recurring task packages with Simplixy routine extensions", async () => {
+  it("exports routines as recurring task packages with Simplexy routine extensions", async () => {
     const portability = companyPortabilityService({} as any);
 
     projectSvc.list.mockResolvedValue([
@@ -2660,7 +2660,7 @@ describe("company portability", () => {
 
     companySvc.create.mockResolvedValue({
       id: "company-imported",
-      name: "Imported Simplixy",
+      name: "Imported Simplexy",
     });
     accessSvc.ensureMembership.mockResolvedValue(undefined);
     agentSvc.create.mockResolvedValue({
@@ -2679,7 +2679,7 @@ describe("company portability", () => {
       "COMPANY.md": [
         "---",
         'schema: "agentcompanies/v1"',
-        'name: "Imported Simplixy"',
+        'name: "Imported Simplexy"',
         "---",
         "",
       ].join("\n"),
@@ -2731,7 +2731,7 @@ describe("company portability", () => {
     const preview = await portability.previewImport({
       source: { type: "inline", rootPath: "paperclip-demo", files },
       include: { company: true, agents: true, projects: true, issues: true, skills: false },
-      target: { mode: "new_company", newCompanyName: "Imported Simplixy" },
+      target: { mode: "new_company", newCompanyName: "Imported Simplexy" },
       agents: "all",
       collisionStrategy: "rename",
     });
@@ -2747,7 +2747,7 @@ describe("company portability", () => {
     const result = await portability.importBundle({
       source: { type: "inline", rootPath: "paperclip-demo", files },
       include: { company: true, agents: true, projects: true, issues: true, skills: false },
-      target: { mode: "new_company", newCompanyName: "Imported Simplixy" },
+      target: { mode: "new_company", newCompanyName: "Imported Simplexy" },
       agents: "all",
       collisionStrategy: "rename",
     }, "user-1");
@@ -2786,18 +2786,18 @@ describe("company portability", () => {
     const portability = companyPortabilityService({} as any);
 
     companySvc.list.mockResolvedValue([
-      { name: "Imported Simplixy" },
+      { name: "Imported Simplexy" },
       // Case-insensitive: an existing "(2)" in any casing blocks that suffix.
       { name: "imported paperclip (2)" },
     ]);
     companySvc.create.mockResolvedValue({
       id: "company-imported",
-      name: "Imported Simplixy (3)",
+      name: "Imported Simplexy (3)",
     });
     accessSvc.ensureMembership.mockResolvedValue(undefined);
 
     const files = {
-      "COMPANY.md": ["---", 'schema: "agentcompanies/v1"', 'name: "Imported Simplixy"', "---", ""].join("\n"),
+      "COMPANY.md": ["---", 'schema: "agentcompanies/v1"', 'name: "Imported Simplexy"', "---", ""].join("\n"),
     };
 
     await portability.importBundle({
@@ -2809,23 +2809,23 @@ describe("company portability", () => {
     }, "user-1");
 
     expect(companySvc.create).toHaveBeenCalledWith(expect.objectContaining({
-      name: "Imported Simplixy (3)",
+      name: "Imported Simplexy (3)",
     }));
   });
 
   it("skips name de-duplication for agent-safe imports so collisions stay unobservable", async () => {
     const portability = companyPortabilityService({} as any);
 
-    companySvc.list.mockResolvedValue([{ name: "Imported Simplixy" }]);
+    companySvc.list.mockResolvedValue([{ name: "Imported Simplexy" }]);
     companySvc.create.mockResolvedValue({
       id: "company-imported",
-      name: "Imported Simplixy",
+      name: "Imported Simplexy",
     });
     accessSvc.listActiveUserMemberships.mockResolvedValue([{ userId: "user-1" }]);
     accessSvc.copyActiveUserMemberships.mockResolvedValue([]);
 
     const files = {
-      "COMPANY.md": ["---", 'schema: "agentcompanies/v1"', 'name: "Imported Simplixy"', "---", ""].join("\n"),
+      "COMPANY.md": ["---", 'schema: "agentcompanies/v1"', 'name: "Imported Simplexy"', "---", ""].join("\n"),
     };
 
     await portability.importBundle({
@@ -2839,33 +2839,33 @@ describe("company portability", () => {
     // company-scoped agent, and no suffix may reflect a collision back.
     expect(companySvc.list).not.toHaveBeenCalled();
     expect(companySvc.create).toHaveBeenCalledWith(expect.objectContaining({
-      name: "Imported Simplixy",
+      name: "Imported Simplexy",
     }));
   });
 
   it("honors an explicitly typed company name even when it collides", async () => {
     const portability = companyPortabilityService({} as any);
 
-    companySvc.list.mockResolvedValue([{ name: "Imported Simplixy" }]);
+    companySvc.list.mockResolvedValue([{ name: "Imported Simplexy" }]);
     companySvc.create.mockResolvedValue({
       id: "company-imported",
-      name: "Imported Simplixy",
+      name: "Imported Simplexy",
     });
     accessSvc.ensureMembership.mockResolvedValue(undefined);
 
     const files = {
-      "COMPANY.md": ["---", 'schema: "agentcompanies/v1"', 'name: "Imported Simplixy"', "---", ""].join("\n"),
+      "COMPANY.md": ["---", 'schema: "agentcompanies/v1"', 'name: "Imported Simplexy"', "---", ""].join("\n"),
     };
 
     await portability.importBundle({
       source: { type: "inline", rootPath: "paperclip-demo", files },
       include: { company: true, agents: false, projects: false, issues: false },
-      target: { mode: "new_company", newCompanyName: "Imported Simplixy" },
+      target: { mode: "new_company", newCompanyName: "Imported Simplexy" },
       collisionStrategy: "rename",
     }, "user-1");
 
     expect(companySvc.create).toHaveBeenCalledWith(expect.objectContaining({
-      name: "Imported Simplixy",
+      name: "Imported Simplexy",
     }));
   });
 
@@ -2874,7 +2874,7 @@ describe("company portability", () => {
 
     companySvc.create.mockResolvedValue({
       id: "company-imported",
-      name: "Imported Simplixy",
+      name: "Imported Simplexy",
     });
     accessSvc.ensureMembership.mockResolvedValue(undefined);
     agentSvc.create.mockResolvedValue({
@@ -2891,7 +2891,7 @@ describe("company portability", () => {
     projectSvc.list.mockResolvedValue([]);
 
     const files = {
-      "COMPANY.md": ['---', 'schema: "agentcompanies/v1"', 'name: "Imported Simplixy"', "---", ""].join("\n"),
+      "COMPANY.md": ['---', 'schema: "agentcompanies/v1"', 'name: "Imported Simplexy"', "---", ""].join("\n"),
       "agents/claudecoder/AGENTS.md": ['---', 'name: "ClaudeCoder"', "---", "", "You write code.", ""].join("\n"),
       "projects/launch/PROJECT.md": ['---', 'name: "Launch"', "---", ""].join("\n"),
       "tasks/monday-review/TASK.md": [
@@ -2920,7 +2920,7 @@ describe("company portability", () => {
     const result = await portability.importBundle({
       source: { type: "inline", rootPath: "paperclip-demo", files },
       include: { company: true, agents: true, projects: true, issues: true, skills: false },
-      target: { mode: "new_company", newCompanyName: "Imported Simplixy" },
+      target: { mode: "new_company", newCompanyName: "Imported Simplexy" },
       agents: "all",
       collisionStrategy: "rename",
     }, "user-1", { pauseAutomations: true });
@@ -2946,7 +2946,7 @@ describe("company portability", () => {
 
     companySvc.create.mockResolvedValue({
       id: "company-imported",
-      name: "Imported Simplixy",
+      name: "Imported Simplexy",
     });
     accessSvc.ensureMembership.mockResolvedValue(undefined);
     agentSvc.create.mockResolvedValue({
@@ -2962,7 +2962,7 @@ describe("company portability", () => {
     projectSvc.list.mockResolvedValue([]);
 
     const files = {
-      "COMPANY.md": ['---', 'schema: "agentcompanies/v1"', 'name: "Imported Simplixy"', "---", ""].join("\n"),
+      "COMPANY.md": ['---', 'schema: "agentcompanies/v1"', 'name: "Imported Simplexy"', "---", ""].join("\n"),
       "agents/claudecoder/AGENTS.md": ['---', 'name: "ClaudeCoder"', "---", "", "You write code.", ""].join("\n"),
       "projects/launch/PROJECT.md": ['---', 'name: "Launch"', "---", ""].join("\n"),
       "tasks/monday-review/TASK.md": [
@@ -2991,7 +2991,7 @@ describe("company portability", () => {
     const result = await portability.importBundle({
       source: { type: "inline", rootPath: "paperclip-demo", files },
       include: { company: true, agents: true, projects: true, issues: true, skills: false },
-      target: { mode: "new_company", newCompanyName: "Imported Simplixy" },
+      target: { mode: "new_company", newCompanyName: "Imported Simplexy" },
       agents: "all",
       collisionStrategy: "rename",
     }, "user-1");
@@ -3015,7 +3015,7 @@ describe("company portability", () => {
 
     companySvc.create.mockResolvedValue({
       id: "company-imported",
-      name: "Imported Simplixy",
+      name: "Imported Simplexy",
     });
     accessSvc.ensureMembership.mockResolvedValue(undefined);
     agentSvc.create.mockResolvedValue({
@@ -3031,7 +3031,7 @@ describe("company portability", () => {
     projectSvc.list.mockResolvedValue([]);
 
     const files = {
-      "COMPANY.md": ['---', 'schema: "agentcompanies/v1"', 'name: "Imported Simplixy"', "---", ""].join("\n"),
+      "COMPANY.md": ['---', 'schema: "agentcompanies/v1"', 'name: "Imported Simplexy"', "---", ""].join("\n"),
       "agents/claudecoder/AGENTS.md": ['---', 'name: "ClaudeCoder"', "---", "", "You write code.", ""].join("\n"),
       "projects/launch/PROJECT.md": ['---', 'name: "Launch"', "---", ""].join("\n"),
       "tasks/monday-review/TASK.md": [
@@ -3057,7 +3057,7 @@ describe("company portability", () => {
     const preview = await portability.previewImport({
       source: { type: "inline", rootPath: "paperclip-demo", files },
       include: { company: true, agents: true, projects: true, issues: true, skills: false },
-      target: { mode: "new_company", newCompanyName: "Imported Simplixy" },
+      target: { mode: "new_company", newCompanyName: "Imported Simplexy" },
       agents: "all",
       collisionStrategy: "rename",
     });
@@ -3071,7 +3071,7 @@ describe("company portability", () => {
     await portability.importBundle({
       source: { type: "inline", rootPath: "paperclip-demo", files },
       include: { company: true, agents: true, projects: true, issues: true, skills: false },
-      target: { mode: "new_company", newCompanyName: "Imported Simplixy" },
+      target: { mode: "new_company", newCompanyName: "Imported Simplexy" },
       agents: "all",
       collisionStrategy: "rename",
     }, "user-1");
@@ -3089,14 +3089,14 @@ describe("company portability", () => {
 
     companySvc.create.mockResolvedValue({
       id: "company-imported",
-      name: "Imported Simplixy",
+      name: "Imported Simplexy",
     });
     accessSvc.ensureMembership.mockResolvedValue(undefined);
     agentSvc.list.mockResolvedValue([]);
     projectSvc.list.mockResolvedValue([]);
 
     const files = {
-      "COMPANY.md": ['---', 'schema: "agentcompanies/v1"', 'name: "Imported Simplixy"', "---", ""].join("\n"),
+      "COMPANY.md": ['---', 'schema: "agentcompanies/v1"', 'name: "Imported Simplexy"', "---", ""].join("\n"),
       "tasks/monday-review/TASK.md": [
         "---",
         'name: "Monday Review"',
@@ -3110,7 +3110,7 @@ describe("company portability", () => {
     const request = {
       source: { type: "inline" as const, rootPath: "paperclip-demo", files },
       include: { company: true, agents: false, projects: false, issues: true, skills: false },
-      target: { mode: "new_company" as const, newCompanyName: "Imported Simplixy" },
+      target: { mode: "new_company" as const, newCompanyName: "Imported Simplexy" },
       collisionStrategy: "rename" as const,
     };
 
@@ -3136,7 +3136,7 @@ describe("company portability", () => {
 
     companySvc.create.mockResolvedValue({
       id: "company-imported",
-      name: "Imported Simplixy",
+      name: "Imported Simplexy",
     });
     accessSvc.ensureMembership.mockResolvedValue(undefined);
     agentSvc.create.mockResolvedValue({
@@ -3152,11 +3152,11 @@ describe("company portability", () => {
           "COMPANY.md": [
             "---",
             'schema: "agentcompanies/v1"',
-            'name: "Imported Simplixy"',
+            'name: "Imported Simplexy"',
             'description: "Portable company package"',
             "---",
             "",
-            "# Imported Simplixy",
+            "# Imported Simplexy",
             "",
           ].join("\n"),
           "agents/claudecoder/AGENTS.md": [
@@ -3180,14 +3180,14 @@ describe("company portability", () => {
       },
       target: {
         mode: "new_company",
-        newCompanyName: "Imported Simplixy",
+        newCompanyName: "Imported Simplexy",
       },
       agents: "all",
       collisionStrategy: "rename",
     });
 
     expect(preview.errors).toEqual([]);
-    expect(preview.manifest.company?.name).toBe("Imported Simplixy");
+    expect(preview.manifest.company?.name).toBe("Imported Simplexy");
     expect(preview.manifest.agents).toEqual([
       expect.objectContaining({
         slug: "claudecoder",
@@ -3205,11 +3205,11 @@ describe("company portability", () => {
           "COMPANY.md": [
             "---",
             'schema: "agentcompanies/v1"',
-            'name: "Imported Simplixy"',
+            'name: "Imported Simplexy"',
             'description: "Portable company package"',
             "---",
             "",
-            "# Imported Simplixy",
+            "# Imported Simplexy",
             "",
           ].join("\n"),
           "agents/claudecoder/AGENTS.md": [
@@ -3233,14 +3233,14 @@ describe("company portability", () => {
       },
       target: {
         mode: "new_company",
-        newCompanyName: "Imported Simplixy",
+        newCompanyName: "Imported Simplexy",
       },
       agents: "all",
       collisionStrategy: "rename",
     }, "user-1");
 
     expect(companySvc.create).toHaveBeenCalledWith(expect.objectContaining({
-      name: "Imported Simplixy",
+      name: "Imported Simplexy",
       description: "Portable company package",
     }));
     expect(agentSvc.create).toHaveBeenCalledWith("company-imported", expect.objectContaining({
@@ -3348,7 +3348,7 @@ describe("company portability", () => {
 
     companySvc.create.mockResolvedValue({
       id: "company-imported",
-      name: "Imported Simplixy",
+      name: "Imported Simplexy",
     });
     accessSvc.ensureMembership.mockResolvedValue(undefined);
     agentSvc.create.mockResolvedValue({
@@ -3386,7 +3386,7 @@ describe("company portability", () => {
       },
       target: {
         mode: "new_company",
-        newCompanyName: "Imported Simplixy",
+        newCompanyName: "Imported Simplexy",
       },
       agents: "all",
       collisionStrategy: "rename",
@@ -3427,12 +3427,12 @@ describe("company portability", () => {
     };
     companySvc.create.mockResolvedValue({
       id: "company-imported",
-      name: "Imported Simplixy",
+      name: "Imported Simplexy",
       logoAssetId: null,
     });
     companySvc.update.mockResolvedValue({
       id: "company-imported",
-      name: "Imported Simplixy",
+      name: "Imported Simplexy",
       logoAssetId: "asset-created",
     });
     agentSvc.create.mockResolvedValue({
@@ -3472,7 +3472,7 @@ describe("company portability", () => {
       },
       target: {
         mode: "new_company",
-        newCompanyName: "Imported Simplixy",
+        newCompanyName: "Imported Simplexy",
       },
       agents: "all",
       collisionStrategy: "rename",
@@ -3500,7 +3500,7 @@ describe("company portability", () => {
 
     companySvc.create.mockResolvedValue({
       id: "company-imported",
-      name: "Imported Simplixy",
+      name: "Imported Simplexy",
     });
     agentSvc.create.mockResolvedValue({
       id: "agent-created",
@@ -3525,7 +3525,7 @@ describe("company portability", () => {
       },
       target: {
         mode: "new_company",
-        newCompanyName: "Imported Simplixy",
+        newCompanyName: "Imported Simplexy",
       },
       agents: "all",
       collisionStrategy: "rename",
@@ -3548,7 +3548,7 @@ describe("company portability", () => {
 
     companySvc.create.mockResolvedValue({
       id: "company-imported",
-      name: "Imported Simplixy",
+      name: "Imported Simplexy",
     });
     agentSvc.create.mockImplementation(async (_companyId: string, input: Record<string, unknown>) => ({
       id: `agent-${String(input.name).toLowerCase()}`,
@@ -3585,7 +3585,7 @@ describe("company portability", () => {
       },
       target: {
         mode: "new_company",
-        newCompanyName: "Imported Simplixy",
+        newCompanyName: "Imported Simplexy",
       },
       agents: "all",
       collisionStrategy: "rename",
@@ -3618,7 +3618,7 @@ describe("company portability", () => {
     projectSvc.list.mockResolvedValue([]);
     companySvc.getById.mockResolvedValue({
       id: "company-1",
-      name: "Simplixy",
+      name: "Simplexy",
       description: "Existing company",
       requireBoardApprovalForNewAgents: false,
     });
@@ -3695,7 +3695,7 @@ describe("company portability", () => {
 
     companySvc.create.mockResolvedValue({
       id: "company-imported",
-      name: "Imported Simplixy",
+      name: "Imported Simplexy",
     });
     accessSvc.ensureMembership.mockResolvedValue(undefined);
     agentSvc.create.mockResolvedValue({
@@ -3721,7 +3721,7 @@ describe("company portability", () => {
       },
       target: {
         mode: "new_company",
-        newCompanyName: "Imported Simplixy",
+        newCompanyName: "Imported Simplexy",
       },
       agents: "all",
       collisionStrategy: "rename",
@@ -3769,7 +3769,7 @@ describe("company portability", () => {
 
     companySvc.create.mockResolvedValue({
       id: "company-imported",
-      name: "Imported Simplixy",
+      name: "Imported Simplexy",
     });
     accessSvc.ensureMembership.mockResolvedValue(undefined);
     agentSvc.create.mockImplementation(async (_companyId: string, input: Record<string, unknown>) => ({
@@ -3797,7 +3797,7 @@ describe("company portability", () => {
       },
       target: {
         mode: "new_company",
-        newCompanyName: "Imported Simplixy",
+        newCompanyName: "Imported Simplexy",
       },
       agents: ["claudecoder"],
       collisionStrategy: "rename",
@@ -3822,7 +3822,7 @@ describe("company portability", () => {
       },
       target: {
         mode: "new_company",
-        newCompanyName: "Imported Simplixy",
+        newCompanyName: "Imported Simplexy",
       },
       agents: ["claudecoder"],
       collisionStrategy: "rename",
@@ -5261,7 +5261,7 @@ describe("company portability", () => {
     );
   });
 
-  it("rejects packages produced by a newer Simplixy", async () => {
+  it("rejects packages produced by a newer Simplexy", async () => {
     const portability = companyPortabilityService({} as any);
 
     await expect(portability.importBundle({
@@ -5270,7 +5270,7 @@ describe("company portability", () => {
       target: { mode: "new_company", newCompanyName: "Future Import" },
       agents: "all",
       collisionStrategy: "rename",
-    }, "user-1")).rejects.toThrow(/newer Simplixy/);
+    }, "user-1")).rejects.toThrow(/newer Simplexy/);
     expect(issueSvc.importIssues).not.toHaveBeenCalled();
   });
 
@@ -5309,7 +5309,7 @@ describe("company portability", () => {
         authorType: "system",
         authorAgentId: null,
         authorUserId: null,
-        body: "Simplixy needs a disposition before this issue can continue.",
+        body: "Simplexy needs a disposition before this issue can continue.",
         presentation,
         metadata,
         createdAt: new Date("2026-05-04T12:00:00.000Z"),
@@ -5342,7 +5342,7 @@ describe("company portability", () => {
 
     expect(issueSvc.addImportedComments).toHaveBeenCalledWith(expect.arrayContaining([
       expect.objectContaining({
-        body: "Simplixy needs a disposition before this issue can continue.",
+        body: "Simplexy needs a disposition before this issue can continue.",
         authorType: "system",
         authorAgentId: null,
         authorUserId: null,
@@ -5477,7 +5477,7 @@ describe("company portability", () => {
 
     companySvc.create.mockResolvedValue({
       id: "company-imported",
-      name: "Imported Simplixy",
+      name: "Imported Simplexy",
     });
     accessSvc.ensureMembership.mockResolvedValue(undefined);
     agentSvc.create.mockResolvedValue({
@@ -5510,7 +5510,7 @@ describe("company portability", () => {
       },
       target: {
         mode: "new_company",
-        newCompanyName: "Imported Simplixy",
+        newCompanyName: "Imported Simplexy",
       },
       agents: ["claudecoder"],
       collisionStrategy: "rename",
@@ -5749,7 +5749,7 @@ describe("company portability", () => {
       },
       target: {
         mode: "new_company",
-        newCompanyName: "Imported Simplixy",
+        newCompanyName: "Imported Simplexy",
       },
       agents: ["claudecoder"],
       collisionStrategy: "rename",
@@ -6231,17 +6231,17 @@ describe("company portability", () => {
 
 describe("dedupeImportedCompanyName", () => {
   it("returns the base name when nothing collides", () => {
-    expect(dedupeImportedCompanyName("Simplixy", ["Other Co"])).toBe("Simplixy");
-    expect(dedupeImportedCompanyName("Simplixy", [])).toBe("Simplixy");
+    expect(dedupeImportedCompanyName("Simplexy", ["Other Co"])).toBe("Simplexy");
+    expect(dedupeImportedCompanyName("Simplexy", [])).toBe("Simplexy");
   });
 
   it("suffixes past every taken candidate, case-insensitively", () => {
-    expect(dedupeImportedCompanyName("Simplixy", ["paperclip"])).toBe("Simplixy (2)");
-    expect(dedupeImportedCompanyName("Simplixy", ["Simplixy", "Simplixy (2)"])).toBe("Simplixy (3)");
-    expect(dedupeImportedCompanyName("Simplixy", ["PAPERCLIP", "paperclip (2)"])).toBe("Simplixy (3)");
+    expect(dedupeImportedCompanyName("Simplexy", ["paperclip"])).toBe("Simplexy (2)");
+    expect(dedupeImportedCompanyName("Simplexy", ["Simplexy", "Simplexy (2)"])).toBe("Simplexy (3)");
+    expect(dedupeImportedCompanyName("Simplexy", ["PAPERCLIP", "paperclip (2)"])).toBe("Simplexy (3)");
   });
 
   it("ignores surrounding whitespace in existing names", () => {
-    expect(dedupeImportedCompanyName("Simplixy", ["  Simplixy  "])).toBe("Simplixy (2)");
+    expect(dedupeImportedCompanyName("Simplexy", ["  Simplexy  "])).toBe("Simplexy (2)");
   });
 });

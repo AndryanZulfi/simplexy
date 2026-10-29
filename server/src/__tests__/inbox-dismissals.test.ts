@@ -76,7 +76,7 @@ describeEmbeddedPostgres("inbox dismissals", () => {
     { userId: null, actorType: "agent", expected: 0 },
   ])("scopes failed-run badges to $userId (actor=$actorType)", async ({ userId, actorType, expected }) => {
     const companyId = randomUUID();
-    await db.insert(companies).values({ id: companyId, name: "Simplixy", issuePrefix: "PAP" });
+    await db.insert(companies).values({ id: companyId, name: "Simplexy", issuePrefix: "PAP" });
     for (const responsibleUserId of ["user-1", "user-2", null]) {
       const agentId = randomUUID();
       await db.insert(agents).values({ id: agentId, companyId, name: "Agent", role: "engineer", status: "error" });
@@ -158,7 +158,7 @@ describeEmbeddedPostgres("inbox dismissals", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -181,7 +181,7 @@ describeEmbeddedPostgres("inbox dismissals", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });
@@ -241,7 +241,7 @@ describeEmbeddedPostgres("inbox dismissals", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "PAP",
       requireBoardApprovalForNewAgents: false,
     });

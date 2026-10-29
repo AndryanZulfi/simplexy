@@ -3,19 +3,19 @@ name: paperclip-muse
 description: Handle Paperclip invitations, company tasks, and PAPERCLIP_MUSE wakes through the installed governed client.
 ---
 
-# Simplixy for personal Muse — protocol v1, assets v2
+# Simplexy for personal Muse — protocol v1, assets v2
 
-These instructions connect a personal Muse agent to a named Simplixy company and agent. They do not grant access to every company, replace Muse's own permissions, or describe every tool Muse can use. Simplixy usage and cost are unavailable.
+These instructions connect a personal Muse agent to a named Simplexy company and agent. They do not grant access to every company, replace Muse's own permissions, or describe every tool Muse can use. Simplexy usage and cost are unavailable.
 
 Read this file when a user mentions Paperclip, company tasks, an assigned Paperclip issue, or a `PAPERCLIP_MUSE` wake. A wake is an invitation to inspect the authenticated mailbox. Its opaque reference is not task content or execution authority.
 
 ## Install once; make it discoverable
 
-1. Use the current setup prompt from Simplixy and approve its HTTPS hostname through Muse's permission UI. Never ask the user to paste a durable credential.
+1. Use the current setup prompt from Simplexy and approve its HTTPS hostname through Muse's permission UI. Never ask the user to paste a durable credential.
 2. Download the exact immutable asset2 `client.py`, `detector.sh`, and this instructions file. Verify each SHA-256 digest against the pinned manifest. Store the source files under `~/.config/paperclip-muse/` with private modes; they contain no credentials.
 3. Run `client.py --binding <binding UUID> configure --origin <approved HTTPS origin>`. This writes only `connection.json` with public origin/binding, the binding-specific Secure Vault credential name, and later the authenticated generation. It also writes `receiver.json` containing exactly public `version`, `origin`, and `bindingId`, plus a public-only executable hook wrapper. It does not pair, exchange tokens, or read old `worker.json`/credential journals.
 4. Invoke `credentials.request_api_access` using the exact setup values: binding-specific `provider`, `api_hosts`, `auth_scheme: oauth2_code`, ticket-bearing `authorization_url`, bare-hostname `issuer_domain`, `token_url`, `token_endpoint_auth_method: none`, `registration_url`, and `scopes: paperclip:agent offline_access`. Show the returned Connect link. The user completes Muse's supported OAuth consent; authd chooses its actual callback, performs public-client registration and S256 PKCE, stores secrets in Secure Vault, and rotates refresh automatically. Never invent a callback or perform a raw pairing/token exchange. Never inspect, copy, print, or persist access tokens, refresh tokens, or surrogate headers.
-5. After consent, run the client `status` command and verify its scoped identity. Only after this authenticated read succeeds, register the generated expanded path `~/hooks/scripts/paperclip-muse-<binding UUID>.sh` through `hooks.add` `script_path` with no arguments. The managed runtime supplies `HATCH_HOOK_RUNTIME`. Request five-second checks and inspect the actual installed schedule. The detector uses only public `/api/muse/v1/signal` with `X-Simplixy-Muse-Binding`, without Authorization or any secret. Empty/failed checks stay silent; never substitute sixty seconds.
+5. After consent, run the client `status` command and verify its scoped identity. Only after this authenticated read succeeds, register the generated expanded path `~/hooks/scripts/paperclip-muse-<binding UUID>.sh` through `hooks.add` `script_path` with no arguments. The managed runtime supplies `HATCH_HOOK_RUNTIME`. Request five-second checks and inspect the actual installed schedule. The detector uses only public `/api/muse/v1/signal` with `X-Simplexy-Muse-Binding`, without Authorization or any secret. Empty/failed checks stay silent; never substitute sixty seconds.
 6. Install this verified skill at `~/workspace/skills/paperclip-muse/SKILL.md`. Fresh conversations discover it with `muse.skill_search`; no registration is required. Record only the nonsecret current binding UUID and public client path, never the ticket or any credential. Keep the same instructions beside the client for `help`.
 
 The client loads the supported `/opt/hatch/skills/skill-creator/bin/dynamic_credentials.py` helper. It calls `add_surrogate_to_request(req, credential_name='custom.paperclip-muse-<binding UUID>', entry_name='access_token', allowed_hosts=[approved hostname])` and `read_json_response(resp)`, with bounded HTTPS responses and no redirects. It never reads or caches real tokens or surrogate headers. Private operation/answer/mailbox journals can contain authorized task data, and remain separate from Secure Vault credentials.
@@ -47,9 +47,9 @@ python3 "$MUSE_CLIENT" --binding "$MUSE_BINDING" status
 
 ## Background readiness and the mailbox
 
-Pairing, persisted receiver contact, verified background reply, and agent lifecycle readiness are separate facts. Copying a prompt or running a manual client command does not establish background readiness. Public receiver contact is untrusted presence evidence, not authenticated worker readiness. It is persisted in batches and may lag by the interval reported in Simplixy. A quiet receiver does not prove the worker is running.
+Pairing, persisted receiver contact, verified background reply, and agent lifecycle readiness are separate facts. Copying a prompt or running a manual client command does not establish background readiness. Public receiver contact is untrusted presence evidence, not authenticated worker readiness. It is persisted in batches and may lag by the interval reported in Simplexy. A quiet receiver does not prove the worker is running.
 
-After installing the hook, end the installation turn. Do not read and confirm the readiness nonce inline while installing. Simplixy issues its readiness challenge after persisted receiver contact; a subsequent managed detector wake must trigger a separate background turn that reads and confirms it. The following challenge command is for that background turn only.
+After installing the hook, end the installation turn. Do not read and confirm the readiness nonce inline while installing. Simplexy issues its readiness challenge after persisted receiver contact; a subsequent managed detector wake must trigger a separate background turn that reads and confirms it. The following challenge command is for that background turn only.
 
 Read the authenticated mailbox on every wake and resume through the durable mailbox helper. A new binding starts at cursor `0`. Each page returns `items` and `nextCursor`, at most 50 items. The helper privately journals the complete returned batch before printing it.
 
@@ -70,11 +70,11 @@ After a timeout or crash, call `mailbox` again and resume the saved batch/contin
 
 Handle only the authenticated item kind and references:
 
-- `readiness_challenge`: use its exact `references.nonce` in the command below. Run this from the managed background wake, not by fabricating a nonce. Simplixy checks persisted receiver contact, expiry, binding, and authority.
+- `readiness_challenge`: use its exact `references.nonce` in the command below. Run this from the managed background wake, not by fabricating a nonce. Simplexy checks persisted receiver contact, expiry, binding, and authority.
 - `assignment`: read its `references.assignmentId`, then follow the bounded assignment workflow below. An offer alone grants no permission to execute.
 - `operation_result`: inspect the exact assignment/request receipt. A notification alone is not a successful effect.
 - `input_available`: obtain the canonical answer for its assignment/request/turn, durably ingest it, then consume it.
-- `authority_revoked`: stop Simplixy execution and use the cleanup lane. Preserve the exact stop boundary.
+- `authority_revoked`: stop Simplexy execution and use the cleanup lane. Preserve the exact stop boundary.
 
 ```sh
 python3 "$MUSE_CLIENT" --binding "$MUSE_BINDING" command --key 'challenge:<nonce>' <<'JSON'
@@ -82,7 +82,7 @@ python3 "$MUSE_CLIENT" --binding "$MUSE_BINDING" command --key 'challenge:<nonce
 JSON
 ```
 
-The client supplies protocol `version: 1` and journals a stable UUID `requestId` before I/O. Keep the same key and body for retries. Await Simplixy's observed verified reply and lifecycle readiness. If there is no recent reply, inspect setup/schedule/contact and use Simplixy's Test background reply or Repair connection action. Do not announce readiness based on a copied prompt, wake, or self-report.
+The client supplies protocol `version: 1` and journals a stable UUID `requestId` before I/O. Keep the same key and body for retries. Await Simplexy's observed verified reply and lifecycle readiness. If there is no recent reply, inspect setup/schedule/contact and use Simplexy's Test background reply or Repair connection action. Do not announce readiness based on a copied prompt, wake, or self-report.
 
 ## Idle access and requesting work
 
@@ -109,7 +109,7 @@ Supported idle shapes (the client adds `version` and a stable command `requestId
 | command | `{"command":"task.create","title":"A concrete task","description":"Optional details","parentId":"<optional issue UUID>","projectId":"<optional project UUID>"}` |
 | command | `{"command":"task.comment","issueId":"<issue UUID>","body":"A concrete comment"}` |
 | command | `{"command":"work.request","issueId":"<issue UUID>"}` |
-| command | `{"command":"turn.request","prompt":"The user's requested Simplixy work"}` |
+| command | `{"command":"turn.request","prompt":"The user's requested Simplexy work"}` |
 
 Omit optional fields when absent; never send placeholder UUIDs, extra keys, or `null` for optional UUIDs. Task creation requires a title, not a status change. Work/turn requests go through ordinary scheduling and admission; they do not create direct tool authority. Use one stable command key for one logical user request, including retries. Observe its receipt and wait for the offered assignment; do not request duplicate turns because scheduling is slow.
 
@@ -124,7 +124,7 @@ python3 "$MUSE_CLIENT" --binding "$MUSE_BINDING" query <<JSON
 JSON
 ```
 
-Durably save the result. Check its binding/generation, run/session/turn, revision, status, task `text`, `instructions`, `acceptByUnixMs`, `expiresAtUnixMs`, `completionContract`, and `tools`. Use the exact projected tool names and input schemas; a transport tool call is not an arbitrary function or shell command. The active tool catalog describes Simplixy's admitted tools, not Muse's private tools. Do not import tools from another assignment or a remembered catalog.
+Durably save the result. Check its binding/generation, run/session/turn, revision, status, task `text`, `instructions`, `acceptByUnixMs`, `expiresAtUnixMs`, `completionContract`, and `tools`. Use the exact projected tool names and input schemas; a transport tool call is not an arbitrary function or shell command. The active tool catalog describes Simplexy's admitted tools, not Muse's private tools. Do not import tools from another assignment or a remembered catalog.
 
 Accept before `acceptByUnixMs` using one stable key. The client allocates and stores the UUID before sending:
 
@@ -190,7 +190,7 @@ python3 "$MUSE_CLIENT" --binding "$MUSE_BINDING" receipt --key "renew:$MUSE_ASSI
 
 Do not recalculate/rewrite that file while retrying the same renewal key. A later renewal needs a new key and a separately retained command.
 
-Do not run indefinitely: stop on the admitted deadline, declared completion, inability to proceed, or revoked authority. Never retry an unresolved private Muse effect based on Simplixy's receipt; Simplixy cannot observe all private tools.
+Do not run indefinitely: stop on the admitted deadline, declared completion, inability to proceed, or revoked authority. Never retry an unresolved private Muse effect based on Simplexy's receipt; Simplexy cannot observe all private tools.
 
 ## Ask a human, resume the same turn, then consume
 
@@ -232,11 +232,11 @@ The shown result is a shape marker, not a valid completion report. Replace the e
 python3 "$MUSE_CLIENT" --binding "$MUSE_BINDING" command --key "finish:$MUSE_ASSIGNMENT" < "$MUSE_STATE/finish.json"
 ```
 
-Observe the exact native accepted finish receipt. Simplixy's run finalization is a separate later event; do not claim queue-to-completion latency from a webhook or your declaration. No pending result is successful completion. After finish, stop using that assignment's tools.
+Observe the exact native accepted finish receipt. Simplexy's run finalization is a separate later event; do not claim queue-to-completion latency from a webhook or your declaration. No pending result is successful completion. After finish, stop using that assignment's tools.
 
 ## Fencing, repair, and truthful cleanup
 
-On run revocation, fencing, denied authority, pause, or expiration, stop the named Simplixy work immediately. Preserve pending request IDs and unknown effect outcomes. Do not reconnect to escape a fence. Secure Vault/authd owns refresh; a denied or uncertain OAuth connection requires the user to review and reconnect through the supported flow, never raw token handling.
+On run revocation, fencing, denied authority, pause, or expiration, stop the named Simplexy work immediately. Preserve pending request IDs and unknown effect outcomes. Do not reconnect to escape a fence. Secure Vault/authd owns refresh; a denied or uncertain OAuth connection requires the user to review and reconnect through the supported flow, never raw token handling.
 
 While the OAuth connection itself remains live, a run-level stop may be inspected and acknowledged through the same authenticated identity:
 

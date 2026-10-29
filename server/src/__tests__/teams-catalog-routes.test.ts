@@ -128,7 +128,7 @@ describe("teams catalog routes", () => {
     mockTeamsCatalogService.installCatalogTeam.mockResolvedValue({
       team: catalogTeam(),
       portabilityImport: {
-        company: { id: companyId, name: "Simplixy", action: "unchanged" },
+        company: { id: companyId, name: "Simplexy", action: "unchanged" },
         agents: [],
         projects: [],
         envInputs: [],

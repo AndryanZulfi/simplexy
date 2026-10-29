@@ -1832,13 +1832,13 @@ export function chatChannelService(db: Db, options: ChatChannelServiceOptions) {
         const filteredReason = !endpointAllowed
           ? "Connection is not active"
           : !destinationAllowed
-            ? "Destination is not enabled in Simplixy"
+            ? "Destination is not enabled in Simplexy"
             : principalResolution.linkedDenied
-              ? "Linked Simplixy account is not currently permitted"
+              ? "Linked Simplexy account is not currently permitted"
               : !principalAllowed
                 ? endpoint.allowUnlinkedPeople
                   ? "Endpoint sponsor can no longer authorize external guests"
-                  : "External identity must be linked to a Simplixy account"
+                  : "External identity must be linked to a Simplexy account"
                 : "Message did not address the agent or an active task thread";
         await db.transaction(async (tx) => {
           await notifyChatDeliveryWork(tx);
@@ -2025,7 +2025,7 @@ export function chatChannelService(db: Db, options: ChatChannelServiceOptions) {
             : controlCommand === "new"
               ? isTelegramForumTopic
                 ? telegramForumControlResponse("new", taskLabel, Boolean(existingIssue), Boolean(existingConversation))
-                : "Send your request to start a new Simplixy task."
+                : "Send your request to start a new Simplexy task."
               : existingConversation
                 ? isTelegramForumTopic
                   ? telegramForumControlResponse("close", taskLabel, Boolean(existingIssue), true)
@@ -2207,7 +2207,7 @@ export function chatChannelService(db: Db, options: ChatChannelServiceOptions) {
         }
         if (!conversation)
           throw conflict(
-            "Could not bind external conversation to a Simplixy task",
+            "Could not bind external conversation to a Simplexy task",
           );
 
         const issue =
@@ -2296,7 +2296,7 @@ export function chatChannelService(db: Db, options: ChatChannelServiceOptions) {
                       type: "key_value",
                       label: "Authority",
                       value: taskUserId
-                        ? "Linked Simplixy user"
+                        ? "Linked Simplexy user"
                         : "Sponsored external guest (restricted)",
                     },
                   ],
@@ -2452,11 +2452,11 @@ export function chatChannelService(db: Db, options: ChatChannelServiceOptions) {
                 : endpointStillAllowed
                   ? destinationStillAllowed
                     ? currentPrincipalAuthorization.linkedDenied
-                      ? "Linked Simplixy account is not currently permitted"
+                      ? "Linked Simplexy account is not currently permitted"
                       : currentEndpoint.allowUnlinkedPeople
                         ? "Endpoint sponsor can no longer authorize external guests"
-                        : "External identity must be linked to a Simplixy account"
-                    : "Destination is not enabled in Simplixy"
+                        : "External identity must be linked to a Simplexy account"
+                    : "Destination is not enabled in Simplexy"
                   : "Connection is not active",
               updatedAt: filteredAt,
             })

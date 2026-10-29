@@ -16,7 +16,7 @@ afterEach(() => {
   window.sessionStorage.clear();
 });
 
-describe("Simplixy Cloud OAuth handoff", () => {
+describe("Simplexy Cloud OAuth handoff", () => {
   it("uses the fixed same-origin endpoint and never navigates to the legacy confirmation URL", async () => {
     const request = vi.fn(async () => Response.json({
       authorizationUrl: "https://provider.example.test/authorize?state=one",

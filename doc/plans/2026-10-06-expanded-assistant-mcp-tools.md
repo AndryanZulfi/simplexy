@@ -1,4 +1,4 @@
-# Expand Paperclip’s assistant MCP tools
+# Expand Simplexy’s assistant MCP tools
 
 ## Outcome
 Outside assistants manage work and configuration as the connected person through the existing experimental MCP endpoint. Human attribution, company isolation, revocation, approval gates, native execution ownership and scheduling remain authoritative.
@@ -32,4 +32,4 @@ Outside assistants manage work and configuration as the connected person through
 - Review fixes cover pending native retries, model-specific reasoning configuration and legacy instruction revision safety. Butter staging and final CI are separate delivery gates tracked in the PR verification sections.
 
 ## Consent revision
-- User requested one checkbox: **Write all of your Paperclip data**. It controls requested work and configuration scopes together in browser and device consent; there is no separate configuration checkbox. Viewer restrictions and already-issued grant scopes remain unchanged.
+- User requested one checkbox: **Write all of your Simplexy data**. It controls requested work and configuration scopes together in browser and device consent; there is no separate configuration checkbox. Viewer restrictions and already-issued grant scopes remain unchanged.

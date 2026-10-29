@@ -53,7 +53,7 @@ function isPluginKeyConflict(error: unknown): boolean {
 /**
  * PluginRegistry – CRUD operations for the `plugins` and `plugin_config`
  * tables.  Follows the same factory-function pattern used by the rest of
- * the Simplixy service layer.
+ * the Simplexy service layer.
  *
  * This is the lowest-level persistence layer for plugins. Higher-level
  * concerns such as lifecycle state-machine enforcement and capability
@@ -559,7 +559,7 @@ export function pluginRegistryService(db: Db) {
     },
 
     /**
-     * Create or update a persistent mapping between a Simplixy object and an
+     * Create or update a persistent mapping between a Simplexy object and an
      * external entity.
      *
      * @param pluginId - The UUID of the plugin.

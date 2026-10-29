@@ -4,11 +4,11 @@ import type { McpPrincipal } from "./oauth.js";
 
 export class McpApiError extends Error {
   constructor(readonly status: number, readonly details: Record<string, unknown> = {}) {
-    super(details.code === "MCP_ACTIVE_EXECUTION" ? "An agent currently owns execution. Wait for it to finish, or manage execution in Simplixy."
-      : details.code === "MCP_REVIEW_REQUIRED" ? "A review is pending. Make the review decision in Simplixy before changing status or ownership."
+    super(details.code === "MCP_ACTIVE_EXECUTION" ? "An agent currently owns execution. Wait for it to finish, or manage execution in Simplexy."
+      : details.code === "MCP_REVIEW_REQUIRED" ? "A review is pending. Make the review decision in Simplexy before changing status or ownership."
       : status === 409 ? "The operation conflicts with current state. Read the latest revision, version, dependencies or task state before submitting a revised action."
       : status === 422 || status === 400 ? "Validation failed. Check the operation schema, dependency cycles, assignment and required blocker or revision fields."
-      : `Simplixy rejected the operation (HTTP ${status}). Check your current organization permissions and connection scopes in Simplixy.`);
+      : `Simplexy rejected the operation (HTTP ${status}). Check your current organization permissions and connection scopes in Simplexy.`);
   }
 }
 

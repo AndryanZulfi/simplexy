@@ -339,7 +339,7 @@ export function registerRoutineCommands(program: Command): void {
     .command("disable-all")
     .description("Pause all non-archived routines in the configured local instance for one company")
     .option("-c, --config <path>", "Path to config file")
-    .option("-d, --data-dir <path>", "Simplixy data directory root (isolates state from ~/.paperclip)")
+    .option("-d, --data-dir <path>", "Simplexy data directory root (isolates state from ~/.paperclip)")
     .option("-C, --company-id <id>", "Company ID")
     .option("--json", "Output raw JSON")
     .action(async (opts: RoutinesDisableAllOptions) => {

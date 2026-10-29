@@ -119,7 +119,7 @@ function createLocalSandboxRunner() {
 }
 
 describe("codex execute", () => {
-  it("uses a Simplixy-managed CODEX_HOME outside worktree mode while preserving shared auth and config", async () => {
+  it("uses a Simplexy-managed CODEX_HOME outside worktree mode while preserving shared auth and config", async () => {
     const root = await fs.mkdtemp(path.join(os.tmpdir(), "paperclip-codex-execute-default-"));
     const workspace = path.join(root, "workspace");
     const commandPath = path.join(root, "codex");
@@ -203,7 +203,7 @@ describe("codex execute", () => {
       expect(logs).toContainEqual(
         expect.objectContaining({
           stream: "stdout",
-          chunk: expect.stringContaining("Using Simplixy-managed Codex home"),
+          chunk: expect.stringContaining("Using Simplexy-managed Codex home"),
         }),
       );
     } finally {
@@ -318,7 +318,7 @@ describe("codex execute", () => {
         expect.arrayContaining([
           expect.objectContaining({
             stream: "stderr",
-            chunk: expect.stringContaining("Simplixy cannot enforce policies for that direct entry"),
+            chunk: expect.stringContaining("Simplexy cannot enforce policies for that direct entry"),
           }),
         ]),
       );
@@ -387,7 +387,7 @@ describe("codex execute", () => {
       expect(result.exitCode).toBe(0);
       expect(result.errorMessage).toBeNull();
       expect(commandNotes).toContain(
-        "Codex exec automatically applies repo-scoped AGENTS.md instructions from the current workspace; Simplixy does not currently suppress that discovery.",
+        "Codex exec automatically applies repo-scoped AGENTS.md instructions from the current workspace; Simplexy does not currently suppress that discovery.",
       );
     } finally {
       if (previousHome === undefined) delete process.env.HOME;
@@ -644,7 +644,7 @@ describe("codex execute", () => {
       expect(capture.paperclipWakePayloadJson).toBeNull();
       expect(capture.prompt).toContain(description);
       expect(capture.prompt).toContain("- reason: issue_commented");
-      expect(capture.prompt).toContain("## Simplixy Wake Payload");
+      expect(capture.prompt).toContain("## Simplexy Wake Payload");
       expect(capture.prompt).toContain("Use this wake to continue the task, applying new user direction and preserving its approval gates.");
       expect(capture.prompt).toContain("Do not switch to another issue until you have handled this wake.");
       expect(capture.prompt).toContain(
@@ -1066,7 +1066,7 @@ process.exit(1);
       expect(capture.argv).not.toContain("resume");
       expect(capture.argv).not.toContain('service_tier="fast"');
       expect(capture.argv).not.toContain("features.fast_mode=true");
-      expect(capture.prompt).toContain("Simplixy session handoff:");
+      expect(capture.prompt).toContain("Simplexy session handoff:");
       expect(capture.prompt).toContain("Issue continuation summary for the next fresh session.");
       expect(commandNotes).toContain("Codex transient fallback requested safer invocation settings for this retry.");
       expect(commandNotes).toContain("Codex transient fallback forced a fresh session with a continuation handoff.");
@@ -1307,7 +1307,7 @@ process.exit(1);
       const capture = JSON.parse(await fs.readFile(capturePath, "utf8")) as CapturePayload;
       expect(capture.paperclipEnvKeys).not.toContain("PAPERCLIP_WAKE_PAYLOAD_JSON");
       expect(capture.paperclipWakePayloadJson).toBeNull();
-      expect(capture.prompt).toContain("## Simplixy Wake Payload");
+      expect(capture.prompt).toContain("## Simplexy Wake Payload");
       expect(capture.prompt).toContain("Do not switch to another issue until you have handled this wake.");
       expect(capture.prompt).toContain("- issue: PAP-1201 Fix gallery opening for inline images");
       expect(capture.prompt).not.toContain("- pending comments:");
@@ -1430,7 +1430,7 @@ process.exit(1);
       const capture = JSON.parse(await fs.readFile(capturePath, "utf8")) as CapturePayload;
       if (resumedSession) expect(capture.argv).toEqual(expect.arrayContaining(["resume", "codex-session-1", "-"]));
       else expect(capture.argv).not.toContain("resume");
-      expect(capture.prompt).toContain(resumedSession ? "## Simplixy Resume Delta" : "## Simplixy Wake Payload");
+      expect(capture.prompt).toContain(resumedSession ? "## Simplexy Resume Delta" : "## Simplexy Wake Payload");
       expect(capture.prompt).toContain("Do not switch to another issue until you have handled this wake.");
       expect(capture.prompt).toContain("Second comment");
       expect(capture.prompt).toContain(policy);
@@ -1448,7 +1448,7 @@ process.exit(1);
       expect(capture.prompt).not.toContain("Follow the paperclip heartbeat.");
       if (resumedSession) {
         expect(capture.prompt).not.toContain("You are managed instructions.");
-        expect(invocationPrompt).toContain("## Simplixy Resume Delta");
+        expect(invocationPrompt).toContain("## Simplexy Resume Delta");
         expect(invocationNotes).toContain("Skipped stdin instruction reinjection because an existing Codex session is being resumed with a wake delta.");
         expect(promptMetrics.instructionsChars).toBe(0);
         expect(promptMetrics.heartbeatPromptChars).toBe(0);

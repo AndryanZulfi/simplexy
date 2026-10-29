@@ -3174,7 +3174,7 @@ describe("TaskChatThread runtime transcript selection", () => {
       comments: testCase.withRecoveryNotice ? [{
         id: "recovery-after-stop", companyId: "company", issueId: "issue", metadata: null,
         authorType: "system", authorAgentId: null, authorUserId: null,
-        body: "Simplixy retried continuation, but it still has no live execution path.",
+        body: "Simplexy retried continuation, but it still has no live execution path.",
         presentation: { kind: "system_notice", title: "No live execution path", tone: "danger", detailsDefaultOpen: false },
         createdAt: new Date("2026-08-25T18:00:03.000Z"), updatedAt: new Date("2026-08-25T18:00:03.000Z"),
       }] : [],
@@ -3681,7 +3681,7 @@ describe("TaskChatThread no-live-execution-path recovery", () => {
     authorType: "system" as const,
     authorAgentId: null,
     authorUserId: null,
-    body: "Simplixy retried continuation, but it still has no live execution path.",
+    body: "Simplexy retried continuation, but it still has no live execution path.",
     presentation: {
       kind: "system_notice" as const,
       tone: "danger" as const,
@@ -4204,7 +4204,7 @@ describe("TaskChatThread queued message actions", () => {
   });
 });
 
-describe("TaskChatThread Simplixy Runner queue", () => {
+describe("TaskChatThread Simplexy Runner queue", () => {
   const queuedComment = {
     id: "queued-prp-1",
     companyId: "company-1",
@@ -5043,6 +5043,6 @@ it("explains a missing provider runtime with an installation repair", () => {
   expect(container.textContent).toContain("Runtime missing");
   const toggle = container.querySelector<HTMLButtonElement>('[data-testid="task-chat-collapsible-marker"] button[aria-expanded]')!;
   flushSync(() => toggle.click());
-  expect(container.textContent).toContain("Reinstall or rebuild Simplixy");
+  expect(container.textContent).toContain("Reinstall or rebuild Simplexy");
   expect(container.textContent).toContain("test the agent's runtime");
 });

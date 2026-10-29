@@ -179,12 +179,12 @@ describe("secret routes", () => {
           operation: "secret.create",
           providerConfigId: "11111111-1111-4111-8111-111111111111",
           region: "us-east-1",
-          credentialPath: "Simplixy server runtime/provider credential path",
+          credentialPath: "Simplexy server runtime/provider credential path",
           requiredCapability: "secretsmanager:CreateSecret",
           actionableMessage:
             "AWS managed secret creation needs secretsmanager:CreateSecret in the selected region for this provider vault.",
           safeAlternative:
-            "If the secret already exists in AWS, link it as an external reference instead of creating a Simplixy-managed value.",
+            "If the secret already exists in AWS, link it as an external reference instead of creating a Simplexy-managed value.",
         },
       ),
     );
@@ -533,10 +533,10 @@ describe("secret routes", () => {
           providerConfigId: "discovery-preview",
           providerVaultContext: "draft_config",
           region: "us-east-1",
-          credentialPath: "Simplixy server runtime/provider credential path",
+          credentialPath: "Simplexy server runtime/provider credential path",
           requiredCapability: "secretsmanager:ListSecrets",
           actionableMessage:
-            "AWS discovery preview needs secretsmanager:ListSecrets in the selected region for the Simplixy server runtime/provider credential path.",
+            "AWS discovery preview needs secretsmanager:ListSecrets in the selected region for the Simplexy server runtime/provider credential path.",
           safeAlternative:
             "If the operator already knows the exact AWS Secrets Manager ARN, paste/link that ARN instead of using discovery. Exact-resource DescribeSecret and runtime read permissions are still required.",
         },
@@ -563,7 +563,7 @@ describe("secret routes", () => {
         requiredCapability: "secretsmanager:ListSecrets",
       },
     });
-    expect(res.body.details.actionableMessage).toContain("Simplixy server runtime/provider credential path");
+    expect(res.body.details.actionableMessage).toContain("Simplexy server runtime/provider credential path");
     expect(res.body.details.safeAlternative).toContain("paste/link that ARN");
     expect(JSON.stringify(res.body)).not.toContain("arn:aws");
     expect(JSON.stringify(res.body)).not.toContain("123456789012");
@@ -837,7 +837,7 @@ describe("secret routes", () => {
             externalRef: "arn:aws:secretsmanager:us-east-1:123456789012:secret:prod/openai",
             name: "OpenAI API key",
             key: "openai-api-key",
-            description: "Operator-entered Simplixy description",
+            description: "Operator-entered Simplexy description",
           },
         ],
       });
@@ -852,7 +852,7 @@ describe("secret routes", () => {
             externalRef: "arn:aws:secretsmanager:us-east-1:123456789012:secret:prod/openai",
             name: "OpenAI API key",
             key: "openai-api-key",
-            description: "Operator-entered Simplixy description",
+            description: "Operator-entered Simplexy description",
           },
         ],
       },

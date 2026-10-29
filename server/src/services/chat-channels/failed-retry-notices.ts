@@ -66,7 +66,7 @@ export function createFailedRetryNotices(db: Db, options: Options) {
             idempotencyKey: inboundWakePublicationKey(action.id, state, source.endpointId, source.conversationId),
             payload: projectSafeChatPublication({ classification: "external", source: "safe_milestone",
               text: state === "queued" ? "Your retry is queued."
-                : "This retry was not started. Open the task in Simplixy for details.",
+                : "This retry was not started. Open the task in Simplexy for details.",
               progressState: state === "queued" ? "queued" : "failed",
             }), state: "pending",
           }).onConflictDoNothing().returning({ id: chatPublications.id })).length;

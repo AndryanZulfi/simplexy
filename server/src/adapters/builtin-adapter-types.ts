@@ -1,5 +1,5 @@
 /**
- * Adapter types shipped with Simplixy. External plugins must not replace these.
+ * Adapter types shipped with Simplexy. External plugins must not replace these.
  */
 export const BUILTIN_ADAPTER_TYPES = new Set([
   "acpx_local",

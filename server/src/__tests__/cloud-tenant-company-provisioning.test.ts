@@ -53,7 +53,7 @@ function legacyProvisionedPrefix(stackId: string) {
 }
 
 function legacyProvisionedDescription(stackId: string) {
-  return `Provisioned by Simplixy Cloud for stack ${stackId}.`;
+  return `Provisioned by Simplexy Cloud for stack ${stackId}.`;
 }
 
 describeEmbeddedPostgres("cloud tenant company provisioning", () => {

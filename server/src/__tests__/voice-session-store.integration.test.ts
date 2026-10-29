@@ -596,7 +596,7 @@ const support = external ? { supported: true } : await getEmbeddedPostgresTestSu
   it("rejects Backlog voice work before claiming that it was accepted", async () => {
     const f = await fixture();
     await db.update(issues).set({status: "backlog"}).where(eq(issues.id, f.issueId));
-    await expect(f.store.runTool(f.toolInput("submit_request", {text: "Inspect disk space"}))).rejects.toMatchObject({status: 409, message: "Move this task to Todo in Simplixy before requesting voice work."});
+    await expect(f.store.runTool(f.toolInput("submit_request", {text: "Inspect disk space"}))).rejects.toMatchObject({status: 409, message: "Move this task to Todo in Simplexy before requesting voice work."});
     expect(await db.select().from(chatDeliveries).where(eq(chatDeliveries.endpointId, f.endpointId))).toHaveLength(0);
     expect(await db.select().from(chatVoiceToolCalls).where(eq(chatVoiceToolCalls.sessionId, f.sessionId))).toHaveLength(0);
   });
@@ -1622,10 +1622,10 @@ const support = external ? { supported: true } : await getEmbeddedPostgresTestSu
     expect(f.response.systemPrompt).not.toContain(f.call.approvalCode);
     // The provider must not inherit browser notification-only waiting or a
     // protected question tool that this public session cannot use.
-    expect(f.response.systemPrompt).toContain("Simplixy pushes approved task answers");
+    expect(f.response.systemPrompt).toContain("Simplexy pushes approved task answers");
     expect(f.response.systemPrompt).toContain("Do not repeatedly poll while pending.");
     expect(f.response.systemPrompt).toContain("Do not call answer_question");
-    expect(f.response.systemPrompt).toContain("Do not make the caller wait for a Simplixy turn");
+    expect(f.response.systemPrompt).toContain("Do not make the caller wait for a Simplexy turn");
     expect(f.response.systemPrompt).toContain("Submit follow-ups even while earlier work is running");
     expect(f.response.systemPrompt).toContain("inspect its actual environment");
     expect(f.response.systemPrompt).toContain("How much disk space do you have on your computer?");
@@ -2145,7 +2145,7 @@ const support = external ? { supported: true } : await getEmbeddedPostgresTestSu
     const skill = config.paperclipRuntimeSkills[0];
     const markdown = await readFile(join(skill.source, "SKILL.md"), "utf8");
     expect(markdown).toContain("one focused clarification");
-    expect(markdown).toContain("durable Simplixy continuation");
+    expect(markdown).toContain("durable Simplexy continuation");
     expect(markdown).toContain("never blindly redial");
     expect(markdown).not.toContain("+12015551234");
     for (const adapter of ["paperclip_runner", "claude_local", "codex_local"]) {

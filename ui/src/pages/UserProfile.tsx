@@ -238,7 +238,7 @@ export function UserProfile() {
     () =>
       (data?.topAgents ?? []).map((row) => ({
         key: row.agentId ?? "unknown",
-        label: row.agentName ?? (row.agentId ? row.agentId.slice(0, 8) : "Simplixy services"),
+        label: row.agentName ?? (row.agentId ? row.agentId.slice(0, 8) : "Simplexy services"),
         sublabel: "Task-linked usage",
         costCents: row.costCents,
         inputTokens: row.inputTokens,

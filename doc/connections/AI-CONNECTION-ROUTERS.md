@@ -103,7 +103,7 @@ to build the preview.
 
 Pool configuration stories belong to the private Cloud plugin's own Storybook
 in `extensions/plugin-connection-pool/storybook/`. Both previews use fictional
-accounts; they do not call live providers or mutate a Paperclip instance.
+accounts; they do not call live providers or mutate a Simplexy instance.
 Core also owns **Connectors / Pool host** stories for the generic native
 extension. The overview links to Cloud's **In Connectors** preview on port 6010;
 its stories mount these same production routes, header, sidebar and tokens.

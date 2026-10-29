@@ -136,7 +136,7 @@ describe("test-drive data isolation", () => {
     expect(fs.readFileSync(marker, "utf8")).toBe("keep");
   });
 
-  it("discards inherited Simplixy routing while preserving a custom key source", async () => {
+  it("discards inherited Simplexy routing while preserving a custom key source", async () => {
     const root = fs.mkdtempSync(path.join(os.tmpdir(), "paperclip-test-drive-env-"));
     cleanupDirectories.push(root);
     process.env.PAPERCLIP_HOME = "/normal/home";

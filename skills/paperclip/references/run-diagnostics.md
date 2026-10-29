@@ -1,7 +1,7 @@
 # Run diagnostics from a sandbox
 
 The queue and HTTP/2 sandbox bridges admit these read-only routes through the
-normal injected Paperclip API credential. The server still checks company,
+normal injected Simplexy API credential. The server still checks company,
 authorization-boundary and private-task access, and applies its existing run
 content and credential redaction. Admission through the bridge does not grant
 access to another company's runs or a private task. A list can return a redacted

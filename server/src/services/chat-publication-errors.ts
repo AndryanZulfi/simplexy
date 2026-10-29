@@ -4,7 +4,7 @@ export type ChatPublicationErrorDisposition =
   | {
       kind: "retry";
       retryAfterMs: number;
-      /** True when the provider explicitly asked Simplixy to slow down. */
+      /** True when the provider explicitly asked Simplexy to slow down. */
       providerRateLimit?: boolean;
       reason: string;
     }

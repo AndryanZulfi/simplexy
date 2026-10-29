@@ -31,7 +31,7 @@ if (!embeddedSupport.supported) {
   console.warn(`Skipping semantic production conformance: ${embeddedSupport.reason ?? "unsupported host"}`);
 }
 
-describeEmbedded("Simplixy semantic mock/production conformance", () => {
+describeEmbedded("Simplexy semantic mock/production conformance", () => {
   let temporary: Awaited<ReturnType<typeof startEmbeddedPostgresTestDatabase>> | null = null;
   let mock: CapabilityMockSemanticConformanceAdapter | null = null;
 

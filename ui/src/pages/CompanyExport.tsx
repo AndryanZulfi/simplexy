@@ -490,10 +490,10 @@ function generateReadmeFromSelection(
   lines.push("npx paperclipai company import this-github-url-or-folder");
   lines.push("```");
   lines.push("");
-  lines.push("See [Simplixy](https://paperclip.ing) for more information.");
+  lines.push("See [Simplexy](https://paperclip.ing) for more information.");
   lines.push("");
   lines.push("---");
-  lines.push(`Exported from [Simplixy](https://paperclip.ing) on ${new Date().toISOString().split("T")[0]}`);
+  lines.push(`Exported from [Simplexy](https://paperclip.ing) on ${new Date().toISOString().split("T")[0]}`);
   lines.push("");
 
   return lines.join("\n");

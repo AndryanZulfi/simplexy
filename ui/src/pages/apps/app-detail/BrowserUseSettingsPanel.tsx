@@ -57,11 +57,11 @@ function CredentialSettings({
           min="0"
           step="0.01"
           value={limit}
-          placeholder="Use the remaining Simplixy budget"
+          placeholder="Use the remaining Simplexy budget"
           onChange={(e) => setLimit(e.target.value)}
         />
         <p className="text-sm text-muted-foreground">
-          The agent can choose a lower limit. Simplixy also applies any
+          The agent can choose a lower limit. Simplexy also applies any
           remaining hard budget limit.
         </p>
       </div>

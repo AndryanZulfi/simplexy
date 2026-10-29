@@ -43,7 +43,7 @@ describe("instance experimental settings validators", () => {
     expect(settings.enableServerInfoDebugView).toBe(false);
   });
 
-  it("defaults Simplixy developer mode off and accepts explicit patches", () => {
+  it("defaults Simplexy developer mode off and accepts explicit patches", () => {
     expect(instanceExperimentalSettingsSchema.parse({}).enablePaperclipDeveloperMode).toBe(false);
     expect(
       patchInstanceExperimentalSettingsSchema.parse({ enablePaperclipDeveloperMode: true }),

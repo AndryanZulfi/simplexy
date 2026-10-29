@@ -93,20 +93,20 @@ describe("genericConnectGuidance", () => {
     expect(guidance.body).toContain("Advanced authentication");
   });
 
-  it("points at the deployment when Simplixy itself has no public HTTPS address", () => {
+  it("points at the deployment when Simplexy itself has no public HTTPS address", () => {
     expect(genericConnectGuidance("oauth_redirect_origin_unsupported", null).focus).toBe("deployment");
   });
 
   it("does not ask the operator to resolve an internal name conflict", () => {
     const guidance = genericConnectGuidance("tool_access_name_conflict", null);
-    expect(guidance).toMatchObject({ title: "Simplixy couldn’t name this connection", focus: "none" });
+    expect(guidance).toMatchObject({ title: "Simplexy couldn’t name this connection", focus: "none" });
     expect(guidance.body).not.toContain("different name");
   });
 
   it("passes a rejected header's own message through", () => {
     const guidance = genericConnectGuidance(
       "mcp_header_rejected",
-      'Simplixy manages the "Host" header and cannot send a custom value for it.',
+      'Simplexy manages the "Host" header and cannot send a custom value for it.',
     );
     expect(guidance.body).toContain('"Host"');
     expect(guidance.focus).toBe("credentials");
@@ -126,9 +126,9 @@ describe("customHeaderError", () => {
     ])).toBeNull();
   });
 
-  it("rejects headers Simplixy refuses to send", () => {
+  it("rejects headers Simplexy refuses to send", () => {
     expect(customHeaderError([{ id: "a", name: "Host", value: "evil.example" }]))
-      .toContain('Simplixy manages the "Host" header');
+      .toContain('Simplexy manages the "Host" header');
   });
 
   it("rejects a value that would split the request", () => {

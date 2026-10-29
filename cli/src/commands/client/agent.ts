@@ -776,14 +776,14 @@ export function registerAgentCommands(program: Command): void {
     agent
       .command("local-cli")
       .description(
-        "Create an agent API key, install local Simplixy skills for Codex/Claude, and print shell exports",
+        "Create an agent API key, install local Simplexy skills for Codex/Claude, and print shell exports",
       )
       .argument("<agentRef>", "Agent ID or shortname/url-key")
       .requiredOption("-C, --company-id <id>", "Company ID")
       .option("--key-name <name>", "API key label", "local-cli")
       .option(
         "--no-install-skills",
-        "Skip installing Simplixy skills into ~/.codex/skills, ~/.claude/skills, and ~/.kimi-code/skills",
+        "Skip installing Simplexy skills into ~/.codex/skills, ~/.claude/skills, and ~/.kimi-code/skills",
       )
       .action(async (agentRef: string, opts: AgentLocalCliOptions) => {
         try {
@@ -808,7 +808,7 @@ export function registerAgentCommands(program: Command): void {
             const skillsDir = await resolvePaperclipSkillsDir(__moduleDir, [path.resolve(process.cwd(), "skills")]);
             if (!skillsDir) {
               throw new Error(
-                "Could not locate local Simplixy skills directory. Expected ./skills in the repo checkout.",
+                "Could not locate local Simplexy skills directory. Expected ./skills in the repo checkout.",
               );
             }
 

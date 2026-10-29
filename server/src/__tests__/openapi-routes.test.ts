@@ -452,7 +452,7 @@ describe("openapi routes", () => {
     const operation = path.post;
     expect(operation.security).toEqual([{ AgentBearerAuth: [] }]);
     expect(operation["x-paperclip-authorization"]).toEqual({ actor: "agent", heartbeatBound: true });
-    expect(operation.description).toContain("X-Simplixy-Run-Id");
+    expect(operation.description).toContain("X-Simplexy-Run-Id");
     const body = operation.requestBody.content["application/json"].schema;
     expect(body.additionalProperties).toBe(false);
     expect(Object.keys(body.properties).sort()).toEqual(["body", "idempotencyKey", "kind"]);
@@ -539,7 +539,7 @@ describe("openapi routes", () => {
 
     expect(res.status).toBe(200);
     expect(res.body.openapi).toBe("3.0.0");
-    expect(res.body.info.title).toBe("Simplixy API");
+    expect(res.body.info.title).toBe("Simplexy API");
     expect(res.body.paths["/api/openapi.json"].get.summary).toBe(
       "Get the generated OpenAPI document",
     );

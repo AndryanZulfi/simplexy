@@ -200,7 +200,7 @@ describeEmbeddedPostgres("heartbeat bounded retry scheduling", () => {
     const agentName = input.agentName ?? (adapterType === "claude_local" ? "ClaudeCoder" : "CodexCoder");
     await db.insert(companies).values({
       id: input.companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `T${input.companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
       defaultResponsibleUserId: "responsible-user",
@@ -324,7 +324,7 @@ describeEmbeddedPostgres("heartbeat bounded retry scheduling", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `T${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
       defaultResponsibleUserId: "responsible-user",
@@ -419,7 +419,7 @@ describeEmbeddedPostgres("heartbeat bounded retry scheduling", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix,
       requireBoardApprovalForNewAgents: false,
       defaultResponsibleUserId: "responsible-user",
@@ -583,7 +583,7 @@ describeEmbeddedPostgres("heartbeat bounded retry scheduling", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `T${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
       defaultResponsibleUserId: "responsible-user",
@@ -995,7 +995,7 @@ describeEmbeddedPostgres("heartbeat bounded retry scheduling", () => {
     await db.insert(projects).values({
       id: projectId,
       companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       status: "in_progress",
     });
     await db.insert(executionWorkspaces).values({
@@ -1160,7 +1160,7 @@ describeEmbeddedPostgres("heartbeat bounded retry scheduling", () => {
     await db.insert(projects).values({
       id: projectId,
       companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       status: "in_progress",
     });
     await db.insert(issues).values({
@@ -1298,7 +1298,7 @@ describeEmbeddedPostgres("heartbeat bounded retry scheduling", () => {
     await db.insert(projects).values({
       id: projectId,
       companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       status: "in_progress",
     });
     await db.insert(executionWorkspaces).values([
@@ -1717,7 +1717,7 @@ describeEmbeddedPostgres("heartbeat bounded retry scheduling", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `T${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
       defaultResponsibleUserId: "responsible-user",
@@ -1885,7 +1885,7 @@ describeEmbeddedPostgres("heartbeat bounded retry scheduling", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `T${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
       defaultResponsibleUserId: "responsible-user",
@@ -2483,7 +2483,7 @@ describeEmbeddedPostgres("heartbeat bounded retry scheduling", () => {
 
       await db.insert(companies).values({
         id: companyId,
-        name: "Simplixy",
+        name: "Simplexy",
         issuePrefix,
         requireBoardApprovalForNewAgents: false,
         defaultResponsibleUserId: "responsible-user",

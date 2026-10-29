@@ -57,7 +57,7 @@ function config() {
   };
 }
 
-describe("Simplixy Cloud connector", () => {
+describe("Simplexy Cloud connector", () => {
   it("accepts actual partial Workspace consent inside an envelope bound to the full requested profile", async () => {
     const keys = config();
     const scopes = ["https://www.googleapis.com/auth/documents"];
@@ -115,7 +115,7 @@ describe("Simplixy Cloud connector", () => {
       status: originRejectionContract.status,
     }))).toMatchObject({
       code: "CONNECTOR_REQUEST_FAILED", status: 400,
-      message: "Simplixy Cloud connector rejected the request (operation=session, status=400, reason=RETURN_ORIGIN_NOT_ENROLLED)",
+      message: "Simplexy Cloud connector rejected the request (operation=session, status=400, reason=RETURN_ORIGIN_NOT_ENROLLED)",
     });
   });
 
@@ -127,7 +127,7 @@ describe("Simplixy Cloud connector", () => {
     expect(error).toBeInstanceOf(PaperclipCloudConnectorError);
     expect(error).toMatchObject({
       code: "CONNECTOR_REQUEST_FAILED", status: 400,
-      message: "Simplixy Cloud connector rejected the request (operation=session, status=400, reason=RETURN_ORIGIN_NOT_ENROLLED)",
+      message: "Simplexy Cloud connector rejected the request (operation=session, status=400, reason=RETURN_ORIGIN_NOT_ENROLLED)",
     });
     expect(JSON.stringify(error)).not.toMatch(/DO_NOT_REPORT|private-state|access-secret|private\.example/);
   });
@@ -141,7 +141,7 @@ describe("Simplixy Cloud connector", () => {
     const error = await rejection(new Response(body, { status: 409 }));
     expect(error).toMatchObject({
       code: "REAUTHORIZATION_REQUIRED", status: 409,
-      message: "Simplixy Cloud connector rejected the request (operation=session, status=409, reason=UNKNOWN_BROKER_ERROR)",
+      message: "Simplexy Cloud connector rejected the request (operation=session, status=409, reason=UNKNOWN_BROKER_ERROR)",
     });
   });
 
@@ -158,7 +158,7 @@ describe("Simplixy Cloud connector", () => {
     expect(error).toBeInstanceOf(PaperclipCloudConnectorError);
     expect(error).toMatchObject({
       code: "REAUTHORIZATION_REQUIRED", status: 409,
-      message: "Simplixy Cloud connector rejected the request (operation=refresh, status=409, reason=PROVIDER_REAUTHORIZATION_REQUIRED)",
+      message: "Simplexy Cloud connector rejected the request (operation=refresh, status=409, reason=PROVIDER_REAUTHORIZATION_REQUIRED)",
     });
     expect(JSON.stringify(error)).not.toContain("refresh-secret");
   });
@@ -487,7 +487,7 @@ describe("Simplixy Cloud connector", () => {
     const keys = config();
     const credentials = { v: 1, accessToken: "manager-access-canary", refreshToken: "manager-refresh-canary", tokenType: "user", accessTokenExpiresAt: "2030-01-01T00:00:00.000Z", refreshTokenExpiresAt: null,
       scopes: [...SLACK_MANAGER_SCOPES], subject, companyId, instanceId, environment: "staging", provider: "slack", profile: "slack.manager",
-      slackManager: { appId: "AMANAGER", workspaceId: "TWORKSPACE", workspaceName: "Simplixy", userId: "UOWNER" } };
+      slackManager: { appId: "AMANAGER", workspaceId: "TWORKSPACE", workspaceName: "Simplexy", userId: "UOWNER" } };
     const sealed = seal(credentials, keys.sealPublicKey, "initial", keys.config, "slack.manager");
     const connector = createPaperclipCloudConnector({ config: keys.config, request: vi.fn(async () => Response.json({ claimId: "claim", scopes: [...SLACK_MANAGER_SCOPES], sealed })) as typeof fetch });
     await expect(connector.claim({ subject, companyId, profile: "slack.manager", claimId: "claim", redemptionId: "manager-state" })).resolves.toEqual(credentials);

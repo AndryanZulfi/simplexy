@@ -35,7 +35,7 @@ function decodeFile(value: unknown) {
 }
 
 /** A provider-focused REST bridge. It never reads host files, calls host shell
- * commands, borrows provider-plugin credentials, or looks up Simplixy tasks. */
+ * commands, borrows provider-plugin credentials, or looks up Simplexy tasks. */
 export function daytonaClient(headers: Record<string, string>, request: DaytonaRequest, pinnedOrganizationId?: unknown,
   signal: AbortSignal = AbortSignal.timeout(30_000), deadlineAt: number = Date.now() + 30_000) {
   const authorization = headers.Authorization;

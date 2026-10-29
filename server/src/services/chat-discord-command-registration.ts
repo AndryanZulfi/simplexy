@@ -103,12 +103,12 @@ export function discordPaperclipCommandDefinition(publicOwnerId: string) {
   return {
     type: 1,
     name: "paperclip",
-    description: `Simplixy session controls [pc:${publicOwnerId}]`,
+    description: `Simplexy session controls [pc:${publicOwnerId}]`,
     options: [
       {
         type: 1,
         name: "status",
-        description: "Show the current Simplixy task",
+        description: "Show the current Simplexy task",
       },
       {
         type: 1,
@@ -132,7 +132,7 @@ export function discordPaperclipCommandDefinition(publicOwnerId: string) {
 // it never enables command handling before a current definition is confirmed.
 function priorCloseCopyDefinition(id: string) {
   const definition = discordPaperclipCommandDefinition(id);
-  definition.options[2]!.description = "Close the current Simplixy task";
+  definition.options[2]!.description = "Close the current Simplexy task";
   return definition;
 }
 

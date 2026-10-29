@@ -64,7 +64,7 @@ describe("GET /api/cloud/stacks", () => {
     const warn = vi.spyOn(logger, "warn").mockImplementation(() => {});
     const response = await request(createApp({ fetchImpl })).get("/api/cloud/stacks").set("Cookie", "client-session=private-cookie");
     expect(response.status).toBe(502);
-    expect(response.body).toEqual({ error: "Simplixy Cloud portfolio request failed", code: "cloud_portfolio_upstream_error", details: { code: "cloud_portfolio_upstream_error" } });
+    expect(response.body).toEqual({ error: "Simplexy Cloud portfolio request failed", code: "cloud_portfolio_upstream_error", details: { code: "cloud_portfolio_upstream_error" } });
     expect(response.headers["set-cookie"]).toBeUndefined();
     expect(fetchImpl).toHaveBeenCalledTimes(1);
     expect(new Headers(fetchImpl.mock.calls[0]![1]!.headers).has("cookie")).toBe(false);
@@ -74,7 +74,7 @@ describe("GET /api/cloud/stacks", () => {
     expect(error.diagnostics).toMatchObject({ phase: "http_response", upstreamStatus: status, networkCode: "unknown", elapsedMs: expect.any(Number) });
     expect(error.stack).toContain("routes/cloud.ts:");
     expect(error.stack).not.toContain("at portfolioError");
-    expect(warn).toHaveBeenCalledWith({ cloudPortfolio: error.diagnostics }, "Simplixy Cloud portfolio request failed");
+    expect(warn).toHaveBeenCalledWith({ cloudPortfolio: error.diagnostics }, "Simplexy Cloud portfolio request failed");
     expect(JSON.stringify(warn.mock.calls)).not.toContain("private");
   });
 
@@ -87,7 +87,7 @@ describe("GET /api/cloud/stacks", () => {
     const app = createApp({ fetchImpl });
     const failure = await request(app).get("/api/cloud/stacks");
     expect(failure.status).toBe(502);
-    expect(failure.body).toEqual({ error: "Simplixy Cloud portfolio request failed", code: "cloud_portfolio_upstream_error", details: { code: "cloud_portfolio_upstream_error" } });
+    expect(failure.body).toEqual({ error: "Simplexy Cloud portfolio request failed", code: "cloud_portfolio_upstream_error", details: { code: "cloud_portfolio_upstream_error" } });
     expect(fetchImpl).toHaveBeenCalledTimes(1);
     const error = capture.mock.calls[0]![0] as CloudPortfolioError;
     expect(error.diagnostics).toMatchObject({ phase: "fetch", upstreamStatus: null, networkCode: "ECONNRESET" });
@@ -111,7 +111,7 @@ describe("GET /api/cloud/stacks", () => {
     for (let count = 1; count <= 2; count++) {
       const response = await request(app).get("/api/cloud/stacks");
       expect(response.status).toBe(502);
-      expect(response.body).toEqual({ error: "Simplixy Cloud portfolio returned invalid JSON", code: "cloud_portfolio_invalid_response", details: { code: "cloud_portfolio_invalid_response" } });
+      expect(response.body).toEqual({ error: "Simplexy Cloud portfolio returned invalid JSON", code: "cloud_portfolio_invalid_response", details: { code: "cloud_portfolio_invalid_response" } });
       expect(fetchImpl).toHaveBeenCalledTimes(count);
     }
     expect(timeout).toHaveBeenCalledWith(10_000);
@@ -127,7 +127,7 @@ describe("GET /api/cloud/stacks", () => {
     const fetchImpl = vi.fn<typeof fetch>().mockRejectedValue(signal.reason);
     const capture = vi.spyOn(sentry, "captureException").mockImplementation(() => {});
     const response = await request(createApp({ fetchImpl })).get("/api/cloud/stacks");
-    expect(response.body).toEqual({ error: "Simplixy Cloud portfolio request failed", code: "cloud_portfolio_upstream_error", details: { code: "cloud_portfolio_upstream_error" } });
+    expect(response.body).toEqual({ error: "Simplexy Cloud portfolio request failed", code: "cloud_portfolio_upstream_error", details: { code: "cloud_portfolio_upstream_error" } });
     expect(fetchImpl).toHaveBeenCalledTimes(1);
     expect(fetchImpl.mock.calls[0]![1]?.signal).toBe(signal);
     expect(timeout).toHaveBeenCalledWith(10_000);
@@ -143,7 +143,7 @@ describe("GET /api/cloud/stacks", () => {
     const capture = vi.spyOn(sentry, "captureException").mockImplementation(() => {});
     const response = await request(createApp({ fetchImpl })).get("/api/cloud/stacks");
     expect(response.status).toBe(502);
-    expect(response.body).toEqual({ error: "Simplixy Cloud portfolio request failed", code: "cloud_portfolio_upstream_error", details: { code: "cloud_portfolio_upstream_error" } });
+    expect(response.body).toEqual({ error: "Simplexy Cloud portfolio request failed", code: "cloud_portfolio_upstream_error", details: { code: "cloud_portfolio_upstream_error" } });
     expect(fetchImpl).toHaveBeenCalledTimes(1);
     expect((capture.mock.calls[0]![0] as CloudPortfolioError).diagnostics).toMatchObject({ phase: "response_write", upstreamStatus: 200, networkCode: "unknown" });
   });

@@ -36,7 +36,7 @@ export function museInvitationService(db: Db) {
       return agent ? describe(agent) : null;
     },
     async create(companyId: string, operatorId: string, input: { name: string; role: string }) {
-      if (!await museRunnerBroker(db).enabled()) throw unprocessable("Enable Muse and Simplixy Runner in experimental settings.");
+      if (!await museRunnerBroker(db).enabled()) throw unprocessable("Enable Muse and Simplexy Runner in experimental settings.");
       const database = db;
       const lockKey = `paperclip:muse-invitation:${companyId}:${operatorId}`;
       return withDedicatedDbConnection(db, lockDb => lockDb.transaction(async lock => {

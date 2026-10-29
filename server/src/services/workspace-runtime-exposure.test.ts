@@ -308,7 +308,7 @@ const DECLARED_EXPOSE = {
 } as const;
 
 /**
- * The pre-feature Simplixy App project template, verbatim: a hard-coded HTTP
+ * The pre-feature Simplexy App project template, verbatim: a hard-coded HTTP
  * `urlTemplate`, a pinned port outside the broker's dedicated range, and no
  * exposure declaration at all.
  */
@@ -326,7 +326,7 @@ function startInput(options?: {
   const expose = options?.expose === undefined ? DECLARED_EXPOSE : options.expose;
   return {
     invocationId: "runtime-exposure-test",
-    actor: { id: null, name: "Simplixy", companyId: "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee" },
+    actor: { id: null, name: "Simplexy", companyId: "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee" },
     issue: null,
     workspace: {
       baseCwd: process.cwd(),
@@ -670,7 +670,7 @@ describe("loopback bind is forced on the guest, not merely requested (PAP-17256)
     expect(error!.message).toContain("--bind loopback");
   }, 20_000);
 
-  it("leaves a non-Simplixy service's --bind argument alone", async () => {
+  it("leaves a non-Simplexy service's --bind argument alone", async () => {
     // `--bind` means something entirely different to the HTTPS probe canaries
     // (`python3 -m http.server --bind 127.0.0.1`); rewriting it would break them.
     const { broker, calls } = createBroker();
@@ -689,7 +689,7 @@ describe("loopback bind is forced on the guest, not merely requested (PAP-17256)
     expect(runtime.exposure?.state).toBe("ready");
   }, 20_000);
 
-  it("does not rewrite a Simplixy dev command when the service is not exposed", async () => {
+  it("does not rewrite a Simplexy dev command when the service is not exposed", async () => {
     const { broker, calls } = createBroker();
     installDeps({ broker });
 

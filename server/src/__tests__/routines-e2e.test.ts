@@ -200,7 +200,7 @@ describeEmbeddedPostgres("routine routes end-to-end", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix,
       requireBoardApprovalForNewAgents: false,
     });
@@ -388,7 +388,7 @@ describeEmbeddedPostgres("routine routes end-to-end", () => {
         const req = request(ingress).post(path).set("Content-Type", "application/json");
         if (signingMode === "bearer") req.set("Authorization", `Bearer ${secret}`);
         if (signingMode === "hmac_sha256") {
-          req.set("X-Simplixy-Timestamp", ts).set("X-Simplixy-Signature",
+          req.set("X-Simplexy-Timestamp", ts).set("X-Simplexy-Signature",
             `sha256=${createHmac("sha256", secret).update(`${ts}.`).update(raw).digest("hex")}`);
         }
         if (signingMode === "github_hmac") req.set("X-Hub-Signature-256",
@@ -402,7 +402,7 @@ describeEmbeddedPostgres("routine routes end-to-end", () => {
       if (signingMode === "hmac_sha256") {
         expect((await delivery(undefined, raw, "1")).status).toBe(401);
         const malformed = await request(ingress).post(path).set("Content-Type", "application/json")
-          .set("X-Simplixy-Timestamp", timestamp).set("X-Simplixy-Signature", "é".repeat(64)).send(raw);
+          .set("X-Simplexy-Timestamp", timestamp).set("X-Simplexy-Signature", "é".repeat(64)).send(raw);
         expect(malformed.status).toBe(401);
       }
       expect((await request(ingress).post(path).type("text").send(raw)).status).toBe(415);

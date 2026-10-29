@@ -28,7 +28,7 @@ describe("claude local skill sync", () => {
     cleanupDirs.clear();
   });
 
-  it("keeps the operational Simplixy skill configured when no explicit selection exists", async () => {
+  it("keeps the operational Simplexy skill configured when no explicit selection exists", async () => {
     const snapshot = await listClaudeSkills({
       agentId: "agent-1",
       companyId: "company-1",
@@ -60,7 +60,7 @@ describe("claude local skill sync", () => {
     expect(snapshot.entries.find((entry) => entry.key === createAgentKey)?.state).toBe("available");
   });
 
-  it("normalizes legacy flat Simplixy skill refs to canonical keys", async () => {
+  it("normalizes legacy flat Simplexy skill refs to canonical keys", async () => {
     const snapshot = await listClaudeSkills({
       agentId: "agent-3",
       companyId: "company-1",
@@ -104,7 +104,7 @@ describe("claude local skill sync", () => {
       originLabel: "User-installed",
       locationLabel: "~/.claude/skills",
       readOnly: true,
-      detail: "Installed outside Simplixy management in the Claude skills home.",
+      detail: "Installed outside Simplexy management in the Claude skills home.",
     }));
   });
 });

@@ -103,20 +103,20 @@ describe("BreadcrumbContext", () => {
     expect(renderCounts).toHaveLength(3);
   });
 
-  it("builds page titles with the selected company name before Simplixy", () => {
+  it("builds page titles with the selected company name before Simplexy", () => {
     expect(buildDocumentTitle([{ label: "Inbox" }], "Anachronist Wiki")).toBe(
-      "Inbox • Anachronist Wiki • Simplixy",
+      "Inbox • Anachronist Wiki • Simplexy",
     );
     expect(
       buildDocumentTitle(
         [{ label: "Issues", href: "/issues" }, { label: "PAP-3515" }],
         "Anachronist Wiki",
       ),
-    ).toBe("PAP-3515 • Issues • Anachronist Wiki • Simplixy");
+    ).toBe("PAP-3515 • Issues • Anachronist Wiki • Simplexy");
   });
 
   it("omits blank company names from page titles", () => {
-    expect(buildDocumentTitle([{ label: "Inbox" }], "  ")).toBe("Inbox • Simplixy");
-    expect(buildDocumentTitle([], null)).toBe("Simplixy");
+    expect(buildDocumentTitle([{ label: "Inbox" }], "  ")).toBe("Inbox • Simplexy");
+    expect(buildDocumentTitle([], null)).toBe("Simplexy");
   });
 });

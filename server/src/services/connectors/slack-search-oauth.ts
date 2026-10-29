@@ -553,7 +553,7 @@ export function slackSearchOAuthService(
         typeof user.access_token !== "string"
       )
         throw forbidden(
-          "Authorize the same Slack user and workspace that you linked in Simplixy",
+          "Authorize the same Slack user and workspace that you linked in Simplexy",
         );
       const scopes = String(user.scope ?? "").split(",");
       if (

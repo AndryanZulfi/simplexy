@@ -1,9 +1,9 @@
 ---
 title: Local Development
-summary: Set up Paperclip for local development
+summary: Set up Simplexy for local development
 ---
 
-Run Paperclip locally with zero external dependencies.
+Run Simplexy locally with zero external dependencies.
 
 ## Prerequisites
 
@@ -22,7 +22,7 @@ This starts:
 - **API server** at `http://localhost:3100`
 - **UI** served by the API server in dev middleware mode (same origin)
 
-No Docker or external database required. Paperclip uses embedded PostgreSQL automatically.
+No Docker or external database required. Simplexy uses embedded PostgreSQL automatically.
 
 ## One-Command Bootstrap
 
@@ -35,14 +35,14 @@ pnpm paperclipai run
 This does:
 
 1. Auto-onboards if config is missing
-2. Runs `paperclipai doctor` with repair enabled
+2. Runs `simplexy doctor` with repair enabled
 3. Starts the server when checks pass
 
 ## Bind Presets In Dev
 
 Default `pnpm dev` stays in `local_trusted` with loopback-only binding.
 
-To open Paperclip to a private network with login enabled:
+To open Simplexy to a private network with login enabled:
 
 ```sh
 pnpm dev --bind lan

@@ -44,7 +44,7 @@ export function githubBodyMentionsBot(body: string, username: string | null): bo
 /**
  * A thread subscription must not turn a request for another connected bot
  * into work for this bot. A leading mention explicitly selects a recipient,
- * including Apps outside Simplixy. Incidental human mentions still follow
+ * including Apps outside Simplexy. Incidental human mentions still follow
  * thread policy, and explicitly mentioning this bot always wins. */
 export async function githubMessageAddressesAnotherRecipient(
   db: Db | Parameters<Parameters<Db["transaction"]>[0]>[0],

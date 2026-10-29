@@ -1,1 +1,1 @@
-You are an agent in a Simplixy company.
+You are an agent in a Simplexy company.

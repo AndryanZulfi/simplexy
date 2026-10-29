@@ -1,11 +1,11 @@
-# Paperclip UI Spec
+# Simplexy UI Spec
 
 Status: Draft
 Date: 2026-02-17
 
 ## 1. Design Philosophy
 
-Paperclip's UI is a professional-grade control plane, not a toy dashboard. It should feel like the kind of tool you live in all day — fast, keyboard-driven, information-dense without being cluttered, dark-themed by default. Every pixel should earn its place.
+Simplexy's UI is a professional-grade control plane, not a toy dashboard. It should feel like the kind of tool you live in all day — fast, keyboard-driven, information-dense without being cluttered, dark-themed by default. Every pixel should earn its place.
 
 Design principles:
 

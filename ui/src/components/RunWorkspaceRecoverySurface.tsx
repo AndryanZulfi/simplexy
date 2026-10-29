@@ -19,7 +19,7 @@ import {
   readRecoveryReconcileWorkspaceId,
 } from "../lib/recovery-reconcile";
 
-/** The run errorCode Simplixy stamps when it declines a run over a git workspace it can't validate. */
+/** The run errorCode Simplexy stamps when it declines a run over a git workspace it can't validate. */
 export const WORKSPACE_VALIDATION_RUN_ERROR_CODE = "workspace_validation_failed";
 
 function asRecord(value: unknown): Record<string, unknown> | null {

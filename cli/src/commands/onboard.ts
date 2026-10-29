@@ -440,7 +440,7 @@ export async function onboard(opts: OnboardOptions): Promise<void> {
 
   if (existingConfig) {
     p.log.message(
-      pc.dim("Existing Simplixy install detected; keeping the current configuration unchanged."),
+      pc.dim("Existing Simplexy install detected; keeping the current configuration unchanged."),
     );
     p.log.message(pc.dim(`Use ${pc.cyan("paperclipai configure")} if you want to change settings.`));
 
@@ -499,7 +499,7 @@ export async function onboard(opts: OnboardOptions): Promise<void> {
     let shouldRunNow = !serviceInstalled && (opts.run === true || opts.yes === true);
     if (shouldOfferForegroundStart({ serviceInstalled, startAlreadyDecided: shouldRunNow, invokedByRun: opts.invokedByRun === true, interactive: Boolean(process.stdin.isTTY && process.stdout.isTTY) })) {
       const answer = await p.confirm({
-        message: "Start Simplixy now?",
+        message: "Start Simplexy now?",
         initialValue: true,
       });
       if (!p.isCancel(answer)) {
@@ -512,7 +512,7 @@ export async function onboard(opts: OnboardOptions): Promise<void> {
       return;
     }
 
-    p.outro("Existing Simplixy setup is ready.");
+    p.outro("Existing Simplexy setup is ready.");
     return;
   }
 
@@ -770,7 +770,7 @@ export async function onboard(opts: OnboardOptions): Promise<void> {
   let shouldRunNow = !serviceInstalled && (opts.run === true || opts.yes === true);
   if (shouldOfferForegroundStart({ serviceInstalled, startAlreadyDecided: shouldRunNow, invokedByRun: opts.invokedByRun === true, interactive: Boolean(process.stdin.isTTY && process.stdout.isTTY) })) {
     const answer = await p.confirm({
-      message: "Start Simplixy now?",
+      message: "Start Simplexy now?",
       initialValue: true,
     });
     if (!p.isCancel(answer)) {

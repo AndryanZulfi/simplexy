@@ -422,7 +422,7 @@ async function promptForImportSelection(preview: CompanyPortabilityPreviewResult
 
   while (true) {
     const choice = await p.select<ImportSelectableGroup | "company" | "confirm">({
-      message: "Select what Simplixy should import",
+      message: "Select what Simplexy should import",
       options: [
         {
           value: "company",

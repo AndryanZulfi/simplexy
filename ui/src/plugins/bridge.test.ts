@@ -269,7 +269,7 @@ describe("plugin SDK FileTree bridge", () => {
           onSelectFile: () => undefined,
         }),
       ),
-    ).toThrow('Simplixy plugin UI runtime is not initialized for "FileTree"');
+    ).toThrow('Simplexy plugin UI runtime is not initialized for "FileTree"');
   });
 });
 

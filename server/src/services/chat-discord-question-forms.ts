@@ -332,6 +332,6 @@ export function discordQuestionFormCorrectionModal(
 export const discordQuestionFormDenialResponse = (): ModalResponse => ({
   action: "errors",
   errors: {
-    form: "This form is no longer authorized. Open the linked Simplixy task.",
+    form: "This form is no longer authorized. Open the linked Simplexy task.",
   },
 });

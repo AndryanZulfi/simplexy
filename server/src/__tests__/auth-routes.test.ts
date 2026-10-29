@@ -273,7 +273,7 @@ describe("auth routes", () => {
     });
   });
 
-  it("accepts Simplixy asset paths for avatars", async () => {
+  it("accepts Simplexy asset paths for avatars", async () => {
     const app = await createApp(
       {
         type: "board",

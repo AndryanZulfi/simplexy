@@ -1,8 +1,8 @@
-# Paperclip Notebook
+# Simplexy Notebook
 
-Paperclip Notebook uses the existing remote HTTP MCP connection, authorization-code
+Simplexy Notebook uses the existing remote HTTP MCP connection, authorization-code
 OAuth with PKCE, Dynamic Client Registration, and instance credential vault.
-Hosted and self-hosted Paperclip use the same connection protocol; Cloud broker
+Hosted and self-hosted Simplexy use the same connection protocol; Cloud broker
 enrollment is unnecessary. Cloud authenticates the person, while Notebook owns
 pages, reader policies, deployments, and its resource-specific OAuth grants.
 
@@ -22,7 +22,7 @@ rollout gate does not blacklist independent generic remote MCP endpoints.
 
 The personal connection requests `notebook:read`, `notebook:write`,
 `notebook:share`, and `notebook:delete`. Sharing includes publishing a page
-publicly in Explore. Notebook enforces ownership and reader policy; Paperclip
+publicly in Explore. Notebook enforces ownership and reader policy; Simplexy
 continues to enforce current agent assignment and Allowed / Ask first / Off
 controls. Connection labels use the normal catalog name. Reconnect preserves
 assignments and action restrictions.
@@ -35,7 +35,7 @@ decoded. Clients that upload directly can continue to use the existing scoped
 S3-ticket protocol; upload URLs are temporary authority and must not be logged.
 
 For a local file or built directory, Notebook provides a standalone Node.js
-script. It is owned and served by Notebook; Paperclip adds no publishing CLI
+script. It is owned and served by Notebook; Simplexy adds no publishing CLI
 command, native runtime tool, private transfer channel, or credential flow.
 The script requires a Notebook release advertising `uploadLimits` through
 `notebook_get_account` and supporting `notebook_begin_upload` with
@@ -43,7 +43,7 @@ The script requires a Notebook release advertising `uploadLimits` through
 be deployed together; this source addition does not establish that deployment.
 
 Run it only in an approved agent shell that already has `PAPERCLIP_API_URL`,
-`PAPERCLIP_API_KEY`, and `PAPERCLIP_RUN_ID`. These are the existing Paperclip run
+`PAPERCLIP_API_KEY`, and `PAPERCLIP_RUN_ID`. These are the existing Simplexy run
 credentials, not Notebook credentials. It creates no login or API key. Download
 and inspect the trusted script before running it:
 
@@ -67,7 +67,7 @@ MCP tools available to their runtime; the script grants neither authority.
 
 The script opens an ordinary run-bound tool gateway session and sends every
 operation through `/api/tool-gateway/tools/call` on the selected connection.
-Notebook OAuth credentials remain in Paperclip's vault. File bytes travel as
+Notebook OAuth credentials remain in Simplexy's vault. File bytes travel as
 bounded base64 tool arguments under normal gateway handling, not through signed
 upload URLs or a private data channel. Notebook verifies chunk identity,
 checksums, ownership, scopes, and the original upload window before publication.
@@ -87,15 +87,15 @@ The connection fixtures exercise personal OAuth, registration, PKCE/resource
 binding, tool discovery, assignment, refresh, reconnect policy preservation,
 and local removal. Uploader tests use real local files and controlled HTTP
 services; final acceptance must additionally exercise the ordinary authenticated
-Paperclip gateway against Notebook. These checks do not establish deployed
+Simplexy gateway against Notebook. These checks do not establish deployed
 hosted/self-hosted browser acceptance or maximum-path AWS publication. Notebook
 advertises accepted upload limits; clients do not infer its S3 key layout.
 
 Removing a connection disables local use and clears saved credentials through
-Paperclip's existing removal flow. It does not automatically revoke Notebook's
+Simplexy's existing removal flow. It does not automatically revoke Notebook's
 remote authorization; revoke that separately in Notebook's Connected apps.
 Automatic upstream revocation, account-email labels, and custom rotating-refresh
 response recovery remain deferred. A lost refresh response may require reconnecting.
 
-Notebook artwork uses the repository's first-party Paperclip mark, with fixed
+Notebook artwork uses the repository's first-party Simplexy mark, with fixed
 light and dark variants for the connector icon renderer.

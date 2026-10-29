@@ -110,7 +110,7 @@ export async function serviceHealthChecks(
           ? {
               name: "Service runtime",
               status: "fail",
-              message: `${status.serviceName} is inactive but the configured port is serving another Simplixy process`,
+              message: `${status.serviceName} is inactive but the configured port is serving another Simplexy process`,
               repairHint: "Run `paperclipai service start`, or stop the conflicting foreground process first",
             }
           : {

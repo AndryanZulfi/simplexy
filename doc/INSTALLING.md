@@ -1,6 +1,6 @@
-# Installing Paperclip
+# Installing Simplexy
 
-Paperclip supports a managed installation, an ephemeral `npx` tryout, a
+Simplexy supports a managed installation, an ephemeral `npx` tryout, a
 traditional global npm installation, and development from a source checkout.
 The managed installation is recommended because it provides atomic updates,
 rollback, git-ref installs, and a stable entrypoint for the background service.
@@ -24,7 +24,7 @@ The bootstrap script:
 
 1. verifies that the platform is supported;
 2. ensures Node.js 24.11 or newer is available;
-3. delegates installation to `paperclipai install`;
+3. delegates installation to `simplexy install`;
 4. starts interactive onboarding when stdin and stdout are terminals.
 
 The script prints and confirms any command that requires elevated privileges.
@@ -74,12 +74,12 @@ in an interactive shell. Systemd and launchd do not load shell version-manager
 configuration. A newer Node installed elsewhere does not upgrade a running
 service or change a custom startup script's `PATH`.
 
-Managed installs pin the validated Node executable in the `paperclipai` shim
+Managed installs pin the validated Node executable in the `simplexy` shim
 and prepend its directory to `PATH` for child tools, including ACP servers with
 an `/usr/bin/env node` shebang. Re-run the installer using the supported
 Node runtime after changing runtime installations, then restart the service.
 For example, put the supported Node's bin directory first on `PATH` and run
-`npx paperclipai@latest install --yes`. Do not use the old managed shim to
+`npx simplexy@latest install --yes`. Do not use the old managed shim to
 re-pin Node: it intentionally continues launching its previously pinned runtime.
 Installs and updates refresh existing managed shims in place. Updates reject an
 unsupported running Node before installing or activating a payload; read-only
@@ -115,8 +115,8 @@ Managed code is separate from instance data:
 ~/.local/bin/paperclipai
 ```
 
-The `paperclipai` shim remains stable while `current` switches atomically
-between complete payloads. Paperclip keeps the two previous managed payloads
+The `simplexy` shim remains stable while `current` switches atomically
+between complete payloads. Simplexy keeps the two previous managed payloads
 for rollback. Configuration, databases, uploads, logs, secrets, and workspaces
 remain under `~/.paperclip/instances/` and are not stored inside CLI payloads.
 
@@ -167,7 +167,7 @@ Run onboarding after a non-interactive installation:
 paperclipai onboard
 ```
 
-Interactive onboarding asks whether Paperclip should run as a background
+Interactive onboarding asks whether Simplexy should run as a background
 service when the platform supports one. Automated onboarding deliberately does
 not install a service unless explicitly requested:
 
@@ -194,9 +194,9 @@ paperclipai service logs -f
 paperclipai service uninstall
 ```
 
-Paperclip uses a systemd user service on Linux and WSL2 systems with user
+Simplexy uses a systemd user service on Linux and WSL2 systems with user
 systemd, and a LaunchAgent on macOS. Containers, WSL1, and systems without a
-supported user service manager receive foreground `paperclipai run` guidance
+supported user service manager receive foreground `simplexy run` guidance
 instead of a hard failure.
 
 The service uses the stable managed-install shim, restarts after crashes, and
@@ -204,7 +204,7 @@ can start on login. On Linux, service installation may offer to enable user
 lingering so it can continue without an active login session. The command
 explains and confirms that system-level action before running it.
 
-Use one server process per instance. `paperclipai run` refuses to start when
+Use one server process per instance. `simplexy run` refuses to start when
 the same instance is already supervised; stop the service first or use
 `--force` only when you intentionally accept the single-writer risk.
 
@@ -228,9 +228,9 @@ Managed updates create a database backup before switching payloads, verify the
 new CLI, atomically flip `current`, and restart an installed service. A failed
 install or verification leaves the previous payload active.
 
-If the service is stopped, start it with `paperclipai service start` before
-updating so Paperclip can take the safety backup. Use
-`paperclipai update --no-backup` only when you intentionally accept updating
+If the service is stopped, start it with `simplexy service start` before
+updating so Simplexy can take the safety backup. Use
+`simplexy update --no-backup` only when you intentionally accept updating
 without that rollback safeguard. A never-onboarded instance with no config or
 instance data skips the backup automatically because there is nothing to save.
 
@@ -267,7 +267,7 @@ pnpm install
 pnpm dev
 ```
 
-The managed `paperclipai update` command can update managed and global npm
+The managed `simplexy update` command can update managed and global npm
 installs. For source checkouts it reports the appropriate git workflow instead
 of modifying the checkout automatically.
 
@@ -300,7 +300,7 @@ paperclipai service uninstall
 paperclipai uninstall
 ```
 
-`paperclipai uninstall` removes the managed shim, manifest, and CLI payloads.
+`simplexy uninstall` removes the managed shim, manifest, and CLI payloads.
 It deliberately preserves `~/.paperclip/instances/`, including configuration,
 databases, uploads, logs, secrets, backups, and workspaces. Back up and remove
-that data separately only when you intend to delete the Paperclip instance.
+that data separately only when you intend to delete the Simplexy instance.

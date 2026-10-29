@@ -1,14 +1,14 @@
 /**
  * Deterministic, shared port + URL derivation for the `tailscale_https`
  * exposure mode. Extracted so runtime allocation, server startup, the broker,
- * and tests all agree on the dedicated Simplixy runtime port range and the
+ * and tests all agree on the dedicated Simplexy runtime port range and the
  * app/HMR pairing (PAP-17049 plan, PAP-17050 verdict requirement #2).
  *
  * Pure functions only — no I/O, no process state.
  */
 
 /**
- * Dedicated, allowlisted port range for managed Simplixy runtime APP
+ * Dedicated, allowlisted port range for managed Simplexy runtime APP
  * listeners. Ports outside this range are never eligible for exposure, which
  * bounds the SSRF blast radius: a compromised caller cannot ask the broker to
  * publish an arbitrary existing loopback service.
@@ -17,8 +17,8 @@ export const RUNTIME_EXPOSURE_APP_PORT_MIN = 42000;
 export const RUNTIME_EXPOSURE_APP_PORT_MAX = 42999;
 
 /**
- * Fixed offset between an app port and its Simplixy Vite HMR companion port.
- * Matches Simplixy dev mode's `server port + offset` HMR convention and keeps
+ * Fixed offset between an app port and its Simplexy Vite HMR companion port.
+ * Matches Simplexy dev mode's `server port + offset` HMR convention and keeps
  * the two listeners deterministically paired.
  */
 export const RUNTIME_EXPOSURE_HMR_PORT_OFFSET = 10000;
@@ -72,9 +72,9 @@ export function deriveViteHmrPort(appPort: number): number {
 }
 
 /**
- * Derive Simplixy's Vite HMR companion port for any valid application port.
+ * Derive Simplexy's Vite HMR companion port for any valid application port.
  *
- * Normal Simplixy instances can use ports outside the dedicated exposure
+ * Normal Simplexy instances can use ports outside the dedicated exposure
  * range, while exposed branch runtimes are deliberately constrained to it.
  * Keeping the generic derivation here prevents the app server and exposure
  * allocator from drifting while preserving the historical overflow fallback.

@@ -583,7 +583,7 @@ describe("worktree helpers", () => {
       availableMigrations: ["0001_initial.sql", "0002_current.sql"],
       appliedMigrations: ["0001_initial.sql", "0003_unknown.sql"],
       journalEntryCount: 3,
-    }, "sourcePrefix")).toThrow("Migration journal is not a prefix of this Simplixy checkout");
+    }, "sourcePrefix")).toThrow("Migration journal is not a prefix of this Simplexy checkout");
   });
 
   it("accepts a current source whose migration application order differs from filename order", () => {
@@ -1163,7 +1163,7 @@ describe("worktree helpers", () => {
     try {
       await db.insert(companies).values({
         id: companyId,
-        name: "Simplixy",
+        name: "Simplexy",
         issuePrefix: "WTQ",
         requireBoardApprovalForNewAgents: false,
       });
@@ -1971,7 +1971,7 @@ describe("worktree helpers", () => {
     }
   });
 
-  it("defaults the seed source config to the current repo-local Simplixy config", () => {
+  it("defaults the seed source config to the current repo-local Simplexy config", () => {
     const tempRoot = fs.mkdtempSync(path.join(fs.realpathSync(os.tmpdir()), "paperclip-worktree-source-config-"));
     const repoRoot = path.join(tempRoot, "repo");
     const localConfigPath = path.join(repoRoot, ".paperclip", "config.json");
@@ -2085,7 +2085,7 @@ describe("worktree helpers", () => {
         resolveWorktreeReseedTargetPaths({
           configPath,
           rootPath: worktreeRoot,
-        })).toThrow("does not look like a worktree-local Simplixy instance");
+        })).toThrow("does not look like a worktree-local Simplexy instance");
     } finally {
       fs.rmSync(tempRoot, { recursive: true, force: true });
     }
@@ -2403,7 +2403,7 @@ describe("worktree helpers", () => {
     }
   });
 
-  it("repairs the current linked worktree when Simplixy metadata is missing", async () => {
+  it("repairs the current linked worktree when Simplexy metadata is missing", async () => {
     const tempRoot = fs.mkdtempSync(path.join(fs.realpathSync(os.tmpdir()), "paperclip-worktree-repair-current-"));
     const repoRoot = path.join(tempRoot, "repo");
     const worktreePath = path.join(repoRoot, ".paperclip", "worktrees", "repair-me");
@@ -2492,7 +2492,7 @@ describeEmbeddedPostgres("pauseSeededScheduledRoutines", () => {
     try {
       await db.insert(companies).values({
         id: companyId,
-        name: "Simplixy",
+        name: "Simplexy",
         issuePrefix: `T${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
         requireBoardApprovalForNewAgents: false,
       });

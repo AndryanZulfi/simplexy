@@ -102,7 +102,7 @@ vi.mock("../context/BreadcrumbContext", () => ({
 vi.mock("../context/CompanyContext", () => ({
   useCompany: () => ({
     selectedCompanyId: "company-1",
-    selectedCompany: { id: "company-1", name: "Simplixy" },
+    selectedCompany: { id: "company-1", name: "Simplexy" },
     setSelectedCompanyId: mockSetSelectedCompanyId,
   }),
   useOptionalCompany: mockOptionalCompany,
@@ -1107,7 +1107,7 @@ describe("CompanyImport", () => {
     });
   });
 
-  it("hides Simplixy Runner import configuration while its experimental flag is off", async () => {
+  it("hides Simplexy Runner import configuration while its experimental flag is off", async () => {
     mockAdaptersApi.list.mockResolvedValue([
       { type: "claude_local", disabled: false },
       { type: "codex_local", disabled: false },
@@ -1121,7 +1121,7 @@ describe("CompanyImport", () => {
     }
   });
 
-  it("offers Simplixy Runner import configuration after its experimental flag is enabled", async () => {
+  it("offers Simplexy Runner import configuration after its experimental flag is enabled", async () => {
     mockInstanceSettingsApi.getExperimental.mockResolvedValue({ enableNativeRunner: true, enableOpenAiDot: false });
     mockAdaptersApi.list.mockResolvedValue([
       { type: "claude_local", disabled: false },
@@ -1326,10 +1326,10 @@ describe("CompanyImport", () => {
       await flushReact();
     }
     const select = container.querySelector<HTMLButtonElement>('[aria-label="Permission mode"]');
-    if (sourceType === "paperclip_runner") expect(select?.textContent).toContain(permission === "deny-all" ? "Deny all" : "Allow Simplixy reads");
+    if (sourceType === "paperclip_runner") expect(select?.textContent).toContain(permission === "deny-all" ? "Deny all" : "Allow Simplexy reads");
     await act(async () => select!.click());
     const nextPermission = permission === "deny-all" ? "approve-reads" : "deny-all";
-    const option = [...document.querySelectorAll<HTMLElement>('[role="option"]')].find(element => element.textContent === (nextPermission === "deny-all" ? "Deny all" : "Allow Simplixy reads"));
+    const option = [...document.querySelectorAll<HTMLElement>('[role="option"]')].find(element => element.textContent === (nextPermission === "deny-all" ? "Deny all" : "Allow Simplexy reads"));
     expect(option).toBeTruthy();
     await act(async () => option!.click());
     await flushReact();
@@ -1495,7 +1495,7 @@ describe("CompanyImport", () => {
     await clickButton(text => text.startsWith("Import 3 file"));
     await settle();
     expect(mockCompaniesApi.importBundleAsync).not.toHaveBeenCalled();
-    expect(container.textContent).toContain("Unknown Simplixy Runner provider unknown-provider");
+    expect(container.textContent).toContain("Unknown Simplexy Runner provider unknown-provider");
   });
 
   it("requires billing acknowledgement and serializes the standalone Dot import choice as Runner", async () => {

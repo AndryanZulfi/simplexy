@@ -2,7 +2,7 @@
  * Forcing a managed runtime's listeners onto loopback through argv (PAP-17256).
  *
  * The broker only exposes a port whose listener /proc proves to be loopback-only,
- * so an exposed Simplixy dev runtime MUST bind `127.0.0.1`. The server used to
+ * so an exposed Simplexy dev runtime MUST bind `127.0.0.1`. The server used to
  * request that with env vars alone (`PAPERCLIP_BIND` / `PAPERCLIP_BIND_HOST`),
  * which is not sufficient: the process that has to honour them is the *guest
  * checkout's* `scripts/dev-runner.ts`, and a checkout that predates managed
@@ -39,7 +39,7 @@ export function commandSelectsBindMode(command: string): boolean {
 }
 
 /**
- * A Simplixy dev-runner invocation — the only shape that understands
+ * A Simplexy dev-runner invocation — the only shape that understands
  * `--bind` / `--bind-host`.
  *
  * Deliberately keyed on the *command*, not the service name. `--bind` means
@@ -55,7 +55,7 @@ export function isPaperclipDevRunnerCommand(command: string): boolean {
 }
 
 /**
- * Rewrite a Simplixy dev-runner command so it explicitly requests the loopback
+ * Rewrite a Simplexy dev-runner command so it explicitly requests the loopback
  * bind, replacing whatever bind selection it carried.
  *
  * A command that is not a dev-runner invocation is returned untouched — see

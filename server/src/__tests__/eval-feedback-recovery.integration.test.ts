@@ -33,7 +33,7 @@ it("recovers real saved complaints and suggestions after their producer is kille
       for (const kind of ['complaint', 'suggestion']) {
         const response = await fetch(process.env.FEEDBACK_URL, {
           method: 'POST', headers: { 'content-type': 'application/json',
-            authorization: 'Bearer ' + process.env.FEEDBACK_TOKEN, 'X-Simplixy-Run-Id': process.env.FEEDBACK_RUN },
+            authorization: 'Bearer ' + process.env.FEEDBACK_TOKEN, 'X-Simplexy-Run-Id': process.env.FEEDBACK_RUN },
           body: JSON.stringify({ kind, body: 'Synthetic interrupted producer ' + kind, idempotencyKey: kind }),
         });
         if (response.status !== 201) throw new Error('Synthetic feedback submission failed: ' + response.status);

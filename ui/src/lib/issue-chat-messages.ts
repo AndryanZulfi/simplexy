@@ -543,10 +543,10 @@ function authorNameForComment(
 ) {
   const authorAgentId = effectiveCommentAuthorAgentId(comment);
   if (authorAgentId) {
-    return agentMap?.get(authorAgentId)?.name ?? (options?.isSystemNotice ? "Simplixy" : authorAgentId.slice(0, 8));
+    return agentMap?.get(authorAgentId)?.name ?? (options?.isSystemNotice ? "Simplexy" : authorAgentId.slice(0, 8));
   }
   const authorUserId = comment.authorUserId ?? null;
-  if (!authorUserId) return options?.isSystemNotice ? "Simplixy" : "You";
+  if (!authorUserId) return options?.isSystemNotice ? "Simplexy" : "You";
   const userLabel = userLabelMap?.get(authorUserId)?.trim();
   if (userLabel) return userLabel;
   return formatAssigneeUserLabel(authorUserId, currentUserId, userLabelMap) ?? "You";

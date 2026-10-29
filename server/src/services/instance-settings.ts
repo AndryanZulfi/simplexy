@@ -591,7 +591,7 @@ export function instanceSettingsService(db: Db, options: InstanceSettingsService
     updateExperimental: async (patch: PatchInstanceExperimentalSettings): Promise<InstanceSettings> => {
       for (const [key, enabled] of Object.entries(managedConfig?.features ?? {})) {
         if (enabled && patch[key as ManagedExperimentalFeatureKey] === false) {
-          throw forbidden(`${key} is enabled by Simplixy Cloud and cannot be disabled on this instance`, {
+          throw forbidden(`${key} is enabled by Simplexy Cloud and cannot be disabled on this instance`, {
             code: "settings_operator_managed",
           });
         }

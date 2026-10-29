@@ -329,12 +329,12 @@ describe("uploadCompanyImportTransfer", () => {
         alreadyCompleted: true,
         totalParts: 2,
         missingParts: [],
-        company: { id: "company-2", name: "Simplixy", issuePrefix: "PAPA" },
+        company: { id: "company-2", name: "Simplexy", issuePrefix: "PAPA" },
       }),
     });
 
     await expect(uploadCompanyImportTransfer(api, zipBytes)).rejects.toThrow(
-      /landed in the company "Simplixy" \(PAPA\)/,
+      /landed in the company "Simplexy" \(PAPA\)/,
     );
     expect(putRaw).not.toHaveBeenCalled();
   });

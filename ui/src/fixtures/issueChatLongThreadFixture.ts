@@ -62,7 +62,7 @@ function markdownBody(index: number) {
     "",
     "- Parsed checklist item one with inline `code`",
     "- Parsed checklist item two with **bold** and _italic_ text",
-    "- Parsed checklist item three with a link to [Simplixy](/PAP/dashboard)",
+    "- Parsed checklist item three with a link to [Simplexy](/PAP/dashboard)",
     "",
     "| Metric | Value |",
     "| --- | ---: |",
@@ -194,7 +194,7 @@ export const issueChatLongThreadFixtureContext = {
     title: "Long-thread rendering baseline fixture",
     status: "in_progress",
     priority: "medium",
-    projectName: "Simplixy App",
+    projectName: "Simplexy App",
   },
   documents: [
     "Implementation Plan",

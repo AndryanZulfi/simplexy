@@ -65,7 +65,7 @@ export async function validateNativeWorkspaceReconstruction(db: Db, input: {
   if (!lease || lease.issueId !== issue.id || lease.providerLeaseId !== reference.providerLeaseId
     || !leases.every(hasRemoteTerminationReceipt) || object(lease.metadata?.remoteExecutionTermination).state !== "destroyed"
     || leases.some(row => row.metadata?.pendingCleanupInFlight === true)) {
-    throw conflict("Simplixy has not confirmed destruction of the original workspace. Recover its files or retry its export first.", { code: "workspace_reconstruction_source_not_destroyed" });
+    throw conflict("Simplexy has not confirmed destruction of the original workspace. Recover its files or retry its export first.", { code: "workspace_reconstruction_source_not_destroyed" });
   }
   const [otherLease] = await db.select({ id: environmentLeases.id }).from(environmentLeases).where(and(
     ne(environmentLeases.id, lease.id), eq(environmentLeases.provider, lease.provider!), eq(environmentLeases.providerLeaseId, lease.providerLeaseId!),

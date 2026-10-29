@@ -281,7 +281,7 @@ suite("Discord command ownership store (real PostgreSQL, no network)", () => {
       receipt: Record<string, unknown>;
     };
     const prior = discordPaperclipCommandDefinition(registration.ownerId);
-    prior.options[2]!.description = "Close the current Simplixy task";
+    prior.options[2]!.description = "Close the current Simplexy task";
     const remote = f.remote[0]!;
     f.remote[0] = {
       ...prior,

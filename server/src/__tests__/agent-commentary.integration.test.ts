@@ -48,7 +48,7 @@ describe("internal agent commentary through both transports", () => {
   }
   async function post(f: Fixture & { token: string }, value: unknown, companyId = f.companyId) {
     return fetch(`${server.apiUrl}/api/companies/${companyId}/agent-commentary`, {
-      method: "POST", headers: { authorization: `Bearer ${f.token}`, "X-Simplixy-Run-Id": f.runId, "Content-Type": "application/json" }, body: JSON.stringify(value),
+      method: "POST", headers: { authorization: `Bearer ${f.token}`, "X-Simplexy-Run-Id": f.runId, "Content-Type": "application/json" }, body: JSON.stringify(value),
     });
   }
 

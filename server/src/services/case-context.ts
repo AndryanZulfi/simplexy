@@ -171,7 +171,7 @@ export interface CaseProjectionMarker {
   incomingInstructionsSha256: string | null;
 }
 
-const CASE_PROJECTION_PREFIX = "Simplixy workflow case projection: ";
+const CASE_PROJECTION_PREFIX = "Simplexy workflow case projection: ";
 
 function caseProjectionMarker(context: CaseExecutionContext): CaseProjectionMarker {
   return {

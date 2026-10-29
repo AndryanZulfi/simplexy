@@ -194,7 +194,7 @@ describe("personal Muse control plane",()=>{
       const input = { name: "Muse project authority canary", description: "A bounded project result", idempotencyKey: randomUUID() };
       const receiptKey = `project:${f.company.id}:${f.agent.id}:${f.issue.id}:${input.idempotencyKey}`;
       const send = (body = input) => request(app).post(`/api/companies/${f.company.id}/projects`)
-        .set("Authorization", "Bearer " + token).set("X-Simplixy-Run-Id", f.runId).send(body);
+        .set("Authorization", "Bearer " + token).set("X-Simplexy-Run-Id", f.runId).send(body);
       let priorId: string | undefined;
       if (replay) {
         const first = await send();
@@ -327,7 +327,7 @@ describe("personal Muse control plane",()=>{
       expect(typeof token).toBe("string");
       const app=express();app.use(actorMiddleware(db,{deploymentMode:"authenticated",resolveSession:async()=>null}));
       app.get("/actor",(req,res)=>res.json(req.actor));app.use(errorHandler);
-      const read=()=>request(app).get("/actor").set("Authorization","Bearer "+token).set("X-Simplixy-Run-Id",f.runId);
+      const read=()=>request(app).get("/actor").set("Authorization","Bearer "+token).set("X-Simplexy-Run-Id",f.runId);
       const positive=await read();
       expect(positive.status).toBe(200);expect(positive.body).toMatchObject({type:"agent",source:"agent_jwt",companyId:f.company.id,agentId:f.agent.id,runId:f.runId,authorizingUserId:f.operatorId,onBehalfOfUserId:f.operatorId});
       const beforeHolds=await db.select().from(externalAgentHolds).where(eq(externalAgentHolds.assignmentId,f.assignment.id));
@@ -346,7 +346,7 @@ describe("personal Muse control plane",()=>{
       expect((await read()).status).toBe(200);
       const otherAuthorizer=createLocalAgentJwt(f.agent.id,f.company.id,"paperclip_runner",f.runId,f.operatorId,undefined,randomUUID());
       expect(typeof otherAuthorizer).toBe("string");
-      const wrongAuthorizer=await request(app).get("/actor").set("Authorization","Bearer "+otherAuthorizer).set("X-Simplixy-Run-Id",f.runId);
+      const wrongAuthorizer=await request(app).get("/actor").set("Authorization","Bearer "+otherAuthorizer).set("X-Simplexy-Run-Id",f.runId);
       expect(wrongAuthorizer.status).toBe(403);expect(wrongAuthorizer.body).toEqual({error:"Muse native tool authority is unavailable"});
       // A synthetic current-DB grant revocation must affect the same signed JWT.
       await db.update(mcpOauthGrants).set({revokedAt:new Date()}).where(eq(mcpOauthGrants.id,f.binding.grantId!));
@@ -2408,20 +2408,20 @@ describe("personal Muse control plane",()=>{
 
   it("serves opaque public wake digests while worker and cleanup APIs still require private bearer authority",async()=>{
     const f=await active();try {
-      const app=transport(),reply=await request(app).get("/api/muse/v1/signal").set("X-Simplixy-Muse-Binding",f.binding.id);
+      const app=transport(),reply=await request(app).get("/api/muse/v1/signal").set("X-Simplexy-Muse-Binding",f.binding.id);
       expect(reply.status).toBe(200);expect(Object.keys(reply.body)).toEqual(["version","signal"]);expect(Object.keys(reply.body.signal)).toEqual(["reference"]);
       const [item]=await db.select().from(mailbox).where(eq(mailbox.assignmentId,f.assignment.id));
       expect(reply.body.signal.reference).toBe("sha256:"+createHash("sha256").update(`${f.binding.id}:1:${item.sourceEventId}:${item.signalAttempt}`).digest("hex"));
       expect(JSON.stringify(reply.body)).not.toContain(f.assignment.id);expect(JSON.stringify(reply.body)).not.toContain(f.issue.title);
-      expect((await request(app).get("/api/muse/v1/signal").set("X-Simplixy-Muse-Binding",f.binding.id)).body).toEqual(reply.body);
+      expect((await request(app).get("/api/muse/v1/signal").set("X-Simplexy-Muse-Binding",f.binding.id)).body).toEqual(reply.body);
       expect((await request(app).get("/api/muse/v1/signal")).status).toBe(400);
-      expect((await request(app).get("/api/muse/v1/signal").set("X-Simplixy-Muse-Binding","invalid")).status).toBe(400);
-      expect((await request(app).get("/api/muse/v1/signal").set("X-Simplixy-Muse-Binding",randomUUID())).status).toBe(410);
+      expect((await request(app).get("/api/muse/v1/signal").set("X-Simplexy-Muse-Binding","invalid")).status).toBe(400);
+      expect((await request(app).get("/api/muse/v1/signal").set("X-Simplexy-Muse-Binding",randomUUID())).status).toBe(410);
       expect((await request(app).get("/api/muse/v1/signal?binding="+f.binding.id)).status).toBe(404);
-      expect((await request(app).post("/api/muse/v1/commands").set("X-Simplixy-Muse-Binding",f.binding.id).send({version:1,command:"accept",assignmentId:f.assignment.id,requestId:randomUUID()})).status).toBe(401);
-      expect((await request(app).post("/api/muse/v1/detector-cleanup").set("X-Simplixy-Muse-Binding",f.binding.id).send({version:1,bindingId:f.binding.id,generation:1,requestId:randomUUID(),detectorRemoved:true})).status).toBe(401);
-      expect((await request(app).post("/api/muse/v1/queries").set("X-Simplixy-Muse-Binding",f.binding.id).send({version:1,query:"identify"})).status).toBe(401);
-      expect((await request(app).post("/api/muse/v1/cleanup").set("X-Simplixy-Muse-Binding",f.binding.id).send({version:1,command:"control.inspect"})).status).toBe(401);
+      expect((await request(app).post("/api/muse/v1/commands").set("X-Simplexy-Muse-Binding",f.binding.id).send({version:1,command:"accept",assignmentId:f.assignment.id,requestId:randomUUID()})).status).toBe(401);
+      expect((await request(app).post("/api/muse/v1/detector-cleanup").set("X-Simplexy-Muse-Binding",f.binding.id).send({version:1,bindingId:f.binding.id,generation:1,requestId:randomUUID(),detectorRemoved:true})).status).toBe(401);
+      expect((await request(app).post("/api/muse/v1/queries").set("X-Simplexy-Muse-Binding",f.binding.id).send({version:1,query:"identify"})).status).toBe(401);
+      expect((await request(app).post("/api/muse/v1/cleanup").set("X-Simplexy-Muse-Binding",f.binding.id).send({version:1,command:"control.inspect"})).status).toBe(401);
     }finally{await f.detach();}
   });
   it.each(["input", "challenge"] as const)("signals pending stop control while paused and keeps ordinary %s quiet",async(kind)=>{
@@ -2436,7 +2436,7 @@ describe("personal Muse control plane",()=>{
       }
       await f.port.dispatch({sourceEventId:randomUUID(),payload:{kind:"authority_revoked",binding:f.ref}});
       await db.update(agents).set({status:"paused"}).where(eq(agents.id,f.agent.id));
-      const app=transport(),poll=()=>request(app).get("/api/muse/v1/signal").set("X-Simplixy-Muse-Binding",f.binding.id);
+      const app=transport(),poll=()=>request(app).get("/api/muse/v1/signal").set("X-Simplexy-Muse-Binding",f.binding.id);
       const first=await poll();expect(first.status).toBe(200);expect(first.body.signal?.reference).toMatch(/^sha256:/);
       const [stop]=await db.select().from(mailbox).where(and(eq(mailbox.bindingId,f.binding.id),eq(mailbox.kind,"authority_revoked")));
       expect(stop.signalAttempt).toBe(1);expect(stop.signalNotifiedAt).toBeInstanceOf(Date);
@@ -2469,7 +2469,7 @@ describe("personal Muse control plane",()=>{
       const [hold]=await db.select().from(externalAgentHolds).where(eq(externalAgentHolds.assignmentId,f.assignment.id));
       const [stop]=await db.select().from(mailbox).where(and(eq(mailbox.bindingId,f.binding.id),eq(mailbox.kind,"authority_revoked")));
       const authorization="Bearer "+oauth.tokens!.access_token;
-      const poll=()=>request(app).get("/api/muse/v1/signal").set("X-Simplixy-Muse-Binding",f.binding.id);
+      const poll=()=>request(app).get("/api/muse/v1/signal").set("X-Simplexy-Muse-Binding",f.binding.id);
       const [signal,inbox,inspection]=await Promise.all([
         poll(),request(app).post("/api/muse/v1/queries").set("Authorization",authorization).send({version:1,query:"mailbox",after:0}),
         request(app).post("/api/muse/v1/cleanup").set("Authorization",authorization).send({version:1,command:"control.inspect"}),
@@ -2527,7 +2527,7 @@ describe("personal Muse control plane",()=>{
       for(const command of [{command:"control.inspect"},{command:"worker.quiescent",boundary:hold.stopBoundary,requestId:randomUUID()}])expect((await request(app).post("/api/muse/v1/cleanup").set("Authorization",authorization).send({version:1,...command})).status).toBe(expected);
       expect((await request(app).post("/api/muse/v1/queries").set("Authorization",authorization).send({version:1,query:"mailbox",after:0})).status).toBe(expected);
       const [saved]=await db.select().from(externalAgentHolds).where(eq(externalAgentHolds.id,hold.id));expect(saved.workerReportedAt).toBeNull();expect(saved.stopBoundary).toEqual(hold.stopBoundary);expect(f.sent).toHaveLength(1);
-      const signal=await request(app).get("/api/muse/v1/signal").set("X-Simplixy-Muse-Binding",f.binding.id);
+      const signal=await request(app).get("/api/muse/v1/signal").set("X-Simplexy-Muse-Binding",f.binding.id);
       if(["grant_revoked","connection_revoked","refresh_expired","membership_lost","resource_changed"].includes(fault))expect(signal.status).toBe(410);
       else expect(signal.body).toEqual({version:1,signal:null});
     }finally{await instanceSettingsService(db).updateExperimental({enableMuse:true,enableNativeRunner:true});await f.detach();}
@@ -2563,7 +2563,7 @@ describe("personal Muse control plane",()=>{
   it.each(["enableMuse","enableNativeRunner"] as const)("disabled stop control requires a durable fence before using %s current credentials",async flag=>{
     const f=await oauthFixture(true),app=transport();try {
       await instanceSettingsService(db).updateExperimental({[flag]:false});
-      expect((await request(app).get("/api/muse/v1/signal").set("X-Simplixy-Muse-Binding",f.binding.id)).body).toEqual({version:1,signal:null});
+      expect((await request(app).get("/api/muse/v1/signal").set("X-Simplexy-Muse-Binding",f.binding.id)).body).toEqual({version:1,signal:null});
       expect((await request(app).post("/api/muse/v1/queries").set("Authorization","Bearer "+f.tokens!.access_token).send({version:1,query:"mailbox",after:0})).status).toBe(403);
       expect((await request(app).post("/api/muse/v1/cleanup").set("Authorization","Bearer "+f.tokens!.access_token).send({version:1,command:"control.inspect"})).status).toBe(403);
     }finally{await instanceSettingsService(db).updateExperimental({enableMuse:true,enableNativeRunner:true});}
@@ -2588,7 +2588,7 @@ describe("personal Muse control plane",()=>{
     await f.broker.verify(f.company.id,f.agent.id,{bindingId:f.binding.id,generation:1,expectedRevision:state.revision});
     const [challenge]=await db.select().from(mailbox).where(and(eq(mailbox.bindingId,f.binding.id),eq(mailbox.kind,"readiness_challenge")));
     await db.update(bindings).set({challengeExpiresAt:new Date(Date.now()-1)}).where(eq(bindings.id,f.binding.id));
-    const poll=()=>request(app).get("/api/muse/v1/signal").set("X-Simplixy-Muse-Binding",f.binding.id);
+    const poll=()=>request(app).get("/api/muse/v1/signal").set("X-Simplexy-Muse-Binding",f.binding.id);
     expect((await poll()).body).toEqual({version:1,signal:null});
     const ack=await request(app).post("/api/muse/v1/queries").set("Authorization","Bearer "+f.tokens!.access_token).send({version:1,query:"mailbox",after:challenge.id});
     expect(ack.status).toBe(200);
@@ -2604,7 +2604,7 @@ describe("personal Muse control plane",()=>{
     expect(challenges).toHaveLength(2);
     const current=(await db.select().from(bindings).where(eq(bindings.id,f.binding.id)))[0];
     expect(museCredentialHash(String(challenges[1].references.nonce))).toBe(current.challengeHash);
-    const poll=()=>request(app).get("/api/muse/v1/signal").set("X-Simplixy-Muse-Binding",f.binding.id);
+    const poll=()=>request(app).get("/api/muse/v1/signal").set("X-Simplexy-Muse-Binding",f.binding.id);
     const first=await poll(),second=await poll();expect(first.status).toBe(200);expect(first.body.signal?.reference).toMatch(/^sha256:/);expect(second.body).toEqual(first.body);
     const saved=await db.select().from(mailbox).where(and(eq(mailbox.bindingId,f.binding.id),eq(mailbox.kind,"readiness_challenge"))).orderBy(mailbox.id);
     expect(saved.map(item=>item.signalAttempt)).toEqual([0,1]);
@@ -2615,7 +2615,7 @@ describe("personal Muse control plane",()=>{
 
   it("keeps paused and feature-disabled public receivers idle, resumes them, and fences lost current authority",async()=>{
     const f=await active();try {
-      const app=transport(),poll=()=>request(app).get("/api/muse/v1/signal").set("X-Simplixy-Muse-Binding",f.binding.id);
+      const app=transport(),poll=()=>request(app).get("/api/muse/v1/signal").set("X-Simplexy-Muse-Binding",f.binding.id);
       await db.update(agents).set({status:"paused"}).where(eq(agents.id,f.agent.id));expect((await poll()).body).toEqual({version:1,signal:null});
       await db.update(agents).set({status:"active"}).where(eq(agents.id,f.agent.id));expect((await poll()).body.signal.reference).toMatch(/^sha256:/);
       await instanceSettingsService(db).updateExperimental({enableMuse:false});expect((await poll()).body).toEqual({version:1,signal:null});
@@ -2626,16 +2626,16 @@ describe("personal Muse control plane",()=>{
   it("returns410 for expired refresh authority and thirty days of authenticated inactivity",async()=>{
     const expired=await fixture(false),inactive=await fixture(false),app=transport();
     await db.update(museCredentials).set({expiresAt:new Date(Date.now()-1)}).where(and(eq(museCredentials.bindingId,expired.binding.id),eq(museCredentials.kind,"refresh")));
-    expect((await request(app).get("/api/muse/v1/signal").set("X-Simplixy-Muse-Binding",expired.binding.id)).status).toBe(410);
+    expect((await request(app).get("/api/muse/v1/signal").set("X-Simplexy-Muse-Binding",expired.binding.id)).status).toBe(410);
     await db.update(bindings).set({workerActivityAt:new Date(Date.now()-30*86400000)}).where(eq(bindings.id,inactive.binding.id));
-    expect((await request(app).get("/api/muse/v1/signal").set("X-Simplixy-Muse-Binding",inactive.binding.id)).status).toBe(410);
+    expect((await request(app).get("/api/muse/v1/signal").set("X-Simplexy-Muse-Binding",inactive.binding.id)).status).toBe(410);
   });
   it("keeps transient authority-check failures retryable and records no failed public contact",async()=>{
     const f=await fixture(false),app=transport(),check=vi.spyOn(museIdentityModule,"assertMuseReceiverAuthority").mockRejectedValueOnce(new Error("Synthetic database transport failure"));
     try {
-      expect((await request(app).get("/api/muse/v1/signal").set("X-Simplixy-Muse-Binding",f.binding.id)).status).toBe(500);
+      expect((await request(app).get("/api/muse/v1/signal").set("X-Simplexy-Muse-Binding",f.binding.id)).status).toBe(500);
       await museReceiver(db).flush();expect((await db.select().from(bindings).where(eq(bindings.id,f.binding.id)))[0].receiverContactAt).toBeNull();
-      expect((await request(app).get("/api/muse/v1/signal").set("X-Simplixy-Muse-Binding",f.binding.id)).status).toBe(200);
+      expect((await request(app).get("/api/muse/v1/signal").set("X-Simplexy-Muse-Binding",f.binding.id)).status).toBe(200);
     }finally{check.mockRestore();}
   });
   it("retains immutable asset1 through asset8 bytes and advertises finite asset9 routes",async()=>{
@@ -2671,7 +2671,7 @@ describe("personal Muse control plane",()=>{
     const [grant]=await db.select().from(mcpOauthGrants).where(eq(mcpOauthGrants.id,f.binding.grantId!));expect(grant).toMatchObject({companyId:f.company.id,agentId:f.agent.id,userId:f.operatorId,purpose:"agent",resource:oauthResource,scopes:["paperclip:agent","offline_access"]});
     expect(f.binding.ticketHash).toBeNull();expect(f.binding.pairedAt).toBeInstanceOf(Date);expect(await db.select().from(museCredentials).where(eq(museCredentials.bindingId,f.binding.id))).toHaveLength(0);
     expect(await inspectMuseConnectionCredential(db,f.binding,oauthResource)).toEqual({state:"pending",refreshExpiresAt:null});
-    expect((await request(transport()).get("/api/muse/v1/signal").set("X-Simplixy-Muse-Binding",f.binding.id)).body).toEqual({version:1,signal:null});
+    expect((await request(transport()).get("/api/muse/v1/signal").set("X-Simplexy-Muse-Binding",f.binding.id)).body).toEqual({version:1,signal:null});
     const tokens=await f.oauth.token(f.tokenInput()),subject=await f.identity.authenticateOAuthAccess(tokens.access_token,oauthOrigin);
     expect(subject).toMatchObject({credentialSource:"oauth",grantId:grant.id,provider:"muse",agentId:f.agent.id,authorizingUserId:f.operatorId});
     const [stored]=await db.select().from(mcpOauthTokens).where(eq(mcpOauthTokens.tokenHash,hashMcpSecret(tokens.access_token)));expect(subject.credentialId).toBe(stored.id);
@@ -2897,7 +2897,7 @@ describe("personal Muse control plane",()=>{
     const f=await oauthFixture(false,false),results=await Promise.allSettled([f.oauth.authorize(f.input),f.oauth.authorize(f.input)]);expect(results.filter(r=>r.status==="fulfilled")).toHaveLength(1);
     const [binding]=await db.select().from(bindings).where(eq(bindings.id,f.binding.id));expect(await db.select().from(mcpOauthGrants).where(eq(mcpOauthGrants.agentId,f.agent.id))).toHaveLength(1);
     await db.update(mcpOauthRequests).set({expiresAt:new Date(Date.now()-1)}).where(eq(mcpOauthRequests.grantId,binding.grantId!));
-    expect((await request(transport()).get("/api/muse/v1/signal").set("X-Simplixy-Muse-Binding",f.binding.id)).status).toBe(410);
+    expect((await request(transport()).get("/api/muse/v1/signal").set("X-Simplexy-Muse-Binding",f.binding.id)).status).toBe(410);
   });
   it("rotates finite Muse OAuth refresh,defaults absent resource only here,and fences replay without cleanup exception",async()=>{
     const f=await oauthFixture(true),original=f.tokens!;
@@ -2916,7 +2916,7 @@ describe("personal Muse control plane",()=>{
     await db.update(mcpOauthGrants).set({resource:oauthResource,scopes:["paperclip:agent"]}).where(eq(mcpOauthGrants.id,f.binding.grantId!));expect((await inspectMuseConnectionCredential(db,f.binding,oauthResource)).state).toBe("revoked");
     await db.update(mcpOauthGrants).set({scopes:["paperclip:agent","offline_access"]}).where(eq(mcpOauthGrants.id,f.binding.grantId!));
     await db.update(mcpOauthTokens).set({expiresAt:new Date(Date.now()-1)}).where(eq(mcpOauthTokens.id,refresh.id));expect((await inspectMuseConnectionCredential(db,f.binding,oauthResource)).state).toBe("expired");
-    expect((await request(transport()).get("/api/muse/v1/signal").set("X-Simplixy-Muse-Binding",f.binding.id)).status).toBe(410);
+    expect((await request(transport()).get("/api/muse/v1/signal").set("X-Simplexy-Muse-Binding",f.binding.id)).status).toBe(410);
   });
   it("serves PKCE OAuth ingress and disables raw HTTPlegacy pairing by default",async()=>{
     const f=await oauthFixture(false,false),app=transport();
@@ -2927,7 +2927,7 @@ describe("personal Muse control plane",()=>{
     const code=new URL(reply.headers.location).searchParams.get("code")!;
     const exchange=await request(app).post("/api/muse/v1/oauth/token").type("form").send({grant_type:"authorization_code",client_id:f.client.client_id,redirect_uri:oauthCallback,code,code_verifier:f.verifier});expect(exchange.status).toBe(200);expect(exchange.body.token_type).toBe("Bearer");
     expect((await request(app).post("/api/muse/v1/oauth/revoke").type("form").send({client_id:f.client.client_id,token:exchange.body.access_token})).status).toBe(200);
-    expect((await request(app).get("/api/muse/v1/signal").set("X-Simplixy-Muse-Binding",f.binding.id)).status).toBe(410);
+    expect((await request(app).get("/api/muse/v1/signal").set("X-Simplexy-Muse-Binding",f.binding.id)).status).toBe(410);
   });
   it.each(["access_expired","grant_revoked"])("rechecks idle OAuth authority after waiting for its transaction lock:%s",async(reason)=>{
     const f=await oauthFixture(true),requestId=randomUUID(),title="Must not create "+randomUUID();let outcome:Promise<{value?:unknown;error?:unknown}>|undefined;

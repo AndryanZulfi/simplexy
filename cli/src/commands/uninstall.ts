@@ -83,8 +83,8 @@ export async function uninstallCommand(
   }, paths, { initialize: !hadStore });
 
   if (!shimRemoved) {
-    console.log(pc.yellow(`Left ${paths.shimPath} unchanged because it is not a Simplixy-managed shim.`));
+    console.log(pc.yellow(`Left ${paths.shimPath} unchanged because it is not a Simplexy-managed shim.`));
   }
-  console.log(pc.green("Removed the managed Simplixy CLI install."));
+  console.log(pc.green("Removed the managed Simplexy CLI install."));
   console.log(pc.dim(`User data was left untouched under ${paths.paperclipHome}.`));
 }

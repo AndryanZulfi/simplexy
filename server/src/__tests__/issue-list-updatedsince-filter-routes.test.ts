@@ -86,7 +86,7 @@ describeEmbeddedPostgres("issue list routes updatedSince filter", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: uniqueIssuePrefix(),
       requireBoardApprovalForNewAgents: false,
     });
@@ -120,7 +120,7 @@ describeEmbeddedPostgres("issue list routes updatedSince filter", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: uniqueIssuePrefix(),
       requireBoardApprovalForNewAgents: false,
     });
@@ -157,7 +157,7 @@ describeEmbeddedPostgres("issue list routes updatedSince filter", () => {
     const companyId = randomUUID();
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: uniqueIssuePrefix(),
       requireBoardApprovalForNewAgents: false,
     });

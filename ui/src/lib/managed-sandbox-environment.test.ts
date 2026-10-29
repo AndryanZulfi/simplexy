@@ -7,7 +7,7 @@ import {
 
 describe("managed sandbox environment helpers", () => {
   it("identifies platform-managed rows by the provisioner marker", () => {
-    expect(isPlatformManagedEnvironment({ metadata: { managedBySimplixy: true } })).toBe(true);
+    expect(isPlatformManagedEnvironment({ metadata: { managedBySimplexy: true } })).toBe(true);
     expect(isPlatformManagedEnvironment({ metadata: { managedByPaperclip: false } })).toBe(false);
     expect(isPlatformManagedEnvironment({ metadata: { source: "manual" } })).toBe(false);
     expect(isPlatformManagedEnvironment({ metadata: null })).toBe(false);
@@ -17,11 +17,11 @@ describe("managed sandbox environment helpers", () => {
   it("labels platform-managed rows by name alone and keeps the driver suffix elsewhere", () => {
     expect(
       environmentDisplayLabel({
-        name: "Simplixy Computer",
+        name: "Simplexy Computer",
         driver: "sandbox",
-        metadata: { managedBySimplixy: true },
+        metadata: { managedBySimplexy: true },
       }),
-    ).toBe("Simplixy Computer");
+    ).toBe("Simplexy Computer");
     expect(
       environmentDisplayLabel({ name: "E2B", driver: "sandbox", metadata: null }),
     ).toBe("E2B · sandbox");

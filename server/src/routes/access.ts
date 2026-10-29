@@ -194,7 +194,7 @@ function isSafeSkillName(skillName: string): boolean {
   return /^[a-z0-9][a-z0-9._-]*$/.test(skillName);
 }
 
-/** Resolve the Simplixy repo skills directory (built-in / managed skills). */
+/** Resolve the Simplexy repo skills directory (built-in / managed skills). */
 function resolvePaperclipSkillsDir(): string | null {
   const moduleDir = path.dirname(fileURLToPath(import.meta.url));
   const candidates = [
@@ -298,7 +298,7 @@ function listAvailableSkills(): AvailableSkill[] {
           isPaperclipManaged: true,
         });
       }
-    } catch { /* skip Simplixy skills directory */ }
+    } catch { /* skip Simplexy skills directory */ }
   }
 
   skills.sort((a, b) => a.name.localeCompare(b.name));
@@ -679,7 +679,7 @@ export function assertLegacyAgentInviteAdapterType(
 ) {
   if (adapterType === "paperclip_runner") {
     throw badRequest(
-      "Simplixy Runner is not available through agent invite onboarding.",
+      "Simplexy Runner is not available through agent invite onboarding.",
       { code: "paperclip_runner_invite_onboarding_disabled" },
     );
   }
@@ -800,7 +800,7 @@ export function normalizeAgentDefaultsForJoin(input: {
               code: "hermes_gateway_dashboard_root_mapped",
               level: "info",
               message: `Default Hermes dashboard root mapped to API base ${apiBaseUrl.toString()}`,
-              hint: "Hermes dashboard and /chat routes are browser UI routes. Simplixy gateway calls use /api/health and /api/v1/runs.",
+              hint: "Hermes dashboard and /chat routes are browser UI routes. Simplexy gateway calls use /api/health and /api/v1/runs.",
             });
           }
           if (apiBaseUrl.protocol === "http:" && !isLoopbackHost(apiBaseUrl.hostname)) {
@@ -1638,7 +1638,7 @@ function buildOnboardingDiscoveryDiagnostics(input: {
       code: "openclaw_onboarding_api_loopback",
       level: "warn",
       message:
-        "Onboarding URL resolves to loopback hostname. Remote OpenClaw agents cannot reach localhost on your Simplixy host.",
+        "Onboarding URL resolves to loopback hostname. Remote OpenClaw agents cannot reach localhost on your Simplexy host.",
       hint: "Use a reachable hostname/IP (for example Tailscale hostname, Docker host alias, or public domain)."
     });
   }
@@ -1651,7 +1651,7 @@ function buildOnboardingDiscoveryDiagnostics(input: {
     diagnostics.push({
       code: "openclaw_onboarding_private_loopback_bind",
       level: "warn",
-      message: "Simplixy is bound to loopback in authenticated/private mode.",
+      message: "Simplexy is bound to loopback in authenticated/private mode.",
       hint: "Use a reachable private bind mode such as `pnpm dev --bind lan` or `pnpm dev --bind tailnet` for private-network onboarding."
     });
   }
@@ -1773,7 +1773,7 @@ function buildInviteOnboardingManifest(
     ),
     onboarding: {
       instructions:
-        "Join as an external Simplixy agent, save your one-time claim secret, wait for board approval, then claim your Simplixy API key through the standard claim endpoint. Use requestType='agent', include your agentName and capabilities, and set adapterType plus agentDefaultsPayload for your runtime when applicable. Hermes Gateway agents must use adapterType='hermes_gateway', start a clean Hermes install with API_SERVER_ENABLED=true and a fresh API_SERVER_KEY, then run `hermes gateway run --replace --accept-hooks`. Put the Hermes gateway URL in agentDefaultsPayload.apiBaseUrl, put the exact API_SERVER_KEY value in agentDefaultsPayload.apiKey, and put the reachable Simplixy base URL in agentDefaultsPayload.paperclipApiUrl. If you use the default Hermes dashboard root or /chat URL on port 9119, Simplixy maps it to /api automatically. OpenClaw Gateway agents must use adapterType='openclaw_gateway', set agentDefaultsPayload.url to a ws:// or wss:// gateway endpoint, and include agentDefaultsPayload.headers.x-openclaw-token." + "\n\n" + EXTERNAL_AGENT_TOOL_GUIDANCE,
+        "Join as an external Simplexy agent, save your one-time claim secret, wait for board approval, then claim your Simplexy API key through the standard claim endpoint. Use requestType='agent', include your agentName and capabilities, and set adapterType plus agentDefaultsPayload for your runtime when applicable. Hermes Gateway agents must use adapterType='hermes_gateway', start a clean Hermes install with API_SERVER_ENABLED=true and a fresh API_SERVER_KEY, then run `hermes gateway run --replace --accept-hooks`. Put the Hermes gateway URL in agentDefaultsPayload.apiBaseUrl, put the exact API_SERVER_KEY value in agentDefaultsPayload.apiKey, and put the reachable Simplexy base URL in agentDefaultsPayload.paperclipApiUrl. If you use the default Hermes dashboard root or /chat URL on port 9119, Simplexy maps it to /api automatically. OpenClaw Gateway agents must use adapterType='openclaw_gateway', set agentDefaultsPayload.url to a ws:// or wss:// gateway endpoint, and include agentDefaultsPayload.headers.x-openclaw-token." + "\n\n" + EXTERNAL_AGENT_TOOL_GUIDANCE,
       inviteMessage: extractInviteMessage(invite),
       recommendedAdapterType: null,
       requiredFields: {
@@ -1808,8 +1808,8 @@ function buildInviteOnboardingManifest(
         guidance:
           opts.deploymentMode === "authenticated" &&
           opts.deploymentExposure === "private"
-            ? "If OpenClaw runs on another machine, ensure the Simplixy hostname is reachable and allowed via `npx paperclipai allowed-hostname <host>`."
-            : "Ensure OpenClaw can reach this Simplixy API base URL for invite, claim, and skill bootstrap calls."
+            ? "If OpenClaw runs on another machine, ensure the Simplexy hostname is reachable and allowed via `npx paperclipai allowed-hostname <host>`."
+            : "Ensure OpenClaw can reach this Simplexy API base URL for invite, claim, and skill bootstrap calls."
       },
       textInstructions: {
         path: onboardingTextPath,
@@ -1820,7 +1820,7 @@ function buildInviteOnboardingManifest(
         name: "paperclip",
         path: skillPath,
         url: skillUrl,
-        installPath: "runtime-specific Simplixy skill location"
+        installPath: "runtime-specific Simplexy skill location"
       }
     }
   };
@@ -1872,7 +1872,7 @@ export function buildInviteOnboardingTextDocument(
   };
 
   appendBlock(`
-    # Simplixy Agent Onboarding
+    # Simplexy Agent Onboarding
 
     This document is meant to be readable by both humans and agents.
 
@@ -1896,9 +1896,9 @@ export function buildInviteOnboardingTextDocument(
   appendBlock(`
     ## Step 0
 
-    Decide which Simplixy adapter type matches your runtime.
+    Decide which Simplexy adapter type matches your runtime.
 
-    Use adapterType only when there is a matching Simplixy adapter. Put runtime-specific settings in agentDefaultsPayload.
+    Use adapterType only when there is a matching Simplexy adapter. Put runtime-specific settings in agentDefaultsPayload.
 
     ## Step 1: Submit agent join request
     ${onboarding.registrationEndpoint.method} ${
@@ -1938,13 +1938,13 @@ export function buildInviteOnboardingTextDocument(
     - For a clean Hermes install, generate a fresh random gateway key and start Hermes with API_SERVER_ENABLED=true and API_SERVER_KEY=<random-gateway-key>.
     - Run: hermes gateway run --replace --accept-hooks
     - Default Hermes API server port: 8642.
-    - Set agentDefaultsPayload.apiBaseUrl to the Hermes gateway URL Simplixy can reach.
-    - Set agentDefaultsPayload.apiKey to the exact same value as API_SERVER_KEY. This is the Hermes gateway key, not the Simplixy key.
+    - Set agentDefaultsPayload.apiBaseUrl to the Hermes gateway URL Simplexy can reach.
+    - Set agentDefaultsPayload.apiKey to the exact same value as API_SERVER_KEY. This is the Hermes gateway key, not the Simplexy key.
     - If you only have the default Hermes dashboard or chat URL, http://127.0.0.1:9119 and http://127.0.0.1:9119/chat are accepted and map to /api automatically.
-    - Watch out: /chat and the dashboard root are browser UI routes. Simplixy tests /api/health and starts runs with /api/v1/runs after mapping them to the API base.
-    - Set agentDefaultsPayload.paperclipApiUrl to the Simplixy base URL Hermes can reach.
-    - Use hermes_local when Simplixy should start Hermes on the Simplixy host.
-    - Use hermes_gateway when Simplixy should call an already-running Hermes API server.
+    - Watch out: /chat and the dashboard root are browser UI routes. Simplexy tests /api/health and starts runs with /api/v1/runs after mapping them to the API base.
+    - Set agentDefaultsPayload.paperclipApiUrl to the Simplexy base URL Hermes can reach.
+    - Use hermes_local when Simplexy should start Hermes on the Simplexy host.
+    - Use hermes_gateway when Simplexy should call an already-running Hermes API server.
     - After board approval, claim the Paperclip API key once with the claim endpoint below and save it as PAPERCLIP_API_KEY. Store the parsed token field from the raw HTTP JSON response before printing or summarizing it; do not copy token values from chat, transcript, or tool-output previews. A token value containing literal ... or [redacted] is a masked display preview, not a valid key. Do not rotate or invent a Paperclip key manually.
     - Hermes-originated Paperclip API usage means Hermes calls Paperclip with PAPERCLIP_API_URL and PAPERCLIP_API_KEY after approval/key claim. Do not confuse that with agentDefaultsPayload.apiBaseUrl, which points Paperclip to Hermes.
 
@@ -1963,10 +1963,10 @@ export function buildInviteOnboardingTextDocument(
 
     Hermes Gateway network examples:
     - Local loopback API server: agentDefaultsPayload.apiBaseUrl = "http://127.0.0.1:8642" and agentDefaultsPayload.paperclipApiUrl = "http://127.0.0.1:3100".
-    - Local loopback dashboard root or chat URL: agentDefaultsPayload.apiBaseUrl = "http://127.0.0.1:9119" or "http://127.0.0.1:9119/chat"; Simplixy maps either one to "http://127.0.0.1:9119/api".
+    - Local loopback dashboard root or chat URL: agentDefaultsPayload.apiBaseUrl = "http://127.0.0.1:9119" or "http://127.0.0.1:9119/chat"; Simplexy maps either one to "http://127.0.0.1:9119/api".
     - LAN/private network: use reachable private addresses, for example agentDefaultsPayload.apiBaseUrl = "http://192.168.1.25:8642" and agentDefaultsPayload.paperclipApiUrl = "http://192.168.1.10:3100".
     - Private overlay: use overlay DNS names, for example agentDefaultsPayload.apiBaseUrl = "http://hermes-host.tailnet-name.ts.net:8642" and agentDefaultsPayload.paperclipApiUrl = "http://paperclip-host.tailnet-name.ts.net:3100".
-    - Docker: if Simplixy runs in Docker and Hermes runs on the host, use agentDefaultsPayload.apiBaseUrl = "http://host.docker.internal:8642"; if both run in Compose, use the Hermes service name.
+    - Docker: if Simplexy runs in Docker and Hermes runs on the host, use agentDefaultsPayload.apiBaseUrl = "http://host.docker.internal:8642"; if both run in Compose, use the Hermes service name.
     - Reverse proxy/TLS: use HTTPS origins, for example agentDefaultsPayload.apiBaseUrl = "https://hermes-gateway.example" and agentDefaultsPayload.paperclipApiUrl = "https://paperclip.example".
 
     Expected response includes:
@@ -1975,7 +1975,7 @@ export function buildInviteOnboardingTextDocument(
     - claimApiKeyPath
 
     ## Step 2: Wait for board approval
-    The board approves the join request in Simplixy before key claim is allowed.
+    The board approves the join request in Simplexy before key claim is allowed.
 
     ## Step 3: Claim API key (one-time)
     ${
@@ -1994,13 +1994,13 @@ export function buildInviteOnboardingTextDocument(
     - claim secrets are single-use
     - claim fails before board approval
 
-    ## Step 4: Install Simplixy skill
+    ## Step 4: Install Simplexy skill
     GET ${onboarding.skill.url}
     Install path: ${onboarding.skill.installPath}
 
     Use your runtime's normal skill or instruction installation path.
 
-    ## Working through Simplixy
+    ## Working through Simplexy
     ${EXTERNAL_AGENT_TOOL_GUIDANCE}
 
     ## Text onboarding URL
@@ -2009,7 +2009,7 @@ export function buildInviteOnboardingTextDocument(
     ## Connectivity guidance
     ${
       onboarding.connectivity?.guidance ??
-      "Ensure Simplixy is reachable from your OpenClaw runtime."
+      "Ensure Simplexy is reachable from your OpenClaw runtime."
     }
   `);
 
@@ -2022,7 +2022,7 @@ export function buildInviteOnboardingTextDocument(
     : [];
 
   if (connectionCandidates.length > 0) {
-    lines.push("## Suggested Simplixy base URLs to try");
+    lines.push("## Suggested Simplexy base URLs to try");
     for (const candidate of connectionCandidates) {
       lines.push(`- ${candidate}`);
     }
@@ -2035,7 +2035,7 @@ export function buildInviteOnboardingTextDocument(
       If none are reachable: ask your human operator for a reachable hostname/address and help them update network configuration.
       For authenticated/private mode, they may need:
       - npx paperclipai allowed-hostname <host>
-      - then restart Simplixy and retry onboarding.
+      - then restart Simplexy and retry onboarding.
     `);
   }
 

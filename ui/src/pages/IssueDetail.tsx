@@ -2546,7 +2546,7 @@ const IssueDetailChatTab = memo(function IssueDetailChatTab({
         if (code === "queued_comment_already_dispatching") {
           pushToast({
             title: "Message is already being sent",
-            body: "The continuation started before the discard was confirmed, so Simplixy could not unsend it.",
+            body: "The continuation started before the discard was confirmed, so Simplexy could not unsend it.",
             tone: "error",
             ttlMs: 15_000,
             dedupeKey: `queued-comment-already-dispatching:${issueId}:${commentId}`,
@@ -2769,8 +2769,8 @@ const IssueDetailChatTab = memo(function IssueDetailChatTab({
                   }
                 : undefined
             }
-            stopRunLabel={grokWork ? "Stop Simplixy work" : "Pause work"}
-            stoppingRunLabel={grokWork ? "Stopping Simplixy work…" : "Pausing..."}
+            stopRunLabel={grokWork ? "Stop Simplexy work" : "Pause work"}
+            stoppingRunLabel={grokWork ? "Stopping Simplexy work…" : "Pausing..."}
             stopRunVariant={grokWork ? "stop" : "pause"}
             runFinalizationActions={runFinalizationActions}
             onAcceptInteraction={onAcceptInteraction}
@@ -2802,7 +2802,7 @@ const IssueDetailChatTab = memo(function IssueDetailChatTab({
               tryAgainNoLiveExecutionPathPending
             }
             footer={grokWork || stopGrokWork.error || classicQueuedDeliveryError ? <>
-              {grokWork && <p className="text-xs text-muted-foreground">Runs in Grok Bot · Usage not reported. Stop Simplixy work revokes this session’s authority; remote execution may continue. Open the Grok Bot desktop app to inspect it.</p>}
+              {grokWork && <p className="text-xs text-muted-foreground">Runs in Grok Bot · Usage not reported. Stop Simplexy work revokes this session’s authority; remote execution may continue. Open the Grok Bot desktop app to inspect it.</p>}
               {stopGrokWork.error && <p role="alert" className="text-sm text-destructive">{describeError(stopGrokWork.error).body}</p>}
               {classicQueuedDeliveryError && <p role="status" className="text-sm text-destructive">{classicQueuedDeliveryError}</p>}
               {footer}

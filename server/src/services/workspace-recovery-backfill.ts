@@ -65,7 +65,7 @@ export async function adoptHistoricalWorkspaceRecoveries(db: Db) {
       // the current task's active approval/user-action owner.
       status: active || ["done", "cancelled"].includes(issue.status) ? "resolved" : "active",
       outcome: active ? "blocked" : null,
-      nextAction: "Simplixy owns preservation of this historical source.",
+      nextAction: "Simplexy owns preservation of this historical source.",
       evidence: { runId: run.id, workspaceRestoreRecovery: current.resultJson?.workspaceRestoreRecovery,
         workspaceRestoreFailure: current.resultJson?.workspaceRestoreFailure, historicalWorkspaceSource,
         automaticRecovery: { replay: "blocked" } },

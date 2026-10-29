@@ -402,7 +402,7 @@ describeEmbeddedPostgres("plugin database namespaces", () => {
       version: "0.1.0",
       displayName: "LLM Wiki",
       description: "Local-file LLM Wiki plugin.",
-      author: "Simplixy",
+      author: "Simplexy",
       categories: ["automation", "ui"],
       capabilities: [
         "database.namespace.migrate",
@@ -466,7 +466,7 @@ describeEmbeddedPostgres("plugin database namespaces", () => {
       version: "1.0.0",
       displayName: "DB Test",
       description: "Exercises restricted plugin database access.",
-      author: "Simplixy",
+      author: "Simplexy",
       categories: ["automation"],
       capabilities: [
         "database.namespace.migrate",
@@ -579,7 +579,7 @@ describeEmbeddedPostgres("plugin database namespaces", () => {
     const issueId = randomUUID();
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: "TST",
       requireBoardApprovalForNewAgents: false,
     });

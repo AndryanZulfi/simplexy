@@ -2,7 +2,7 @@
 
 ## Goal and boundary
 
-Upgrade the main Paperclip server while native agents keep running in their
+Upgrade the main Simplexy server while native agents keep running in their
 existing Daytona sandboxes. A server outage of up to five minutes may delay
 server-dependent tools and queued launches, but must not interrupt the provider
 turn, create a replacement run, repeat completed effects, or require an operator
@@ -562,7 +562,7 @@ transactions and fourteen changed rows, with zero streaming or idle SQL.
 `create_project` stores its committed result identity in the existing
 `project.created` activity receipt, scoped to company, actor, source task and
 idempotency key. Recovery asks the normal authenticated project creation route
-for that receipt with `X-Paperclip-Receipt-Only: true`. The route retains its
+for that receipt with `X-Simplexy-Receipt-Only: true`. The route retains its
 normal parsed input, fingerprint validation and access checks. It checks current
 run authority again after acquiring the receipt lock. A matching receipt returns
 the existing project. An absent receipt returns HTTP 204 before any project or

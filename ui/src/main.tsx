@@ -101,7 +101,7 @@ function CompanyVoiceCalls({ children }: { children: React.ReactNode }) {
 }
 
 const rootElement = document.getElementById("root");
-if (!rootElement) throw new Error("Simplixy root element is missing");
+if (!rootElement) throw new Error("Simplexy root element is missing");
 
 getOrCreatePaperclipReactRoot(window, rootElement).render(
   <StrictMode>

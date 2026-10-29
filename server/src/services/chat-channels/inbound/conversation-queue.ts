@@ -386,7 +386,7 @@ export function createChatConversationDeliveryQueue(db: Db, options: Conversatio
    * Drain one external conversation in durable receipt order. The database
    * lease is endpoint + thread scoped, so separate server processes can work
    * on different conversations concurrently but can never mutate the same
-   * Simplixy task from two inbound turns at once.
+   * Simplexy task from two inbound turns at once.
    */
   async function drainConversationDeliveries(
     endpointId: string,

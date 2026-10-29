@@ -2699,7 +2699,7 @@ describe("IssueChatThread", () => {
     });
   });
 
-  it("renders the transcript directly from stable Simplixy messages", () => {
+  it("renders the transcript directly from stable Simplexy messages", () => {
     const root = createRoot(container);
 
     act(() => {

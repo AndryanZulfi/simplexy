@@ -1,14 +1,14 @@
 # Company agent observability
 
 Company Settings → General → Agent observability configures one company-owned
-OTLP destination for Paperclip-managed Codex and Claude Code executions. Export
+OTLP destination for Simplexy-managed Codex and Claude Code executions. Export
 is disabled by default. Choose Braintrust (US) or a custom HTTP(S) OTLP base URL;
 use your own collector when you need fan-out. Braintrust EU and self-hosted
 installations can use Custom OTLP with their required routing/authentication
 headers. The receiver must be reachable from every execution environment;
 `localhost` refers to the execution host, including a remote sandbox.
 
-This is separate from Paperclip's first-party Telemetry and its content-free
+This is separate from Simplexy's first-party Telemetry and its content-free
 [infrastructure tracing](observability.md). Configuring it does not change either data path.
 
 ## Capture and supported runtimes
@@ -42,7 +42,7 @@ outside this feature.
 
 ## Changes and process lifetime
 
-Paperclip reads settings once when an execution begins preparation. That
+Simplexy reads settings once when an execution begins preparation. That
 snapshot governs instruction reservation, compatibility and launch. Already
 preparing or running work retains its configuration. A changed settings
 revision or resolved credential version retires an idle incompatible warm
@@ -60,7 +60,7 @@ tool-acknowledgment or settlement paths.
 
 Only board users with Manage connections permission can read or change this
 configuration. Agents cannot retrieve it through the settings API. The destination stores no credential
-values. Authentication headers live in one encrypted Paperclip-managed company
+values. Authentication headers live in one encrypted Simplexy-managed company
 secret, bound to the system consumer company-observability. Updates rotate that
 secret; removal uses the secret service to retire it. Braintrust project
 routing is derived from the current project ID, independently of the API key.

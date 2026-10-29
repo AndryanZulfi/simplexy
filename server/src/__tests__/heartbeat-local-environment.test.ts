@@ -117,7 +117,7 @@ describeEmbeddedPostgres("heartbeat local environment lifecycle", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix,
       requireBoardApprovalForNewAgents: false,
       defaultResponsibleUserId: "responsible-user",
@@ -167,7 +167,7 @@ describeEmbeddedPostgres("heartbeat local environment lifecycle", () => {
     });
   });
 
-  it("injects run-scoped Simplixy env into process agents", async () => {
+  it("injects run-scoped Simplexy env into process agents", async () => {
     const companyId = randomUUID();
     const agentId = randomUUID();
     const issuePrefix = `T${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`;
@@ -176,7 +176,7 @@ describeEmbeddedPostgres("heartbeat local environment lifecycle", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix,
       requireBoardApprovalForNewAgents: false,
       defaultResponsibleUserId: "responsible-user",

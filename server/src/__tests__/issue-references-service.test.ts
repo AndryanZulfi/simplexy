@@ -87,7 +87,7 @@ describeEmbeddedPostgres("issueReferenceService", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: `R${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
     });
@@ -182,7 +182,7 @@ describeEmbeddedPostgres("issueReferenceService", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy Concurrent References",
+      name: "Simplexy Concurrent References",
       issuePrefix: `C${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
     });
@@ -228,7 +228,7 @@ describeEmbeddedPostgres("issueReferenceService", () => {
 
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy Backfill",
+      name: "Simplexy Backfill",
       issuePrefix: `B${companyId.replace(/-/g, "").slice(0, 6).toUpperCase()}`,
       requireBoardApprovalForNewAgents: false,
     });

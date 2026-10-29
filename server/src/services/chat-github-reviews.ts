@@ -1371,7 +1371,7 @@ export function githubChatReviewService(db: Db, fetchImpl = fetch) {
                 app?: { id?: number };
               }>;
             }>(
-              `/commits/${review.headSha}/check-runs?check_name=Simplixy%20Review&per_page=100`,
+              `/commits/${review.headSha}/check-runs?check_name=Simplexy%20Review&per_page=100`,
             );
             const check = checks.check_runs.find(
               (item) =>
@@ -1386,7 +1386,7 @@ export function githubChatReviewService(db: Db, fetchImpl = fetch) {
             }>(check ? `/check-runs/${check.id}` : "/check-runs", {
               method: check ? "PATCH" : "POST",
               body: {
-                name: "Simplixy Review",
+                name: "Simplexy Review",
                 head_sha: review.headSha,
                 external_id: `${source.endpoint.id}:${source.number}:${review.headSha}`,
                 ...(board ? { details_url: `${board}/issues/${source.issue.id}` } : {}),

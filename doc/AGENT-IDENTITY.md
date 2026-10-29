@@ -1,7 +1,7 @@
 # Agent cryptographic identity
 
 Each agent has one persistent Ed25519 keypair. New agents receive it in the
-agent-creation transaction. Existing agents receive it when Paperclip prepares
+agent-creation transaction. Existing agents receive it when Simplexy prepares
 their next managed run. Migration, startup, public API reads, and opening the
 agent page do not provision existing agents. There is no backfill command.
 
@@ -28,7 +28,7 @@ restarts preserve the keypair.
 
 ## Managed runs
 
-Paperclip supplies these server-owned environment variables:
+Simplexy supplies these server-owned environment variables:
 
 ```text
 PAPERCLIP_AGENT_KEY_ID
@@ -50,7 +50,7 @@ routing, timing, and interpretation metadata remain available.
 Managed remote providers, including Cursor Cloud, receive the same private key
 as managed local processes. Selecting a runtime therefore trusts its host with
 the agent's persistent identity: the agent and its host can retain the key and
-sign outside Paperclip. Encryption at rest protects database storage, not an
+sign outside Simplexy. Encryption at rest protects database storage, not an
 executing runtime. Move an agent only between runtime hosts trusted with that
 identity.
 
@@ -65,7 +65,7 @@ import { sign } from "node:crypto";
 const signature = sign(null, challengeBytes, process.env.PAPERCLIP_AGENT_PRIVATE_KEY);
 ```
 
-This identity does not change Paperclip bearer-token authentication. There is no
+This identity does not change Simplexy bearer-token authentication. There is no
 signing API, private-key download endpoint, Git integration, rotation UI, or
 external-key import. Agents possess their private keys. External consumers must
 define their own authorization, expiry, and revocation rules.

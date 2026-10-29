@@ -20,7 +20,7 @@ describe("gemini local skill sync", () => {
     cleanupDirs.clear();
   });
 
-  it("defaults and installs the operational Simplixy skill in the Gemini skills home", async () => {
+  it("defaults and installs the operational Simplexy skill in the Gemini skills home", async () => {
     const home = await makeTempDir("paperclip-gemini-skill-sync-");
     cleanupDirs.add(home);
 

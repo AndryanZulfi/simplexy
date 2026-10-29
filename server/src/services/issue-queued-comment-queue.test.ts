@@ -68,7 +68,7 @@ describe("decideQueuedCommentQueueSteering", () => {
     expect(decision).toEqual({ protocol: "paperclip_runner_v1", kind: "probe", steeringRunId: "run-1" });
   });
 
-  it("keeps a preparing Simplixy Runner on the steering protocol until runtime selection finishes", () => {
+  it("keeps a preparing Simplexy Runner on the steering protocol until runtime selection finishes", () => {
     expect(decideQueuedCommentQueueSteering({ state: "deferred", queueRunRuntimeMode: null,
       activeRun: { id: "preparing-run", runtimeMode: "legacy", runtimeModeResolvedAt: null,
         runnerProfileJson: { adapterDispatch: { adapterType: "paperclip_runner" } } },

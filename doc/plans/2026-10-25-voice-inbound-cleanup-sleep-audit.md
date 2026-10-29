@@ -196,7 +196,7 @@ remote CI and review are required before accepting the PR.
 
 Parent #17578 at 90caaf3fa9 has all checks terminal with no failures and Greptile
 5/5 on that exact head. Both requested findings are fixed/resolved. The fresh
-Paperclip reviewer stopped before completing its turn; do not report a new 5/5
+Simplexy reviewer stopped before completing its turn; do not report a new 5/5
 assessment from that reviewer. The full original migration ledger, #17490 failure,
 and final stack/master reconciliation remain outstanding.
 

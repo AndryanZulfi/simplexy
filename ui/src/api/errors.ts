@@ -60,16 +60,16 @@ const CONNECTIVITY_CODES = new Set(["tenant_app_unavailable", "tenant_app_starti
 // raw `body.error`/`body.code`) or an `ErrorKind` fallback. Never return a raw
 // code to the user: anything not in this table falls back to its kind's copy.
 
-const UNAVAILABLE_BODY = "Simplixy is temporarily unavailable. Please try again in a moment.";
+const UNAVAILABLE_BODY = "Simplexy is temporarily unavailable. Please try again in a moment.";
 
 const CODE_COPY: Record<string, { title: string; body: string }> = {
   tenant_app_unavailable: {
-    title: "Reconnecting to Simplixy",
-    body: "Simplixy is restarting or updating. Please try again in a moment.",
+    title: "Reconnecting to Simplexy",
+    body: "Simplexy is restarting or updating. Please try again in a moment.",
   },
   tenant_app_starting: {
-    title: "Simplixy is starting",
-    body: "Simplixy is starting up. Please try again in a few seconds.",
+    title: "Simplexy is starting",
+    body: "Simplexy is starting up. Please try again in a few seconds.",
   },
   WORKER_UNAVAILABLE: {
     title: "Plugin unavailable",

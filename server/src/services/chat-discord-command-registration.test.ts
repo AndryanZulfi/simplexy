@@ -114,7 +114,7 @@ describe("Discord owned native-command registration", () => {
     const f = fixture();
     await reconcileDiscordCommandRegistration(f.options());
     const prior = discordPaperclipCommandDefinition(f.stored.ownerId);
-    prior.options[2]!.description = "Close the current Simplixy task";
+    prior.options[2]!.description = "Close the current Simplexy task";
     if (f.stored.phase !== "registered") throw new Error("Missing receipt");
     f.stored = {
       ...f.stored,
@@ -240,7 +240,7 @@ describe("Discord owned native-command registration", () => {
     expect(f.commit).not.toHaveBeenCalled();
   });
 
-  it("describes closing a conversation without claiming to close the Simplixy task", () => {
+  it("describes closing a conversation without claiming to close the Simplexy task", () => {
     const definition = discordPaperclipCommandDefinition(
       createDiscordCommandRegistration(scope).ownerId,
     );

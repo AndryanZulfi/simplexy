@@ -89,7 +89,7 @@ export function boardChatRoutes(
     } catch {
       return (
         "You are a board-level assistant helping a human manage their AI-agent " +
-        "company through Simplixy. Help them create companies, hire agents, " +
+        "company through Simplexy. Help them create companies, hire agents, " +
         "approve tasks, and monitor their organization. Be conversational, " +
         "strategic, and concise."
       );

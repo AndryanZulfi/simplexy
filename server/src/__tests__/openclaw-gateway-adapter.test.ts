@@ -493,7 +493,7 @@ describe("openclaw gateway adapter execute", () => {
       expect(String(payload?.message ?? "")).toContain("wake now");
       expect(String(payload?.message ?? "")).toContain("PAPERCLIP_RUN_ID=run-123");
       expect(String(payload?.message ?? "")).toContain("PAPERCLIP_TASK_ID=task-123");
-      expect(String(payload?.message ?? "")).toContain("## Simplixy Wake Payload");
+      expect(String(payload?.message ?? "")).toContain("## Simplexy Wake Payload");
       expect(String(payload?.message ?? "")).toContain(
         "Use this wake to continue the task, applying new user direction and preserving its approval gates.",
       );

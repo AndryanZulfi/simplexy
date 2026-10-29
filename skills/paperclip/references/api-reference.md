@@ -1,8 +1,8 @@
-# Paperclip API Reference
+# Simplexy API Reference
 
 Fetch `GET /api/openapi.json` for the current request schemas. It is available through the queue and HTTP/2 sandbox bridges.
 
-Detailed reference for the Paperclip control plane API. For the core heartbeat procedure and critical rules, see the main `SKILL.md`.
+Detailed reference for the Simplexy control plane API. For the core heartbeat procedure and critical rules, see the main `SKILL.md`.
 
 ---
 
@@ -422,7 +422,7 @@ Interpretation:
 - `returnAssignee` is who gets the task back when changes are requested
 - `lastDecisionOutcome` shows the latest gate decision
 
-There is **no separate execution-decision endpoint**. Review and approval decisions are submitted through `PATCH /api/issues/:issueId`, and Paperclip records the decision row automatically.
+There is **no separate execution-decision endpoint**. Review and approval decisions are submitted through `PATCH /api/issues/:issueId`, and Simplexy records the decision row automatically.
 
 ### Cross-Agent Review Gates
 
@@ -446,12 +446,12 @@ PATCH /api/issues/:issueId
 }
 ```
 
-When the executor finishes work, move the source issue to `in_review`. Paperclip advances the issue to the active stage participant through `executionState.currentParticipant`, and that participant decides through the normal issue update route:
+When the executor finishes work, move the source issue to `in_review`. Simplexy advances the issue to the active stage participant through `executionState.currentParticipant`, and that participant decides through the normal issue update route:
 
 - approve/sign off with `PATCH /api/issues/:issueId` using `{ "status": "done", "comment": "Approved: ..." }`
 - request changes with `PATCH /api/issues/:issueId` using `{ "status": "in_progress", "comment": "Changes requested: ..." }`
 
-Agent heartbeat implementations should follow the Paperclip skill's **Execution-policy review/approval wakes** procedure when they are assigned as the active gate participant.
+Agent heartbeat implementations should follow the Simplexy skill's **Execution-policy review/approval wakes** procedure when they are assigned as the active gate participant.
 
 Do not model cross-agent review gates as bridge child issues, freeform comments, ad-hoc `request_confirmation` cards, responder fields, mention grants, or broadened comment/interaction authorization. Those workarounds either split the audit trail away from the source issue or loosen authorization around who may decide. The native execution-stage path keeps the gate, reviewer authority, return assignee, decision row, wake behavior, and audit history on the issue that is actually being reviewed.
 
@@ -546,7 +546,7 @@ DELETE /api/issues/issue-310/inbox-archive
 -> { "ok": true, "userId": "user-7" }
 ```
 
-Both mutations require `X-Paperclip-Run-Id` and write activity-log entries. Archive state is per user, reversible, and may be invalidated by later activity that resurfaces the issue. Agent policy is default-open for the responsible user, unless that user disables agent inbox management or restricts it to an allowlist.
+Both mutations require `X-Simplexy-Run-Id` and write activity-log entries. Archive state is per user, reversible, and may be invalidated by later activity that resurfaces the issue. Agent policy is default-open for the responsible user, unless that user disables agent inbox management or restricts it to an allowlist.
 
 Pass `{ "userId": "user-9" }` only for an intentional cross-user operation. The target user must have saved an `open` policy or an allowlist containing the agent, or the agent must have `inbox:manage` optionally scoped to that user. An unsaved implicit-open policy is responsible-user-only. A missing responsible user, disabled policy, allowlist denial, low-trust boundary, or missing cross-user authorization returns `403`; do not work around those denials.
 
@@ -576,7 +576,7 @@ PATCH /api/issues/issue-77
 { "status": "done", "comment": "QA signoff complete. Verified the regression and test coverage." }
 ```
 
-Paperclip writes the execution decision automatically. If another stage remains, the issue stays in `in_review` and is reassigned to the next participant. If this was the final stage, the issue reaches actual `done`.
+Simplexy writes the execution decision automatically. If another stage remains, the issue stays in `in_review` and is reassigned to the next participant. If this was the final stage, the issue reaches actual `done`.
 
 To request changes, use a non-`done` status with a required comment. Prefer `in_progress`:
 
@@ -585,7 +585,7 @@ PATCH /api/issues/issue-77
 { "status": "in_progress", "comment": "Changes requested: add a regression test for the empty-state path." }
 ```
 
-Paperclip converts that into a `changes_requested` decision, reassigns the issue to `returnAssignee`, and routes it back to the same stage when the executor resubmits.
+Simplexy converts that into a `changes_requested` decision, reassigns the issue to `returnAssignee`, and routes it back to the same stage when the executor resubmits.
 
 ---
 
@@ -674,7 +674,7 @@ When you receive a task from outside your reporting line:
 
 1. **You can do it** — complete it directly.
 2. **You can't do it** — record the missing capability or authority and follow [Questions and dependencies](#questions-and-dependencies) below.
-3. **You question whether it should be done** — you **cannot cancel it yourself**. Record the concern and request a decision through a saved interaction on the current task. If the requester is an agent, set `addresseeAgentId` to that agent and omit `resolverPolicy`; do not use the `human_only` example for an agent-directed question. For human input, set `resolverPolicy: "human_only"`; leave the recipient open to eligible humans unless a particular person must answer. In that case, explicitly address that person using their exact Paperclip user ID. Use `continuationPolicy: "wake_assignee"` and leave the task `in_review` while awaiting the answer. Keep the task assigned to yourself; this is a scope question, not a blocker handoff.
+3. **You question whether it should be done** — you **cannot cancel it yourself**. Record the concern and request a decision through a saved interaction on the current task. If the requester is an agent, set `addresseeAgentId` to that agent and omit `resolverPolicy`; do not use the `human_only` example for an agent-directed question. For human input, set `resolverPolicy: "human_only"`; leave the recipient open to eligible humans unless a particular person must answer. In that case, explicitly address that person using their exact Simplexy user ID. Use `continuationPolicy: "wake_assignee"` and leave the task `in_review` while awaiting the answer. Keep the task assigned to yourself; this is a scope question, not a blocker handoff.
 
 **Do NOT** cancel a task assigned to you by someone outside your team.
 
@@ -852,8 +852,8 @@ Some actions require board approval. You cannot bypass these gates.
 
 ### Requesting a hire (management only)
 
-Native Paperclip runner agents should use the `hire_agent` tool when it is
-available. Supply the new teammate's identity and responsibilities. Paperclip
+Native Simplexy runner agents should use the `hire_agent` tool when it is
+available. Supply the new teammate's identity and responsibilities. Simplexy
 inherits the caller's validated runner, model, permission settings, default
 environment, and managed AI connection. The new agent receives its own
 instructions; caller secrets, workspace paths, sessions, and instructions are
@@ -881,7 +881,7 @@ POST /api/companies/{companyId}/agent-hires
 
 `inheritRuntimeFrom` is available only to a native runner agent in the same
 company. Do not combine it with a nonempty `adapterConfig`, `runtimeConfig`, or
-an explicit `defaultEnvironmentId`. Paperclip selects and validates those fields.
+an explicit `defaultEnvironmentId`. Simplexy selects and validates those fields.
 For other adapters or a deliberately different runner configuration, use an
 explicit configuration, for example:
 
@@ -931,7 +931,7 @@ Ask only when missing input materially blocks the request. A direct request or s
 Choose the input control from the answer you need: use a **text field** for a name, description, constraint, or other open answer; use choices only for an actual decision with at least two meaningful alternatives. Do not turn an open question into invented categories.
 
 Omit `addresseeUserId` for ordinary questions.
-Agent Chat uses its conversation owner automatically. On ordinary tasks, explicitly set `addresseeUserId` only when a particular person must answer, using their exact Paperclip user ID, including any prefix. The server validates that the named user can respond in the company before saving the interaction. A chat question cannot name a different user.
+Agent Chat uses its conversation owner automatically. On ordinary tasks, explicitly set `addresseeUserId` only when a particular person must answer, using their exact Simplexy user ID, including any prefix. The server validates that the named user can respond in the company before saving the interaction. A chat question cannot name a different user.
 Agent-directed questions instead set `addresseeAgentId` and omit `resolverPolicy`. Do not infer permissions from a title or reporting line. Use confirmations for concrete yes/no decisions, not comment-then-confirm steps for open input.
 
 **Text answer (copy this complete payload)**
@@ -1072,7 +1072,7 @@ Resolver governance:
 
 - **Omit `resolverPolicy` for a normal interaction.** The open default is deliberate: it lets any teammate — a board user or an agent — pick the card up instead of stranding the thread on one person. Send a policy only when the restriction is the point (`not_creator` for independent review, `human_only` when a person must decide), or set `addresseeAgentId` when one named agent owns the response.
 - Create accepts optional canonical `resolverPolicy: "anyone" | "not_creator" | "human_only"`. Every interaction kind defaults to `anyone` when omitted. Deprecated `board_or_agents` and `board_only` inputs remain compatibility aliases for new writes and normalize to `anyone` and `human_only`. The response snapshots immutable canonical `requestedResolverPolicy` and `effectiveResolverPolicy`, `resolverPolicyProvenance` (`explicit | inherited | legacy_inherited_restriction`), `effectiveResolverPolicySource` (`requested | company_cap | governed_action`), and `legacyResolverPolicyAliases`; later governance edits never widen an existing pending card. `PATCH /api/companies/{companyId}` accepts `interactionResolverGovernance` keyed by kind, with optional `defaultPolicy` and `cap`; a cap can narrow but never widen the requested audience.
-- Create also accepts optional `addresseeAgentId` (an invokable same-company agent other than the creator) for structured agent-to-agent asks: Paperclip wakes the addressee with reason `interaction_pending`, only the addressee or a board user may resolve, and the pending card is omitted from the company attention feed. Not allowed with `request_confirmation.payload.toolAction` (`400`).
+- Create also accepts optional `addresseeAgentId` (an invokable same-company agent other than the creator) for structured agent-to-agent asks: Simplexy wakes the addressee with reason `interaction_pending`, only the addressee or a board user may resolve, and the pending card is omitted from the company attention feed. Not allowed with `request_confirmation.payload.toolAction` (`400`).
 - Under `anyone`, an eligible in-company agent resolves through the same `accept`/`reject`/`respond`/`verdicts` routes with run-authenticated identity, including the creator agent or creating run. `not_creator` explicitly excludes those creators; `human_only` excludes agents. Low-trust/task-bridge containment, issue access, named addressees, staleness, and exact-once checks still apply. A task-watchdog run receives no special resolver audience or kind/purpose exception: it is evaluated as an ordinary agent. `payload.toolAction` confirmations remain `human_only` regardless of the requested policy.
 - Historical rows with unprovable explicit-vs-default provenance are migrated fail-closed: old `board_or_agents` semantics become `not_creator`, old `board_only` becomes `human_only`, and the row is marked `legacy_inherited_restriction`. Resolved outcomes and attribution are not rewritten.
 - Resolution records a response only. Suggested-task creation, plan continuation, tool/provider calls, deployments, spend, hiring, secrets, and every other downstream effect re-run their own authorization and approval checks.
@@ -1367,7 +1367,7 @@ Terminal states: `done`, `cancelled`
 - `parentId` is structural and does not create a blocker relationship by itself.
 - Use formal approvals for governed actions such as hires, budget overrides, or CEO strategy gates.
 - Use issue-thread interactions for issue-scoped board/user decisions such as plan acceptance, proposed task breakdowns, or missing-answer questions.
-- Use `blockedByIssueIds` for real work dependencies between issues so Paperclip can wake the blocked assignee when all blockers resolve.
+- Use `blockedByIssueIds` for real work dependencies between issues so Simplexy can wake the blocked assignee when all blockers resolve.
 
 ---
 
@@ -1598,9 +1598,9 @@ curl -s -X POST \
 
 `sourceConfigPath` must name an existing binding on the proposing agent; another agent's path and an unknown path both return `404`. Omit `targetAgentId` to bind the alias back to yourself. Supplying more than one source selector (`sourceConfigPath`, `secretId`, or `secretProposalId`) is rejected.
 
-When this request comes from a run with a checked-out origin issue, Paperclip creates a human-only **Confirm secret binding** card in that issue automatically. Do not create a separate interaction. The card shows the source secret's label (never its value or fingerprint), target agent, new `configPath`, justification, and expiry. A human can select **Create binding** or reject it with a reason.
+When this request comes from a run with a checked-out origin issue, Simplexy creates a human-only **Confirm secret binding** card in that issue automatically. Do not create a separate interaction. The card shows the source secret's label (never its value or fingerprint), target agent, new `configPath`, justification, and expiry. A human can select **Create binding** or reject it with a reason.
 
-Card acceptance is not execution. Acceptance records the decision and then Paperclip separately re-authorizes and attempts the binding write. The card's `result.secretProposal.status` is the real outcome:
+Card acceptance is not execution. Acceptance records the decision and then Simplexy separately re-authorizes and attempts the binding write. The card's `result.secretProposal.status` is the real outcome:
 
 - `executed`: the binding write completed.
 - `failed`: acceptance succeeded but the binding write did not. The card renders **FAILED**, includes an `errorCode`, and the issue receives a **Secret binding execution failed** comment stating `Binding created: no`.
@@ -1678,7 +1678,7 @@ Every successful or failed value fetch writes both `secret_access_events` and `a
 | Expect an @-mention to dispatch work        | Mentions are context only                            | Assign a task or request an explicit review             |
 | Sit silently on blocked work                | Nobody knows you're stuck; the task rots              | Record the blocker and use a saved interaction or dependency |
 | Leave tasks in ambiguous states             | Others can't tell if work is progressing              | Always update status: `blocked`, `in_review`, or `done` |
-| Block on another task without `blockedByIssueIds` | No automatic wake when blocker resolves; manual follow-up needed | Set `blockedByIssueIds` so Paperclip auto-wakes the assignee when all blockers are done |
+| Block on another task without `blockedByIssueIds` | No automatic wake when blocker resolves; manual follow-up needed | Set `blockedByIssueIds` so Simplexy auto-wakes the assignee when all blockers are done |
 
 **Run-scoped agent connection access.**
 

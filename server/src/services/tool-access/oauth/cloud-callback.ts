@@ -95,7 +95,7 @@ export function createCloudOAuthCallback(db: Db, dependencies: Dependencies) {
     const cloudConnector = currentCloudConnector();
     if (!cloudConnector) {
       throw unprocessable(
-        `${providerName} connections through Simplixy are not available on this instance yet`,
+        `${providerName} connections through Simplexy are not available on this instance yet`,
         {
           code: "paperclip_cloud_connector_unavailable",
         },
@@ -435,7 +435,7 @@ export function createCloudOAuthCallback(db: Db, dependencies: Dependencies) {
       }
     });
     // The transaction above committed the connection's lifecycle write; a
-    // Simplixy Cloud connector callback is the managed variant of an OAuth
+    // Simplexy Cloud connector callback is the managed variant of an OAuth
     // callback completion.
     emitConnectionUpdated(connection, preCloudCallbackLifecycle, "oauth_callback");
     if (githubMetadata) {

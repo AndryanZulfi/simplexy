@@ -35,7 +35,7 @@ export function slackTestMessageService(db: Db, options: Options) {
         eq(companyMemberships.companyId, endpoint.companyId), eq(companyMemberships.principalType, "user"),
         eq(companyMemberships.principalId, actor.userId), eq(companyMemberships.status, "active"), ne(companyMemberships.membershipRole, "viewer"),
       ));
-      if (!membership) throw forbidden("An active Simplixy account is required");
+      if (!membership) throw forbidden("An active Simplexy account is required");
       async function authorizeTestMessage() {
         const context = actor.managementContext;
         if (context?.actor.type !== "agent") return;
@@ -125,8 +125,8 @@ export function slackTestMessageService(db: Db, options: Options) {
           kind: "slack_test_message_invitation", providerActionId: `${actionKey}:invite`, status: "processing", payload: { userId: actor.userId, slackUserId: userId } }).returning();
         try {
           const response = await call("chat.postMessage", { channel: userId,
-            text: `Connect your Slack account to ${record.agentName} in Simplixy to receive your test message.`,
-            blocks: JSON.stringify([{ type: "section", text: { type: "plain_text", text: `Connect your Slack account to ${record.agentName} in Simplixy.` } },
+            text: `Connect your Slack account to ${record.agentName} in Simplexy to receive your test message.`,
+            blocks: JSON.stringify([{ type: "section", text: { type: "plain_text", text: `Connect your Slack account to ${record.agentName} in Simplexy.` } },
               { type: "section", text: { type: "mrkdwn", text: `<${intent.confirmationUrl}|Connect my account> to receive your test message.` } }]),
             unfurl_links: "false", unfurl_media: "false" });
           if (typeof response.channel !== "string" || !/^D[A-Z0-9]+$/.test(response.channel) || typeof response.ts !== "string") throw unprocessable("Slack did not confirm invitation delivery");

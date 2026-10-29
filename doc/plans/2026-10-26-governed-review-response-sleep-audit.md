@@ -590,7 +590,7 @@ three concurrent attention assertions cause exactly one hint and one SELECT,
 then return to quiet. The finding was resolved with that evidence and its
 current-head security check became successful. No production change was needed.
 The regression is retained here and covers both response workers with real
-Paperclip callbacks and PostgreSQL; the external Photon transport is mocked.
+Simplexy callbacks and PostgreSQL; the external Photon transport is mocked.
 The complete 22-case Photon file passes on this combined source. An earlier
 single-worker 21-case acceptance retains its own parent source scope.
 

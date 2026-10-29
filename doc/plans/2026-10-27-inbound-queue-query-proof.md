@@ -2,7 +2,7 @@
 
 ## Contract and cause
 
-Paperclip's inbound queue discovers its next deadline, selects each conversation
+Simplexy's inbound queue discovers its next deadline, selects each conversation
 head, and selects ordinary ready deliveries. A retained processed delivery can
 still own the head while an issued or processing `inbound_wakeup` action remains.
 This work keeps that obligation, company and endpoint scope, lease expiry,

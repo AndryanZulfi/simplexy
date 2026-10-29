@@ -212,7 +212,7 @@ describe("runner API request boundary", () => {
       expect(request).toHaveBeenCalledOnce();
       const headers = new Headers(request.mock.calls[0][1]?.headers);
       expect(headers.get("Authorization")).toBe("Bearer private-agent-token");
-      expect(headers.get("X-Simplixy-Run-Id")).toBe(context.runId);
+      expect(headers.get("X-Simplexy-Run-Id")).toBe(context.runId);
     },
   );
   it.each([
@@ -398,7 +398,7 @@ describe("runner API request boundary", () => {
     expect(new Headers(options.headers).get("Authorization")).toBe(
       "Bearer private-agent-token",
     );
-    expect(new Headers(options.headers).get("X-Simplixy-Run-Id")).toBe(
+    expect(new Headers(options.headers).get("X-Simplexy-Run-Id")).toBe(
       context.runId,
     );
     expect(options.redirect).toBe("manual");

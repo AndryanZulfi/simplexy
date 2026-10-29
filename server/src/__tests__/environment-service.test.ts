@@ -1095,7 +1095,7 @@ describeEmbeddedPostgres("environmentService leases", () => {
 
       expect(adopted.id).toBe(existing?.id);
       expect(adopted.name).toBe("Tenant Local");
-      expect(adopted.metadata).toEqual({ owner: "operator", managedBySimplixy: true });
+      expect(adopted.metadata).toEqual({ owner: "operator", managedBySimplexy: true });
 
       // Re-ensuring an already-adopted row must not rewrite it.
       const adoptedRow = await db
@@ -1104,7 +1104,7 @@ describeEmbeddedPostgres("environmentService leases", () => {
         .where(eq(environments.driver, "local"))
         .then((rows) => rows[0]);
       const reused = await svc.ensureLocalEnvironment(companyId);
-      expect(reused.metadata).toEqual({ owner: "operator", managedBySimplixy: true });
+      expect(reused.metadata).toEqual({ owner: "operator", managedBySimplexy: true });
       const reusedRow = await db
         .select()
         .from(environments)
@@ -1908,7 +1908,7 @@ describeEmbeddedPostgres("environmentService leases", () => {
       driver: "sandbox",
       status: "active",
       config: { provider: "kubernetes" },
-      metadata: { managedBySimplixy: true, managedKubernetesSandbox: true },
+      metadata: { managedBySimplexy: true, managedKubernetesSandbox: true },
       createdAt: now,
       updatedAt: now,
     });
@@ -1922,7 +1922,7 @@ describeEmbeddedPostgres("environmentService leases", () => {
       driver: "sandbox",
       status: "active",
       config: { provider: "kubernetes" },
-      metadata: { managedBySimplixy: true, managedKubernetesSandbox: true },
+      metadata: { managedBySimplexy: true, managedKubernetesSandbox: true },
       createdAt: new Date(now.getTime() + 1),
       updatedAt: new Date(now.getTime() + 1),
     });

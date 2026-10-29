@@ -1,11 +1,11 @@
 ---
 title: Tailscale Private Access
-summary: Run Paperclip with Tailscale-friendly bind presets and connect from other devices
+summary: Run Simplexy with Tailscale-friendly bind presets and connect from other devices
 ---
 
-Use this when you want to access Paperclip over Tailscale (or a private LAN/VPN) instead of only `localhost`.
+Use this when you want to access Simplexy over Tailscale (or a private LAN/VPN) instead of only `localhost`.
 
-## 1. Start Paperclip in private authenticated mode
+## 1. Start Simplexy in private authenticated mode
 
 ```sh
 pnpm dev --bind tailnet
@@ -58,7 +58,7 @@ http://my-macbook.tailnet.ts.net:3100
 If you access Paperclip with a custom private hostname, add it to the allowlist:
 
 ```sh
-npx paperclipai allowed-hostname my-macbook.tailnet.ts.net
+npx simplexy allowed-hostname my-macbook.tailnet.ts.net
 ```
 
 ## 5. Verify the server is reachable

@@ -63,7 +63,7 @@ describeEmbeddedPostgres("registry.listConfigs (startup config delivery)", () =>
         version: "0.0.1",
         displayName: pluginKey,
         description: "Test plugin",
-        author: "Simplixy",
+        author: "Simplexy",
         categories: ["automation"],
         capabilities: [],
         entrypoints: { worker: "./dist/worker.js" },

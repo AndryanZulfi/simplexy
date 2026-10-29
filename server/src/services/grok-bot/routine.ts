@@ -59,7 +59,7 @@ export function grokRoutineService(db: Db, deliver: Delivery = deliverGrokRoutin
         eq(bindings.agentId, agentId), eq(bindings.providerKind, "grok_bot"))).orderBy(asc(bindings.id)).for("update");
       const rows = await tx.select().from(routines).where(and(eq(routines.companyId, companyId), eq(routines.agentId, agentId))).for("update");
       const [active] = await tx.select({ id: assignments.id }).from(assignments).where(and(eq(assignments.companyId, companyId), eq(assignments.agentId, agentId), inArray(assignments.status, ["offered", "accepted"])));
-      if (active) throw fail("Stop or finish the current Simplixy work session before clearing recovery.");
+      if (active) throw fail("Stop or finish the current Simplexy work session before clearing recovery.");
       for (const routine of rows) {
         await tx.update(dispatches).set({ status: "cancelled", updatedAt: new Date() }).where(and(eq(dispatches.routineId, routine.id), inArray(dispatches.status, ["prepared", "sending", "accepted", "unknown"])));
         await tx.update(routines).set({ recoveryRequiredAt: null, recoveryReason: null, verifiedAt: null, verifiedGrantId: null, updatedAt: new Date() }).where(eq(routines.id, routine.id));
@@ -104,7 +104,7 @@ export function grokRoutineService(db: Db, deliver: Delivery = deliverGrokRoutin
       const [active] = await tx.select({ id: assignments.id }).from(assignments).where(and(eq(assignments.bindingId, binding.id), inArray(assignments.status, ["offered", "accepted"])));
       const [old] = await tx.select().from(routines).where(eq(routines.bindingId, binding.id)).for("update");
       const [pending] = old ? await tx.select({ id: dispatches.id }).from(dispatches).where(and(eq(dispatches.routineId, old.id), eq(dispatches.routineRevision, old.revision), inArray(dispatches.status, ["prepared", "sending", "accepted", "unknown"]))) : [];
-      if (active || pending || old?.recoveryRequiredAt) throw fail("Inspect and recover existing Simplixy work before replacing routine credentials.");
+      if (active || pending || old?.recoveryRequiredAt) throw fail("Inspect and recover existing Simplexy work before replacing routine credentials.");
       if ((old?.revision ?? 0) !== input.expectedRevision) throw fail("Routine configuration changed. Reload before replacing it.");
       const revision = (old?.revision ?? 0) + 1;
       // One fresh immutable secret version prevents partial URL/key replacement.
@@ -143,7 +143,7 @@ export function grokRoutineService(db: Db, deliver: Delivery = deliverGrokRoutin
         eq(dispatches.bindingGeneration, binding.generation), eq(dispatches.routineRevision, routine.revision), eq(dispatches.sourceEventId, input.sourceEventId)));
       if (old) return old;
       const [active] = input.kind === "verify" ? await tx.select({ id: assignments.id }).from(assignments).where(and(eq(assignments.bindingId, binding.id), inArray(assignments.status, ["offered", "accepted"]))) : [];
-      if (active) throw fail("Finish or stop current Simplixy work before verifying the routine again.");
+      if (active) throw fail("Finish or stop current Simplexy work before verifying the routine again.");
       const [pending] = input.kind === "verify" ? await tx.select({ id: dispatches.id }).from(dispatches).where(and(eq(dispatches.routineId, routine.id), eq(dispatches.routineRevision, routine.revision), eq(dispatches.kind, "verify"), inArray(dispatches.status, ["prepared", "sending", "accepted", "unknown"]))) : [];
       if (pending) throw fail("Verification already has an outstanding delivery. Inspect it before sending another.");
       const correlationId = randomUUID();

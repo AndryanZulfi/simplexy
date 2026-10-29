@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import { applyDevRunnerOptions } from "../../../scripts/dev-runner-options.ts";
 
 describe("applyDevRunnerOptions", () => {
-  it("turns --data-dir into isolated Simplixy paths and consumes the option", () => {
+  it("turns --data-dir into isolated Simplexy paths and consumes the option", () => {
     const env: NodeJS.ProcessEnv = {};
     const cwd = path.join(os.tmpdir(), "paperclip-dev-runner-options");
     const previousInstanceId = process.env.PAPERCLIP_INSTANCE_ID;

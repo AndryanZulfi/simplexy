@@ -14,7 +14,7 @@ const ANTHROPIC_VERSION = "2023-06-01";
 export const CLAUDE_MANAGED_BETA_VERSION = "managed-agents-2026-04-01" as const;
 export const CLAUDE_MANAGED_QUALIFIED_MODEL = "claude-sonnet-5" as const;
 export const CLAUDE_MANAGED_SYSTEM_PROMPT =
-  "You are a Simplixy remote agent. Follow the current user turn and use only the custom tools supplied for that session. Simplixy tool authority, completion, blocking, review, and yielding are enforced by the runner. Never request or infer a Simplixy endpoint or credential.";
+  "You are a Simplexy remote agent. Follow the current user turn and use only the custom tools supplied for that session. Simplexy tool authority, completion, blocking, review, and yielding are enforced by the runner. Never request or infer a Simplexy endpoint or credential.";
 
 export interface ManagedAgentSetupOptions extends BaseClientOptions {
   companyId?: string;
@@ -164,7 +164,7 @@ function resourceByProfile(
   );
   if (matches.length > 1) {
     throw new Error(
-      `Multiple Anthropic ${resourceLabel} resources use Simplixy profile ${profileKey}; pass an explicit resource ID`,
+      `Multiple Anthropic ${resourceLabel} resources use Simplexy profile ${profileKey}; pass an explicit resource ID`,
     );
   }
   return matches[0] ?? null;
@@ -189,7 +189,7 @@ export function assertSafeManagedEnvironment(environment: Record<string, unknown
     || installed.length > 0
   ) {
     throw new Error(
-      "Existing Anthropic Environment does not match Simplixy's no-network, no-package profile",
+      "Existing Anthropic Environment does not match Simplexy's no-network, no-package profile",
     );
   }
 }
@@ -241,8 +241,8 @@ async function resolveEnvironment(
   if (options.probe) throw new Error("Probe found no matching Anthropic Environment");
 
   const environment = await anthropicRequest(key, "POST", "/v1/environments", {
-    name: `Simplixy · ${options.displayName}`,
-    description: "Simplixy remote-agent environment: no network or added packages.",
+    name: `Simplexy · ${options.displayName}`,
+    description: "Simplexy remote-agent environment: no network or added packages.",
     config: {
       type: "cloud",
       networking: {
@@ -294,8 +294,8 @@ async function resolveAgent(
   if (options.probe) throw new Error("Probe found no matching Anthropic Agent");
 
   const agent = await anthropicRequest(key, "POST", "/v1/agents", {
-    name: `Simplixy · ${options.displayName}`,
-    description: "Versioned Simplixy remote agent; runnerd supplies session tools.",
+    name: `Simplexy · ${options.displayName}`,
+    description: "Versioned Simplexy remote agent; runnerd supplies session tools.",
     model: options.model,
     system: CLAUDE_MANAGED_SYSTEM_PROMPT,
     tools: [],

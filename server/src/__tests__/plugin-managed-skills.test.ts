@@ -42,7 +42,7 @@ function manifest(): PaperclipPluginManifestV1 {
     version: "0.1.0",
     displayName: "Managed Skills Test",
     description: "Test plugin",
-    author: "Simplixy",
+    author: "Simplexy",
     categories: ["automation"],
     capabilities: ["skills.managed"],
     entrypoints: { worker: "./dist/worker.js" },
@@ -90,7 +90,7 @@ describeEmbeddedPostgres("plugin-managed skills", () => {
     const pluginId = randomUUID();
     await db.insert(companies).values({
       id: companyId,
-      name: "Simplixy",
+      name: "Simplexy",
       issuePrefix: issuePrefix(companyId),
     });
     await db.insert(plugins).values({

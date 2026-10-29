@@ -42,8 +42,8 @@ export class CloudPortfolioError extends HttpError {
     error?: unknown,
   ) {
     super(502, kind === "invalid_response"
-      ? "Simplixy Cloud portfolio returned invalid JSON"
-      : "Simplixy Cloud portfolio request failed", {
+      ? "Simplexy Cloud portfolio returned invalid JSON"
+      : "Simplexy Cloud portfolio request failed", {
       code: kind === "invalid_response" ? "cloud_portfolio_invalid_response" : "cloud_portfolio_upstream_error",
     });
     Error.captureStackTrace?.(this, CloudPortfolioError);

@@ -1,8 +1,8 @@
 # Cloud customer-success inspection support
 
-Paperclip exposes `/api/customer-success/v1/run-authority` and `/read` for the
+Simplexy exposes `/api/customer-success/v1/run-authority` and `/read` for the
 coordinated Cloud inspection broker. This foundation supports one registered
-Paperclip agent; bot creation, scheduling, scoring and reporting are separate.
+Simplexy agent; bot creation, scheduling, scoring and reporting are separate.
 
 The authority endpoint is disabled unless
 `PAPERCLIP_CUSTOMER_SUCCESS_AUTHORITY_ENABLED=true`. It accepts only a strict,
