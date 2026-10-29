@@ -47,8 +47,8 @@ Simplexy mewarisi seluruh control plane Paperclip:
 
 ```sh
 # Clone
-git clone https://github.com/AndryanZulfi/simplixy.git
-cd simplixy
+git clone https://github.com/AndryanZulfi/simplexy.git
+cd simplexy
 
 # Install dependencies
 pnpm install
