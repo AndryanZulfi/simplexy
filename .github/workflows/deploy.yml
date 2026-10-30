@@ -8,8 +8,7 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
-      - name: Pull and Deploy
+      - name: Git Pull
         run: |
           cd /root/Projects/simplexy
           git pull origin main
-          docker compose up -d --build server
