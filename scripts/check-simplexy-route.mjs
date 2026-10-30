@@ -1,0 +1,15 @@
+import { chromium } from '@playwright/test';
+import assert from 'node:assert/strict';
+const browser = await chromium.launch({channel:'chrome',headless:true});
+const page = await browser.newPage({viewport:{width:1440,height:1000}});
+await page.goto('http://127.0.0.1:5175/');
+await page.locator('h1').waitFor();
+const loaded=[];
+page.on('response', r=>{if(r.url().includes('/src/main.tsx'))loaded.push(r.status())});
+await page.getByRole('link',{name:'Buka dashboard'}).click();
+await page.waitForTimeout(5000);
+assert.ok(loaded.includes(200),'existing board entry loads');
+assert.equal(await page.getByTestId('hero-demo').count(),0);
+console.log('PASS dashboard link loads existing board entry; URL:',page.url());
+console.log('Board visible text:',(await page.locator('body').innerText()).slice(0,500));
+await browser.close();

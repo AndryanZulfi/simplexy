@@ -1,0 +1,81 @@
+import { chromium } from '@playwright/test';
+import assert from 'node:assert/strict';
+import { mkdir } from 'node:fs/promises';
+const browser = await chromium.launch({ channel: 'chrome', headless: true });
+const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+const errors = [];
+const api = [];
+page.on('pageerror', error => errors.push(error.message));
+page.on('request', request => { if (request.url().includes('/api/')) api.push(request.url()); });
+await page.goto('http://127.0.0.1:5175/');
+await page.locator('h1').waitFor();
+await page.waitForTimeout(700);
+await page.getByRole('button', { name: 'Jeda', exact: true }).first().click();
+const before = await page.getByTestId('hero-demo').getAttribute('data-step');
+await page.waitForTimeout(1500);
+assert.equal(await page.getByTestId('hero-demo').getAttribute('data-step'), before, 'pause holds phase');
+await page.getByRole('button', { name: 'Lanjutkan' }).click();
+await page.waitForTimeout(5000);
+assert.equal(await page.getByTestId('hero-demo').getAttribute('data-step'), '5');
+await mkdir('/Users/idn/.hermes/profiles/web-dev/cache/scratch/simplexy', { recursive: true });
+await page.screenshot({ path: '/Users/idn/.hermes/profiles/web-dev/cache/scratch/simplexy/hero-desktop.png', fullPage: true });
+await page.getByRole('button', { name: 'Putar ulang' }).first().click();
+assert.equal(await page.getByTestId('hero-demo').getAttribute('data-step'), '0');
+for (const width of [320, 768, 1024, 1440]) {
+ await page.setViewportSize({ width, height: 1000 });
+ assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `no overflow ${width}`);
+}
+await page.getByTestId('workflow-demo').scrollIntoViewIfNeeded();
+await page.waitForTimeout(3500);
+assert.equal(await page.getByTestId('workflow-demo').getAttribute('data-step'), '5');
+await page.locator('#cara-kerja').screenshot({ path: '/Users/idn/.hermes/profiles/web-dev/cache/scratch/simplexy/workflow.png' });
+await page.getByTestId('hero-demo').scrollIntoViewIfNeeded();
+await page.getByTestId('workflow-demo').scrollIntoViewIfNeeded();
+assert.equal(await page.getByTestId('workflow-demo').getAttribute('data-step'), '5', 'workflow does not restart on reentry');
+await page.locator('#cara-kerja').getByRole('button',{name:'Putar ulang'}).click();
+await page.locator('#cara-kerja').getByRole('button',{name:'Jeda',exact:true}).click();
+const workflowStep = await page.getByTestId('workflow-demo').getAttribute('data-step');
+await page.waitForTimeout(1000);
+assert.equal(await page.getByTestId('workflow-demo').getAttribute('data-step'),workflowStep);
+await page.locator('#cara-kerja').getByRole('button',{name:'Lanjutkan'}).click();
+await page.waitForTimeout(3300);
+assert.equal(await page.getByTestId('workflow-demo').getAttribute('data-step'),'5');
+console.log('PASS workflow completion, pause/resume/replay and retained state');
+await page.getByRole('tab', { name: /Ringkasan laporan harian/ }).click();
+await page.waitForTimeout(500);
+assert.match(await page.getByRole('tabpanel').innerText(), /Belum ada data transaksi/);
+await page.getByRole('tab', { name: /Pencatatan data baru/ }).click();
+await page.waitForTimeout(500);
+assert.match(await page.getByRole('tabpanel').innerText(), /tidak ada data yang disimpan/);
+await page.getByRole('tab', { name: /Pencatatan data baru/ }).press('Home');
+assert.equal(await page.getByRole('tab', { name: /Cek stok/ }).getAttribute('aria-selected'), 'true');
+await page.waitForTimeout(500);
+await page.getByLabel('Kondisi simulasi').selectOption('empty');
+assert.match(await page.getByRole('tabpanel').innerText(), /Belum ada catatan/);
+await page.getByLabel('Kondisi simulasi').selectOption('error');
+assert.match(await page.getByRole('tabpanel').innerText(), /Tidak ada data yang diubah/);
+await page.getByLabel('Kondisi simulasi').selectOption('ready');
+await page.locator('#showcase').screenshot({path:'/Users/idn/.hermes/profiles/web-dev/cache/scratch/simplexy/showcase.png'});
+await page.emulateMedia({reducedMotion:'reduce'});
+await page.reload();
+await page.getByTestId('hero-demo').waitFor();
+assert.equal(await page.getByTestId('hero-demo').getAttribute('data-step'), '5');
+assert.equal(await page.getByTestId('workflow-demo').getAttribute('data-step'), '5');
+for (const width of [320,768,1024,1440]) {
+ await page.setViewportSize({width,height:1000});
+ assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `final overflow ${width}`);
+ for (const name of [/Cek stok/,/Ringkasan laporan harian/,/Pencatatan data baru/]) await page.getByRole('tab',{name}).click();
+}
+await page.screenshot({path:'/Users/idn/.hermes/profiles/web-dev/cache/scratch/simplexy/landing-desktop.png',fullPage:true});
+await page.setViewportSize({width:390,height:844});
+await page.screenshot({path:'/Users/idn/.hermes/profiles/web-dev/cache/scratch/simplexy/landing-mobile.png',fullPage:true});
+for (const link of await page.locator('a[href^="#"]').all()) {
+ const href = await link.getAttribute('href');
+ assert.equal(await page.locator(href).count(),1, `anchor ${href}`);
+ if (await link.isVisible()) { await link.focus(); await link.press('Enter'); }
+}
+console.log('PASS all showcase tabs, keyboard Home, empty/error/recovery, reduced motion, anchor destinations');
+assert.deepEqual(errors, [], 'no runtime errors');
+assert.deepEqual(api, [], 'public landing makes no API requests');
+console.log('PASS hero pause/resume/replay, responsive 320/768/1024/1440, no API requests, no runtime errors');
+await browser.close();
