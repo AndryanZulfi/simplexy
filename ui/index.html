@@ -87,10 +87,24 @@
           notice.hidden = false;
         };
         const onError = (event) => {
-          // Ignore images and other incidental resources. Preserve the original
-          // error for the browser console; never display raw errors or URLs here.
+          // Ignore external third-party scripts (e.g. Cloudflare beacon blocked by adblockers)
+          if (event.target instanceof HTMLScriptElement) {
+            const src = event.target.src || "";
+            if (src && !src.startsWith(window.location.origin) && !src.startsWith("/")) {
+              console.warn("[Simplexy] Ignored external script failure:", src);
+              return;
+            }
+          }
+          // Ignore errors originating from browser extensions
+          if (event instanceof ErrorEvent && event.filename && event.filename.includes("-extension://")) {
+            console.warn("[Simplexy] Ignored browser extension error:", event.filename);
+            return;
+          }
           if (event instanceof ErrorEvent || event.target instanceof HTMLScriptElement ||
-              (event.target instanceof HTMLLinkElement && event.target.rel === "stylesheet")) onFailure();
+              (event.target instanceof HTMLLinkElement && event.target.rel === "stylesheet")) {
+            console.error("[Simplexy startup failure]:", event);
+            onFailure();
+          }
         };
         const observer = new MutationObserver(() => { if (finished()) cleanup(); });
         observer.observe(root, { childList: true });
