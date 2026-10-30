@@ -4,8 +4,8 @@
     {
       "id": "skill:skills/paperclip/SKILL.md:10",
       "kind": "skill_heading",
-      "sourceAnchor": "skills/paperclip/SKILL.md#L10:paperclip-skill",
-      "heading": "Paperclip Skill",
+      "sourceAnchor": "skills/paperclip/SKILL.md#L10:simplexy-skill",
+      "heading": "Simplexy Skill",
       "primaryDisposition": "optional_agent_tool",
       "semanticOperation": "scoped_discovery",
       "expectedMockState": "operation_result"
@@ -310,8 +310,8 @@
     {
       "id": "skill:skills/paperclip/references/api-reference.md:1",
       "kind": "skill_heading",
-      "sourceAnchor": "skills/paperclip/references/api-reference.md#L1:paperclip-api-reference",
-      "heading": "Paperclip API Reference",
+      "sourceAnchor": "skills/paperclip/references/api-reference.md#L1:simplexy-api-reference",
+      "heading": "Simplexy API Reference",
       "primaryDisposition": "optional_agent_tool",
       "semanticOperation": "scoped_discovery",
       "expectedMockState": "operation_result"
@@ -1318,8 +1318,8 @@
     {
       "id": "skill:skills/paperclip/references/routines.md:1",
       "kind": "skill_heading",
-      "sourceAnchor": "skills/paperclip/references/routines.md#L1:paperclip-routines",
-      "heading": "Paperclip Routines",
+      "sourceAnchor": "skills/paperclip/references/routines.md#L1:simplexy-routines",
+      "heading": "Simplexy Routines",
       "primaryDisposition": "optional_agent_tool",
       "semanticOperation": "scoped_discovery",
       "expectedMockState": "operation_result"
@@ -1453,8 +1453,8 @@
     {
       "id": "skill:skills/paperclip/references/workflows.md:1",
       "kind": "skill_heading",
-      "sourceAnchor": "skills/paperclip/references/workflows.md#L1:paperclip-workflow-playbooks",
-      "heading": "Paperclip Workflow Playbooks",
+      "sourceAnchor": "skills/paperclip/references/workflows.md#L1:simplexy-workflow-playbooks",
+      "heading": "Simplexy Workflow Playbooks",
       "primaryDisposition": "control_plane_owned",
       "semanticOperation": "runtime_reconciliation",
       "expectedMockState": "runtime_decision_record"
