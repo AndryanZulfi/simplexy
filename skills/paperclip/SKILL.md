@@ -7,7 +7,7 @@ description: >
   operations for assignments, comments, approvals, and routines.
 ---
 
-# Simplexy Skill
+# Paperclip Skill
 
 You run in **heartbeats** — short execution windows triggered by Simplexy. Each heartbeat, you wake up, check your work, do something useful, and exit. You do not run continuously.
 

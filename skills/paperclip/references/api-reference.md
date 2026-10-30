@@ -1,4 +1,4 @@
-# Simplexy API Reference
+# Paperclip API Reference
 
 Fetch `GET /api/openapi.json` for the current request schemas. It is available through the queue and HTTP/2 sandbox bridges.
 
