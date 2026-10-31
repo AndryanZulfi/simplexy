@@ -3,8 +3,8 @@ import path from "node:path";
 import http from "node:http";
 import { randomBytes, randomUUID, timingSafeEqual } from "node:crypto";
 import type { AddressInfo } from "node:net";
-import type { AdapterExecutionContext, AdapterExecutionResult } from "@paperclipai/adapter-utils";
-import { runChildProcess, runningProcesses, signalRunningProcess, joinPromptSections, selectPaperclipPromptSections } from "@paperclipai/adapter-utils/server-utils";
+import type { AdapterExecutionContext, AdapterExecutionResult } from "@simplexy/adapter-utils";
+import { runChildProcess, runningProcesses, signalRunningProcess, joinPromptSections, selectPaperclipPromptSections } from "@simplexy/adapter-utils/server-utils";
 import { prepareManagedLocalRuntime } from "./managed-local.js";
 import { parsePiJsonl } from "./parse.js";
 

@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { resolvePaperclipInstanceRootForAdapter } from "@paperclipai/adapter-utils/server-utils";
+import { resolvePaperclipInstanceRootForAdapter } from "@simplexy/adapter-utils/server-utils";
 
 // This is an OS filesystem boundary; HOME/cwd alone are not isolation.
 export async function prepareManagedLocalRuntime(companyId: string, operatorEnv: NodeJS.ProcessEnv = process.env) {

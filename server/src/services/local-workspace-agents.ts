@@ -1,7 +1,7 @@
 import path from "node:path";
 import fs from "node:fs/promises";
 import { createHash } from "node:crypto";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import { forbidden } from "../errors.js";
 import { resolvePaperclipInstanceRoot } from "../home-paths.js";
 import { isCloudManagedInstance } from "./cloud-instance.js";
