@@ -32,9 +32,9 @@ export function cloudStackCreateUrl(cloudBaseUrl: string | null | undefined): st
 
 /** Keep auth return targets inside the tenant, and never return to the login form. */
 export function tenantSignInReturnPath(path: string): string {
-  if (!path.startsWith("/") || path.startsWith("//") || /[\\\x00-\x20]/.test(path)) return "/";
+  if (!path.startsWith("/") || path.startsWith("//") || /[\\\x00-\x20]/.test(path)) return "/dashboard";
   const url = new URL(path, "https://tenant.invalid");
-  if (url.pathname.replace(/\/+$/, "") === "/auth") return "/";
+  if (url.pathname.replace(/\/+$/, "") === "" || url.pathname.replace(/\/+$/, "") === "/auth") return "/dashboard";
   return `${url.pathname}${url.search}${url.hash}`;
 }
 

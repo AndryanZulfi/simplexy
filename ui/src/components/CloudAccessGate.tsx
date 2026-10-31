@@ -142,8 +142,11 @@ export function CloudAccessGate({ allowMembershipRequest = false }: { allowMembe
     healthQuery.isLoading ||
     (isAuthenticatedMode && sessionQuery.isLoading) ||
     (isAuthenticatedMode && !isBootstrapPending && !!sessionQuery.data && boardAccessQuery.isLoading);
+  const isSelfHosted = !healthQuery.data?.cloud;
   const hasBoardAccess = allowMembershipRequest || !isAuthenticatedMode
-    || !!boardAccessQuery.data?.isInstanceAdmin || (boardAccessQuery.data?.companyIds.length ?? 0) > 0;
+    || !!boardAccessQuery.data?.isInstanceAdmin
+    || (boardAccessQuery.data?.companyIds.length ?? 0) > 0
+    || (isSelfHosted && (boardAccessQuery.data?.companyIds.length ?? 0) === 0);
   const canAccessBoard = !isLoading && !blockingError && !isBootstrapPending
     && (!isAuthenticatedMode || !!sessionQuery.data) && hasBoardAccess;
   useEffect(() => {
