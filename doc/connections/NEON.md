@@ -37,7 +37,7 @@ involved; cloud and self-hosted instances use the same path.
 ```mermaid
 sequenceDiagram
     actor A as Administrator
-    participant P as Paperclip
+    participant P as Simplexy
     participant M as mcp.neon.tech
 
     A->>P: Choose Sign in with Neon

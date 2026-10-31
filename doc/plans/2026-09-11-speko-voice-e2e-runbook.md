@@ -101,7 +101,7 @@ by the actual setup UI. Save a private fixture at
   "companyId": "temporary-company-uuid",
   "companyPrefix": "SPE",
   "agentId": "selected-agent-uuid",
-  "agentName": "Existing Paperclip Agent",
+  "agentName": "Existing Simplexy Agent",
   "providerAgentId": "agent_dedicated_persona",
   "endpointId": "optional-resumable-endpoint-uuid"
 }

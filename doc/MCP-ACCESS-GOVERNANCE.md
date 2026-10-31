@@ -99,20 +99,20 @@ If the smoke fails, fix the failing check before introducing any production conn
 Simplexy plays two roles in the MCP graph, and confusing them is the most common operator error.
 
 ```
-              Paperclip as MCP endpoint
-              (clients call Paperclip)
+              Simplexy as MCP endpoint
+              (clients call Simplexy)
                        ┌──────────────┐
-   Claude Code  ─────▶ │   Paperclip  │
+   Claude Code  ─────▶ │   Simplexy  │
    IDE / CLI    ─────▶ │ /mcp surface │
                        └──────────────┘
                           (task ops, agent ops)
 
 
-              Paperclip as MCP gateway / proxy
-              (agents call upstream MCP through Paperclip)
+              Simplexy as MCP gateway / proxy
+              (agents call upstream MCP through Simplexy)
 
    ┌─────┐       ┌────────────┐       ┌──────────────┐
-   │Agent│──────▶│ Paperclip  │──────▶│ Upstream MCP │
+   │Agent│──────▶│ Simplexy  │──────▶│ Upstream MCP │
    │ run │       │  gateway   │       │ (GitHub etc.)│
    └─────┘       │  + policy  │       └──────────────┘
                  │  + audit   │
@@ -345,7 +345,7 @@ curl -fsS -X POST -H "Authorization: Bearer $BOARD_API_KEY" -H "Content-Type: ap
   -d '{ "companyId": "'"$COMPANY_ID"'" }' | jq '{id, status, resolvedAt, resolvedByUserId}'
 
 # Retry the original tool call with approvedActionRequestId (the agent does this).
-curl -fsS -X POST -H "X-Paperclip-Tool-Gateway-Token: $GATEWAY_TOKEN" -H "Content-Type: application/json" \
+curl -fsS -X POST -H "X-Simplexy-Tool-Gateway-Token: $GATEWAY_TOKEN" -H "Content-Type: application/json" \
   "$PAPERCLIP_URL/api/tool-gateway/tools/call" \
   -d '{
     "tool": "create_item",

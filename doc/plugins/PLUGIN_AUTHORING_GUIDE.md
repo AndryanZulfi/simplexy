@@ -417,7 +417,7 @@ const manifest: PaperclipPluginManifestV1 = {
       capabilities: "Runs recurring research briefs for this company.",
       adapterPreference: ["codex_local", "claude_local", "process"],
       instructions: {
-        content: "Follow the Paperclip heartbeat and produce concise research briefs.",
+        content: "Follow the Simplexy heartbeat and produce concise research briefs.",
       },
     },
   ],

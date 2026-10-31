@@ -639,7 +639,7 @@ export default definePlugin({
   }),
   async register(ctx) {
     ctx.jobs.register("linear-pull", { cron: "*/5 * * * *" }, async (job) => {
-      // sync Linear issues into plugin-owned state or explicit Paperclip entities
+      // sync Linear issues into plugin-owned state or explicit Simplexy entities
     });
 
     // subscribe with optional server-side filter

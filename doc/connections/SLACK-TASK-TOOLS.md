@@ -150,7 +150,7 @@ current link to that bot's workspace. The bundled
 ```text
 POST /api/companies/:companyId/slack/tasks/:issueId/tools
 Authorization: Bearer <agent run key>
-X-Paperclip-Run-Id: <run ID>
+X-Simplexy-Run-Id: <run ID>
 
 {"endpointId":"<assigned endpoint ID>","tool":"slack_history","arguments":{"channel":"C123","limit":50}}
 ```

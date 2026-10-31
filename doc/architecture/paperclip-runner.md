@@ -61,7 +61,7 @@ paths.
 The initial local topology is:
 
 ```text
-Paperclip server
+Simplexy server
   |  authenticated PRP v1 WebSocket
   v
 paperclip-runnerd
@@ -94,7 +94,7 @@ JSON Schema and fixtures
                    v
          deterministic parity
 
-Paperclip server ----implements----> runner public ports
+Simplexy server ----implements----> runner public ports
 ```
 
 The dependency points from an implementation to a contract. The Simplexy

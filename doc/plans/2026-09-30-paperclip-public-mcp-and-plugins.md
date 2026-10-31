@@ -45,11 +45,11 @@ Simplexy governs participation. It does not promise to launch or stop the extern
 
 ```mermaid
 flowchart TD
-    A[ChatGPT / Codex / Claude] --> B[Public Paperclip plugin]
+    A[ChatGPT / Codex / Claude] --> B[Public Simplexy plugin]
     C[Direct or private connection] --> D[Agent gateway]
     B --> E[OAuth identity and scoped authorization]
     D --> E
-    E --> F[Shared Paperclip capability layer]
+    E --> F[Shared Simplexy capability layer]
     G[Native runner] --> F
     F --> H[Tasks, documents, agents and governance]
     F --> I[Authorized connected tools]

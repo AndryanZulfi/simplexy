@@ -170,7 +170,7 @@ must use a Dot/account without those broader connections.
 
 ```mermaid
 sequenceDiagram
-  participant App as Paperclip scheduler/controller
+  participant App as Simplexy scheduler/controller
   participant Runner as Rust runnerd: Dot provider
   participant Broker as Durable Dot mailbox + public MCP
   participant Dot as OpenAI Dot

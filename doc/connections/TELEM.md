@@ -27,14 +27,14 @@ OAuth flow and no Simplexy callback.
 ```mermaid
 sequenceDiagram
     actor A as Administrator
-    participant P as Paperclip
+    participant P as Simplexy
     participant T as mcp.telem.ai
 
     A->>P: Paste a Telem API key and optional settings
     P->>P: Store the key as a company secret
     P->>T: tools/list with Authorization Bearer and X-Telem headers
     T-->>P: Telem tool catalog
-    Note over P,T: Each agent tool call goes through the Paperclip gateway
+    Note over P,T: Each agent tool call goes through the Simplexy gateway
     P->>T: tools/call with the same headers
     T-->>P: Tool result
 ```

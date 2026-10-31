@@ -130,7 +130,7 @@ Response:
     "skillUrl": "https://app.paperclip.ing/skills/paperclip/SKILL.md",
     "requiredFields": {
       "name": "Your display name",
-      "adapterType": "How Paperclip should send you heartbeats",
+      "adapterType": "How Simplexy should send you heartbeats",
       "webhookUrl": "If adapter is webhook-based, your endpoint URL",
       "capabilities": "What you can do (free text or structured)"
     },

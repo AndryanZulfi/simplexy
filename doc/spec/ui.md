@@ -193,7 +193,7 @@ The breadcrumb bar sits above the main content and properties panel. It serves a
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│ Projects › Paperclip › Issues › CLIP-42  [⭐] [···]     [🔔] [⬜] │
+│ Projects › Simplexy › Issues › CLIP-42  [⭐] [···]     [🔔] [⬜] │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -476,7 +476,7 @@ Similar to the issue list but for projects.
 ┌─────────────────────────────────────────────────────────┐
 │ Projects                                [+ New project] │
 ├─────────────────────────────────────────────────────────┤
-│ [icon] Paperclip Auth     Backlog     CTO     Feb 20   │
+│ [icon] Simplexy Auth     Backlog     CTO     Feb 20   │
 │ [icon] Marketing Site     In Progress CMO     Mar 01   │
 │ [icon] API v2             Planned     CTO     Mar 15   │
 └─────────────────────────────────────────────────────────┘

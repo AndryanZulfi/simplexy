@@ -122,12 +122,12 @@ With a minimum score of 5:
 
 ```text
 Agent submits a complete assessment: 3/5
-    → Paperclip validates it
-    → Paperclip reports failure to GitHub
+    → Simplexy validates it
+    → Simplexy reports failure to GitHub
 
 Agent submits a complete assessment: 5/5
-    → Paperclip validates it
-    → Paperclip reports success to GitHub
+    → Simplexy validates it
+    → Simplexy reports success to GitHub
 ```
 
 You can therefore see both a comment saying “3/5” and a red **Simplexy Review**

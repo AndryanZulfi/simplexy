@@ -17,10 +17,10 @@ pause controls, and consistent audits instead of hidden daemon behavior.
 ## The five steps
 
 ```bash
-# 1. Start Paperclip locally
+# 1. Start Simplexy locally
 pnpm paperclipai run
 
-# 2. Scaffold a plugin outside the Paperclip repo
+# 2. Scaffold a plugin outside the Simplexy repo
 paperclipai plugin init @acme/hello-plugin --output ~/dev/paperclip-plugins
 
 # 3. Install dependencies and start the watch build
@@ -94,13 +94,13 @@ The CLI auto-detects local paths (anything that looks absolute, starts with `./`
 Before it installs, the CLI probes `GET /api/health` on the instance it is configured to talk to and prints the **target diagnostics** so you can confirm *which* Simplexy you are installing into. You will see a confirmation like:
 
 ```
-Target Paperclip: http://127.0.0.1:3100
+Target Simplexy: http://127.0.0.1:3100
   health: status=ok  version=0.1.0  mode=local_trusted  exposure=private
 Installing plugin from local path: /Users/you/dev/paperclip-plugins/hello-plugin
 ✓ Installed acme.hello-plugin v0.1.0 (ready)
 Local plugin installs run trusted local code from your machine.
 Keep `pnpm dev` running in /Users/you/dev/paperclip-plugins/hello-plugin;
-Paperclip watches rebuilt dist output and reloads the plugin worker.
+Simplexy watches rebuilt dist output and reloads the plugin worker.
 ```
 
 Read that first line. If the API URL, version, or mode is not the instance you expect, stop and re-point the CLI (see [Targeting a branch / issue-workspace runtime](#targeting-a-branch--issue-workspace-runtime)) before trusting the result. Pass `--no-verify-target` to skip the probe, or run `simplexy plugin target` to see the same diagnostics without installing anything.
@@ -146,7 +146,7 @@ PAPERCLIP_SERVER_PORT=3120 pnpm dev          # or: pnpm paperclipai run
 
 # 2. Confirm the CLI will talk to that exact branch service before installing.
 paperclipai plugin target --api-base http://127.0.0.1:3120
-# Target Paperclip: http://127.0.0.1:3120
+# Target Simplexy: http://127.0.0.1:3120
 #   health: status=ok  version=<branch-version>  mode=local_trusted  exposure=private
 
 # 3. Install the local-path plugin into that service (not the default host).

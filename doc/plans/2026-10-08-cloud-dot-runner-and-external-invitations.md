@@ -22,13 +22,13 @@ For the first cloud implementation:
 
 ```mermaid
 flowchart LR
-  User[Operator assigns work] --> CP[Paperclip control plane]
+  User[Operator assigns work] --> CP[Simplexy control plane]
   CP -->|admit assignment| Job[Managed sandbox: Rust Runner]
   Job -->|offer, progress, receipts| CP
   CP -->|MCP Events notification| Dot[Dot on OpenAI's computer]
   Dot -->|MCP inbox and tool calls| CP
   CP -->|authorized assignment operations| Job
-  Job -.->|future explicitly granted tools| Workspace[Isolated Paperclip workspace]
+  Job -.->|future explicitly granted tools| Workspace[Isolated Simplexy workspace]
 ```
 
 The control plane authenticates inbound Dot requests even when no assignment exists. Idle reads and connection checks need no sandbox. A request to start work creates a visible task and passes normal admission before launching a job. During an assignment, the control plane routes operations to its owning Runner through the durable bridge. Progress and completion return through normal Runner bookkeeping. After completion or cancellation, tear down the job according to the managed execution policy; keep the binding and mailbox.

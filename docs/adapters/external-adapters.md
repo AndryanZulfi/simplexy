@@ -176,7 +176,7 @@ export async function execute(
   const command = String(config.command ?? "my-agent");
   const timeoutSec = Number(config.timeoutSec ?? 300);
 
-  // 2. Build environment with Paperclip vars injected
+  // 2. Build environment with Simplexy vars injected
   const env = buildPaperclipEnv(agent);
 
   // 3. Render prompt template
@@ -276,7 +276,7 @@ Check levels:
 ### From npm
 
 ```sh
-# Via the Paperclip UI
+# Via the Simplexy UI
 # Settings → Adapters → Install from npm → "my-paperclip-adapter"
 
 # Or via API

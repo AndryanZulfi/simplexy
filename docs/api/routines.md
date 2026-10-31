@@ -228,8 +228,8 @@ const response = await fetch(process.env.WEBHOOK_URL, {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
-    "X-Paperclip-Timestamp": timestamp,
-    "X-Paperclip-Signature": `sha256=${signature}`,
+    "X-Simplexy-Timestamp": timestamp,
+    "X-Simplexy-Signature": `sha256=${signature}`,
   },
   body,
 });

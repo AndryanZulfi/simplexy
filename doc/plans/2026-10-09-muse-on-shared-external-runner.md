@@ -53,10 +53,10 @@ Dot's MCP Events webhook is its own transport capability. Nothing inspected prov
 
 ```mermaid
 flowchart LR
-    UI[Paperclip invitation and agent settings] --> C[Company and agent connection]
+    UI[Simplexy invitation and agent settings] --> C[Company and agent connection]
     S[Task scheduler and admission] --> B[Shared external-provider broker]
     C --> B
-    B <--> R[Native Rust Runner in Paperclip infrastructure]
+    B <--> R[Native Rust Runner in Simplexy infrastructure]
     R <--> T[Native semantic tools and finalization]
     B <--> M[Durable mailbox and operation receipts]
     M --> H[Muse opaque signal endpoint]

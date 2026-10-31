@@ -59,8 +59,8 @@ client with its own callback URL.
 sequenceDiagram
     autonumber
     actor U as User's browser
-    participant UI as Paperclip UI<br/>/apps/connect?source=ditto
-    participant S as Paperclip instance server<br/>(cloud or self-hosted, same path)
+    participant UI as Simplexy UI<br/>/apps/connect?source=ditto
+    participant S as Simplexy instance server<br/>(cloud or self-hosted, same path)
     participant M as api.dittowords.com<br/>(MCP resource)
     participant A as login.dittowords.com<br/>(Auth0 authorization server)
 

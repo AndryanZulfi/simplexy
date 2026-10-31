@@ -96,7 +96,7 @@ incremental. Treat the generic path as the baseline, not as a lesser fallback.
 ```mermaid
 sequenceDiagram
     participant O as Operator
-    participant P as Paperclip instance
+    participant P as Simplexy instance
     participant R as wisdom-api.enterpret.com
     participant A as oauth.enterpret.com
     O->>P: Connect Enterpret, method mcp-oauth
@@ -107,7 +107,7 @@ sequenceDiagram
     P->>A: GET /.well-known/oauth-authorization-server
     A-->>P: authorize, token, register, PKCE S256, auth method none
     P->>A: POST /register, RFC 7591 dynamic client registration
-    A-->>P: client_id for this Paperclip instance
+    A-->>P: client_id for this Simplexy instance
     P->>O: Redirect to /authorize with PKCE challenge
     O->>A: Sign in and consent
     A-->>P: Redirect to /api/tools/oauth/callback with code
@@ -149,7 +149,7 @@ Simplexy requests `mcp:read` for the official read-only endpoint. The live
 2026-09-25 observation is preserved:
 
 ```text
-Paperclip authorization request  mcp:read
+Simplexy authorization request  mcp:read
 Enterpret token response         no scope field
 Enterpret token introspection    openid email profile mcp:read mcp:write
 ```

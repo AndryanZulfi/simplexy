@@ -58,7 +58,7 @@ spec = {'base': '8e955181d8a3776acc86e4662de3c77933231a76',
                 'hash': 'a9f8c23c46b994199221719de840292a9c8c2c9ff613e5f4e220441b5c4cd0ea',
                 'counts': [11, 0, 1, 10],
                 'guard': 'loads the no-task export automatically without an interstitial',
-                'message': "AssertionError: expected 'Paperclip exportExporting 1 of 1 file…' not to "
+                'message': "AssertionError: expected 'Simplexy exportExporting 1 of 1 file…' not to "
                            "contain 'Not included in this export'",
                 'selector': 'loads the no-task export automatically without an interstitial',
                 'line': 253},
@@ -202,7 +202,7 @@ Recorded intended failure excerpts (fixture path prefixes omitted):
 
 ```text
 empty-fidelity / loads the no-task export automatically without an interstitial
-AssertionError: expected 'Paperclip exportExporting 1 of 1 file…' not to contain 'Not included in this export'
+AssertionError: expected 'Simplexy exportExporting 1 of 1 file…' not to contain 'Not included in this export'
 CompanyExport.test.tsx:253
 attachments-enabled / keeps task history opt-in, then requests all selected files on download
 AssertionError: expected false to be true // Object.is equality

@@ -5,7 +5,7 @@
 Simplexy creates the run and a short-lived, one-use runner bootstrap ticket. The Daytona sandbox starts only `paperclip-runnerd`; runnerd then starts the configured provider (Codex initially). Runnerd listens on a fixed sandbox-local port and Simplexy connects through Daytona's authenticated preview WebSocket ingress. The provider never receives a Simplexy API credential or Daytona preview credential.
 
 ```text
-Paperclip control plane
+Simplexy control plane
        |
        | outbound WSS + X-Daytona-Preview-Token
        v
