@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
@@ -14,18 +15,25 @@ export function expandHomePrefix(value: string): string {
 }
 
 export function resolvePaperclipHomeDir(homeOverride?: string): string {
-  const raw = homeOverride?.trim() || process.env.PAPERCLIP_HOME?.trim();
+  const raw = homeOverride?.trim() || process.env.SIMPLEXY_HOME?.trim() || process.env.PAPERCLIP_HOME?.trim();
   if (raw) return path.resolve(expandHomePrefix(raw));
-  return path.resolve(os.homedir(), ".paperclip");
+  const simplexyHome = path.resolve(os.homedir(), ".simplexy");
+  const paperclipHome = path.resolve(os.homedir(), ".paperclip");
+  return fs.existsSync(simplexyHome) || !fs.existsSync(paperclipHome)
+    ? simplexyHome
+    : paperclipHome;
 }
 
 export function resolvePaperclipInstanceId(instanceIdOverride?: string): string {
-  const raw = instanceIdOverride?.trim() || process.env.PAPERCLIP_INSTANCE_ID?.trim() || DEFAULT_PAPERCLIP_INSTANCE_ID;
+  const raw = instanceIdOverride?.trim() || process.env.SIMPLEXY_INSTANCE_ID?.trim() || process.env.PAPERCLIP_INSTANCE_ID?.trim() || DEFAULT_PAPERCLIP_INSTANCE_ID;
   if (!PATH_SEGMENT_RE.test(raw)) {
-    throw new Error(`Invalid PAPERCLIP_INSTANCE_ID '${raw}'.`);
+    throw new Error(`Invalid instance ID '${raw}'.`);
   }
   return raw;
 }
+
+export const resolveSimplexyHomeDir = resolvePaperclipHomeDir;
+export const resolveSimplexyInstanceId = resolvePaperclipInstanceId;
 
 export function resolvePaperclipInstanceRoot(input: {
   homeDir?: string;

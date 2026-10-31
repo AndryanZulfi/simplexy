@@ -10,6 +10,10 @@ function findConfigFileFromAncestors(startDir: string): string | null {
   let currentDir = absoluteStartDir;
 
   while (true) {
+    const candidateSimplexy = path.resolve(currentDir, ".simplexy", PAPERCLIP_CONFIG_BASENAME);
+    if (fs.existsSync(candidateSimplexy)) {
+      return candidateSimplexy;
+    }
     const candidate = path.resolve(currentDir, ".paperclip", PAPERCLIP_CONFIG_BASENAME);
     if (fs.existsSync(candidate)) {
       return candidate;
@@ -25,6 +29,7 @@ function findConfigFileFromAncestors(startDir: string): string | null {
 
 export function resolvePaperclipConfigPath(overridePath?: string): string {
   if (overridePath) return path.resolve(overridePath);
+  if (process.env.SIMPLEXY_CONFIG) return path.resolve(process.env.SIMPLEXY_CONFIG);
   if (process.env.PAPERCLIP_CONFIG) return path.resolve(process.env.PAPERCLIP_CONFIG);
   return findConfigFileFromAncestors(process.cwd()) ?? resolveDefaultConfigPath();
 }

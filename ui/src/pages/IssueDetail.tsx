@@ -1,3 +1,4 @@
+import { AttachmentIcon } from "@/components/AttachmentIcon";
 import { taskChatHashAnchor } from "@/components/task-chat/scroll-navigation";
 import { useCoordinatorWorkspaceEnabled } from "@/hooks/useCoordinatorWorkspaceEnabled";
 import { CoordinatorAgentSwitcher } from "@/components/CoordinatorAgentSwitcher";
@@ -357,7 +358,6 @@ import {
   MessageSquare,
   MoreHorizontal,
   MoreVertical,
-  Paperclip,
   Plus,
   Repeat,
   SlidersHorizontal,
@@ -7356,7 +7356,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
           attachmentDragActive && "border-primary bg-primary/5",
         )}
       >
-        <Paperclip className="h-3.5 w-3.5 mr-1.5" />
+        <AttachmentIcon className="h-3.5 w-3.5 mr-1.5" />
         {uploadAttachment.isPending || importMarkdownDocument.isPending ? (
           "Uploading..."
         ) : (

@@ -1,3 +1,4 @@
+import { AttachmentIcon } from "@/components/AttachmentIcon";
 import { SkillBinaryFile } from "../components/SkillBinaryFile";
 import { SkillSourceProvenance } from "../components/SkillSourceProvenance";
 import { AgentIdentity } from "@/components/AgentIdentity";
@@ -148,7 +149,6 @@ import {
   ExternalLink,
   FlaskConical,
   MoreHorizontal,
-  Paperclip,
   Pause,
   Pencil,
   Pin,
@@ -275,7 +275,7 @@ function sourceMeta(sourceBadge: CompanySkillSourceBadge, sourceLabel: string | 
     case "local":
       return { icon: Folder, label: sourceLabel ?? "Folder", managedLabel: "Folder managed" };
     case "paperclip":
-      return { icon: Paperclip, label: sourceLabel ?? "Simplexy", managedLabel: "Simplexy managed" };
+      return { icon: AttachmentIcon, label: sourceLabel ?? "Simplexy", managedLabel: "Simplexy managed" };
     default:
       return { icon: Boxes, label: sourceLabel ?? "Catalog", managedLabel: "Catalog managed" };
   }

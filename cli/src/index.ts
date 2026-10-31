@@ -62,12 +62,13 @@ import {
 
 const program = new Command();
 const DATA_DIR_OPTION_HELP =
-  "Simplexy data directory root (isolates state from ~/.paperclip)";
+  "Simplexy data directory root (isolates state from ~/.simplexy)";
 
 program.enablePositionalOptions();
 
 program
-  .name("paperclipai")
+  .name("simplexy")
+  .alias("paperclipai")
   .description("Simplexy CLI — setup, diagnose, and configure your instance")
   .version(cliVersion);
 
