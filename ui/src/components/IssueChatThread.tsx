@@ -63,9 +63,9 @@ import { findUIAdapter } from "../adapters/registry";
 import { useLiveRunTranscripts } from "./transcript/useLiveRunTranscripts";
 import { useSecondTick } from "../hooks/useSecondTick";
 import {
-  usePaperclipIssueRuntime,
-  type PaperclipIssueRuntimeReassignment,
-} from "../hooks/usePaperclipIssueRuntime";
+  useSimplexyIssueRuntime,
+  type SimplexyIssueRuntimeReassignment,
+} from "../hooks/useSimplexyIssueRuntime";
 import { useOptionalToastActions } from "../context/ToastContext";
 import { copyTextToClipboard } from "../lib/clipboard";
 import {
@@ -1037,7 +1037,7 @@ function toValidIsoString(
 
 function parseReassignment(
   target: string,
-): PaperclipIssueRuntimeReassignment | null {
+): SimplexyIssueRuntimeReassignment | null {
   if (!target || target === "__none__") {
     return { assigneeAgentId: null, assigneeUserId: null };
   }
@@ -6188,7 +6188,7 @@ export function IssueChatThread({
     },
     [onAdd, beginSubmission, rejectSubmission],
   );
-  const runtime = usePaperclipIssueRuntime({
+  const runtime = useSimplexyIssueRuntime({
     messages,
     isRunning,
     onSend: ({ body, reopen, reassignment, attachmentIds }) =>

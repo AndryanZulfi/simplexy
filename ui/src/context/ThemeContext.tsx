@@ -16,7 +16,8 @@ interface ThemeContextValue {
   toggleTheme: () => void;
 }
 
-const THEME_STORAGE_KEY = "paperclip.theme";
+const THEME_STORAGE_KEY = "simplexy.theme";
+const LEGACY_THEME_STORAGE_KEY = "simplexy.theme";
 const DARK_THEME_COLOR = "#18181b";
 const LIGHT_THEME_COLOR = "#ffffff";
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
@@ -29,7 +30,7 @@ function resolveThemeFromDocument(): Theme {
 function hasStoredTheme(): boolean {
   if (typeof window === "undefined") return false;
   try {
-    const stored = window.localStorage.getItem(THEME_STORAGE_KEY);
+    const stored = window.localStorage.getItem(THEME_STORAGE_KEY) || window.localStorage.getItem(LEGACY_THEME_STORAGE_KEY);
     return stored === "light" || stored === "dark";
   } catch {
     return false;

@@ -3,7 +3,7 @@
 @plugin "@tailwindcss/typography";
 
 /* offline-recovery:start */
-.paperclip-offline {
+:is(.simplexy-offline, .paperclip-offline) {
   --offline-background: #171716;
   --offline-foreground: #fafafa;
   --offline-muted: #a3a3a3;
@@ -50,7 +50,7 @@
   line-height: var(--offline-leading);
   text-align: center;
 }
-.paperclip-offline main {
+:is(.simplexy-offline, .paperclip-offline) main {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,23 +58,23 @@
   width: 100%;
   max-width: var(--offline-content-width);
 }
-.paperclip-offline-message,
-.paperclip-offline-identity {
+:is(.simplexy-offline-message, .paperclip-offline-message),
+:is(.simplexy-offline-identity, .paperclip-offline-identity) {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.paperclip-offline-message {
+:is(.simplexy-offline-message, .paperclip-offline-message) {
   gap: var(--offline-message-gap);
 }
-.paperclip-offline-identity {
+:is(.simplexy-offline-identity, .paperclip-offline-identity) {
   gap: var(--offline-identity-gap);
 }
-.paperclip-offline-character {
+:is(.simplexy-offline-character, .paperclip-offline-character) {
   width: var(--offline-character-size);
   height: var(--offline-character-size);
 }
-.paperclip-offline h1 {
+:is(.simplexy-offline, .paperclip-offline) h1 {
   margin: 0;
   font-size: var(--offline-title-size);
   font-weight: var(--offline-weight);
@@ -82,12 +82,12 @@
   letter-spacing: var(--offline-tracking);
   text-wrap: balance;
 }
-.paperclip-offline p {
+:is(.simplexy-offline, .paperclip-offline) p {
   margin: 0;
   color: var(--offline-muted);
   text-wrap: pretty;
 }
-.paperclip-offline button {
+:is(.simplexy-offline, .paperclip-offline) button {
   min-height: var(--offline-control-height);
   padding: var(--offline-copy-gap) var(--offline-space);
   border: var(--offline-stroke) solid var(--offline-border);
@@ -98,10 +98,10 @@
   font-weight: var(--offline-weight);
   cursor: pointer;
 }
-.paperclip-offline button:hover {
+:is(.simplexy-offline, .paperclip-offline) button:hover {
   background: var(--offline-control-hover);
 }
-.paperclip-offline button:focus-visible {
+:is(.simplexy-offline, .paperclip-offline) button:focus-visible {
   outline: var(--offline-focus-width) solid var(--offline-focus);
   outline-offset: var(--offline-focus-offset);
 }
@@ -283,14 +283,22 @@
   --chip-match-identifier-bg: var(--muted);
   --chip-match-identifier-fg: var(--muted-foreground);
   --chip-match-identifier-border: var(--border);
-  --paperclip-doc-annotation-highlight-source: oklch(0.78 0.16 89);
-  --paperclip-doc-annotation-highlight-open: color-mix(in srgb, var(--paperclip-doc-annotation-highlight-source) 58%, var(--background));
-  --paperclip-doc-annotation-highlight-focused: color-mix(in srgb, var(--paperclip-doc-annotation-highlight-source) 60%, var(--background));
-  --paperclip-doc-annotation-highlight-stale: color-mix(in srgb, var(--paperclip-doc-annotation-highlight-source) 48%, var(--background));
-  --paperclip-doc-annotation-highlight-resolved: color-mix(in srgb, var(--paperclip-doc-annotation-highlight-source) 28%, var(--background));
-  --paperclip-doc-annotation-highlight-x-outset: 0.25rem;
-  --paperclip-doc-annotation-highlight-y-outset: 0.125rem;
-  --paperclip-doc-annotation-highlight-radius: 0.1875rem;
+  --simplexy-doc-annotation-highlight-source: oklch(0.78 0.16 89);
+  --paperclip-doc-annotation-highlight-source: var(--simplexy-doc-annotation-highlight-source);
+  --simplexy-doc-annotation-highlight-open: color-mix(in srgb, var(--paperclip-doc-annotation-highlight-source) 58%, var(--background));
+  --paperclip-doc-annotation-highlight-open: var(--simplexy-doc-annotation-highlight-open);
+  --simplexy-doc-annotation-highlight-focused: color-mix(in srgb, var(--paperclip-doc-annotation-highlight-source) 60%, var(--background));
+  --paperclip-doc-annotation-highlight-focused: var(--simplexy-doc-annotation-highlight-focused);
+  --simplexy-doc-annotation-highlight-stale: color-mix(in srgb, var(--paperclip-doc-annotation-highlight-source) 48%, var(--background));
+  --paperclip-doc-annotation-highlight-stale: var(--simplexy-doc-annotation-highlight-stale);
+  --simplexy-doc-annotation-highlight-resolved: color-mix(in srgb, var(--paperclip-doc-annotation-highlight-source) 28%, var(--background));
+  --paperclip-doc-annotation-highlight-resolved: var(--simplexy-doc-annotation-highlight-resolved);
+  --simplexy-doc-annotation-highlight-x-outset: 0.25rem;
+  --paperclip-doc-annotation-highlight-x-outset: var(--simplexy-doc-annotation-highlight-x-outset);
+  --simplexy-doc-annotation-highlight-y-outset: 0.125rem;
+  --paperclip-doc-annotation-highlight-y-outset: var(--simplexy-doc-annotation-highlight-y-outset);
+  --simplexy-doc-annotation-highlight-radius: 0.1875rem;
+  --paperclip-doc-annotation-highlight-radius: var(--simplexy-doc-annotation-highlight-radius);
 
   /* Brand agent-capsule gradient stops (paperclip.ing/brand/).
      "The capsule is the agent" — each agent gets a 2-stop gradient,
@@ -693,7 +701,7 @@
   color: inherit;
 }
 
-.paperclip-doc-annotation-highlight::before {
+:is(.simplexy-doc-annotation-highlight, .paperclip-doc-annotation-highlight)::before {
   position: absolute;
   inset:
     calc(-1 * var(--paperclip-doc-annotation-highlight-y-outset))
@@ -706,16 +714,16 @@
   transition-timing-function: var(--motion-ease-standard);
 }
 
-.paperclip-doc-annotation-highlight[data-focused="true"]:not([data-anchor-state="stale"]):not([data-status="resolved"])::before,
-.paperclip-doc-annotation-highlight[data-hovered="true"]:not([data-anchor-state="stale"]):not([data-status="resolved"])::before {
+:is(.simplexy-doc-annotation-highlight, .paperclip-doc-annotation-highlight)[data-focused="true"]:not([data-anchor-state="stale"]):not([data-status="resolved"])::before,
+:is(.simplexy-doc-annotation-highlight, .paperclip-doc-annotation-highlight)[data-hovered="true"]:not([data-anchor-state="stale"]):not([data-status="resolved"])::before {
   background-color: var(--paperclip-doc-annotation-highlight-focused);
 }
 
-.paperclip-doc-annotation-highlight[data-anchor-state="stale"]:not([data-status="resolved"])::before {
+:is(.simplexy-doc-annotation-highlight, .paperclip-doc-annotation-highlight)[data-anchor-state="stale"]:not([data-status="resolved"])::before {
   background-color: var(--paperclip-doc-annotation-highlight-stale);
 }
 
-.paperclip-doc-annotation-highlight[data-status="resolved"]::before {
+:is(.simplexy-doc-annotation-highlight, .paperclip-doc-annotation-highlight)[data-status="resolved"]::before {
   background-color: var(--paperclip-doc-annotation-highlight-resolved);
 }
 
@@ -786,8 +794,8 @@
     }
   }
   /* Let font-mono (utilities layer) override for monospace editors */
-  .paperclip-mdxeditor [class*="_placeholder_"],
-  .paperclip-mdxeditor-content {
+  :is(.simplexy-mdxeditor, .paperclip-mdxeditor) [class*="_placeholder_"],
+  :is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) {
     font-family: inherit;
   }
 }
@@ -895,22 +903,22 @@ select:where(:not([multiple]):not(.appearance-none)):where(:not([size]), [size="
 /* Mobile conversations use the same single message scroller + normal footer as
    desktop. Opt in from the rendered task shell, so classic tasks, lists, and
    the empty agent-chat picker retain their existing document layout. */
-html:has(.paperclip-app-shell[data-mobile="true"] [data-task-chat-shell]),
-html:has(.paperclip-app-shell[data-mobile="true"] [data-task-chat-shell]) body {
+html:has(:is(.simplexy-app-shell, .paperclip-app-shell)[data-mobile="true"] [data-task-chat-shell]),
+html:has(:is(.simplexy-app-shell, .paperclip-app-shell)[data-mobile="true"] [data-task-chat-shell]) body {
   position: fixed;
   inset: 0;
   width: 100%;
 }
 
-html:has(.paperclip-app-shell[data-mobile="true"] [data-task-chat-shell]),
-html:has(.paperclip-app-shell[data-mobile="true"] [data-task-chat-shell]) body,
-html:has(.paperclip-app-shell[data-mobile="true"] [data-task-chat-shell]) #root {
+html:has(:is(.simplexy-app-shell, .paperclip-app-shell)[data-mobile="true"] [data-task-chat-shell]),
+html:has(:is(.simplexy-app-shell, .paperclip-app-shell)[data-mobile="true"] [data-task-chat-shell]) body,
+html:has(:is(.simplexy-app-shell, .paperclip-app-shell)[data-mobile="true"] [data-task-chat-shell]) #root {
   height: 100%;
   overflow: hidden !important;
   overscroll-behavior: none;
 }
 
-.paperclip-app-shell[data-mobile="true"]:has([data-task-chat-shell]) {
+:is(.simplexy-app-shell, .paperclip-app-shell)[data-mobile="true"]:has([data-task-chat-shell]) {
   position: fixed;
   inset: 0;
   display: flex;
@@ -920,23 +928,23 @@ html:has(.paperclip-app-shell[data-mobile="true"] [data-task-chat-shell]) #root 
   overflow: hidden;
 }
 
-.paperclip-app-shell[data-mobile="true"]:has([data-task-chat-shell]) :is(.app-main-row, .app-content-row) {
+:is(.simplexy-app-shell, .paperclip-app-shell)[data-mobile="true"]:has([data-task-chat-shell]) :is(.app-main-row, .app-content-row) {
   display: flex;
   flex: 1;
   min-height: 0;
   overflow: hidden;
 }
 
-.paperclip-app-shell[data-mobile="true"]:has([data-task-chat-shell]) .app-content-column {
+:is(.simplexy-app-shell, .paperclip-app-shell)[data-mobile="true"]:has([data-task-chat-shell]) .app-content-column {
   flex: 1;
   min-height: 0;
 }
 
-.paperclip-app-shell[data-mobile="true"]:has([data-task-chat-shell]) .app-breadcrumb {
+:is(.simplexy-app-shell, .paperclip-app-shell)[data-mobile="true"]:has([data-task-chat-shell]) .app-breadcrumb {
   flex-shrink: 0;
 }
 
-.paperclip-app-shell[data-mobile="true"]:has([data-task-chat-shell]) #main-content {
+:is(.simplexy-app-shell, .paperclip-app-shell)[data-mobile="true"]:has([data-task-chat-shell]) #main-content {
   display: flex;
   flex-direction: column;
   min-height: 0;
@@ -944,7 +952,7 @@ html:has(.paperclip-app-shell[data-mobile="true"] [data-task-chat-shell]) #root 
   padding-bottom: var(--tc-composer-visible-nav-offset);
 }
 
-.paperclip-app-shell[data-mobile="true"][data-keyboard-open="true"]:has([data-task-chat-shell]) #main-content {
+:is(.simplexy-app-shell, .paperclip-app-shell)[data-mobile="true"][data-keyboard-open="true"]:has([data-task-chat-shell]) #main-content {
   padding-bottom: 0;
 }
 
@@ -970,27 +978,27 @@ html:has(.paperclip-app-shell[data-mobile="true"] [data-task-chat-shell]) #root 
     flex-shrink: 0;
   }
 
-  .paperclip-task-list-toolbar > :first-child {
+  :is(.simplexy-task-list-toolbar, .paperclip-task-list-toolbar) > :first-child {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
   }
 
-  .paperclip-task-list-toolbar [data-slot="collection-toolbar-search"] {
+  :is(.simplexy-task-list-toolbar, .paperclip-task-list-toolbar) [data-slot="collection-toolbar-search"] {
     grid-column: 1;
     grid-row: 1;
   }
 
-  .paperclip-task-list-toolbar [data-slot="collection-toolbar-search"] input {
+  :is(.simplexy-task-list-toolbar, .paperclip-task-list-toolbar) [data-slot="collection-toolbar-search"] input {
     height: var(--sz-44px);
   }
 
-  .paperclip-task-list-toolbar [data-slot="collection-toolbar-context"] {
+  :is(.simplexy-task-list-toolbar, .paperclip-task-list-toolbar) [data-slot="collection-toolbar-context"] {
     grid-column: 2;
     grid-row: 1;
   }
 
-  .paperclip-task-list-toolbar [data-slot="collection-toolbar-context"] button,
-  .paperclip-task-list-toolbar [data-slot="collection-toolbar-controls"] button {
+  :is(.simplexy-task-list-toolbar, .paperclip-task-list-toolbar) [data-slot="collection-toolbar-context"] button,
+  :is(.simplexy-task-list-toolbar, .paperclip-task-list-toolbar) [data-slot="collection-toolbar-controls"] button {
     width: var(--sz-44px);
     height: var(--sz-44px);
     min-height: var(--sz-44px);
@@ -998,7 +1006,7 @@ html:has(.paperclip-app-shell[data-mobile="true"] [data-task-chat-shell]) #root 
     flex-shrink: 0;
   }
 
-  .paperclip-task-list-toolbar > :first-child > :last-child {
+  :is(.simplexy-task-list-toolbar, .paperclip-task-list-toolbar) > :first-child > :last-child {
     grid-column: 1 / -1;
     grid-row: 2;
   }
@@ -1700,8 +1708,8 @@ html:has(.paperclip-app-shell[data-mobile="true"] [data-task-chat-shell]) #root 
   animation: tc-live-ping var(--motion-approval-pulse) var(--motion-ease-standard) infinite;
 }
 
-.paperclip-markdown.task-chat-reasoning-markdown,
-.paperclip-markdown.task-chat-reasoning-markdown :is(h1, h2, h3, h4, h5, h6, strong) {
+:is(.simplexy-markdown, .paperclip-markdown).task-chat-reasoning-markdown,
+:is(.simplexy-markdown, .paperclip-markdown).task-chat-reasoning-markdown :is(h1, h2, h3, h4, h5, h6, strong) {
   font-size: inherit;
   font-weight: inherit;
   line-height: inherit;
@@ -1729,8 +1737,8 @@ html:has(.paperclip-app-shell[data-mobile="true"] [data-task-chat-shell]) #root 
 }
 
 .task-chat-expanded-line-wrap,
-.paperclip-markdown.task-chat-reasoning-markdown,
-.paperclip-markdown.task-chat-reasoning-markdown :is(p, strong, em, a, code) {
+:is(.simplexy-markdown, .paperclip-markdown).task-chat-reasoning-markdown,
+:is(.simplexy-markdown, .paperclip-markdown).task-chat-reasoning-markdown :is(p, strong, em, a, code) {
   overflow-wrap: anywhere;
   word-break: break-word;
 }
@@ -1766,7 +1774,7 @@ html:has(.paperclip-app-shell[data-mobile="true"] [data-task-chat-shell]) #root 
   animation: shimmer-text-slide 2.5s linear infinite;
 }
 
-.paperclip-thinking-icon {
+:is(.simplexy-thinking-icon, .paperclip-thinking-icon) {
   transform-origin: 50% 50%;
 }
 
@@ -1798,7 +1806,7 @@ html:has(.paperclip-app-shell[data-mobile="true"] [data-task-chat-shell]) #root 
   }
 }
 
-.paperclip-thinking-icon-path {
+:is(.simplexy-thinking-icon-path, .paperclip-thinking-icon-path) {
   animation: paperclip-thinking-draw 1s linear infinite;
 }
 
@@ -1855,7 +1863,7 @@ html:has(.paperclip-app-shell[data-mobile="true"] [data-task-chat-shell]) #root 
     background: none;
   }
 
-  .paperclip-thinking-icon-path {
+  :is(.simplexy-thinking-icon-path, .paperclip-thinking-icon-path) {
     animation: none;
     opacity: 1;
     stroke-dasharray: 85.717 85.717;
@@ -1971,8 +1979,8 @@ html:has(.paperclip-app-shell[data-mobile="true"] [data-task-chat-shell]) #root 
 }
 
 /* MDXEditor theme integration */
-.paperclip-mdxeditor-scope,
-.paperclip-mdxeditor {
+:is(.simplexy-mdxeditor-scope, .paperclip-mdxeditor-scope),
+:is(.simplexy-mdxeditor, .paperclip-mdxeditor) {
   --baseBase: var(--background);
   --baseBg: transparent;
   --baseBgSubtle: color-mix(in oklab, var(--accent) 35%, transparent);
@@ -2004,37 +2012,37 @@ html:has(.paperclip-app-shell[data-mobile="true"] [data-task-chat-shell]) #root 
 }
 
 @media (min-width: 768px) {
-  .paperclip-mdxeditor-scope,
-  .paperclip-mdxeditor {
+  :is(.simplexy-mdxeditor-scope, .paperclip-mdxeditor-scope),
+  :is(.simplexy-mdxeditor, .paperclip-mdxeditor) {
     font-size: 0.875rem;
   }
 }
 
-.paperclip-mdxeditor-scope [class*="_iconButton_"],
-.paperclip-mdxeditor [class*="_iconButton_"] {
+:is(.simplexy-mdxeditor-scope, .paperclip-mdxeditor-scope) [class*="_iconButton_"],
+:is(.simplexy-mdxeditor, .paperclip-mdxeditor) [class*="_iconButton_"] {
   color: var(--baseText);
 }
 
-.paperclip-mdxeditor-scope [class*="_iconButton_"]:hover,
-.paperclip-mdxeditor [class*="_iconButton_"]:hover {
+:is(.simplexy-mdxeditor-scope, .paperclip-mdxeditor-scope) [class*="_iconButton_"]:hover,
+:is(.simplexy-mdxeditor, .paperclip-mdxeditor) [class*="_iconButton_"]:hover {
   color: var(--baseTextContrast);
 }
 
-.paperclip-mdxeditor .mdxeditor-root-contenteditable {
+:is(.simplexy-mdxeditor, .paperclip-mdxeditor) .mdxeditor-root-contenteditable {
   min-height: 2.5rem;
   padding: 0;
   line-height: 1.5;
 }
 
-.paperclip-mdxeditor [class*="_contentEditable_"] {
+:is(.simplexy-mdxeditor, .paperclip-mdxeditor) [class*="_contentEditable_"] {
   padding: 0.375rem 0.625rem !important;
 }
 
-.paperclip-mdxeditor--borderless [class*="_contentEditable_"] {
+:is(.simplexy-mdxeditor--borderless, .paperclip-mdxeditor--borderless) [class*="_contentEditable_"] {
   padding: 0 !important;
 }
 
-.paperclip-mdxeditor [class*="_placeholder_"] {
+:is(.simplexy-mdxeditor, .paperclip-mdxeditor) [class*="_placeholder_"] {
   font-size: inherit;
   line-height: 1.5;
   color: var(--muted-foreground);
@@ -2043,54 +2051,54 @@ html:has(.paperclip-app-shell[data-mobile="true"] [data-task-chat-shell]) #root 
 /* MDXEditor defaults placeholders to a single clipped line. The task-chat
    composer uses longer, assignee-aware copy, so keep it inside the editor by
    giving the absolutely positioned placeholder a wrapping inline size. */
-.paperclip-task-chat-composer .paperclip-mdxeditor [class*="_placeholder_"] {
+:is(.simplexy-task-chat-composer, .paperclip-task-chat-composer) :is(.simplexy-mdxeditor, .paperclip-mdxeditor) [class*="_placeholder_"] {
   display: block;
   width: 100%;
   overflow-wrap: anywhere;
   white-space: normal;
 }
 
-.paperclip-mdxeditor-content {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) {
   font-size: inherit;
   line-height: inherit;
   color: inherit;
 }
 
-.paperclip-edit-in-place-content {
+:is(.simplexy-edit-in-place-content, .paperclip-edit-in-place-content) {
   font-size: 0.9375rem;
   line-height: 1.75rem;
 }
 
-.paperclip-mdxeditor-content > *:first-child {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) > *:first-child {
   margin-top: 0;
 }
 
-.paperclip-mdxeditor-content > *:last-child {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) > *:last-child {
   margin-bottom: 0;
 }
 
-.paperclip-mdxeditor-content p {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) p {
   margin: 0;
   line-height: inherit;
 }
 
-.paperclip-mdxeditor-content p + p {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) p + p {
   margin-top: 1.1em;
 }
 
-.paperclip-mdxeditor-content a:not(.paperclip-mention-chip):not(.paperclip-project-mention-chip) {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) a:not(:is(.simplexy-mention-chip, .paperclip-mention-chip)):not(:is(.simplexy-project-mention-chip, .paperclip-project-mention-chip)) {
   color: color-mix(in oklab, var(--foreground) 76%, #0969da 24%);
   text-decoration: underline;
   text-underline-offset: 0.15em;
   cursor: pointer;
 }
 
-.dark .paperclip-mdxeditor-content a:not(.paperclip-mention-chip):not(.paperclip-project-mention-chip) {
+.dark :is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) a:not(:is(.simplexy-mention-chip, .paperclip-mention-chip)):not(:is(.simplexy-project-mention-chip, .paperclip-project-mention-chip)) {
   color: color-mix(in oklab, var(--foreground) 80%, #58a6ff 20%);
 }
 
-.paperclip-mdxeditor-content a.paperclip-mention-chip,
-.paperclip-mdxeditor-content a.paperclip-project-mention-chip {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) a:is(.simplexy-mention-chip, .paperclip-mention-chip),
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) a:is(.simplexy-project-mention-chip, .paperclip-project-mention-chip) {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
@@ -2110,30 +2118,30 @@ html:has(.paperclip-app-shell[data-mobile="true"] [data-task-chat-shell]) #root 
 
 /* Strip the MDXEditor's default inline-code styling from the text inside chips
    (the link label otherwise picks up a monospace font + gray tint). */
-.paperclip-mdxeditor-content a.paperclip-mention-chip code,
-.paperclip-mdxeditor-content a.paperclip-project-mention-chip code {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) a:is(.simplexy-mention-chip, .paperclip-mention-chip) code,
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) a:is(.simplexy-project-mention-chip, .paperclip-project-mention-chip) code {
   font-family: inherit;
   background: none;
   color: inherit;
   padding: 0;
 }
 
-.paperclip-mdxeditor-content a.paperclip-mention-chip::before,
-a.paperclip-mention-chip::before {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) a:is(.simplexy-mention-chip, .paperclip-mention-chip)::before,
+a:is(.simplexy-mention-chip, .paperclip-mention-chip)::before {
   content: "";
   flex: none;
 }
 
-.paperclip-mdxeditor-content a.paperclip-mention-chip[data-mention-kind="project"]::before,
-a.paperclip-mention-chip[data-mention-kind="project"]::before {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) a:is(.simplexy-mention-chip, .paperclip-mention-chip)[data-mention-kind="project"]::before,
+a:is(.simplexy-mention-chip, .paperclip-mention-chip)[data-mention-kind="project"]::before {
   width: 0.45rem;
   height: 0.45rem;
   border-radius: 999px;
   background-color: var(--paperclip-mention-project-color, currentColor);
 }
 
-.paperclip-mdxeditor-content a.paperclip-mention-chip[data-mention-kind="agent"]::before,
-a.paperclip-mention-chip[data-mention-kind="agent"]::before {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) a:is(.simplexy-mention-chip, .paperclip-mention-chip)[data-mention-kind="agent"]::before,
+a:is(.simplexy-mention-chip, .paperclip-mention-chip)[data-mention-kind="agent"]::before {
   width: 1rem;
   height: 1rem;
   background-image: var(--paperclip-mention-avatar-image);
@@ -2142,57 +2150,57 @@ a.paperclip-mention-chip[data-mention-kind="agent"]::before {
   background-size: contain;
 }
 
-.paperclip-mdxeditor-content ul,
-.paperclip-mdxeditor-content ol {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) ul,
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) ol {
   margin: 1.1em 0;
   padding-left: 1.6em;
 }
 
-.paperclip-mdxeditor-content ul {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) ul {
   list-style: disc;
 }
 
-.paperclip-mdxeditor-content ol {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) ol {
   list-style: decimal;
 }
 
-.paperclip-mdxeditor-content li {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) li {
   display: list-item;
   margin: 0.3em 0;
   line-height: inherit;
 }
 
-.paperclip-mdxeditor-content li::marker {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) li::marker {
   color: var(--muted-foreground);
 }
 
-.paperclip-mdxeditor-content h1 {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) h1 {
   margin: 1.4em 0 0.9em;
   font-size: 1.75em;
   font-weight: var(--font-weight-bold);
   line-height: 1.2;
 }
 
-.paperclip-mdxeditor-content h2 {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) h2 {
   margin: 1.3em 0 0.85em;
   font-size: 1.35em;
   font-weight: var(--font-weight-bold);
   line-height: 1.3;
 }
 
-.paperclip-mdxeditor-content h3 {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) h3 {
   margin: 1.2em 0 0.8em;
   font-size: 1.15em;
   font-weight: 600;
   line-height: 1.35;
 }
 
-.paperclip-mdxeditor-content img {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) img {
   max-height: 18rem;
   border-radius: calc(var(--radius) - 2px);
 }
 
-.paperclip-mdxeditor-content blockquote {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) blockquote {
   margin: 1.2em 0;
   padding-left: 1em;
   border-left: 3px solid var(--border);
@@ -2200,12 +2208,12 @@ a.paperclip-mention-chip[data-mention-kind="agent"]::before {
   line-height: inherit;
 }
 
-.paperclip-mdxeditor-content code {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) code {
   font-family: var(--font-mono);
   font-size: 1em;
 }
 
-.paperclip-mdxeditor-content pre {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) pre {
   margin: 0.4rem 0;
   padding: 0;
   border: 1px solid var(--border);
@@ -2217,50 +2225,50 @@ a.paperclip-mention-chip[data-mention-kind="agent"]::before {
 
 /* Dark theme for CodeMirror code blocks inside the MDXEditor.
    Overrides the default cm6-theme-basic-light that MDXEditor bundles. */
-.paperclip-mdxeditor .cm-editor {
+:is(.simplexy-mdxeditor, .paperclip-mdxeditor) .cm-editor {
   background-color: #1e1e2e !important;
   color: #cdd6f4 !important;
   font-size: 1em;
 }
 
-.paperclip-mdxeditor .cm-gutters {
+:is(.simplexy-mdxeditor, .paperclip-mdxeditor) .cm-gutters {
   background-color: #181825 !important;
   color: #585b70 !important;
   border-right: 1px solid #313244 !important;
 }
 
-.paperclip-mdxeditor .cm-activeLineGutter {
+:is(.simplexy-mdxeditor, .paperclip-mdxeditor) .cm-activeLineGutter {
   background-color: #1e1e2e !important;
 }
 
-.paperclip-mdxeditor .cm-activeLine {
+:is(.simplexy-mdxeditor, .paperclip-mdxeditor) .cm-activeLine {
   background-color: color-mix(in oklab, #cdd6f4 5%, transparent) !important;
 }
 
-.paperclip-mdxeditor .cm-cursor,
-.paperclip-mdxeditor .cm-dropCursor {
+:is(.simplexy-mdxeditor, .paperclip-mdxeditor) .cm-cursor,
+:is(.simplexy-mdxeditor, .paperclip-mdxeditor) .cm-dropCursor {
   border-left-color: #cdd6f4 !important;
 }
 
-.paperclip-mdxeditor .cm-selectionBackground {
+:is(.simplexy-mdxeditor, .paperclip-mdxeditor) .cm-selectionBackground {
   background-color: color-mix(in oklab, #89b4fa 25%, transparent) !important;
 }
 
-.paperclip-mdxeditor .cm-focused .cm-selectionBackground {
+:is(.simplexy-mdxeditor, .paperclip-mdxeditor) .cm-focused .cm-selectionBackground {
   background-color: color-mix(in oklab, #89b4fa 30%, transparent) !important;
 }
 
-.paperclip-mdxeditor .cm-content {
+:is(.simplexy-mdxeditor, .paperclip-mdxeditor) .cm-content {
   caret-color: #cdd6f4;
 }
 
 /* MDXEditor code block language selector – show on hover only */
-.paperclip-mdxeditor-content [class*="_codeMirrorWrapper_"] {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) [class*="_codeMirrorWrapper_"] {
   position: relative;
 }
 
-.paperclip-mdxeditor-content [class*="_codeMirrorToolbar_"],
-.paperclip-mdxeditor-content [class*="_codeBlockToolbar_"] {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) [class*="_codeMirrorToolbar_"],
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) [class*="_codeBlockToolbar_"] {
   position: absolute;
   top: 0.25rem;
   right: 0.25rem;
@@ -2269,17 +2277,17 @@ a.paperclip-mention-chip[data-mention-kind="agent"]::before {
   transition: opacity 150ms ease;
 }
 
-.paperclip-mdxeditor-content [class*="_codeMirrorToolbar_"] select,
-.paperclip-mdxeditor-content [class*="_codeBlockToolbar_"] select {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) [class*="_codeMirrorToolbar_"] select,
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) [class*="_codeBlockToolbar_"] select {
   background-color: #313244;
   color: #cdd6f4;
   border-color: #45475a;
 }
 
-.paperclip-mdxeditor-content [class*="_codeMirrorWrapper_"]:hover [class*="_codeMirrorToolbar_"],
-.paperclip-mdxeditor-content [class*="_codeMirrorWrapper_"]:hover [class*="_codeBlockToolbar_"],
-.paperclip-mdxeditor-content [class*="_codeMirrorWrapper_"]:focus-within [class*="_codeMirrorToolbar_"],
-.paperclip-mdxeditor-content [class*="_codeMirrorWrapper_"]:focus-within [class*="_codeBlockToolbar_"] {
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) [class*="_codeMirrorWrapper_"]:hover [class*="_codeMirrorToolbar_"],
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) [class*="_codeMirrorWrapper_"]:hover [class*="_codeBlockToolbar_"],
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) [class*="_codeMirrorWrapper_"]:focus-within [class*="_codeMirrorToolbar_"],
+:is(.simplexy-mdxeditor-content, .paperclip-mdxeditor-content) [class*="_codeMirrorWrapper_"]:focus-within [class*="_codeBlockToolbar_"] {
   opacity: 1;
 }
 
@@ -2288,7 +2296,7 @@ a.paperclip-mention-chip[data-mention-kind="agent"]::before {
    light and dark instead of pinning the old Catppuccin #1e1e2e/#cdd6f4 in
    both modes. Override prose CSS variables so prose-invert can't revert to
    defaults. */
-.paperclip-markdown {
+:is(.simplexy-markdown, .paperclip-markdown) {
   --tw-prose-pre-bg: var(--muted);
   --tw-prose-pre-code: var(--foreground);
   --tw-prose-code: var(--foreground);
@@ -2297,7 +2305,7 @@ a.paperclip-mention-chip[data-mention-kind="agent"]::before {
   --tw-prose-invert-code: var(--foreground);
 }
 
-.paperclip-markdown pre {
+:is(.simplexy-markdown, .paperclip-markdown) pre {
   border: 1px solid var(--border) !important;
   border-radius: var(--radius-lg) !important;
   background-color: var(--muted) !important;
@@ -2309,23 +2317,23 @@ a.paperclip-mention-chip[data-mention-kind="agent"]::before {
   white-space: pre;
 }
 
-.paperclip-markdown code {
+:is(.simplexy-markdown, .paperclip-markdown) code {
   font-family: var(--font-mono);
   font-size: 1em;
 }
 
-.paperclip-markdown pre code {
+:is(.simplexy-markdown, .paperclip-markdown) pre code {
   font-size: inherit;
   color: inherit;
   background: none;
 }
 
 /* Actions for fenced and indented preformatted markdown blocks */
-.paperclip-markdown-codeblock {
+:is(.simplexy-markdown-codeblock, .paperclip-markdown-codeblock) {
   position: relative;
 }
 
-.paperclip-markdown-codeblock-actions {
+:is(.simplexy-markdown-codeblock-actions, .paperclip-markdown-codeblock-actions) {
   position: absolute;
   top: 0.4rem;
   right: 0.4rem;
@@ -2336,7 +2344,7 @@ a.paperclip-mention-chip[data-mention-kind="agent"]::before {
   transition: opacity 0.12s ease;
 }
 
-.paperclip-markdown-codeblock-action {
+:is(.simplexy-markdown-codeblock-action, .paperclip-markdown-codeblock-action) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2353,28 +2361,28 @@ a.paperclip-mention-chip[data-mention-kind="agent"]::before {
   transition: background-color 0.12s ease, color 0.12s ease, border-color 0.12s ease;
 }
 
-.paperclip-markdown-codeblock:hover .paperclip-markdown-codeblock-actions,
-.paperclip-markdown-codeblock-actions:focus-within,
-.paperclip-markdown-codeblock-actions[data-active] {
+:is(.simplexy-markdown-codeblock, .paperclip-markdown-codeblock):hover :is(.simplexy-markdown-codeblock-actions, .paperclip-markdown-codeblock-actions),
+:is(.simplexy-markdown-codeblock-actions, .paperclip-markdown-codeblock-actions):focus-within,
+:is(.simplexy-markdown-codeblock-actions, .paperclip-markdown-codeblock-actions)[data-active] {
   opacity: 1;
 }
 
-.paperclip-markdown-codeblock-action:hover {
+:is(.simplexy-markdown-codeblock-action, .paperclip-markdown-codeblock-action):hover {
   background-color: var(--accent);
   color: var(--accent-foreground);
 }
 
-.paperclip-markdown-codeblock-action[data-active],
-.paperclip-markdown-codeblock-action[data-copied] {
+:is(.simplexy-markdown-codeblock-action, .paperclip-markdown-codeblock-action)[data-active],
+:is(.simplexy-markdown-codeblock-action, .paperclip-markdown-codeblock-action)[data-copied] {
   border-color: color-mix(in oklab, var(--primary) 38%, transparent);
   color: var(--primary);
 }
 
-.paperclip-markdown-codeblock-action[data-failed] {
+:is(.simplexy-markdown-codeblock-action, .paperclip-markdown-codeblock-action)[data-failed] {
   color: var(--destructive);
 }
 
-.paperclip-markdown-codeblock-action-label {
+:is(.simplexy-markdown-codeblock-action-label, .paperclip-markdown-codeblock-action-label) {
   font-weight: var(--font-weight-medium);
 }
 
@@ -2396,18 +2404,18 @@ a.paperclip-mention-chip[data-mention-kind="agent"]::before {
   background-color: #ffffff0f;
 }
 
-.paperclip-markdown.paperclip-markdown-on-accent :not(pre) > code {
+:is(.simplexy-markdown, .paperclip-markdown):is(.simplexy-markdown-on-accent, .paperclip-markdown-on-accent) :not(pre) > code {
   background-color: color-mix(in oklab, currentColor 24%, transparent);
   color: currentColor;
 }
 
-.paperclip-markdown {
+:is(.simplexy-markdown, .paperclip-markdown) {
   color: var(--foreground);
   font-size: 0.9375rem;
   line-height: 1.6;
 }
 
-.paperclip-markdown.paperclip-markdown-on-accent {
+:is(.simplexy-markdown, .paperclip-markdown):is(.simplexy-markdown-on-accent, .paperclip-markdown-on-accent) {
   color: inherit;
   --tw-prose-body: currentColor;
   --tw-prose-headings: currentColor;
@@ -2439,62 +2447,62 @@ a.paperclip-mention-chip[data-mention-kind="agent"]::before {
   --tw-prose-invert-td-borders: color-mix(in oklab, currentColor 22%, transparent);
 }
 
-.paperclip-markdown > :first-child {
+:is(.simplexy-markdown, .paperclip-markdown) > :first-child {
   margin-top: 0;
 }
 
-.paperclip-markdown > :last-child {
+:is(.simplexy-markdown, .paperclip-markdown) > :last-child {
   margin-bottom: 0;
 }
 
-.paperclip-markdown :where(p, ul, ol, blockquote, pre, .paperclip-markdown-table-scroll) {
+:is(.simplexy-markdown, .paperclip-markdown) :where(p, ul, ol, blockquote, pre, :is(.simplexy-markdown-table-scroll, .paperclip-markdown-table-scroll)) {
   margin-top: 0.7rem;
   margin-bottom: 0.7rem;
 }
 
-.paperclip-markdown :where(ul, ol) {
+:is(.simplexy-markdown, .paperclip-markdown) :where(ul, ol) {
   padding-left: 1.5rem;
 }
 
-.paperclip-markdown ul {
+:is(.simplexy-markdown, .paperclip-markdown) ul {
   list-style-type: disc;
 }
 
-.paperclip-markdown ol {
+:is(.simplexy-markdown, .paperclip-markdown) ol {
   /* Enough inline start room to hold outside markers without clipped digits
      when markdown lists sit flush against an overflow-constrained container. */
   list-style-type: decimal;
   padding-left: 2.5rem;
 }
 
-.paperclip-markdown li {
+:is(.simplexy-markdown, .paperclip-markdown) li {
   margin: 0.14rem 0;
   padding-left: 0.2rem;
 }
 
 @media (width < 48rem) {
-  .paperclip-mobile-thread .paperclip-markdown :where(ul, ol) {
+  :is(.simplexy-mobile-thread, .paperclip-mobile-thread) :is(.simplexy-markdown, .paperclip-markdown) :where(ul, ol) {
     padding-left: calc(var(--spacing) * 5);
   }
 }
 
-.paperclip-markdown li > :where(p, ul, ol) {
+:is(.simplexy-markdown, .paperclip-markdown) li > :where(p, ul, ol) {
   margin-top: 0.3rem;
   margin-bottom: 0.3rem;
 }
 
-.paperclip-markdown li::marker {
+:is(.simplexy-markdown, .paperclip-markdown) li::marker {
   color: var(--muted-foreground);
 }
 
-.paperclip-markdown.paperclip-markdown-on-accent li::marker {
+:is(.simplexy-markdown, .paperclip-markdown):is(.simplexy-markdown-on-accent, .paperclip-markdown-on-accent) li::marker {
   color: currentColor;
 }
 
-.paperclip-markdown h1,
-.paperclip-markdown h2,
-.paperclip-markdown h3,
-.paperclip-markdown h4 {
+:is(.simplexy-markdown, .paperclip-markdown) h1,
+:is(.simplexy-markdown, .paperclip-markdown) h2,
+:is(.simplexy-markdown, .paperclip-markdown) h3,
+:is(.simplexy-markdown, .paperclip-markdown) h4 {
   margin-top: 1.75rem;
   margin-bottom: 0.45rem;
   color: var(--foreground);
@@ -2503,147 +2511,147 @@ a.paperclip-mention-chip[data-mention-kind="agent"]::before {
   line-height: 1.3;
 }
 
-.paperclip-markdown h1 {
+:is(.simplexy-markdown, .paperclip-markdown) h1 {
   font-size: 1.5rem;
 }
 
-.paperclip-markdown h2 {
+:is(.simplexy-markdown, .paperclip-markdown) h2 {
   font-size: 1.25rem;
 }
 
-.paperclip-markdown h3 {
+:is(.simplexy-markdown, .paperclip-markdown) h3 {
   font-size: 1.05rem;
 }
 
-.paperclip-markdown h4 {
+:is(.simplexy-markdown, .paperclip-markdown) h4 {
   font-size: 0.95rem;
 }
 
-.paperclip-markdown.paperclip-markdown-on-accent :where(h1, h2, h3, h4, strong, b) {
+:is(.simplexy-markdown, .paperclip-markdown):is(.simplexy-markdown-on-accent, .paperclip-markdown-on-accent) :where(h1, h2, h3, h4, strong, b) {
   color: currentColor;
 }
 
-.paperclip-markdown :where(strong, b) {
+:is(.simplexy-markdown, .paperclip-markdown) :where(strong, b) {
   color: var(--foreground);
   font-weight: 600;
 }
 
-.paperclip-markdown a {
+:is(.simplexy-markdown, .paperclip-markdown) a {
   color: color-mix(in oklab, var(--foreground) 76%, #0969da 24%);
   text-decoration: underline;
   text-underline-offset: 0.15em;
   cursor: pointer;
 }
 
-.paperclip-markdown.paperclip-markdown-on-accent :where(a, a:visited) {
+:is(.simplexy-markdown, .paperclip-markdown):is(.simplexy-markdown-on-accent, .paperclip-markdown-on-accent) :where(a, a:visited) {
   color: currentColor;
   text-decoration-color: color-mix(in oklab, currentColor 72%, transparent);
 }
 
-.paperclip-markdown.paperclip-markdown-on-accent :where(a:hover, a:focus-visible) {
+:is(.simplexy-markdown, .paperclip-markdown):is(.simplexy-markdown-on-accent, .paperclip-markdown-on-accent) :where(a:hover, a:focus-visible) {
   color: currentColor;
   text-decoration-color: currentColor;
 }
 
-.paperclip-markdown a.paperclip-mention-chip {
+:is(.simplexy-markdown, .paperclip-markdown) a:is(.simplexy-mention-chip, .paperclip-mention-chip) {
   text-decoration: none;
 }
 
-.paperclip-markdown a.paperclip-mention-chip[data-mention-kind="issue"] {
+:is(.simplexy-markdown, .paperclip-markdown) a:is(.simplexy-mention-chip, .paperclip-mention-chip)[data-mention-kind="issue"] {
   border-color: color-mix(in oklab, var(--foreground) 14%, var(--border) 86%);
   background: color-mix(in oklab, var(--accent) 42%, transparent);
 }
 
 /* Inline issue references in markdown: no pill chrome, just a status icon
    beside the link label — keeps the pair from splitting across lines. */
-.paperclip-markdown-issue-ref {
+:is(.simplexy-markdown-issue-ref, .paperclip-markdown-issue-ref) {
   display: inline;
   white-space: nowrap;
 }
 
 /* External object URL decorations follow the same pattern: the host renders
    the icon prefix, the link text is left untouched (Postel's Law). */
-.paperclip-markdown-external-ref {
+:is(.simplexy-markdown-external-ref, .paperclip-markdown-external-ref) {
   display: inline;
   white-space: nowrap;
 }
 
-.dark .paperclip-markdown a {
+.dark :is(.simplexy-markdown, .paperclip-markdown) a {
   color: color-mix(in oklab, var(--foreground) 80%, #58a6ff 20%);
 }
 
-.dark .paperclip-markdown.paperclip-markdown-on-accent :where(a, a:visited) {
+.dark :is(.simplexy-markdown, .paperclip-markdown):is(.simplexy-markdown-on-accent, .paperclip-markdown-on-accent) :where(a, a:visited) {
   color: currentColor;
 }
 
-.paperclip-markdown blockquote {
+:is(.simplexy-markdown, .paperclip-markdown) blockquote {
   margin-left: 0;
   padding-left: 0.95rem;
   border-left: 0.24rem solid color-mix(in oklab, var(--border) 84%, var(--muted-foreground) 16%);
   color: var(--muted-foreground);
 }
 
-.paperclip-markdown.paperclip-markdown-on-accent blockquote {
+:is(.simplexy-markdown, .paperclip-markdown):is(.simplexy-markdown-on-accent, .paperclip-markdown-on-accent) blockquote {
   border-left-color: color-mix(in oklab, currentColor 56%, transparent);
   color: color-mix(in oklab, currentColor 88%, transparent);
 }
 
-.paperclip-markdown.paperclip-markdown-on-accent .paperclip-workspace-file-link {
+:is(.simplexy-markdown, .paperclip-markdown):is(.simplexy-markdown-on-accent, .paperclip-markdown-on-accent) :is(.simplexy-workspace-file-link, .paperclip-workspace-file-link) {
   border-color: color-mix(in oklab, currentColor 34%, transparent);
   background-color: color-mix(in oklab, currentColor 16%, transparent);
   color: currentColor;
 }
 
-.paperclip-markdown.paperclip-markdown-on-accent .paperclip-workspace-file-link:hover {
+:is(.simplexy-markdown, .paperclip-markdown):is(.simplexy-markdown-on-accent, .paperclip-markdown-on-accent) :is(.simplexy-workspace-file-link, .paperclip-workspace-file-link):hover {
   background-color: color-mix(in oklab, currentColor 24%, transparent);
 }
 
-.paperclip-markdown.paperclip-markdown-on-accent :where(a.paperclip-mention-chip, a.paperclip-project-mention-chip) {
+:is(.simplexy-markdown, .paperclip-markdown):is(.simplexy-markdown-on-accent, .paperclip-markdown-on-accent) :where(a:is(.simplexy-mention-chip, .paperclip-mention-chip), a:is(.simplexy-project-mention-chip, .paperclip-project-mention-chip)) {
   border-color: color-mix(in oklab, currentColor 34%, transparent) !important;
   background: color-mix(in oklab, currentColor 16%, transparent) !important;
   color: currentColor !important;
 }
 
-.paperclip-markdown hr {
+:is(.simplexy-markdown, .paperclip-markdown) hr {
   margin: 1.25rem 0;
   border-color: var(--border);
 }
 
-.paperclip-markdown img {
+:is(.simplexy-markdown, .paperclip-markdown) img {
   border-radius: calc(var(--radius) + 2px);
   box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--foreground) 10%, transparent);
 }
 
-.paperclip-markdown-table-scroll {
+:is(.simplexy-markdown-table-scroll, .paperclip-markdown-table-scroll) {
   max-width: 100%;
   overflow-x: auto;
   overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
 }
 
-.paperclip-markdown-table-scroll:focus-visible {
+:is(.simplexy-markdown-table-scroll, .paperclip-markdown-table-scroll):focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 2px;
 }
 
-.paperclip-markdown-table-scroll table {
+:is(.simplexy-markdown-table-scroll, .paperclip-markdown-table-scroll) table {
   width: max-content;
   min-width: 100%;
   margin: 0;
 }
 
-.paperclip-markdown-table-scroll :where(th, td) {
+:is(.simplexy-markdown-table-scroll, .paperclip-markdown-table-scroll) :where(th, td) {
   min-width: 8rem;
   max-width: 18rem;
   vertical-align: top;
 }
 
-.paperclip-markdown th {
+:is(.simplexy-markdown, .paperclip-markdown) th {
   font-weight: 600;
   text-align: left;
 }
 
-.paperclip-mermaid {
+:is(.simplexy-mermaid, .paperclip-mermaid) {
   margin: 0.5rem 0;
   padding: 0.45rem 0.55rem;
   border: 1px solid var(--border);
@@ -2652,7 +2660,7 @@ a.paperclip-mention-chip[data-mention-kind="agent"]::before {
   overflow-x: auto;
 }
 
-.paperclip-mermaid svg {
+:is(.simplexy-mermaid, .paperclip-mermaid) svg {
   display: block;
   width: max-content;
   max-width: none;
@@ -2660,17 +2668,17 @@ a.paperclip-mention-chip[data-mention-kind="agent"]::before {
   height: auto;
 }
 
-.paperclip-mermaid-status {
+:is(.simplexy-mermaid-status, .paperclip-mermaid-status) {
   margin: 0 0 0.45rem;
   font-size: 0.75rem;
   color: var(--muted-foreground);
 }
 
-.paperclip-mermaid-status-error {
+:is(.simplexy-mermaid-status-error, .paperclip-mermaid-status-error) {
   color: var(--destructive);
 }
 
-.paperclip-mermaid-source {
+:is(.simplexy-mermaid-source, .paperclip-mermaid-source) {
   margin: 0;
   padding: 0;
   border: 0;
@@ -2678,10 +2686,10 @@ a.paperclip-mention-chip[data-mention-kind="agent"]::before {
 }
 
 /* Mention chips rendered inline in prose (MarkdownBody or inline anchors) */
-a.paperclip-mention-chip,
-a.paperclip-project-mention-chip,
-span.paperclip-mention-chip,
-span.paperclip-project-mention-chip {
+a:is(.simplexy-mention-chip, .paperclip-mention-chip),
+a:is(.simplexy-project-mention-chip, .paperclip-project-mention-chip),
+span:is(.simplexy-mention-chip, .paperclip-mention-chip),
+span:is(.simplexy-project-mention-chip, .paperclip-project-mention-chip) {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
@@ -2705,28 +2713,28 @@ span.paperclip-project-mention-chip {
 /* Touch target floor: WCAG 2.5.5 expects ≥24px on coarse pointers. The base
    chip is 22px; bump it on touch viewports without disturbing inline metrics. */
 @media (pointer: coarse) {
-  a.paperclip-mention-chip,
-  a.paperclip-project-mention-chip,
-  span.paperclip-mention-chip,
-  span.paperclip-project-mention-chip {
+  a:is(.simplexy-mention-chip, .paperclip-mention-chip),
+  a:is(.simplexy-project-mention-chip, .paperclip-project-mention-chip),
+  span:is(.simplexy-mention-chip, .paperclip-mention-chip),
+  span:is(.simplexy-project-mention-chip, .paperclip-project-mention-chip) {
     min-height: 24px;
   }
 }
 
 /* External object pills: variant marker the host renders for known-resolved
    external URLs. Inline status icon is rendered by ExternalObjectStatusIcon. */
-a.paperclip-mention-chip[data-mention-kind="external-object"],
-span.paperclip-mention-chip[data-mention-kind="external-object"] {
+a:is(.simplexy-mention-chip, .paperclip-mention-chip)[data-mention-kind="external-object"],
+span:is(.simplexy-mention-chip, .paperclip-mention-chip)[data-mention-kind="external-object"] {
   /* Inherit base chip styling; status colour comes from inline classes so the
      host can vary tone per category without defining a CSS variant per state. */
 }
 
 /* When the identifier inside a chip is backtick-wrapped in markdown, strip the
    inline-code monospace/gray styling so the pill label reads cleanly. */
-.paperclip-markdown a.paperclip-mention-chip code,
-.paperclip-markdown a.paperclip-project-mention-chip code,
-.paperclip-markdown span.paperclip-mention-chip code,
-.paperclip-markdown span.paperclip-project-mention-chip code {
+:is(.simplexy-markdown, .paperclip-markdown) a:is(.simplexy-mention-chip, .paperclip-mention-chip) code,
+:is(.simplexy-markdown, .paperclip-markdown) a:is(.simplexy-project-mention-chip, .paperclip-project-mention-chip) code,
+:is(.simplexy-markdown, .paperclip-markdown) span:is(.simplexy-mention-chip, .paperclip-mention-chip) code,
+:is(.simplexy-markdown, .paperclip-markdown) span:is(.simplexy-project-mention-chip, .paperclip-project-mention-chip) code {
   font-family: inherit;
   background: none;
   color: inherit;
@@ -3212,8 +3220,10 @@ span.paperclip-mention-chip[data-mention-kind="external-object"] {
   --blur-2px: 2px; /* Extracted from ui/src/components/IssueChatThread.tsx (backdrop-blur-[2px]). */
   --drop-shadow-extract-1: 0 1px 2px rgba(0,0,0,0.65); /* Extracted from ui/src/components/CompanyPatternIcon.tsx (drop-shadow-[0_1px_2px_rgba(0,0,0,0.65)]). */
   --code-bg-resolved: var(--paperclip-code-bg, var(--muted)); /* Extracted from ui/src/components/FileViewerSheet.tsx (bg-[var(--paperclip-code-bg,theme(colors.muted.DEFAULT))]). */
-  --paperclip-code-highlight-bg: rgba(250,204,21,0.12); /* DECISION-SHEET.md A5: FileViewerSheet.tsx referenced this var without it ever being defined, relying on the var() fallback; minted here at exactly the former fallback value (zero pixels). */
-  --paperclip-code-highlight-border: rgb(234,179,8); /* DECISION-SHEET.md A5: same as --paperclip-code-highlight-bg — minted at the former fallback value. */
+  --simplexy-code-highlight-bg: rgba(250,204,21,0.12);
+  --paperclip-code-highlight-bg: var(--simplexy-code-highlight-bg);
+  --simplexy-code-highlight-border: rgb(234,179,8);
+  --paperclip-code-highlight-border: var(--simplexy-code-highlight-border);
   --code-highlight-bg-resolved: var(--paperclip-code-highlight-bg); /* Extracted from ui/src/components/FileViewerSheet.tsx; fallback dropped in A5 now that --paperclip-code-highlight-bg is a real token (was var(--paperclip-code-highlight-bg, rgba(250,204,21,0.12))). */
   --code-gutter-fg-resolved: var(--paperclip-code-gutter-fg, var(--muted-foreground)); /* Extracted from ui/src/components/FileViewerSheet.tsx (text-[var(--paperclip-code-gutter-fg,theme(colors.muted.foreground))]). */
   --code-highlight-border-resolved: var(--paperclip-code-highlight-border); /* Extracted from ui/src/components/FileViewerSheet.tsx; fallback dropped in A5 now that --paperclip-code-highlight-border is a real token (was var(--paperclip-code-highlight-border, rgb(234,179,8))). */
@@ -4047,7 +4057,7 @@ html:has(.design-proposal-theme) [class~="text-(length:--text-micro)"] {
 /* Tailwind prose and preflight also contain literal medium/bolder weights.
    Preserve explicit strong-heading rules and compact reasoning inheritance. */
 html:has(.design-proposal-theme) :where(b, strong) { font-weight: var(--font-weight-semibold); }
-html:has(.design-proposal-theme) .paperclip-markdown :where(a, code, blockquote) { font-weight: var(--font-weight-normal); }
+html:has(.design-proposal-theme) :is(.simplexy-markdown, .paperclip-markdown) :where(a, code, blockquote) { font-weight: var(--font-weight-normal); }
 
 /* Conversation proposal: two size/leading recipes, shared by saved threads,
    synthetic previews and the composer. Page headers and other prose are outside
@@ -4092,7 +4102,7 @@ html:has(.design-proposal-theme) [data-conversation-typography] :where(
   line-height: inherit;
 }
 html:has(.design-proposal-theme) [data-conversation-typography] :where(
-  [data-conversation-text], [data-testid="task-chat-thinking"] .paperclip-markdown,
+  [data-conversation-text], [data-testid="task-chat-thinking"] :is(.simplexy-markdown, .paperclip-markdown),
   [data-testid="task-chat-composer-input"],
   [data-testid="task-chat-live-run-pill"] > span:first-child,
   [data-testid="task-chat-turn-status-header"]
@@ -4103,27 +4113,27 @@ html:has(.design-proposal-theme) [data-conversation-typography] :where(
 }
 html:has(.design-proposal-theme) [data-conversation-typography] [data-conversation-text="final"] { color: var(--foreground); }
 html:has(.design-proposal-theme) [data-conversation-typography] [data-conversation-text="human"] { color: var(--conversation-human-foreground); }
-html:has(.design-proposal-theme) [data-conversation-typography] .paperclip-markdown {
+html:has(.design-proposal-theme) [data-conversation-typography] :is(.simplexy-markdown, .paperclip-markdown) {
   font-size: inherit;
   line-height: inherit;
   color: inherit;
 }
-html:has(.design-proposal-theme) [data-conversation-typography] .paperclip-markdown :is(h1, h2, h3, h4, h5, h6, p, ul, ol, li, blockquote, a, code, strong, b, em, th, td) {
+html:has(.design-proposal-theme) [data-conversation-typography] :is(.simplexy-markdown, .paperclip-markdown) :is(h1, h2, h3, h4, h5, h6, p, ul, ol, li, blockquote, a, code, strong, b, em, th, td) {
   font-size: inherit;
   line-height: inherit;
   color: inherit;
   letter-spacing: normal;
 }
-html:has(.design-proposal-theme) [data-conversation-typography] .paperclip-markdown :is(h1, h2, h3, h4, h5, h6) { font-weight: var(--font-weight-normal); }
-html:has(.design-proposal-theme) [data-conversation-typography] .paperclip-markdown :is(strong, b) { font-weight: var(--font-weight-semibold); }
+html:has(.design-proposal-theme) [data-conversation-typography] :is(.simplexy-markdown, .paperclip-markdown) :is(h1, h2, h3, h4, h5, h6) { font-weight: var(--font-weight-normal); }
+html:has(.design-proposal-theme) [data-conversation-typography] :is(.simplexy-markdown, .paperclip-markdown) :is(strong, b) { font-weight: var(--font-weight-semibold); }
 /* Existing shared code-block rules use !important; retain their layout while
    allowing authored message and diagnostic roles to own size and contrast. */
-html:has(.design-proposal-theme) [data-conversation-typography] .paperclip-markdown pre {
+html:has(.design-proposal-theme) [data-conversation-typography] :is(.simplexy-markdown, .paperclip-markdown) pre {
   font-size: inherit !important;
   line-height: inherit;
   color: inherit !important;
 }
-html:has(.design-proposal-theme) [data-conversation-typography] .paperclip-markdown :is(a, a:hover, a:focus-visible) { color: inherit; }
+html:has(.design-proposal-theme) [data-conversation-typography] :is(.simplexy-markdown, .paperclip-markdown) :is(a, a:hover, a:focus-visible) { color: inherit; }
 html:has(.design-proposal-theme) [data-conversation-typography] .shimmer-text {
   --shimmer-base: var(--foreground);
   --shimmer-highlight: color-mix(in oklch, var(--foreground) 35%, transparent);
@@ -5001,7 +5011,7 @@ html:not(.dark) .coordinator-sidebar {
 }
 .coordinator-workspace [data-conversation-text] { font-size: var(--coordinator-body-size); line-height: var(--coordinator-body-leading); }
 .coordinator-workspace [data-conversation-text="progress"] { font-size: var(--text-sm); line-height: var(--text-sm--line-height); }
-.coordinator-workspace [data-conversation-text] .paperclip-markdown { font-size: inherit; line-height: inherit; }
+.coordinator-workspace [data-conversation-text] :is(.simplexy-markdown, .paperclip-markdown) { font-size: inherit; line-height: inherit; }
 .coordinator-workspace [data-conversation-text="human"] { background: var(--bubble-human-bg); color: var(--bubble-human-fg); }
 .coordinator-workspace [data-question-answer] { background: var(--card); }
 .dark .coordinator-workspace [data-question-answer] { background: var(--muted); }
@@ -5016,7 +5026,7 @@ html:not(.dark) .coordinator-sidebar {
 @media (min-width: 768px) {
   .coordinator-workspace [data-testid="task-chat-thread"] { position: relative; }
   .coordinator-workspace [data-testid="task-chat-composer-dock"] { position: absolute; inset-inline: 0; bottom: 0; }
-  .coordinator-workspace [data-testid="task-chat-scroller"] > .paperclip-mobile-thread {
+  .coordinator-workspace [data-testid="task-chat-scroller"] > :is(.simplexy-mobile-thread, .paperclip-mobile-thread) {
     padding-bottom: calc(var(--task-composer-dock-height, 0px) + var(--spacing) * 4);
   }
   .coordinator-workspace [data-testid="task-chat-scroller"] ~ button {

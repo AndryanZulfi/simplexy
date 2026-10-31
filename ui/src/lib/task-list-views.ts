@@ -21,7 +21,7 @@ export function matchesTaskListView(view: TaskListView, issue: ViewIssue, unread
 }
 
 export function taskListViewStorageKey(scope: string, userId: string): string {
-  return `paperclip:task-list-view:v1:${encodeURIComponent(scope)}:${encodeURIComponent(userId)}`;
+  return `simplexy:task-list-view:v1:${encodeURIComponent(scope)}:${encodeURIComponent(userId)}`;
 }
 
 type ViewStorage = Pick<Storage, "getItem" | "setItem">;

@@ -1,9 +1,9 @@
 import type { Issue, IssueStatus, IssueSummary } from "@paperclipai/shared";
 
 export const RECENT_TASKS_LIMIT = 5;
-export const RECENT_TASKS_UPDATED_EVENT = "paperclip:recent-tasks-updated";
+export const RECENT_TASKS_UPDATED_EVENT = "simplexy:recent-tasks-updated";
 const STORAGE_PREFIX = "paperclip.recentTasks.v2:";
-const LEGACY_STORAGE_PREFIX = "paperclip.recentTasks:";
+const LEGACY_STORAGE_PREFIX = "simplexy.recentTasks:";
 
 export interface RecentTaskEntry {
   id: string;

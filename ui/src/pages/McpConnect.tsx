@@ -149,7 +149,8 @@ function McpConnectRequest({ id, device = false, agentPairingOnly = false, onEdi
         </>}
       </>}
     </Card>
-  </div>;
+  </div>
+  );
 }
 
 export function AssistantConnectionsPage() {

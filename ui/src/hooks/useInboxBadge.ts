@@ -14,6 +14,7 @@ import {
   loadReadInboxItems,
   saveReadInboxItems,
   READ_ITEMS_KEY,
+  DISMISSED_KEY,
 } from "../lib/inbox";
 
 export function useDismissedInboxAlerts() {
@@ -21,7 +22,7 @@ export function useDismissedInboxAlerts() {
 
   useEffect(() => {
     const handleStorage = (event: StorageEvent) => {
-      if (event.key !== "paperclip:inbox:dismissed") return;
+      if (event.key !== DISMISSED_KEY && event.key !== "simplexy:inbox:dismissed") return;
       setDismissed(loadDismissedInboxAlerts());
     };
     window.addEventListener("storage", handleStorage);

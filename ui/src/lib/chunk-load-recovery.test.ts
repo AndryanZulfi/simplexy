@@ -102,7 +102,7 @@ describe("reloadForChunkLoadError", () => {
 
   it("ignores an unreadable stored marker", () => {
     const reload = vi.fn();
-    const storage = memoryStorage({ "paperclip:chunk-load-reload-at": "not-a-time" });
+    const storage = memoryStorage({ "simplexy:chunk-load-reload-at": "not-a-time" });
     const { reloadForChunkLoadError } = createChunkLoadRecovery({ storage: () => storage, reload, now: () => 1_000 });
     expect(reloadForChunkLoadError(cssPreloadError)).toBe(true);
   });

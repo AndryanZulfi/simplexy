@@ -1,6 +1,6 @@
 import { useCallback, useState, useSyncExternalStore } from "react";
 
-const UPDATED = "paperclip:pinned-navigation-updated";
+const UPDATED = "simplexy:pinned-navigation-updated";
 const EMPTY = "[]";
 
 function read(key: string | null) {

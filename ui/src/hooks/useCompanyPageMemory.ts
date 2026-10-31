@@ -8,11 +8,12 @@ import {
   sanitizeRememberedPathForCompany,
 } from "../lib/company-page-memory";
 
-const STORAGE_KEY = "paperclip.companyPaths";
+const STORAGE_KEY = "simplexy.companyPaths";
+const LEGACY_STORAGE_KEY = "simplexy.companyPaths";
 
 function getCompanyPaths(): Record<string, string> {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(STORAGE_KEY) ?? localStorage.getItem(LEGACY_STORAGE_KEY);
     if (raw) return JSON.parse(raw);
   } catch {
     /* ignore */

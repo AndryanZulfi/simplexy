@@ -1,7 +1,7 @@
 import type { Agent } from "@paperclipai/shared";
 
-export const AGENT_ORDER_UPDATED_EVENT = "paperclip:agent-order-updated";
-export const AGENT_SORT_MODE_UPDATED_EVENT = "paperclip:agent-sort-mode-updated";
+export const AGENT_ORDER_UPDATED_EVENT = "simplexy:agent-order-updated";
+export const AGENT_SORT_MODE_UPDATED_EVENT = "simplexy:agent-sort-mode-updated";
 const AGENT_ORDER_STORAGE_PREFIX = "paperclip.agentOrder";
 const AGENT_SORT_MODE_STORAGE_PREFIX = "paperclip.agentSortMode";
 const ANONYMOUS_USER_ID = "anonymous";
