@@ -22,7 +22,7 @@ import {
   heartbeatRuns,
   issues,
   plugins,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,

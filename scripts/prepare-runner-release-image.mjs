@@ -137,7 +137,7 @@ z.extractall(dest)
   verifyReleaseProviderPack(pack, source, 'linux-x64', { profiles, distributions });
   const packages = JSON.parse(await readFile(join(dirs[2], 'manifest.json'), 'utf8'));
   if (packages.schema !== 'paperclip.runner.public-packages/v1' || packages.sourceRevision !== source) throw Error('Wrong public-package source');
-  const server = packages.archives?.filter(a => a.name === '@paperclipai/server');
+  const server = packages.archives?.filter(a => a.name === '@simplexy/server');
   if (server?.length !== 1 || !/^paperclipai-server-[a-z0-9.-]+\.tgz$/.test(server[0].file)
     || !/^[a-f0-9]{64}$/.test(server[0].sha256)) throw Error('Invalid server archive');
   const serverArchive = join(dirs[2], server[0].file);

@@ -1,5 +1,5 @@
 import { CASE_STATUSES, type CaseDetail, type CaseEvent, type CaseHandoffView } from "@/api/cases";
-import { instanceExperimentalSettingsSchema } from "@paperclipai/shared";
+import { instanceExperimentalSettingsSchema } from "@simplexy/shared";
 import { storybookAgents, storybookProjects } from "../fixtures/paperclipData";
 import { caseActors, readonlyCaseFixtures, type CaseRecord } from "./cases-read-only-fixtures";
 import { prepareFixtureApi, type FixtureState } from "./capability-gaps/api";

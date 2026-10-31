@@ -1,8 +1,8 @@
 import { createHash, randomUUID } from "node:crypto";
 import { eq } from "drizzle-orm";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { agents, authUsers, companies, companyMemberships, createDb, heartbeatRuns, issueComments, issues } from "@paperclipai/db";
-import { FAST_RESPONSE_AGENT_GUIDANCE } from "@paperclipai/shared";
+import { agents, authUsers, companies, companyMemberships, createDb, heartbeatRuns, issueComments, issues } from "@simplexy/db";
+import { FAST_RESPONSE_AGENT_GUIDANCE } from "@simplexy/shared";
 import { registerServerAdapter, unregisterServerAdapter, type AdapterExecutionContext } from "../adapters/index.js";
 import { heartbeatService } from "../services/heartbeat.js";
 import { documentService } from "../services/documents.js";

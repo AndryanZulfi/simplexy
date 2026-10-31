@@ -1,5 +1,5 @@
 import { imessageProgressSupersessionReason } from "./imessage-photon/publications.js";
-import { fastResponseRequests } from "@paperclipai/db";
+import { fastResponseRequests } from "@simplexy/db";
 
 import {
   and,
@@ -16,7 +16,7 @@ import {
 } from "drizzle-orm";
 import { alias } from "drizzle-orm/pg-core";
 
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 
 import {
   agentWakeupRequests,
@@ -27,13 +27,13 @@ import {
   issueComments,
   issueThreadInteractions,
   issues,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import type {
   SafeChatPublicationPayload,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   isUuidLike,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 
 import {
   NativeChatReviewPresentationContentionError,

@@ -1,8 +1,8 @@
 import type { ActorInfo } from "../types.js";
 import { and, desc, eq } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
-import { toolConnections, toolRuntimeSlots } from "@paperclipai/db";
-import type { ToolRuntimeSlot } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import { toolConnections, toolRuntimeSlots } from "@simplexy/db";
+import type { ToolRuntimeSlot } from "@simplexy/shared";
 import { HttpError, notFound } from "../../../errors.js";
 import { logActivity } from "../../activity-log.js";
 import { createToolRuntimeSupervisor, ToolRuntimeSupervisorError } from "../../tool-runtime-supervisor.js";

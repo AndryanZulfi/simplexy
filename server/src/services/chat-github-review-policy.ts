@@ -10,7 +10,7 @@ import {
   type GitHubAutomaticEventContext,
   type GitHubIssueEventContext,
   type GitHubReviewPolicy,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 
 export type GitHubAutomaticPolicyContext =
   | Pick<GitHubReviewEventContext, "event" | "repositoryId" | "repository" | "author" | "sender" | "draft" | "baseBranch" | "labels">

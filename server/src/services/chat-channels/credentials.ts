@@ -17,7 +17,7 @@ import { type CredentialMutationLeaseGuard } from "../chat-credential-mutation-l
 
 import { photonSharedScope } from "../photon/cloud.js";
 
-import { isUuidLike, photonChannelConfigurationSchema } from "@paperclipai/shared";
+import { isUuidLike, photonChannelConfigurationSchema } from "@simplexy/shared";
 import { notifyChatEndpointWork } from "../chat-work-notifications.js";
 
 import {
@@ -32,17 +32,17 @@ import {
   sql,
 } from "drizzle-orm";
 
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 
 import {
   chatEndpoints,
   companySecretBindings,
   toolConnections,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import type {
   ChatProvider,
   ToolCredentialSecretRef,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 
 import { isUniqueViolation } from "../../db-errors.js";
 

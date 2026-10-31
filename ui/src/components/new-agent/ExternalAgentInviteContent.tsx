@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { AGENT_ROLES, AGENT_ROLE_LABELS } from "@paperclipai/shared";
+import { AGENT_ROLES, AGENT_ROLE_LABELS } from "@simplexy/shared";
 import type { MuseInvitationDraft } from "@/lib/muse-invitation-draft";
 import { Input } from "../ui/input";
 import { Link } from "@/lib/router";

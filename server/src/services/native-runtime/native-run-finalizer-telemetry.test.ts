@@ -20,7 +20,7 @@ import {
   agentWakeupRequests,
   workspaceOperations,
   activityLog,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,

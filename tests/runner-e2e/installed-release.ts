@@ -18,9 +18,9 @@ export function installedReleaseLaunch(cliPath: string) {
 export function installedReleaseDaytonaPlugin(cliPath: string, installedPluginPath?: string, expectedVersion?: string): string {
   const cli = installedReleaseLaunch(cliPath);
   if (installedPluginPath && !path.isAbsolute(installedPluginPath)) throw new Error("Installed Daytona plugin path must be absolute");
-  const plugin = realpathSync(installedPluginPath ?? path.join(path.dirname(cli.cwd), "@paperclipai/plugin-daytona"));
+  const plugin = realpathSync(installedPluginPath ?? path.join(path.dirname(cli.cwd), "@simplexy/plugin-daytona"));
   const manifest = JSON.parse(readFileSync(path.join(plugin, "package.json"), "utf8"));
-  if (manifest.name !== "@paperclipai/plugin-daytona" ||
+  if (manifest.name !== "@simplexy/plugin-daytona" ||
       manifest.paperclipPlugin?.manifest !== "./dist/manifest.js" ||
       manifest.paperclipPlugin?.worker !== "./dist/worker.js" ||
       manifest.exports?.["."]?.import !== "./dist/index.js") {

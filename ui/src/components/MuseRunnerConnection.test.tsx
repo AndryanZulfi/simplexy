@@ -8,7 +8,7 @@ import { MuseConnectionChecks } from "./new-agent/ExternalAgentInviteContent";
 import { museConnectionState } from "@/hooks/useMuseConnection";
 import { museConnection, stoppedMuseConnection, museStopBoundary, musePairing } from "../../storybook/support/external-agent-invite/muse-fixtures";
 import { museInvitationsApi } from "@/api/museInvitations";
-import { MUSE_CLIENT_VERSION, type MuseConnection } from "@paperclipai/shared";
+import { MUSE_CLIENT_VERSION, type MuseConnection } from "@simplexy/shared";
 
 vi.mock("@/api/companies-query", () => ({ useAccountIdentity: () => ({ userId: "operator", settled: true, failed: false }) }));
 

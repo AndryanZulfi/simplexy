@@ -1,8 +1,8 @@
 import { randomUUID } from "node:crypto";
 import { eq } from "drizzle-orm";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { activityLog, agents, companies, createDb, heartbeatRuns, issueComments, issues } from "@paperclipai/db";
-import type { LiveEvent } from "@paperclipai/shared";
+import { activityLog, agents, companies, createDb, heartbeatRuns, issueComments, issues } from "@simplexy/db";
+import type { LiveEvent } from "@simplexy/shared";
 import { taskToastEligible } from "../realtime/task-toast-eligibility.js";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 

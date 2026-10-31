@@ -9,7 +9,7 @@ import {
   statusDecisions, statusDecisionEffects, workAssessments, heartbeatRunEvents,
   heartbeatRuns, issueComments, issueQuestionResponseDeliveries, issueThreadInteractions,
   issues, toolApplications, toolConnections,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 
 // This owns only fixture data. Each test retains its worker, clock and quiet
 // assertions, and must stop the worker before cleanup.

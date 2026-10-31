@@ -2,7 +2,7 @@ import { useLayoutEffect, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, within } from "storybook/test";
-import { monthlySubscriptionCents, type SubscriptionCostReport, type CostDataQualityReport } from "@paperclipai/shared";
+import { monthlySubscriptionCents, type SubscriptionCostReport, type CostDataQualityReport } from "@simplexy/shared";
 import { Costs } from "@/pages/Costs";
 import { ToastViewport } from "@/components/ToastViewport";
 

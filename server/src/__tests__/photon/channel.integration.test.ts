@@ -54,7 +54,7 @@ import {
   issueAttachments,
   assets,
   toolConnections,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { startEmbeddedPostgresTestDatabase } from "../helpers/embedded-postgres.js";
 import {
   chatChannelService,

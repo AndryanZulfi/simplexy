@@ -1,5 +1,5 @@
 import type { PgInsertValue } from "drizzle-orm/pg-core";
-import { issueComments, type Db } from "@paperclipai/db";
+import { issueComments, type Db } from "@simplexy/db";
 import { DELIVERY_QUEUES, notifyDeliveryWork } from "./delivery-work-notifications.js";
 
 type WriteDb = Db | Parameters<Parameters<Db["transaction"]>[0]>[0];

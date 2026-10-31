@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, waitFor, within } from "storybook/test";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { getAppStoreDefinition, type ToolCatalogEntry, type ToolConnectionAccessSummary, type ToolConnectionTestAgent } from "@paperclipai/shared";
+import { getAppStoreDefinition, type ToolCatalogEntry, type ToolConnectionAccessSummary, type ToolConnectionTestAgent } from "@simplexy/shared";
 import { queryKeys } from "@/lib/queryKeys";
 import { ConnectionSetupFlow } from "@/features/connections/ConnectionSetupFlow";
 import { ConnectorCard } from "@/pages/apps/Browse";

@@ -9,8 +9,8 @@ import {
   toolConnections,
   toolConnectionInstalls,
   type Db,
-} from "@paperclipai/db";
-import type { ProjectGitAuthorization } from "@paperclipai/shared";
+} from "@simplexy/db";
+import type { ProjectGitAuthorization } from "@simplexy/shared";
 import { forbidden, notFound } from "../errors.js";
 import { resolveManagedGitHubCredential } from "./git-credentials.js";
 import { resolveGitHubOperationCredentials } from "./github-operation-credentials.js";

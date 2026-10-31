@@ -2,12 +2,12 @@ import { writeToolConnectionHealthChange } from "../../tool-connection-health-no
 import type { ActorInfo } from "../types.js";
 import { createOAuthClientProtocol, storedOAuthTokenEndpointAuthMethod } from "./client.js";
 import { oauthConfig, normalizeOauthScopes, resolveGrantedOauthScopes } from "./metadata.js";
-import { googleWorkspaceEffectiveScopes, isGoogleWorkspaceScopeGrant } from "@paperclipai/shared";
+import { googleWorkspaceEffectiveScopes, isGoogleWorkspaceScopeGrant } from "@simplexy/shared";
 import { emitConnectionUpdated } from "../../connector-telemetry.js";
 import { and, eq, sql } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
-import { connectionGrants, companySecrets, toolConnections } from "@paperclipai/db";
-import type { ToolCredentialSecretRef } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import { connectionGrants, companySecrets, toolConnections } from "@simplexy/db";
+import type { ToolCredentialSecretRef } from "@simplexy/shared";
 import { conflict, HttpError, unprocessable } from "../../../errors.js";
 import { secretService } from "../../secrets.js";
 import { isPaperclipCloudConnectorStrategy, PaperclipCloudConnectorError, type PaperclipCloudConnector } from "../../paperclip-cloud-connector.js";

@@ -745,7 +745,7 @@ Public release packaging now selects the daemon beside its own compiled module,
 including the server's vendored layout, and verifies its actual executable
 architecture. Release assembly requires one source revision and all three
 independently built daemons. Run
-`pnpm --filter @paperclipai/paperclip-runner stage:release-binaries /path/to/manifest.json`
+`pnpm --filter @simplexy/paperclip-runner stage:release-binaries /path/to/manifest.json`
 with a JSON manifest containing `sourceRevision` and `platforms`, whose exact
 keys are `darwin-arm64`, `darwin-x64`, and `linux-x64`; each entry contains an
 absolute artifact `path` and `sha256:<64 hex digits>` digest. Assembly verifies

@@ -20,7 +20,7 @@ import {
   isArtifactReviewDocumentKey,
   type Issue,
   type IssueDocument,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   Globe,
   AppWindow,

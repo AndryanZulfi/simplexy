@@ -9,7 +9,7 @@ import {
   agentSessionGoalActions,
   agents,
   activityLog,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   type IssueExecutionMonitorPolicy,
   type IssueExecutionMonitorClearReason,
@@ -17,7 +17,7 @@ import {
   PROVIDER_QUOTA_MONITOR_SERVICE_NAME,
   EXECUTION_RECONCILIATION_CAUSES,
   isUuidLike,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   and,
   eq,
@@ -54,7 +54,7 @@ import {
 import { logger } from "../../middleware/logger.js";
 import { failRunnerGoalAction } from "../runner-goals.js";
 import { evaluateAgentInvokability } from "../agent-invokability.js";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import type { issueService } from "../issues.js";
 import type { createHeartbeatQueue } from "./queue.js";
 import type { createHeartbeatRetries, HeartbeatRetryDependencies } from "./retries.js";

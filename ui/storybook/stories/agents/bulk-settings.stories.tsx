@@ -8,7 +8,7 @@ import { PluginLauncherProvider } from "@/plugins/launchers";
 import { Layout } from "@/components/Layout";
 import { Agents } from "@/pages/Agents";
 import { queryKeys } from "@/lib/queryKeys";
-import type { Agent, AiConnectionBinding, AiManagedConnectionSummary } from "@paperclipai/shared";
+import type { Agent, AiConnectionBinding, AiManagedConnectionSummary } from "@simplexy/shared";
 import { storybookAgents } from "../../fixtures/paperclipData";
 import { connections, harnesses, roster } from "../../support/design-proposals/bulk-agent-settings-data";
 

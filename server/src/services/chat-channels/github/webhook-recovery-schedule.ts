@@ -1,6 +1,6 @@
 import { and, asc, eq, gt, isNotNull, sql } from "drizzle-orm";
-import { chatEndpoints, chatSdkState, toolConnections, type Db } from "@paperclipai/db";
-import type { ChatEndpointSetupState, ToolCredentialSecretRef } from "@paperclipai/shared";
+import { chatEndpoints, chatSdkState, toolConnections, type Db } from "@simplexy/db";
+import type { ChatEndpointSetupState, ToolCredentialSecretRef } from "@simplexy/shared";
 import { GITHUB_RECOVERY_STATE_KEY, githubRecoveryWindow } from "./webhook-recovery-state.js";
 import type { GitHubWebhookRecoveryScope } from "./webhook-recovery-notifications.js";
 

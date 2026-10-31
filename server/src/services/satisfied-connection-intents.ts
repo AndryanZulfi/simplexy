@@ -4,8 +4,8 @@ import { enqueueTerminalIssueInteractionChatPublications } from "./chat-interact
 import { connectionManagementService } from "./connection-management.js";
 import { chatCredentialEntryGenerations } from "./chat-channels/credentials.js";
 import { and, asc, eq, gt, inArray, isNull, or } from "drizzle-orm";
-import { approvals, chatEndpoints, chatExternalPrincipals, chatIdentityLinks, toolConnections, companyMemberships, connectionIntentDeliveries, issueApprovals, issueThreadInteractions, issues, type Db } from "@paperclipai/db";
-import { connectionIntentPayloadSchema } from "@paperclipai/shared";
+import { approvals, chatEndpoints, chatExternalPrincipals, chatIdentityLinks, toolConnections, companyMemberships, connectionIntentDeliveries, issueApprovals, issueThreadInteractions, issues, type Db } from "@simplexy/db";
+import { connectionIntentPayloadSchema } from "@simplexy/shared";
 import { logActivity, publishActivity, type ActivityPublication } from "./activity-log.js";
 import { chatCredentialRotationId, connectionIntentService } from "./connection-intents.js";
 import { DELIVERY_QUEUES, notifyDeliveryWork } from "./delivery-work-notifications.js";

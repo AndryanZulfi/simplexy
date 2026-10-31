@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { describe, expect, it } from "vitest";
-import type { AiProviderRouting } from "@paperclipai/shared";
-import { OPENROUTER_ATTRIBUTION_HEADERS } from "@paperclipai/shared/openrouter-attribution";
+import type { AiProviderRouting } from "@simplexy/shared";
+import { OPENROUTER_ATTRIBUTION_HEADERS } from "@simplexy/shared/openrouter-attribution";
 import { managedProviderRouting } from "../services/ai-provider-routing.js";
 
 describe("Simplexy OpenRouter connection attribution", () => {

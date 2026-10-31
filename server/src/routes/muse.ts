@@ -1,7 +1,7 @@
 import express, { Router, type Request } from "express";
 import { z } from "zod";
-import type { Db } from "@paperclipai/db";
-import { MUSE_PUBLIC_ROUTES, MUSE_MAX_BODY_BYTES, MUSE_OAUTH_SCOPES, MUSE_RESOURCE_PATH, musePairSchema, museRefreshSchema, museCommandSchema, museQuerySchema, museCleanupSchema, museDetectorCleanupSchema, museStopBoundarySchema, museDetectorCleanupAttestationSchema } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import { MUSE_PUBLIC_ROUTES, MUSE_MAX_BODY_BYTES, MUSE_OAUTH_SCOPES, MUSE_RESOURCE_PATH, musePairSchema, museRefreshSchema, museCommandSchema, museQuerySchema, museCleanupSchema, museDetectorCleanupSchema, museStopBoundarySchema, museDetectorCleanupAttestationSchema } from "@simplexy/shared";
 import { museExternalAgents } from "../modules/external-agents/index.js";
 import { museIdentity } from "../services/muse-identity.js";
 import { museOAuth } from "../services/muse-oauth.js";

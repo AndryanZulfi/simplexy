@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { act, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { ReactNode } from "react";
-import type { CreateConfigValues } from "@paperclipai/adapter-utils";
+import type { CreateConfigValues } from "@simplexy/adapter-utils";
 
 import { beforeAll, describe, expect, it } from "vitest";
 
@@ -11,9 +11,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 
 import { CodexLocalConfigFields } from "./config-fields";
 import { buildCodexRunnerConfig } from "./config-fields";
-import { buildPaperclipRunnerConfig } from "@paperclipai/adapter-codex-local/ui";
+import { buildPaperclipRunnerConfig } from "@simplexy/adapter-codex-local/ui";
 import { defaultCreateValues } from "@/components/agent-config-defaults";
-import { resolveCodexLocalCliPolicy } from "@paperclipai/adapter-codex-local";
+import { resolveCodexLocalCliPolicy } from "@simplexy/adapter-codex-local";
 
 beforeAll(() => { Object.assign(globalThis, { IS_REACT_ACT_ENVIRONMENT: true }); });
 

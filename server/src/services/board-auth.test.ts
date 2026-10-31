@@ -6,8 +6,8 @@ import os from "node:os";
 import path from "node:path";
 import { createInviteRateLimiter } from "./invite-rate-limit.js";
 import { eq, sql } from "drizzle-orm";
-import { activityLog, authUsers, boardApiKeys, cliAuthChallenges, companies, companyMemberships, createDb, getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "@paperclipai/db";
-import type { Db } from "@paperclipai/db";
+import { activityLog, authUsers, boardApiKeys, cliAuthChallenges, companies, companyMemberships, createDb, getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "@simplexy/db";
+import type { Db } from "@simplexy/db";
 import { boardAuthService } from "./board-auth.js";
 import { subscribeCompanyLiveEvents } from "./live-events.js";
 
@@ -224,7 +224,7 @@ databaseSuite("CLI challenge authority and transitions (real PostgreSQL)", () =>
 
   it("keeps instance-admin approval and current full-Board key authentication compatible", async () => {
     const f = await fixture();
-    const { instanceUserRoles } = await import("@paperclipai/db");
+    const { instanceUserRoles } = await import("@simplexy/db");
     await db.delete(companyMemberships).where(eq(companyMemberships.principalId, f.userId));
     await db.insert(instanceUserRoles).values({ userId: f.userId, role: "instance_admin" });
     const created = await f.service.createCliAuthChallenge({ command: "paperclipai auth login", requestedAccess: "instance_admin_required", requestedCompanyId: f.companyId });

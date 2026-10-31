@@ -4,13 +4,13 @@ import { AiConnectionCredentialStep } from "@/components/ai-connections/AiConnec
 import { AiProviderSetup } from "@/components/ai-connections/AiProviderSetup";
 import { AiConnectionPoolConnector } from "@/components/ai-connections/AiConnectionPoolConnector";
 import { useEffect } from "react";
-import { isRetiredComposioConnection } from "@paperclipai/shared";
-import { findComposioCatalogApp } from "@paperclipai/shared/aggregator-app-catalog";
+import { isRetiredComposioConnection } from "@simplexy/shared";
+import { findComposioCatalogApp } from "@simplexy/shared/aggregator-app-catalog";
 import { toolsApi } from "@/api/tools";
 import { queryKeys } from "@/lib/queryKeys";
 import { Button } from "@/components/ui/button";
 import { ConnectionSetupFlow } from "@/features/connections/ConnectionSetupFlow";
-import { aiProviderSetupPreset, type ToolConnectionCredentialSource } from "@paperclipai/shared";
+import { aiProviderSetupPreset, type ToolConnectionCredentialSource } from "@simplexy/shared";
 import { useCompany } from "@/context/CompanyContext";
 import { useNavigate, useParams, useSearchParams } from "@/lib/router";
 import { consumeSkillSourceReturn, skillSourceReturnPath } from "@/lib/skill-source-connect-return";

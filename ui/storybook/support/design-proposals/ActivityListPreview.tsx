@@ -1,6 +1,6 @@
 import { useLayoutEffect } from "react";
 import { useQueryClient } from "@tanstack/react-query";
-import type { ActivityEvent } from "@paperclipai/shared";
+import type { ActivityEvent } from "@simplexy/shared";
 import { ActivityList } from "@/components/ActivityList";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";

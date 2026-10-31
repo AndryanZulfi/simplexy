@@ -1,4 +1,4 @@
-import { subscribeDatabaseWork } from "@paperclipai/db";
+import { subscribeDatabaseWork } from "@simplexy/db";
 import { DELIVERY_QUEUES } from "../../../services/delivery-work-notifications.js";
 import { resolveExternalTestDatabaseUrl } from "../../../__tests__/helpers/external-test-database.js";
 import { createAgentLifecycle as createLifecycleCommands } from "../index.js";
@@ -19,7 +19,7 @@ import { errorHandler } from "../../../middleware/error-handler.js";
 import { createLifecycleDriver } from "../../../services/agent-lifecycle-driver.js";
 import { randomUUID } from "node:crypto";
 import { and, eq, sql } from "drizzle-orm";
-import { agents, approvals, projects, issues, heartbeatRuns, nativeRunFinalizations, budgetPolicies, environmentLeases, environments, agentApiKeys, activityLog, agentConfigRevisions, userCompanyPreferences, companies, companyMemberships, principalPermissionGrants, plugins, pluginCompanySettings, applyPendingMigrations, closeRegisteredClients, createDb, type Db } from "@paperclipai/db";
+import { agents, approvals, projects, issues, heartbeatRuns, nativeRunFinalizations, budgetPolicies, environmentLeases, environments, agentApiKeys, activityLog, agentConfigRevisions, userCompanyPreferences, companies, companyMemberships, principalPermissionGrants, plugins, pluginCompanySettings, applyPendingMigrations, closeRegisteredClients, createDb, type Db } from "@simplexy/db";
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "../../../__tests__/helpers/embedded-postgres.js";
 import { createAgentLifecycle, configureAgentLifecycle, startAgentLifecycle } from "../../../services/agent-lifecycle.js";
@@ -835,8 +835,8 @@ const support = external ? { supported: true } : await getEmbeddedPostgresTestSu
       manifestJson: { agentLifecycle: true, capabilities: ["agents.lifecycle.manage"] } as never });
     let resourcesReady = false;
     let resourcesRemoved = false;
-    const requests: import("@paperclipai/shared").AgentLifecycleRequest[] = [];
-    const call = async (id: string, method: string, input: import("@paperclipai/shared").AgentLifecycleRequest) => {
+    const requests: import("@simplexy/shared").AgentLifecycleRequest[] = [];
+    const call = async (id: string, method: string, input: import("@simplexy/shared").AgentLifecycleRequest) => {
       expect(id).toBe(pluginId);
       expect(method).toBe("agentLifecycle");
       expect(input.companyId).toBe(companyId);

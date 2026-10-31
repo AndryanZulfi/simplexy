@@ -2,7 +2,7 @@ import { lstat } from "node:fs/promises";
 import { hostname, tmpdir } from "node:os";
 import path from "node:path";
 import { and, desc, eq, inArray, isNull, or, sql } from "drizzle-orm";
-import { caseEvents, caseHandoffs, cases, environmentLeases, heartbeatRunEvents, heartbeatRuns, issues, type Db } from "@paperclipai/db";
+import { caseEvents, caseHandoffs, cases, environmentLeases, heartbeatRunEvents, heartbeatRuns, issues, type Db } from "@simplexy/db";
 import { persistActivity, type ActivityPublication } from "../activity-log.js";
 import { conflict } from "../../errors.js";
 import { getExecutionBlocker, hasPendingRunCleanup } from "../execution-blocker.js";

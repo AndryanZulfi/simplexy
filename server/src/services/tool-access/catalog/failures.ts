@@ -1,4 +1,4 @@
-import type { ToolConnectionHealthStatus } from "@paperclipai/shared";
+import type { ToolConnectionHealthStatus } from "@simplexy/shared";
 import { HttpError, unprocessable } from "../../../errors.js";
 
 function asRecord(value: unknown): Record<string, unknown> {

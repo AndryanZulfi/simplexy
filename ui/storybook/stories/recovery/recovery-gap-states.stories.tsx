@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import type { IssueRecoveryAction } from "@paperclipai/shared";
+import type { IssueRecoveryAction } from "@simplexy/shared";
 import { expect, userEvent, within, waitFor } from "storybook/test";
 import { IssueRecoveryActionCard } from "@/components/IssueRecoveryActionCard";
 import {

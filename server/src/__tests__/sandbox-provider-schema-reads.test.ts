@@ -1,9 +1,9 @@
 import { randomBytes, randomUUID } from "node:crypto";
 import { eq, sql, type SQL } from "drizzle-orm";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { createDb, plugins, type Db } from "@paperclipai/db";
-import { createDatabaseResponseCapture, installDatabaseResponseCapture } from "@paperclipai/db/response-capture";
-import type { PaperclipPluginManifestV1, PluginEnvironmentDriverDeclaration } from "@paperclipai/shared";
+import { createDb, plugins, type Db } from "@simplexy/db";
+import { createDatabaseResponseCapture, installDatabaseResponseCapture } from "@simplexy/db/response-capture";
+import type { PaperclipPluginManifestV1, PluginEnvironmentDriverDeclaration } from "@simplexy/shared";
 import { resolvePluginSandboxProviderConfigSchema, resolvePluginSandboxProviderDriverByKey } from "../services/plugin-environment-driver.js";
 import { resolveEnvironmentDriverConfigForRuntime, resolveSandboxProviderSecretRefPaths } from "../services/environment-config.js";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";

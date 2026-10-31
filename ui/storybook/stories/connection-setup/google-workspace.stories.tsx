@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { getAppStoreDefinition } from "@paperclipai/shared";
+import { getAppStoreDefinition } from "@simplexy/shared";
 import { ConnectionSetupFlow } from "@/features/connections/ConnectionSetupFlow";
 import { useNavigate } from "@/lib/router";
 

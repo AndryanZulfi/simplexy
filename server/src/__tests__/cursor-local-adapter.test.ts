@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
-import { isCursorUnknownSessionError, parseCursorJsonl } from "@paperclipai/adapter-cursor-local/server";
-import { parseCursorStdoutLine } from "@paperclipai/adapter-cursor-local/ui";
-import { printCursorStreamEvent } from "@paperclipai/adapter-cursor-local/cli";
+import { isCursorUnknownSessionError, parseCursorJsonl } from "@simplexy/adapter-cursor-local/server";
+import { parseCursorStdoutLine } from "@simplexy/adapter-cursor-local/ui";
+import { printCursorStreamEvent } from "@simplexy/adapter-cursor-local/cli";
 
 describe("cursor parser", () => {
   it.each([

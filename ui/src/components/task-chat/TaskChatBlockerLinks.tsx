@@ -1,7 +1,7 @@
 import type {
   IssueBlockerAttentionIssueSummary,
   IssueRelationIssueSummary,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { CheckCircle2, Circle } from "lucide-react";
 import { createIssueDetailPath } from "@/lib/issueDetailBreadcrumb";
 import {

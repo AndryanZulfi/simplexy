@@ -3,7 +3,7 @@ import { and, eq } from "drizzle-orm";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { agents, agentWakeupRequests, authUsers, companies, companyMemberships, createDb,
   heartbeatRuns, issueComments, issues, museAgentBindings, museMailboxItems,
-  museRunnerAssignments, museRunnerOperations } from "@paperclipai/db";
+  museRunnerAssignments, museRunnerOperations } from "@simplexy/db";
 import { startEmbeddedPostgresTestDatabase } from "../../__tests__/helpers/embedded-postgres.js";
 import { heartbeatService } from "../heartbeat.js";
 import { instanceSettingsService } from "../instance-settings.js";

@@ -17,7 +17,7 @@ import {
   sql,
 } from "drizzle-orm";
 
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 
 import {
   chatActions,
@@ -26,7 +26,7 @@ import {
   chatEndpoints,
   chatPublications,
   toolConnections,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 
 import { logger } from "../../../middleware/logger.js";
 import { redactSensitiveText } from "../../../redaction.js";

@@ -1,9 +1,9 @@
-import { isProvisionedSlackSetup } from "@paperclipai/shared";
+import { isProvisionedSlackSetup } from "@simplexy/shared";
 import { createSlackManagerGrants } from "./manager-grants.js";
 import { createManagedSlackSetup } from "./managed.js";
 import { randomBytes } from "node:crypto";
 import { and, eq, gt, like } from "drizzle-orm";
-import { chatEndpoints, chatSlackRegistrations, companies, toolOauthStates, type Db } from "@paperclipai/db";
+import { chatEndpoints, chatSlackRegistrations, companies, toolOauthStates, type Db } from "@simplexy/db";
 import { badRequest, conflict, forbidden, notFound } from "../../../../errors.js";
 import { removeSlackRegistration } from "../../../chat-slack-registration-cleanup.js";
 import type { CredentialMutationLeaseGuard } from "../../../chat-credential-mutation-lease.js";

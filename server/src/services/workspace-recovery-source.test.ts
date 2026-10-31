@@ -4,7 +4,7 @@ import express from "express";
 import request from "supertest";
 import { eq, sql } from "drizzle-orm";
 import { activityLog, agents, agentWakeupRequests, applyPendingMigrations, companies, createDb, environmentLeases, environments,
-  heartbeatRuns, issueRecoveryActions, issues, workspaceOperations } from "@paperclipai/db";
+  heartbeatRuns, issueRecoveryActions, issues, workspaceOperations } from "@simplexy/db";
 import { startEmbeddedPostgresTestDatabase } from "../__tests__/helpers/embedded-postgres.js";
 import { resolveExternalTestDatabaseUrl } from "../__tests__/helpers/external-test-database.js";
 import { inspectWorkspaceRecoverySource } from "./workspace-recovery-source.js";

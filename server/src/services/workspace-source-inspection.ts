@@ -1,5 +1,5 @@
-import type { Db } from "@paperclipai/db";
-import type { WorkspaceSourceInspection } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import type { WorkspaceSourceInspection } from "@simplexy/shared";
 import { inspectWorkspaceRecoverySource, WorkspaceSourceInspectionLimit,
   type WorkspaceRecoverySourceIdentity } from "./workspace-recovery-source.js";
 import { SystemRecoveryFailure, workspaceSourceVerificationFailureSchema } from "./system-recovery-state.js";

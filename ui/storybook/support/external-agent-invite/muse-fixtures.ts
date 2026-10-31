@@ -1,4 +1,4 @@
-import { MUSE_ASSET_VERSION, MUSE_CLIENT_VERSION, type MuseBinding, type MuseConnection, type MusePairing, type MuseStopBoundary } from "@paperclipai/shared";
+import { MUSE_ASSET_VERSION, MUSE_CLIENT_VERSION, type MuseBinding, type MuseConnection, type MusePairing, type MuseStopBoundary } from "@simplexy/shared";
 
 /** Public, nonsecret fixture values only; the .example origin cannot connect a real Muse. */
 export const museBinding: MuseBinding = {

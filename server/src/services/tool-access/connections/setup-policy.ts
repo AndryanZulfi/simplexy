@@ -1,12 +1,12 @@
-import { getAppDefinitionForApplicationKey, isConnectorFeatureEnabled } from "@paperclipai/shared";
-import { isMemoryConnectorId } from "@paperclipai/shared";
+import { getAppDefinitionForApplicationKey, isConnectorFeatureEnabled } from "@simplexy/shared";
+import { isMemoryConnectorId } from "@simplexy/shared";
 import { instanceSettingsService } from "../../instance-settings.js";
 import { and, eq } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
-import { toolApplications, toolConnections } from "@paperclipai/db";
-import { getConnectableAppDefinition } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import { toolApplications, toolConnections } from "@simplexy/db";
+import { getConnectableAppDefinition } from "@simplexy/shared";
 import { forbidden, unprocessable } from "../../../errors.js";
-import { isRetiredComposioConnection, RETIRED_COMPOSIO_MESSAGE } from "@paperclipai/shared";
+import { isRetiredComposioConnection, RETIRED_COMPOSIO_MESSAGE } from "@simplexy/shared";
 
 export function assertSupportedConnection(connection: typeof toolConnections.$inferSelect) {
   if (isRetiredComposioConnection(connection)) {

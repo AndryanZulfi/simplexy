@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import express from "express";
 import request from "supertest";
 import { eq } from "drizzle-orm";
-import { agents, companies, companyMemberships, principalPermissionGrants, environments, plugins, createDb, type Db } from "@paperclipai/db";
+import { agents, companies, companyMemberships, principalPermissionGrants, environments, plugins, createDb, type Db } from "@simplexy/db";
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "../../../__tests__/helpers/embedded-postgres.js";
 import { createAgentLifecycle, configureAgentLifecycle, createAgentLifecycleEffects } from "../../../services/agent-lifecycle.js";

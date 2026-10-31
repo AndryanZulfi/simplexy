@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import type { DotPairing } from "@paperclipai/shared";
+import type { DotPairing } from "@simplexy/shared";
 import { grokBotApi } from "@/api/grokBot";
 import { buildGrokAccessPrompt, buildGrokRoutinePrompt } from "@/lib/grok-bot-setup-prompt";
 import { AgentSetupPrompt } from "./AgentSetupPrompt";

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import type { SecretProposalView } from "@paperclipai/shared";
+import type { SecretProposalView } from "@simplexy/shared";
 import { expect, userEvent, within, waitFor } from "storybook/test";
 import { ProposalsTab } from "@/pages/secrets/ProposalsTab";
 import { ToastViewport } from "@/components/ToastViewport";

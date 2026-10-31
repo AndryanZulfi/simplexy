@@ -1,6 +1,6 @@
 import WebSocket from "ws";
 import { REMOTE_RUNNER_RECONNECT_GRACE_MS } from "../services/native-runtime/native-runner-recovery-contract.js";
-import type { RunnerIngressEndpoint } from "@paperclipai/adapter-utils/runner-connectivity";
+import type { RunnerIngressEndpoint } from "@simplexy/adapter-utils/runner-connectivity";
 import type {
   DurablePrpControlPlane,
   PrpWireConnection,

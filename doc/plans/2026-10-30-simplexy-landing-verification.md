@@ -4,7 +4,7 @@ Local preview: http://127.0.0.1:5175/. Entry: ui/src/bootstrap.ts selects the pu
 
 ## Evidence
 - PASS: node scripts/check-simplexy-landing.mjs. Hero and workflow pause/resume/replay, workflow retained after reentry, all three showcase tabs, keyboard Home selection, empty/error/recovery states, reduced motion final states, anchor targets, responsive widths 320/768/1024/1440, zero page errors and zero /api/ requests.
-- PASS: pnpm --filter @paperclipai/ui build (Vite emits existing config compatibility and large-chunk warnings).
+- PASS: pnpm --filter @simplexy/ui build (Vite emits existing config compatibility and large-chunk warnings).
 - PASS: targeted tsc --ignoreConfig --noEmit for Hero, Workflow, Showcase and useDemoSequence with React JSX, bundler resolution and DOM/ES2022 libs.
 - PASS: pnpm check:token-gates.
 - Dashboard boundary: scripts/check-simplexy-route.mjs confirms /dashboard loads existing main.tsx and removes the landing. Board content was blank on UI-only preview; this is NOT proof of full dashboard operation.

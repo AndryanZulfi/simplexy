@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, waitFor, within } from "storybook/test";
-import type { AgentDetail, GrokConnection } from "@paperclipai/shared";
+import type { AgentDetail, GrokConnection } from "@simplexy/shared";
 import { ConfigurationTab } from "@/pages/AgentDetail";
 import { storybookAgents } from "../../../fixtures/paperclipData";
 

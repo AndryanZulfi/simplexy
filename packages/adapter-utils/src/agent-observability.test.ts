@@ -3,7 +3,7 @@ import { lstat, mkdtemp, readFile, readlink, rm, stat, writeFile } from "node:fs
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { parse } from "smol-toml";
-import { DEFAULT_AGENT_OBSERVABILITY_CAPTURE } from "@paperclipai/shared";
+import { DEFAULT_AGENT_OBSERVABILITY_CAPTURE } from "@simplexy/shared";
 import { buildProviderObservabilityLaunch, applyObservabilityEnvironment, observabilitySecretValues } from "./agent-observability.js";
 import { prepareCodexObservabilityProfile, replaceCodexProfileArgs, selectedCodexProfile, disableCodexObservabilityArgs } from "./codex-observability-profile.js";
 import { buildInvocationEnvForLogs } from "./server-utils.js";

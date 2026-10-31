@@ -1,4 +1,4 @@
-import type { Agent } from "@paperclipai/shared";
+import type { Agent } from "@simplexy/shared";
 
 export const AGENT_ORDER_UPDATED_EVENT = "simplexy:agent-order-updated";
 export const AGENT_SORT_MODE_UPDATED_EVENT = "simplexy:agent-sort-mode-updated";

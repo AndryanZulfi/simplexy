@@ -1,6 +1,6 @@
 import { notifyNativeFinalizationWork } from "../native-finalization-notifications.js";
 import { notifyUnsafeWorkspaceExportRecovery } from "../unsafe-workspace-export-notifications.js";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import type { NativeInteractionResponseEnvelope } from "../../vendor/paperclip-runner/index.js";
 import { and, asc, eq, inArray } from "drizzle-orm";
 import {
@@ -14,8 +14,8 @@ import {
   nativeRunResults,
   statusDecisions,
   workAssessments,
-} from "@paperclipai/db";
-import { getAgentWorkEligibility } from "@paperclipai/shared";
+} from "@simplexy/db";
+import { getAgentWorkEligibility } from "@simplexy/shared";
 import { issueThreadInteractionService } from "../issue-thread-interactions.js";
 import { commitNativeStatusDecision } from "./status-decision-committer.js";
 import { nativeSha256 } from "./canonical.js";

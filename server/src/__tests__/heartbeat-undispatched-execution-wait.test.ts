@@ -5,7 +5,7 @@ import {
   agentWakeupRequests, agents, companies, createDb, environmentLeases,
   heartbeatRunEvents, heartbeatRuns, issueComments, issueRecoveryActions, issues, issueTreeHoldMembers, issueTreeHolds,
   nativeRunFinalizations,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { getExecutionBlocker } from "../services/execution-blocker.js";
 import { heartbeatService } from "../services/heartbeat.js";

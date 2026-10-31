@@ -1,6 +1,6 @@
 /**
  * Disposable synthetic PostgreSQL + real Git proof. Never accepts DATABASE_URL.
- * pnpm --filter @paperclipai/server exec tsx ../scripts/benchmark-workspace-preparation-history.ts \
+ * pnpm --filter @simplexy/server exec tsx ../scripts/benchmark-workspace-preparation-history.ts \
  *   --baseline-ref=df80616d98119cbf5abd40549794d9980a5fabf6 --output=/tmp/workspace-history.json
  */
 import assert from "node:assert/strict";

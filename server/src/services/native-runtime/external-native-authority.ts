@@ -1,4 +1,4 @@
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import type { NativeExecutionInput } from "../../vendor/paperclip-runner/index.js";
 import { dotRunnerBroker } from "../dot-runner-broker.js";
 import { museRunnerBroker } from "../muse-runner-broker.js";

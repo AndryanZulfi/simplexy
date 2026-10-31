@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import type { BudgetIncident } from "@paperclipai/shared";
+import type { BudgetIncident } from "@simplexy/shared";
 import { expect, userEvent, within, waitFor } from "storybook/test";
 import type { ComponentProps } from "react";
 import { Costs } from "@/pages/Costs";

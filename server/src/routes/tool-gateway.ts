@@ -1,18 +1,18 @@
 import { filterConnectionManagementRows, connectionManagementGuard, connectionRequestContext, connectionRequestUserId } from "./connection-management-authz.js";
 import { Router, type Request, type Response } from "express";
 import { and, desc, eq, gte, ilike, inArray, lt, or, sql } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
-import { agents, toolApplications, toolCallEvents, toolConnections, toolInvocations, toolRuntimeSlots } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
+import { agents, toolApplications, toolCallEvents, toolConnections, toolInvocations, toolRuntimeSlots } from "@simplexy/db";
 import {
   humanizeConnectionDisplayName,
   type PermissionKey,
   type ToolConnectionLifecycleEventType,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   createToolMcpGatewaySchema,
   createToolMcpGatewayTokenSchema,
   updateToolMcpGatewaySchema,
-} from "@paperclipai/shared/validators/tool-access";
+} from "@simplexy/shared/validators/tool-access";
 import { assertBoard, assertBoardOrAgent, assertCompanyAccess, getActorInfo } from "./authz.js";
 import { ToolGatewayHttpError, type ToolGatewayService } from "../services/tool-gateway.js";
 import { forbidden, HttpError } from "../errors.js";

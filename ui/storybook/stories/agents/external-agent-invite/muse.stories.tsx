@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { MUSE_ASSET_VERSION } from "@paperclipai/shared";
+import { MUSE_ASSET_VERSION } from "@simplexy/shared";
 import { expect, userEvent, within, waitFor, fn } from "storybook/test";
 import { ExternalAgentInvitePreview } from "../../../support/external-agent-invite/ExternalAgentInvitePreview";
 import { MuseConnectionDetails } from "@/components/MuseRunnerConnection";

@@ -4,7 +4,7 @@ import type {
   InboxDismissal,
   Issue,
   JoinRequest,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   applyIssueFilters,
   defaultIssueFilterState,
@@ -719,7 +719,7 @@ export function getInboxKeyboardSelectionIndex(
     : Math.max(previousIndex - 1, 0);
 }
 
-export { latestFailedRunsByAgent as getLatestFailedRunsByAgent } from "@paperclipai/shared";
+export { latestFailedRunsByAgent as getLatestFailedRunsByAgent } from "@simplexy/shared";
 
 export function normalizeTimestamp(value: string | Date | null | undefined): number {
   if (!value) return 0;

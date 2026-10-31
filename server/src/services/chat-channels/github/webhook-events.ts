@@ -9,8 +9,8 @@ import { githubAutomaticReviewEvent, githubAutomaticIssueEvent, githubAutomaticA
 import { githubReviewPrompt, GITHUB_CONFIGURED_SKILL_GUIDANCE } from "../../chat-github-review-policy.js";
 import { createHash } from "node:crypto";
 
-import type { Db } from "@paperclipai/db";
-import { chatDeliveries } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
+import { chatDeliveries } from "@simplexy/db";
 import type { EndpointRow, RuntimeContext, InboundRuntimeContext, LifecycleRuntimeFence } from "../runtime-types.js";
 import type { ChatEndpointRuntime } from "../../voice/voice-runtime.js";
 import type { Thread, Message } from "chat";

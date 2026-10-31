@@ -1,7 +1,7 @@
 import { writeFile } from "node:fs/promises";
 import { setImmediate } from "node:timers/promises";
 import { expect, it, vi } from "vitest";
-import type { LiveEvent } from "@paperclipai/shared";
+import type { LiveEvent } from "@simplexy/shared";
 import { createLiveEventDelivery, LIVE_DELIVERY_MAX_BYTES, LIVE_DELIVERY_MAX_ITEMS } from "./live-event-delivery.js";
 
 it("bounds presentation cost for the same output with zero, one, multiple and congested viewers", async () => {

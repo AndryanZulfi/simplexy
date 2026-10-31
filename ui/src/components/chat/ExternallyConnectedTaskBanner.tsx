@@ -7,7 +7,7 @@ import type {
   ChatPublicationState,
   ChatFileTransferPhase,
   IssueAttachment,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   chatEndpointsApi,
   type ChatProvider,

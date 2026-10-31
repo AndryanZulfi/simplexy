@@ -3,7 +3,7 @@ import { renewNativeSessionExecutionLease, startNativeSessionExecutionLeaseRenew
 import { enableRunFailureReporting } from "../../__tests__/helpers/run-failure-reporting.js";
 import { hasNativeLocalProcessStop } from "../native-local-process-stop.js";
 import { randomUUID } from "node:crypto";
-import { createRunnerProviderLaunch, runnerLaunchRequirementsDigest, type RunnerProviderLaunchRequirements } from "@paperclipai/paperclip-runner";
+import { createRunnerProviderLaunch, runnerLaunchRequirementsDigest, type RunnerProviderLaunchRequirements } from "@simplexy/paperclip-runner";
 import { createRequire } from "node:module";
 import { spawn } from "node:child_process";
 import { existsSync } from "node:fs";
@@ -34,7 +34,7 @@ import {
   nativeRunResults,
   nativeRunnerCheckpoints,
   EMBEDDED_POSTGRES_TEST_TIMEOUT_MS,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 
 import {

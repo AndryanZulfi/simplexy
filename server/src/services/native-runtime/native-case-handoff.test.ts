@@ -4,7 +4,7 @@ import { once } from "node:events";
 import { rm } from "node:fs/promises";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { eq } from "drizzle-orm";
-import { agents, caseEvents, caseHandoffs, cases, companies, createDb, heartbeatRuns, issues } from "@paperclipai/db";
+import { agents, caseEvents, caseHandoffs, cases, companies, createDb, heartbeatRuns, issues } from "@simplexy/db";
 import { startEmbeddedPostgresTestDatabase } from "../../__tests__/helpers/embedded-postgres.js";
 import { assertAgentRunWriteAllowed } from "../../agent-run-cancellation.js";
 import { assertNoCaseHandoffMutation, isCaseHandoffSourceReleased, pendingCaseHandoffForRun, recordCaseHandoffExecutionReleased } from "../heartbeat/case-handoff-lifecycle.js";

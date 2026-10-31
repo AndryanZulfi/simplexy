@@ -9,11 +9,11 @@ import {
   issues,
   runIdentityContexts,
   type Db,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { conflict, forbidden } from "../errors.js";
 import { notifyChatRunMilestones } from "./chat-run-milestone-notifications.js";
 import { boundRunIssueId, boundRunIssueIdSql, runTaskContextColumn } from "./run-task-binding.js";
-import { isUuidLike } from "@paperclipai/shared";
+import { isUuidLike } from "@simplexy/shared";
 import { queuedCommentIdsFromRunContext, queuedCommentIdsFromWakePayload } from "./issue-queued-comment-queue.js";
 
 /** Resolve an explicit click from persisted receipts, never caller context or message authors. */

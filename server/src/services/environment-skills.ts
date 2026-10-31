@@ -1,6 +1,6 @@
 import { and, eq, inArray, or, sql } from "drizzle-orm";
-import { companySkills, pluginCompanySettings, pluginManagedResources, plugins, type Db } from "@paperclipai/db";
-import { readPaperclipSkillSyncPreference, resolvePaperclipDesiredSkillNames, writePaperclipSkillSyncPreference } from "@paperclipai/adapter-utils/server-utils";
+import { companySkills, pluginCompanySettings, pluginManagedResources, plugins, type Db } from "@simplexy/db";
+import { readPaperclipSkillSyncPreference, resolvePaperclipDesiredSkillNames, writePaperclipSkillSyncPreference } from "@simplexy/adapter-utils/server-utils";
 import { unprocessable } from "../errors.js";
 import { buildSkillRuntimeName } from "./company-skills.js";
 import { pluginManagedSkillService } from "./plugin-managed-skills.js";

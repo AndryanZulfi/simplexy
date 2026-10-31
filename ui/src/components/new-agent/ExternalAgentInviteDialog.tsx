@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import type { MuseInvitation } from "@paperclipai/shared";
+import type { MuseInvitation } from "@simplexy/shared";
 import { ApiError } from "@/api/client";
 import { museInvitationsApi } from "@/api/museInvitations";
 import { useAccountIdentity } from "@/api/companies-query";

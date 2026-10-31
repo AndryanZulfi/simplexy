@@ -1,5 +1,5 @@
 import { and, asc, desc, lte, sql } from "drizzle-orm";
-import { decisions, type Db } from "@paperclipai/db";
+import { decisions, type Db } from "@simplexy/db";
 
 const running = sql`${decisions.status} = 'decided' AND ${decisions.executionStatus} = 'running'`;
 

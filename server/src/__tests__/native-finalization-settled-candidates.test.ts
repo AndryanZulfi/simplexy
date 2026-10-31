@@ -9,7 +9,7 @@ import {
   issues,
   nativeRunFinalizations,
   statusDecisionEffects,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,

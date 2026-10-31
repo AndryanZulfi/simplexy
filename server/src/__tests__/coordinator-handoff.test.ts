@@ -2,8 +2,8 @@ import { randomUUID } from "node:crypto";
 import { and, eq } from "drizzle-orm";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { agents, assets, chatTaskHandoffs, companies, companyMemberships, createDb, documentRevisions, documents, heartbeatRuns,
-  inboxDismissals, issueAttachments, issueComments, issueDocuments, issues, issueThreadInteractions } from "@paperclipai/db";
-import { requestConfirmationTargetSchema, suggestedTaskDraftSchema } from "@paperclipai/shared";
+  inboxDismissals, issueAttachments, issueComments, issueDocuments, issues, issueThreadInteractions } from "@simplexy/db";
+import { requestConfirmationTargetSchema, suggestedTaskDraftSchema } from "@simplexy/shared";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { issueThreadInteractionService } from "../services/issue-thread-interactions.js";
 import { issueService } from "../services/issues.js";

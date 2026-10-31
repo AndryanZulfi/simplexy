@@ -1,4 +1,4 @@
-import { appearanceForPalette, type Agent } from "@paperclipai/shared";
+import { appearanceForPalette, type Agent } from "@simplexy/shared";
 import { storybookAgents } from "../../fixtures/paperclipData";
 
 export type SidebarScenario = "conversation" | "landing" | "large-team";

@@ -1,6 +1,6 @@
 import { notifyApprovalWork } from "./approval-work-notifications.js";
-import type { Db } from "@paperclipai/db";
-import type { AttentionSourceKind } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import type { AttentionSourceKind } from "@simplexy/shared";
 import { DELIVERY_QUEUES, notifyDeliveryWork } from "./delivery-work-notifications.js";
 
 export async function notifyRetentionWork(transaction: object, kind: AttentionSourceKind) {

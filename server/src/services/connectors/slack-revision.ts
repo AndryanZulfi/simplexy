@@ -10,7 +10,7 @@ import {
   toolProfileEntries,
   toolProfiles,
   type Db,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 
 function revisionColumns(columns: Record<string, AnyPgColumn>) {
   return Object.fromEntries(Object.entries(columns).map(([name, column]) => [

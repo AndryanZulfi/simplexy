@@ -11,7 +11,7 @@ vi.mock("./client", async (importOriginal) => ({
   api: mockApi,
 }));
 
-import type { IssueThreadInteraction } from "@paperclipai/shared";
+import type { IssueThreadInteraction } from "@simplexy/shared";
 import { acceptedResolutionMatches, answeredResolutionMatches, issuesApi } from "./issues";
 import { ApiError } from "./client";
 import { CommentSubmissionUnknownError } from "../lib/comment-submit-result";

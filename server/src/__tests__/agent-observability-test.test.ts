@@ -3,7 +3,7 @@ import { createServer, type Server } from "node:http";
 import type { AddressInfo } from "node:net";
 import { readFile } from "node:fs/promises";
 import protobuf from "protobufjs";
-import { DEFAULT_AGENT_OBSERVABILITY_CAPTURE } from "@paperclipai/shared";
+import { DEFAULT_AGENT_OBSERVABILITY_CAPTURE } from "@simplexy/shared";
 import { testAgentObservability } from "../services/agent-observability-test.js";
 
 let server: Server, endpoint: string;

@@ -8,7 +8,7 @@ const trackErrorHandlerCrashMock = vi.hoisted(() => vi.fn());
 
 vi.mock("../sentry.js", () => ({ captureException: captureExceptionMock }));
 vi.mock("../telemetry.js", () => ({ getTelemetryClient: () => ({}) }));
-vi.mock("@paperclipai/shared/telemetry", () => ({
+vi.mock("@simplexy/shared/telemetry", () => ({
   trackErrorHandlerCrash: trackErrorHandlerCrashMock,
 }));
 

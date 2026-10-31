@@ -5,7 +5,7 @@ import { InMemorySpanExporter, SimpleSpanProcessor, TracerProvider } from "@open
 import {
   authUsers, companies, companyMemberships, connectionGrants, createDb,
   EMBEDDED_POSTGRES_TEST_TIMEOUT_MS, toolApplications, toolConnections,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { eq, sql } from "drizzle-orm";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { writeConnectionCredential } from "../services/connection-credentials.js";

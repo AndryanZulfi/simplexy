@@ -1,4 +1,4 @@
-import { AGENT_ROLES, type AgentRole } from "@paperclipai/shared";
+import { AGENT_ROLES, type AgentRole } from "@simplexy/shared";
 
 export interface MuseInvitationDraft { name: string; role: AgentRole }
 export const emptyMuseInvitationDraft: MuseInvitationDraft = { name: "", role: "general" };

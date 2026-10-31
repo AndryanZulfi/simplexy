@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { describe, expect, it, vi } from "vitest";
-import type { RunnerProviderLaunchRequirements } from "@paperclipai/paperclip-runner";
+import type { RunnerProviderLaunchRequirements } from "@simplexy/paperclip-runner";
 import type { RunnerProcessLaunchSpec } from "../../vendor/paperclip-runner/index.js";
 import { createPluginRunnerTaskOwner } from "./plugin-runner-task.js";
 

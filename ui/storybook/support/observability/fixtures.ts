@@ -1,4 +1,4 @@
-import { DEFAULT_AGENT_OBSERVABILITY_CAPTURE, type AgentObservabilitySettings, type AgentObservabilityTestReceipt } from "@paperclipai/shared";
+import { DEFAULT_AGENT_OBSERVABILITY_CAPTURE, type AgentObservabilitySettings, type AgentObservabilityTestReceipt } from "@simplexy/shared";
 export const companyId = "company-storybook";
 export const configured: AgentObservabilitySettings = {
   companyId, revision: "10000000-0000-4000-8000-000000000001", enabled: true,

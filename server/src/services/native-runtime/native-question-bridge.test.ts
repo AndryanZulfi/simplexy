@@ -21,9 +21,9 @@ import {
   issueThreadInteractions,
   issues,
   nativeRunFinalizations,
-} from "@paperclipai/db";
-import type { PrpEvent } from "@paperclipai/paperclip-runner";
-import { respondIssueThreadInteractionSchema } from "@paperclipai/shared";
+} from "@simplexy/db";
+import type { PrpEvent } from "@simplexy/paperclip-runner";
+import { respondIssueThreadInteractionSchema } from "@simplexy/shared";
 
 import {
   getEmbeddedPostgresTestSupport,

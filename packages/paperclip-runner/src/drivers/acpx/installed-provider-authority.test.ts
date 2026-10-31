@@ -7,7 +7,7 @@ import { resolveInstalledProviderAuthority } from "./installed-provider-authorit
 
 const roots: string[] = [];
 afterEach(async () => { await Promise.all(roots.splice(0).map(root => rm(root, { recursive: true, force: true }))); });
-async function fixture(name = "@paperclipai/server") {
+async function fixture(name = "@simplexy/server") {
   const root = await realpath(await mkdtemp(join(tmpdir(), "installed-acpx-authority-")));
   roots.push(root);
   const directory = join(root, "dist/vendor/paperclip-runner/drivers/acpx");
@@ -35,7 +35,7 @@ describe("installed provider authority", () => {
   it("rejects a symlinked manifest before adopting its declarations", async () => {
     const f = await fixture();
     const other = join(f.root, "other.json");
-    await writeFile(other, JSON.stringify({ name: "@paperclipai/server" }));
+    await writeFile(other, JSON.stringify({ name: "@simplexy/server" }));
     await rm(f.manifest);
     await symlink(other, f.manifest);
     expect(() => resolveInstalledProviderAuthority(pathToFileURL(f.module).href)).toThrow();

@@ -52,8 +52,8 @@ See [`rules/README.md`](rules/README.md) for rule authoring and Greptile setup.
 - `packages/adapters/`: agent adapter implementations (Claude, Codex, Cursor, etc.)
 - `packages/adapter-utils/`: shared adapter utilities
 - `packages/plugins/`: plugin system packages
-- `packages/skills-catalog/`: app-shipped skills catalog (`@paperclipai/skills-catalog`)
-- `packages/teams-catalog/`: app-shipped teams catalog (`@paperclipai/teams-catalog`)
+- `packages/skills-catalog/`: app-shipped skills catalog (`@simplexy/skills-catalog`)
+- `packages/teams-catalog/`: app-shipped teams catalog (`@simplexy/teams-catalog`)
 - `cli/`: `paperclipai` CLI package (published bin, agent-facing commands)
 - `skills/`: Simplexy runtime/operational skills (not part of the app catalog)
 - `doc/`: operational and product docs

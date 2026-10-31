@@ -8,7 +8,7 @@ import { notifyChatPublicationWork } from "../../chat-work-notifications.js";
 
 import { type CredentialMutationLeaseGuard } from "../../chat-credential-mutation-lease.js";
 
-import { chatGitHubConfigurations } from "@paperclipai/db";
+import { chatGitHubConfigurations } from "@simplexy/db";
 
 import { githubResponseCommentService } from "../../chat-github-response-comments.js";
 
@@ -24,7 +24,7 @@ import {
   sql,
 } from "drizzle-orm";
 
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 
 import {
   chatActions,
@@ -32,10 +32,10 @@ import {
   heartbeatRuns,
   nativeRunFinalizations,
   issueComments,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import type {
   SafeChatPublicationPayload,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 
 import {
   NativeChatReviewPresentationContentionError,

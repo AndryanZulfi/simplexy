@@ -2,7 +2,7 @@ import { chmodSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { SLACK_MANAGER_SCOPES } from "@paperclipai/shared";
+import { SLACK_MANAGER_SCOPES } from "@simplexy/shared";
 import { developmentSlackManager } from "../services/connectors/slack/setup/development-manager.js";
 
 const roots: string[] = [];

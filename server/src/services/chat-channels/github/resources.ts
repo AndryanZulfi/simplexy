@@ -1,5 +1,5 @@
 import { and, asc, eq, sql } from "drizzle-orm";
-import { chatConversations, chatEndpointResources, chatEndpoints, type Db } from "@paperclipai/db";
+import { chatConversations, chatEndpointResources, chatEndpoints, type Db } from "@simplexy/db";
 import { conflict, notFound } from "../../../errors.js";
 import type { CredentialMutationLeaseGuard } from "../../chat-credential-mutation-lease.js";
 import type { ChatProviderResourceInventoryItem } from "../../chat-provider-inventory.js";

@@ -13,7 +13,7 @@ import {
 } from "drizzle-orm";
 import { alias, type AnyPgColumn } from "drizzle-orm/pg-core";
 
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 
 import {
   chatActions,
@@ -22,11 +22,11 @@ import {
   chatPublications,
   chatTeamsFileTransfers,
   issues,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import type {
   ChatPublicationSummary,
   SafeChatPublicationPayload,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 
 import {
   teamsFileTransferService,

@@ -1,7 +1,7 @@
 import { useLayoutEffect, useState, type ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { queryKeys } from "@/lib/queryKeys";
-import { buildSkillMentionHref, type ChatExecutionDefaults } from "@paperclipai/shared";
+import { buildSkillMentionHref, type ChatExecutionDefaults } from "@simplexy/shared";
 import { EditorAutocompleteProvider } from "@/context/EditorAutocompleteContext";
 import {
   endpoint,

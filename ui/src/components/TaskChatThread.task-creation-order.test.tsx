@@ -3,7 +3,7 @@ import { act, forwardRef, useImperativeHandle, type ForwardedRef } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { ConversationTaskHandoff, IssueDocument, IssueThreadInteraction } from "@paperclipai/shared";
+import type { ConversationTaskHandoff, IssueDocument, IssueThreadInteraction } from "@simplexy/shared";
 import { TaskChatThread } from "./TaskChatThread";
 import { CoordinatorPresentation } from "./coordinator/CoordinatorPresentation";
 import { ThemeProvider } from "@/context/ThemeContext";

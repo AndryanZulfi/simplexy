@@ -10,8 +10,8 @@ import {
   issues,
   projectWorkspaces,
   projects,
-} from "@paperclipai/db";
-import { LOW_TRUST_REVIEW_PRESET } from "@paperclipai/shared";
+} from "@simplexy/db";
+import { LOW_TRUST_REVIEW_PRESET } from "@simplexy/shared";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,

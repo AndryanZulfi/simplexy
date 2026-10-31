@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MemoryRouter, Route, Routes, useLocation } from "react-router-dom";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { GitHubChatSetup, gitHubAppManifestAction } from "./GitHubChatSetup";
-import { defaultGitHubReviewPolicy } from "@paperclipai/shared";
+import { defaultGitHubReviewPolicy } from "@simplexy/shared";
 import { ChatEndpointDetail } from "./ChatEndpointDetail";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { agentsApi } from "@/api/agents";

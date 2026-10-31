@@ -1,4 +1,4 @@
-import { createDb } from "@paperclipai/db";
+import { createDb } from "@simplexy/db";
 import { executePaperclipNativeSession } from "../../services/native-runtime/native-session-executor.js";
 import { dockerCommandRunner } from "./docker-command-runner.js";
 

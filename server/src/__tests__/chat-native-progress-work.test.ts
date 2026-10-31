@@ -3,7 +3,7 @@ import { persistReprojectedWorkspaceDiffs, projectCodexWorkspaceDiffsFromTrace }
 import { randomUUID } from "node:crypto";
 import { eq, like, and } from "drizzle-orm";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
-import { chatPublications, createDb, heartbeatRunEvents, heartbeatRuns, issues, subscribeDatabaseWork } from "@paperclipai/db";
+import { chatPublications, createDb, heartbeatRunEvents, heartbeatRuns, issues, subscribeDatabaseWork } from "@simplexy/db";
 import { resolveExternalTestDatabaseUrl } from "./helpers/external-test-database.js";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { createChatMilestoneFixtures } from "./helpers/chat-milestone-fixtures.js";

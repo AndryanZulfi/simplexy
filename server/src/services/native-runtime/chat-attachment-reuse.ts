@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 
 import { and, desc, eq, inArray, isNull, sql } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import {
   assets,
   agents,
@@ -20,7 +20,7 @@ import {
   issues,
   issueWorkProducts,
   runIdentityContexts,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 
 import {
   isAllowedContentType,

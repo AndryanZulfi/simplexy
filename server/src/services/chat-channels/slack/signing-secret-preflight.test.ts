@@ -1,7 +1,7 @@
 import { createHmac, randomUUID } from "node:crypto";
 import { describe, expect, it, vi } from "vitest";
-import type { Db } from "@paperclipai/db";
-import type { ToolCredentialSecretRef } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import type { ToolCredentialSecretRef } from "@simplexy/shared";
 import { createChatCredentials } from "../credentials.js";
 import type { EndpointRow } from "../runtime-types.js";
 import { createSlackWebhookCallbacks } from "./webhook-callbacks.js";

@@ -1,4 +1,4 @@
-import { checkOAuthEndpointUrl, oauthEndpointUrlRejectionMessage, type OAuthEndpointKind, type OAuthEndpointUrlRejection } from "@paperclipai/shared";
+import { checkOAuthEndpointUrl, oauthEndpointUrlRejectionMessage, type OAuthEndpointKind, type OAuthEndpointUrlRejection } from "@simplexy/shared";
 import { HttpError } from "../../../errors.js";
 import { originOf, isSmokeLabOAuthUrl } from "./metadata.js";
 

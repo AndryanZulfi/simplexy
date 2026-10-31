@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { IssueAccessGrant } from "@paperclipai/shared";
+import type { IssueAccessGrant } from "@simplexy/shared";
 import {
   agentVisibilityFromPermissions,
   canManageIssuePrivacy,

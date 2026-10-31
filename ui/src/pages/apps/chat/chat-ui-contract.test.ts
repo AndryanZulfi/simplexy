@@ -248,7 +248,7 @@ describe("chat connector UI contract", () => {
     expect(setup).toContain("slackSetupState({ endpoint, repairing");
     expect(source("./slack/setup-state.ts")).toContain("endpoint.providerAccountId && !repairing");
     expect(setup).not.toContain('field("webhookSecret"');
-    expect(setup).not.toContain("@paperclipai/teams-connect");
+    expect(setup).not.toContain("@simplexy/teams-connect");
     expect(setup).not.toContain("Copy setup command");
     expect(setup).not.toContain("Add {agentName} to Slack");
     expect(setup).not.toContain("Create in GitHub");

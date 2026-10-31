@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import express from "express";
 import request from "supertest";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import { museQualificationRoutes } from "../routes/muse-qualification.js";
 import { museBoardRoutes } from "../routes/muse.js";
 const mocks = vi.hoisted(() => ({ beginQualification: vi.fn(), endQualification: vi.fn(), readQualificationEvidence: vi.fn(), verify: vi.fn(), attestDetectorCleanup: vi.fn(), decide: vi.fn(), getById: vi.fn() }));

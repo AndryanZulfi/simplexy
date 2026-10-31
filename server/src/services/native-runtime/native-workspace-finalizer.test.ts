@@ -32,7 +32,7 @@ import {
   workspaceOperations,
   workAssessments,
   statusDecisions,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { startEmbeddedPostgresTestDatabase } from "../../__tests__/helpers/embedded-postgres.js";
 import { resumeNativeWorkspaceFinalization } from "./native-workspace-finalizer.js";
 import { reconcileNativeFinalizations } from "./native-finalization-reconciler.js";

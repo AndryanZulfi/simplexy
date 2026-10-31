@@ -125,7 +125,7 @@ with tempfile.TemporaryDirectory(prefix="paperclip-audit-") as directory:
         if spec["kind"] == "tap":
             command = ["node", "--test", "--test-reporter=tap", owner]
         elif spec["kind"] == "ui":
-            command = ["pnpm", "--filter", "@paperclipai/ui",
+            command = ["pnpm", "--filter", "@simplexy/ui",
                        "exec", "vitest", "run", "src/pages/CompanyExport.test.tsx",
                        "--maxWorkers=1", "--reporter=default", "--reporter=json",
                        "--outputFile.json=" + str(report)]

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { expect, userEvent, waitFor, within } from "storybook/test";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
-import { CONNECTABLE_APP_DEFINITIONS } from "@paperclipai/shared";
+import { CONNECTABLE_APP_DEFINITIONS } from "@simplexy/shared";
 import { Browse } from "@/pages/apps/Browse";
 import { ChatEndpointSetup } from "@/pages/apps/chat/ChatEndpointSetup";
 import { ChatEndpointDetail } from "@/pages/apps/chat/ChatEndpointDetail";

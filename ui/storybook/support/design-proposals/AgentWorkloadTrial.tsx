@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import type { Agent, Issue } from "@paperclipai/shared";
+import type { Agent, Issue } from "@simplexy/shared";
 import { CirclePause, Coffee, ListChecks, SearchX, Users, Zap } from "lucide-react";
 import { AgentAvatar } from "@/components/AgentAvatar";
 import { CollectionToolbar } from "@/components/CollectionToolbar";

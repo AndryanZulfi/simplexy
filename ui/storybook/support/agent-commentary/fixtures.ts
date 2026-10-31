@@ -1,4 +1,4 @@
-import { type AgentCommentaryDetail } from "@paperclipai/shared";
+import { type AgentCommentaryDetail } from "@simplexy/shared";
 import { storybookAgents } from "../../fixtures/paperclipData";
 import { prepareFixtureApi, type FixtureState } from "../capability-gaps/api";
 

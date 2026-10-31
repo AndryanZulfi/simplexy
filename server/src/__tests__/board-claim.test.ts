@@ -11,7 +11,7 @@ import {
   instanceUserRoles,
   principalPermissionGrants,
   subscribeDatabaseWork,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   claimBoardOwnership,
   getBoardClaimWarningUrl,

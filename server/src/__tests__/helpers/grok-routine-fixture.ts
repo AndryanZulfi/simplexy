@@ -1,6 +1,6 @@
 import { createHash, randomBytes, randomUUID } from "node:crypto";
 import { vi } from "vitest";
-import { agents, authUsers, companies, companyMemberships, type createDb } from "@paperclipai/db";
+import { agents, authUsers, companies, companyMemberships, type createDb } from "@simplexy/db";
 import { accessService } from "../../services/access.js";
 import { createPublicMcpOAuth } from "../../services/public-mcp/oauth.js";
 import { dotRunnerBroker } from "../../services/dot-runner-broker.js";

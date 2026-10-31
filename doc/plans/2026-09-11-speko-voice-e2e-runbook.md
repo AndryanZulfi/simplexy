@@ -40,7 +40,7 @@ implementation still requires live audio requalification; see the
 Run deterministic integration without a Speko account, microphone or public tunnel:
 
 ```sh
-npx --yes pnpm@9.15.4 --filter @paperclipai/ui build
+npx --yes pnpm@9.15.4 --filter @simplexy/ui build
 npx --yes pnpm@9.15.4 exec tsc -p tests/speko-native/tsconfig.json
 npx --yes pnpm@9.15.4 exec playwright test --config tests/speko-native/playwright.config.ts
 npx --yes pnpm@9.15.4 exec playwright test --config tests/speko-native/playwright-auth.config.ts
@@ -72,7 +72,7 @@ Use pnpm 9.15.4 to honor this checkout's dependency patches. Build the static UI
 before starting the temporary server:
 
 ```sh
-npx --yes pnpm@9.15.4 --filter @paperclipai/ui build
+npx --yes pnpm@9.15.4 --filter @simplexy/ui build
 SPEKO_NATIVE_PORT=3449 SPEKO_NATIVE_CALLBACK_ORIGIN=https://your-test-origin.example \
   server/node_modules/.bin/tsx tests/speko-native/server.ts
 ```

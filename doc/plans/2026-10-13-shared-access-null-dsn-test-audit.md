@@ -34,7 +34,7 @@ Commands ran from `/private/tmp/paperclip-test-audit-pr-stack`, using the root V
 Baseline:
 
 ```sh
-node_modules/.bin/vitest run --project @paperclipai/shared packages/shared/src/telemetry/client.test.ts packages/shared/src/telemetry/client-contract.test.ts packages/shared/src/validators/access.test.ts
+node_modules/.bin/vitest run --project @simplexy/shared packages/shared/src/telemetry/client.test.ts packages/shared/src/telemetry/client-contract.test.ts packages/shared/src/validators/access.test.ts
 ```
 
 Result: **3 files passed, 53 cases passed**, zero failed/skipped/todo; Vitest duration **214 ms** (start 08:15:17). Access contributed 20 cases.
@@ -42,7 +42,7 @@ Result: **3 files passed, 53 cases passed**, zero failed/skipped/todo; Vitest du
 Candidate, after the access and telemetry consolidations:
 
 ```sh
-node_modules/.bin/vitest run --project @paperclipai/shared packages/shared/src/telemetry/client.test.ts packages/shared/src/validators/access.test.ts
+node_modules/.bin/vitest run --project @simplexy/shared packages/shared/src/telemetry/client.test.ts packages/shared/src/validators/access.test.ts
 ```
 
 Result: **2 files passed, 44 cases passed**, zero failed/skipped/todo; Vitest duration **214 ms** (start 08:15:50). Access contributes 19 surviving cases, and telemetry contributes 25.

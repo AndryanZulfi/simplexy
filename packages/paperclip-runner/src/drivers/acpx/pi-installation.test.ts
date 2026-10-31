@@ -32,7 +32,7 @@ async function withPiTestPlatform<T>(arch: "x64" | "arm64", run: () => Promise<T
 
 async function fixture() {
   const root = await mkdtemp(join(tmpdir(), "pi-installation-test-")); roots.push(root);
-  await writeFile(join(root, "package.json"), JSON.stringify({ name: "@paperclipai/paperclip-runner" }));
+  await writeFile(join(root, "package.json"), JSON.stringify({ name: "@simplexy/paperclip-runner" }));
   vi.stubEnv("PAPERCLIP_ACPX_PROVIDER_PACKAGE_ROOT", root);
   vi.stubEnv("PAPERCLIP_ACPX_PROVIDER_PACKAGE_MANIFEST", join(root, "package.json"));
   const assets = join(root, "provider-assets/pi", `${process.platform}-${process.arch}`);

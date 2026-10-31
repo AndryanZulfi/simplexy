@@ -1,17 +1,17 @@
 import { createHash, randomUUID } from "node:crypto";
 import { and, eq } from "drizzle-orm";
-import { companyObservability, type Db } from "@paperclipai/db";
+import { companyObservability, type Db } from "@simplexy/db";
 import {
   agentObservabilityCaptureSchema, agentObservabilityDestinationSchema, agentObservabilityHeadersSchema,
   DEFAULT_AGENT_OBSERVABILITY_CAPTURE, updateAgentObservabilitySchema,
   isSameOtlpOrigin,
   type AgentObservabilitySettings, type AgentObservabilityTestReceipt, type UpdateAgentObservabilityRequest, type AgentObservabilityUnavailableReason,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { conflict, notFound, unprocessable } from "../errors.js";
 import { withAccountingTransaction } from "./accounting-transaction.js";
 import { logActivity } from "./activity-log.js";
 import { secretService } from "./secrets.js";
-import { withAccountHomeSecretMutationLock } from "@paperclipai/adapter-codex-local/server";
+import { withAccountHomeSecretMutationLock } from "@simplexy/adapter-codex-local/server";
 
 type Row = typeof companyObservability.$inferSelect;
 const target = { targetType: "system" as const, targetId: "company-observability" };

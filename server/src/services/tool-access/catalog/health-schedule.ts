@@ -1,7 +1,7 @@
 import { logger } from "../../../middleware/logger.js";
 import { and, asc, eq, gt, ne, sql } from "drizzle-orm";
-import { toolApplications, toolConnections, type Db } from "@paperclipai/db";
-import { isConnectorFeatureEnabled } from "@paperclipai/shared";
+import { toolApplications, toolConnections, type Db } from "@simplexy/db";
+import { isConnectorFeatureEnabled } from "@simplexy/shared";
 import { instanceSettingsService } from "../../instance-settings.js";
 import { connectionSetupApp } from "../connections/setup-policy.js";
 import type { ConnectionHealth } from "./health.js";

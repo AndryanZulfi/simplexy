@@ -4,7 +4,7 @@ import { eq } from "drizzle-orm";
 import {
   agents, companies, createDb, heartbeatRuns, issues, nativeRunFinalizations, EMBEDDED_POSTGRES_TEST_TIMEOUT_MS,
   issueRelations, issueTreeHolds, issueTreeHoldMembers,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { startEmbeddedPostgresTestDatabase } from "../../__tests__/helpers/embedded-postgres.js";
 import { claimNativeSessionResumptions, dispatchNativeSessionResumptions } from "./native-finalization-reconciler.js";
 import { stageNativeRunnerWakeAttachments } from "./native-runner-file-handoff.js";

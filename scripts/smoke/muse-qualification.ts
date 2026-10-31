@@ -3,7 +3,7 @@ import { createHash, randomUUID } from "node:crypto";
 import { mkdir, open, readFile, rename, rm } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { getStoredBoardCredential } from "../../cli/src/client/board-auth.js";
-import type { MuseConnection, MuseQualificationEvidence } from "@paperclipai/shared";
+import type { MuseConnection, MuseQualificationEvidence } from "@simplexy/shared";
 import { qualificationReport, qualificationCadence } from "./muse-qualification-report.mjs";
 
 const HOUR = 3_600_000;

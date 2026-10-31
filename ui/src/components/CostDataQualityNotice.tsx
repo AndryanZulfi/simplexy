@@ -2,7 +2,7 @@ import { useId, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { Link } from "../lib/router";
-import type { CostDataQualityItem, CostDataQualityReason } from "@paperclipai/shared";
+import type { CostDataQualityItem, CostDataQualityReason } from "@simplexy/shared";
 import { costsApi } from "../api/costs";
 import { formatDateTime } from "../lib/utils";
 import { Button } from "./ui/button";

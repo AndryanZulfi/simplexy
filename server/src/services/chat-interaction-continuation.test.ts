@@ -5,7 +5,7 @@ import {
   agents, agentWakeupRequests, authUsers, chatConversations, chatEndpoints, chatMessageLinks,
   chatPublications, connectionIntentDeliveries, companies, companyMemberships, closeRegisteredClients, createDb, heartbeatRuns,
   issueComments, issueThreadInteractions, issues, toolApplications, toolConnections,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { startEmbeddedPostgresTestDatabase } from "../__tests__/helpers/embedded-postgres.js";
 import { resolveChatRunPresentationAuthorizationReason, enqueueChatRunMilestones } from "./chat-run-publications.js";
 import { CHAT_RUN_PRESENTATION_AUTHORIZATION_REASON, isChatOriginPublicationCandidate, isExternalChatPresentationContext, resolveHeartbeatRunResponse } from "./heartbeat-run-summary.js";

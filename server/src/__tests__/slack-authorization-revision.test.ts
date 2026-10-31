@@ -6,7 +6,7 @@ import {
   agents, chatEndpointResources, chatEndpoints, chatExternalPrincipals, chatIdentityLinks,
   companies, connectionGrants, createDb, toolApplications, toolCatalogEntries, toolConnections,
   toolPolicies, toolProfileBindings, toolProfileEntries, toolProfiles,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { slackAuthorizationRevision } from "../services/connectors/slack-revision.js";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 

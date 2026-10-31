@@ -3,7 +3,7 @@ import { useArgs } from "storybook/preview-api";
 import { Fragment, useState, type ReactNode } from "react";
 import { ChevronDown, ChevronRight, GitBranch } from "lucide-react";
 import { expect, userEvent, waitFor, within } from "storybook/test";
-import type { Issue } from "@paperclipai/shared";
+import type { Issue } from "@simplexy/shared";
 import { IssueRow } from "@/components/IssueRow";
 import { TaskRowGroup } from "@/components/TaskRowGroup";
 import { TaskList } from "@/components/TaskList";

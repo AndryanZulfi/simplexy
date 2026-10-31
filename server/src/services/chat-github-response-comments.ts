@@ -4,7 +4,7 @@ import {
   chatEndpointResources, chatGitHubConfigurations, chatMessageLinks, heartbeatRuns, issues,
   fastResponseRequests, chatPublications,
   type Db,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { registerGitHubTerminalResponseWork } from "./chat-channels/github/terminal-response-work.js";
 import { githubResponseExecution, githubResponseRunColumns as responseRunColumns } from "./chat-channels/github/response-execution.js";
 import { notifyChatResponseAvailability } from "./chat-response-availability.js";

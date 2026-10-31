@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import { and, eq } from "drizzle-orm";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { agents, companies, companyMemberships, companySecrets, connectionGrants, createDb,
-  ensurePostgresDatabase, applyPendingMigrations, heartbeatRuns, issues, toolCatalogEntries, toolConnections } from "@paperclipai/db";
+  ensurePostgresDatabase, applyPendingMigrations, heartbeatRuns, issues, toolCatalogEntries, toolConnections } from "@simplexy/db";
 import { toolAccessService } from "../services/tool-access.js";
 import { createToolGatewayService } from "../services/tool-gateway.js";
 import { DAYTONA_API_URL, DAYTONA_TOOLS, daytonaClient, executeDaytonaTool } from "../services/daytona.js";

@@ -13,17 +13,17 @@ import {
   sql,
 } from "drizzle-orm";
 
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 
 import {
   chatActions,
   chatConversations,
   chatPublications,
   toolConnections,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import type {
   ToolCredentialSecretRef,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 
 import {
   TELEGRAM_DRAFT_ACTION_KIND,

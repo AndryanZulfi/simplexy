@@ -13,7 +13,7 @@ import {
   toolMcpGateways,
   toolProfiles,
   type Db,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { connectionManagementService } from "../services/connection-management.js";
 import type { AuthorizationActor } from "../services/authorization.js";
 import type { ConnectionManagementResource } from "../services/connection-management-policy.js";

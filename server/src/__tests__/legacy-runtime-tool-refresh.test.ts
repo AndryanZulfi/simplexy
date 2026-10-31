@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { AdapterExecutionContext } from "@paperclipai/adapter-utils";
+import type { AdapterExecutionContext } from "@simplexy/adapter-utils";
 
 // Pi resolves its session directory at module load. Keep that test directory
 // under the temporary root instead of the operator's real home.
@@ -10,16 +10,16 @@ vi.mock("node:os", async (importOriginal) => {
   const actual = await importOriginal<typeof import("node:os")>();
   return { ...actual, default: { ...actual.default, homedir: actual.tmpdir }, homedir: actual.tmpdir };
 });
-vi.mock("@paperclipai/adapter-utils/execution-target", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@paperclipai/adapter-utils/execution-target")>();
+vi.mock("@simplexy/adapter-utils/execution-target", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@simplexy/adapter-utils/execution-target")>();
   return { ...actual, runAdapterExecutionTargetProcess: vi.fn() };
 });
-import { runAdapterExecutionTargetProcess } from "@paperclipai/adapter-utils/execution-target";
-import { execute as gemini } from "@paperclipai/adapter-gemini-local/server";
-import { execute as kimi } from "@paperclipai/adapter-kimi-local/server";
-import { execute as cursor } from "@paperclipai/adapter-cursor-local/server";
-import { execute as opencode } from "@paperclipai/adapter-opencode-local/server";
-import { execute as pi } from "@paperclipai/adapter-pi-local/server";
+import { runAdapterExecutionTargetProcess } from "@simplexy/adapter-utils/execution-target";
+import { execute as gemini } from "@simplexy/adapter-gemini-local/server";
+import { execute as kimi } from "@simplexy/adapter-kimi-local/server";
+import { execute as cursor } from "@simplexy/adapter-cursor-local/server";
+import { execute as opencode } from "@simplexy/adapter-opencode-local/server";
+import { execute as pi } from "@simplexy/adapter-pi-local/server";
 
 const roots: string[] = [];
 afterEach(async () => { vi.clearAllMocks(); await Promise.all(roots.splice(0).map(root => fs.rm(root, { recursive: true, force: true }))); });

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import type { TaskInterruptionPresentation } from "@paperclipai/shared";
+import type { TaskInterruptionPresentation } from "@simplexy/shared";
 import { useState } from "react";
 import { expect, userEvent, within } from "storybook/test";
 import { ExecutionBlockerNotice } from "@/components/ExecutionBlockerNotice";

@@ -9,7 +9,7 @@ import {
 import {
   chatActions,
   chatDeliveries,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 
 import {
   type ChatProviderLifecycleEffect,

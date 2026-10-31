@@ -1,4 +1,4 @@
-import type { AttentionFeed, AttentionFeedQuery, DecisionHistoryPage, DecisionHistoryQuery } from "@paperclipai/shared";
+import type { AttentionFeed, AttentionFeedQuery, DecisionHistoryPage, DecisionHistoryQuery } from "@simplexy/shared";
 import { api } from "./client";
 
 export const attentionApi = {

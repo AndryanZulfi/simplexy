@@ -36,9 +36,9 @@ import type { ConnectionManagementContext } from "./connection-management.js";
 
 import { randomBytes } from "node:crypto";
 import { and, eq, gt, inArray, isNotNull, isNull, lte, notInArray, or, sql } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
-import { adapterAuthSessions } from "@paperclipai/db";
-import type { AgentAdapterType } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import { adapterAuthSessions } from "@simplexy/db";
+import type { AgentAdapterType } from "@simplexy/shared";
 
 // The setup-token login flow supports only the `claude_local` adapter. The
 // unified `adapter_auth_sessions` table also holds the Codex device-login rows,
@@ -113,7 +113,7 @@ export const SETUP_TOKEN_CANCELLABLE_STATES: readonly SetupTokenSessionState[] =
  */
 export interface SetupTokenSessionScope {
   managementContext?: ConnectionManagementContext;
-  aiConnection?: import("@paperclipai/shared").AiConnectionLoginIntent;
+  aiConnection?: import("@simplexy/shared").AiConnectionLoginIntent;
   companyId: string;
   ownerUserId: string;
   // The adapter of the login. It is part of the session identity.
@@ -223,7 +223,7 @@ export interface SetupTokenLeaseManager {
  * column on the row.
  */
 export interface SetupTokenCleanupRecord {
-  aiConnection?: import("@paperclipai/shared").AiConnectionLoginIntent;
+  aiConnection?: import("@simplexy/shared").AiConnectionLoginIntent;
   sessionId: string;
   companyId: string;
   ownerUserId: string;
@@ -690,7 +690,7 @@ export interface SetupTokenPromptView {
  * response returns the login URL through the confidential transport guard.
  */
 export interface SetupTokenSessionDescriptor {
-  aiConnection?: import("@paperclipai/shared").AiConnectionLoginIntent;
+  aiConnection?: import("@simplexy/shared").AiConnectionLoginIntent;
   sessionId: string;
   state: SetupTokenSessionState;
   environmentId: string;

@@ -1,7 +1,7 @@
 import { and, desc, eq, gte, sql } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
-import { toolAccessAuditEvents, toolConnections, toolCallEvents, toolRuntimeMetricCounters, toolRuntimeSlots } from "@paperclipai/db";
-import type { DeploymentExposure, DeploymentMode, ToolRuntimeAlertRecommendation, ToolRuntimeHealthSummary } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import { toolAccessAuditEvents, toolConnections, toolCallEvents, toolRuntimeMetricCounters, toolRuntimeSlots } from "@simplexy/db";
+import type { DeploymentExposure, DeploymentMode, ToolRuntimeAlertRecommendation, ToolRuntimeHealthSummary } from "@simplexy/shared";
 import { TOOL_RUNTIME_AUDIT_WRITE_FAILURE_METRIC } from "../../tool-runtime-metrics.js";
 
 function asRecord(value: unknown): Record<string, unknown> {

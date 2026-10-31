@@ -3,7 +3,7 @@ import { decisionArchiveDeliveryService, type ArchiveNotificationBatch } from ".
 import { DELIVERY_QUEUES, notifyDeliveryWork } from "./delivery-work-notifications.js";
 import { createHash } from "node:crypto";
 import { and, eq, inArray, isNotNull, isNull, lte, ne, sql } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import {
   agents,
   approvals,
@@ -16,12 +16,12 @@ import {
   issueThreadInteractions,
   issues,
   joinRequests,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import type {
   AttentionArchiveManifestEntry,
   AttentionItem,
   AttentionSourceKind,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { conflict, notFound, unprocessable } from "../errors.js";
 import { logActivity } from "./activity-log.js";
 import type { AuthorizationActor } from "./authorization.js";

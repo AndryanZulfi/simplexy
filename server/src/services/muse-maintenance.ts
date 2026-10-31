@@ -1,6 +1,6 @@
 import { logger } from "../middleware/logger.js";
 import { and, asc, eq, gt, inArray, isNull, lte, or } from "drizzle-orm";
-import { museAgentBindings as bindings, museRunnerAssignments as assignments, mcpOauthGrants, type Db } from "@paperclipai/db";
+import { museAgentBindings as bindings, museRunnerAssignments as assignments, mcpOauthGrants, type Db } from "@simplexy/db";
 import { museRunnerBroker } from "./muse-runner-broker.js";
 import { museReceiver } from "./muse-receiver.js";
 import type { createDeliveryWorkCoordinator } from "./delivery-work-coordinator.js";

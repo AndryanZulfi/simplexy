@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import { sql } from "drizzle-orm";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { activityLog, agents, companies, createDb, heartbeatRuns, toolAccessAuditEvents, toolGatewaySessions,
-  toolMcpGateways, toolMcpGatewayTokens, toolProfiles } from "@paperclipai/db";
+  toolMcpGateways, toolMcpGatewayTokens, toolProfiles } from "@simplexy/db";
 import { createToolGatewayService } from "../services/tool-gateway.js";
 import { createDeliveryWorkCoordinator } from "../services/delivery-work-coordinator.js";
 import { registerGatewayCredentialExpiryWork } from "../services/gateway-credential-expiry-work.js";

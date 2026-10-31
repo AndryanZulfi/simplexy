@@ -1,5 +1,5 @@
-import type { PluginDetailTabProps } from "@paperclipai/plugin-sdk/ui";
-import { copyTextToClipboard, usePluginData, usePluginToast } from "@paperclipai/plugin-sdk/ui";
+import type { PluginDetailTabProps } from "@simplexy/plugin-sdk/ui";
+import { copyTextToClipboard, usePluginData, usePluginToast } from "@simplexy/plugin-sdk/ui";
 import { DIFFS_TAG_NAME, getSingularPatch } from "@pierre/diffs";
 import type { PatchDiffProps } from "@pierre/diffs/react";
 import { useFileDiffInstance } from "@pierre/diffs/react";

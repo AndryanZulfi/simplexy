@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
-import type { ActivityEvent, Issue, Agent, ProviderTraceMetadata } from "@paperclipai/shared";
+import type { ActivityEvent, Issue, Agent, ProviderTraceMetadata } from "@simplexy/shared";
 import {
   isResponsibleUserDenialCode,
   responsibleUserLabel,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "@/lib/router";
 import { accessApi, type CurrentBoardAccess } from "../api/access";

@@ -1,4 +1,4 @@
-// The public packages the public-install verifier stages: `@paperclipai/server`
+// The public packages the public-install verifier stages: `@simplexy/server`
 // and `paperclipai` plus every public workspace package they reach through
 // `workspace:` specs, in the depth-first order the verifier packs them. The
 // npm cache warm-up reads the same closure from source manifests before
@@ -8,7 +8,7 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-export const PUBLIC_INSTALL_ROOTS = ['@paperclipai/server', 'paperclipai'];
+export const PUBLIC_INSTALL_ROOTS = ['@simplexy/server', 'paperclipai'];
 
 // Returns `{ packages, needed }`: `packages` maps every public workspace
 // package name to `{ dir, manifest }`, and `needed` is the closure in visit

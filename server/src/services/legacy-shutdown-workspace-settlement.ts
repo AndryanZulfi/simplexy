@@ -1,5 +1,5 @@
 import { and, eq, gt, inArray, ne, or, sql } from "drizzle-orm";
-import { environmentLeases, heartbeatRuns, issues, type Db } from "@paperclipai/db";
+import { environmentLeases, heartbeatRuns, issues, type Db } from "@simplexy/db";
 import { adapterExecutionControls } from "./adapter-execution-control.js";
 import { legacyControllerBootId } from "./legacy-controller-lease.js";
 import { LEGACY_WORKSPACE_RECOVERY_SCHEMA } from "./workspace-restore-recovery-state.js";

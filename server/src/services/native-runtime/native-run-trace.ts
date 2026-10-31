@@ -3,7 +3,7 @@ import { AsyncLocalStorage } from "node:async_hooks";
 import { createHash } from "node:crypto";
 import { isSpanContextValid, ROOT_CONTEXT, trace } from "@opentelemetry/api";
 
-import { runWithRuntimeParent } from "@paperclipai/adapter-utils/acpx-engine/startup-timing";
+import { runWithRuntimeParent } from "@simplexy/adapter-utils/acpx-engine/startup-timing";
 import type { AdapterRuntimeEvent } from "../../adapters/index.js";
 import {
   getStartupTraceContext,

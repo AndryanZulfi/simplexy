@@ -11,8 +11,8 @@ import {
   issueAttachments,
   toolInvocations,
   type Db,
-} from "@paperclipai/db";
-import { SLACK_TOOLS } from "@paperclipai/shared";
+} from "@simplexy/db";
+import { SLACK_TOOLS } from "@simplexy/shared";
 import { conflict, forbidden, HttpError, unprocessable } from "../../errors.js";
 import { getStorageService } from "../../storage/index.js";
 import {

@@ -23,7 +23,7 @@ shard layouts evolve.
 Example focused command, replacing the example path with the actual owner:
 
 ```sh
-pnpm --filter @paperclipai/server exec vitest run src/services/OWNER.test.ts
+pnpm --filter @simplexy/server exec vitest run src/services/OWNER.test.ts
 ```
 
 `pnpm test` is the normal Vitest entry point. Browser and release-smoke suites

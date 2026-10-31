@@ -2,15 +2,15 @@ import { constants } from "node:fs";
 import { lstat, mkdir, mkdtemp, open, realpath, rm, stat, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, posix } from "node:path";
-import { CODEX_CHATGPT_MODEL_REJECTION_RE, codexChatGptRetirementHint } from "@paperclipai/adapter-codex-local";
-import { copyBackCodexAuth } from "@paperclipai/adapter-codex-local/server";
-import type { AdapterEnvironmentTestContext, AdapterEnvironmentTestResult } from "@paperclipai/adapter-utils";
-import { ADAPTER_AUTH_MISSING_CHECK_CODE } from "@paperclipai/shared";
+import { CODEX_CHATGPT_MODEL_REJECTION_RE, codexChatGptRetirementHint } from "@simplexy/adapter-codex-local";
+import { copyBackCodexAuth } from "@simplexy/adapter-codex-local/server";
+import type { AdapterEnvironmentTestContext, AdapterEnvironmentTestResult } from "@simplexy/adapter-utils";
+import { ADAPTER_AUTH_MISSING_CHECK_CODE } from "@simplexy/shared";
 import { probeNativeRunnerEnvironment, resolveSourceCodexHome } from "../../vendor/paperclip-runner/index.js";
 import { resolvePaperclipRunnerBinary, resolveRemotePaperclipRunnerBinary } from "./native-codex-runner.js";
 import { readLocalAiCredentialFile } from "../local-ai-credential-file.js";
 import { createNativeSshCommandRunner } from "./native-ssh-command-runner.js";
-import { resolvePaperclipRunnerTransport } from "@paperclipai/adapter-utils/runner-connectivity";
+import { resolvePaperclipRunnerTransport } from "@simplexy/adapter-utils/runner-connectivity";
 import { createNativeRunnerExecutionDriver } from "./native-runner-execution-driver.js";
 
 

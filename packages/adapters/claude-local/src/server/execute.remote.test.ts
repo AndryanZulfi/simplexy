@@ -2,7 +2,7 @@ import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { RunProcessResult } from "@paperclipai/adapter-utils/server-utils";
+import type { RunProcessResult } from "@simplexy/adapter-utils/server-utils";
 
 const {
   runChildProcess,
@@ -43,9 +43,9 @@ const {
   })),
 }));
 
-vi.mock("@paperclipai/adapter-utils/server-utils", async () => {
-  const actual = await vi.importActual<typeof import("@paperclipai/adapter-utils/server-utils")>(
-    "@paperclipai/adapter-utils/server-utils",
+vi.mock("@simplexy/adapter-utils/server-utils", async () => {
+  const actual = await vi.importActual<typeof import("@simplexy/adapter-utils/server-utils")>(
+    "@simplexy/adapter-utils/server-utils",
   );
   return {
     ...actual,
@@ -55,9 +55,9 @@ vi.mock("@paperclipai/adapter-utils/server-utils", async () => {
   };
 });
 
-vi.mock("@paperclipai/adapter-utils/ssh", async () => {
-  const actual = await vi.importActual<typeof import("@paperclipai/adapter-utils/ssh")>(
-    "@paperclipai/adapter-utils/ssh",
+vi.mock("@simplexy/adapter-utils/ssh", async () => {
+  const actual = await vi.importActual<typeof import("@simplexy/adapter-utils/ssh")>(
+    "@simplexy/adapter-utils/ssh",
   );
   return {
     ...actual,
@@ -67,9 +67,9 @@ vi.mock("@paperclipai/adapter-utils/ssh", async () => {
   };
 });
 
-vi.mock("@paperclipai/adapter-utils/execution-target", async () => {
-  const actual = await vi.importActual<typeof import("@paperclipai/adapter-utils/execution-target")>(
-    "@paperclipai/adapter-utils/execution-target",
+vi.mock("@simplexy/adapter-utils/execution-target", async () => {
+  const actual = await vi.importActual<typeof import("@simplexy/adapter-utils/execution-target")>(
+    "@simplexy/adapter-utils/execution-target",
   );
   return {
     ...actual,
@@ -77,7 +77,7 @@ vi.mock("@paperclipai/adapter-utils/execution-target", async () => {
   };
 });
 
-import { createPromptContextFixture } from "@paperclipai/adapter-utils/test-fixtures/prompt-context";
+import { createPromptContextFixture } from "@simplexy/adapter-utils/test-fixtures/prompt-context";
 import { execute } from "./execute.js";
 import { resetClaudeCliCapabilitiesCacheForTests } from "./cli-capabilities.js";
 

@@ -6,7 +6,7 @@ import os from "node:os";
 import path from "node:path";
 import request from "supertest";
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from "vitest";
-import { createDb, plugins } from "@paperclipai/db";
+import { createDb, plugins } from "@simplexy/db";
 import {
   ensureLocalPluginBuilt,
   pluginLoader,
@@ -61,7 +61,7 @@ async function createBundledPluginFixture(
   options: { rootDir?: string; buildDistImmediately?: boolean } = {},
 ): Promise<FixturePlugin> {
   const slug = `plugin-autobuild-${nameSuffix}-${randomUUID().slice(0, 8)}`;
-  const packageName = `@paperclipai/${slug}`;
+  const packageName = `@simplexy/${slug}`;
   const pluginKey = `paperclip.${slug.replace(/^plugin-/, "").replace(/-/g, "_")}`;
   const packageRoot = path.join(options.rootDir ?? repoPluginRoot, slug);
   const distDir = path.join(packageRoot, "dist");
@@ -184,7 +184,7 @@ describe("ensureLocalPluginBuilt", () => {
     await ensureLocalPluginBuilt(
       packageRoot,
       {
-        name: "@paperclipai/plugin-outside",
+        name: "@simplexy/plugin-outside",
         paperclipPlugin: {
           manifest: "./dist/manifest.js",
           worker: "./dist/worker.js",

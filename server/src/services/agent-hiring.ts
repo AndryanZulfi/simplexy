@@ -1,6 +1,6 @@
-import { agentAppearanceSchema, randomAgentAppearance } from "@paperclipai/shared";
-import { normalizePaperclipRunnerAdapterConfig } from "@paperclipai/adapter-utils/server-utils";
-import { agents, toolConnectionInstalls, principalPermissionGrants, type Db } from "@paperclipai/db";
+import { agentAppearanceSchema, randomAgentAppearance } from "@simplexy/shared";
+import { normalizePaperclipRunnerAdapterConfig } from "@simplexy/adapter-utils/server-utils";
+import { agents, toolConnectionInstalls, principalPermissionGrants, type Db } from "@simplexy/db";
 import { eq } from "drizzle-orm";
 import { unprocessable } from "../errors.js";
 import { agentRecordQueries, isPlainRecord, configPatchFromApprovalPayload, normalizeRuntimeConfigForNewAgent,

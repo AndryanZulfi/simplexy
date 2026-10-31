@@ -2,7 +2,7 @@ import { agentAvatarUrl } from "@/lib/agent-avatar-url";
 import { expect, waitFor } from "storybook/test";
 import { useEffect, useRef, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { AGENT_PALETTE_IDS, AGENT_AVATAR_SIZES, CHARACTER_STATES, appearanceForPalette, type CharacterState } from "@paperclipai/shared";
+import { AGENT_PALETTE_IDS, AGENT_AVATAR_SIZES, CHARACTER_STATES, appearanceForPalette, type CharacterState } from "@simplexy/shared";
 import { AgentAvatar, avatarSizeClasses } from "../../../src/components/AgentAvatar";
 import { AgentCharacter } from "../../../src/components/AgentCharacter";
 import { AgentIdentity } from "../../../src/components/AgentIdentity";
@@ -120,7 +120,7 @@ function SnapshotPair({ size = 256, state = "rest", density = 2 }: SnapshotPairP
   useEffect(() => {
     let disposed = false;
     let cleanup: (() => void) | undefined;
-    void Promise.all([import("@paperclipai/shared/cliplab/renderer"), import("@paperclipai/shared/cliplab/definition")]).then(([{ CharacterRenderer }, library]) => {
+    void Promise.all([import("@simplexy/shared/cliplab/renderer"), import("@simplexy/shared/cliplab/definition")]).then(([{ CharacterRenderer }, library]) => {
       if (disposed || !host.current) return;
       const canvas = document.createElement("canvas");
       canvas.className = "size-full";

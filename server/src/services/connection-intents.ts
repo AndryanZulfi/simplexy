@@ -8,10 +8,10 @@ import { agentService } from "./agents.js";
 import { createHash } from "node:crypto";
 import { logActivity } from "./activity-log.js";
 import { aiConnectionService } from "./ai-connections.js";
-import { aiConnectionBindingSchema, aiConnectionRouterBindingSchema } from "@paperclipai/shared";
+import { aiConnectionBindingSchema, aiConnectionRouterBindingSchema } from "@simplexy/shared";
 import { aiBindingForAuthRecovery, isAiAuthenticationFailure, isAiAuthenticationRepairable } from "./ai-auth-failure.js";
 import { and, eq, desc, isNull, sql } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import {
   agents,
   aiConnectionTaskPins,
@@ -29,7 +29,7 @@ import {
   issueThreadInteractions,
   issueComments,
   issues,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   APP_STORE_DEFINITIONS,
   isUuidLike,
@@ -53,7 +53,7 @@ import {
   type ToolConnection,
   type AiConnectionAttribution,
   type AiConnectionBinding,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { instanceSettingsService } from "./instance-settings.js";
 import { conflict, forbidden, notFound, unprocessable } from "../errors.js";
 import type { RuntimeToolsTokenClaims } from "../runtime-tools-token.js";

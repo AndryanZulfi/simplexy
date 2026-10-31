@@ -35,7 +35,7 @@ import {
   documentRevisions,
   issues,
   nativeRunFinalizations,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,

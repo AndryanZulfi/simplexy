@@ -1,5 +1,5 @@
 import { and, asc, eq, gt, isNotNull, isNull, notExists, sql } from "drizzle-orm";
-import { heartbeatRuns, issueComments, nativeRunFinalizations, statusDecisions, type Db } from "@paperclipai/db";
+import { heartbeatRuns, issueComments, nativeRunFinalizations, statusDecisions, type Db } from "@simplexy/db";
 import type { createDeliveryWorkCoordinator } from "../delivery-work-coordinator.js";
 import { DELIVERY_QUEUES } from "../delivery-work-notifications.js";
 import type { NativeReviewResponseScope } from "../native-review-response-notifications.js";

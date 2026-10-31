@@ -39,7 +39,7 @@ for (const owner of ["runner", "server"]) {
       await mkdir(join(root, "node_modules/@github"), { recursive: true });
       await symlink(native, join(root, "node_modules", distribution.packageName), "dir");
       await writeFile(join(root, "package.json"), JSON.stringify({
-        name: owner === "server" ? "@paperclipai/server" : "@paperclipai/paperclip-runner", type: "module",
+        name: owner === "server" ? "@simplexy/server" : "@simplexy/paperclip-runner", type: "module",
       }));
       const runtimeRoot = owner === "server" ? join(root, "dist/vendor/paperclip-runner") : join(root, "dist");
       // Compile the actual installation closure into a published package layout.

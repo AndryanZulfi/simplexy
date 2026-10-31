@@ -1,5 +1,5 @@
 import { notifyUnsafeWorkspaceExportRecovery } from "./unsafe-workspace-export-notifications.js";
-import { FAST_RESPONSE_AGENT_GUIDANCE, fastResponseHistoryBody } from "@paperclipai/shared";
+import { FAST_RESPONSE_AGENT_GUIDANCE, fastResponseHistoryBody } from "@simplexy/shared";
 import {
   persistActivity,
   publishActivity,
@@ -17,7 +17,7 @@ import {
   issueThreadInteractions,
   issues,
   type Db,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 
 import { notifyChatRunMilestones } from "./chat-run-milestone-notifications.js";
 import { sanitizeQuarantinedCommentForHigherTrust } from "./source-trust.js";

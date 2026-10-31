@@ -14,8 +14,8 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import {
   agentApiKeys, agents, authUsers, companies, companyMemberships, createDb,
   heartbeatRuns, issueAccessGrants, issues, type Db,
-} from "@paperclipai/db";
-import * as schema from "@paperclipai/db/schema/index";
+} from "@simplexy/db";
+import * as schema from "@simplexy/db/schema/index";
 import { setupLiveEventsWebSocketServer } from "../realtime/live-events-ws.js";
 import { publishLiveEvent } from "../services/live-events.js";
 import { authorizationService, type AuthorizationActor } from "../services/authorization.js";

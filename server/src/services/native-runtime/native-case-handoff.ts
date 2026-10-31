@@ -1,4 +1,4 @@
-import { caseHandoffs, type Db } from "@paperclipai/db";
+import { caseHandoffs, type Db } from "@simplexy/db";
 import { and, eq } from "drizzle-orm";
 import type { PrpStructuredRunResult } from "../../vendor/paperclip-runner/index.js";
 import { pendingCaseHandoffForRun } from "../heartbeat/case-handoff-lifecycle.js";

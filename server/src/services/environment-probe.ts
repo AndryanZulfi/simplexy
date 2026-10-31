@@ -1,6 +1,6 @@
-import type { Environment, EnvironmentProbeResult } from "@paperclipai/shared";
-import type { Db } from "@paperclipai/db";
-import { ensureSshWorkspaceReady } from "@paperclipai/adapter-utils/ssh";
+import type { Environment, EnvironmentProbeResult } from "@simplexy/shared";
+import type { Db } from "@simplexy/db";
+import { ensureSshWorkspaceReady } from "@simplexy/adapter-utils/ssh";
 import {
   parseEnvironmentDriverConfig,
   resolveEnvironmentDriverConfigForRuntime,
@@ -13,7 +13,7 @@ import type { PluginWorkerManager } from "./plugin-worker-manager.js";
 import { environmentRuntimeService } from "./environment-runtime.js";
 import { environmentService } from "./environments.js";
 import { fingerprintEnvironmentSandboxProviderConfig, SANDBOX_PLATFORM_PROBE_METADATA_KEY } from "./environment-custom-image-runtime.js";
-import type { SandboxEnvironmentConfig } from "@paperclipai/shared";
+import type { SandboxEnvironmentConfig } from "@simplexy/shared";
 import { isQualifiableDaytonaSnapshot, qualifiedSandboxSnapshotId, readSnapshotIdentity, type SandboxTemplateIdentity } from "./sandbox-snapshot-qualification.js";
 
 export const SANDBOX_PLATFORM_PROBE_COMMAND = "uname -s; uname -m; if version=$(getconf GNU_LIBC_VERSION 2>/dev/null) && [ -n \"$version\" ]; then printf 'glibc\\n%s\\n' \"$version\"; else case \"$(ldd --version 2>&1)\" in *musl*) printf 'musl\\n' ;; *) printf 'unknown\\n' ;; esac; fi";

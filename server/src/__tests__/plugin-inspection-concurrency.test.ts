@@ -1,7 +1,7 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { expect, it } from "vitest";
-import type { PaperclipPluginManifestV1 } from "@paperclipai/shared";
+import type { PaperclipPluginManifestV1 } from "@simplexy/shared";
 import { createPluginWorkerManager } from "../services/plugin-worker-manager.js";
 import { idleWorkSnapshot } from "../services/task-admission.js";
 

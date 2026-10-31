@@ -22,14 +22,14 @@ import {
   heartbeatRuns,
   issues,
   nativeRunResults,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { describe, expect, it, vi } from "vitest";
 import {
   CodexAppServerDriver,
   HarnessDriverBackend,
   createCodexTaskEnvelope,
   createRunnerdCodexTransport as createCapabilityRunnerdCodexTransport,
-} from "@paperclipai/paperclip-runner";
+} from "@simplexy/paperclip-runner";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase as startEmbeddedDatabase,
@@ -79,7 +79,7 @@ const externalTestDatabaseUrl = resolveExternalTestDatabaseUrl("PAPERCLIP_TEST_D
 async function startEmbeddedPostgresTestDatabase(prefix: string) {
   const externalUrl = externalTestDatabaseUrl;
   if (!externalUrl) return startEmbeddedDatabase(prefix);
-  const { closeRegisteredClients } = await import("@paperclipai/db");
+  const { closeRegisteredClients } = await import("@simplexy/db");
   return { connectionString: externalUrl, cleanup: async () => {
     const db = createDb(externalUrl);
     try { await db.execute(sql`TRUNCATE TABLE companies CASCADE`); }

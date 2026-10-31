@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { publishLiveEvent } from "../services/live-events.js";
-import { heartbeatRuns } from "@paperclipai/db";
+import { heartbeatRuns } from "@simplexy/db";
 import { createRunSecretRedactionRegistry } from "../services/run-secret-redaction.js";
 import { REDACTED_EVENT_VALUE } from "../redaction.js";
 import { homedir } from "node:os";

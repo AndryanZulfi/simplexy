@@ -12,7 +12,7 @@ import {
   statusDecisions,
   workAssessments,
   type Db,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   persistActivity,
   publishActivity,

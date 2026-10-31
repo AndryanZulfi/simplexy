@@ -2,7 +2,7 @@ import { TextAttachmentContext } from "@/context/TextAttachmentContext";
 import { isTextAttachment } from "@/lib/issue-attachments";
 import { useContext, useMemo, useState, type DragEvent, type ReactNode } from "react";
 import { useQuery } from "@tanstack/react-query";
-import type { IssueAttachment } from "@paperclipai/shared";
+import type { IssueAttachment } from "@simplexy/shared";
 import { Download, ExternalLink, FileText, Maximize2, Trash2 } from "lucide-react";
 import { AttachmentIcon } from "@/components/AttachmentIcon";
 import { Button } from "@/components/ui/button";

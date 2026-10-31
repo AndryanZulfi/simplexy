@@ -12,7 +12,7 @@ import {
   chatEndpointResources,
   chatExternalPrincipals,
   chatIdentityLinks,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 
 import {
   type TelegramCallbackReceipt,

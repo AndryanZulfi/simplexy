@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { creationVisibilityStories } from "../../support/issue-creation-visibility";
-import type { Issue, IssueLabel, Project } from "@paperclipai/shared";
+import type { Issue, IssueLabel, Project } from "@simplexy/shared";
 import type { RunForIssue } from "@/api/activity";
 import { useQueryClient } from "@tanstack/react-query";
 import {

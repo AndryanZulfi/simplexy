@@ -57,14 +57,14 @@ export async function verifyInstalledDaytonaPlugin(env: NodeJS.ProcessEnv, execu
     await pinned(join(pin.root, pin.entry), pin.entrySha256);
     return manifest;
   }
-  const plugin = await packageAt(a.plugin, "@paperclipai/plugin-daytona");
-  const sdk = await packageAt(a.sdk, "@paperclipai/plugin-sdk");
-  const shared = await packageAt(a.shared, "@paperclipai/shared");
+  const plugin = await packageAt(a.plugin, "@simplexy/plugin-daytona");
+  const sdk = await packageAt(a.sdk, "@simplexy/plugin-sdk");
+  const shared = await packageAt(a.shared, "@simplexy/shared");
   const daytona = await packageAt(a.daytona, "@daytonaio/sdk");
-  if (plugin.paperclipPlugin?.manifest !== "./dist/manifest.js" || plugin.paperclipPlugin?.worker !== "./dist/worker.js" || plugin.dependencies?.["@paperclipai/plugin-sdk"] !== sdk.version || sdk.dependencies?.["@paperclipai/shared"] !== shared.version || plugin.dependencies?.["@daytonaio/sdk"] !== "0.203.0" || daytona.version !== "0.203.0") throw new Error("Installed Daytona plugin public dependency identity differs");
+  if (plugin.paperclipPlugin?.manifest !== "./dist/manifest.js" || plugin.paperclipPlugin?.worker !== "./dist/worker.js" || plugin.dependencies?.["@simplexy/plugin-sdk"] !== sdk.version || sdk.dependencies?.["@simplexy/shared"] !== shared.version || plugin.dependencies?.["@daytonaio/sdk"] !== "0.203.0" || daytona.version !== "0.203.0") throw new Error("Installed Daytona plugin public dependency identity differs");
   await pinned(join(a.plugin.root, "dist/manifest.js"), a.plugin.manifestSha256);
   await pinned(join(a.plugin.root, "dist/worker.js"), a.plugin.workerSha256);
-  for (const [name, parent, pin] of [["@paperclipai/plugin-sdk", join(a.plugin.root, "dist/worker.js"), a.sdk], ["@paperclipai/shared", join(a.sdk.root, a.sdk.entry), a.shared], ["@daytonaio/sdk", join(a.plugin.root, "dist/worker.js"), a.daytona]] as const) {
+  for (const [name, parent, pin] of [["@simplexy/plugin-sdk", join(a.plugin.root, "dist/worker.js"), a.sdk], ["@simplexy/shared", join(a.sdk.root, a.sdk.entry), a.shared], ["@daytonaio/sdk", join(a.plugin.root, "dist/worker.js"), a.daytona]] as const) {
     const found = findPackageJSON(name, pathToFileURL(parent));
     if (!found || await realpath(found) !== join(pin.root, "package.json")) throw new Error("Installed Daytona plugin resolves a foreign dependency");
   }

@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { AdapterExecutionTarget } from "@paperclipai/adapter-utils/execution-target";
+import type { AdapterExecutionTarget } from "@simplexy/adapter-utils/execution-target";
 import {
   codexModelFallbackCandidates,
   compatibleCodexModel,

@@ -41,7 +41,7 @@ import {
   toolInvocations,
   toolPolicies,
   toolRateLimitCounters,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import type { PluginToolDispatcher } from "../services/plugin-tool-dispatcher.js";
 import type { VercelConnectClient } from "../services/vercel-connect.js";
 import { initializeRunIdentity, reserveSteeredIdentity, reconcileSteeredIdentity } from "../services/run-identity.js";

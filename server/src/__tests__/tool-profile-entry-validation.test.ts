@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
-import { companies, createDb, toolApplications, toolCatalogEntries, toolConnections, toolProfileEntries, toolProfiles } from "@paperclipai/db";
-import type { CreateToolProfileEntryForProfile } from "@paperclipai/shared";
+import { companies, createDb, toolApplications, toolCatalogEntries, toolConnections, toolProfileEntries, toolProfiles } from "@simplexy/db";
+import type { CreateToolProfileEntryForProfile } from "@simplexy/shared";
 import { eq } from "drizzle-orm";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { toolAccessService } from "../services/tool-access.js";

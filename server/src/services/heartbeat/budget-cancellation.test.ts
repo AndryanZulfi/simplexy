@@ -1,8 +1,8 @@
 import { randomUUID } from "node:crypto";
 import { spawn } from "node:child_process";
 import { once } from "node:events";
-import type { Db } from "@paperclipai/db";
-import { agents, agentWakeupRequests, browserUseRuns, browserUseSessions, budgetPolicies, companies, connectionGrants, costEvents, environmentLeases, heartbeatRuns, issues, projects, toolApplications, toolConnections } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
+import { agents, agentWakeupRequests, browserUseRuns, browserUseSessions, budgetPolicies, companies, connectionGrants, costEvents, environmentLeases, heartbeatRuns, issues, projects, toolApplications, toolConnections } from "@simplexy/db";
 import { eq, inArray } from "drizzle-orm";
 import { describe, expect, it, vi } from "vitest";
 import { runningProcesses } from "../../adapters/index.js";

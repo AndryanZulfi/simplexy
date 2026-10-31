@@ -6,7 +6,7 @@ import {
   agents, toolActionDeliveries, toolActionRequests, toolInvocations, toolGatewaySessions, toolCallEvents, toolAccessAuditEvents, toolPolicies,
   companySecretBindings, companySecretProposals, companySecrets, createDb,
   chatPublications, heartbeatRuns, issueComments, issueThreadInteractions, issues,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { resolveExternalTestDatabaseUrl } from "./helpers/external-test-database.js";
 import { createChatMilestoneFixtures } from "./helpers/chat-milestone-fixtures.js";

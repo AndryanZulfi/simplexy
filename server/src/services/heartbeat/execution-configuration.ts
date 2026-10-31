@@ -1,14 +1,14 @@
-import { agentHarnessType } from "@paperclipai/shared";
-import { observabilitySecretValues } from "@paperclipai/adapter-utils/agent-observability";
+import { agentHarnessType } from "@simplexy/shared";
+import { observabilitySecretValues } from "@simplexy/adapter-utils/agent-observability";
 import { agentObservabilityService, unavailableAgentObservability, type ResolvedAgentObservability } from "../agent-observability.js";
 import { agentObservabilityLaunch } from "../agent-observability-launch.js";
 import { withSkillActor } from "../skill-access.js";
 import type { AuthorizationActor } from "../authorization.js";
 import { eq, sql } from "drizzle-orm";
-import { heartbeatRuns, type Db, type agents, type projects } from "@paperclipai/db";
-import type { AiConnectionBinding } from "@paperclipai/shared";
+import { heartbeatRuns, type Db, type agents, type projects } from "@simplexy/db";
+import type { AiConnectionBinding } from "@simplexy/shared";
 import { readPaperclipSkillSyncPreference, resolvePaperclipDesiredSkillNames, resolveLegacyPaperclipDesiredSkillNames,
-  writePaperclipSkillSyncPreference } from "@paperclipai/adapter-utils/server-utils";
+  writePaperclipSkillSyncPreference } from "@simplexy/adapter-utils/server-utils";
 import { parseObject } from "../../adapters/utils.js";
 import { logger } from "../../middleware/logger.js";
 import { AI_CONNECTION_BUSY_RETRY_REASON, extractWakeCommentIds, isNonAssigneeWorkspaceBusyRetry } from "../../modules/run-dispatch/index.js";

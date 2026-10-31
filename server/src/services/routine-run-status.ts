@@ -1,6 +1,6 @@
 import { and, eq } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
-import { issues, routineRuns, routines } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
+import { issues, routineRuns, routines } from "@simplexy/db";
 
 const EXECUTION_ISSUE_TRANSIENT_FAILURE_CODE = "execution_issue_status";
 const EXECUTION_ISSUE_TRANSIENT_FAILURE_STATUSES = ["blocked", "cancelled"] as const;

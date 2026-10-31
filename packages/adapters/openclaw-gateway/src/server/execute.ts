@@ -2,7 +2,7 @@ import type {
   AdapterExecutionContext,
   AdapterExecutionResult,
   AdapterRuntimeServiceReport,
-} from "@paperclipai/adapter-utils";
+} from "@simplexy/adapter-utils";
 import {
   asNumber,
   asString,
@@ -16,7 +16,7 @@ import {
   joinPromptSections,
   stringifyPaperclipWakePayload,
   paperclipWakeCommentsArePromptOwned,
-} from "@paperclipai/adapter-utils/server-utils";
+} from "@simplexy/adapter-utils/server-utils";
 import crypto, { randomUUID } from "node:crypto";
 import { WebSocket } from "ws";
 

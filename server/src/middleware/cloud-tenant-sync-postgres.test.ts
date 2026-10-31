@@ -6,7 +6,7 @@ import { and, eq, sql } from "drizzle-orm";
 import {
   agents, applyPendingMigrations, authUsers, companies, companyMemberships, createDb, instanceSettings,
   instanceUserRoles, principalPermissionGrants, resourceLifecycleEvents, type Db,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "../__tests__/helpers/embedded-postgres.js";
 import { cloudActorHeaderSourceFromHeaders, resolveCloudTenantActor } from "./auth.js";
 import { errorHandler } from "./error-handler.js";

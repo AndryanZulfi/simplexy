@@ -11,7 +11,7 @@ vi.mock("node:https", () => ({ request: (url: URL, options: object) => {
 } }));
 import request from "supertest";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { pluginManifestV1Schema, type PaperclipPluginManifestV1 } from "@paperclipai/shared";
+import { pluginManifestV1Schema, type PaperclipPluginManifestV1 } from "@simplexy/shared";
 
 const mockAccess = vi.hoisted(() => ({ decide: vi.fn().mockResolvedValue({ allowed: true }) }));
 vi.mock("../services/authorization.js", () => ({ authorizationService: () => mockAccess }));

@@ -13,10 +13,10 @@ import {
 
 import {
   chatEndpointResources,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import type {
   ChatProvider,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 
 import type {
   Thread,

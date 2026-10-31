@@ -17,9 +17,9 @@ import {
   toolProfileEntries,
   toolProfiles,
   toolMcpGatewayTokens,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { and, eq } from "drizzle-orm";
-import type { ToolAccessDecisionInput } from "@paperclipai/shared";
+import type { ToolAccessDecisionInput } from "@simplexy/shared";
 import {
   createToolAccessDecisionCache,
   toolAccessPolicyService,

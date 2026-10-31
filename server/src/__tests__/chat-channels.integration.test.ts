@@ -14,7 +14,7 @@ import { nativeChatProgressWork } from "../services/chat-native-progress-work.js
 import { cloudActorHeaderSourceFromHeaders, resolveCloudTenantActor } from "../middleware/auth.js";
 import { cloudTenantPrimaryCompanyId } from "../services/cloud-instance.js";
 import { accessService } from "../services/access.js";
-import { signalDatabaseWork, subscribeDatabaseWork } from "@paperclipai/db";
+import { signalDatabaseWork, subscribeDatabaseWork } from "@simplexy/db";
 import { claimTaskRetryInput, releaseUnadmittedTaskRetryInput } from "../services/chat-channels/task-retry-input.js";
 import { restoreNativeChatReviewPresentationInTransaction } from "../services/native-runtime/native-chat-review-presentation.js";
 import { notifyChatEndpointConfiguration, notifyChatCompanyConfiguration } from "../services/chat-channels/configuration-work-notifications.js";
@@ -25,7 +25,7 @@ import { chatRunSourceMessageId } from "../services/chat-channels/run-origin.js"
 import * as durableChatWakeup from "../services/durable-chat-wakeup.js";
 import { conflict } from "../errors.js";
 import * as githubTaskPreparation from "../services/chat-channels/github/task-preparation.js";
-import { budgetPolicies } from "@paperclipai/db";
+import { budgetPolicies } from "@simplexy/db";
 import { budgetService } from "../services/budgets.js";
 import { idleWorkSnapshot } from "../services/task-admission.js";
 import { readFreshWorkspaceReadiness } from "../services/fresh-workspace-continuation.js";
@@ -33,14 +33,14 @@ import { requestTaskRetry, reconcileTaskChatRetryReceipts } from "../services/ta
 import { createSystemRecovery } from "../services/system-recovery-state.js";
 import { remoteTerminationReceipt } from "../services/remote-execution-termination.js";
 import { stageReceiptReactionRemovals } from "../services/chat-receipt-reactions.js";
-import type { Db } from "@paperclipai/db";
-import { createDatabaseResponseCapture, installDatabaseResponseCapture } from "@paperclipai/db/response-capture";
+import type { Db } from "@simplexy/db";
+import { createDatabaseResponseCapture, installDatabaseResponseCapture } from "@simplexy/db/response-capture";
 import { githubResponseAuthorityFields } from "../services/chat-channels/github/response-authority-read.js";
 import * as activityLogModule from "../services/activity-log.js";
 import * as connectionCredentialBindings from "../services/connection-credential-bindings.js";
-import { chatSlackManagerGrants, chatSlackRegistrations, toolOauthStates } from "@paperclipai/db";
+import { chatSlackManagerGrants, chatSlackRegistrations, toolOauthStates } from "@simplexy/db";
 import type { PaperclipCloudConnector, SealedConnectorCredentials } from "../services/paperclip-cloud-connector.js";
-import { buildSlackAppManifest, SLACK_MANAGER_SCOPES } from "@paperclipai/shared";
+import { buildSlackAppManifest, SLACK_MANAGER_SCOPES } from "@simplexy/shared";
 import { registerChatActionWork, dueChatAction } from "../services/chat-action-work.js";
 import { chatRunMilestoneWork } from "../services/chat-run-milestone-work.js";
 import { createDeliveryWorkCoordinator } from "../services/delivery-work-coordinator.js";
@@ -50,9 +50,9 @@ import { DELIVERY_QUEUES, subscribeDeliveryWork } from "../services/delivery-wor
 import { aiConnectionService } from "../services/ai-connections.js";
 import { fastResponseService } from "../services/fast-responses.js";
 import { fastResponseReceipt } from "../services/fast-response-provider.js";
-import { companyFastResponses, fastResponseRequests } from "@paperclipai/db";
+import { companyFastResponses, fastResponseRequests } from "@simplexy/db";
 import { toolAccessService } from "../services/tool-access.js";
-import { toolActionRequests, toolInvocations, toolPolicies } from "@paperclipai/db";
+import { toolActionRequests, toolInvocations, toolPolicies } from "@simplexy/db";
 import { GitHubPublicationLeaseLost, withGitHubPublicationLease } from "../services/chat-github-publication-lease.js";
 import { secretService } from "../services/secrets.js";
 import { githubChatWizardService } from "../services/chat-github-wizard.js";
@@ -73,9 +73,9 @@ import { initializeRunIdentity } from "../services/run-identity.js";
 import { prepareHeartbeatExecutionConfiguration } from "../services/heartbeat/execution-configuration.js";
 import { appendHeartbeatRunEvent } from "../services/heartbeat-run-events.js";
 import { companySkillService } from "../services/company-skills.js";
-import { companyObservability } from "@paperclipai/db";
+import { companyObservability } from "@simplexy/db";
 import * as runIdentityModule from "../services/run-identity.js";
-import { chatGitHubRegistrations, chatGitHubReviews, chatGitHubConfigurations, toolCatalogEntries } from "@paperclipai/db";
+import { chatGitHubRegistrations, chatGitHubReviews, chatGitHubConfigurations, toolCatalogEntries } from "@simplexy/db";
 import { AsyncLocalStorage } from "node:async_hooks";
 import * as cloudRuntimeIdentity from "../services/cloud-runtime-identity.js";
 import {
@@ -160,9 +160,9 @@ import {
   projects,
   projectWorkspaces,
   toolConnections,
-} from "@paperclipai/db";
-import { defaultGitHubReviewPolicy, type ChatProvider } from "@paperclipai/shared";
-import { isPaperclipExternalChatTurn } from "@paperclipai/adapter-utils/server-utils";
+} from "@simplexy/db";
+import { defaultGitHubReviewPolicy, type ChatProvider } from "@simplexy/shared";
+import { isPaperclipExternalChatTurn } from "@simplexy/adapter-utils/server-utils";
 import type { Attachment, Author, Message, Thread } from "chat";
 import { errorHandler } from "../middleware/index.js";
 import { issueRoutes } from "../routes/issues.js";
@@ -2584,7 +2584,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
           },
         });
         if (snapshotScenario) {
-          const { workspaceOperations } = await import("@paperclipai/db");
+          const { workspaceOperations } = await import("@simplexy/db");
           await db.update(heartbeatRuns).set({ status: "failed", errorCode: "execution_finalization_deadline_exceeded",
             runnerProfileJson: { nativeWorkspaceSync: { schema: "paperclip.native-workspace-sync/v3", state: "prepared",
               descriptorSha256: "a".repeat(64), baselineSha256: "b".repeat(64), finalHostSha256: null,
@@ -2712,7 +2712,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       const injected = await skill("injected");
       const foreign = await skill("foreign", other.companyId);
       // Use the production link format, including the slash picker identity.
-      const { buildSkillMentionHref } = await import("@paperclipai/shared");
+      const { buildSkillMentionHref } = await import("@simplexy/shared");
       const ref = (s: typeof common) => `[/skill](${buildSkillMentionHref(s.id, s.slug)})`;
       const saved = await f.management.configuration(f.endpoint.id, "owner-user");
       await f.management.saveConfiguration(f.endpoint.id, { expectedRevision: saved.revision, configuration: {
@@ -3886,7 +3886,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
       onTestFinished(() => vi.unstubAllGlobals());
       const { aiConnectionService } = await import("../services/ai-connections.js");
       const { promptInjectionPreventionService } = await import("../services/prompt-injection-prevention.js");
-      const { promptInjectionInvocations } = await import("@paperclipai/db");
+      const { promptInjectionInvocations } = await import("@simplexy/db");
       const binding = await aiConnectionService(db).save(f.companyId, "owner-user", { provider: "openrouter", method: "api_key",
         name: "Classifier", ownership: "shared", apiKey: "fixture-key", allAgents: true, agentIds: [] }, "fixture-key");
       await promptInjectionPreventionService(db).configure(f.companyId, "owner-user", { ...binding, enabled: true, model: "openai/gpt-oss-safeguard-20b" });
@@ -7030,7 +7030,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     });
     it("admits opt-in signed issue events without PR checks, deduplicates them and rechecks revoked policy", async () => {
       const f = await reviewBotFixture();
-      const { buildSkillMentionHref } = await import("@paperclipai/shared");
+      const { buildSkillMentionHref } = await import("@simplexy/shared");
       const [skill] = await db.insert(companySkills).values({
         companyId: f.companyId, key: `company/${f.companyId}/automatic-playbook`,
         slug: "automatic-playbook", name: "Automatic playbook", markdown: "# Automatic playbook",
@@ -7103,7 +7103,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     });
     it("admits signed PR events into an ordinary assigned task and deduplicates delivery", async () => {
       const f = await reviewBotFixture();
-      const { buildSkillMentionHref } = await import("@paperclipai/shared");
+      const { buildSkillMentionHref } = await import("@simplexy/shared");
       const [skill] = await db.insert(companySkills).values({
         companyId: f.companyId, key: `company/${f.companyId}/automatic-playbook`,
         slug: "automatic-playbook", name: "Automatic playbook", markdown: "# Automatic playbook",
@@ -7235,7 +7235,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
           wakeReason: "External chat message received", paperclipHarnessCheckedOut: true } };
       const wake = await buildPaperclipWakePayload(wakeArgs);
       expect(wake?.githubReviewConfigurations).toEqual(configs);
-      const { renderPaperclipWakePrompt } = await import("@paperclipai/adapter-utils/server-utils");
+      const { renderPaperclipWakePrompt } = await import("@simplexy/adapter-utils/server-utils");
       const prompt = renderPaperclipWakePrompt(wake);
       expect(prompt.split(instruction)).toHaveLength(2);
       expect(prompt).not.toContain("Untrusted PR body");
@@ -10749,7 +10749,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
   });
 
   it.each(["cancelled", "paused", "blocked", "closed-workspace"] as const)("does not bypass %s task guards from the Slack Board composer or its outbox", async (guard) => {
-    const { issueTreeHolds, issueRelations, executionWorkspaces, projects } = await import("@paperclipai/db");
+    const { issueTreeHolds, issueRelations, executionWorkspaces, projects } = await import("@simplexy/db");
     const fixture = await seedCompany();
     const { callbacks, endpoint, service, wakeup, runtime } = await configuredSlackEndpoint(fixture);
     const channel = makeThread({ channelId: "CGUARD", id: "slack:CGUARD:8100.1", name: "guard" });
@@ -10856,7 +10856,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
   }, 15_000);
 
   it("refreshes Slack tool guidance without restoring disabled catalog policies", async () => {
-    const { SLACK_TOOLS } = await import("@paperclipai/shared");
+    const { SLACK_TOOLS } = await import("@simplexy/shared");
     const { slackBotCatalogIsCurrent, syncSlackBotTools } = await import("../services/connectors/slack-catalog.js");
     const fixture = await seedCompany();
     const { endpoint } = await configuredSlackEndpoint(fixture);
@@ -11232,7 +11232,7 @@ describeEmbeddedPostgres("chat channel control-plane integration", () => {
     await rejected;
     await expect(oauth.status(fixture.companyId, endpoint.id, "owner-user")).resolves.toMatchObject({ connected: false });
     await expect(oauth.status(randomUUID(), endpoint.id, "owner-user")).rejects.toThrow("not found");
-    const { toolProfiles, toolProfileBindings } = await import("@paperclipai/db");
+    const { toolProfiles, toolProfileBindings } = await import("@simplexy/db");
     const [slackProfile] = await db.select().from(toolProfiles).where(and(eq(toolProfiles.companyId, fixture.companyId), eq(toolProfiles.profileKey, `slack-bot:${endpoint.id}`)));
     const [removedBinding] = await db.delete(toolProfileBindings).where(and(eq(toolProfileBindings.profileId, slackProfile.id), eq(toolProfileBindings.targetId, binding.agentId))).returning();
     await expect(resolveConnectorAssignments(db, recovered)).resolves.toEqual([]);

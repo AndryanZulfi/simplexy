@@ -1,8 +1,8 @@
 import { notifyApprovalQueueWork } from "./approval-work-notifications.js";
 import { and, desc, eq, inArray } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
-import { executionWorkspaces, heartbeatRunEvents, issueWorkProducts, workspaceRuntimeServices } from "@paperclipai/db";
-import type { IssueWorkProduct } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import { executionWorkspaces, heartbeatRunEvents, issueWorkProducts, workspaceRuntimeServices } from "@simplexy/db";
+import type { IssueWorkProduct } from "@simplexy/shared";
 import { unprocessable } from "../errors.js";
 import { insertRowsInChunks } from "./batch-insert.js";
 import { notifyTerminalWorkspaceWork } from "./terminal-workspace-work.js";

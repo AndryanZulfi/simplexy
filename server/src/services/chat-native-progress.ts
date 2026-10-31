@@ -1,7 +1,7 @@
 import { and, asc, desc, eq, gt, gte, inArray, like, notExists, sql } from "drizzle-orm";
 import { alias } from "drizzle-orm/pg-core";
-import type { Db } from "@paperclipai/db";
-import { agents, chatConversations, chatEndpoints, chatPublications, heartbeatRunEvents, heartbeatRuns, issueComments, issues } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
+import { agents, chatConversations, chatEndpoints, chatPublications, heartbeatRunEvents, heartbeatRuns, issueComments, issues } from "@simplexy/db";
 import { notifyChatPublicationWork } from "./chat-work-notifications.js";
 import { projectSafeChatPublication } from "./chat-publication-projection.js";
 import { hasChatRunOwnedProviderInteraction } from "./chat-interaction-arbitration.js";

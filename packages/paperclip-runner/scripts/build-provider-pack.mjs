@@ -109,7 +109,7 @@ try {
     "pnpm",
     [
       "--filter",
-      "@paperclipai/paperclip-runner",
+      "@simplexy/paperclip-runner",
       "deploy",
       "--prod",
       temporaryRoot,

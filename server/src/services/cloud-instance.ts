@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import type { ManagedExperimentalFeatureKey } from "@paperclipai/shared";
+import type { ManagedExperimentalFeatureKey } from "@simplexy/shared";
 
 const CLOUD_STAGING_EXPERIMENTAL_KEYS: ReadonlySet<string> = new Set([
   "autoRestartDevServerWhenIdle",

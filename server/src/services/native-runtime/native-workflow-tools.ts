@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { z } from "zod";
-import { createWorkflowSchema, updateWorkflowSchema, listWorkflowsSchema, readWorkflowQuerySchema } from "@paperclipai/shared";
-import type { Db } from "@paperclipai/db";
+import { createWorkflowSchema, updateWorkflowSchema, listWorkflowsSchema, readWorkflowQuerySchema } from "@simplexy/shared";
+import type { Db } from "@simplexy/db";
 import { forbidden, badRequest } from "../../errors.js";
 import { requireCasesEnabled } from "../workflows.js";
 import { runnerApiCallSchema, type RunnerApiCall } from "./runner-api-client.js";

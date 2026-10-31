@@ -4,7 +4,7 @@ import { act } from "react";
 import { createRoot } from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { afterEach, expect, it, vi } from "vitest";
-import type { AgentDetail } from "@paperclipai/shared";
+import type { AgentDetail } from "@simplexy/shared";
 import { ConfigurationTab } from "./AgentDetail";
 
 const mocks = vi.hoisted(() => ({ update: vi.fn(), navigate: vi.fn(), toast: vi.fn() }));

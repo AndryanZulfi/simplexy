@@ -36,7 +36,7 @@ import {
   sql,
 } from "drizzle-orm";
 
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 
 import {
   chatConversations,
@@ -44,13 +44,13 @@ import {
   chatEndpoints,
   toolApplications,
   toolConnections,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import type {
   ChatEndpoint,
   ChatEndpointSetupState,
   ChatProvider,
   ConfigureChatEndpointInput,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 
 import {
   MAX_ATTACHMENT_BYTES,

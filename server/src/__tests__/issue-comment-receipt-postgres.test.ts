@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { and, eq, sql } from "drizzle-orm";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
-import { activityLog, companies, createDb, issueComments, issueReferenceMentions, issues } from "@paperclipai/db";
+import { activityLog, companies, createDb, issueComments, issueReferenceMentions, issues } from "@simplexy/db";
 import { completeIssueCommentReceipt } from "../services/issue-comment-receipt.js";
 import { issueReferenceService } from "../services/issue-references.js";
 import { issueService } from "../services/issues.js";

@@ -35,7 +35,7 @@ import {
   issues,
   chatPublications,
   type Db,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   aiConnectionCatalogSlug,
   aiConnectionMetadataSchema,
@@ -48,7 +48,7 @@ import {
   type FastResponseHistoryEntry,
   type UpdateFastResponse,
   type FastResponseTestResult,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { aiConnectionService } from "./ai-connections.js";
 import { instanceSettingsService } from "./instance-settings.js";
 import { isAutomaticRecoverySuppressedByPauseHold } from "./recovery/pause-hold-guard.js";

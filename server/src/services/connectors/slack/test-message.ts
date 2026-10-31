@@ -1,7 +1,7 @@
 import { toolAccessPolicyService } from "../../tool-access-policy.js";
 import { and, eq, gte, inArray, ne } from "drizzle-orm";
-import { agents, chatActions, chatEndpoints, chatExternalPrincipals, chatIdentityLinks, chatSlackManagerGrants, companyMemberships, toolConnections, type Db } from "@paperclipai/db";
-import { slackTestMessageSchema, type SlackTestMessageInput, type SlackTestMessageResult } from "@paperclipai/shared";
+import { agents, chatActions, chatEndpoints, chatExternalPrincipals, chatIdentityLinks, chatSlackManagerGrants, companyMemberships, toolConnections, type Db } from "@simplexy/db";
+import { slackTestMessageSchema, type SlackTestMessageInput, type SlackTestMessageResult } from "@simplexy/shared";
 import { conflict, forbidden, notFound, tooManyRequests, unprocessable } from "../../../errors.js";
 import { logger } from "../../../middleware/logger.js";
 import { logActivity } from "../../activity-log.js";

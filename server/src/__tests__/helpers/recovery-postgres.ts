@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { applyPendingMigrations, closeRegisteredClients, createDb } from "@paperclipai/db";
+import { applyPendingMigrations, closeRegisteredClients, createDb } from "@simplexy/db";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./embedded-postgres.js";
 
 export const recoveryPostgresSupport = process.env.PAPERCLIP_TEST_DATABASE_URL

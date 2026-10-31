@@ -6,7 +6,7 @@
  * `getAdapterDisplay()`.
  */
 import type { ComponentType } from "react";
-import { agentHarnessType } from "@paperclipai/shared";
+import { agentHarnessType } from "@simplexy/shared";
 import {
   Bot,
   Code,

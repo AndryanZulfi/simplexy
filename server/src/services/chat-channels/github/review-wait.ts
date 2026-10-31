@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import { HttpError } from "../../../errors.js";
 import { chatRunSourceMessageId } from "../run-origin.js";
 import { and, desc, eq, or, sql } from "drizzle-orm";
-import { chatActions, chatConversations, chatEndpointResources, chatEndpoints, chatGitHubReviews, chatMessageLinks, heartbeatRuns, toolConnections, type Db } from "@paperclipai/db";
+import { chatActions, chatConversations, chatEndpointResources, chatEndpoints, chatGitHubReviews, chatMessageLinks, heartbeatRuns, toolConnections, type Db } from "@simplexy/db";
 
 export async function hasPublishedGitHubReview(db: Db, binding: {
   companyId: string;

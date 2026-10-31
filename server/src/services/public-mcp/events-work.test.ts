@@ -1,7 +1,7 @@
 import { randomBytes, randomUUID } from "node:crypto";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { eq, sql } from "drizzle-orm";
-import { applyPendingMigrations, createDb, companies, authUsers, companyMemberships, mcpOauthClients, mcpOauthGrants, issues, agents, dotAgentBindings, dotMailboxItems, dotRunnerAssignments, heartbeatRuns, mcpEventDeliveries, mcpEventSubscriptions } from "@paperclipai/db";
+import { applyPendingMigrations, createDb, companies, authUsers, companyMemberships, mcpOauthClients, mcpOauthGrants, issues, agents, dotAgentBindings, dotMailboxItems, dotRunnerAssignments, heartbeatRuns, mcpEventDeliveries, mcpEventSubscriptions } from "@simplexy/db";
 import { resolveExternalTestDatabaseUrl } from "../../__tests__/helpers/external-test-database.js";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "../../__tests__/helpers/embedded-postgres.js";
 import { createPublicMcpEvents } from "./events.js";

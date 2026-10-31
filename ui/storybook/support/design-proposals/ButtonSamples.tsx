@@ -1,5 +1,5 @@
 import { useState, type ComponentProps, type ReactNode } from "react";
-import type { FeedbackVoteValue } from "@paperclipai/shared";
+import type { FeedbackVoteValue } from "@simplexy/shared";
 import { Button } from "@/components/ui/button";
 import { ClearErrorButton, PauseResumeButton, RunButton } from "@/components/AgentActionButtons";
 import { DesignSidebar } from "@/components/DesignSidebar";

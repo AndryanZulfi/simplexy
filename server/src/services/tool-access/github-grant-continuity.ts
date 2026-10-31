@@ -3,8 +3,8 @@ import { loadGitHubGrantMetadata } from "./github-access-discovery.js";
 import { measureRunPhase } from "../execution-preparation-timing.js";
 import { measureRunTransaction } from "../execution-transaction-timing.js";
 import { and, eq } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
-import { connectionGrants, toolConnections } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
+import { connectionGrants, toolConnections } from "@simplexy/db";
 import { conflict, HttpError, notFound, unprocessable } from "../../errors.js";
 import { type PaperclipCloudConnector } from "../paperclip-cloud-connector.js";
 

@@ -18,7 +18,7 @@ import {
   issues,
   projectAccessMembers,
   projects,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,

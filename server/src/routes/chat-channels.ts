@@ -1,9 +1,9 @@
 import { connectionManagementService } from "../services/connection-management.js";
 import { chatCredentialRotationId, connectionIntentService, savedChatSetupPath } from "../services/connection-intents.js";
-import { companies } from "@paperclipai/db";
+import { companies } from "@simplexy/db";
 import { eq } from "drizzle-orm";
 import { requiredConnectionUserAction, filterConnectionManagementRows, connectionManagementGuard, connectionRequestContext, connectionRequestUserId } from "./connection-management-authz.js";
-import { slackTestMessageSchema, slackRegistrationSchema, slackSetupActionSchema, slackManagedProvisionSchema } from "@paperclipai/shared";
+import { slackTestMessageSchema, slackRegistrationSchema, slackSetupActionSchema, slackManagedProvisionSchema } from "@simplexy/shared";
 import { isCrossSiteOAuthCallbackNavigation, oauthCallbackInterstitialHtml } from "../lib/oauth-browser-return.js";
 import {
   Router,
@@ -12,8 +12,8 @@ import {
 } from "express";
 import { z } from "zod";
 import { githubChatManagementService } from "../services/chat-github-management.js";
-import { updateGitHubChatConfigurationSchema } from "@paperclipai/shared";
-import type { Db } from "@paperclipai/db";
+import { updateGitHubChatConfigurationSchema } from "@simplexy/shared";
+import type { Db } from "@simplexy/db";
 import {
   CHAT_PROVIDERS,
   configureChatEndpointSchema,
@@ -31,7 +31,7 @@ import {
   updateChatEndpointSchema,
   type ChatProvider,
   type ConnectionRequiredUserAction,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { validate } from "../middleware/validate.js";
 import {
   chatChannelService,

@@ -21,8 +21,8 @@ import {
   pluginManagedResources,
   plugins,
   principalPermissionGrants,
-} from "@paperclipai/db";
-import type { PaperclipPluginManifestV1 } from "@paperclipai/shared";
+} from "@simplexy/db";
+import type { PaperclipPluginManifestV1 } from "@simplexy/shared";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,
@@ -145,7 +145,7 @@ describeEmbeddedPostgres("plugin-managed agents", () => {
     await db.insert(plugins).values({
       id: pluginId,
       pluginKey: pluginManifest.id,
-      packageName: "@paperclipai/plugin-managed-agents-test",
+      packageName: "@simplexy/plugin-managed-agents-test",
       version: pluginManifest.version,
       apiVersion: pluginManifest.apiVersion,
       categories: pluginManifest.categories,
@@ -558,7 +558,7 @@ describeEmbeddedPostgres("plugin-managed agents", () => {
       expect(await db.select().from(pluginEntities)).toHaveLength(0);
       const nextManifest = structuredClone(pluginManifest);
       nextManifest.agents![0]!.instructions = { content: "# Reinstalled stock\n" };
-      const installed = await registry.install({ packageName: "@paperclipai/plugin-managed-agents-test" }, nextManifest);
+      const installed = await registry.install({ packageName: "@simplexy/plugin-managed-agents-test" }, nextManifest);
       expect(installed!.id).not.toBe(pluginId);
       await registry.updateStatus(installed!.id, { status: "ready" });
       const reinstalledServices = buildHostServices(db, installed!.id, nextManifest.id, createEventBusStub(), undefined, {

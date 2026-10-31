@@ -2,7 +2,7 @@ import type {Meta, StoryObj} from "@storybook/react-vite";
 import {useLayoutEffect, useState} from "react";
 import {expect, userEvent, waitFor, within} from "storybook/test";
 import {SpekoIncomingCalls, SpekoIncomingCallCard} from "@/components/voice/SpekoIncomingCalls";
-import type {VoiceInboundCall} from "@paperclipai/shared";
+import type {VoiceInboundCall} from "@simplexy/shared";
 import {voiceStoryLifecycle} from "../../../support/speko/voiceStoryLifecycle";
 import {voicePhoneApi} from "@/api/voicePhone";
 import {issuesApi} from "@/api/issues";

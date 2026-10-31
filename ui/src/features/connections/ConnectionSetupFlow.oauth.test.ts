@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 
 import { describe, expect, it } from "vitest";
-import type { ToolApplication, ToolConnection } from "@paperclipai/shared";
-import { getConnectableAppDefinition } from "@paperclipai/shared";
+import type { ToolApplication, ToolConnection } from "@simplexy/shared";
+import { getConnectableAppDefinition } from "@simplexy/shared";
 import {
   isConnectionDefinitionUnavailable,
   isVercelConnectUnavailable,

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, fn, userEvent, within } from "storybook/test";
-import type { DecisionHistoryItem } from "@paperclipai/shared";
+import type { DecisionHistoryItem } from "@simplexy/shared";
 import { CoordinatorDecisionReceipt } from "@/components/coordinator/CoordinatorDecisionReceipt";
 
 const receipt: DecisionHistoryItem = {

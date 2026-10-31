@@ -1,7 +1,7 @@
 import { randomBytes, randomUUID } from "node:crypto";
 import { resourceFromAttributes } from "@opentelemetry/resources";
 import { ProtobufLogsSerializer, ProtobufTraceSerializer } from "@opentelemetry/otlp-transformer";
-import type { AgentObservabilityTestReceipt, OtlpSignalTestResult } from "@paperclipai/shared";
+import type { AgentObservabilityTestReceipt, OtlpSignalTestResult } from "@simplexy/shared";
 import { guardedRemoteHttpFetch } from "./remote-http-fetch.js";
 import type { ResolvedAgentObservability } from "./agent-observability.js";
 

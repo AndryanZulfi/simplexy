@@ -31,7 +31,7 @@ import {
   sql,
 } from "drizzle-orm";
 
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import {
   createDurableChatWakeupRequest,
   assertDurableChatWakeupReceipt,
@@ -56,15 +56,15 @@ import {
   issueThreadInteractions,
   issueQuestionResponseDeliveries,
   issues,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import type {
   ChatProvider,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   isAgentStatusInvokable,
   CHAT_PROVIDERS,
   isUuidLike,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 
 import {
   nativeFailedRunRetryStateIsSafe,

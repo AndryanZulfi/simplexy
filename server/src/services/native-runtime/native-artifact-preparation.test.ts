@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { setImmediate } from "node:timers/promises";
 import { afterEach, describe, expect, it } from "vitest";
-import type { CommandManagedRuntimeRunner } from "@paperclipai/adapter-utils/command-managed-runtime";
+import type { CommandManagedRuntimeRunner } from "@simplexy/adapter-utils/command-managed-runtime";
 import { createRemoteNativeArtifactPreparation } from "./native-session-executor.js";
 
 type Request = Parameters<CommandManagedRuntimeRunner["execute"]>[0];
@@ -12,7 +12,7 @@ const roots: string[] = [];
 const metadata = {
   schema: "paperclip-runner/runnerd-build-metadata/v1",
   binaryName: "paperclip-runnerd",
-  packageName: "@paperclipai/paperclip-runner",
+  packageName: "@simplexy/paperclip-runner",
   binaryContractVersion: 2,
   durableSessionCapabilities: ["unlimited_runtime", "connection_lease_renewal"],
   prpTransportModes: ["dial_ws_loopback", "dial_wss", "listen_ws"],

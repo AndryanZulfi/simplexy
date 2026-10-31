@@ -1,4 +1,4 @@
-import { companies, type Db } from "@paperclipai/db";
+import { companies, type Db } from "@simplexy/db";
 import { isCloudManagedInstance } from "./cloud-instance.js";
 import { getCloudRuntimeIdentity } from "./cloud-runtime-identity.js";
 

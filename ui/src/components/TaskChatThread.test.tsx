@@ -16,12 +16,12 @@ import type {
   IssueQueuedCommentQueue,
   IssueThreadInteraction,
   TaskBrowser,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { heartbeatsApi } from "@/api/heartbeats";
 import { nativeRunEventsToTranscript } from "./transcript/native-run-events";
 import { pendingConnectionIntentInteraction } from "@/fixtures/issueThreadInteractionFixtures";
 import { TaskChatScrollNavigation } from "./task-chat/scroll-navigation";
-import type { HeartbeatRunEvent } from "@paperclipai/shared";
+import type { HeartbeatRunEvent } from "@simplexy/shared";
 
 const transcriptState = vi.hoisted(() => ({
   transcriptByRun: new Map(),

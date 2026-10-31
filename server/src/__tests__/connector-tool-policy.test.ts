@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { companies, createDb } from "@paperclipai/db";
+import { companies, createDb } from "@simplexy/db";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { connectorToolPolicy } from "../services/connectors/tool-policy.js";
 import { DAYTONA_API_URL, DAYTONA_METHOD } from "../services/daytona.js";

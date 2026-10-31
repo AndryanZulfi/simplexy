@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { Agent } from "@paperclipai/shared";
+import type { Agent } from "@simplexy/shared";
 import { copilotTaskModelCatalogOptions } from "./copilot-task-model-catalog";
 
 describe("Copilot task model catalog identity", () => {

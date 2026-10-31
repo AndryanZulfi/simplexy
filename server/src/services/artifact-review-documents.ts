@@ -1,7 +1,7 @@
 import { isDeepStrictEqual } from "node:util";
 import { and, eq } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
-import { assets, documentRevisions, documents, issueAttachments, issueDocuments } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
+import { assets, documentRevisions, documents, issueAttachments, issueDocuments } from "@simplexy/db";
 import {
   MARKDOWN_REVIEW_DOCUMENT_MAX_BYTES,
   artifactReviewDocumentKey,
@@ -9,7 +9,7 @@ import {
   isMarkdownAttachmentContent,
   type AttachmentArtifactWorkProductMetadata,
   type IssueWorkProduct,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   HttpError,
   conflict,

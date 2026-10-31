@@ -4,7 +4,7 @@ import {
   aiConnectionCatalogSlug,
   isAiConnectionCompatible,
   type AiConnectionBinding,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   Select,
   SelectContent,

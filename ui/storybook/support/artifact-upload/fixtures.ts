@@ -1,4 +1,4 @@
-import type { IssueDocument, IssueWorkProduct } from "@paperclipai/shared";
+import type { IssueDocument, IssueWorkProduct } from "@simplexy/shared";
 import { queryKeys } from "@/lib/queryKeys";
 import { uploadedDocumentKey } from "@/lib/issue-artifact-upload";
 import { QueryClient } from "@tanstack/react-query";

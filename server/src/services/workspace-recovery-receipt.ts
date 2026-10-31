@@ -1,6 +1,6 @@
 import { and, eq } from "drizzle-orm";
-import { heartbeatRuns, issueRecoveryActions, workspaceOperations, type Db } from "@paperclipai/db";
-import type { ExecutionBlocker } from "@paperclipai/shared";
+import { heartbeatRuns, issueRecoveryActions, workspaceOperations, type Db } from "@simplexy/db";
+import type { ExecutionBlocker } from "@simplexy/shared";
 import { z } from "zod";
 import { readNativeWorkspaceSyncReference } from "./native-runtime/native-workspace-sync.js";
 

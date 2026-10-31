@@ -1,4 +1,4 @@
-import { agentConfigurationDocumentSchema, type AgentConfigurationDocument, type AgentConfigurationWarning } from "@paperclipai/shared";
+import { agentConfigurationDocumentSchema, type AgentConfigurationDocument, type AgentConfigurationWarning } from "@simplexy/shared";
 import { agentsApi } from "../../api/agents";
 import { secretsApi } from "../../api/secrets";
 import { agentConfigurationPatch } from "../agent-configuration-yaml";

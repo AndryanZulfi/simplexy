@@ -23,7 +23,7 @@ import { loadAgentCaseDocument, projectAgentCaseRead } from "../services/case-ag
 import multer from "multer";
 import { z } from "zod";
 import { and, asc, desc, eq, getTableColumns, ilike, inArray, isNull, or, sql } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import {
   agents,
   assets,
@@ -40,13 +40,13 @@ import {
   issues,
   labels,
   projects,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   createDocumentAnnotationCommentSchema,
   createDocumentAnnotationThreadSchema,
   updateDocumentAnnotationThreadSchema,
   isUuidLike,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { formatAttachmentSize, MAX_ATTACHMENT_BYTES, normalizeContentType } from "../attachment-types.js";
 import { HttpError, badRequest, conflict, forbidden, notFound, unprocessable } from "../errors.js";
 import { validate } from "../middleware/validate.js";

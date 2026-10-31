@@ -1,6 +1,6 @@
 import { SkillsNavigationTabs } from "@/components/skill-studio/SkillsNavigationTabs";
 import { RoutinesToolbar, type RoutineSortField, type RoutineSortDir, type RoutineGroupBy } from "@/components/RoutinesToolbar";
-import type { AttentionItem } from "@paperclipai/shared";
+import type { AttentionItem } from "@simplexy/shared";
 import { useState, type ReactNode } from "react";
 import { DecisionsToolbar } from "@/components/DecisionsToolbar";
 import { ProjectsToolbar, type ProjectSortField, type ProjectSortDir } from "@/components/ProjectsToolbar";

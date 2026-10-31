@@ -32,7 +32,7 @@ import {
   routineRuns,
   routines,
   secretAccessEvents,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,

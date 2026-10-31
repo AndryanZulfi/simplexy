@@ -7,7 +7,7 @@ import { promisify } from "node:util";
 import { createServer } from "node:http";
 import { createReadStream } from "node:fs";
 import { afterEach, expect, it, vi } from "vitest";
-import { withDirectoryMergeLock } from "@paperclipai/adapter-utils/workspace-restore-merge";
+import { withDirectoryMergeLock } from "@simplexy/adapter-utils/workspace-restore-merge";
 import { materializeManagedProjectWorkspace } from "../services/managed-repository-checkout.js";
 import { assertReproducibleBaseGitStorage } from "../services/git-workspace-restoration.js";
 import { readRepositoryObjectCache, resolveRepositoryObjectCache, publishRepositoryObjectCache } from "../services/repository-object-cache.js";

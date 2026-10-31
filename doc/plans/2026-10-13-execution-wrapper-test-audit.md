@@ -31,7 +31,7 @@ The protocol-coverage generator and generated artifact now name the actual runti
 Focused candidate command:
 
 ```sh
-pnpm --filter @paperclipai/server exec vitest run \
+pnpm --filter @simplexy/server exec vitest run \
   src/services/native-runtime/runtime-mode.test.ts \
   src/services/native-runtime/evidence-classifier.test.ts \
   src/services/native-runtime/paperclip-control-plane-port.test.ts

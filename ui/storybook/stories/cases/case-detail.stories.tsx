@@ -3,7 +3,7 @@ import { Routes, Route } from "@/lib/router";
 import { CaseDetail } from "@/pages/CaseDetail";
 import { CaseFieldsPanel, CaseFieldsTable } from "@/components/CaseFieldsPanel";
 import { IssueCasesPanel } from "@/components/IssueCasesPanel";
-import { instanceExperimentalSettingsSchema } from "@paperclipai/shared";
+import { instanceExperimentalSettingsSchema } from "@simplexy/shared";
 import { expect, within } from "storybook/test";
 import {
   caseItem,

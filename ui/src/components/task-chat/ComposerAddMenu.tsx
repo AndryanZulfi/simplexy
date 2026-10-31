@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import type { IssueWorkMode } from "@paperclipai/shared";
+import type { IssueWorkMode } from "@simplexy/shared";
 import { Check, ClipboardList, MessageCircleQuestion, Lock, Plus, Target, X, type LucideIcon } from "lucide-react";
 import { AttachmentIcon } from "@/components/AttachmentIcon";
 import { cn } from "@/lib/utils";

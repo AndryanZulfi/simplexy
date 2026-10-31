@@ -1,4 +1,4 @@
-import type { Issue, IssueStatus, IssueSummary } from "@paperclipai/shared";
+import type { Issue, IssueStatus, IssueSummary } from "@simplexy/shared";
 
 export const RECENT_TASKS_LIMIT = 5;
 export const RECENT_TASKS_UPDATED_EVENT = "simplexy:recent-tasks-updated";

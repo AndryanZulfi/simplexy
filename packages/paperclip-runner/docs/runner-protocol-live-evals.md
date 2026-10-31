@@ -17,7 +17,7 @@ the same dark theme. Static site styles live in
 colors and typography come from the Runner Lab token layer.
 Missing recordings show a notice in the same viewer; missing viewer builds
 fail generation. Build with
-`pnpm --filter @paperclipai/paperclip-runner build:issue-thread` and provide
+`pnpm --filter @simplexy/paperclip-runner build:issue-thread` and provide
 `--viewer-root` or `PAPERCLIP_EVAL_VIEWER_ROOT` to the canonical Python renderer.
 
 Legacy manual runs place full evidence in Actions artifacts. These artifacts
@@ -773,14 +773,14 @@ additive writes and reads for that prefix.
 These tests make no provider or AWS calls:
 
 ```sh
-pnpm --filter @paperclipai/paperclip-runner test:runner-protocol-eval-publish
+pnpm --filter @simplexy/paperclip-runner test:runner-protocol-eval-publish
 ```
 
 To inspect the catalog without executing it, point the command at a local
 evals checkout:
 
 ```sh
-pnpm --filter @paperclipai/paperclip-runner \
+pnpm --filter @simplexy/paperclip-runner \
   report:runner-protocol-eval:catalog -- \
   --evals-root /path/to/paperclip-evals \
   --campaign-id gha-1-1 \

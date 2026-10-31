@@ -1,6 +1,6 @@
 import { and, eq, notInArray } from "drizzle-orm";
-import { pluginCompanySettings, plugins, type Db } from "@paperclipai/db";
-import type { PaperclipPluginManifestV1, ProjectWorkspaceProviderConfiguration } from "@paperclipai/shared";
+import { pluginCompanySettings, plugins, type Db } from "@simplexy/db";
+import type { PaperclipPluginManifestV1, ProjectWorkspaceProviderConfiguration } from "@simplexy/shared";
 import { parseProjectExecutionWorkspacePolicy } from "./execution-workspace-policy.js";
 import { conflict } from "../errors.js";
 

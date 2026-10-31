@@ -1,6 +1,6 @@
 import { and, eq } from "drizzle-orm";
-import { chatActions, chatSlackRegistrations } from "@paperclipai/db";
-import { type SlackManagedProvisionInput, type SlackManagedResult } from "@paperclipai/shared";
+import { chatActions, chatSlackRegistrations } from "@simplexy/db";
+import { type SlackManagedProvisionInput, type SlackManagedResult } from "@simplexy/shared";
 import { conflict } from "../../../../errors.js";
 import type { createCustomerOwnedSetup } from "./customer-owned.js";
 import type { createSlackManagerGrants } from "./manager-grants.js";

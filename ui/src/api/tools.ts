@@ -1,5 +1,5 @@
-import type { AggregatorAppsResponse, ArcadeDiscoverySetupInput } from "@paperclipai/shared/aggregator-apps";
-import type { ComposioAppAccountInput, ComposioAppSetupInput, ComposioAppSetupResult, ComposioAppSnapshot, ComposioAppsResponse } from "@paperclipai/shared";
+import type { AggregatorAppsResponse, ArcadeDiscoverySetupInput } from "@simplexy/shared/aggregator-apps";
+import type { ComposioAppAccountInput, ComposioAppSetupInput, ComposioAppSetupResult, ComposioAppSnapshot, ComposioAppsResponse } from "@simplexy/shared";
 import type {
   ToolApplication,
   ConfigureRailwaySsh,
@@ -65,7 +65,7 @@ import type {
   ConnectionGrantsResponse,
   ToolConnectionCreateCapabilities,
   ToolAppMetadataPreflightResult,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { api, detachInflightGet } from "./client";
 
 /**
@@ -160,7 +160,7 @@ export interface CreateToolConnectionInput {
 }
 
 export interface UpdateToolConnectionInput {
-  agentInstructions?: import("@paperclipai/shared").ConnectionAgentInstructions | null;
+  agentInstructions?: import("@simplexy/shared").ConnectionAgentInstructions | null;
   name?: string;
   status?: ToolConnection["status"];
   config?: Record<string, unknown>;
@@ -309,7 +309,7 @@ export const toolsApi = {
       asCurrentUser?: boolean;
       asAgentId?: string;
       interactionId?: string;
-      workspaceServices?: import("@paperclipai/shared").GoogleWorkspaceServiceSelection;
+      workspaceServices?: import("@simplexy/shared").GoogleWorkspaceServiceSelection;
     } = {},
   ) =>
     api.post<ToolOAuthStartResult>(`/tools/oauth/${connectionId}/start`, input),
@@ -326,7 +326,7 @@ export const toolsApi = {
     enabledCatalogEntryIds: string[];
     askFirstCatalogEntryIds: string[];
     reviewedCatalogEntryIds?: string[];
-    agentInstructions?: import("@paperclipai/shared").ConnectionAgentInstructions | null;
+    agentInstructions?: import("@simplexy/shared").ConnectionAgentInstructions | null;
     access: "all_agents" | { agentIds: string[] };
   }) =>
     api.post<FinishToolAppResult>(

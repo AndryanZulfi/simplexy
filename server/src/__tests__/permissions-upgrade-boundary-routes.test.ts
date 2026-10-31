@@ -17,7 +17,7 @@ import {
   issues,
   issueWorkProducts,
   principalPermissionGrants,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,

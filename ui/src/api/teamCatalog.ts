@@ -7,7 +7,7 @@ import type {
   CatalogTeamInstallResult,
   CatalogTeamKind,
   InstalledCatalogTeam,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { api } from "./client";
 
 export interface TeamCatalogListQuery {

@@ -1,9 +1,9 @@
 import { notifyNativeReviewResponse } from "../../native-review-response-notifications.js";
 import type { ActorInfo } from "../types.js";
 import { and, eq } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
-import { issueThreadInteractions, toolOauthStates } from "@paperclipai/db";
-import { connectionIntentPayloadSchema } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import { issueThreadInteractions, toolOauthStates } from "@simplexy/db";
+import { connectionIntentPayloadSchema } from "@simplexy/shared";
 import { badRequest, forbidden } from "../../../errors.js";
 
 import { actorBinding } from "../actor.js";

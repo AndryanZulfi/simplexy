@@ -5,7 +5,7 @@ import type {
   AskUserQuestionsAnswer,
   IssueThreadInteraction,
   RequestConfirmationInteraction,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { PhotonChatAdapter } from "./adapter.js";
 import { PhotonError, photonFailure } from "./cloud.js";
 import { projectSafeChatPublicationText } from "../chat-publication-projection.js";

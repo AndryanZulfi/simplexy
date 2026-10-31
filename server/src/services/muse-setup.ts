@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
-import { MUSE_ASSET_VERSION } from "@paperclipai/shared";
+import { MUSE_ASSET_VERSION } from "@simplexy/shared";
 import { unprocessable } from "../errors.js";
 /** Published historical versions retain exact bytes; new installations use asset9. */
 export async function museReceiverAssets(assetVersion: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 = MUSE_ASSET_VERSION) {

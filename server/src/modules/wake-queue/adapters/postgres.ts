@@ -10,8 +10,8 @@ import { currentConversationCommentCondition } from "../../../services/agent-con
 import { getExecutionBlocker, hasPendingRunCleanup } from "../../../services/execution-blocker.js";
 import { and, asc, eq, inArray, isNull, notInArray, or, sql } from "drizzle-orm";
 import { readReleaseRun, type ReleaseRun } from "./release-run-read.js";
-import type { Db } from "@paperclipai/db";
-import { extractIssueReferenceIdentifiers, isUuidLike } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import { extractIssueReferenceIdentifiers, isUuidLike } from "@simplexy/shared";
 import {
   activityLog,
   agentWakeupRequests,
@@ -23,7 +23,7 @@ import {
   issueRelations,
   issues,
   nativeRunFinalizations,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { hasConversationContinuationPolicy } from "../../../services/conversation-continuation.js";
 import { legacyExecutionNeedsReconciliationWithEvidence } from "../../../services/legacy-execution-recovery.js";
 import {

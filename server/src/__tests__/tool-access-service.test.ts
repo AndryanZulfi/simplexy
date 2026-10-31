@@ -54,7 +54,7 @@ import {
   toolStdioCommandTemplates,
   userSecretDefinitions,
   userSecretDeclarations,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { and, eq, inArray, sql } from "drizzle-orm";
 import {
   APP_DEFINITIONS,
@@ -67,7 +67,7 @@ import {
   getAvailableConnectionMethod,
   getConnectableAppDefinition,
   type GoogleWorkspaceConnectorProfileId,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,

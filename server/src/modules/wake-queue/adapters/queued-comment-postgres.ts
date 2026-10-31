@@ -4,9 +4,9 @@ import { notifyInstructionCollection } from "../../../services/instruction-colle
 import { notifyChatInboundWakeNotices } from "../../../services/chat-inbound-wake-notice-notifications.js";
 import { notifyChatRunMilestones } from "../../../services/chat-run-milestone-notifications.js";
 import { and, eq, inArray } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
-import { agentWakeupRequests, agents, heartbeatRuns, issueComments, issues } from "@paperclipai/db";
-import type { IssueComment, IssueQueuedCommentQueue } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import { agentWakeupRequests, agents, heartbeatRuns, issueComments, issues } from "@simplexy/db";
+import type { IssueComment, IssueQueuedCommentQueue } from "@simplexy/shared";
 import {
   buildQueuedCommentQueueSnapshot,
   decideQueuedCommentQueueSteering,

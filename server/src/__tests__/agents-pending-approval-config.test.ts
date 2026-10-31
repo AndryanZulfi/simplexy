@@ -10,14 +10,14 @@ import {
   companies,
   createDb,
   principalPermissionGrants,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,
 } from "./helpers/embedded-postgres.js";
 import { agentService } from "../services/agents.ts";
 import { approvalService } from "../services/approvals.ts";
-import { paperclipRunnerSupportsPlatform } from "@paperclipai/shared";
+import { paperclipRunnerSupportsPlatform } from "@simplexy/shared";
 
 const embeddedPostgresSupport = await getEmbeddedPostgresTestSupport();
 const describeEmbeddedPostgres = embeddedPostgresSupport.supported ? describe : describe.skip;

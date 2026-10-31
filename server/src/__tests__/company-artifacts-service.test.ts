@@ -17,8 +17,8 @@ import {
   issues,
   issueWorkProducts,
   projects,
-} from "@paperclipai/db";
-import { ISSUE_CONTINUATION_SUMMARY_DOCUMENT_KEY } from "@paperclipai/shared";
+} from "@simplexy/db";
+import { ISSUE_CONTINUATION_SUMMARY_DOCUMENT_KEY } from "@simplexy/shared";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,

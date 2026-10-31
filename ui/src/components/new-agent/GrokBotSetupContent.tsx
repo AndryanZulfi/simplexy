@@ -1,6 +1,6 @@
 import { useId } from "react";
 import { Check, Circle, Loader2 } from "lucide-react";
-import { AGENT_ROLES, type CreateGrokInvitation, type DotPairing, type GrokConnection } from "@paperclipai/shared";
+import { AGENT_ROLES, type CreateGrokInvitation, type DotPairing, type GrokConnection } from "@simplexy/shared";
 import { AdapterMark } from "../AdapterMark";
 import { AgentSetupPrompt } from "../AgentSetupPrompt";
 import { Button, buttonVariants } from "../ui/button";

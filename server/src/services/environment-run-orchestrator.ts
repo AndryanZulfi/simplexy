@@ -1,4 +1,4 @@
-import { freshWorkspaceSchema } from "@paperclipai/plugin-sdk";
+import { freshWorkspaceSchema } from "@simplexy/plugin-sdk";
 /**
  * Centralized environment run orchestrator.
  *
@@ -16,7 +16,7 @@ import { freshWorkspaceSchema } from "@paperclipai/plugin-sdk";
  * and transport logic.
  */
 
-import { environmentLeases, type Db } from "@paperclipai/db";
+import { environmentLeases, type Db } from "@simplexy/db";
 import { and, eq } from "drizzle-orm";
 import { remoteExecutionHasStopped } from "./remote-execution-termination.js";
 import type {
@@ -27,7 +27,7 @@ import type {
   ExecutionWorkspace,
   ExecutionWorkspaceConfig,
   IssueExecutionWorkspaceSettings,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { resolveRunnerEnvironmentForRun } from "./runner-environment-lifecycle.js";
 import { environmentService } from "./environments.js";
 import {
@@ -47,8 +47,8 @@ import {
   type AdapterExecutionTarget,
   type AdapterRemoteExecutionSpec,
   type AdapterWorkspaceRealization,
-} from "@paperclipai/adapter-utils/execution-target";
-import type { DuplexObservabilityRecorder } from "@paperclipai/adapter-utils/duplex-observability";
+} from "@simplexy/adapter-utils/execution-target";
+import type { DuplexObservabilityRecorder } from "@simplexy/adapter-utils/duplex-observability";
 import { buildWorkspaceRealizationRequest } from "./workspace-realization.js";
 import { executionWorkspaceService } from "./execution-workspaces.js";
 import { logActivity } from "./activity-log.js";

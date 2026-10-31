@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { chatEndpoints, type Db } from "@paperclipai/db";
+import { chatEndpoints, type Db } from "@simplexy/db";
 import { githubConnectionEventService } from "./github-connection-events.js";
 import type { PaperclipCloudConnector } from "./paperclip-cloud-connector.js";
 

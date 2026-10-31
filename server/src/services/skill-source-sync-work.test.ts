@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { eq, sql } from 'drizzle-orm';
-import { companies, companySkills, companySkillSources, createDb, applyPendingMigrations, projects, projectWorkspaces, projectSkillSources } from '@paperclipai/db';
+import { companies, companySkills, companySkillSources, createDb, applyPendingMigrations, projects, projectWorkspaces, projectSkillSources } from '@simplexy/db';
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from '../__tests__/helpers/embedded-postgres.js';
 import { githubFixture } from '../__tests__/helpers/github-skills.js';
 import { skillSourceSyncService } from './skill-source-sync.js';

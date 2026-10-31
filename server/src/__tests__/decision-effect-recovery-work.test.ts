@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import { eq, sql } from "drizzle-orm";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { activityLog, agents, applyPendingMigrations, authUsers, companies, companyMemberships, createDb, decisionEffectExecutions,
-  decisions, decisionRetention, decisionTargetIssues, heartbeatRuns, issueComments, issues } from "@paperclipai/db";
+  decisions, decisionRetention, decisionTargetIssues, heartbeatRuns, issueComments, issues } from "@simplexy/db";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { resolveExternalTestDatabaseUrl } from "./helpers/external-test-database.js";
 import { decisionService } from "../services/decisions.js";
@@ -12,7 +12,7 @@ import { registerDecisionContinuationWork } from "../services/decision-continuat
 import { writeDecisionChange } from "../services/decision-work-notifications.js";
 import { createDeliveryWorkCoordinator } from "../services/delivery-work-coordinator.js";
 import { hashAttentionArchiveManifest } from "../services/decision-retention.js";
-import type { AttentionArchiveManifestEntry } from "@paperclipai/shared";
+import type { AttentionArchiveManifestEntry } from "@simplexy/shared";
 import { idleWorkSnapshot } from "../services/task-admission.js";
 
 const externalUrl = resolveExternalTestDatabaseUrl("PAPERCLIP_DECISION_EFFECTS_TEST_DATABASE_URL");

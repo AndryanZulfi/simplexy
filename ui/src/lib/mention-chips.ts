@@ -8,7 +8,7 @@ import {
   parseUserMentionHref,
   resolveAgentAppearance,
   type AgentAppearance,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { agentAvatarUrl } from "@/lib/agent-avatar-url";
 import { hexToRgb, pickTextColorForPillBg } from "./color-contrast";
 

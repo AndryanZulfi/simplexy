@@ -1,24 +1,24 @@
 import { notifyCancelledWorkspacePreservation } from "../cancelled-workspace-preservation-notifications.js";
 import { notifyEnvironmentCleanup } from "../environment-cleanup-notifications.js";
 import { measureRunPhase } from "../execution-preparation-timing.js";
-import { emitStartupReuse, type StartupReuseReason } from "@paperclipai/adapter-utils/startup-reuse";
-import type { AdapterRuntimeEvent } from "@paperclipai/adapter-utils";
-import type { WorkspaceCheckpointMetrics } from "@paperclipai/adapter-utils/workspace-checkpoint";
-import type { RuntimeSpanRunner } from "@paperclipai/adapter-utils/acpx-engine/startup-timing";
+import { emitStartupReuse, type StartupReuseReason } from "@simplexy/adapter-utils/startup-reuse";
+import type { AdapterRuntimeEvent } from "@simplexy/adapter-utils";
+import type { WorkspaceCheckpointMetrics } from "@simplexy/adapter-utils/workspace-checkpoint";
+import type { RuntimeSpanRunner } from "@simplexy/adapter-utils/acpx-engine/startup-timing";
 import fs from "node:fs/promises";
 import { createReadStream } from "node:fs";
 import path from "node:path";
 import { createHash, randomUUID } from "node:crypto";
 import { eq } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
-import { environmentLeases, heartbeatRuns } from "@paperclipai/db";
-import type { EnvironmentLease } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import { environmentLeases, heartbeatRuns } from "@simplexy/db";
+import type { EnvironmentLease } from "@simplexy/shared";
 import {
   prepareAdapterExecutionTargetRuntime,
   type AdapterExecutionTarget,
   type PreparedAdapterExecutionTargetRuntime,
-} from "@paperclipai/adapter-utils/execution-target";
-import { disposeGitWorkspaceSnapshot, type GitWorkspaceSnapshot } from "@paperclipai/adapter-utils/git-workspace-sync";
+} from "@simplexy/adapter-utils/execution-target";
+import { disposeGitWorkspaceSnapshot, type GitWorkspaceSnapshot } from "@simplexy/adapter-utils/git-workspace-sync";
 import {
   directorySnapshotSha256,
   disposeDirectorySnapshot,
@@ -27,12 +27,12 @@ import {
   serializeDirectorySnapshot,
   type DirectorySnapshot,
   type SerializedDirectorySnapshot,
-} from "@paperclipai/adapter-utils/workspace-restore-merge";
+} from "@simplexy/adapter-utils/workspace-restore-merge";
 import type {
   WorkspaceDurableSeedPaths,
   WorkspaceInboundMode,
-} from "@paperclipai/adapter-utils/sandbox-managed-runtime";
-import { assertWorkspaceManifestDiskSpace, isPathManifest, manifestFileSha256, readManifestRecords, type PathManifest, type WorkspacePaths } from "@paperclipai/adapter-utils/workspace-manifest";
+} from "@simplexy/adapter-utils/sandbox-managed-runtime";
+import { assertWorkspaceManifestDiskSpace, isPathManifest, manifestFileSha256, readManifestRecords, type PathManifest, type WorkspacePaths } from "@simplexy/adapter-utils/workspace-manifest";
 import { resolvePaperclipInstanceRoot } from "../../home-paths.js";
 import { parseObject } from "../../adapters/utils.js";
 import type { NativeRestartRecoveryClaim } from "./native-restart-recovery.js";
@@ -856,7 +856,7 @@ async function finalizePreparedRuntime(input: {
   return measureRunPhase("execution.workspace_commit", async () => {
     await input.assertOwnership?.();
     const finalSnapshot =
-      await import("@paperclipai/adapter-utils/workspace-restore-merge").then(
+      await import("@simplexy/adapter-utils/workspace-restore-merge").then(
         ({ captureDirectorySnapshotOffThread: captureDirectorySnapshot }) =>
           captureDirectorySnapshot(input.descriptor.binding.localCwd, {
             exclude: input.runtime.workspaceSyncSnapshot?.baseline.exclude ?? [],

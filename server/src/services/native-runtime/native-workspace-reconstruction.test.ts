@@ -3,7 +3,7 @@ import express from "express";
 import request from "supertest";
 import { eq, sql } from "drizzle-orm";
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from "vitest";
-import { activityLog, agents, agentWakeupRequests, assets, authUsers, companies, companyMemberships, completionContracts, createDb, environmentLeases, heartbeatRuns, issueAttachments, issueComments, issueRecoveryActions, issues, nativeRunFinalizations, nativeRunResults } from "@paperclipai/db";
+import { activityLog, agents, agentWakeupRequests, assets, authUsers, companies, companyMemberships, completionContracts, createDb, environmentLeases, heartbeatRuns, issueAttachments, issueComments, issueRecoveryActions, issues, nativeRunFinalizations, nativeRunResults } from "@simplexy/db";
 import { startEmbeddedPostgresTestDatabase } from "../../__tests__/helpers/embedded-postgres.js";
 import { errorHandler } from "../../middleware/index.js";
 import { issueRoutes } from "../../routes/issues.js";

@@ -1,4 +1,4 @@
-import type { Issue } from "@paperclipai/shared";
+import type { Issue } from "@simplexy/shared";
 import type { TaskListItem } from "@/components/TaskList";
 import type { TaskListColumnId } from "@/lib/task-list";
 import { createIssue, storybookAgentMap, storybookExecutionWorkspaces, storybookIssueLabels } from "../../fixtures/paperclipData";

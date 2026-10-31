@@ -1,4 +1,4 @@
-import { GROK_BOT_AGENT_TOOL_GUIDANCE } from "@paperclipai/shared";
+import { GROK_BOT_AGENT_TOOL_GUIDANCE } from "@simplexy/shared";
 
 /** Pairing codes and routine credentials are deliberately excluded from chat prompts. */
 export function buildGrokAccessPrompt(resourceUrl: string, botName: string) {

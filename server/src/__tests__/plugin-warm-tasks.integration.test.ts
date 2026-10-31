@@ -2,7 +2,7 @@ import { flushDeferredEnvironmentCleanup, hasDeferredEnvironmentCleanup, registe
 import { randomUUID } from "node:crypto";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { eq } from "drizzle-orm";
-import { agents, companies, createDb, environmentLeases, environments, heartbeatRuns, issues, plugins, projects } from "@paperclipai/db";
+import { agents, companies, createDb, environmentLeases, environments, heartbeatRuns, issues, plugins, projects } from "@simplexy/db";
 import { environmentRuntimeService } from "../services/environment-runtime.js";
 import * as orphanCleanup from "../services/sandbox-orphan-cleanup-spool.js";
 import { resolvePluginTaskResume } from "../services/environment-task-runtime.js";

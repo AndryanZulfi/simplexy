@@ -1,4 +1,4 @@
-import { heartbeatRuns, type Db } from "@paperclipai/db";
+import { heartbeatRuns, type Db } from "@simplexy/db";
 import { museRunnerBroker } from "../muse-runner-broker.js";
 import { logger } from "../../middleware/logger.js";
 

@@ -1,4 +1,4 @@
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import { sql } from "drizzle-orm";
 import { inspectNativeRunnerUpgradeHeader } from "../native-runtime/native-runner-checkpoint.js";
 import { readNativeWorkspaceSyncReference } from "../native-runtime/native-workspace-sync.js";

@@ -1,4 +1,4 @@
-import { getConnectableAppDefinition, type AppDefinition, type ConnectionMethodDef, type ToolAppMetadataPreflightResult } from "@paperclipai/shared";
+import { getConnectableAppDefinition, type AppDefinition, type ConnectionMethodDef, type ToolAppMetadataPreflightResult } from "@simplexy/shared";
 import { HttpError, unprocessable } from "../../../errors.js";
 import { connectionMethodFor, connectionMethodForConnection, remoteEndpoint } from "../connection-methods.js";
 import type { OAuthConnectionSettings, OAuthProviderEndpoints, OAuthTransport } from "./types.js";

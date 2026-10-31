@@ -1,7 +1,7 @@
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import type { VoiceCallHistoryEntry, VoiceCallReport, VoiceUnapprovedCallHistoryEntry } from "@paperclipai/shared";
+import type { VoiceCallHistoryEntry, VoiceCallReport, VoiceUnapprovedCallHistoryEntry } from "@simplexy/shared";
 import { Button } from "@/components/ui/button";
 import { voiceSessionsApi } from "@/api/voiceSessions";
 import { voicePhoneApi } from "@/api/voicePhone";

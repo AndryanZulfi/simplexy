@@ -1,6 +1,6 @@
 import { Command } from "commander";
-import type { Agent, Issue, IssueComment } from "@paperclipai/shared";
-import { addIssueCommentSchema, createIssueSchema } from "@paperclipai/shared";
+import type { Agent, Issue, IssueComment } from "@simplexy/shared";
+import { addIssueCommentSchema, createIssueSchema } from "@simplexy/shared";
 import {
   addCommonClientOptions,
   apiPath,

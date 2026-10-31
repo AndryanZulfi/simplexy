@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { eq, sql } from "drizzle-orm";
-import { adapterAuthSessions, applyPendingMigrations, companies, createDb, environmentLeases, environments, type Db } from "@paperclipai/db";
+import { adapterAuthSessions, applyPendingMigrations, companies, createDb, environmentLeases, environments, type Db } from "@simplexy/db";
 import { installDatabaseWorkSignals } from "../../../packages/db/src/work-signals.js";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { resolveExternalTestDatabaseUrl } from "./helpers/external-test-database.js";

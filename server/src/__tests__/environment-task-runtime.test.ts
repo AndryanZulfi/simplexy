@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { PgDialect } from "drizzle-orm/pg-core";
-import { executionWorkspaces, type Db } from "@paperclipai/db";
-import { environmentTaskOperationSchema, parseEnvironmentTaskResult } from "@paperclipai/plugin-sdk";
+import { executionWorkspaces, type Db } from "@simplexy/db";
+import { environmentTaskOperationSchema, parseEnvironmentTaskResult } from "@simplexy/plugin-sdk";
 import { executeEnvironmentTask } from "../services/environment-task-runtime.js";
 
 const state = vi.hoisted(() => ({ plugin: {} as any, release: vi.fn() }));

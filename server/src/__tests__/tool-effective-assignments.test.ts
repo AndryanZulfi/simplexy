@@ -4,8 +4,8 @@ import { eq, sql } from "drizzle-orm";
 import {
   agents, companies, createDb, toolApplications, toolCatalogEntries,
   toolConnections, toolProfileBindings, toolProfileEntries, toolProfiles, type Db,
-} from "@paperclipai/db";
-import { createDatabaseResponseCapture, installDatabaseResponseCapture } from "@paperclipai/db/response-capture";
+} from "@simplexy/db";
+import { createDatabaseResponseCapture, installDatabaseResponseCapture } from "@simplexy/db/response-capture";
 import { toolAccessService } from "../services/tool-access.js";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 

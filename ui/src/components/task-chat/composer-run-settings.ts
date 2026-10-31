@@ -1,9 +1,9 @@
-import { codexLocalReasoningEffortsForModel, isCodexLocalFastModeSupported, isCodexLocalKnownModel } from "@paperclipai/adapter-codex-local";
-import { claudeLocalReasoningEffortsForModel } from "@paperclipai/adapter-claude-local";
-import { resolvePaperclipRunnerModel } from "@paperclipai/adapter-utils";
-import { DEFAULT_GROK_LOCAL_MODEL, grokLocalReasoningEffortsForModel } from "@paperclipai/adapter-grok-local";
-import { DEFAULT_KIMI_LOCAL_MODEL, modelSupportsEffort, KIMI_SUPPORTED_EFFORTS } from "@paperclipai/adapter-kimi-local";
-import { aiConnectionBindingSchema, aiRuntimeConnectionBindingSchema, agentHarnessType, type Agent, type IssueAssigneeAdapterOverrides } from "@paperclipai/shared";
+import { codexLocalReasoningEffortsForModel, isCodexLocalFastModeSupported, isCodexLocalKnownModel } from "@simplexy/adapter-codex-local";
+import { claudeLocalReasoningEffortsForModel } from "@simplexy/adapter-claude-local";
+import { resolvePaperclipRunnerModel } from "@simplexy/adapter-utils";
+import { DEFAULT_GROK_LOCAL_MODEL, grokLocalReasoningEffortsForModel } from "@simplexy/adapter-grok-local";
+import { DEFAULT_KIMI_LOCAL_MODEL, modelSupportsEffort, KIMI_SUPPORTED_EFFORTS } from "@simplexy/adapter-kimi-local";
+import { aiConnectionBindingSchema, aiRuntimeConnectionBindingSchema, agentHarnessType, type Agent, type IssueAssigneeAdapterOverrides } from "@simplexy/shared";
 
 export interface ComposerRunSettings {
   model: string | null;

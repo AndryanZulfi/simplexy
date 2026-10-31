@@ -9,7 +9,7 @@ import {
 import type {
   PaperclipQuestionResponse,
   PaperclipQuestionSet,
-} from "@paperclipai/adapter-utils";
+} from "@simplexy/adapter-utils";
 import type { MentionOption } from "@/components/MarkdownEditor";
 import { DecisionCardFooter } from "@/components/DecisionCardFooter";
 import { MarkdownBody } from "@/components/MarkdownBody";

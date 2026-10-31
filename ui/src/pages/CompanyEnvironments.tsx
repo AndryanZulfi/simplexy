@@ -18,7 +18,7 @@ import {
   type EnvironmentProbeResult,
   type EnvironmentCustomImageSetupSession,
   type JsonSchema,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   environmentsApi,
   type EnvironmentCustomImageActiveTemplateDrift,

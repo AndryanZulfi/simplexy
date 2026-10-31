@@ -5,8 +5,8 @@ import { GrokBotConnection } from "../../components/GrokBotConnection";
 import { DotRunnerConnection } from "../../components/DotRunnerConnection";
 import { configFieldsForSection } from "../config-sections";
 import type { AdapterConfigFieldsProps } from "../types";
-import type { CreateConfigValues } from "@paperclipai/adapter-utils";
-import { buildCodexLocalConfig } from "@paperclipai/adapter-codex-local/ui";
+import type { CreateConfigValues } from "@simplexy/adapter-utils";
+import { buildCodexLocalConfig } from "@simplexy/adapter-codex-local/ui";
 import {
   Field,
   ToggleField,
@@ -22,7 +22,7 @@ import {
   isCodexLocalFastModeSupported,
   isCodexLocalManualModel,
   resolveCodexLocalCliPolicy,
-} from "@paperclipai/adapter-codex-local";
+} from "@simplexy/adapter-codex-local";
 import {
   PAPERCLIP_RUNNER_IDLE_TIMEOUT_DEFAULT_MS,
   PAPERCLIP_RUNNER_IDLE_TIMEOUT_MAX_MS,
@@ -33,7 +33,7 @@ import {
   resolvePaperclipRunnerPermissionMode,
   type PaperclipRunnerPermissionMode,
   type PaperclipRunnerPermissionCapability,
-} from "@paperclipai/adapter-utils";
+} from "@simplexy/adapter-utils";
 
 const inputClass =
   "w-full rounded-md border border-border px-2.5 py-1.5 bg-transparent outline-none text-sm font-mono placeholder:text-muted-foreground/40";

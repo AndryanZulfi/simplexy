@@ -1,5 +1,5 @@
 import { and, eq, sql } from "drizzle-orm";
-import { chatEndpoints, chatSdkState, type Db } from "@paperclipai/db";
+import { chatEndpoints, chatSdkState, type Db } from "@simplexy/db";
 import { GITHUB_RECOVERY_STATE_KEY } from "./webhook-recovery-state.js";
 
 /** Direct callback recovery warnings do not describe Cloud relay delivery. */

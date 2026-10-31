@@ -59,7 +59,7 @@ were retained.
 PAPERCLIP_HOME=/private/tmp/r16-hbr/h \
 PAPERCLIP_CONFIG=/private/tmp/r16-hbr/h/config.json \
 PAPERCLIP_INSTANCE_ID=heartbeat-recovery-audit TMPDIR=/private/tmp/r16-hbr/t NODE_ENV=test \
-node node_modules/vitest/vitest.mjs run --project @paperclipai/server \
+node node_modules/vitest/vitest.mjs run --project @simplexy/server \
 server/src/__tests__/heartbeat-process-recovery.test.ts --exclude '**/dist/**'
 ```
 

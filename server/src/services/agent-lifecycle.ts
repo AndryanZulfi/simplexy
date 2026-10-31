@@ -1,9 +1,9 @@
 import { notifyNativeReviewResponse } from "./native-review-response-notifications.js";
-import { isAgentStatusInvokable } from "@paperclipai/shared";
+import { isAgentStatusInvokable } from "@simplexy/shared";
 import { notifyNativeResponsePresentation } from "./native-response-presentation-notifications.js";
 import { notifyChatInboundWakeNotices } from "./chat-inbound-wake-notice-notifications.js";
 import { logger } from "../middleware/logger.js";
-import { companies, type Db } from "@paperclipai/db";
+import { companies, type Db } from "@simplexy/db";
 import { eq } from "drizzle-orm";
 import * as lifecycle from "../modules/agent-lifecycle/index.js";
 import { withAccountingTransaction } from "./accounting-transaction.js";

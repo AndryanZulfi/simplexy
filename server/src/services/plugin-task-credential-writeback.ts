@@ -1,13 +1,13 @@
-import { aiConnectionMetadataSchema } from "@paperclipai/shared";
+import { aiConnectionMetadataSchema } from "@simplexy/shared";
 import { and, eq, sql } from "drizzle-orm";
-import { companySecrets, connectionGrants, environmentLeases, toolConnections, type Db } from "@paperclipai/db";
-import { z, type PluginEnvironmentTaskCredential } from "@paperclipai/plugin-sdk";
+import { companySecrets, connectionGrants, environmentLeases, toolConnections, type Db } from "@simplexy/db";
+import { z, type PluginEnvironmentTaskCredential } from "@simplexy/plugin-sdk";
 import { mkdtemp, writeFile, rm, realpath } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { isDeepStrictEqual } from "node:util";
-import { decideCodexAuthMerge, withAccountHomeSecretMutationLock } from "@paperclipai/adapter-codex-local/server";
-import { WORKSPACE_RESTORE_LOCK_TIMEOUT_CODE } from "@paperclipai/adapter-utils/workspace-restore-merge";
+import { decideCodexAuthMerge, withAccountHomeSecretMutationLock } from "@simplexy/adapter-codex-local/server";
+import { WORKSPACE_RESTORE_LOCK_TIMEOUT_CODE } from "@simplexy/adapter-utils/workspace-restore-merge";
 import { aiConnectionService } from "./ai-connections.js";
 import { secretService } from "./secrets.js";
 

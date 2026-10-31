@@ -50,8 +50,8 @@ import type {
   SecretStatus,
   UserSecretCoverageSummary,
   UserSecretDefinition,
-} from "@paperclipai/shared";
-import { hidesCompanySection } from "@paperclipai/shared";
+} from "@simplexy/shared";
+import { hidesCompanySection } from "@simplexy/shared";
 import { useCompany } from "../context/CompanyContext";
 import { useHiddenSettings } from "../hooks/useHiddenSettings";
 import { useBreadcrumbs } from "../context/BreadcrumbContext";

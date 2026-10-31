@@ -4,14 +4,14 @@ import {
   companySecrets,
   providerBillingSnapshots,
   type Db,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   centsToUnits,
   usdToUnits,
   unitsToCents,
   importProviderCostsSchema,
   type ImportProviderCosts,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { secretService } from "./secrets.js";
 import { withAccountingTransaction } from "./accounting-transaction.js";
 import { createFinanceEventInTransaction } from "./finance.js";

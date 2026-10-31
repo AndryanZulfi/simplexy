@@ -59,13 +59,13 @@ import {
   or,
   sql,
 } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import {
   ISSUE_CONTINUATION_SUMMARY_DOCUMENT_KEY,
   type HeartbeatRunStatusPhase,
   type RequestConfirmationResult,
   type RunLivenessState,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   agents,
   agentRuntimeState,
@@ -86,7 +86,7 @@ import {
   issueWorkProducts,
   routines,
   workspaceOperations,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { logger } from "../../middleware/logger.js";
 import { publishLiveEvent } from "../live-events.js";
 import {
@@ -170,11 +170,11 @@ import {
 } from "../../redaction.js";
 import {
   type RuntimeStatusUpdate,
-} from "@paperclipai/adapter-utils";
+} from "@simplexy/adapter-utils";
 import {
   UNMANAGED_BACKGROUND_TASK_LIVENESS_REASON,
   UNMANAGED_BACKGROUND_TASK_STOP_REASON,
-} from "@paperclipai/adapter-utils/server-utils";
+} from "@simplexy/adapter-utils/server-utils";
 import {
   clearHeartbeatRunRuntimeStatus,
   getHeartbeatRunRuntimeStatus,

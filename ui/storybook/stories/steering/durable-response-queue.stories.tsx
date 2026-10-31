@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import type { IssueQueuedCommentQueue } from "@paperclipai/shared";
+import type { IssueQueuedCommentQueue } from "@simplexy/shared";
 import { expect, userEvent, within, waitFor } from "storybook/test";
 import { TaskChatQueuedMessages } from "@/components/task-chat/TaskChatQueuedMessages";
 const initialQueue: IssueQueuedCommentQueue = {

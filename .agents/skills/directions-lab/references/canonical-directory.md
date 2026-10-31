@@ -217,7 +217,7 @@ cd ui && npx vitest run storybook/map-tooling.test.ts  # 1 passed; wraps the thr
 
 The vitest wrapper is the CI signal (`maps/storybook-map/README.md:104-105`); a green
 `node --test` alone is not. `cd ui && pnpm typecheck` also re-runs the catalog (`ui/package.json:23`);
-report it as not run if `@paperclipai/plugin-sdk` is not built.
+report it as not run if `@simplexy/plugin-sdk` is not built.
 
 With Part 2 merged, a lab records stages as `lifecycle.md` mode B says: proposed and adopted map
 to `status: "proposed"`, current to `"current"`, historical to `"historical"` plus `replacement`.

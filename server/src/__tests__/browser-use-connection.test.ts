@@ -36,7 +36,7 @@ import {
   financeEvents,
   budgetPolicies,
   budgetReservations,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { toolAccessService } from "../services/tool-access.js";
 import { createToolGatewayService } from "../services/tool-gateway.js";
 import { browserUseViewports } from "../services/browser-use-viewport.js";
@@ -45,7 +45,7 @@ import { registerBrowserUseCleanup } from "../services/browser-use-work.js";
 import { browserUseService } from "../services/browser-use.js";
 import { applyConnectorSkills, prepareConnectorSkillDelivery, resolveConnectorAssignments } from "../services/connector-runtime.js";
 import { registerAssignedMcpGateway } from "../services/native-runtime/assigned-mcp-tools.js";
-import { listPaperclipSkillEntries } from "@paperclipai/adapter-utils/server-utils";
+import { listPaperclipSkillEntries } from "@simplexy/adapter-utils/server-utils";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import {

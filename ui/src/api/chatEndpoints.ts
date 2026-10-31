@@ -1,4 +1,4 @@
-import type { SlackSetupOptions, SlackManagedProvisionInput, SlackManagedResult } from "@paperclipai/shared";
+import type { SlackSetupOptions, SlackManagedProvisionInput, SlackManagedResult } from "@simplexy/shared";
 import { api } from "./client";
 import type {
   SlackAppConfiguration,
@@ -15,11 +15,11 @@ import type {
   ChatPublicationSummary,
   ChatActivityItem,
   ChatFileTransferResolutionPrecondition,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 export type {
   ChatPublicationSummary,
   ChatActivityItem,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 
 export type ChatProvider =
   "slack" | "github" | "discord" | "microsoft-teams" | "telegram" | "agentmail" | "imessage-photon" | "speko";
@@ -36,7 +36,7 @@ export type ChatEndpointSetupAction =
   "configure" | "verify" | "pause" | "resume" | "reconnect" | "remove";
 
 export interface ChatEndpointResource {
-  executionDefaults?: import("@paperclipai/shared").ChatExecutionDefaults | null;
+  executionDefaults?: import("@simplexy/shared").ChatExecutionDefaults | null;
   metadata?: Record<string, unknown>;
   id: string;
   type: string;
@@ -103,7 +103,7 @@ export interface ChatIdentityLinkPreview {
 }
 
 export interface ChatEndpoint {
-  executionDefaults?: import("@paperclipai/shared").ChatExecutionDefaults | null;
+  executionDefaults?: import("@simplexy/shared").ChatExecutionDefaults | null;
   communicationInstructions?: string;
   publicationMode?: "automatic" | "explicit";
   externalExecutionPolicy?: "restricted" | "agent";
@@ -134,7 +134,7 @@ export interface ChatEndpoint {
   conversations?: ChatConversation[];
   activity?: ChatActivityItem[];
   setup?: {
-    github?: import("@paperclipai/shared").ChatEndpointSetupState["github"];
+    github?: import("@simplexy/shared").ChatEndpointSetupState["github"];
     step: string;
     testStartedAt?: string | null;
     testSkipped?: boolean;
@@ -223,10 +223,10 @@ export const chatEndpointsApi = {
       photon?: PhotonChannelConfiguration;
     },
   ) => api.post<ChatEndpoint>(`/chat-endpoints/${endpointId}/setup`, input),
-  sendSlackTestMessage: (endpointId: string, input: import("@paperclipai/shared").SlackTestMessageInput) =>
-    api.post<import("@paperclipai/shared").SlackTestMessageResult>(`/chat-endpoints/${endpointId}/slack/test-message`, input),
+  sendSlackTestMessage: (endpointId: string, input: import("@simplexy/shared").SlackTestMessageInput) =>
+    api.post<import("@simplexy/shared").SlackTestMessageResult>(`/chat-endpoints/${endpointId}/slack/test-message`, input),
   slackSetupOptions: (companyId: string) => api.get<SlackSetupOptions>(`/companies/${companyId}/chat-slack/setup-options`),
-  authorizeSlackManager: (endpointId: string) => api.post<import("@paperclipai/shared").SlackManagerAuthorization>(`/chat-endpoints/${endpointId}/slack/managed/authorize`, {}),
+  authorizeSlackManager: (endpointId: string) => api.post<import("@simplexy/shared").SlackManagerAuthorization>(`/chat-endpoints/${endpointId}/slack/managed/authorize`, {}),
   provisionManagedSlack: (endpointId: string, input: SlackManagedProvisionInput) => api.post<SlackManagedResult>(`/chat-endpoints/${endpointId}/slack/managed/provision`, input),
   createSlackApp: (endpointId: string, input: SlackRegistrationInput) =>
     api.post<ChatEndpoint>(`/chat-endpoints/${endpointId}/slack/registration`, input),
@@ -254,7 +254,7 @@ export const chatEndpointsApi = {
     ),
   updateResources: (
     endpointId: string,
-    resources: Array<{ id: string; enabled?: boolean; executionDefaults?: import("@paperclipai/shared").ChatExecutionDefaults | null }>,
+    resources: Array<{ id: string; enabled?: boolean; executionDefaults?: import("@simplexy/shared").ChatExecutionDefaults | null }>,
   ) =>
     api.put<ChatEndpointResource[]>(`/chat-endpoints/${endpointId}/resources`, {
       resources,

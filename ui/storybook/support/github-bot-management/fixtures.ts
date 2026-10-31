@@ -2,7 +2,7 @@ import {
   defaultGitHubReviewPolicy,
   type GitHubChatConfiguration,
   type GitHubTaskReview,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import type {
   ChatEndpoint,
   ChatEndpointResource,

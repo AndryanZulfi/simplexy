@@ -27,7 +27,7 @@ readiness and retry parsing boundary outside this optimization.
 Run from the source checkout with its dependencies built:
 
 ```sh
-pnpm --filter @paperclipai/server exec tsx ../scripts/benchmark-inbound-queue-discovery.ts --baseline-ref=09ad9adce2cf4742944353a3707a2f908e9bb35e --require-work-budget
+pnpm --filter @simplexy/server exec tsx ../scripts/benchmark-inbound-queue-discovery.ts --baseline-ref=09ad9adce2cf4742944353a3707a2f908e9bb35e --require-work-budget
 ```
 
 The harness starts disposable PostgreSQL through the repository test helper.

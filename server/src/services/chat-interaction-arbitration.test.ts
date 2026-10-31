@@ -13,7 +13,7 @@ import {
   issueThreadInteractions,
   toolApplications,
   toolConnections,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { startEmbeddedPostgresTestDatabase } from "../__tests__/helpers/embedded-postgres.js";
 import { resolveExternalTestDatabaseUrl } from "../__tests__/helpers/external-test-database.js";
 import { hasChatRunOwnedProviderInteraction } from "./chat-interaction-arbitration.js";

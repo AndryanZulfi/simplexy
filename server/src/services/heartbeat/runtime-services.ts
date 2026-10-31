@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
-import { heartbeatRuns, type Db } from "@paperclipai/db";
-import type { AdapterExecutionResult } from "@paperclipai/adapter-utils";
+import { heartbeatRuns, type Db } from "@simplexy/db";
+import type { AdapterExecutionResult } from "@simplexy/adapter-utils";
 import { parseObject } from "../../adapters/utils.js";
 import { assertLowTrustRuntimeServicesAllowed } from "../low-trust-runtime-containment.js";
 import {

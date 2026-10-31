@@ -1,12 +1,12 @@
 import { randomUUID } from "node:crypto";
 import { and, eq, inArray, isNull, ne, or } from "drizzle-orm";
-import { companySecrets, companySecretProposals, managedAgentProfiles, routineTriggers, userSecretDefinitions, type connectionGrants, type toolConnections } from "@paperclipai/db";
-import type { ToolCredentialSecretRef } from "@paperclipai/shared";
-import { connectionCredentialConfigPath } from "@paperclipai/shared";
+import { companySecrets, companySecretProposals, managedAgentProfiles, routineTriggers, userSecretDefinitions, type connectionGrants, type toolConnections } from "@simplexy/db";
+import type { ToolCredentialSecretRef } from "@simplexy/shared";
+import { connectionCredentialConfigPath } from "@simplexy/shared";
 import { unprocessable } from "../errors.js";
 import { secretService } from "./secrets.js";
 
-export { connectionCredentialConfigPath } from "@paperclipai/shared";
+export { connectionCredentialConfigPath } from "@simplexy/shared";
 
 type CredentialDb = Parameters<typeof secretService>[0];
 type SecretActor = Parameters<ReturnType<typeof secretService>["create"]>[2];

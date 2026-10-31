@@ -1,7 +1,7 @@
 import { randomBytes, randomUUID } from "node:crypto";
 import { and, eq, gt, like, sql } from "drizzle-orm";
-import { chatEndpoints, chatSlackManagerGrants, chatSlackRegistrations, companySecrets, toolOauthStates } from "@paperclipai/db";
-import { SLACK_MANAGER_SCOPES, type SlackSetupOptions as SetupChoices } from "@paperclipai/shared";
+import { chatEndpoints, chatSlackManagerGrants, chatSlackRegistrations, companySecrets, toolOauthStates } from "@simplexy/db";
+import { SLACK_MANAGER_SCOPES, type SlackSetupOptions as SetupChoices } from "@simplexy/shared";
 import { conflict, forbidden } from "../../../../errors.js";
 import { getCloudRuntimeIdentity } from "../../../cloud-runtime-identity.js";
 import { createPaperclipCloudConnector, paperclipCloudConnectorConfigFromEnv, type SealedConnectorCredentials } from "../../../paperclip-cloud-connector.js";

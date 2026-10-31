@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, within, waitFor } from "storybook/test";
-import { instanceGeneralSettingsSchema } from "@paperclipai/shared";
+import { instanceGeneralSettingsSchema } from "@simplexy/shared";
 import { InstanceGeneralSettings } from "@/pages/InstanceGeneralSettings";
 import {
   prepareFixtureApi,

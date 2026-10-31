@@ -15,7 +15,7 @@ expected one startup call after two maintenance ticks and observed three calls.
 The recorded command is:
 
 ```sh
-pnpm --filter @paperclipai/server exec vitest run \
+pnpm --filter @simplexy/server exec vitest run \
   src/__tests__/server-startup-feedback-export.test.ts \
   -t 'does not rescan idle tool health' --maxWorkers=1
 ```

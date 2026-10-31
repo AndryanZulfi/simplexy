@@ -8,7 +8,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 
 import { and, eq, ne, sql } from "drizzle-orm";
-import { createDatabaseResponseCapture, installDatabaseResponseCapture } from "@paperclipai/db/response-capture";
+import { createDatabaseResponseCapture, installDatabaseResponseCapture } from "@simplexy/db/response-capture";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import {
   agentWakeupRequests,
@@ -48,7 +48,7 @@ import {
   toolOauthStates,
   chatVoiceSessions, chatVoiceReplies, chatVoiceToolCalls,
   workspaceOperations,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { validatePrpStructuredRunResult } from "../../vendor/paperclip-runner/index.js";
 import type {
   PrpStructuredRunResult,
@@ -96,7 +96,7 @@ import { resolveExternalChatQuestionResponse } from "./external-chat-question-re
 import { listExternalReviewWaits } from "./external-review-wait.js";
 import { materializeExternalChatQuestionResponseInput } from "./external-chat-question-response-input.js";
 import * as nativeInteractionBridge from "./native-interaction-bridge.js";
-import { defaultGitHubReviewPolicy, type AskUserQuestionsInteraction } from "@paperclipai/shared";
+import { defaultGitHubReviewPolicy, type AskUserQuestionsInteraction } from "@simplexy/shared";
 import { PaperclipRunnerToolAuthority } from "./paperclip-runner-tool-authority.js";
 import { createLocalDiskStorageProvider } from "../../storage/local-disk-provider.js";
 import { createStorageService } from "../../storage/service.js";

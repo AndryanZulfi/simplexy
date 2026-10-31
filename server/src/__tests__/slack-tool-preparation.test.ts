@@ -5,8 +5,8 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import {
   agents, chatEndpoints, chatExternalPrincipals, chatIdentityLinks, companies,
   companyMemberships, createDb, heartbeatRuns, issues, toolApplications, toolConnections,
-} from "@paperclipai/db";
-import type { ToolCredentialSecretRef } from "@paperclipai/shared";
+} from "@simplexy/db";
+import type { ToolCredentialSecretRef } from "@simplexy/shared";
 import { createChatCredentials } from "../services/chat-channels/credentials.js";
 import { createSlackTaskAuthorityRegistration } from "../services/chat-channels/slack/task-authority.js";
 import { resolveSlackTaskAuthority } from "../services/connectors/slack-authority.js";

@@ -7,7 +7,7 @@ import { join } from "node:path";
 import express from "express";
 import request from "supertest";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
-import { companies, companyMemberships, createDb, connectionGrants, toolCatalogEntries, toolConnections, toolOauthStates } from "@paperclipai/db";
+import { companies, companyMemberships, createDb, connectionGrants, toolCatalogEntries, toolConnections, toolOauthStates } from "@simplexy/db";
 import { eq } from "drizzle-orm";
 import { toolAccessService } from "../services/tool-access.js";
 import { toolAccessRoutes } from "../routes/tool-access.js";

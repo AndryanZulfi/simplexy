@@ -1,5 +1,5 @@
-import { projectWorkspaces, type Db } from "@paperclipai/db";
-import type { TaskWorkspaceIntent } from "@paperclipai/shared";
+import { projectWorkspaces, type Db } from "@simplexy/db";
+import type { TaskWorkspaceIntent } from "@simplexy/shared";
 import { and, eq } from "drizzle-orm";
 
 import { resolveProjectDefaultWorkspaceId } from "./project-default-workspace.js";

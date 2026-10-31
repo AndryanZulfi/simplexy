@@ -1,5 +1,5 @@
-import type { Db } from "@paperclipai/db";
-import type { Agent, EnvironmentProbeResult } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import type { Agent, EnvironmentProbeResult } from "@simplexy/shared";
 import { conflict, unprocessable } from "../errors.js";
 import { resolveAgentRunnerEnvironmentForCompany } from "./agent-runner-selection.js";
 import { probeEnvironment, readSandboxPlatformQualification } from "./environment-probe.js";

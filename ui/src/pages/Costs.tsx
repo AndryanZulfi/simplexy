@@ -19,7 +19,7 @@ import type {
   FinanceEvent,
   QuotaWindow,
   ProviderQuotaResult,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { ArrowDownLeft, ArrowUpRight, ChevronDown, ChevronRight, Coins, DollarSign, ReceiptText } from "lucide-react";
 import { budgetsApi } from "../api/budgets";
 import { costsApi } from "../api/costs";

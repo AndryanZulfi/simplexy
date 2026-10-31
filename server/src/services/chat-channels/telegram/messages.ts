@@ -1,7 +1,7 @@
 import type { Attachment } from "chat";
 import { createHash } from "node:crypto";
-import type { chatDeliveries } from "@paperclipai/db";
-import type { ChatProvider } from "@paperclipai/shared";
+import type { chatDeliveries } from "@simplexy/db";
+import type { ChatProvider } from "@simplexy/shared";
 import { normalizeTelegramRichMessage } from "../../chat-telegram-rich-intake.js";
 import { MAX_INBOUND_TEXT, type LifecycleActor } from "../message-lifecycle.js";
 

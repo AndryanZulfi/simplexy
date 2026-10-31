@@ -1,10 +1,10 @@
 import { readLocalAiCredentialFile } from "./local-ai-credential-file.js";
 import fs from "node:fs/promises";
 import path from "node:path";
-import { readIsolatedClaudeKeychainToken } from "@paperclipai/adapter-claude-local/server";
-import { readCodexAuthInfo, fetchCodexQuota } from "@paperclipai/adapter-codex-local/server";
-import { parseGrokAuthPayload, hasUsableGrokAuthValue } from "@paperclipai/adapter-grok-local/server";
-import type { AiProvider } from "@paperclipai/shared";
+import { readIsolatedClaudeKeychainToken } from "@simplexy/adapter-claude-local/server";
+import { readCodexAuthInfo, fetchCodexQuota } from "@simplexy/adapter-codex-local/server";
+import { parseGrokAuthPayload, hasUsableGrokAuthValue } from "@simplexy/adapter-grok-local/server";
+import type { AiProvider } from "@simplexy/shared";
 import { unprocessable } from "../errors.js";
 
 /** Read and verify a connection-specific login home. */

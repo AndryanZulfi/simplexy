@@ -1,5 +1,5 @@
 import { and, eq, isNull } from "drizzle-orm";
-import { agents, dotAgentBindings, mcpOauthGrants, type Db } from "@paperclipai/db";
+import { agents, dotAgentBindings, mcpOauthGrants, type Db } from "@simplexy/db";
 import { canConfigureAgentConnection } from "../modules/agent-lifecycle/index.js";
 import { accessService } from "./access.js";
 import { boardAuthService } from "./board-auth.js";

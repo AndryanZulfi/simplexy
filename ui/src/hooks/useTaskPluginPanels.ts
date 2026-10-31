@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useQueries, useQuery } from "@tanstack/react-query";
-import type { Issue } from "@paperclipai/shared";
+import type { Issue } from "@simplexy/shared";
 import { api } from "@/api/client";
 import { heartbeatsApi } from "@/api/heartbeats";
 import { useHasCompanyLiveConnection } from "@/context/LiveUpdatesProvider";

@@ -8,7 +8,7 @@ import type {
   ToolMcpGatewayToken,
   ToolMcpGatewayTokenCreated,
   ToolMcpGatewayWithTokens,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ConnectClientDialog } from "./ConnectClientDialog";
 

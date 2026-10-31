@@ -1,4 +1,4 @@
-import type { Agent, Approval } from "@paperclipai/shared";
+import type { Agent, Approval } from "@simplexy/shared";
 import { api } from "./client";
 
 /**
@@ -108,7 +108,7 @@ export interface BuiltInAgentState {
 }
 
 export interface BuiltInAgentProvisionInput {
-  runner?: import("@paperclipai/shared").AgentRunnerChoice;
+  runner?: import("@simplexy/shared").AgentRunnerChoice;
   adapterType?: string;
   adapterConfig?: Record<string, unknown>;
   budgetMonthlyCents?: number;

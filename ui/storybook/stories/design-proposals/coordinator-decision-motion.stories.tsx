@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import type { DecisionHistoryItem } from "@paperclipai/shared";
+import type { DecisionHistoryItem } from "@simplexy/shared";
 import { CoordinatorNeedsYou } from "@/components/coordinator/CoordinatorNeedsYou";
 import { coordinatorTaskQuestion, coordinatorTaskQuestionAttention } from "@/fixtures/coordinatorTaskQuestion";
 import { genericPendingRequestConfirmationInteraction } from "@/fixtures/issueThreadInteractionFixtures";

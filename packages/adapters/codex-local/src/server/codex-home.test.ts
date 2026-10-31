@@ -2,10 +2,10 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { prepareAdapterExecutionTargetRuntime } from "@paperclipai/adapter-utils/execution-target";
-import { runChildProcess } from "@paperclipai/adapter-utils/server-utils";
+import { prepareAdapterExecutionTargetRuntime } from "@simplexy/adapter-utils/execution-target";
+import { runChildProcess } from "@simplexy/adapter-utils/server-utils";
 import { execute as executeCodex } from "./execute.js";
-import { buildProviderObservabilityLaunch } from "@paperclipai/adapter-utils/agent-observability";
+import { buildProviderObservabilityLaunch } from "@simplexy/adapter-utils/agent-observability";
 import { randomUUID } from "node:crypto";
 import {
   CODEX_SYNC_ALLOWLIST,

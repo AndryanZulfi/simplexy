@@ -1,5 +1,5 @@
 import { and, asc, eq, inArray, isNull, sql } from "drizzle-orm";
-import { agentWakeupRequests, chatActions, chatPublications, type Db } from "@paperclipai/db";
+import { agentWakeupRequests, chatActions, chatPublications, type Db } from "@simplexy/db";
 import type { DbOrTransaction } from "./runtime-types.js";
 import { notifyChatPublicationWork } from "../chat-work-notifications.js";
 import { projectSafeChatPublication } from "../chat-publication-projection.js";

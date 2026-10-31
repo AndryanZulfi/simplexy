@@ -28,7 +28,7 @@ import {
   issues,
   projects,
   projectWorkspaces,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,
@@ -59,8 +59,8 @@ vi.mock("../sentry.js", async (importOriginal) => ({
 }));
 
 // Exercise the real SSH lease and heartbeat paths without connecting to a host.
-vi.mock("@paperclipai/adapter-utils/ssh", async (importOriginal) => ({
-  ...await importOriginal<typeof import("@paperclipai/adapter-utils/ssh")>(),
+vi.mock("@simplexy/adapter-utils/ssh", async (importOriginal) => ({
+  ...await importOriginal<typeof import("@simplexy/adapter-utils/ssh")>(),
   ensureSshWorkspaceReady: async (config: { remoteWorkspacePath: string }) => ({
     remoteCwd: config.remoteWorkspacePath,
   }),

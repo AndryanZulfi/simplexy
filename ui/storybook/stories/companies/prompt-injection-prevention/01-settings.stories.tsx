@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
 import { PromptInjectionPreventionSettingsView } from "@/components/prompt-injection-prevention/PromptInjectionPreventionSettings";
-import { PROMPT_INJECTION_DEFAULT_MODEL } from "@paperclipai/shared";
+import { PROMPT_INJECTION_DEFAULT_MODEL } from "@simplexy/shared";
 import { choices as allChoices } from "../../../support/decision-models/fixtures";
 const choices = allChoices.filter(c => c.provider === "openrouter");
 const empty = { companyId: "company-storybook", enabled: false, connectionId: null, grantId: null, model: PROMPT_INJECTION_DEFAULT_MODEL };

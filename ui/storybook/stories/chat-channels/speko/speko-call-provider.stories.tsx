@@ -1,7 +1,7 @@
 import { StrictMode, useMemo, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, waitFor, within } from "storybook/test";
-import type { VoiceSession } from "@paperclipai/shared";
+import type { VoiceSession } from "@simplexy/shared";
 import { Button } from "@/components/ui/button";
 import { VoiceCallProvider } from "@/components/voice/VoiceCallProvider";
 import { NativeVoiceConversation } from "@/components/voice/NativeVoiceConversation";

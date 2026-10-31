@@ -23,7 +23,7 @@ import {
   sql,
 } from "drizzle-orm";
 
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 
 import {
   chatActions,
@@ -33,7 +33,7 @@ import {
   chatPublications,
   issueThreadInteractions,
   issues,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 
 import {
   type ChatSdkCallbackEvent,
@@ -184,7 +184,7 @@ export function createChatConfirmationActions(db: Db, options: ChatConfirmationO
                 runtimeContext,
               });
             },
-            afterResolveInTransaction: async (tx: DbTransaction, resolved: import("@paperclipai/shared").IssueThreadInteraction) => {
+            afterResolveInTransaction: async (tx: DbTransaction, resolved: import("@simplexy/shared").IssueThreadInteraction) => {
               await notifyChatConfirmationWork(tx, { companyId: action.companyId, issueId: conversation.issueId });
               const [owned] = await tx
                 .update(chatActions)

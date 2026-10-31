@@ -1,13 +1,13 @@
 import { Router } from "express";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
-import { issues, type Db } from "@paperclipai/db";
+import { issues, type Db } from "@simplexy/db";
 import {
   browserUseControlSchema,
   browserUseSettingsSchema,
   browserUseViewportSchema,
   browserUseViewerSchema,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   assertBoard,
   assertCompanyAccess,

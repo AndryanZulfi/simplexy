@@ -16,7 +16,7 @@ import {
   or,
 } from "drizzle-orm";
 
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 
 import {
   agentWakeupRequests,
@@ -24,7 +24,7 @@ import {
   chatEndpoints,
   chatMessageLinks,
   issues,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 
 import { isUniqueViolation } from "../../../db-errors.js";
 

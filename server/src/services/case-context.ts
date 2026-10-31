@@ -1,6 +1,6 @@
 import { and, desc, eq, inArray, isNull } from "drizzle-orm";
 import { createHash } from "node:crypto";
-import { agents, caseDocuments, caseHandoffs, caseIssueLinks, cases, documents, heartbeatRuns, issueComments, issueWorkProducts, issues, museAgentBindings, type Db } from "@paperclipai/db";
+import { agents, caseDocuments, caseHandoffs, caseIssueLinks, cases, documents, heartbeatRuns, issueComments, issueWorkProducts, issues, museAgentBindings, type Db } from "@simplexy/db";
 import { forbidden } from "../errors.js";
 import { authorizationService, issueReadSqlCondition, type AuthorizationActor } from "./authorization.js";
 import { assertCaseTrustedForExecution, canActorReadCase } from "./case-access.js";

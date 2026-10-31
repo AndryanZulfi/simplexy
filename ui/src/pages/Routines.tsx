@@ -49,8 +49,8 @@ import { auditSectionHref } from "./audit/audit-navigation";
 import { routineDetailHref } from "../components/RoutineContextualSidebar";
 import { usePublishSharedQueryData, useSharedPollingQuery } from "../hooks/useSharedPolling";
 import { useStreamlinedUiEnabled } from "../hooks/useStreamlinedUiEnabled";
-import type { RoutineListItem, RoutineVariable } from "@paperclipai/shared";
-import type { FolderListItem } from "@paperclipai/shared";
+import type { RoutineListItem, RoutineVariable } from "@simplexy/shared";
+import type { FolderListItem } from "@simplexy/shared";
 import { Tabs } from "@/components/ui/tabs";
 import {
   AllUnfiledBanner,

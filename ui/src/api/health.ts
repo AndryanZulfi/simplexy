@@ -1,4 +1,4 @@
-import type { ServerInfoSnapshot } from "@paperclipai/shared";
+import type { ServerInfoSnapshot } from "@simplexy/shared";
 import { tenantSessionRecovery } from "@/lib/tenant-session-recovery";
 import { apiErrorFromResponse, apiFetch } from "./client";
 import { ApiUnavailableError, readApiJson } from "./response";

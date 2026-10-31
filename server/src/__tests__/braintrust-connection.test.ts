@@ -5,7 +5,7 @@ import {
   agents, approvals, companies, companyMemberships, companySecrets, connectionGrants,
   createDb, heartbeatRuns, issues, toolAccessAuditEvents, toolActionRequests,
   toolApplications, toolCallEvents, toolConnections, toolOauthStates,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { classifyRisk, toolAccessService, type McpToolDescriptor } from "../services/tool-access.js";
 import { createToolGatewayService } from "../services/tool-gateway.js";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";

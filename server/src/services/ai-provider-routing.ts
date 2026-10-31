@@ -1,9 +1,9 @@
-import { OPENROUTER_ATTRIBUTION_HEADERS, isOpenRouterUrl, openRouterClaudeHeaders, openRouterCodexHeaders } from "@paperclipai/shared/openrouter-attribution";
+import { OPENROUTER_ATTRIBUTION_HEADERS, isOpenRouterUrl, openRouterClaudeHeaders, openRouterCodexHeaders } from "@simplexy/shared/openrouter-attribution";
 import {
   aiRoutingBaseUrl,
   aiRoutingModel,
   type AiProviderRouting,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 
 /** Projects one authoritative connection into an isolated harness environment. */
 export function managedProviderRouting(

@@ -1,7 +1,7 @@
 import { createServer } from "node:http";
 import { once } from "node:events";
 import { describe, expect, it, vi } from "vitest";
-import { PROMPT_INJECTION_DEFAULT_MODEL, PROMPT_INJECTION_MAX_REQUEST_BYTES } from "@paperclipai/shared";
+import { PROMPT_INJECTION_DEFAULT_MODEL, PROMPT_INJECTION_MAX_REQUEST_BYTES } from "@simplexy/shared";
 import { parsePromptInjectionVerdict, promptInjectionInput, promptInjectionRequestFits, runPromptInjectionProvider } from "../services/prompt-injection-provider.js";
 const input = { credential: "fixture-key", model: PROMPT_INJECTION_DEFAULT_MODEL,
   prompt: promptInjectionInput("ordinary result", { name: "read", type: "builtin" }) };

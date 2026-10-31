@@ -4,7 +4,7 @@ import type {
   IssueQueuedCommentQueue,
   IssueQueuedCommentQueueState,
   IssueQueuedCommentSteeringDisposition,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import type { RunForIssue } from "../api/activity";
 
 /** Presentation only. Admission has accepted these inputs, but has not consumed them. */

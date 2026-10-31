@@ -18,7 +18,7 @@ import {
   inArray,
 } from "drizzle-orm";
 
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 
 import {
   chatActions,
@@ -27,7 +27,7 @@ import {
   chatPublications,
   heartbeatRuns,
   issueComments,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 
 import {
   authorizeNativeChatReviewPresentation,

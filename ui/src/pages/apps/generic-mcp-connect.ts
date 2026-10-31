@@ -1,5 +1,5 @@
-import { checkMcpRemoteHeaderName, checkMcpRemoteHeaderValue, mcpRemoteHeaderRejectionMessage } from "@paperclipai/shared";
-import type { GenericMcpAuthMode } from "@paperclipai/shared";
+import { checkMcpRemoteHeaderName, checkMcpRemoteHeaderValue, mcpRemoteHeaderRejectionMessage } from "@simplexy/shared";
+import type { GenericMcpAuthMode } from "@simplexy/shared";
 
 /**
  * Logic behind the guided "Connect your own MCP server" flow (PAP-17087).

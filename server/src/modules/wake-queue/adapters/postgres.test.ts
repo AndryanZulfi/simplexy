@@ -3,7 +3,7 @@ import { instanceSettingsService } from "../../../services/instance-settings.js"
 import { randomBytes, randomUUID } from "node:crypto";
 import { eq } from "drizzle-orm";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import {
   activityLog,
   agentWakeupRequests,
@@ -18,7 +18,7 @@ import {
   issues,
   nativeRunFinalizations,
   subscribeDatabaseWork,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,

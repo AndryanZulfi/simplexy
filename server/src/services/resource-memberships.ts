@@ -1,5 +1,5 @@
 import { and, eq, sql } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import {
   agentMemberships,
   agents,
@@ -7,13 +7,13 @@ import {
   documents,
   projectMemberships,
   projects,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import type {
   ResourceMembershipResourceType,
   ResourceMembershipState,
   ResourceMemberships,
   ResourceMembershipUpdateResult,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { forbidden, notFound } from "../errors.js";
 import { clearPrimaryAgent } from "./primary-agent.js";
 import { logger } from "../middleware/logger.js";

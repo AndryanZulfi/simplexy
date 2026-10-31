@@ -12,7 +12,7 @@ mkdirSync(output, { recursive: true });
 const results = [];
 const commands = [
   ['general-server', process.execPath, ['scripts/run-vitest-stable.mjs', '--mode', 'general', '--group', 'general-server-without-chat-or-native-runner', '--shard-index', '0', '--shard-count', '12']],
-  ['fixtures', 'pnpm', ['exec', 'vitest', 'run', '--project', '@paperclipai/server',
+  ['fixtures', 'pnpm', ['exec', 'vitest', 'run', '--project', '@simplexy/server',
     'server/src/services/workspace-git-snapshot-streaming.test.ts', 'server/src/__tests__/workspace-runtime.test.ts',
     '-t', 'streams.*all four real Git|commits fixed-port reservations']],
 ];

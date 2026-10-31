@@ -3,7 +3,7 @@ import {
   activityLog, agentInstructionWorkingCopies, agents, agentWakeupRequests, companies,
   createDb, EMBEDDED_POSTGRES_TEST_TIMEOUT_MS, environmentLeases, environments, heartbeatRuns,
   issues, nativeRunFinalizations, type Db,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { and, eq, sql } from "drizzle-orm";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "../../__tests__/helpers/embedded-postgres.js";

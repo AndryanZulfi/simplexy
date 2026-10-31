@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { and, asc, eq, gt, inArray, isNull, or, sql } from "drizzle-orm";
-import { agentWakeupRequests, chatActions, chatConversations, chatEndpoints, heartbeatRuns, issues, type Db } from "@paperclipai/db";
+import { agentWakeupRequests, chatActions, chatConversations, chatEndpoints, heartbeatRuns, issues, type Db } from "@simplexy/db";
 import type { DbOrTransaction } from "./runtime-types.js";
 import { notifyChatInboundWakeNotices } from "../chat-inbound-wake-notice-notifications.js";
 

@@ -12,12 +12,12 @@ import {
   companyMemberships,
   toolConnections,
   type Db,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import type {
   GitHubAppRegistrationInput,
   GitHubAppWizardState,
   GitHubAppCloudState,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { badRequest, conflict, forbidden, notFound } from "../errors.js";
 import { logActivity } from "./activity-log.js";
 import {

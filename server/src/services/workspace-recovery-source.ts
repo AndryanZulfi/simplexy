@@ -1,12 +1,12 @@
 import { and, eq, inArray, ne, or, sql } from "drizzle-orm";
-import { environmentLeases, environments, heartbeatRuns, issueRecoveryActions, nativeRunFinalizations, type Db } from "@paperclipai/db";
+import { environmentLeases, environments, heartbeatRuns, issueRecoveryActions, nativeRunFinalizations, type Db } from "@simplexy/db";
 import { adapterExecutionControls } from "./adapter-execution-control.js";
 import { readNativeWorkspaceSyncReference } from "./native-runtime/native-workspace-sync.js";
 import { SystemRecoveryFailure } from "./system-recovery-state.js";
 import type { NativeWorkspaceFinalizationOwnership } from "./native-runtime/native-workspace-finalization-ownership.js";
 import { readStopOnlyCleanup } from "./sandbox-stop-and-retain.js";
 import { ENVIRONMENT_LEASE_POLICIES, type EnvironmentLeasePolicy,
-  type WorkspaceSourceVerificationFailure } from "@paperclipai/shared";
+  type WorkspaceSourceVerificationFailure } from "@simplexy/shared";
 
 export const workspaceExportCauses = ["native_workspace_sync_out_unrecoverable", "native_workspace_sync_out_retry_exhausted"];
 export const terminalWorkspaceRunStates = ["failed", "interrupted", "timed_out", "cancelled", "succeeded"];

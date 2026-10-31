@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { agentWakeupRequests, heartbeatRuns, issueRecoveryActions, type Db } from "@paperclipai/db";
+import { agentWakeupRequests, heartbeatRuns, issueRecoveryActions, type Db } from "@simplexy/db";
 import { canonicalExecutionUuid } from "./execution-identity.js";
 
 /** Only committed predecessor edges can carry preserved work into a retry. */

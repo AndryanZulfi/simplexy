@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { appearanceForPalette, type AgentConfigurationDocument } from "@paperclipai/shared";
+import { appearanceForPalette, type AgentConfigurationDocument } from "@simplexy/shared";
 import { parseAgentConfigurationYaml, serializeAgentConfigurationDocument } from "../agent-configuration-yaml";
 import { loadAgentConfiguration } from "./load";
 import { ConfigurationSaveInterrupted, planAgentConfiguration, saveAgentConfiguration } from "./save";

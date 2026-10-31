@@ -206,7 +206,7 @@ test('Pi assembly gets bounded scratch capacity while preserving sandbox restric
 });
 
 test('only an offline runtime probe can execute its verified scratch snapshot', () => {
-  const command = ['node', '/packages/pi-public-install-probe.mjs', '/consumer/node_modules/@paperclipai/server'];
+  const command = ['node', '/packages/pi-public-install-probe.mjs', '/consumer/node_modules/@simplexy/server'];
   const args = grokConsumerDockerArgs({ ...paths, command, temporarySizeMiB: 2048, temporaryExecutable: true });
   assert.deepEqual(values(args, '--tmpfs'), ['/tmp:rw,nosuid,nodev,exec,size=2048m,mode=1777']);
   assert.deepEqual(values(args, '--network'), ['none']);
@@ -358,11 +358,11 @@ test('the installed Codex probe exercises the public export and rejects incomple
       resolved: `https://registry.npmjs.org/@openai/codex/-/codex-${manifest.version}.tgz`, integrity: `sha512-${Buffer.alloc(64, 1).toString('base64')}` };
     const lock = { lockfileVersion: 3, packages: { [platformPath]: entry } };
     writeFileSync(join(consumer, 'package-lock.json'), JSON.stringify(lock));
-    const server = join(consumer, 'node_modules/@paperclipai/server');
+    const server = join(consumer, 'node_modules/@simplexy/server');
     const vendor = join(server, 'dist/vendor/paperclip-runner'), drivers = join(vendor, 'drivers/acpx'); mkdirSync(drivers, { recursive: true });
     mkdirSync(join(vendor, 'live'));
     writeFileSync(join(vendor, 'live/runner-binary.js'), `export const runnerBinaryTarget = ${runnerBinaryTarget.toString()};`);
-    writeFileSync(join(server, 'package.json'), JSON.stringify({ name: '@paperclipai/server', type: 'module' }));
+    writeFileSync(join(server, 'package.json'), JSON.stringify({ name: '@simplexy/server', type: 'module' }));
     const integrity = join(drivers, 'installation-integrity.js');
     const security = join(vendor, 'drivers/codex/codex-security-config.js'); mkdirSync(join(vendor, 'drivers/codex'));
     const securitySource = `export const codexExecutableReadOnlyRoots = () => [${JSON.stringify(nativeVendor)}];

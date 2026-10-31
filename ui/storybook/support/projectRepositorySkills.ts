@@ -1,6 +1,6 @@
 import type { QueryClient } from '@tanstack/react-query';
-import type { ProjectSkillRepository, RoutineRunSummary, Issue } from '@paperclipai/shared';
-import { buildSkillMentionHref } from '@paperclipai/shared';
+import type { ProjectSkillRepository, RoutineRunSummary, Issue } from '@simplexy/shared';
+import { buildSkillMentionHref } from '@simplexy/shared';
 import { skillSourcesApi } from '@/api/skillSources';
 import { companySkillsApi } from '@/api/companySkills';
 import { projectsApi } from '@/api/projects';

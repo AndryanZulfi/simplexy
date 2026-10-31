@@ -75,7 +75,7 @@ async function makeRepo() {
     "tsconfig.base.json": "{}\n",
     "patches/acpx@0.13.1.patch": "--- a\n+++ b\n",
     "patches/pi-acp@0.0.33.patch": "--- c\n+++ d\n",
-    "packages/paperclip-runner/package.json": '{"name":"@paperclipai/paperclip-runner"}\n',
+    "packages/paperclip-runner/package.json": '{"name":"@simplexy/paperclip-runner"}\n',
     "packages/paperclip-runner/src/index.ts": "export const one = 1;\n",
     "packages/paperclip-runner/runner/src/main.rs": "fn main() {}\n",
     "packages/paperclip-runner/runner/target/release/paperclip-runnerd": "binary\n",

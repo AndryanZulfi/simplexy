@@ -3,8 +3,8 @@ import { resolveExternalTestDatabaseUrl } from "../../__tests__/helpers/external
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { asc, eq, sql } from "drizzle-orm";
 import { generateKeyPairSync, randomUUID } from "node:crypto";
-import { renderPaperclipWakePrompt } from "@paperclipai/adapter-utils/server-utils";
-import { ONBOARDING_FIRST_TASK_ORIGIN_KIND } from "@paperclipai/shared";
+import { renderPaperclipWakePrompt } from "@simplexy/adapter-utils/server-utils";
+import { ONBOARDING_FIRST_TASK_ORIGIN_KIND } from "@simplexy/shared";
 import { readCompletedAssistantMessageCandidate, resolveHeartbeatRunResponse, selectHeartbeatRunFinalAgentMessage } from "../heartbeat-run-summary.js";
 import {
   activityLog,
@@ -28,7 +28,7 @@ import {
   statusDecisionEffects,
   statusDecisions,
   workAssessments,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   executeNativeSession,
   parseNativeExecutionInput,
