@@ -1,4 +1,5 @@
 import { supportsLocalAiLogin } from "../services/local-ai-login-policy.js";
+import { isLocalWorkspaceAgentsEnabled } from "../services/local-workspace-agents.js";
 import { randomUUID, timingSafeEqual } from "node:crypto";
 import { Router } from "express";
 import type { Db } from "@paperclipai/db";
@@ -282,6 +283,7 @@ export function healthRoutes(
               serverInfo,
               ...(cloud ? { cloud } : {}),
               ...(hiddenSettings.length ? { hiddenSettings } : {}),
+              ...(isLocalWorkspaceAgentsEnabled(runtimeEnv) ? { localWorkspaceAgentsEnabled: true } : {}),
             }
           : {
               status: healthStatus,
@@ -289,6 +291,7 @@ export function healthRoutes(
               commit,
               ...(cloud ? { cloud } : {}),
               ...(hiddenSettings.length ? { hiddenSettings } : {}),
+              ...(isLocalWorkspaceAgentsEnabled(runtimeEnv) ? { localWorkspaceAgentsEnabled: true } : {}),
             },
       );
       return;
@@ -307,6 +310,7 @@ export function healthRoutes(
         warmStandby: true,
         ...(cloud ? { cloud } : {}),
         ...(hiddenSettings.length ? { hiddenSettings } : {}),
+              ...(isLocalWorkspaceAgentsEnabled(runtimeEnv) ? { localWorkspaceAgentsEnabled: true } : {}),
       });
       return;
     }
@@ -423,6 +427,7 @@ export function healthRoutes(
         ...(workspaceReadiness ? { workspace: workspaceReadiness } : {}),
         ...(cloud ? { cloud } : {}),
         ...(hiddenSettings.length ? { hiddenSettings } : {}),
+              ...(isLocalWorkspaceAgentsEnabled(runtimeEnv) ? { localWorkspaceAgentsEnabled: true } : {}),
       });
       return;
     }
@@ -450,6 +455,7 @@ export function healthRoutes(
       ...(workspaceReadiness ? { workspace: workspaceReadiness } : {}),
       ...(cloud ? { cloud } : {}),
       ...(hiddenSettings.length ? { hiddenSettings } : {}),
+              ...(isLocalWorkspaceAgentsEnabled(runtimeEnv) ? { localWorkspaceAgentsEnabled: true } : {}),
     });
   });
 

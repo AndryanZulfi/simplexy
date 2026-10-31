@@ -14,7 +14,7 @@ export function expandHomePrefix(value: string): string {
 }
 
 export function resolvePaperclipHomeDir(homeOverride?: string): string {
-  const raw = homeOverride?.trim() || process.env.PAPERCLIP_HOME?.trim();
+  const raw = homeOverride?.trim() || process.env.SIMPLEXY_HOME?.trim() || process.env.PAPERCLIP_HOME?.trim();
   if (raw) return path.resolve(expandHomePrefix(raw));
   return path.resolve(os.homedir(), ".paperclip");
 }

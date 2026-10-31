@@ -621,6 +621,52 @@ describe("OnboardingWizard restore-gate (stale localStorage across accounts)", (
       await flushReact();
     }
 
+    it("skips manual setup only after fetching the provisioned local agent", async () => {
+      localHealth.get.mockResolvedValue({ localWorkspaceAgentsEnabled: true });
+      mockAgentsApi.list.mockResolvedValue([{
+        id: "local-agent", name: "Asisten", adapterType: "pi_local",
+        adapterConfig: { managedLocalWorkspace: true }, status: "idle",
+      } as never]);
+      const { root } = await openStepOne();
+      try {
+        await clickByText((text) => text.startsWith("Continue"));
+        expect(mockAgentsApi.list).toHaveBeenCalledWith("created");
+        expect(document.body.textContent).toContain("Agent Cloud");
+        expect(document.body.textContent).toContain("Menggunakan agent cloud Simplexy.");
+        expect(document.body.textContent).not.toContain("is ready to work!");
+        expect(mockAgentsApi.create).not.toHaveBeenCalled();
+        expect(mockAgentsApi.hire).not.toHaveBeenCalled();
+      } finally { await act(async () => root.unmount()); }
+    });
+
+    it("keeps a failed local-agent fetch retryable without creating another company", async () => {
+      localHealth.get.mockResolvedValue({ localWorkspaceAgentsEnabled: true });
+      mockAgentsApi.list.mockRejectedValueOnce(new Error("Runtime tidak tersedia"));
+      const { root } = await openStepOne();
+      try {
+        await clickByText((text) => text.startsWith("Continue"));
+        expect(document.body.textContent).toContain("Runtime tidak tersedia");
+        expect(document.body.textContent).not.toContain("is ready to work!");
+        expect(document.body.querySelector("#onboarding-agent-name")).toBeNull();
+        mockAgentsApi.list.mockResolvedValue([{ id: "local-agent", name: "Asisten", adapterType: "pi_local", adapterConfig: { managedLocalWorkspace: true }, status: "idle" } as never]);
+        await clickByText((text) => text.startsWith("Continue"));
+        expect(mockCompaniesApi.create).toHaveBeenCalledTimes(1);
+        expect(document.body.textContent).toContain("Agent Cloud");
+      } finally { await act(async () => root.unmount()); }
+    });
+
+    it("does not treat an errored provisioned agent as ready", async () => {
+      localHealth.get.mockResolvedValue({ localWorkspaceAgentsEnabled: true });
+      mockAgentsApi.list.mockResolvedValue([{ id: "local-agent", name: "Asisten", adapterType: "pi_local", adapterConfig: { managedLocalWorkspace: true }, status: "error" } as never]);
+      const { root } = await openStepOne();
+      try {
+        await clickByText((text) => text.startsWith("Continue"));
+        expect(document.body.textContent).toContain("Agent lokal belum tersedia");
+        expect(document.body.textContent).not.toContain("is ready to work!");
+        expect(mockAgentsApi.create).not.toHaveBeenCalled();
+      } finally { await act(async () => root.unmount()); }
+    });
+
     it("defers the native runner until the name-only setup has a chosen provider", async () => {
       mockCompaniesApi.create.mockResolvedValue({ id: "company-new", issuePrefix: "INI" });
       const { root } = await openStepOne({ adapterType: "codex_local", runner: "paperclip" });

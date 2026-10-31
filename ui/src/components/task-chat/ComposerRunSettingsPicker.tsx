@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode, type Ref } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { ArrowLeft, Check, ChevronDown, Plus, RotateCcw, Search, X, Zap } from "lucide-react";
 import { aiRuntimeConnectionBindingSchema, agentHarnessType, type Agent, type IssueAssigneeAdapterOverrides } from "@paperclipai/shared";
 import { agentsApi, type AdapterModel } from "@/api/agents";
@@ -95,6 +95,7 @@ export function ComposerRunSettingsPicker({
   const [assigneeSearch, setAssigneeSearch] = useState(initialAssigneeSearch);
   const [highlightedAssignee, setHighlightedAssignee] = useState(0);
   const [narrow, setNarrow] = useState(() => typeof window !== "undefined" && typeof window.matchMedia === "function" && window.matchMedia("(max-width: 639px)").matches);
+  const queryClient = useQueryClient();
   useEffect(() => {
     if (typeof window.matchMedia !== "function") return;
     const query = window.matchMedia("(max-width: 639px)");
@@ -238,6 +239,51 @@ export function ComposerRunSettingsPicker({
       {!choices.length && modelSupported ? <button type="button" aria-label="Reset to agent default" title="Reset to agent default" disabled={!changed} onClick={reset} className="grid size-8 place-items-center rounded-md text-muted-foreground hover:bg-accent disabled:opacity-40"><RotateCcw className="size-4" /></button> : null}
       {closeButton}
     </div>
+    {agent && (agent.adapterConfig.managedLocalWorkspace === true || agent.adapterType === "pi_local" || agent.adapterType === "hermes_local") ? (
+      <div className="mt-3 flex items-center justify-between rounded-md border border-border p-2">
+        <span className="text-xs text-muted-foreground">Harness</span>
+        <div className="flex gap-1">
+          <button
+            type="button"
+            onClick={async () => {
+              if (agent.adapterType !== "pi_local") {
+                await agentsApi.update(agent.id, { adapterType: "pi_local" }, companyId);
+                await queryClient.invalidateQueries({ queryKey: queryKeys.agents.list(companyId) });
+                await queryClient.invalidateQueries({ queryKey: queryKeys.agents.detail(agent.id) });
+                onSettingsChange(null);
+              }
+            }}
+            className={cn(
+              "rounded px-2 py-1 text-xs font-medium transition-colors",
+              agent.adapterType === "pi_local"
+                ? "bg-primary text-primary-foreground font-semibold"
+                : "bg-muted text-muted-foreground hover:bg-accent hover:text-foreground"
+            )}
+          >
+            Pi
+          </button>
+          <button
+            type="button"
+            onClick={async () => {
+              if (agent.adapterType !== "hermes_local") {
+                await agentsApi.update(agent.id, { adapterType: "hermes_local" }, companyId);
+                await queryClient.invalidateQueries({ queryKey: queryKeys.agents.list(companyId) });
+                await queryClient.invalidateQueries({ queryKey: queryKeys.agents.detail(agent.id) });
+                onSettingsChange(null);
+              }
+            }}
+            className={cn(
+              "rounded px-2 py-1 text-xs font-medium transition-colors",
+              agent.adapterType === "hermes_local"
+                ? "bg-primary text-primary-foreground font-semibold"
+                : "bg-muted text-muted-foreground hover:bg-accent hover:text-foreground"
+            )}
+          >
+            Hermes
+          </button>
+        </div>
+      </div>
+    ) : null}
     {modelSupported ? <>
       <button type="button" aria-label="Choose exact model" onClick={() => setView("models")} className="mt-3 flex w-full items-center gap-2 rounded-md px-1 py-1 text-left hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
         <span className="min-w-0 flex-1"><span className="block text-xs text-muted-foreground">Model</span><span className="block truncate text-sm font-medium">{modelName || "Default"}</span></span><ChevronDown className="size-4 shrink-0 text-muted-foreground" aria-hidden />

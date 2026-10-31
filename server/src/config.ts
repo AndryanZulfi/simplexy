@@ -49,6 +49,14 @@ if (shouldLoadWorkingDirectoryEnv({
   loadDotenv({ path: CWD_ENV_PATH, override: false, quiet: true });
 }
 
+// Automatically mirror any SIMPLEXY_* environment variable to PAPERCLIP_*.
+for (const [key, value] of Object.entries(process.env)) {
+  if (key.startsWith("SIMPLEXY_") && value !== undefined) {
+    const aliased = "PAPERCLIP_" + key.slice(9);
+    process.env[aliased] = value;
+  }
+}
+
 if (basename(dirname(PAPERCLIP_ENV_FILE_PATH)) === ".paperclip") {
   applyEmptyWorktreeSigningSecrets(dirname(dirname(PAPERCLIP_ENV_FILE_PATH)));
 }

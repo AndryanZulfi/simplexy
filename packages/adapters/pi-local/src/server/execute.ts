@@ -226,6 +226,10 @@ async function readSavedSessionCwd(input: {
 }
 
 export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExecutionResult> {
+  if (process.env.SIMPLEXY_LOCAL_AGENTS_ENABLED === "true" || ctx.config.managedLocalWorkspace === true) {
+    const { executeManagedLocal } = await import("./managed-execute.js");
+    return executeManagedLocal(ctx);
+  }
   const providerStop = createProviderStoppedBoundary(ctx.onProviderStopped);
   const { runId, agent, runtime, config, context, onLog, onMeta, onSpawn, authToken } = ctx;
   const executionTarget = readAdapterExecutionTarget({

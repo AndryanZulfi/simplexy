@@ -617,7 +617,9 @@ function AgentMetaColumns({
   showEnvironment: boolean;
 }) {
   const model = getConfiguredModel(agent);
-  const adapterLabel = getAdapterLabel(agentDisplayAdapterType(agent));
+  const adapterLabel = agent.adapterType === "pi_local" && agent.adapterConfig.managedLocalWorkspace === true
+    ? "Agent Cloud"
+    : getAdapterLabel(agentDisplayAdapterType(agent));
   return (
     <>
       <div className="w-44 min-w-0 leading-tight">

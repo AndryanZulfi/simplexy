@@ -1,4 +1,5 @@
 import type {
+  Agent,
   Company,
   CompanyPortabilityExportRequest,
   CompanyPortabilityExportPreviewResult,
@@ -97,6 +98,8 @@ export const companiesApi = {
     budgetMonthlyCents?: number;
   }) =>
     api.post<Company>("/companies", data),
+  ensureLocalAgent: (companyId: string) =>
+    api.post<Agent>(`/companies/${companyId}/local-agent`, {}),
   update: (
     companyId: string,
     data: Partial<

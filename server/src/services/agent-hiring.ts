@@ -13,8 +13,10 @@ import { agentCredentialService } from "./agent-credentials.js";
 import { agentIdentityService } from "./agent-identity.js";
 import { initializePrimaryAgent } from "./primary-agent.js";
 import { resolveAgentRunnerTaskDriverForCompany, resolveNewAgentRunnerForCompany } from "./agent-runner-selection.js";
+import { assertManagedLocalAgentConfiguration } from "./local-workspace-agents.js";
 
 export async function prepareAgentHire(db: Db, companyId: string, input: CreateAgentData, options?: CreateAgentOptions): Promise<CreateAgentData> {
+  assertManagedLocalAgentConfiguration(companyId, input);
   const { runner, ...data } = input;
   const selection = options?.runnerResolved
     ? { adapterType: data.adapterType ?? "process", adapterConfig: isPlainRecord(data.adapterConfig) ? data.adapterConfig : {} }
@@ -23,6 +25,7 @@ export async function prepareAgentHire(db: Db, companyId: string, input: CreateA
       });
   data.adapterType = selection.adapterType;
   data.adapterConfig = selection.adapterConfig;
+  assertManagedLocalAgentConfiguration(companyId, data);
   const { ensureManager, assertBuiltInAgentMetadataMutationAllowed } = agentRecordQueries(db);
   if (data.appearance?.customAvatarAssetId) throw unprocessable("Create the agent before uploading its avatar");
   assertBuiltInAgentMetadataMutationAllowed(null, data.metadata, options);
@@ -94,6 +97,7 @@ export async function initializeAgentHire(txDb: Db, created: AgentHireRecord, op
 export async function prepareAgentHireApproval(txDb: Db, existing: AgentHireRecord, approvedPayload?: Record<string, unknown> | null): Promise<AgentConfigurationPatch> {
   const approvedPatch = approvedPayload ? configPatchFromApprovalPayload(approvedPayload) : {};
   const patch = { ...approvedPatch } as AgentConfigurationPatch;
+  assertManagedLocalAgentConfiguration(existing.companyId, { ...existing, ...patch });
   const hasApprovedAdapterConfig = Object.prototype.hasOwnProperty.call(patch, "adapterConfig") && isPlainRecord(patch.adapterConfig);
   if (
     Object.prototype.hasOwnProperty.call(patch, "adapterConfig") &&

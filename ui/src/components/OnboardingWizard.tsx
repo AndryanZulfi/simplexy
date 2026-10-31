@@ -1840,6 +1840,7 @@ function OnboardingWizardInner({
   }, [filteredModels, adapterType]);
 
   function reset() {
+    setManagedLocalAgent(null);
     onboardingDraftStorage.clear();
     // Back to the first step — "Name your organization". There is no front
     // door before it anymore, so a fresh run opens here.
@@ -2312,8 +2313,37 @@ function OnboardingWizardInner({
   // No goal is written here: the mission is collected later, in the chat with
   // the first agent, so writing an empty one now would only give the
   // organization a goal it did not choose.
+  const [managedLocalAgent, setManagedLocalAgent] = useState<Agent | null>(null);
+  const managedLocalOnboarding = localLoginHealth.data?.localWorkspaceAgentsEnabled === true;
+
+  async function adoptManagedLocalAgent(companyId: string) {
+    const isManaged = (c: Agent) => c.adapterType === "pi_local"
+      && c.adapterConfig.managedLocalWorkspace === true
+      && c.status !== "terminated"
+      && c.status !== "error";
+    let agents = await agentsApi.list(companyId);
+    if (!stillTheSameCompany(companyId)) return;
+    let agent = agents.find(isManaged);
+    if (!agent || agent.status === "paused") {
+      try {
+        await companiesApi.ensureLocalAgent(companyId);
+        agents = await agentsApi.list(companyId);
+        agent = agents.find(isManaged);
+      } catch {
+        // Fall through to throw descriptive error below
+      }
+    }
+    if (!agent) throw new Error("Agent lokal belum tersedia. Coba lagi atau periksa runtime Simplexy.");
+    setManagedLocalAgent(agent);
+    setCreatedAgentId(agent.id);
+    setAgentName(agent.name);
+    setAgentAppearance(resolveAgentAppearance(agent.appearance));
+    queryClient.setQueryData(queryKeys.agents.list(companyId), agents);
+    setStep(5);
+  }
+
   async function handleCreateCompany() {
-    if (createdCompanyId) {
+    if (createdCompanyId && !managedLocalOnboarding) {
       setStep(3);
       return;
     }
@@ -2323,6 +2353,12 @@ function OnboardingWizardInner({
     setError(null);
     const companyIdAtStart = createdCompanyIdRef.current;
     try {
+      const health = await queryClient.fetchQuery({ queryKey: queryKeys.health, queryFn: healthApi.get });
+      const useManagedLocal = health.localWorkspaceAgentsEnabled === true;
+      if (createdCompanyId && useManagedLocal) {
+        await adoptManagedLocalAgent(createdCompanyId);
+        return;
+      }
       const company = await companiesApi.create({ name: companyName.trim() });
       queryClient.invalidateQueries({ queryKey: queryKeys.companies.all });
       // Nothing was in hand when this started, so "unchanged" means still
@@ -2338,7 +2374,8 @@ function OnboardingWizardInner({
       createdCompanyIdRef.current = company.id;
       setCreatedCompanyPrefix(company.issuePrefix);
       setSelectedCompanyId(company.id);
-      setStep(3);
+      if (useManagedLocal) await adoptManagedLocalAgent(company.id);
+      else setStep(3);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to create organization");
     } finally {
@@ -2913,7 +2950,7 @@ function OnboardingWizardInner({
                               ? "Create your first agent"
                               : step === 4
                                 ? "Connect a model"
-                                : "Let's get started..."}
+                                : managedLocalAgent ? "Agent Cloud" : "Let's get started..."}
                         </motion.span>
                       }
                     />
@@ -2936,7 +2973,9 @@ function OnboardingWizardInner({
                         <motion.span key={step} {...titleSwapMotion} className="inline-block">
                           {step === 4
                             ? "Simplexy works with your subscription or API keys."
-                            : `${agentName.trim() || "Your first agent"} is ready to work!`}
+                            : managedLocalAgent
+                              ? "Menggunakan agent cloud Simplexy."
+                              : step === 5 ? `${agentName.trim() || "Your first agent"} is ready to work!` : ""}
                         </motion.span>
                       </p>
                     </motion.div>

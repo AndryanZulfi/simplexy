@@ -44,7 +44,7 @@ function createApp(
   db?: Db,
   serverInfo = testServerInfo,
   databaseBackupHealth?: Parameters<typeof healthRoutes>[1]["databaseBackupHealth"],
-  runtimeEnv?: Parameters<typeof healthRoutes>[1]["runtimeEnv"],
+  runtimeEnv: Parameters<typeof healthRoutes>[1]["runtimeEnv"] = { ...process.env, SIMPLEXY_LOCAL_AGENTS_ENABLED: "false" },
 ) {
   const app = express();
   app.use(
@@ -66,12 +66,22 @@ describe("GET /health", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     mockReadPersistedDevServerStatus.mockReturnValue(undefined);
+    delete process.env.SIMPLEXY_LOCAL_AGENTS_ENABLED;
   });
 
   afterEach(() => {
     vi.restoreAllMocks();
     vi.unstubAllEnvs();
   });
+  it("advertises managed local agents only for an opted-in non-cloud server", async () => {
+    const local = await request(createApp(undefined, testServerInfo, undefined, { SIMPLEXY_LOCAL_AGENTS_ENABLED: "true" })).get("/health");
+    expect(local.body.localWorkspaceAgentsEnabled).toBe(true);
+    const disabled = await request(createApp(undefined, testServerInfo, undefined, {})).get("/health");
+    expect(disabled.body).not.toHaveProperty("localWorkspaceAgentsEnabled");
+    const cloud = await request(createApp(undefined, testServerInfo, undefined, { SIMPLEXY_LOCAL_AGENTS_ENABLED: "true", PAPERCLIP_CLOUD_TENANT_SERVER_TOKEN: "tenant-token" })).get("/health");
+    expect(cloud.body).not.toHaveProperty("localWorkspaceAgentsEnabled");
+  });
+
   it("returns 200 with status ok", async () => {
     const app = createApp();
     const res = await request(app).get("/health");

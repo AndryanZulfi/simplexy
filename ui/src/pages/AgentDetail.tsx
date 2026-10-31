@@ -1280,7 +1280,7 @@ export function AgentDetail() {
               {agent.adapterType === "claude_local" || agent.adapterType === "codex_local"
                 ? <img src={`/brands/${agent.adapterType === "claude_local" ? "claude" : "codex"}-color.svg`} className="size-4" alt="" />
                 : null}
-              <span>{getAdapterDisplay(agentDisplayAdapterType(agent)).label}</span><span>·</span>
+              <span>{agent.adapterType === "pi_local" && agent.adapterConfig.managedLocalWorkspace === true ? "Agent Cloud" : getAdapterDisplay(agentDisplayAdapterType(agent)).label}</span><span>·</span>
               <span>{agent.title || roleLabels[agent.role] || agent.role}</span>
             </div>
             <AgentLifecycleStatus agent={currentAgent} refreshError={lifecycle.isError} onRetry={() => agentAction.mutate("retryLifecycle")} retryPending={agentAction.isPending} />
@@ -1785,6 +1785,31 @@ export function AgentOverview({
     enabled: hasHumanCreator,
   });
   const creatorLabel = resolveAgentCreatorLabel(agent.createdByUserId, userDirectory.data?.users);
+  const queryClient = useQueryClient();
+  const modelsQuery = useQuery({
+    queryKey: queryKeys.agents.adapterModels(agent.companyId, agent.adapterType),
+    queryFn: () => agentsApi.adapterModels(agent.companyId, agent.adapterType),
+    staleTime: 30_000,
+  });
+  const dynamicModels = modelsQuery.data ?? [];
+  const updateManagedRuntime = useMutation({
+    mutationFn: (patch: { adapterType?: string; model?: string }) => {
+      const adapterType = patch.adapterType ?? agent.adapterType;
+      const model = patch.model ?? configuredModel ?? "ag/gemini-3.8-flash";
+      return agentsApi.update(agent.id, {
+        adapterType,
+        adapterConfig: {
+          ...agent.adapterConfig,
+          model,
+        },
+      }, agent.companyId);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.agents.detail(agent.id) });
+      queryClient.invalidateQueries({ queryKey: queryKeys.agents.detail(agentRouteId) });
+      queryClient.invalidateQueries({ queryKey: queryKeys.agents.list(agent.companyId) });
+    },
+  });
   return (
     <div className="space-y-6">
       <LatestRunCard runs={runs} agentId={agentRouteId} issuesById={issuesById} />
@@ -1834,7 +1859,62 @@ export function AgentOverview({
             <Link className="text-xs text-muted-foreground hover:text-foreground" to={agentDetailHref(agentRouteId, "runtime")}>Configure</Link>
           </div>
           <div className="space-y-3">
-            <SummaryRow label="Adapter"><span className="text-sm">{getAdapterDisplay(agentDisplayAdapterType(agent)).label}</span></SummaryRow>
+            <SummaryRow label="Adapter"><span className="text-sm">{(agent.adapterType === "pi_local" || agent.adapterType === "hermes_local") && agent.adapterConfig.managedLocalWorkspace === true ? "Agent Cloud" : getAdapterDisplay(agentDisplayAdapterType(agent)).label}</span></SummaryRow>
+            {(agent.adapterType === "pi_local" || agent.adapterType === "hermes_local") && agent.adapterConfig.managedLocalWorkspace === true && <p className="text-sm text-muted-foreground">Menggunakan agent cloud Simplexy.</p>}
+            {(agent.adapterType === "pi_local" || agent.adapterType === "hermes_local") && agent.adapterConfig.managedLocalWorkspace === true ? (
+              <div className="space-y-3 pt-2">
+                <div className="space-y-1.5">
+                  <span className="text-xs font-medium text-muted-foreground">Harness Engine</span>
+                  <div className="flex gap-2">
+                    <button
+                      type="button"
+                      disabled={updateManagedRuntime.isPending}
+                      onClick={() => updateManagedRuntime.mutate({ adapterType: "pi_local" })}
+                      className={cn(
+                        "flex-1 rounded-md border px-3 py-2 text-left text-xs font-medium transition-colors",
+                        agent.adapterType === "pi_local"
+                          ? "border-primary bg-primary/10 text-foreground"
+                          : "border-border text-muted-foreground hover:bg-accent hover:text-foreground"
+                      )}
+                    >
+                      <span className="block font-semibold">Pi CLI</span>
+                      <span className="block text-[11px] text-muted-foreground">Sandbox proses lokal</span>
+                    </button>
+                    <button
+                      type="button"
+                      disabled={updateManagedRuntime.isPending}
+                      onClick={() => updateManagedRuntime.mutate({ adapterType: "hermes_local" })}
+                      className={cn(
+                        "flex-1 rounded-md border px-3 py-2 text-left text-xs font-medium transition-colors",
+                        agent.adapterType === "hermes_local"
+                          ? "border-primary bg-primary/10 text-foreground"
+                          : "border-border text-muted-foreground hover:bg-accent hover:text-foreground"
+                      )}
+                    >
+                      <span className="block font-semibold">Hermes Agent</span>
+                      <span className="block text-[11px] text-muted-foreground">CLI Hermes lokal terisolasi</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <span className="text-xs font-medium text-muted-foreground">Model</span>
+                  <select
+                    disabled={updateManagedRuntime.isPending || modelsQuery.isPending}
+                    value={configuredModel}
+                    onChange={(e) => updateManagedRuntime.mutate({ model: e.target.value })}
+                    className="w-full rounded-md border border-border bg-background px-3 py-1.5 text-xs text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  >
+                    {dynamicModels.map((m) => (
+                      <option key={m.id} value={m.id}>{m.label || m.id}</option>
+                    ))}
+                    {!dynamicModels.some((m) => m.id === configuredModel) ? (
+                      <option value={configuredModel}>{configuredModel}</option>
+                    ) : null}
+                  </select>
+                </div>
+              </div>
+            ) : null}
             {agent.adapterType === "paperclip_runner" && agent.adapterConfig.provider === "grok_bot" ? <><SummaryRow label="Execution"><span className="text-sm">Runs in Grok Bot</span></SummaryRow><SummaryRow label="Usage"><span className="text-sm">Not reported</span></SummaryRow></> : <SummaryRow label="Model"><span className="max-w-64 truncate text-sm font-mono">{configuredModel}</span></SummaryRow>}
             <SummaryRow label="Session"><span className="max-w-64 truncate text-sm font-mono">{runtimeState?.sessionDisplayId ?? runtimeState?.sessionId ?? "No session"}</span></SummaryRow>
             <SummaryRow label="Last run">

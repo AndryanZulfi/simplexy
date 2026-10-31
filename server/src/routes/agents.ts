@@ -3111,6 +3111,11 @@ export function agentRoutes(
       res.json(requireServerAdapter(modelAdapterType).models ?? []);
       return;
     }
+    const { isLocalWorkspaceAgentsEnabled, fetchLocalWorkspaceModels } = await import("../services/local-workspace-agents.js");
+    if (isLocalWorkspaceAgentsEnabled() && (modelAdapterType === "pi_local" || modelAdapterType === "hermes_local")) {
+      res.json(await fetchLocalWorkspaceModels());
+      return;
+    }
     const models = refresh
       ? await refreshAdapterModels(modelAdapterType)
       : await listAdapterModels(modelAdapterType);

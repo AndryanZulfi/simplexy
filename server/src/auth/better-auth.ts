@@ -205,6 +205,13 @@ export function deriveAuthTrustedOrigins(config: Config, opts?: { listenPort?: n
         trustedOrigins.add(`http://${trimmed}:${port}`);
       }
     }
+    // Always trust loopback origins when running on loopback or local host.
+    if (config.bind === "loopback" || config.host === "127.0.0.1" || config.host === "localhost") {
+      trustedOrigins.add(`http://127.0.0.1:${port}`);
+      trustedOrigins.add(`http://localhost:${port}`);
+      trustedOrigins.add("http://127.0.0.1");
+      trustedOrigins.add("http://localhost");
+    }
   }
 
   return Array.from(trustedOrigins);

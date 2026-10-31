@@ -82,7 +82,7 @@ function cfgEnvString(v: unknown): string | undefined {
 }
 
 export function resolveHermesCommand(config: Record<string, unknown>): string {
-  return cfgString(config.hermesCommand) || cfgString(config.command) || HERMES_CLI;
+  return cfgString(config.hermesCommand) || cfgString(config.command) || process.env.SIMPLEXY_LOCAL_HERMES_COMMAND || HERMES_CLI;
 }
 
 // ---------------------------------------------------------------------------
@@ -494,6 +494,26 @@ export async function execute(
   // Failed resumes remain failures. Do not infer a safe restart from CLI text.
   if (sessionId) args.push("--resume", sessionId);
   if (extraArgs?.length) args.push(...extraArgs);
+
+  if (config.managedLocalWorkspace === true) {
+    args.push("--ignore-user-config", "--ignore-rules");
+    const baseUrl = (process.env.SIMPLEXY_LOCAL_GATEWAY_URL || "http://127.0.0.1:20128/v1").replace(/\/+$/, "");
+    args.push("--base-url", baseUrl);
+    if (!args.includes("--provider")) {
+      args.push("--provider", "custom");
+    }
+    const apiKey = process.env.SIMPLEXY_LOCAL_GATEWAY_API_KEY ||
+      process.env.HERMES_CUSTOM_LOCALHOST_20128_API_KEY ||
+      (() => {
+        try {
+          const prov = JSON.parse(process.env.SIMPLEXY_LOCAL_PI_PROVIDERS || "{}");
+          return prov?.simplexy?.apiKey;
+        } catch { return undefined; }
+      })();
+    if (apiKey) {
+      args.push("--api-key", apiKey);
+    }
+  }
 
   // ── Build environment ──────────────────────────────────────────────────
   const userEnv = config.env as Record<string, string> | undefined;

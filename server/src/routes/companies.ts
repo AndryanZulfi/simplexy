@@ -66,6 +66,7 @@ import {
   workTimelineService,
 } from "../services/index.js";
 import { isCloudManagedInstance } from "../services/cloud-instance.js";
+import { isLocalWorkspaceAgentsEnabled, provisionLocalWorkspaceAgent } from "../services/local-workspace-agents.js";
 import { getHiddenSettings } from "../services/settings-visibility.js";
 import type { StorageService } from "../storage/types.js";
 import { assertBoard, assertCompanyAccess, assertInstanceAdmin, getActorInfo, hasCompanyAccess } from "./authz.js";
@@ -1203,13 +1204,15 @@ export function companyRoutes(db: Db, storage?: StorageService, options?: Compan
     next();
   }, validate(createCompanySchema), async (req, res) => {
     assertBoard(req);
-    if (!(req.actor.source === "local_implicit" || req.actor.isInstanceAdmin)) {
+    const managedLocal = isLocalWorkspaceAgentsEnabled();
+    const selfService = managedLocal && req.actor.source === "session" && !!req.actor.userId;
+    if (!(req.actor.source === "local_implicit" || req.actor.isInstanceAdmin || selfService)) {
       throw forbidden("Instance admin required");
     }
     const ownerPrincipalId = req.actor.userId ?? "local-board";
     const company = await svc.create({
       ...req.body,
-      defaultResponsibleUserId: req.body.defaultResponsibleUserId ?? ownerPrincipalId,
+      defaultResponsibleUserId: managedLocal ? ownerPrincipalId : req.body.defaultResponsibleUserId ?? ownerPrincipalId,
     });
     await access.ensureMembership(company.id, "user", ownerPrincipalId, "owner", "active");
     await access.ensureRoleDefaultGrants(
@@ -1239,7 +1242,43 @@ export function companyRoutes(db: Db, storage?: StorageService, options?: Compan
         req.actor.userId ?? "board",
       );
     }
+    if (managedLocal) {
+      try {
+        await provisionLocalWorkspaceAgent(db, company.id, ownerPrincipalId);
+      } catch (error) {
+        logger.error({ error, companyId: company.id }, "Local workspace agent provisioning failed");
+        // Company ownership is already persisted; expose its ID so the client can retry safely.
+        res.status(201).json({ ...company, localAgentProvisioning: { status: "failed" } });
+        return;
+      }
+    }
     res.status(201).json(company);
+  });
+
+  router.post("/:companyId/local-agent", async (req, res) => {
+    assertBoard(req);
+    const companyId = req.params.companyId as string;
+    assertCompanyAccess(req, companyId);
+    if (!isLocalWorkspaceAgentsEnabled()) throw forbidden("Managed local agents are disabled");
+    if (req.actor.source !== "session" && req.actor.source !== "local_implicit") {
+      throw forbidden("User session required");
+    }
+    const userId = req.actor.userId ?? (req.actor.source === "local_implicit" ? "local-board" : null);
+    if (!userId) throw forbidden("User session required");
+    const membership = await access.getMembership(companyId, "user", userId);
+    if (!membership || membership.status !== "active" || !["owner", "admin"].includes(membership.membershipRole ?? "")) {
+      throw forbidden("Company owner or admin required");
+    }
+    await logActivity(db, {
+      companyId, actorType: "user", actorId: userId,
+      action: "company.local_agent_provisioning_retried", entityType: "company", entityId: companyId,
+    });
+    try {
+      res.json(await provisionLocalWorkspaceAgent(db, companyId, userId));
+    } catch (error) {
+      logger.error({ error, companyId }, "Local workspace agent provisioning retry failed");
+      res.status(503).json({ error: "Local workspace agent provisioning failed. Please retry." });
+    }
   });
 
   router.patch("/:companyId", async (req, res) => {
