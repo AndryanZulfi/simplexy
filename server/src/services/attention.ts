@@ -1,6 +1,6 @@
 import { approvalExecutionIssueCondition, firstApprovalIssueId } from "./approval-visibility.js";
 import { and, asc, desc, eq, gt, inArray, isNotNull, isNull, notInArray, or, sql, type SQL } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import {
   agents,
   approvals,
@@ -26,8 +26,8 @@ import {
   documents,
   projects,
   projectWorkspaces,
-} from "@paperclipai/db";
-import { deriveProjectUrlKey } from "@paperclipai/shared";
+} from "@simplexy/db";
+import { deriveProjectUrlKey } from "@simplexy/shared";
 import type {
   AttentionDecisionVerb,
   AttentionFeed,
@@ -47,7 +47,7 @@ import type {
   IssueThreadInteractionEffectiveResolverPolicySource,
   IssueThreadInteractionResolverPolicyProvenance,
   IssueReviewPolicy,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { badRequest } from "../errors.js";
 import { listAttentionExhaustedRuns } from "./attention-exhausted-runs.js";
 import { budgetService } from "./budgets.js";

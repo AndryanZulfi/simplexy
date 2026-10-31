@@ -1,8 +1,8 @@
 import { randomUUID } from "node:crypto";
 import { and, eq, sql } from "drizzle-orm";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { agents, companies, createDb, heartbeatRuns, issueComments, issueThreadInteractions, issues } from "@paperclipai/db";
-import { createDatabaseResponseCapture, installDatabaseResponseCapture } from "@paperclipai/db/response-capture";
+import { agents, companies, createDb, heartbeatRuns, issueComments, issueThreadInteractions, issues } from "@simplexy/db";
+import { createDatabaseResponseCapture, installDatabaseResponseCapture } from "@simplexy/db/response-capture";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { settleConversationTurnForRun } from "../services/agent-conversations.js";
 

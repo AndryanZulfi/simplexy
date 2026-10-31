@@ -1,6 +1,6 @@
 import { and, eq, sql } from "drizzle-orm";
-import { agentWakeupRequests, issues } from "@paperclipai/db";
-import type { Db } from "@paperclipai/db";
+import { agentWakeupRequests, issues } from "@simplexy/db";
+import type { Db } from "@simplexy/db";
 import type { TrustPresetResolution } from "./trust-preset-resolver.js";
 
 /**

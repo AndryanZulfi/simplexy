@@ -2,7 +2,7 @@ import { prepareSlackEndpoints } from "./slack-endpoint-preparation.js";
 import { createHash } from "node:crypto";
 import { measureRunPhase } from "../execution-preparation-timing.js";
 import { and, eq, isNull, sql } from "drizzle-orm";
-import { SLACK_TOOLS } from "@paperclipai/shared";
+import { SLACK_TOOLS } from "@simplexy/shared";
 import {
   chatEndpoints,
   toolConnections,
@@ -12,7 +12,7 @@ import {
   toolProfileEntries,
   toolProfileBindings,
   type Db,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import type {
   ToolGatewayDescriptor,
   ToolGatewaySession,

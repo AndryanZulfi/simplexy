@@ -1,7 +1,7 @@
 import { pullRequestSeedProductCondition } from "./decision-queue-seed-rules.js";
 import { notifyApprovalQueueWork } from "./approval-work-notifications.js";
 import { and, desc, eq, inArray, isNull, sql } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import {
   agents,
   approvals,
@@ -18,7 +18,7 @@ import {
   issueWorkProducts,
   issues,
   joinRequests,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import type {
   AttentionItem,
   AttentionSourceKind,
@@ -26,7 +26,7 @@ import type {
   DecisionQueueItem,
   DecisionQueueSeedRule,
   DecisionTriage,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { notFound, unprocessable } from "../errors.js";
 import { logActivity } from "./activity-log.js";
 import {

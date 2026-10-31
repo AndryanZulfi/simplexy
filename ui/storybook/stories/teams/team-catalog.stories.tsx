@@ -4,7 +4,7 @@ import type {
   Agent,
   CatalogTeamImportPreviewResult,
   CompanyPortabilityCollisionStrategy,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   ApplyProgress,
   ApplySuccess,

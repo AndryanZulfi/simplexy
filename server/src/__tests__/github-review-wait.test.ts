@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import { eq } from "drizzle-orm";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { agents, chatActions, chatConversations, chatEndpointResources, chatEndpoints, chatGitHubReviews,
-  companies, createDb, heartbeatRuns, runIdentityContexts, toolConnections, type Db } from "@paperclipai/db";
+  companies, createDb, heartbeatRuns, runIdentityContexts, toolConnections, type Db } from "@simplexy/db";
 import { startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { captureReviewWaitQueries, seedGitHubReviewWait, setGitHubReviewAssessment,
   type CapturedReviewWaitQuery } from "./helpers/github-review-wait.js";

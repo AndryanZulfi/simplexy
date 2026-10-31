@@ -7,7 +7,7 @@ import { errorHandler } from "../middleware/error-handler.js";
 import { randomUUID } from "node:crypto";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { eq } from "drizzle-orm";
-import { agents, authUsers, companyMemberships, createDb, executionWorkspaces, heartbeatRuns, issues, projects, EMBEDDED_POSTGRES_TEST_TIMEOUT_MS } from "@paperclipai/db";
+import { agents, authUsers, companyMemberships, createDb, executionWorkspaces, heartbeatRuns, issues, projects, EMBEDDED_POSTGRES_TEST_TIMEOUT_MS } from "@simplexy/db";
 import { executionWorkspaceService } from "../services/execution-workspaces.js";
 import { issueService } from "../services/issues.js";
 import { createRepositoryTrustFixture } from "./helpers/repository-trust-fixture.js";

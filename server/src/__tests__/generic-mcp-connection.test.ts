@@ -41,9 +41,9 @@ import {
   toolProfileEntries,
   toolProfiles,
   toolRuntimeSlots,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { and, eq, inArray, sql } from "drizzle-orm";
-import { APP_DEFINITIONS, MCP_CONFIG_HELP_PROMPT } from "@paperclipai/shared";
+import { APP_DEFINITIONS, MCP_CONFIG_HELP_PROMPT } from "@simplexy/shared";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,

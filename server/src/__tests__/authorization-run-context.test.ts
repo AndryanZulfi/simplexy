@@ -1,8 +1,8 @@
 import { randomUUID } from 'node:crypto';
 import { eq, sql } from 'drizzle-orm';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
-import { agents, companies, companyMemberships, createDb, EMBEDDED_POSTGRES_TEST_TIMEOUT_MS, heartbeatRuns, issues, projects, type Db } from '@paperclipai/db';
-import { LOW_TRUST_REVIEW_PRESET } from '@paperclipai/shared';
+import { agents, companies, companyMemberships, createDb, EMBEDDED_POSTGRES_TEST_TIMEOUT_MS, heartbeatRuns, issues, projects, type Db } from '@simplexy/db';
+import { LOW_TRUST_REVIEW_PRESET } from '@simplexy/shared';
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from './helpers/embedded-postgres.js';
 import { authorizationService } from '../services/authorization.js';
 

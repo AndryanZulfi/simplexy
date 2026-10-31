@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import { eq } from "drizzle-orm";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { agents, companies, completionContracts, createDb, heartbeatRuns, issues,
-  nativeRunFinalizations, nativeRunResults } from "@paperclipai/db";
+  nativeRunFinalizations, nativeRunResults } from "@simplexy/db";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "../../__tests__/helpers/embedded-postgres.js";
 import { deliverExecutionStatuses } from "../execution-status-delivery.js";
 import { buildIssueMonitorTriggeredPatch, normalizeIssueExecutionPolicy } from "../issue-execution-policy.js";

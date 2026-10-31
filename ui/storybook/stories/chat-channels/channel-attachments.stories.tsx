@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import type { IssueAttachment } from "@paperclipai/shared";
+import type { IssueAttachment } from "@simplexy/shared";
 import { TaskChatBubble } from "@/components/task-chat/TaskChatBubble";
 import { expect, within, waitFor } from "storybook/test";
 const attachment: IssueAttachment = {

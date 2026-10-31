@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { chatTeamsFileTransfers } from "@paperclipai/db";
+import { chatTeamsFileTransfers } from "@simplexy/db";
 
 export const fileTransferProjectionColumns = {
   publicationId: chatTeamsFileTransfers.publicationId,

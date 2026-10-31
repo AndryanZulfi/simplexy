@@ -1,6 +1,6 @@
 import { randomBytes, randomUUID } from "node:crypto";
 import { eq } from "drizzle-orm";
-import { agents, agentWakeupRequests, chatConversations, chatEndpoints, chatMessageLinks, companies, heartbeatRuns, issueComments, issues, issueThreadInteractions, toolApplications, toolConnections, toolActionRequests, toolActionDeliveries, toolInvocations, type Db } from "@paperclipai/db";
+import { agents, agentWakeupRequests, chatConversations, chatEndpoints, chatMessageLinks, companies, heartbeatRuns, issueComments, issues, issueThreadInteractions, toolApplications, toolConnections, toolActionRequests, toolActionDeliveries, toolInvocations, type Db } from "@simplexy/db";
 import { resolveChatOriginPublicationBindings } from "../../services/issues.js";
 
 export const lineageContextKeys = ["issueId", "taskId", "wakeCommentIds", "wakeCommentId", "commentId", "source", "sourceRunId", "interactionId", "endpointId"] as const;

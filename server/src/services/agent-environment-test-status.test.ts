@@ -1,8 +1,8 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import * as executionTargets from "@paperclipai/adapter-utils/execution-target";
-import type { AdapterEnvironmentTestContext } from "@paperclipai/adapter-utils";
-import type { AdapterEnvironmentTestResult } from "@paperclipai/shared";
-import type { Db } from "@paperclipai/db";
+import * as executionTargets from "@simplexy/adapter-utils/execution-target";
+import type { AdapterEnvironmentTestContext } from "@simplexy/adapter-utils";
+import type { AdapterEnvironmentTestResult } from "@simplexy/shared";
+import type { Db } from "@simplexy/db";
 
 const { runtimeProbe, claudeProbe, verifyKey, markAuthFailed } = vi.hoisted(() => ({
   runtimeProbe: vi.fn(), claudeProbe: vi.fn(), verifyKey: vi.fn(), markAuthFailed: vi.fn(),

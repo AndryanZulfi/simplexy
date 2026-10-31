@@ -1,11 +1,11 @@
 import { existsSync } from "node:fs";
-import type { AdapterExecutionTarget } from "@paperclipai/adapter-utils/execution-target";
-import { resolvePaperclipRunnerTransport, type PaperclipRunnerTransport } from "@paperclipai/adapter-utils/runner-connectivity";
+import type { AdapterExecutionTarget } from "@simplexy/adapter-utils/execution-target";
+import { resolvePaperclipRunnerTransport, type PaperclipRunnerTransport } from "@simplexy/adapter-utils/runner-connectivity";
 import type { RunnerExecutionDriver } from "../../vendor/paperclip-runner/index.js";
 import { registerRunnerPrpAuthority } from "../../realtime/runner-prp-ws.js";
 import { connectRunnerPrpIngress } from "../../realtime/runner-prp-outbound.js";
 import type { NativeRunTrace } from "./native-run-trace.js";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import { nativeRunnerCheckpointRegistration } from "./native-runner-checkpoint.js";
 
 type ConnectionRegistration = NonNullable<RunnerExecutionDriver["controlPlaneRegistration"]>;

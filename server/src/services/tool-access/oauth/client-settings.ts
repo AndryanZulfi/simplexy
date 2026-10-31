@@ -2,9 +2,9 @@ import type { ActorInfo } from "../types.js";
 import { oauthConfig, isSmokeLabOAuthFixture } from "./metadata.js";
 import { connectionMethodForConnection } from "../connection-methods.js";
 import { stableHash } from "../../tool-catalog-hash.js";
-import { ASANA_CONNECTOR_SCOPES, isAsanaConnectorProfileId, type AsanaConnectorProfileId } from "@paperclipai/shared";
-import { connectionGrants, toolConnections } from "@paperclipai/db";
-import { GITHUB_CONNECTOR_PROFILES, GOOGLE_WORKSPACE_CONNECTOR_PROFILES, getConnectableAppDefinition, isGitHubConnectorProfileId, isGoogleWorkspaceConnectorProfileId, type GitHubConnectorProfileId, type GoogleWorkspaceConnectorProfileId } from "@paperclipai/shared";
+import { ASANA_CONNECTOR_SCOPES, isAsanaConnectorProfileId, type AsanaConnectorProfileId } from "@simplexy/shared";
+import { connectionGrants, toolConnections } from "@simplexy/db";
+import { GITHUB_CONNECTOR_PROFILES, GOOGLE_WORKSPACE_CONNECTOR_PROFILES, getConnectableAppDefinition, isGitHubConnectorProfileId, isGoogleWorkspaceConnectorProfileId, type GitHubConnectorProfileId, type GoogleWorkspaceConnectorProfileId } from "@simplexy/shared";
 import { unprocessable } from "../../../errors.js";
 
 function asRecord(value: unknown): Record<string, unknown> {

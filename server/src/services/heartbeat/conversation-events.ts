@@ -1,5 +1,5 @@
 import { getTableColumns, sql } from "drizzle-orm";
-import { heartbeatRunEvents } from "@paperclipai/db";
+import { heartbeatRunEvents } from "@simplexy/db";
 
 function planWriteCondition(runId: string) {
   return sql`(${heartbeatRunEvents.eventType} = 'item.completed'

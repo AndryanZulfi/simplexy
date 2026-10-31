@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { agentRuntimeSettingsPatchSchema, type AgentRuntimeSettingsPatch } from "@paperclipai/shared";
+import { agentRuntimeSettingsPatchSchema, type AgentRuntimeSettingsPatch } from "@simplexy/shared";
 import { prepareRuntimeSettingsPatch } from "../services/agent-runtime-settings.js";
 
 const connection = { provider: "openai", method: "api_key", mode: "responsible_user" } as const;

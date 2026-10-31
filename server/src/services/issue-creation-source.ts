@@ -1,7 +1,7 @@
 import { and, asc, eq, inArray, isNotNull, sql } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
-import { activityLog, agents, heartbeatRuns, issues } from "@paperclipai/db";
-import { isUuidLike } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import { activityLog, agents, heartbeatRuns, issues } from "@simplexy/db";
+import { isUuidLike } from "@simplexy/shared";
 
 type IssueRow = typeof issues.$inferSelect;
 type HeartbeatRunRow = typeof heartbeatRuns.$inferSelect;

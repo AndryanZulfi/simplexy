@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { ComponentProps } from "react";
 import { Inbox } from "@/pages/Inbox";
-import { instanceExperimentalSettingsSchema } from "@paperclipai/shared";
+import { instanceExperimentalSettingsSchema } from "@simplexy/shared";
 import { storybookIssues } from "../../fixtures/paperclipData";
 import {
   prepareFixtureApi,

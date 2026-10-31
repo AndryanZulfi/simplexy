@@ -1,4 +1,4 @@
-import type { heartbeatRuns } from "@paperclipai/db";
+import type { heartbeatRuns } from "@simplexy/db";
 
 type Run = Pick<typeof heartbeatRuns.$inferSelect,
   "startedAt" | "lastOutputAt" | "processPid" | "processGroupId">;

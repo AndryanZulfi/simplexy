@@ -34,13 +34,13 @@ import {
   issues,
   projects,
   type Db,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   githubCommitSchema,
   type GitHubAutomaticEventContext,
   type GitHubReviewEventContext,
   type GitHubReviewPolicy,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { HttpError, conflict, forbidden, notFound } from "../errors.js";
 import {
   githubBotRepositoryToken,

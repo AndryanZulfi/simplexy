@@ -1,5 +1,5 @@
-import { parseGitHubSkillRepositoryUrl } from "@paperclipai/shared";
-import type { AgentDesiredSkillEntry, CompanySkillDetail, CompanySkillListItem, CompanySkillVersion, CompanySkill, SkillSource, SkillPackageInspection, SkillSourceCandidate, SkillSourceEntry, SkillSourceRefreshResult, SkillRepositoryPackage } from "@paperclipai/shared";
+import { parseGitHubSkillRepositoryUrl } from "@simplexy/shared";
+import type { AgentDesiredSkillEntry, CompanySkillDetail, CompanySkillListItem, CompanySkillVersion, CompanySkill, SkillSource, SkillPackageInspection, SkillSourceCandidate, SkillSourceEntry, SkillSourceRefreshResult, SkillRepositoryPackage } from "@simplexy/shared";
 import { companySkillsApi } from "@/api/companySkills";
 import { agentsApi } from "@/api/agents";
 import { foldersApi } from "@/api/folders";

@@ -5,7 +5,7 @@ import request from "supertest";
 import { eq, sql } from "drizzle-orm";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { activityLog, agents, authUsers, chatEndpoints, chatExternalPrincipals, chatIdentityLinks, companies, companyMemberships, companySecretProviderConfigs, companySecrets, companySecretVersions, createDb, decisionArchiveNotificationOutbox,
-  decisionRetention, invites, joinRequests, principalPermissionGrants, toolApplications, toolConnections, type Db } from "@paperclipai/db";
+  decisionRetention, invites, joinRequests, principalPermissionGrants, toolApplications, toolConnections, type Db } from "@simplexy/db";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { resolveExternalTestDatabaseUrl } from "./helpers/external-test-database.js";
 import { joinRequestRetentionService, registerJoinRequestRetentionWork } from "../services/join-request-retention.js";

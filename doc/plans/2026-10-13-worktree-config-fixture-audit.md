@@ -22,7 +22,7 @@ The five baseline and candidate expressions were evaluated using the unchanged h
 
 Existing dependency directories were linked into the isolated worktree without changing shared dependency installs. Baseline finished before candidate edits.
 
-Command: `node_modules/.bin/vitest run --project @paperclipai/server server/src/__tests__/worktree-config.test.ts --silent=true`.
+Command: `node_modules/.bin/vitest run --project @simplexy/server server/src/__tests__/worktree-config.test.ts --silent=true`.
 
 - Baseline: 1 file passed, 16/16 tests passed, duration 1.47s.
 - Candidate: 1 file passed, 16/16 tests passed, duration 1.43s.

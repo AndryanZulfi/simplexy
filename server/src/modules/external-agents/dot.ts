@@ -9,13 +9,13 @@ import type { heartbeatService } from "../../services/heartbeat.js";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
 import { and, asc, eq, gt, inArray, isNull, sql } from "drizzle-orm";
 import { z } from "zod";
-import { DOT_AGENT_TOOL_GUIDANCE, GROK_BOT_AGENT_TOOL_GUIDANCE, setAgentAvatarSchema, type SetAgentAvatarInput } from "@paperclipai/shared";
+import { DOT_AGENT_TOOL_GUIDANCE, GROK_BOT_AGENT_TOOL_GUIDANCE, setAgentAvatarSchema, type SetAgentAvatarInput } from "@simplexy/shared";
 import { setAgentProfileAvatar } from "../../services/agent-profile-avatar.js";
 import { consumeDotHistoryReceipt } from "../../services/dot-assignment-follow-up.js";
 import { getStorageService } from "../../storage/index.js";
 import { agents, companies, heartbeatRuns, issues, agentWakeupRequests, nativeRunFinalizations, mcpOauthGrants,
   mcpEventSubscriptions, dotAgentBindings as bindings, dotRunnerAssignments as assignments,
-  dotRunnerOperations as operations, dotMailboxItems as mailbox, grokBotRoutines, type Db } from "@paperclipai/db";
+  dotRunnerOperations as operations, dotMailboxItems as mailbox, grokBotRoutines, type Db } from "@simplexy/db";
 import { CAPABILITY_SEMANTIC_TOOL_CATALOG, externalOperationDigest, type DotBindingSnapshot, type ExternalProviderPort, type ExternalProviderOperation } from "../../vendor/paperclip-runner/index.js";
 import { McpOAuthError, type McpPrincipal } from "../../services/public-mcp/oauth.js";
 import type { PublicMcpToolExtension } from "../../services/public-mcp/dot-runner.js";
@@ -513,7 +513,7 @@ function createBroker(db: Db) {
         if (targeted.length || requestedRun?.status === "running" && !previousAssignment && !otherWork) {
           await tx.update(grokBotRoutines).set({ recoveryRequiredAt: new Date(), recoveryReason: "work_session" }).where(eq(grokBotRoutines.bindingId, binding.id));
         }
-        const { grokBotDispatches } = await import("@paperclipai/db");
+        const { grokBotDispatches } = await import("@simplexy/db");
         if (targeted.length) await tx.update(grokBotDispatches).set({ status: "cancelled", updatedAt: new Date() }).where(and(eq(grokBotDispatches.bindingId, binding.id), inArray(grokBotDispatches.assignmentId, targeted.map(row => row.id)), eq(grokBotDispatches.status, "prepared")));
         await logActivity(tx as unknown as Db, { companyId, actorType: "user", actorId: operatorId,
           action: "grok.paperclip_work_stopped", entityType: "agent", entityId: agentId,

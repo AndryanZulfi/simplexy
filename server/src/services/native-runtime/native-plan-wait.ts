@@ -3,8 +3,8 @@ import {
   completionContracts, heartbeatRunEvents, heartbeatRuns, issues, issueComments,
   nativeRunFinalizations, nativeRunResults, statusDecisions,
   issueQuestionResponseDeliveries, issueThreadInteractions, type Db,
-} from "@paperclipai/db";
-import type { AskUserQuestionsInteraction } from "@paperclipai/shared";
+} from "@simplexy/db";
+import type { AskUserQuestionsInteraction } from "@simplexy/shared";
 import {
   parsePaperclipQuestionResponse, parsePaperclipQuestionSet,
   type PrpStructuredRunResult,

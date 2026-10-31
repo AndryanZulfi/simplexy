@@ -23,7 +23,7 @@ OpenCode, Claude Managed, AWS AgentCore, and pinned Claude/Codex ACPX profiles.
 
 ## Decision
 
-Add a standalone package named `@paperclipai/paperclip-runner`. The package owns
+Add a standalone package named `@simplexy/paperclip-runner`. The package owns
 the language-neutral Simplexy Runner Protocol (PRP), the Rust runner process,
 provider drivers, deterministic replay, and semantic action dispatch contracts.
 
@@ -61,7 +61,7 @@ paths.
 The initial local topology is:
 
 ```text
-Paperclip server
+Simplexy server
   |  authenticated PRP v1 WebSocket
   v
 paperclip-runnerd
@@ -94,7 +94,7 @@ JSON Schema and fixtures
                    v
          deterministic parity
 
-Paperclip server ----implements----> runner public ports
+Simplexy server ----implements----> runner public ports
 ```
 
 The dependency points from an implementation to a contract. The Simplexy
@@ -103,8 +103,8 @@ the server implementation.
 
 The initial public package surfaces are:
 
-- `@paperclipai/paperclip-runner` for runtime contracts and clients.
-- `@paperclipai/paperclip-runner/testing` for deterministic fakes and
+- `@simplexy/paperclip-runner` for runtime contracts and clients.
+- `@simplexy/paperclip-runner/testing` for deterministic fakes and
   conformance helpers.
 
 Every export must have an implementation and a clean-consumer test before it is

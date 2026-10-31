@@ -4,10 +4,10 @@ import type { ActorInfo } from "../types.js";
 import { connectionMethodForConnection } from "../connection-methods.js";
 import { emitConnectionUpdated } from "../../connector-telemetry.js";
 import { and, eq, inArray, or } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
-import { connectionGrantMembers, connectionGrantDelegations, connectionGrants, companySecrets, toolApplications, toolCatalogEntries, toolConnectionInstalls, toolConnections } from "@paperclipai/db";
-import type { FinishToolAppResult, FinalizeOAuthAccess, ToolCredentialSecretRef } from "@paperclipai/shared";
-import { getConnectableAppDefinition, recommendedDefaultsForApp } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import { connectionGrantMembers, connectionGrantDelegations, connectionGrants, companySecrets, toolApplications, toolCatalogEntries, toolConnectionInstalls, toolConnections } from "@simplexy/db";
+import type { FinishToolAppResult, FinalizeOAuthAccess, ToolCredentialSecretRef } from "@simplexy/shared";
+import { getConnectableAppDefinition, recommendedDefaultsForApp } from "@simplexy/shared";
 import { badRequest, conflict, forbidden, unprocessable } from "../../../errors.js";
 import { secretService } from "../../secrets.js";
 

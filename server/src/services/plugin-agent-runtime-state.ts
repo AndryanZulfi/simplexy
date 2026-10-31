@@ -1,13 +1,13 @@
 import { and, desc, eq } from "drizzle-orm";
-import { agents, environments, plugins, pluginCompanySettings, resourceLifecycleEvents, type Db } from "@paperclipai/db";
-import type { PluginAgentRuntimeState, PluginAgentRuntimeIdentity } from "@paperclipai/plugin-sdk";
+import { agents, environments, plugins, pluginCompanySettings, resourceLifecycleEvents, type Db } from "@simplexy/db";
+import type { PluginAgentRuntimeState, PluginAgentRuntimeIdentity } from "@simplexy/plugin-sdk";
 import { agentRecordQueries } from "../lib/agent-records.js";
 import { conflict, forbidden, unprocessable } from "../errors.js";
 import { agentInstructionsService } from "./agent-instructions.js";
 import { pluginAgentConnectionAssignments } from "./plugin-agent-connections.js";
 import { companySkillService } from "./company-skills.js";
 import { withSkillActor } from "./skill-access.js";
-import { readPaperclipSkillSyncPreference } from "@paperclipai/adapter-utils/server-utils";
+import { readPaperclipSkillSyncPreference } from "@simplexy/adapter-utils/server-utils";
 import { skillVersionSelectionMap } from "./runtime-skill-selections.js";
 import { instanceSettingsService } from "./instance-settings.js";
 import { agentInstanceSecretService } from "./agent-instance-secrets.js";

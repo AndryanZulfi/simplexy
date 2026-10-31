@@ -1,5 +1,5 @@
 import { and, eq } from "drizzle-orm";
-import { chatGitHubReviews, type Db } from "@paperclipai/db";
+import { chatGitHubReviews, type Db } from "@simplexy/db";
 
 /** Publication evidence describes only this exact review and revision. It does
  * not authorize a write or certify the outcome of any other operation. */

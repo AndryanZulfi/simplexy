@@ -1,5 +1,5 @@
 import { and, asc, eq, getTableColumns, lte, sql } from "drizzle-orm";
-import { decisions, type Db } from "@paperclipai/db";
+import { decisions, type Db } from "@simplexy/db";
 import { logActivity, publishActivity, type ActivityPublication } from "./activity-log.js";
 import { writeDecisionChange } from "./decision-work-notifications.js";
 

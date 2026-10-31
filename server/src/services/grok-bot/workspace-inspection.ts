@@ -1,5 +1,5 @@
 import { and, eq, inArray, isNotNull, or, sql } from "drizzle-orm";
-import { dotRunnerAssignments, environmentLeases, heartbeatRuns, issueRecoveryActions, issues, nativeRunFinalizations, type Db } from "@paperclipai/db";
+import { dotRunnerAssignments, environmentLeases, heartbeatRuns, issueRecoveryActions, issues, nativeRunFinalizations, type Db } from "@simplexy/db";
 import { authorizeExternalBotOperator } from "../external-bot-authority.js";
 import { logActivity } from "../activity-log.js";
 import { McpOAuthError } from "../public-mcp/oauth.js";

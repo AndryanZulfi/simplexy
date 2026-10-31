@@ -86,8 +86,8 @@ For OpenRouter, use the shared policy in
 
 ```http
 HTTP-Referer: https://paperclip.ing
-X-OpenRouter-Title: Paperclip
-X-Title: Paperclip
+X-OpenRouter-Title: Simplexy
+X-Title: Simplexy
 X-OpenRouter-Categories: cloud-agent,programming-app
 ```
 
@@ -1190,7 +1190,7 @@ Minimal customer OAuth example:
   "defaults": {
     "serverUrl": "https://mcp.example.com/mcp"
   },
-  "guidanceMd": "Register Paperclip's callback URI in the provider console.",
+  "guidanceMd": "Register Simplexy's callback URI in the provider console.",
   "consoleLinks": {
     "register": "https://example.com/developers/apps",
     "docs": "https://docs.example.com/mcp/oauth"
@@ -1393,9 +1393,9 @@ without a test-name filter before handoff.
 Targeted type checks:
 
 ```sh
-pnpm --filter @paperclipai/shared typecheck
-pnpm --filter @paperclipai/server typecheck
-pnpm --filter @paperclipai/ui typecheck
+pnpm --filter @simplexy/shared typecheck
+pnpm --filter @simplexy/server typecheck
+pnpm --filter @simplexy/ui typecheck
 ```
 
 If UI code changed, also run:
@@ -2214,9 +2214,9 @@ Copy this section into a connector proposal or implementation issue.
   - Token:
   - Registration (if DCR):
   - Discovery (.well-known), if any:
-  - Paperclip callback: `/api/tools/oauth/callback` (or n/a)
+  - Simplexy callback: `/api/tools/oauth/callback` (or n/a)
 - Redirect constraints (probed): none / https-or-loopback-http / requires-public-redirect
-- Paperclip ID / Paperclip Connect involvement: <"none — DCR is instance-local; cloud and self-hosted use the same path" for RFC 7591 providers; otherwise name the role>
+- Simplexy ID / Simplexy Connect involvement: <"none — DCR is instance-local; cloud and self-hosted use the same path" for RFC 7591 providers; otherwise name the role>
 
 ## Administrator Setup (mandatory)
 
@@ -2353,7 +2353,7 @@ connection with scoped business-data reads and narrow issue writes.
         "tokenEndpoint": "https://api.linear.app/oauth/token",
         "scopesHint": ["read", "write"]
       },
-      "guidanceMd": "Register a Linear OAuth app and add Paperclip's redirect URI before connecting.",
+      "guidanceMd": "Register a Linear OAuth app and add Simplexy's redirect URI before connecting.",
       "riskTier": "S2",
       "requiredResourceFilters": ["workspace", "team", "project"]
     }
@@ -2498,8 +2498,8 @@ Redirect constraints (probed): `https-or-loopback-http`.
 sequenceDiagram
     autonumber
     actor U as User's browser
-    participant UI as Paperclip UI<br/>/ACME/apps/connect?source=notion
-    participant S as Paperclip instance server<br/>(cloud or self-hosted — same path)
+    participant UI as Simplexy UI<br/>/ACME/apps/connect?source=notion
+    participant S as Simplexy instance server<br/>(cloud or self-hosted — same path)
     participant M as mcp.notion.com<br/>(MCP server + OAuth AS)
     participant N as Notion web<br/>(app.notion.com, notion.com)
 

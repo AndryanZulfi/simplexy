@@ -1,4 +1,4 @@
-import { PAPERCLIP_RUNNER_ACPX_PROFILES } from "@paperclipai/adapter-utils";
+import { PAPERCLIP_RUNNER_ACPX_PROFILES } from "@simplexy/adapter-utils";
 import type { NativeExecutionInput } from "../../vendor/paperclip-runner/index.js";
 
 /** Operator-only admission for an exact candidate/model during qualification. */

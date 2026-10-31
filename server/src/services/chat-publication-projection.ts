@@ -3,7 +3,7 @@ import type {
   SafeExternalChatCard,
   SafeExternalChatCardAction,
   SafeExternalChatCardKind,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { redactSensitiveText } from "../redaction.js";
 
 // Bound sanitization work, not the amount silently delivered. The Board accepts

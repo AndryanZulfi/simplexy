@@ -1,6 +1,6 @@
-import { agents, companies, createDb, issues, routines, routineTriggers } from "@paperclipai/db";
+import { agents, companies, createDb, issues, routines, routineTriggers } from "@simplexy/db";
 import { sql } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import type { createDeliveryWorkCoordinator } from "../services/delivery-work-coordinator.js";

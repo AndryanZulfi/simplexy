@@ -216,11 +216,11 @@ Cloud registry. A caller cannot supply any of them.
 ```mermaid
 sequenceDiagram
     actor U as Self-hosted administrator
-    participant P as Self-hosted Paperclip
-    participant C as Paperclip Cloud
-    participant I as Paperclip ID
+    participant P as Self-hosted Simplexy
+    participant C as Simplexy Cloud
+    participant I as Simplexy ID
 
-    U->>P: Enable Paperclip-managed connections
+    U->>P: Enable Simplexy-managed connections
     P->>P: Generate Ed25519 signing and X25519 sealing keys
     P->>C: Create enrollment draft with public keys and exact origin
     C-->>P: Short-lived verification URL
@@ -256,9 +256,9 @@ return trip; Cloud does not need to reach the private hostname.
 ```mermaid
 sequenceDiagram
     actor U as Connecting user
-    participant P as Originating Paperclip instance
+    participant P as Originating Simplexy instance
     participant C as my.paperclip.app
-    participant I as Paperclip ID
+    participant I as Simplexy ID
     participant O as Provider OAuth
     participant V as Instance vault
 
@@ -299,8 +299,8 @@ memory only for the bounded exchange, refresh, or supported revocation request.
 
 ```mermaid
 sequenceDiagram
-    participant P as Paperclip instance
-    participant C as Paperclip Cloud
+    participant P as Simplexy instance
+    participant C as Simplexy Cloud
     participant O as Provider OAuth
 
     P->>C: Signed refresh with hash-bound refresh token

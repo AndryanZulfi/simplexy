@@ -1,5 +1,5 @@
 import { and, desc, eq, or, sql } from "drizzle-orm";
-import { chatMessageLinks, heartbeatRuns, type Db } from "@paperclipai/db";
+import { chatMessageLinks, heartbeatRuns, type Db } from "@simplexy/db";
 import { chatRunSourceMessageId } from "../run-origin.js";
 
 export const responseRunColumns = {

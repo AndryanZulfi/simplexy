@@ -1,5 +1,5 @@
 import { and, eq } from "drizzle-orm";
-import { assets, documents, documentRevisions, heartbeatRuns, issueDocuments, issueAttachments, issueWorkProducts, mcpAttachmentUploads, dotRunnerAssignments, type Db } from "@paperclipai/db";
+import { assets, documents, documentRevisions, heartbeatRuns, issueDocuments, issueAttachments, issueWorkProducts, mcpAttachmentUploads, dotRunnerAssignments, type Db } from "@simplexy/db";
 import type { PrpStructuredRunResult } from "../../vendor/paperclip-runner/index.js";
 
 function evidenceRefs(value: unknown): string[] {

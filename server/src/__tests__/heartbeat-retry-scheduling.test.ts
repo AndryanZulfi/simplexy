@@ -21,7 +21,7 @@ import {
   issueRelations,
   issues,
   projects,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,
@@ -37,9 +37,9 @@ vi.mock("../telemetry.js", () => ({
   getTelemetryClient: () => mockTelemetryClient,
 }));
 
-vi.mock("@paperclipai/shared/telemetry", async () => {
-  const actual = await vi.importActual<typeof import("@paperclipai/shared/telemetry")>(
-    "@paperclipai/shared/telemetry",
+vi.mock("@simplexy/shared/telemetry", async () => {
+  const actual = await vi.importActual<typeof import("@simplexy/shared/telemetry")>(
+    "@simplexy/shared/telemetry",
   );
   return {
     ...actual,

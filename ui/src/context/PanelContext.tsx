@@ -2,7 +2,8 @@ import { useCoordinatorWorkspaceEnabled } from "@/hooks/useCoordinatorWorkspaceE
 import { createContext, useCallback, useContext, useLayoutEffect, useState, type ReactNode } from "react";
 import type { SidePanelContentMode } from "@/components/side-panel";
 
-const STORAGE_KEY = "paperclip:panel-visible";
+const STORAGE_KEY = "simplexy:panel-visible";
+const LEGACY_STORAGE_KEY = "simplexy:panel-visible";
 
 interface PanelContextValue {
   panelContent: ReactNode | null;
@@ -27,7 +28,7 @@ const PanelContext = createContext<PanelContextValue | null>(null);
 
 function readPreference(): boolean {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(STORAGE_KEY) ?? localStorage.getItem(LEGACY_STORAGE_KEY);
     return raw === null ? true : raw === "true";
   } catch {
     return true;

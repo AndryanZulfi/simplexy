@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { AdapterExecutionTarget } from "@paperclipai/adapter-utils/execution-target";
+import type { AdapterExecutionTarget } from "@simplexy/adapter-utils/execution-target";
 
 // The managed-config step runs inside `prepareSandboxClaudeProbeRuntime`. The
 // step resolves the Paperclip instance root first. This mock makes that resolve
@@ -10,9 +10,9 @@ const { resolveInstanceRoot } = vi.hoisted(() => {
   return { resolveInstanceRoot };
 });
 
-vi.mock("@paperclipai/adapter-utils/execution-target", async () => {
-  const actual = await vi.importActual<typeof import("@paperclipai/adapter-utils/execution-target")>(
-    "@paperclipai/adapter-utils/execution-target",
+vi.mock("@simplexy/adapter-utils/execution-target", async () => {
+  const actual = await vi.importActual<typeof import("@simplexy/adapter-utils/execution-target")>(
+    "@simplexy/adapter-utils/execution-target",
   );
   return {
     ...actual,
@@ -20,9 +20,9 @@ vi.mock("@paperclipai/adapter-utils/execution-target", async () => {
   };
 });
 
-vi.mock("@paperclipai/adapter-utils/server-utils", async () => {
-  const actual = await vi.importActual<typeof import("@paperclipai/adapter-utils/server-utils")>(
-    "@paperclipai/adapter-utils/server-utils",
+vi.mock("@simplexy/adapter-utils/server-utils", async () => {
+  const actual = await vi.importActual<typeof import("@simplexy/adapter-utils/server-utils")>(
+    "@simplexy/adapter-utils/server-utils",
   );
   return {
     ...actual,

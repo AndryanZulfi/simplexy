@@ -7,7 +7,7 @@ import {
   randomBytes,
   type KeyObject,
 } from "node:crypto";
-import { SLACK_MANAGER_SCOPES } from "@paperclipai/shared";
+import { SLACK_MANAGER_SCOPES } from "@simplexy/shared";
 import { describe, expect, it, vi } from "vitest";
 import { readFileSync } from "node:fs";
 

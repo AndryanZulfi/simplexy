@@ -1,10 +1,10 @@
 import { notifyNativeFinalizationWork } from "../native-finalization-notifications.js";
 import { notifyEnvironmentCleanup } from "../environment-cleanup-notifications.js";
 import { randomUUID } from "node:crypto";
-import type { Environment, EnvironmentLease } from "@paperclipai/shared";
-import { isNativeWorkspaceExportRepairCause } from "@paperclipai/shared";
+import type { Environment, EnvironmentLease } from "@simplexy/shared";
+import { isNativeWorkspaceExportRepairCause } from "@simplexy/shared";
 import { and, eq, gt, inArray, ne, or, sql } from "drizzle-orm";
-import { environmentLeases, environments, heartbeatRuns, issues, issueRecoveryActions, nativeRunFinalizations, nativeRunResults, type Db } from "@paperclipai/db";
+import { environmentLeases, environments, heartbeatRuns, issues, issueRecoveryActions, nativeRunFinalizations, nativeRunResults, type Db } from "@simplexy/db";
 import { conflict } from "../../errors.js";
 import { persistActivity, publishActivity } from "../activity-log.js";
 import { hasRemoteTerminationReceipt, remoteTerminationReceipt } from "../remote-execution-termination.js";

@@ -1,4 +1,4 @@
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import { githubRunReplyState } from "../../chat-run-publications.js";
 import { readGitHubResponseRun } from "./response-run-state.js";
 export { responseRunColumns as githubResponseRunColumns } from "./response-run-state.js";

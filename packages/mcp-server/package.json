@@ -1,5 +1,5 @@
 {
-  "name": "@paperclipai/mcp-server",
+  "name": "@simplexy/mcp-server",
   "version": "0.1.0",
   "license": "MIT",
   "homepage": "https://github.com/paperclipai/paperclip",
@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.31.0",
-    "@paperclipai/shared": "workspace:*",
+    "@simplexy/shared": "workspace:*",
     "zod": "^4.4.3"
   },
   "devDependencies": {

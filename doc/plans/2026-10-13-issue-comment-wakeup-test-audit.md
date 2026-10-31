@@ -45,7 +45,7 @@ done/closing mention scenarios. Response-before-wake waits remain unchanged.
 ## Verification
 
 Owner suite: **34/34 passed**, one file, 27.93 seconds (start 08:37:13). Exact PR-branch command from the repository root:
-`node_modules/.bin/vitest run --project @paperclipai/server server/src/__tests__/issue-update-comment-wakeup-routes.test.ts --silent=true`.
+`node_modules/.bin/vitest run --project @simplexy/server server/src/__tests__/issue-update-comment-wakeup-routes.test.ts --silent=true`.
 `git diff --check` passed. Mock-backed external sync/sandbox cleanup warnings remain
 non-failing; no warning-related fixture edits were made.
 

@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { eq, sql } from "drizzle-orm";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { companies, companyMemberships, createDb, principalPermissionGrants } from "@paperclipai/db";
+import { companies, companyMemberships, createDb, principalPermissionGrants } from "@simplexy/db";
 import { startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 
 describe("commentary permission upgrade", () => {

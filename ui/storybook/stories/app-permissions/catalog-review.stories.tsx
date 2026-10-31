@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import type { ToolCatalogEntry } from "@paperclipai/shared";
+import type { ToolCatalogEntry } from "@simplexy/shared";
 import { ActionsSection } from "@/pages/apps/app-detail/PermissionsPanel";
 import { expect, userEvent, within } from "storybook/test";
 const entry: ToolCatalogEntry = {

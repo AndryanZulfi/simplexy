@@ -1,7 +1,7 @@
 import { existsSync } from "node:fs";
 import { lstat, readdir } from "node:fs/promises";
 import { posix, resolve } from "node:path";
-import type { CommandManagedRuntimeRunner } from "@paperclipai/adapter-utils/command-managed-runtime";
+import type { CommandManagedRuntimeRunner } from "@simplexy/adapter-utils/command-managed-runtime";
 import type { NativeRuntimeContextSnapshot } from "../../vendor/paperclip-runner/index.js";
 import type { NativeRunTrace } from "./native-run-trace.js";
 

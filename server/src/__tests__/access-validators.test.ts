@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   updateCompanyMemberWithPermissionsSchema,
   updateCurrentUserProfileSchema,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 
 describe("access validators", () => {
   it("accepts HTTP(S) and Simplexy asset image URLs", () => {

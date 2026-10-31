@@ -17,7 +17,7 @@ import { findRegenerableWorkspaceDirs } from "./workspace-compaction.js";
 import { ensureGitRestorePointCommit, validateGitRestorePointRef, type GitRestorePointRef } from "./git-restore-point-storage.js";
 import { getStorageService } from "../storage/index.js";
 import type { StorageService } from "../storage/types.js";
-import { PROJECT_REPOSITORIES_DIR } from "@paperclipai/adapter-utils/git-workspace-sync";
+import { PROJECT_REPOSITORIES_DIR } from "@simplexy/adapter-utils/git-workspace-sync";
 import { OWNED_NESTED_REF_LIMIT, forgetExpiredNestedRepositoryWorktree, nestedRepositoryBaseCandidates, readLinkedNestedCheckout, recordedNestedRepositoryBase, type LinkedNestedCheckout } from "./nested-repository-worktrees.js";
 
 const execFile = promisify(execFileCallback);

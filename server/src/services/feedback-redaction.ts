@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { looksLikeCredentialJwt } from "@paperclipai/adapter-utils/command-redaction";
+import { looksLikeCredentialJwt } from "@simplexy/adapter-utils/command-redaction";
 import { redactCurrentUserText } from "../log-redaction.js";
 import { sanitizeRecord } from "../redaction.js";
 

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, within, waitFor } from "storybook/test";
 import { NewAgent } from "@/pages/NewAgent";
 import { AgentBasicsDialog } from "@/components/new-agent/AgentBasicsDialog";
-import { models } from "@paperclipai/adapter-codex-local";
+import { models } from "@simplexy/adapter-codex-local";
 import { storybookHiredAgent } from "../../../fixtures/paperclipData";
 import { resetOnboardingFixtureState, setOnboardingFixtureState } from "../../../fixtures/onboardingEnvironment";
 

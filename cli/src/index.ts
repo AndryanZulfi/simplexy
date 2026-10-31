@@ -2,7 +2,7 @@ import { registerRuntimeCommands } from "./commands/runtime.js";
 import { registerEmailCommands } from "./commands/client/email.js";
 import { registerMcpCommands } from "./commands/mcp.js";
 import { Command } from "commander";
-import { warnIfUnsupportedNodeVersion } from "@paperclipai/shared/node-version";
+import { warnIfUnsupportedNodeVersion } from "@simplexy/shared/node-version";
 import { onboard } from "./commands/onboard.js";
 import { doctor } from "./commands/doctor.js";
 import { envCommand } from "./commands/env.js";
@@ -62,12 +62,13 @@ import {
 
 const program = new Command();
 const DATA_DIR_OPTION_HELP =
-  "Simplexy data directory root (isolates state from ~/.paperclip)";
+  "Simplexy data directory root (isolates state from ~/.simplexy)";
 
 program.enablePositionalOptions();
 
 program
-  .name("paperclipai")
+  .name("simplexy")
+  .alias("paperclipai")
   .description("Simplexy CLI — setup, diagnose, and configure your instance")
   .version(cliVersion);
 

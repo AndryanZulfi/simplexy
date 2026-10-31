@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import express from "express";
 import request from "supertest";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import { livenessRoutes } from "../routes/liveness.js";
 import { healthRoutes } from "../routes/health.js";
 import { privateHostnameGuard } from "../middleware/private-hostname-guard.js";

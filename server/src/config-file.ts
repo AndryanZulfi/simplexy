@@ -5,7 +5,7 @@ import {
   paperclipConfigSchema,
   type PaperclipConfig,
   type DeploymentMode,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { ZodError } from "zod";
 import { resolvePaperclipConfigPath } from "./paths.js";
 

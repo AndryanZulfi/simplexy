@@ -1,6 +1,6 @@
 import { and, eq, inArray } from "drizzle-orm";
-import { agents, projects, type Db } from "@paperclipai/db";
-import { trustAuthorizationPolicySchema, type AgentProjectAccess } from "@paperclipai/shared";
+import { agents, projects, type Db } from "@simplexy/db";
+import { trustAuthorizationPolicySchema, type AgentProjectAccess } from "@simplexy/shared";
 import { conflict, forbidden, notFound } from "../errors.js";
 import { normalizeAgentPermissions } from "../lib/agent-permissions.js";
 import { accessService } from "./access.js";

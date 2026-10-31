@@ -11,12 +11,12 @@ import { addNestedRepositoryWorktree, isVerifiedNestedRepositoryBase, nestedRepo
 export { materializeManagedProjectWorkspace } from "../managed-repository-checkout.js";
 import { sql } from "drizzle-orm";
 import { materializeIsolatedTaskDirectory } from "../isolated-task-directory.js";
-import { readConnectionFailure, type GitConnectionFailure } from "@paperclipai/adapter-utils/connection-failure";
+import { readConnectionFailure, type GitConnectionFailure } from "@simplexy/adapter-utils/connection-failure";
 import { managedAiSessionFingerprintConfig } from "../ai-connection-runtime.js";
 import {
   PROJECT_REPOSITORIES_DIR,
   readGitWorkspaceSnapshot,
-} from "@paperclipai/adapter-utils/git-workspace-sync";
+} from "@simplexy/adapter-utils/git-workspace-sync";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { localRepositoryPath } from "../local-repository-path.js";
@@ -31,18 +31,18 @@ import {
   asc,
   eq,
 } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import {
   type ExecutionWorkspace,
   type ExecutionWorkspaceConfig,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   agents,
   heartbeatRuns,
   issues,
   projects,
   projectWorkspaces,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { logger } from "../../middleware/logger.js";
 import {
   createGitRemoteAuthProvider,

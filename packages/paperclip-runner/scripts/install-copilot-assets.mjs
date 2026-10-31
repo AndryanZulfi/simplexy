@@ -6,10 +6,10 @@ import { COPILOT_DISTRIBUTIONS, materializePinnedCopilotBinary } from "./materia
 
 const packageRoot = await realpath(fileURLToPath(new URL("../", import.meta.url)));
 const owner = JSON.parse(await readFile(join(packageRoot, "package.json"), "utf8"));
-if (!["@paperclipai/paperclip-runner", "@paperclipai/server"].includes(owner.name)) {
+if (!["@simplexy/paperclip-runner", "@simplexy/server"].includes(owner.name)) {
   throw new Error("Copilot installer must belong to a runner package owner");
 }
-const vendored = owner.name === "@paperclipai/server";
+const vendored = owner.name === "@simplexy/server";
 const runtimeRoot = vendored ? join(packageRoot, "dist/vendor/paperclip-runner") : join(packageRoot, "dist");
 
 /** Install only the native npm package for this platform; never execute it. */

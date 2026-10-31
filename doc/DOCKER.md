@@ -34,7 +34,7 @@ docker build -t paperclip-local \
 
 The image starts the server from a runtime bundle, `server/dist-runtime/index.mjs`,
 with plain `node`. The build creates it from the server's `tsc` output with
-`pnpm --filter @paperclipai/server build:runtime` (`server/scripts/bundle-runtime.mjs`),
+`pnpm --filter @simplexy/server build:runtime` (`server/scripts/bundle-runtime.mjs`),
 compiling in the workspace packages that otherwise load as TypeScript source.
 This avoids transpiling them through the tsx loader on every boot. To check a
 build boots, run `scripts/server-boot-smoke.sh node server/dist-runtime/index.mjs`;

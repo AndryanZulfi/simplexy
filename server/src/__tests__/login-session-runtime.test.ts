@@ -2,7 +2,7 @@ import { installDatabaseWorkSignals, databaseWorkPending } from "../../../packag
 import { DELIVERY_QUEUES, subscribeDeliveryWork } from "../services/delivery-work-notifications.js";
 import { describe, expect, it, vi } from "vitest";
 import { randomUUID } from "node:crypto";
-import type { AgentAdapterType } from "@paperclipai/shared";
+import type { AgentAdapterType } from "@simplexy/shared";
 
 // The production runtime resolves the environment through `environmentService`.
 // These tests replace it with a fake, so the runtime runs with no database. The

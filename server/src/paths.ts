@@ -10,6 +10,10 @@ function findConfigFileFromAncestors(startDir: string): string | null {
   let currentDir = absoluteStartDir;
 
   while (true) {
+    const candidateSimplexy = path.resolve(currentDir, ".simplexy", PAPERCLIP_CONFIG_BASENAME);
+    if (fs.existsSync(candidateSimplexy)) {
+      return candidateSimplexy;
+    }
     const candidate = path.resolve(currentDir, ".paperclip", PAPERCLIP_CONFIG_BASENAME);
     if (fs.existsSync(candidate)) {
       return candidate;

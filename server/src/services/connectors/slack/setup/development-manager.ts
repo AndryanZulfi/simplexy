@@ -1,6 +1,6 @@
 import { readFileSync, statSync } from "node:fs";
 import { isAbsolute } from "node:path";
-import { SLACK_MANAGER_SCOPES } from "@paperclipai/shared";
+import { SLACK_MANAGER_SCOPES } from "@simplexy/shared";
 import type { PaperclipCloudConnector, SealedConnectorCredentials } from "../../../paperclip-cloud-connector.js";
 import { createSlackSetupClient, object, providerFailure } from "./provider-client.js";
 

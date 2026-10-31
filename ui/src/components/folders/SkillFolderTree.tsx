@@ -24,7 +24,7 @@ import {
   Trash2,
   User,
 } from "lucide-react";
-import type { FolderListItem, FolderListResult } from "@paperclipai/shared";
+import type { FolderListItem, FolderListResult } from "@simplexy/shared";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,

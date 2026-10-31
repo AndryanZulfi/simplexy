@@ -594,7 +594,7 @@ runner binaries:
 ```bash
 pnpm install
 pnpm exec playwright install chromium
-pnpm --filter @paperclipai/paperclip-runner build:runner-binaries
+pnpm --filter @simplexy/paperclip-runner build:runner-binaries
 ```
 
 List cells without loading credentials or starting Paperclip:
@@ -876,7 +876,7 @@ GitHub discovery is simulated, scoped to a fixture-only credential; repository
 permissions and mutations remain real. Run it with:
 
 ```bash
-pnpm --filter @paperclipai/ui build
+pnpm --filter @simplexy/ui build
 pnpm test:e2e tests/e2e/agent-chat.spec.ts
 # Against a dedicated authenticated test instance configured per that suite:
 pnpm test:e2e:multiuser-authenticated --grep 'agent chats'
@@ -2633,7 +2633,7 @@ native binary overrides are removed from the server environment. Qualification
 admission is rejected, so this path requires production admission. Use the
 existing browser/API cases and encrypted company-secret fixture path.
 
-Install the public `@paperclipai/plugin-daytona` package separately for a Daytona
+Install the public `@simplexy/plugin-daytona` package separately for a Daytona
 smoke. Set `PAPERCLIP_RUNNER_E2E_INSTALLED_DAYTONA_PLUGIN` to its absolute installed
 package directory when it has its own dependency root. The fixture checks its
 compiled entries and release version before provisioning. The version must match

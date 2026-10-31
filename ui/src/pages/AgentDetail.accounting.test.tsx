@@ -2,7 +2,7 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AgentActionButtons } from "../components/AgentActionButtons";
-import type { Agent, HeartbeatRun } from "@paperclipai/shared";
+import type { Agent, HeartbeatRun } from "@simplexy/shared";
 import { describe, expect, it, vi } from "vitest";
 import { RunAccountingMetrics } from "./AgentDetail";
 import { hasUnavailableProviderAccounting } from "../lib/utils";

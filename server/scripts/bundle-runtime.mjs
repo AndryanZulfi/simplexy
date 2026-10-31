@@ -71,7 +71,7 @@ function externalizeThirdParty(isBundled, runtimeDir) {
   };
 }
 
-export async function bundleRuntime({ entry, outdir, isBundled = (specifier) => specifier.startsWith("@paperclipai/") }) {
+export async function bundleRuntime({ entry, outdir, isBundled = (specifier) => specifier.startsWith("@simplexy/") }) {
   await rm(outdir, { recursive: true, force: true });
   const result = await build({
     entryPoints: { index: "paperclip-runtime-entry", server: entry },

@@ -1,8 +1,8 @@
-import { isOpenRouterUrl, openRouterAttributionHeaders } from "@paperclipai/adapter-utils/openrouter-attribution";
+import { isOpenRouterUrl, openRouterAttributionHeaders } from "@simplexy/adapter-utils/openrouter-attribution";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
-import { asBoolean } from "@paperclipai/adapter-utils/server-utils";
+import { asBoolean } from "@simplexy/adapter-utils/server-utils";
 import { installSandboxToolMemoryPreference } from "./sandbox-tool-memory.js";
 
 type PreparedOpenCodeRuntimeConfig = {

@@ -1,4 +1,4 @@
-import type { chatEndpointResources } from "@paperclipai/db";
+import type { chatEndpointResources } from "@simplexy/db";
 
 export function imessageResourceParticipants(resource: typeof chatEndpointResources.$inferSelect) {
   return resource.providerResourceId.startsWith("imessage-photon:") &&

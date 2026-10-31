@@ -6,8 +6,8 @@ import { notifyScheduledRetryCancellation } from "./scheduled-retry-cancellation
 import { notifyVoiceChange } from "./voice/voice-recovery-notifications.js";
 import { notifyToolConnectionHealth } from "./tool-connection-health-notifications.js";
 import { DELIVERY_QUEUES, notifyDeliveryWork } from "./delivery-work-notifications.js";
-import type { Db } from "@paperclipai/db";
-import { companies, instanceSettings } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
+import { companies, instanceSettings } from "@simplexy/db";
 
 /**
  * A `Db` or an open transaction handle — the subset of query builders the
@@ -34,12 +34,12 @@ import {
   type InstanceSettings,
   type PatchInstanceSettings,
   type PatchInstanceExperimentalSettings,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   INSTANCE_FEATURE_CATALOG,
   applyOperatorGeneralDefaults,
   stripOperatorGeneralEchoes,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { eq } from "drizzle-orm";
 import { getManagedInstanceConfig, type ManagedInstanceConfig } from "./managed-config.js";
 import { getOperatorSettingDefaults } from "./setting-defaults.js";

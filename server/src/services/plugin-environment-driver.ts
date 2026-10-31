@@ -1,10 +1,10 @@
-import { plugins, type Db } from "@paperclipai/db";
+import { plugins, type Db } from "@simplexy/db";
 import { sql } from "drizzle-orm";
 import type {
   EnvironmentProbeResult,
   PluginEnvironmentConfig,
   PluginEnvironmentDriverDeclaration,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import type {
   PluginEnvironmentExecuteParams,
   PluginEnvironmentExecuteResult,
@@ -20,7 +20,7 @@ import type {
   PluginEnvironmentLease,
   PluginEnvironmentRealizeWorkspaceParams,
   PluginEnvironmentRealizeWorkspaceResult,
-} from "@paperclipai/plugin-sdk";
+} from "@simplexy/plugin-sdk";
 import { unprocessable } from "../errors.js";
 import {
   collectSecretRefPaths,

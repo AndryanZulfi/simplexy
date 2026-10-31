@@ -755,7 +755,7 @@ test("direct Grok qualification installs the pinned binary and scopes the select
   const workflow = readWorkflow("runner-protocol-live-evals.yml");
   assert.ok(workflow.includes("XAI_API_KEY: ${{ matrix.credentialName == 'XAI_API_KEY' && secrets.XAI_API_KEY || '' }}"));
   assert.ok(workflow.includes("if [ -f packages/paperclip-runner/scripts/provision-grok.mjs ]; then"));
-  assert.ok(workflow.indexOf("sudo node packages/paperclip-runner/scripts/provision-grok.mjs /opt/paperclip/providers/grok/1.0.13/grok") < workflow.indexOf("pnpm --filter @paperclipai/paperclip-runner deploy --prod"));
+  assert.ok(workflow.indexOf("sudo node packages/paperclip-runner/scripts/provision-grok.mjs /opt/paperclip/providers/grok/1.0.13/grok") < workflow.indexOf("pnpm --filter @simplexy/paperclip-runner deploy --prod"));
   assert.ok(workflow.includes("PAPERCLIP_ACPX_GROK_AUTH_JSON_SECRET: ${{ matrix.credentialName == 'PAPERCLIP_ACPX_GROK_AUTH_JSON_SECRET' && secrets.GROK_AUTH_JSON || '' }}"));
   assert.equal((workflow.match(/secrets\.GROK_AUTH_JSON/gu) ?? []).length, 1);
 });
@@ -972,7 +972,7 @@ test('native preparation overlaps independent outputs and joins both before reco
     for (const name of ['native', 'typescript']) assert.equal(readFileSync(path.join(root, name + '.finished'), 'utf8'), 'joined');
     assert.equal(JSON.parse(readFileSync(path.join(root, 'native.started'), 'utf8')).cwd, path.join(root, 'packages/paperclip-runner'));
     assert.deepEqual(JSON.parse(readFileSync(path.join(root, 'native.started'), 'utf8')).args, ['build:binary']);
-    assert.deepEqual(JSON.parse(readFileSync(path.join(root, 'typescript.started'), 'utf8')).args, ['--filter', '@paperclipai/paperclip-runner', 'build:typescript']);
+    assert.deepEqual(JSON.parse(readFileSync(path.join(root, 'typescript.started'), 'utf8')).args, ['--filter', '@simplexy/paperclip-runner', 'build:typescript']);
     const results = result.stdout.split('\n').filter(line => line.startsWith('{')).map(line => JSON.parse(line));
     assert.deepEqual(results.map(item => [item.build, item.status, item.exitCode]), [['typescript', 'fulfilled', 0], ['native', 'fulfilled', 0]]);
   });
@@ -1347,13 +1347,13 @@ test("nested ETARGET output does not retry a final authentication or network fai
 });
 
 const exactCanary = "2026.1009.0-canary.1";
-const canaryTarball = `https://registry.npmjs.org/@paperclipai/server/-/server-${exactCanary}.tgz`;
-const tarballFailure = (url = canaryTarball, prefix = "npm error") => `${prefix} code E404\n${prefix} 404 Not Found - GET ${url} - Not found\n${prefix} 404\n${prefix} 404  The requested resource '@paperclipai/server@${url}' could not be found or you do not have permission to access it.\n`;
+const canaryTarball = `https://registry.npmjs.org/@simplexy/server/-/server-${exactCanary}.tgz`;
+const tarballFailure = (url = canaryTarball, prefix = "npm error") => `${prefix} code E404\n${prefix} 404 Not Found - GET ${url} - Not found\n${prefix} 404\n${prefix} 404  The requested resource '@simplexy/server@${url}' could not be found or you do not have permission to access it.\n`;
 
 function tarballProof({ config = {}, manifest = {}, status = 200, redirected = false, responseUrl, rawBody } = {}) {
   const calls = [];
   const dist = { tarball: canaryTarball, integrity: `sha512-${Buffer.alloc(64).toString("base64")}`, ...manifest.dist };
-  const data = { name: "@paperclipai/server", version: exactCanary, ...manifest, dist };
+  const data = { name: "@simplexy/server", version: exactCanary, ...manifest, dist };
   return { calls, options: {
     signal: new AbortController().signal, prefix: "/fixture/install", env: {},
     runConfig: async (command, args, options) => {
@@ -1397,10 +1397,10 @@ test("mixed npm errors and noncanonical or unreleased tarballs never read config
     ...[
       canaryTarball + "?token=fixture", canaryTarball + "#fragment", canaryTarball.replace("npmjs.org/", "npmjs.org:443/"),
       canaryTarball.replace("npmjs.org/", "npmjs.org.example.invalid/"), canaryTarball.replace("npmjs.org/", "fixture@npmjs.org/"),
-      canaryTarball.replace("https:", "http:"), canaryTarball.replace("@paperclipai/server", "%40paperclipai%2Fserver"),
-      canaryTarball.replace("@paperclipai/server", "@paperclipai/../server"), canaryTarball.replace(exactCanary, "2026.1009.0-canary.2"),
-      "https://registry.npmjs.org/@paperclipai/not-released/-/not-released-2026.1009.0-canary.1.tgz",
-      "https://registry.npmjs.org/@paperclipai/plugin-createos/-/plugin-createos-2026.1009.0-canary.1.tgz",
+      canaryTarball.replace("https:", "http:"), canaryTarball.replace("@simplexy/server", "%40paperclipai%2Fserver"),
+      canaryTarball.replace("@simplexy/server", "@simplexy/../server"), canaryTarball.replace(exactCanary, "2026.1009.0-canary.2"),
+      "https://registry.npmjs.org/@simplexy/not-released/-/not-released-2026.1009.0-canary.1.tgz",
+      "https://registry.npmjs.org/@simplexy/plugin-createos/-/plugin-createos-2026.1009.0-canary.1.tgz",
       "https://registry.npmjs.org/%40paperclipai%2Fserver/2026.1009.0-canary.1",
     ].map((url) => tarballFailure(url)),
   ];
@@ -1438,7 +1438,7 @@ test("metadata must identify the exact published artifact with valid SHA512 synt
   const fixtures = [
     { status: 404 }, { status: 401 }, { status: 403 }, { status: 302 }, { redirected: true },
     { responseUrl: "https://registry.example.invalid/metadata" }, { rawBody: "not json" },
-    { manifest: { name: "@paperclipai/shared" } }, { manifest: { version: "2026.1009.0-canary.2" } },
+    { manifest: { name: "@simplexy/shared" } }, { manifest: { version: "2026.1009.0-canary.2" } },
     { manifest: { dist: { tarball: canaryTarball + "?query=1" } } },
     ...[undefined, "", "sha512-A===", `sha256-${Buffer.alloc(32).toString("base64")}`, `sha512-${Buffer.alloc(64).toString("base64")} extra`]
       .map((integrity) => ({ manifest: { dist: { integrity } } })),

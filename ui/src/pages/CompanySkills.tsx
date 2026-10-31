@@ -1,3 +1,4 @@
+import { AttachmentIcon } from "@/components/AttachmentIcon";
 import { SkillsNavigationTabs } from "@/components/skill-studio/SkillsNavigationTabs";
 import { SkillsToolbar, type DiscoverySort } from "@/components/skill-studio/SkillsToolbar";
 import { SkillBinaryFile } from "../components/SkillBinaryFile";
@@ -27,7 +28,7 @@ import type {
   CompanySkillUpdateRequest,
   CompanySkillUpdateStatus,
   CompanySkillVersion,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { companySkillsApi } from "../api/companySkills";
 import { foldersApi } from "../api/folders";
 import { agentsApi } from "../api/agents";
@@ -157,7 +158,6 @@ import {
   ExternalLink,
   FlaskConical,
   MoreHorizontal,
-  Paperclip,
   Pause,
   Pencil,
   Pin,
@@ -177,7 +177,7 @@ import {
   XOctagon,
 } from "lucide-react";
 import { GithubIcon } from "../components/icons/github-icon";
-import type { FolderListItem, FolderListResult } from "@paperclipai/shared";
+import type { FolderListItem, FolderListResult } from "@simplexy/shared";
 
 type SkillTreeNode = {
   name: string;
@@ -284,7 +284,7 @@ function sourceMeta(sourceBadge: CompanySkillSourceBadge, sourceLabel: string | 
     case "local":
       return { icon: Folder, label: sourceLabel ?? "Folder", managedLabel: "Folder managed" };
     case "paperclip":
-      return { icon: Paperclip, label: sourceLabel ?? "Simplexy", managedLabel: "Simplexy managed" };
+      return { icon: AttachmentIcon, label: sourceLabel ?? "Simplexy", managedLabel: "Simplexy managed" };
     default:
       return { icon: Boxes, label: sourceLabel ?? "Catalog", managedLabel: "Catalog managed" };
   }

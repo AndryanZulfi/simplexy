@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { eq } from "drizzle-orm";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { applyPendingMigrations, createDb, heartbeatRuns, issues, type Db } from "@paperclipai/db";
+import { applyPendingMigrations, createDb, heartbeatRuns, issues, type Db } from "@simplexy/db";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { captureIdentityQueries, seedIdentityProjection, type IdentityQuery } from "./helpers/run-identity-projection-fixture.js";
 import { captureRunIdentity } from "../services/run-identity.js";

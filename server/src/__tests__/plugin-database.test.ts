@@ -12,8 +12,8 @@ import {
   pluginDatabaseNamespaces,
   pluginMigrations,
   plugins,
-} from "@paperclipai/db";
-import type { PaperclipPluginManifestV1 } from "@paperclipai/shared";
+} from "@simplexy/db";
+import type { PaperclipPluginManifestV1 } from "@simplexy/shared";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,
@@ -204,11 +204,11 @@ describe("buildPluginWorkerEnv", () => {
   });
 
   it.each([
-    { packagePath: null, packageName: "@paperclipai/plugin-createos", driverKey: "createos", allowed: true },
-    { packagePath: "/app/packages/plugins/sandbox-providers/createos", packageName: "@paperclipai/plugin-createos", driverKey: "createos", allowed: true },
-    { packagePath: "/home/operator/plugins/fake-createos", packageName: "@paperclipai/plugin-createos", driverKey: "createos", allowed: false },
+    { packagePath: null, packageName: "@simplexy/plugin-createos", driverKey: "createos", allowed: true },
+    { packagePath: "/app/packages/plugins/sandbox-providers/createos", packageName: "@simplexy/plugin-createos", driverKey: "createos", allowed: true },
+    { packagePath: "/home/operator/plugins/fake-createos", packageName: "@simplexy/plugin-createos", driverKey: "createos", allowed: false },
     { packagePath: null, packageName: "@acme/plugin-createos", driverKey: "createos", allowed: false },
-    { packagePath: null, packageName: "@paperclipai/plugin-createos", driverKey: "daytona", allowed: false },
+    { packagePath: null, packageName: "@simplexy/plugin-createos", driverKey: "daytona", allowed: false },
   ])("confines the CreateOS fallback credential to its trusted worker: $packageName / $packagePath / $driverKey", ({ allowed, driverKey, ...installation }) => {
     const env = buildPluginWorkerEnv({
       ...installation,
@@ -228,11 +228,11 @@ describe("buildPluginWorkerEnv", () => {
   });
 
   it.each([
-    { packagePath: null, packageName: "@paperclipai/plugin-boxd", driverKey: "boxd", allowed: true },
-    { packagePath: "/app/packages/plugins/sandbox-providers/boxd", packageName: "@paperclipai/plugin-boxd", driverKey: "boxd", allowed: true },
-    { packagePath: "/home/operator/plugins/fake-boxd", packageName: "@paperclipai/plugin-boxd", driverKey: "boxd", allowed: false },
+    { packagePath: null, packageName: "@simplexy/plugin-boxd", driverKey: "boxd", allowed: true },
+    { packagePath: "/app/packages/plugins/sandbox-providers/boxd", packageName: "@simplexy/plugin-boxd", driverKey: "boxd", allowed: true },
+    { packagePath: "/home/operator/plugins/fake-boxd", packageName: "@simplexy/plugin-boxd", driverKey: "boxd", allowed: false },
     { packagePath: null, packageName: "@acme/plugin-boxd", driverKey: "boxd", allowed: false },
-    { packagePath: null, packageName: "@paperclipai/plugin-boxd", driverKey: "daytona", allowed: false },
+    { packagePath: null, packageName: "@simplexy/plugin-boxd", driverKey: "daytona", allowed: false },
   ])("confines the boxd fallback credential to its trusted worker: $packageName / $packagePath / $driverKey", ({ allowed, driverKey, ...installation }) => {
     const env = buildPluginWorkerEnv({
       ...installation,
@@ -257,7 +257,7 @@ describe("buildPluginWorkerEnv", () => {
         capabilities: ["environment.drivers.register"],
         environmentDrivers: [{ driverKey: "daytona" }],
       },
-      packageName: "@paperclipai/plugin-daytona",
+      packageName: "@simplexy/plugin-daytona",
       packagePath: null,
       instanceInfo,
       processEnv: {
@@ -280,7 +280,7 @@ describe("buildPluginWorkerEnv", () => {
         capabilities: ["environment.drivers.register"],
         environmentDrivers: [{ driverKey: "daytona" }],
       },
-      packageName: "@paperclipai/plugin-daytona",
+      packageName: "@simplexy/plugin-daytona",
       packagePath: "/app/packages/plugins/sandbox-providers/daytona",
       trustedLocalPluginRoots: ["/app/packages/plugins"],
       instanceInfo,
@@ -302,7 +302,7 @@ describe("buildPluginWorkerEnv", () => {
         capabilities: ["environment.drivers.register"],
         environmentDrivers: [{ driverKey: "daytona" }],
       },
-      packageName: "@paperclipai/plugin-daytona",
+      packageName: "@simplexy/plugin-daytona",
       packagePath: "/home/operator/.paperclip/plugins/fake-daytona",
       trustedLocalPluginRoots: ["/app/packages/plugins"],
       instanceInfo,
@@ -342,7 +342,7 @@ describe("buildPluginWorkerEnv", () => {
         capabilities: ["environment.drivers.register"],
         environmentDrivers: [{ driverKey: "kubernetes" }],
       },
-      packageName: "@paperclipai/plugin-daytona",
+      packageName: "@simplexy/plugin-daytona",
       instanceInfo,
       processEnv: {
         DAYTONA_API_KEY: "daytona-token",

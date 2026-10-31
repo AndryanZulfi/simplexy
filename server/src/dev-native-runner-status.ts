@@ -4,8 +4,8 @@ import {
   createDb,
   heartbeatRuns,
   nativeRunFinalizations,
-} from "@paperclipai/db";
-import { resolveMigrationConnection } from "@paperclipai/db/migration-runtime";
+} from "@simplexy/db";
+import { resolveMigrationConnection } from "@simplexy/db/migration-runtime";
 import { localPaperclipRunnerSupported } from "./lib/agent-runner-platform.js";
 
 import { instanceSettingsService } from "./services/instance-settings.js";

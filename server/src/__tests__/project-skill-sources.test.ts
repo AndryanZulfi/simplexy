@@ -1,5 +1,5 @@
 import { resolveExternalTestDatabaseUrl } from './helpers/external-test-database.js';
-import { applyPendingMigrations } from '@paperclipai/db';
+import { applyPendingMigrations } from '@simplexy/db';
 import { reserveInitialSkillWork } from '../services/skill-source-import-budget.js';
 import { admitDeferredSkillImports, lockSkillImportQueue, MAX_COMPANY_PENDING_SKILL_IMPORTS, MAX_PROJECT_PENDING_SKILL_IMPORTS, SKILL_IMPORT_CAPACITY_WAIT } from '../services/skill-source-import-queue.js';
 import { randomUUID } from 'node:crypto';
@@ -9,7 +9,7 @@ import path from 'node:path';
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 import { and, eq, sql } from 'drizzle-orm';
 import { activityLog, agents, authUsers, companies, companyMemberships, companySkillSources, companySkillImportBudgets, companySkills, createDb, projects,
-  projectWorkspaces, projectSkillSources, projectAccessMembers } from '@paperclipai/db';
+  projectWorkspaces, projectSkillSources, projectAccessMembers } from '@simplexy/db';
 import { startEmbeddedPostgresTestDatabase, getEmbeddedPostgresTestSupport } from './helpers/embedded-postgres.js';
 import { githubFixture } from './helpers/github-skills.js';
 import { enqueueProjectSkillSource, detachProjectSkillSource, projectSkillSetupIdentity } from '../services/project-skill-source-bindings.js';

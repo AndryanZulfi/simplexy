@@ -3,8 +3,11 @@ set -euo pipefail
 
 base_cwd="${PAPERCLIP_WORKSPACE_BASE_CWD:?PAPERCLIP_WORKSPACE_BASE_CWD is required}"
 worktree_cwd="${PAPERCLIP_WORKSPACE_CWD:?PAPERCLIP_WORKSPACE_CWD is required}"
-paperclip_home="${PAPERCLIP_HOME:-$HOME/.paperclip}"
-paperclip_instance_id="${PAPERCLIP_INSTANCE_ID:-default}"
+paperclip_home="${SIMPLEXY_HOME:-${PAPERCLIP_HOME:-$HOME/.simplexy}}"
+if [[ ! -d "$paperclip_home" && -d "$HOME/.paperclip" ]]; then
+  paperclip_home="$HOME/.paperclip"
+fi
+paperclip_instance_id="${SIMPLEXY_INSTANCE_ID:-${PAPERCLIP_INSTANCE_ID:-default}}"
 default_source_config_path="$paperclip_home/instances/$paperclip_instance_id/config.json"
 paperclip_dir="$worktree_cwd/.paperclip"
 worktree_config_path="$paperclip_dir/config.json"

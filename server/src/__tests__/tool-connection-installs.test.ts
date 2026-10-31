@@ -16,7 +16,7 @@ import {
   toolProfileEntries,
   toolProfiles,
   type Db,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { and, eq } from "drizzle-orm";
 import { errorHandler } from "../middleware/index.js";
 import { toolAccessRoutes } from "../routes/tool-access.js";

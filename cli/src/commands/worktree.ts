@@ -25,12 +25,12 @@ import { and, eq, inArray, sql } from "drizzle-orm";
 import {
   resolveCanonicalWorktreeSeedSource,
   resolveRegisteredWorktreeSeedSource,
-} from "@paperclipai/shared/worktree-seed-source";
+} from "@simplexy/shared/worktree-seed-source";
 import {
   readWorktreePortRegistry,
   withWorktreePortRegistryLock,
   writeWorktreePortRegistry,
-} from "@paperclipai/shared/worktree-port-registry";
+} from "@simplexy/shared/worktree-port-registry";
 import {
   applyPendingMigrations,
   agents,
@@ -65,7 +65,7 @@ import {
   formatEmbeddedPostgresError,
   loadWithoutEmbeddedPostgresExitHooks,
   prepareEmbeddedPostgresNativeRuntime,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import type { Command } from "commander";
 import { ensureAgentJwtSecret, ensureToolActionSigningSecret, loadPaperclipEnvFile, mergePaperclipEnvEntries, readPaperclipEnvEntries, resolvePaperclipEnvFile } from "../config/env.js";
 import { expandHomePrefix } from "../config/home.js";

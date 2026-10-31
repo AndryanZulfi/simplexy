@@ -5,9 +5,9 @@ import { resolveOAuthClientIdMetadataDocumentUrl } from "./client-metadata.js";
 import type { OAuthProviderEndpoints, OAuthClientRegistrationSource } from "./types.js";
 import { connectionMethodForConnection } from "../connection-methods.js";
 import { and, eq } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
-import { toolConnections } from "@paperclipai/db";
-import type { AppDefinition } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import { toolConnections } from "@simplexy/db";
+import type { AppDefinition } from "@simplexy/shared";
 import { notFound, unprocessable } from "../../../errors.js";
 import { type RemoteHttpEndpointLookup } from "../../remote-http-endpoint-guard.js";
 

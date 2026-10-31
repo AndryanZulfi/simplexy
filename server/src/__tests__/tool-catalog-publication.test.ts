@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { and, eq, sql } from "drizzle-orm";
-import { agents, companies, createDb, toolApplications, toolConnections, toolCatalogEntries, toolProfiles, toolProfileBindings, toolProfileEntries, type Db } from "@paperclipai/db";
+import { agents, companies, createDb, toolApplications, toolConnections, toolCatalogEntries, toolProfiles, toolProfileBindings, toolProfileEntries, type Db } from "@simplexy/db";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { toolAccessService } from "../services/tool-access.js";

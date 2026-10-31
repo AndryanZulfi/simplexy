@@ -10,9 +10,9 @@ import { queryKeys } from "../lib/queryKeys";
 import { getRememberedInvitePath } from "../lib/invite-memory";
 import { Button } from "@/components/ui/button";
 import { AsciiArtAnimation } from "@/components/AsciiArtAnimation";
-import { PaperclipLoading } from "@/components/AnimatedPaperclipIcon";
+import { SimplexyLoading } from "@/components/AnimatedPaperclipIcon";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { PaperclipLockup } from "../components/PaperclipLockup";
+import { SimplexyLockup } from "../components/SimplexyLockup";
 
 type AuthMode = "sign_in" | "sign_up";
 
@@ -85,7 +85,7 @@ export function AuthPage() {
   if (healthQuery.isLoading || isSessionLoading || session) {
     return (
       <div className="fixed inset-0 flex items-center justify-center">
-        <PaperclipLoading className="min-h-0" />
+        <SimplexyLoading className="min-h-0" />
       </div>
     );
   }
@@ -108,7 +108,7 @@ export function AuthPage() {
       <div className="w-full md:w-1/2 flex flex-col overflow-y-auto">
         <div className="w-full max-w-md mx-auto my-auto px-8 py-12">
           <div className="mb-8">
-            <PaperclipLockup className="h-8 w-auto" />
+            <SimplexyLockup className="h-8 w-auto" />
           </div>
 
           <h1 className="text-xl font-semibold">

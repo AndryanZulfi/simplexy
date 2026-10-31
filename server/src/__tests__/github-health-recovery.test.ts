@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import { loadGitHubGrantMetadata } from "../services/tool-access.js";
 import { createConnectionHealth } from "../services/tool-access/catalog/health.js";
 

@@ -3,7 +3,7 @@ import os from "node:os";
 import path from "node:path";
 import { expect, test as base, type APIRequestContext, type APIResponse, type Page } from "@playwright/test";
 import { parse, stringify } from "yaml";
-import type { AgentConfigurationDocument } from "@paperclipai/shared";
+import type { AgentConfigurationDocument } from "@simplexy/shared";
 import { startReviewProvider } from "../fixtures/connection-review-provider";
 
 const test = base.extend<{ toolProvider: Awaited<ReturnType<typeof startReviewProvider>>; settings: void }>({

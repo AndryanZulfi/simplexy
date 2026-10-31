@@ -3,8 +3,8 @@ import { slackSlashTaskRecoveryPayload, slackTaskStarterThreadId } from "./task-
 import { SLACK_COMMAND_POST_STALE_MS, SLACK_COMMAND_EXPLICIT_RETRY_STALE_MS } from "../../chat-action-work.js";
 import { notifyChatActionWork } from "../../chat-work-notifications.js";
 import { and, eq, lte, ne, or, sql } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
-import { chatActions, chatEndpointResources, chatExternalPrincipals, chatIdentityLinks, companyMemberships } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
+import { chatActions, chatEndpointResources, chatExternalPrincipals, chatIdentityLinks, companyMemberships } from "@simplexy/db";
 import { conflict, notFound } from "../../../errors.js";
 import { logActivity } from "../../activity-log.js";
 import type { createSlackTaskStart } from "./task-start.js";

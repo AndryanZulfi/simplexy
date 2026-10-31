@@ -10,14 +10,14 @@ import {
   agentInstructionHeads as heads,
   agentInstructionRevisions as revisions,
   type Db,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import type {
   AgentInstructionCommitReceipt,
   AgentInstructionDiff,
   AgentInstructionHistory,
   AgentInstructionSnapshot,
   AgentInstructionSource,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { conflict, forbidden, notFound, unprocessable } from "../errors.js";
 import {
   agentInstructionsBundleMode,

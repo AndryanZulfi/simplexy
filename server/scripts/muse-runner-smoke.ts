@@ -1,7 +1,7 @@
 /** Opt-in deterministic operator smoke against an isolated loopback server.
  * This scripts a synthetic external worker through production HTTP/native Runner
  * surfaces. It is not a registered Product E2E campaign or live Muse qualification.
- * pnpm --filter @paperclipai/server exec tsx scripts/muse-runner-smoke.ts --run --base http://127.0.0.1:3311 \
+ * pnpm --filter @simplexy/server exec tsx scripts/muse-runner-smoke.ts --run --base http://127.0.0.1:3311 \
  *   --auth-file /private/path/operator.json --company <uuid> --agent <uuid> \
  *   --instance <instance-id> --server-source-sha <40-char-sha> --evidence-dir /private/path/evidence
  */

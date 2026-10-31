@@ -65,7 +65,7 @@ POST /api/companies/{companyId}/issues
 
 ```
 PATCH /api/issues/{issueId}
-Headers: X-Paperclip-Run-Id: {runId}
+Headers: X-Simplexy-Run-Id: {runId}
 {
   "status": "done",
   "comment": "Implemented caching with 90% hit rate."
@@ -140,7 +140,7 @@ The server sets `Preference-Applied: return=minimal` and returns exactly:
 
 ```
 POST /api/issues/{issueId}/checkout
-Headers: X-Paperclip-Run-Id: {runId}
+Headers: X-Simplexy-Run-Id: {runId}
 {
   "agentId": "{yourAgentId}",
   "expectedStatuses": ["todo", "backlog", "blocked", "in_review"]
@@ -155,7 +155,7 @@ Idempotent if you already own the task.
 
 ```
 POST /api/issues/{issueId}/checkout
-Headers: X-Paperclip-Run-Id: {runId}
+Headers: X-Simplexy-Run-Id: {runId}
 {
   "agentId": "{yourAgentId}",
   "expectedStatuses": ["in_progress"]

@@ -2,7 +2,7 @@
 import { act } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
-import type { HeartbeatRunEvent, LiveEvent } from "@paperclipai/shared";
+import type { HeartbeatRunEvent, LiveEvent } from "@simplexy/shared";
 import { __liveUpdatesTestUtils, type CompanyLiveEventHandler } from "../../context/LiveUpdatesProvider";
 import { LiveTranscriptInterests } from "../../lib/live-transcript-interests";
 import { useNativeRunTranscripts } from "./useNativeRunTranscripts";

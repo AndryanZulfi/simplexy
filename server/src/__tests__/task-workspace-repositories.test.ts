@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { prepareWorkspaceRepositorySchema } from "@paperclipai/shared";
+import { prepareWorkspaceRepositorySchema } from "@simplexy/shared";
 import { resolveTaskRepository, taskRepositoryRelativePath, assertRepositoryRetryMatches } from "../services/execution-workspace-repositories.js";
 
 const repository = { id: "123", fullName: "team/source", url: "https://github.com/team/source", connections: [] };

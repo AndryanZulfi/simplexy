@@ -1,5 +1,5 @@
 /** Source shim; server build replaces it with the runner's compiled live tree. */
-type RunnerLiveModule = typeof import("@paperclipai/paperclip-runner/live");
+type RunnerLiveModule = typeof import("@simplexy/paperclip-runner/live");
 const sourceUrl = new URL(
   "../../../../../packages/paperclip-runner/src/live/index.ts",
   import.meta.url,

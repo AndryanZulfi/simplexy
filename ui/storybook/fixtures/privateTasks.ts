@@ -4,7 +4,7 @@ import type {
   IssueAccessGrant,
   Project,
   ProjectAccessMember,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import type { CurrentBoardAccess } from "@/api/access";
 import {
   storybookAgents,

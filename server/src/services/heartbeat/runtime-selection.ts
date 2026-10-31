@@ -22,15 +22,15 @@ import type { buildExecutionContinuation } from "../execution-continuation.js";
 import type { agentInstructionWorkingCopyService } from "../agent-instruction-working-copies.js";
 import { createHash, randomUUID } from "node:crypto";
 import { and, eq, inArray, sql } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
-import { agentHarnessType, CHAT_PROVIDERS } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import { agentHarnessType, CHAT_PROVIDERS } from "@simplexy/shared";
 import {
   type agents,
   completionContracts,
   heartbeatRunEvents,
   heartbeatRuns,
   nativeRunFinalizations,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { getStartupTracer } from "../../instrumentation.js";
 import { documentService } from "../documents.js";
 import { managedAgentProfileService } from "../managed-agent-profiles.js";
@@ -78,8 +78,8 @@ import { CHAT_CONTROL_RECOVERY_ADMISSION_KEY } from "../chat-control-recovery-st
 import { NATIVE_PREPARATION_FENCING_VERSION } from "../native-runtime/native-active-runs.js";
 import type { issueService } from "../issues.js";
 import { buildPlanReviewContext } from "../plan-review-context.js";
-import { resolvePaperclipRunnerIdleTimeoutMs } from "@paperclipai/adapter-utils";
-import { normalizePaperclipWakePayload, selectPaperclipTaskMarkdown } from "@paperclipai/adapter-utils/server-utils";
+import { resolvePaperclipRunnerIdleTimeoutMs } from "@simplexy/adapter-utils";
+import { normalizePaperclipWakePayload, selectPaperclipTaskMarkdown } from "@simplexy/adapter-utils/server-utils";
 import type { ProviderResourceDisposition } from "../environment-runtime.js";
 
 type Run = typeof heartbeatRuns.$inferSelect;

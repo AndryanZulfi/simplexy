@@ -11,7 +11,7 @@ import { notifyChatDeliveryWork } from "../../chat-work-notifications.js";
 
 import type { ChatEndpointRuntime } from "../../voice/voice-runtime.js";
 
-import type { GitHubReviewEventContext, GitHubIssueEventContext, GitHubReviewPolicy } from "@paperclipai/shared";
+import type { GitHubReviewEventContext, GitHubIssueEventContext, GitHubReviewPolicy } from "@simplexy/shared";
 
 import {
   createHash,
@@ -31,13 +31,13 @@ import {
   externalThreadIdentityCondition,
 } from "../../chat-control-chronology.js";
 
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 
 import {
   chatDeliveries,
   chatEndpointLeases,
   chatEndpoints,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 
 import {
   normalizeContentType,

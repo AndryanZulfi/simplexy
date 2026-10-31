@@ -49,7 +49,7 @@ export function loadKit(id: DirectionId): Promise<DirectionKit> {
 
 ## 2. Adapters: lab fixtures to product types
 
-**GENERIC pattern** (`directions/today/adapters.ts`): pure functions `LabRecord -> product type`, one per prop type the mounted components take, each mirroring what the server would produce. Pin the base object with `} satisfies Partial<IssueWorkProduct>;` (`adapters.ts:64`) so field drift against `@paperclipai/shared` fails typecheck. Deterministic ids, verbatim (`adapters.ts:14-25`):
+**GENERIC pattern** (`directions/today/adapters.ts`): pure functions `LabRecord -> product type`, one per prop type the mounted components take, each mirroring what the server would produce. Pin the base object with `} satisfies Partial<IssueWorkProduct>;` (`adapters.ts:64`) so field drift against `@simplexy/shared` fails typecheck. Deterministic ids, verbatim (`adapters.ts:14-25`):
 
 ```ts
 export function guid(seed: string): string {

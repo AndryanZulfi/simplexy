@@ -1,7 +1,7 @@
 import { useCoordinatorWorkspaceEnabled } from "./hooks/useCoordinatorWorkspaceEnabled";
 import { AgentChats } from "./pages/AgentChats";
 import { lazy, Suspense, useEffect, type ReactNode } from "react";
-import type { ToolConnectionCredentialSource } from "@paperclipai/shared";
+import type { ToolConnectionCredentialSource } from "@simplexy/shared";
 import { Navigate, Outlet, Route, Routes, useActiveCompanyPrefix, useLocation, useParams } from "@/lib/router";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/i18n";
@@ -21,7 +21,7 @@ import { OnboardingWizardVariant } from "./components/OnboardingWizardVariant";
 import { CloudAccessGate } from "./components/CloudAccessGate";
 import { ConnectionStatusBanner } from "./components/ConnectionStatusBanner";
 import { ShellConfigurationGate } from "./components/ShellConfigurationGate";
-import { PaperclipLoading } from "./components/AnimatedPaperclipIcon";
+import { SimplexyLoading } from "./components/AnimatedPaperclipIcon";
 import { AGENT_FILTER_TABS } from "./lib/agent-filter-tabs";
 import { useCombinedInboxTasksEnabled } from "./hooks/useCombinedInboxTasksEnabled";
 import { ChatConnectorsExperimentalGate } from "./components/ChatConnectorsExperimentalGate";
@@ -48,7 +48,7 @@ const BoardClaimPage = lazy(() => import("./pages/BoardClaim").then((module) => 
 const CliAuthPage = lazy(() => import("./pages/CliAuth").then((module) => ({ default: module.CliAuthPage })));
 const InviteLandingPage = lazy(() => import("./pages/InviteLanding").then((module) => ({ default: module.InviteLandingPage })));
 const ChatIdentityConfirm = lazy(() => import("./pages/apps/chat/ChatIdentityConfirm").then((module) => ({ default: module.ChatIdentityConfirm })));
-const PaperclipCloudOAuthHandoffPage = lazy(() => import("./pages/apps/PaperclipCloudOAuthHandoff").then((module) => ({ default: module.PaperclipCloudOAuthHandoffPage })));
+const SimplexyCloudOAuthHandoffPage = lazy(() => import("./pages/apps/PaperclipCloudOAuthHandoff").then((module) => ({ default: module.SimplexyCloudOAuthHandoffPage })));
 const McpConnectPage = lazy(() => import("./pages/McpConnect").then((module) => ({ default: module.McpConnectPage })));
 const McpDevicePage = lazy(() => import("./pages/McpConnect").then((module) => ({ default: module.McpDevicePage })));
 const AssistantConnectionsPage = lazy(() => import("./pages/McpConnect").then((module) => ({ default: module.AssistantConnectionsPage })));
@@ -142,7 +142,7 @@ const ProductionCompanyActivity = lazy(() => import("./pages/audit/CompanyActivi
 const ProductionOrgChart = lazy(() => import("./pages/OrgChart.production").then((module) => ({ default: module.OrgChart })));
 
 function ProductionSurface({ children }: { children: ReactNode }) {
-  return <Suspense fallback={<PaperclipLoading />}>{children}</Suspense>;
+  return <Suspense fallback={<SimplexyLoading />}>{children}</Suspense>;
 }
 
 function boardRoutes(streamlinedUiEnabled: boolean, combinedInboxTasksEnabled: boolean) {
@@ -179,7 +179,7 @@ function boardRoutes(streamlinedUiEnabled: boolean, combinedInboxTasksEnabled: b
         <Route
           path="company/export/*"
           element={(
-            <Suspense fallback={<PaperclipLoading />}>
+            <Suspense fallback={<SimplexyLoading />}>
               <CompanyExport />
             </Suspense>
           )}
@@ -510,7 +510,7 @@ function LegacySettingsRedirect() {
   const { hidden: hiddenSettings } = useHiddenSettings();
 
   if (loading) {
-    return <PaperclipLoading />;
+    return <SimplexyLoading />;
   }
 
   const targetCompany =
@@ -649,7 +649,7 @@ function CompanyRootRedirect() {
   const location = useLocation();
 
   if (loading) {
-    return <PaperclipLoading />;
+    return <SimplexyLoading />;
   }
 
   const targetCompany = selectedCompany ?? companies[0] ?? null;
@@ -694,7 +694,7 @@ function UnprefixedBoardRedirect() {
   const { companies, selectedCompany, loading } = useCompany();
 
   if (loading) {
-    return <PaperclipLoading />;
+    return <SimplexyLoading />;
   }
 
   const targetCompany = selectedCompany ?? companies[0] ?? null;
@@ -779,8 +779,8 @@ export function App() {
   return (
     <>
       <ConnectionStatusBanner />
-      <Suspense fallback={<PaperclipLoading />}><Routes>
-        <Route path="oauth-handoff" element={<PaperclipCloudOAuthHandoffPage />} />
+      <Suspense fallback={<SimplexyLoading />}><Routes>
+        <Route path="oauth-handoff" element={<SimplexyCloudOAuthHandoffPage />} />
         <Route path="auth" element={<AuthPage />} />
         <Route path="board-claim/:token" element={<BoardClaimPage />} />
         <Route path="mcp-connect/:id" element={<McpConnectPage />} />

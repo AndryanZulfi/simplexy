@@ -1,6 +1,6 @@
 import { createHash, randomUUID } from "node:crypto";
 import { and, eq, inArray, notInArray, sql } from "drizzle-orm";
-import { executionWorkspaceRestorePoints, executionWorkspaces, type Db } from "@paperclipai/db";
+import { executionWorkspaceRestorePoints, executionWorkspaces, type Db } from "@simplexy/db";
 import type { StoredSecretVersionMaterial } from "../secrets/types.js";
 import type { StorageService } from "../storage/types.js";
 import {

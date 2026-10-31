@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import type { Db } from "@paperclipai/db";
-import { INSTANCE_FEATURE_CATALOG } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import { INSTANCE_FEATURE_CATALOG } from "@simplexy/shared";
 import {
   applyManagedExperimentalOverlay,
   instanceSettingsService,

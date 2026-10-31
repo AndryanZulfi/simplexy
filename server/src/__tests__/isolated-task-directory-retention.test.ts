@@ -19,7 +19,7 @@ import {
   issues,
   nativeRunFinalizations,
   workspaceRuntimeServices,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { executionWorkspaceService } from "../services/execution-workspaces.js";
 import { materializeIsolatedTaskDirectory } from "../services/isolated-task-directory.js";

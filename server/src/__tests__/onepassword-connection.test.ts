@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import { and, eq } from "drizzle-orm";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { agents, companies, companyMemberships, companySecrets, connectionGrants, createDb,
-  heartbeatRuns, issues, toolAccessAuditEvents, toolConnections, userSecretDeclarations } from "@paperclipai/db";
+  heartbeatRuns, issues, toolAccessAuditEvents, toolConnections, userSecretDeclarations } from "@simplexy/db";
 import { toolAccessService } from "../services/tool-access.js";
 import { createToolGatewayService } from "../services/tool-gateway.js";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";

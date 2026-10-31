@@ -23,11 +23,11 @@ import {
   Search,
   X,
 } from "lucide-react";
-import type { IssueDocument } from "@paperclipai/shared";
+import type { IssueDocument } from "@simplexy/shared";
 import type {
   PaperclipQuestionResponse,
   PaperclipQuestionSet,
-} from "@paperclipai/adapter-utils";
+} from "@simplexy/adapter-utils";
 import { InteractionPreparationNotice } from "@/components/InteractionPreparationNotice";
 import { IssueThreadInteractionCard } from "@/components/IssueThreadInteractionCard";
 import { ConnectionIntentInteractionBody } from "@/features/connections/ConnectionIntentInteractionBody";

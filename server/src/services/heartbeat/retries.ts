@@ -30,14 +30,14 @@ import {
   or,
   sql,
 } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import {
   agents,
   agentWakeupRequests,
   executionWorkspaces,
   heartbeatRuns,
   issues,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   HttpError,
   notFound,

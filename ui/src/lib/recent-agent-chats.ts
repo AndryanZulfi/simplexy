@@ -1,6 +1,6 @@
 import { useCallback, useSyncExternalStore } from "react";
-import type { Agent } from "@paperclipai/shared";
-const eventName = "paperclip:recent-agent-chats";
+import type { Agent } from "@simplexy/shared";
+const eventName = "simplexy:recent-agent-chats";
 const key = (company: string, user?: string | null) =>
   `paperclip.recentAgentChats:${company}:${user ?? "__local_board__"}`;
 const memory = new Map<string, string>();

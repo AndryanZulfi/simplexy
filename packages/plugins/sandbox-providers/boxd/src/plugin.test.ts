@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { PluginEnvironmentCreationCleanupError } from "@paperclipai/plugin-sdk";
+import { PluginEnvironmentCreationCleanupError } from "@simplexy/plugin-sdk";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const sdk = vi.hoisted(() => {

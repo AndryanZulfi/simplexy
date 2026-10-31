@@ -8,7 +8,7 @@ import { randomBytes, randomUUID } from "node:crypto";
 import { and, eq, sql } from "drizzle-orm";
 import { beforeAll, afterAll, afterEach, describe, expect, it, vi } from "vitest";
 import { agents, authUsers, companies, companyMemberships, createDb, dotAgentBindings, grokBotDispatches,
-  grokBotRoutines, mcpOauthGrants, activityLog, issues, heartbeatRuns, dotRunnerAssignments, dotRunnerOperations, dotMailboxItems, nativeRunFinalizations, environmentLeases, environments, issueRecoveryActions, issueComments } from "@paperclipai/db";
+  grokBotRoutines, mcpOauthGrants, activityLog, issues, heartbeatRuns, dotRunnerAssignments, dotRunnerOperations, dotMailboxItems, nativeRunFinalizations, environmentLeases, environments, issueRecoveryActions, issueComments } from "@simplexy/db";
 import { startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { accessService } from "../services/access.js";
 import { instanceSettingsService } from "../services/instance-settings.js";

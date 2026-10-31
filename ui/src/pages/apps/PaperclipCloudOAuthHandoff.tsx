@@ -56,7 +56,7 @@ export function ManagedOAuthHandoffState({
 }
 
 /** Fixed tenant landing used only after Simplexy Cloud refreshes login. */
-export function PaperclipCloudOAuthHandoffPage() {
+export function SimplexyCloudOAuthHandoffPage() {
   const [phase, setPhase] = useState<ManagedOAuthHandoffPhase>("loading");
   const [error, setError] = useState<string | null>(null);
 
@@ -100,3 +100,5 @@ export function PaperclipCloudOAuthHandoffPage() {
     />
   );
 }
+
+export const PaperclipCloudOAuthHandoffPage = SimplexyCloudOAuthHandoffPage;

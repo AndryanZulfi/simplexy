@@ -170,7 +170,7 @@ export interface PluginEnvironmentTaskParams extends Omit<PluginEnvironmentDrive
   agentId: string | null;
   /** Company-validated projects to prepare on submit; empty during cleanup. */
   projectIds: string[];
-  workspace?: import("@paperclipai/shared").WorkspaceProviderBinding;
+  workspace?: import("@simplexy/shared").WorkspaceProviderBinding;
   fresh?: import("./workspace-provider.js").PluginFreshWorkspace;
   operation: PluginEnvironmentTaskOperation;
 }

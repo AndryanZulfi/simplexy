@@ -1,4 +1,4 @@
-import { isOpenRouterUrl, openRouterAttributionHeaders } from "@paperclipai/adapter-utils/openrouter-attribution";
+import { isOpenRouterUrl, openRouterAttributionHeaders } from "@simplexy/adapter-utils/openrouter-attribution";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";

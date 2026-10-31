@@ -28,7 +28,7 @@ import type {
   ChatPublicationState,
   ChatResourceAvailability,
   SafeChatPublicationPayload,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { agents } from "./agents.js";
 import { companies } from "./companies.js";
 import { issueComments } from "./issue_comments.js";

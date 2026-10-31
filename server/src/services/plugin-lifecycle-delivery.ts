@@ -1,6 +1,6 @@
 import { projectInstanceSecretService } from "./project-instance-secrets.js";
 import { and, asc, eq, isNull, or, sql } from "drizzle-orm";
-import { pluginCompanySettings, pluginConfig, plugins, type Db } from "@paperclipai/db";
+import { pluginCompanySettings, pluginConfig, plugins, type Db } from "@simplexy/db";
 import { logger } from "../middleware/logger.js";
 import { pluginLifecycleInbox } from "./plugin-lifecycle-inbox.js";
 import { DELIVERY_QUEUES } from "./delivery-work-notifications.js";

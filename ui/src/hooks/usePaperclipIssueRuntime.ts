@@ -6,24 +6,27 @@ import {
   type ExternalStoreAdapter,
 } from "@assistant-ui/react";
 
-export interface PaperclipIssueRuntimeReassignment {
+export interface SimplexyIssueRuntimeReassignment {
   assigneeAgentId: string | null;
   assigneeUserId: string | null;
 }
+export type PaperclipIssueRuntimeReassignment = SimplexyIssueRuntimeReassignment;
 
-export interface PaperclipIssueRuntimeSendOptions {
+export interface SimplexyIssueRuntimeSendOptions {
   body: string;
   reopen?: boolean;
-  reassignment?: PaperclipIssueRuntimeReassignment;
+  reassignment?: SimplexyIssueRuntimeReassignment;
   attachmentIds?: string[];
 }
+export type PaperclipIssueRuntimeSendOptions = SimplexyIssueRuntimeSendOptions;
 
-interface UsePaperclipIssueRuntimeOptions {
+export interface UseSimplexyIssueRuntimeOptions {
   messages: readonly ThreadMessage[];
   isRunning: boolean;
-  onSend: (options: PaperclipIssueRuntimeSendOptions) => Promise<void>;
+  onSend: (options: SimplexyIssueRuntimeSendOptions) => Promise<void>;
   onCancel?: (() => Promise<void>) | undefined;
 }
+export type UsePaperclipIssueRuntimeOptions = UseSimplexyIssueRuntimeOptions;
 
 function asRecord(value: unknown): Record<string, unknown> | null {
   if (typeof value !== "object" || value === null || Array.isArray(value))
@@ -44,12 +47,12 @@ function readTextContent(message: AppendMessage) {
     .trim();
 }
 
-export function usePaperclipIssueRuntime({
+export function useSimplexyIssueRuntime({
   messages,
   isRunning,
   onSend,
   onCancel,
-}: UsePaperclipIssueRuntimeOptions) {
+}: UseSimplexyIssueRuntimeOptions) {
   const onSendRef = useRef(onSend);
   const onCancelRef = useRef(onCancel);
   onSendRef.current = onSend;
@@ -113,3 +116,5 @@ export function usePaperclipIssueRuntime({
 
   return useExternalStoreRuntime(adapter);
 }
+
+export const usePaperclipIssueRuntime = useSimplexyIssueRuntime;

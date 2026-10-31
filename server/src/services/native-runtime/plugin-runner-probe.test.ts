@@ -12,8 +12,8 @@ const { spawnRunner } = await import(new URL("../../../../packages/paperclip-run
   spawnRunner: (options: any) => RunnerProcessHandle;
 };
 import { readRunnerdArtifactBinding, createRunnerdCodexTransport, canonicalNativeRuntimeContextDigest, type NativeRuntimeContextSnapshot } from "../../vendor/paperclip-runner/index.js";
-import { bindRunnerLaunchResources, createRunnerProviderLaunch, runnerLaunchRequirementsDigest } from "@paperclipai/paperclip-runner";
-import type { PluginEnvironmentTaskOperation, PluginEnvironmentTaskResult } from "@paperclipai/plugin-sdk";
+import { bindRunnerLaunchResources, createRunnerProviderLaunch, runnerLaunchRequirementsDigest } from "@simplexy/paperclip-runner";
+import type { PluginEnvironmentTaskOperation, PluginEnvironmentTaskResult } from "@simplexy/plugin-sdk";
 import { createPluginRunnerTaskOwner } from "./plugin-runner-task.js";
 import { probePluginRunnerEnvironment } from "./plugin-runner-probe.js";
 

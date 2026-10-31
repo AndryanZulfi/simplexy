@@ -1,8 +1,8 @@
 import { and, desc, eq, isNull, ne, sql } from "drizzle-orm";
-import { activityLog, agents, companies, dotAgentBindings, type Db } from "@paperclipai/db";
+import { activityLog, agents, companies, dotAgentBindings, type Db } from "@simplexy/db";
 import { agentService } from "./agents.js";
 import { createAgentLifecycle, scheduleAgentLifecycle } from "./agent-lifecycle.js";
-import { withDedicatedDbConnection } from "@paperclipai/db";
+import { withDedicatedDbConnection } from "@simplexy/db";
 import { approvalService } from "./approvals.js";
 import { accessService } from "./access.js";
 import { agentInstructionsService } from "./agent-instructions.js";

@@ -1,4 +1,4 @@
-/** Disposable PostgreSQL repro. Run: pnpm --filter @paperclipai/server exec tsx ../scripts/benchmark-slow-queries.ts */
+/** Disposable PostgreSQL repro. Run: pnpm --filter @simplexy/server exec tsx ../scripts/benchmark-slow-queries.ts */
 import assert from "node:assert/strict";
 import { randomBytes, randomUUID } from "node:crypto";
 import { execFileSync } from "node:child_process";

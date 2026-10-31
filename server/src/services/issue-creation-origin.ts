@@ -1,7 +1,7 @@
 import { sql } from "drizzle-orm";
 import { alias } from "drizzle-orm/pg-core";
-import { activityLog, heartbeatRuns, issues } from "@paperclipai/db";
-import { isUuidLike } from "@paperclipai/shared";
+import { activityLog, heartbeatRuns, issues } from "@simplexy/db";
+import { isUuidLike } from "@simplexy/shared";
 import { unprocessable } from "../errors.js";
 
 /** Creation provenance is independent of the task's current parent or project. */

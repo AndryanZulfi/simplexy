@@ -20,7 +20,7 @@ import type {
   SecretProviderDescriptor,
   SidebarBadges,
   WorkspaceRuntimeService,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import type { RunForIssue } from "@/api/activity";
 import type { LiveRunForIssue } from "@/api/heartbeats";
 
@@ -391,7 +391,7 @@ const storybookWorkspaceRuntime = {
       id: "typecheck-ui",
       name: "UI typecheck",
       kind: "job",
-      command: "pnpm --filter @paperclipai/ui typecheck",
+      command: "pnpm --filter @simplexy/ui typecheck",
       cwd: ".",
     },
   ],

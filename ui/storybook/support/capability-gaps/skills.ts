@@ -1,4 +1,4 @@
-import type { CompanySkillDetail } from "@paperclipai/shared";
+import type { CompanySkillDetail } from "@simplexy/shared";
 export function makeSkill(
   overrides: Partial<CompanySkillDetail> = {},
 ): CompanySkillDetail {

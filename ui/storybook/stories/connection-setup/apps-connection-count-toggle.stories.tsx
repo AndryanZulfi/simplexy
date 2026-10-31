@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, within } from "storybook/test";
-import { getAppStoreDefinition, type ToolApplication, type ToolConnection } from "@paperclipai/shared";
+import { getAppStoreDefinition, type ToolApplication, type ToolConnection } from "@simplexy/shared";
 import { ManagedAiConnectionRow } from "@/components/ai-connections/ManagedAiConnectionDetails";
 import { ConnectorCard } from "@/pages/apps/Browse";
 import type { ComponentProps } from "react";

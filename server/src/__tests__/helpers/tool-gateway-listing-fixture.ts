@@ -5,7 +5,7 @@ import {
   agents, companies, createDb, heartbeatRuns, issues, principalPermissionGrants,
   projects, toolApplications, toolCatalogEntries, toolConnections, toolPolicies,
   toolProfileBindings, toolProfileEntries, toolProfiles,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { createToolGatewayService } from "../../services/tool-gateway.js";
 
 type Db = ReturnType<typeof createDb>;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import type { Agent, AskUserQuestionsInteraction, IssueAttachment, IssueComment } from "@paperclipai/shared";
+import type { Agent, AskUserQuestionsInteraction, IssueAttachment, IssueComment } from "@simplexy/shared";
 import { TaskChatThread } from "@/components/TaskChatThread";
 import { DocumentCard } from "@/components/artifacts/RichArtifactCards";
 import { Button } from "@/components/ui/button";

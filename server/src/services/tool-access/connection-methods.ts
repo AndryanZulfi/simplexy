@@ -1,5 +1,5 @@
 import { parseRemoteHttpEndpoint } from "../remote-http-endpoint-guard.js";
-import type { AppDefinition, ConnectionMethodDef, ToolConnectionTransport } from "@paperclipai/shared";
+import type { AppDefinition, ConnectionMethodDef, ToolConnectionTransport } from "@simplexy/shared";
 import {
   credentialConfigPath,
   getAvailableConnectionMethod,
@@ -9,7 +9,7 @@ import {
   checkMcpRemoteHeaderName,
   checkMcpRemoteHeaderValue,
   mcpRemoteHeaderRejectionMessage,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { badRequest, unprocessable } from "../../errors.js";
 import { isPaperclipCloudConnectorStrategy } from "../paperclip-cloud-connector.js";
 import { honchoManagedArguments } from "../honcho-connection.js";

@@ -1,8 +1,8 @@
 import { randomUUID } from "node:crypto";
-import { LOW_TRUST_REVIEW_PRESET, DEFAULT_TRUST_PRESET } from "@paperclipai/shared";
+import { LOW_TRUST_REVIEW_PRESET, DEFAULT_TRUST_PRESET } from "@simplexy/shared";
 import { and, desc, eq } from "drizzle-orm";
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from "vitest";
-import { agents, approvals, authUsers, companies, companyMemberships, createDb, completionContracts, nativeRunResults, workAssessments, statusDecisions, issueApprovals, documents, documentRevisions, externalAgentHolds, heartbeatRuns, instanceUserRoles, issueAccessGrants, issues, issueDocuments, issueThreadInteractions, principalPermissionGrants, projectAccessMembers, projects } from "@paperclipai/db";
+import { agents, approvals, authUsers, companies, companyMemberships, createDb, completionContracts, nativeRunResults, workAssessments, statusDecisions, issueApprovals, documents, documentRevisions, externalAgentHolds, heartbeatRuns, instanceUserRoles, issueAccessGrants, issues, issueDocuments, issueThreadInteractions, principalPermissionGrants, projectAccessMembers, projects } from "@simplexy/db";
 import { startEmbeddedPostgresTestDatabase } from "../../__tests__/helpers/embedded-postgres.js";
 import { approvalReadSqlCondition, authorizationService, canActorReadIssuePrivacy, issueReadSqlCondition, projectReadSqlCondition, type AuthorizationActor } from "../authorization.js";
 import { claimQueuedNativeReviewRun } from "./native-review-dispatch.js";

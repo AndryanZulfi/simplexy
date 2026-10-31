@@ -4,7 +4,7 @@ import type {
   ConnectionGrant,
   ConnectionGrantsResponse,
   ToolConnection,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { BrowserUseSettingsPanel } from "@/pages/apps/app-detail/BrowserUseSettingsPanel";
 import { BrowserStoryProviders, mockBrowserUse } from "../../fixtures/browser-use";
 const connection = {

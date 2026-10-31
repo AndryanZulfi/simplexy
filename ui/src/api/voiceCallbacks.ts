@@ -1,4 +1,4 @@
-import type { VoiceCallbackPreference } from "@paperclipai/shared";
+import type { VoiceCallbackPreference } from "@simplexy/shared";
 import { api } from "./client";
 const path = (companyId: string, endpointId: string) => `/companies/${encodeURIComponent(companyId)}/voice-callbacks/${encodeURIComponent(endpointId)}`;
 export const voiceCallbacksApi = {

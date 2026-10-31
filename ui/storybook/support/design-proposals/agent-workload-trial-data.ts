@@ -1,4 +1,4 @@
-import type { Agent, Issue } from "@paperclipai/shared";
+import type { Agent, Issue } from "@simplexy/shared";
 import { createIssue, storybookAgents, storybookAuthSession, storybookCompanies } from "../../fixtures/paperclipData";
 
 export const workloadAgentIds = {

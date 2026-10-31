@@ -10,7 +10,7 @@ import {
   issues,
   plugins,
   pluginCompanySettings,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   preparePluginWorkspace,
   inspectPluginWorkspace,

@@ -1,11 +1,11 @@
 import { AsyncLocalStorage } from "node:async_hooks";
-import { withDedicatedDbConnection, type Db } from "@paperclipai/db";
+import { withDedicatedDbConnection, type Db } from "@simplexy/db";
 import { sql } from "drizzle-orm";
 import path from "node:path";
 import fs from "node:fs/promises";
 import { execFile as execFileCallback } from "node:child_process";
 import { promisify } from "node:util";
-import type { TaskWorkspaceIntent } from "@paperclipai/shared";
+import type { TaskWorkspaceIntent } from "@simplexy/shared";
 import { isGitHubHttpsRemoteUrl, type GitRemoteAuthProvider } from "./git-credentials.js";
 import { resolvePaperclipInstanceRoot } from "../home-paths.js";
 import { materializeManagedProjectWorkspace } from "./managed-repository-checkout.js";

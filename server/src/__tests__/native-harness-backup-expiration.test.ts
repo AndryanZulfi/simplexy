@@ -14,7 +14,7 @@ import {
   issues,
   nativeRunFinalizations,
   nativeRunnerCheckpoints,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { recoveryPostgresSupport as embeddedPostgresSupport, startRecoveryPostgres } from "./helpers/recovery-postgres.js";
 import { nativeHarnessBackupExpirationService } from "../services/native-runtime/native-harness-backup-expiration.ts";
 import { createDeliveryWorkCoordinator } from "../services/delivery-work-coordinator.js";

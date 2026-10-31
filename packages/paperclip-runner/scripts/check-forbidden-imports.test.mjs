@@ -121,7 +121,7 @@ async function fixtureBoundary(t, { manifest = {}, files = {} } = {}) {
   return checkForbiddenImports({ packageRoot: root, scanRoots: ["src"], cargoRoots: [] });
 }
 
-const kernel = "@paperclipai/paperclip-eval-kernel";
+const kernel = "@simplexy/paperclip-eval-kernel";
 const harness = "src/eval/workflow-harness.ts";
 const reviewedManifest = {
   exports: { "./evals": "./dist/evals.js" },
@@ -132,13 +132,13 @@ test("only exact declared public subpaths are admitted", async (t) => {
   const violations = await fixtureBoundary(t, {
     manifest: reviewedManifest,
     files: { "src/consumer.ts": [
-      'import "@paperclipai/paperclip-runner/evals";',
-      'import "@paperclipai/paperclip-runner/evals/private";',
-      'import "@paperclipai/paperclip-runner/undeclared";',
+      'import "@simplexy/paperclip-runner/evals";',
+      'import "@simplexy/paperclip-runner/evals/private";',
+      'import "@simplexy/paperclip-runner/undeclared";',
     ].join("\n") },
   });
   assert.deepEqual(violations.map(({ specifier }) => specifier), [
-    "@paperclipai/paperclip-runner/evals/private", "@paperclipai/paperclip-runner/undeclared",
+    "@simplexy/paperclip-runner/evals/private", "@simplexy/paperclip-runner/undeclared",
   ]);
 });
 
@@ -148,7 +148,7 @@ test("ADR0001 permits only the private development harness and reviewed package"
     files: { [harness]: `import { scenario } from "${kernel}";`, "src/evals.ts": "export const publicApi = true;" },
   }), []);
   for (const [file, specifier] of [
-    ["src/other.ts", kernel], [harness, `${kernel}/private`], [harness, "@paperclipai/other"],
+    ["src/other.ts", kernel], [harness, `${kernel}/private`], [harness, "@simplexy/other"],
   ]) {
     const violations = await fixtureBoundary(t, {
       manifest: reviewedManifest, files: { [file]: `import "${specifier}";` },

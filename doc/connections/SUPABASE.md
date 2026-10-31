@@ -84,27 +84,27 @@ entitlements and cost handling.
 ```mermaid
 sequenceDiagram
     participant User
-    participant Paperclip
+    participant Simplexy
     participant Vault
     participant Supabase
-    User->>Paperclip: Select Supabase method and agent access
+    User->>Simplexy: Select Supabase method and agent access
     alt Hosted MCP browser sign-in
-        Paperclip->>Supabase: Read protected resource and issuer metadata
-        Paperclip->>Supabase: Register instance OAuth client
-        Paperclip->>User: Open authorization URL
+        Simplexy->>Supabase: Read protected resource and issuer metadata
+        Simplexy->>Supabase: Register instance OAuth client
+        Simplexy->>User: Open authorization URL
         User->>Supabase: Choose organization and consent
-        Supabase->>Paperclip: Instance callback with authorization code
-        Paperclip->>Supabase: Exchange code with PKCE
+        Supabase->>Simplexy: Instance callback with authorization code
+        Simplexy->>Supabase: Exchange code with PKCE
     else Personal access token
-        User->>Paperclip: Enter token and optional or required project reference
+        User->>Simplexy: Enter token and optional or required project reference
     end
-    Paperclip->>Vault: Store selected grant credential
-    Paperclip->>Supabase: MCP discovery or native project probe
-    User->>Paperclip: Set action permissions
-    Paperclip->>Paperclip: Authorize agent run and selected grant
-    Paperclip->>Vault: Resolve selected invocation credential
-    Paperclip->>Supabase: Invoke permitted action
-    Paperclip->>Paperclip: Record bounded result and audit
+    Simplexy->>Vault: Store selected grant credential
+    Simplexy->>Supabase: MCP discovery or native project probe
+    User->>Simplexy: Set action permissions
+    Simplexy->>Simplexy: Authorize agent run and selected grant
+    Simplexy->>Vault: Resolve selected invocation credential
+    Simplexy->>Supabase: Invoke permitted action
+    Simplexy->>Simplexy: Record bounded result and audit
 ```
 
 The editable diagram is also in [supabase-flow.mmd](./supabase-flow.mmd).

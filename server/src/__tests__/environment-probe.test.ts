@@ -17,7 +17,7 @@ const mockEnvironmentRuntimeService = vi.hoisted(() => vi.fn(() => ({
 })));
 vi.mock("../services/environments.js", () => ({ environmentService: () => ({ recordSandboxPlatformProbe: mockRecordPlatformProbe }) }));
 
-vi.mock("@paperclipai/adapter-utils/ssh", () => ({
+vi.mock("@simplexy/adapter-utils/ssh", () => ({
   ensureSshWorkspaceReady: mockEnsureSshWorkspaceReady,
 }));
 

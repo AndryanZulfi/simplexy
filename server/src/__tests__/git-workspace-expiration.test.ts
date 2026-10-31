@@ -8,7 +8,7 @@ import { pathToFileURL } from "node:url";
 import { createRequire } from "node:module";
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 import { eq, sql } from "drizzle-orm";
-import { companies, projects, projectWorkspaces, issues, executionWorkspaces, agents, heartbeatRuns, issueRecoveryActions, nativeRunFinalizations, workspaceRuntimeServices, executionWorkspaceRestorePoints, createDb } from "@paperclipai/db";
+import { companies, projects, projectWorkspaces, issues, executionWorkspaces, agents, heartbeatRuns, issueRecoveryActions, nativeRunFinalizations, workspaceRuntimeServices, executionWorkspaceRestorePoints, createDb } from "@simplexy/db";
 import { markGitRestorePointExpired } from "../services/git-restore-point-storage.js";
 import { GIT_RESTORE_POINT_EXPIRED_WARNING } from "../services/execution-workspaces.js";
 import { getStorageService } from "../storage/index.js";

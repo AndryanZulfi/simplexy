@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { AppLogo } from "@/pages/apps/AppLogo";
 import { GoogleWorkspaceServiceFields } from "@/features/connections/GoogleWorkspaceServices";
-import { GOOGLE_WORKSPACE_DEFAULT_SELECTION, GOOGLE_WORKSPACE_SERVICE_GROUPS, googleWorkspaceSelectedScopes } from "@paperclipai/shared";
+import { GOOGLE_WORKSPACE_DEFAULT_SELECTION, GOOGLE_WORKSPACE_SERVICE_GROUPS, googleWorkspaceSelectedScopes } from "@simplexy/shared";
 
 const permissionDetails = {
   gmail: "Google’s compose permission also permits sending email. Paperclip currently exposes draft creation, not sending.",

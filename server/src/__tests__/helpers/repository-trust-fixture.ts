@@ -6,7 +6,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { vi, type Mock } from "vitest";
 import { eq } from "drizzle-orm";
-import { agents, authUsers, companies, companyMemberships, createDb, executionWorkspaces, heartbeatRuns, issueAccessGrants, issues } from "@paperclipai/db";
+import { agents, authUsers, companies, companyMemberships, createDb, executionWorkspaces, heartbeatRuns, issueAccessGrants, issues } from "@simplexy/db";
 import { executionWorkspaceRepositoryService } from "../../services/execution-workspace-repositories.js";
 import { startEmbeddedPostgresTestDatabase } from "./embedded-postgres.js";
 

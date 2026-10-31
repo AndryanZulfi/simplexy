@@ -125,7 +125,7 @@ with tempfile.TemporaryDirectory(prefix="paperclip-audit-") as directory:
         if spec["kind"] == "tap":
             command = ["node", "--test", "--test-reporter=tap", owner]
         elif spec["kind"] == "ui":
-            command = ["pnpm", "--filter", "@paperclipai/ui",
+            command = ["pnpm", "--filter", "@simplexy/ui",
                        "exec", "vitest", "run", "src/pages/CompanyExport.test.tsx",
                        "--maxWorkers=1", "--reporter=default", "--reporter=json",
                        "--outputFile.json=" + str(report)]
@@ -202,10 +202,10 @@ falls back to an isolated config when the base CLI cannot boot
 'expected <fixture-root>/misdirected-worktree-db to live under <fixture-root>/paperclip-provision-home-GzsiQq'
 reconciles deployment mode from the registered source when reusing a guest config
 |-
-    The input did not match the regular expression /Reusing existing isolated Paperclip worktree config/. Input:
+    The input did not match the regular expression /Reusing existing isolated Simplexy worktree config/. Input:
 
     'existing worktree config path is outside <fixture-root>/paperclip-provision-worktree-kroaza-bc89219c87b9: <fixture-root>/misdirected-worktree-db\n' +
-      'Existing isolated Paperclip worktree config is stale for this host; regenerating.\n' +
+      'Existing isolated Simplexy worktree config is stale for this host; regenerating.\n' +
       'No usable paperclipai CLI found; writing isolated fallback config without DB seeding.\n'
 database-path-escape-keeper
 isolates fallback configuration and reconciles deployment mode from the registered source when reusing a guest config

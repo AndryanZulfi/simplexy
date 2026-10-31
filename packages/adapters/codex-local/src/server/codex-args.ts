@@ -1,4 +1,4 @@
-import { asBoolean, asString } from "@paperclipai/adapter-utils/server-utils";
+import { asBoolean, asString } from "@simplexy/adapter-utils/server-utils";
 import {
   CODEX_LOCAL_FAST_MODE_SUPPORTED_MODELS,
   resolveCodexLocalCliPolicy,

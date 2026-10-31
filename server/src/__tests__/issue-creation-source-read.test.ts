@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
-import { activityLog, agents, companies, createDb, heartbeatRuns, issues } from "@paperclipai/db";
-import { createDatabaseResponseCapture, installDatabaseResponseCapture } from "@paperclipai/db/response-capture";
+import { activityLog, agents, companies, createDb, heartbeatRuns, issues } from "@simplexy/db";
+import { createDatabaseResponseCapture, installDatabaseResponseCapture } from "@simplexy/db/response-capture";
 import { eq } from "drizzle-orm";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";

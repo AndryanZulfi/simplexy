@@ -15,7 +15,7 @@ import type {
   ToolMcpGatewayClientSnippet,
   ToolMcpGatewayTokenCreated,
   ToolMcpGatewayWithTokens,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { toolsApi } from "@/api/tools";
 import { SearchableSelect, type SearchableSelectGroup } from "@/components/SearchableSelect";
 import { Button } from "@/components/ui/button";

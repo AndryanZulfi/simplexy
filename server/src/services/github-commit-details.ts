@@ -1,4 +1,4 @@
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import {
   DEFAULT_GITHUB_TOKEN_SECRET_NAMES,
   resolveGitHubApiCredential,

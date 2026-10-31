@@ -1,4 +1,4 @@
-import type { CompanySkill } from "@paperclipai/shared";
+import type { CompanySkill } from "@simplexy/shared";
 import { skillRoute, type CompanySkillRouteSubject } from "./company-skill-routes";
 
 type FileLinkSkill = Pick<CompanySkill, "id" | "slug" | "key" | "sourceType" | "metadata" | "fileInventory">;

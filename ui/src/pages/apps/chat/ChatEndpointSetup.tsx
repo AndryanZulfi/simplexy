@@ -1,6 +1,6 @@
 import { SpekoProviderSetup } from "@/components/voice/SpekoProviderSetup";
 import { NativeVoiceConversation } from "@/components/voice/NativeVoiceConversation";
-import { buildSlackAppManifest, defaultSlackAppConfiguration } from "@paperclipai/shared";
+import { buildSlackAppManifest, defaultSlackAppConfiguration } from "@simplexy/shared";
 import { SlackAppDetails, SlackSetupAdvanced } from "./SlackAppDetails";
 import { SlackSetup } from "./slack/SlackSetup";
 import { isProvisionedSlackSetup, slackSetupState } from "./slack/setup-state";
@@ -46,7 +46,7 @@ import { useNavigate, useSearchParams } from "@/lib/router";
 import { queryKeys } from "@/lib/queryKeys";
 import { copyTextToClipboard } from "@/lib/clipboard";
 import { useCopyAction } from "@/lib/use-copy-action";
-import { isAgentStatusInvokable, slackAppConfigurationSchema, type SlackAppConfiguration } from "@paperclipai/shared";
+import { isAgentStatusInvokable, slackAppConfigurationSchema, type SlackAppConfiguration } from "@simplexy/shared";
 import { sanitizedSetupErrorMessage } from "./chat-setup-error";
 import {
   createGitHubPrivateKeyReadGuard,
@@ -1782,7 +1782,7 @@ function TryStep({
   agentName: string;
   botLabel?: string | null;
   botUsername?: string | null;
-  slackAccount?: import("@paperclipai/shared").SlackAccountState;
+  slackAccount?: import("@simplexy/shared").SlackAccountState;
   photonAllocation?: "dedicated" | "shared";
   providerUrl?: string | null;
   guestIsolationState: "loading" | "enabled" | "disabled" | "unknown";

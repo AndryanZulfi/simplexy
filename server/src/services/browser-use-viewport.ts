@@ -5,7 +5,7 @@ import {
   type BrowserUseViewportPreset,
   type BrowserUseViewportRequest,
   type BrowserUseViewportState,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   BrowserUseError,
   type BrowserUseRequest,

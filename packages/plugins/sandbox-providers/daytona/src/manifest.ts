@@ -1,4 +1,4 @@
-import type { PaperclipPluginManifestV1 } from "@paperclipai/plugin-sdk";
+import type { PaperclipPluginManifestV1 } from "@simplexy/plugin-sdk";
 
 const PLUGIN_ID = "paperclip.daytona-sandbox-provider";
 export const DEFAULT_DAYTONA_OPERATION_TIMEOUT_MS = 300_000;

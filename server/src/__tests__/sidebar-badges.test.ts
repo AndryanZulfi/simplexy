@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { count, eq, inArray } from "drizzle-orm";
-import { agents, approvals, companies, createDb, getEmbeddedPostgresTestSupport, heartbeatRuns, issueAccessGrants, issues, startEmbeddedPostgresTestDatabase, type Db } from "@paperclipai/db";
+import { agents, approvals, companies, createDb, getEmbeddedPostgresTestSupport, heartbeatRuns, issueAccessGrants, issues, startEmbeddedPostgresTestDatabase, type Db } from "@simplexy/db";
 import { sidebarBadgeService } from "../services/sidebar-badges.js";
 import { authorizationService } from "../services/authorization.js";
 import { getHeartbeatRunReadDecisions } from "../services/heartbeat-run-privacy.js";

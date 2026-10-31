@@ -201,8 +201,8 @@ The expected flow is:
 ```mermaid
 sequenceDiagram
     actor U as User browser
-    participant P as Originating Paperclip instance
-    participant C as Paperclip Cloud connector
+    participant P as Originating Simplexy instance
+    participant C as Simplexy Cloud connector
     participant G as Google OAuth
     participant V as Instance encrypted vault
 

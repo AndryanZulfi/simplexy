@@ -2,8 +2,8 @@ import { createAgentLifecycle, configureAgentLifecycle } from "../services/agent
 import { randomUUID } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { and, eq, ne, sql } from "drizzle-orm";
-import { agentApiKeys, agents, budgetPolicies, companies, costEvents, createDb, pluginCompanySettings, pluginLifecycleAcknowledgments, plugins, projects, resourceLifecycleEvents, type Db } from "@paperclipai/db";
-import { createHostClientHandlers } from "@paperclipai/plugin-sdk";
+import { agentApiKeys, agents, budgetPolicies, companies, costEvents, createDb, pluginCompanySettings, pluginLifecycleAcknowledgments, plugins, projects, resourceLifecycleEvents, type Db } from "@simplexy/db";
+import { createHostClientHandlers } from "@simplexy/plugin-sdk";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { agentService } from "../services/agents.js";

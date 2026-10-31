@@ -345,8 +345,8 @@ cd ui && pnpm typecheck
 pnpm build-storybook
 ```
 
-- Fresh worktree: `pnpm install --frozen-lockfile` and build `@paperclipai/plugin-sdk` first, or `tsc`
-  reports `Cannot find module '@paperclipai/plugin-sdk/ui'` in `PluginOrganizationSwitcher(.test).tsx`.
+- Fresh worktree: `pnpm install --frozen-lockfile` and build `@simplexy/plugin-sdk` first, or `tsc`
+  reports `Cannot find module '@simplexy/plugin-sdk/ui'` in `PluginOrganizationSwitcher(.test).tsx`.
   Repo-wide `pnpm -r typecheck` needs the Rust toolchain for `paperclip-runner`; report it as not run when absent.
 - PR title `feat(ui): ...`; one or more `.test.ts(x)` files in the diff; no `pnpm-lock.yaml` change; no new
   `package.json` script; no file crossing 1,000 lines; no code comments; no committed screenshots or

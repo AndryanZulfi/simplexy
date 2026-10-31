@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 
 /**
  * A direct owner-chat turn may edit its own instructions, subject to the normal

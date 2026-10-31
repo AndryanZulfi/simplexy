@@ -50,7 +50,7 @@ async function install() {
   );
   await userEvent.type(
     await c.findByRole("textbox"),
-    "@paperclipai/storybook-fixture",
+    "@simplexy/storybook-fixture",
     { delay: 15 },
   );
   await userEvent.click(c.getByRole("button", { name: "Install" }));

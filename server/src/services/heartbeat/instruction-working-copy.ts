@@ -1,8 +1,8 @@
 import { createHash } from "node:crypto";
 import path from "node:path";
 import { and, eq, sql } from "drizzle-orm";
-import { heartbeatRuns, type Db } from "@paperclipai/db";
-import { adapterExecutionTargetEnablesSandboxDuplexBridge } from "@paperclipai/adapter-utils/execution-target";
+import { heartbeatRuns, type Db } from "@simplexy/db";
+import { adapterExecutionTargetEnablesSandboxDuplexBridge } from "@simplexy/adapter-utils/execution-target";
 import { parseObject } from "../../adapters/utils.js";
 import { logger } from "../../middleware/logger.js";
 import { AgentDirectoryReuseInvalidatedError, isAgentDirectoryCopy } from "../agent-directory-working-copies.js";

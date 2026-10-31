@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import { eq, inArray, sql } from "drizzle-orm";
 import request from "supertest";
 import { expect, it } from "vitest";
-import { activityLog, issueComments, issueInboxArchives, issueReadStates, issues, issueThreadInteractions, issueAccessGrants, projectAccessMembers, projects } from "@paperclipai/db";
+import { activityLog, issueComments, issueInboxArchives, issueReadStates, issues, issueThreadInteractions, issueAccessGrants, projectAccessMembers, projects } from "@simplexy/db";
 import { sidebarBadgeRoutes } from "../routes/sidebar-badges.js";
 import { issueReadSqlCondition } from "../services/authorization.js";
 import { issueService } from "../services/issues.js";

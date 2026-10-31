@@ -1,8 +1,8 @@
 import { Bot } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { museDetectorCleanupAttestationSchema } from "@paperclipai/shared";
-import type { MuseConnection, MusePairing, MuseAttestStopInput, MuseDetectorCleanupAttestationInput } from "@paperclipai/shared";
+import { museDetectorCleanupAttestationSchema } from "@simplexy/shared";
+import type { MuseConnection, MusePairing, MuseAttestStopInput, MuseDetectorCleanupAttestationInput } from "@simplexy/shared";
 import { agentsApi } from "@/api/agents";
 import { useMuseConnection, useMuseConnectionState } from "@/hooks/useMuseConnection";
 import { queryKeys } from "@/lib/queryKeys";

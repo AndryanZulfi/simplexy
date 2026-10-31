@@ -1,5 +1,5 @@
-import { type Db, type issues } from "@paperclipai/db";
-import { isClosedIsolatedExecutionWorkspace } from "@paperclipai/shared";
+import { type Db, type issues } from "@simplexy/db";
+import { isClosedIsolatedExecutionWorkspace } from "@simplexy/shared";
 import { conflict } from "../errors.js";
 import { issueTreeControlService } from "./issue-tree-control.js";
 import { issueService } from "./issues.js";

@@ -9,7 +9,7 @@ import {
   toolConnections,
   userSecretDefinitions,
   type Db,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { and, eq, inArray, or, sql } from "drizzle-orm";
 import { isGitHubDotCom } from "./github-fetch.js";
 import { secretService } from "./secrets.js";

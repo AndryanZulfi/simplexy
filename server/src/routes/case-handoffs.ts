@@ -1,7 +1,7 @@
 import { Router, type Request, type Response } from "express";
 import { z } from "zod";
-import type { Db } from "@paperclipai/db";
-import { handoffCaseSchema } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import { handoffCaseSchema } from "@simplexy/shared";
 import { validate } from "../middleware/validate.js";
 import { notFound } from "../errors.js";
 import { caseHandoffService } from "../services/case-handoffs.js";

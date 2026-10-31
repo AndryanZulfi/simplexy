@@ -53,9 +53,9 @@ describe("server package build script", () => {
     };
 
     expect(
-      packageJson.dependencies?.["@paperclipai/paperclip-runner"],
+      packageJson.dependencies?.["@simplexy/paperclip-runner"],
     ).toBeUndefined();
-    expect(packageJson.devDependencies?.["@paperclipai/paperclip-runner"]).toBe(
+    expect(packageJson.devDependencies?.["@simplexy/paperclip-runner"]).toBe(
       "workspace:*",
     );
     // prepare-runner-vendor.mjs reuses a Runner build whose recorded inputs
@@ -66,7 +66,7 @@ describe("server package build script", () => {
       "node scripts/prepare-runner-vendor.mjs",
     );
     expect(RUNNER_VENDOR_BUILD_COMMAND).toBe(
-      "pnpm --filter @paperclipai/paperclip-runner build",
+      "pnpm --filter @simplexy/paperclip-runner build",
     );
     expect(packageJson.scripts?.build.startsWith("pnpm run prepare:runner-vendor && ")).toBe(true);
     expect(packageJson.scripts?.build).toContain(
@@ -176,7 +176,7 @@ describe("server package build script", () => {
       '"../../../../packages/paperclip-runner/src/index.ts"',
     );
     expect(shim).not.toContain(
-      'export * from "@paperclipai/paperclip-runner"',
+      'export * from "@simplexy/paperclip-runner"',
     );
   });
 
@@ -188,7 +188,7 @@ describe("server package build script", () => {
       const consumer = readFileSync(consumerPath, "utf8");
 
       expect(consumer).toContain('vendor/paperclip-runner/index.js"');
-      expect(consumer).not.toContain('from "@paperclipai/paperclip-runner"');
+      expect(consumer).not.toContain('from "@simplexy/paperclip-runner"');
     }
   });
 });

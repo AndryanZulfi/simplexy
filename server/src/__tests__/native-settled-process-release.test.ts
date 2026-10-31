@@ -1,6 +1,6 @@
-import { EMBEDDED_POSTGRES_TEST_TIMEOUT_MS } from "@paperclipai/db";
+import { EMBEDDED_POSTGRES_TEST_TIMEOUT_MS } from "@simplexy/db";
 import { randomBytes, randomUUID } from "node:crypto";
-import { createDatabaseResponseCapture, installDatabaseResponseCapture } from "@paperclipai/db/response-capture";
+import { createDatabaseResponseCapture, installDatabaseResponseCapture } from "@simplexy/db/response-capture";
 import { spawn } from "node:child_process";
 import os from "node:os";
 import { and, eq } from "drizzle-orm";
@@ -16,7 +16,7 @@ import {
   heartbeatRuns,
   issues,
   nativeRunFinalizations,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { appendHeartbeatRunEvent } from "../services/heartbeat-run-events.js";
 import { persistHeartbeatRunProcessMetadata } from "../services/heartbeat/run-lifecycle.js";

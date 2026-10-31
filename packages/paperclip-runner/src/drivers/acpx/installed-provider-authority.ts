@@ -41,7 +41,7 @@ export function resolveInstalledProviderAuthority(moduleUrl: string): { root: st
     }
     const value = JSON.parse(bytes.toString("utf8"));
     if (!value || typeof value !== "object" || Array.isArray(value)
-      || !Object.hasOwn(value, "name") || value.name !== "@paperclipai/server") {
+      || !Object.hasOwn(value, "name") || value.name !== "@simplexy/server") {
       throw new Error("Installed ACPX verifier requires the owning server package");
     }
   } finally {

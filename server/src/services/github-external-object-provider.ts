@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
-import type { Db } from "@paperclipai/db";
-import type { ExternalObjectCanonicalUrl } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import type { ExternalObjectCanonicalUrl } from "@simplexy/shared";
 import { DEFAULT_GITHUB_TOKEN_SECRET_NAMES, resolveGitHubApiCredential, type GitHubApiCredential } from "./git-credentials.js";
 import { ghFetch, gitHubApiBase } from "./github-fetch.js";
 import type {

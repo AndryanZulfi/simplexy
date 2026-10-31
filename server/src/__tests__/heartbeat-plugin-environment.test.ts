@@ -15,7 +15,7 @@ import {
   plugins,
   projects,
   projectWorkspaces,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,

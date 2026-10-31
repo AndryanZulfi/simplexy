@@ -34,8 +34,8 @@ Do this for every public package that Simplexy publishes.
 At minimum that includes:
 
 - `simplexy`
-- `@paperclipai/server`
-- `@paperclipai/ui`
+- `@simplexy/server`
+- `@simplexy/ui`
 - public packages under `packages/`
 
 ### 2.1. In npm, open each package settings page

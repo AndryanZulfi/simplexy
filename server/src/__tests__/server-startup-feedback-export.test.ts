@@ -11,7 +11,7 @@ import { idleBackupWakeMarker, markIdleBackupWakeRequired } from "../services/id
 import { DELIVERY_QUEUES } from "../services/delivery-work-notifications.js";
 import { decisionService, decisionRetentionService, toolAccessService, reconcileBuiltInAgentsOnStartup, reconcileCodexLocalManagedHomesOnStartup, reconcilePersistedRuntimeServicesOnStartup } from "../services/index.js";
 
-import { companies, runDatabaseBackup, type Db } from "@paperclipai/db";
+import { companies, runDatabaseBackup, type Db } from "@simplexy/db";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { chmodSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, statSync, symlinkSync, writeFileSync } from "node:fs";
 import { gzipSync } from "node:zlib";
@@ -280,8 +280,8 @@ vi.mock("detect-port", () => ({
   default: detectPortMock,
 }));
 
-vi.mock("@paperclipai/db", async (importOriginal) => ({
-  ...await importOriginal<typeof import("@paperclipai/db")>(),
+vi.mock("@simplexy/db", async (importOriginal) => ({
+  ...await importOriginal<typeof import("@simplexy/db")>(),
   createDb: createDbMock,
   ensurePostgresDatabase: vi.fn(),
   getPostgresDataDirectory: vi.fn(),

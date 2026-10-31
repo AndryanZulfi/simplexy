@@ -1,6 +1,6 @@
 # MCP Access Governance Demo Script
 
-This is the end-to-end demo for the MCP Access Governance launch. It walks the three required cases — **read**, **approval-gated write**, **denied/destructive** — against the real [`@paperclipai/kv-demo-mcp-server`](../packages/kv-demo-mcp-server/README.md) package. The server is a standalone Node process that exposes four key/value MCP tools and a tiny web UI over the same in-memory store, so you can call a tool from an agent and watch the value appear in a browser tab in real time.
+This is the end-to-end demo for the MCP Access Governance launch. It walks the three required cases — **read**, **approval-gated write**, **denied/destructive** — against the real [`@simplexy/kv-demo-mcp-server`](../packages/kv-demo-mcp-server/README.md) package. The server is a standalone Node process that exposes four key/value MCP tools and a tiny web UI over the same in-memory store, so you can call a tool from an agent and watch the value appear in a browser tab in real time.
 
 Audience: CTO sign-off, QA repro, and the recorded walkthrough that goes with the release notes. Time to run live: about 10 minutes.
 
@@ -12,7 +12,7 @@ Before you start the recording:
 
 - Simplexy running in `local_trusted` or `authenticated/private` mode. Public mode is fine as long as the Simplexy process can reach `http://127.0.0.1:8848` (we connect over `remote_http`, so no trusted runtime worker is required).
 - A company with at least one agent identity to act as the caller. That agent must have an **active heartbeat run** for the gateway-call steps (Steps 6, 7, 9, 11). The simplest way to keep one alive during recording is to assign a placeholder task to the agent before the demo starts; the agent's heartbeat run stays in `running` while it works.
-- The KV demo server package built (`pnpm --filter @paperclipai/kv-demo-mcp-server build`).
+- The KV demo server package built (`pnpm --filter @simplexy/kv-demo-mcp-server build`).
 - Board API key (`$BOARD_API_KEY`) exported. Company ID (`$COMPANY_ID`) exported. Agent ID (`$AGENT_ID`) for the caller exported.
 - Simplexy URL (`$PAPERCLIP_URL`) exported.
 - The Tools & Access UI open at `/<prefix>/companies/<companyId>/tools`.
@@ -37,7 +37,7 @@ Show the Tools & Access overview tab. Point at:
 In a side terminal, launch the server and leave it running for the rest of the demo:
 
 ```sh
-pnpm --filter @paperclipai/kv-demo-mcp-server start
+pnpm --filter @simplexy/kv-demo-mcp-server start
 ```
 
 Expected stderr:
@@ -161,7 +161,7 @@ Gateway calls use the session token via `X-Simplexy-Tool-Gateway-Token`. The bod
 
 ```sh
 curl -fsS -X POST \
-  -H "X-Paperclip-Tool-Gateway-Token: $GATEWAY_TOKEN" \
+  -H "X-Simplexy-Tool-Gateway-Token: $GATEWAY_TOKEN" \
   -H "Content-Type: application/json" \
   "$PAPERCLIP_URL/api/tool-gateway/tools/call" \
   -d '{ "tool": "kv_list", "parameters": {} }' \
@@ -176,7 +176,7 @@ Switch to the **Audit** tab in the UI. Refresh. The newest row is `tool_gateway.
 
 ```sh
 curl -i -X POST \
-  -H "X-Paperclip-Tool-Gateway-Token: $GATEWAY_TOKEN" \
+  -H "X-Simplexy-Tool-Gateway-Token: $GATEWAY_TOKEN" \
   -H "Content-Type: application/json" \
   "$PAPERCLIP_URL/api/tool-gateway/tools/call" \
   -d '{ "tool": "kv_delete", "parameters": { "key": "demo/launch" } }'
@@ -207,7 +207,7 @@ Spoken note:
 
 ```sh
 CALL=$(curl -sS -w '\n%{http_code}' -X POST \
-  -H "X-Paperclip-Tool-Gateway-Token: $GATEWAY_TOKEN" \
+  -H "X-Simplexy-Tool-Gateway-Token: $GATEWAY_TOKEN" \
   -H "Content-Type: application/json" \
   "$PAPERCLIP_URL/api/tool-gateway/tools/call" \
   -d '{ "tool": "kv_set", "parameters": { "key": "demo/launch", "value": "shipped" } }')
@@ -244,7 +244,7 @@ The agent retries the same call with `approvedActionRequestId` set to the action
 
 ```sh
 curl -fsS -X POST \
-  -H "X-Paperclip-Tool-Gateway-Token: $GATEWAY_TOKEN" \
+  -H "X-Simplexy-Tool-Gateway-Token: $GATEWAY_TOKEN" \
   -H "Content-Type: application/json" \
   "$PAPERCLIP_URL/api/tool-gateway/tools/call" \
   -d '{
@@ -265,7 +265,7 @@ Replay the read to close the loop — the agent's view of the world now matches 
 
 ```sh
 curl -fsS -X POST \
-  -H "X-Paperclip-Tool-Gateway-Token: $GATEWAY_TOKEN" \
+  -H "X-Simplexy-Tool-Gateway-Token: $GATEWAY_TOKEN" \
   -H "Content-Type: application/json" \
   "$PAPERCLIP_URL/api/tool-gateway/tools/call" \
   -d '{ "tool": "kv_get", "parameters": { "key": "demo/launch" } }' \
@@ -331,7 +331,7 @@ The KV server keeps state in process memory. Restart the server to drop everythi
 
 ```sh
 # In the side terminal running the KV server, press Ctrl+C, then start it again.
-pnpm --filter @paperclipai/kv-demo-mcp-server start
+pnpm --filter @simplexy/kv-demo-mcp-server start
 ```
 
 The next `kv_list` call returns an empty `entries` array. The Values UI shows the empty table again. Simplexy's audit history is untouched — it still records that the calls happened, just against a server that has since reset.

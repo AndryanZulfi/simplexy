@@ -1,5 +1,5 @@
 import { eq, sql } from "drizzle-orm";
-import { environmentLeases, type Db } from "@paperclipai/db";
+import { environmentLeases, type Db } from "@simplexy/db";
 import { hasDeferredEnvironmentCleanup } from "./environment-cleanup-notifications.js";
 
 export const ENVIRONMENT_CLEANUP_RETRY_MS = 5 * 60_000;

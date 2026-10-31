@@ -3,7 +3,7 @@ import express from "express";
 import request from "supertest";
 import { eq } from "drizzle-orm";
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
-import { agents, authUsers, companies, companyMemberships, createDb, environments, principalPermissionGrants, activityLog, instanceSettings, builtInManagedResources, EMBEDDED_POSTGRES_TEST_TIMEOUT_MS } from "@paperclipai/db";
+import { agents, authUsers, companies, companyMemberships, createDb, environments, principalPermissionGrants, activityLog, instanceSettings, builtInManagedResources, EMBEDDED_POSTGRES_TEST_TIMEOUT_MS } from "@simplexy/db";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { grantsForHumanRole } from "../services/company-member-roles.js";
 import { agentRoutes } from "../routes/agents.js";

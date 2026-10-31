@@ -2,7 +2,7 @@ import { probeCopilotExecutionTarget } from "../services/copilot-connection-prob
 import { HttpError } from "../errors.js";
 import { probeAcpxClaudeInstallation, probeAcpxCursorInstallation, probeAcpxPiInstallation } from "../vendor/paperclip-runner/live/index.js";
 import { describe, expect, it, beforeEach, afterEach, vi } from "vitest";
-import { buildSandboxNpmInstallCommand } from "@paperclipai/adapter-utils";
+import { buildSandboxNpmInstallCommand } from "@simplexy/adapter-utils";
 import type { ServerAdapterModule } from "../adapters/index.js";
 
 import {

@@ -3,7 +3,7 @@ import os from "node:os";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { agents, applyPendingMigrations, authUsers, closeRegisteredClients, companies, companySecrets, createDb, dotAgentBindings,
   dotRunnerAssignments, grokBotDispatches, grokBotRoutines, heartbeatRuns, issues, mcpOauthClients, mcpOauthGrants, nativeRunFinalizations,
-  type Db } from "@paperclipai/db";
+  type Db } from "@simplexy/db";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,

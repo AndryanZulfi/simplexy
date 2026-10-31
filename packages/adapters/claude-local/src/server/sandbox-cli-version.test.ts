@@ -3,7 +3,7 @@ import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { promisify } from "node:util";
-import type { AdapterExecutionTarget } from "@paperclipai/adapter-utils/execution-target";
+import type { AdapterExecutionTarget } from "@simplexy/adapter-utils/execution-target";
 import { afterEach, describe, expect, it } from "vitest";
 import { prepareCompatibleClaudeCommand } from "./sandbox-cli-version.js";
 

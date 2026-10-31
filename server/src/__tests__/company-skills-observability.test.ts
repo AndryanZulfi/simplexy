@@ -8,7 +8,7 @@ import { context, SpanStatusCode, trace } from "@opentelemetry/api";
 import { AsyncLocalStorageContextManager } from "@opentelemetry/context-async-hooks";
 import { InMemorySpanExporter, SimpleSpanProcessor, TracerProvider } from "@opentelemetry/sdk-trace";
 import { companies, companySkills, companySkillVersions, companySkillRepositorySnapshots, createDb,
-  EMBEDDED_POSTGRES_TEST_TIMEOUT_MS } from "@paperclipai/db";
+  EMBEDDED_POSTGRES_TEST_TIMEOUT_MS } from "@simplexy/db";
 import { eq } from "drizzle-orm";
 import { createRunPreparationTiming, withRunExecutionTiming } from "../services/execution-preparation-timing.js";
 import { skillSnapshotHash } from "../services/skill-snapshot.js";

@@ -22,25 +22,25 @@ const serverSrcDir = path.join(repoRoot, "server", "src");
 const serverTestsDir = path.join(repoRoot, "server", "src", "__tests__");
 const serverScriptsDir = path.join(repoRoot, "server", "scripts");
 const nonServerProjects = [
-  "@paperclipai/shared",
-  "@paperclipai/skills-catalog",
-  "@paperclipai/db",
-  "@paperclipai/adapter-utils",
-  "@paperclipai/adapter-claude-local",
-  "@paperclipai/adapter-codex-local",
-  "@paperclipai/adapter-cursor-cloud",
-  "@paperclipai/adapter-cursor-local",
-  "@paperclipai/adapter-gemini-local",
-  "@paperclipai/adapter-grok-local",
-  "@paperclipai/hermes-paperclip-adapter",
-  "@paperclipai/adapter-kimi-local",
-  "@paperclipai/adapter-openclaw-gateway",
-  "@paperclipai/adapter-opencode-local",
-  "@paperclipai/adapter-pi-local",
-  "@paperclipai/plugin-daytona",
-  "@paperclipai/plugin-sdk",
-  "@paperclipai/create-paperclip-plugin",
-  "@paperclipai/ui",
+  "@simplexy/shared",
+  "@simplexy/skills-catalog",
+  "@simplexy/db",
+  "@simplexy/adapter-utils",
+  "@simplexy/adapter-claude-local",
+  "@simplexy/adapter-codex-local",
+  "@simplexy/adapter-cursor-cloud",
+  "@simplexy/adapter-cursor-local",
+  "@simplexy/adapter-gemini-local",
+  "@simplexy/adapter-grok-local",
+  "@simplexy/hermes-paperclip-adapter",
+  "@simplexy/adapter-kimi-local",
+  "@simplexy/adapter-openclaw-gateway",
+  "@simplexy/adapter-opencode-local",
+  "@simplexy/adapter-pi-local",
+  "@simplexy/plugin-daytona",
+  "@simplexy/plugin-sdk",
+  "@simplexy/create-paperclip-plugin",
+  "@simplexy/ui",
   "paperclipai",
 ];
 const routeTestPattern = /[^/]*(?:route|routes|authz)[^/]*\.test\.ts$/;
@@ -120,7 +120,7 @@ function excludedServerSuites(groupName) {
 const generalWorkspacesAGroupName = "general-workspaces-a";
 const generalWorkspacesBGroupName = "general-workspaces-b";
 const generalWorkspacesCGroupName = "general-workspaces-c";
-const generalWorkspacesAProjects = ["@paperclipai/ui", "paperclipai"];
+const generalWorkspacesAProjects = ["@simplexy/ui", "paperclipai"];
 // The db project runs in its own lane. Its vitest invocation took 168-250s
 // of a 436-513s workspaces-b job (PR runs 38084171761, 38083084276 and
 // 38083020834, 2026-10-10), which made workspaces-b the slowest check once
@@ -130,7 +130,7 @@ const generalWorkspacesAProjects = ["@paperclipai/ui", "paperclipai"];
 // slow suites on one runner. Splitting by project is deterministic and
 // leaves the remaining projects at ~265-275s of vitest time, roughly level
 // with this lane.
-const generalWorkspacesCProjects = ["@paperclipai/db"];
+const generalWorkspacesCProjects = ["@simplexy/db"];
 const generalWorkspacesBProjects = nonServerProjects.filter(
   (project) => !generalWorkspacesAProjects.includes(project) && !generalWorkspacesCProjects.includes(project),
 );
@@ -481,7 +481,7 @@ async function runGeneralGroup(routeTests, groupName, shardIndex = null, shardCo
     // Each invocation gets its own temporary home and embedded PostgreSQL.
     // Wait for both children even on failure so no sibling is abandoned.
     const results = await Promise.allSettled(chatShardWorkers(shardIndex, shardCount).map((shard) =>
-      runVitest(["--project", "@paperclipai/server", ...serializedServerVitestArgs, chatSuite],
+      runVitest(["--project", "@simplexy/server", ...serializedServerVitestArgs, chatSuite],
         "chat integration test shard", shard),
     ));
     const failed = results.find((result) => result.status === "rejected");
@@ -490,7 +490,7 @@ async function runGeneralGroup(routeTests, groupName, shardIndex = null, shardCo
   }
   if (groupName === generalServerNativeRunnerGroupName) {
     await runVitest(
-      ["--project", "@paperclipai/server", ...serializedServerVitestArgs, ...nativeRunnerSuites],
+      ["--project", "@simplexy/server", ...serializedServerVitestArgs, ...nativeRunnerSuites],
       "native runner vertical-slice suite",
     );
     return;
@@ -515,7 +515,7 @@ async function runGeneralGroup(routeTests, groupName, shardIndex = null, shardCo
       await runVitest(
         [
           "--project",
-          "@paperclipai/server",
+          "@simplexy/server",
           // Files have separate fork processes and isolated homes/configs.
           // Keep each file's cases serial; overlap only two independent files.
           // An explicit shared test database cannot be isolated this way.
@@ -536,7 +536,7 @@ async function runGeneralGroup(routeTests, groupName, shardIndex = null, shardCo
     await runVitest(
       [
         "--project",
-        "@paperclipai/server",
+        "@simplexy/server",
         ...serializedServerVitestArgs,
         ...excludeRouteArgs,
       ],
@@ -577,7 +577,7 @@ async function runSerializedSuites(routeTests, shardIndex, shardCount) {
     await runVitest(
       [
         "--project",
-        "@paperclipai/server",
+        "@simplexy/server",
         ...shardTests.map((test) => test.repoPath),
         "--pool=forks",
         "--isolate",

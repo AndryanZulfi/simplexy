@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import express, { type Request } from "express";
 import request from "supertest";
 import { and, eq } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import {
   authUsers,
   companies,
@@ -10,7 +10,7 @@ import {
   instanceSettings,
   instanceUserRoles,
   principalPermissionGrants,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { actorMiddleware, cloudActorHeaderSourceFromHeaders, resolveCloudTenantActor } from "./auth.js";
 import { idleAdmissionMiddleware, trackIdleRequestHandlers } from "./idle-admission.js";
 import { idleWorkSnapshot, startTaskDrain, stopTaskDrain } from "../services/task-admission.js";

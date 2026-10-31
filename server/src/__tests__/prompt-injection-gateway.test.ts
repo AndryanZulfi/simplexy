@@ -8,9 +8,9 @@ import { and, eq } from "drizzle-orm";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import express from "express";
 import { createDb, companies, companyMemberships, agents, issues, heartbeatRuns, toolApplications, toolConnections, connectionGrants,
-  toolCatalogEntries, toolPolicies, toolInvocations, toolCallEvents, toolActionRequests, promptInjectionInvocations, costEvents, budgetReservations } from "@paperclipai/db";
-import { startEmbeddedPostgresTestDatabase } from "@paperclipai/db/test-embedded-postgres";
-import { PROMPT_INJECTION_DEFAULT_MODEL } from "@paperclipai/shared";
+  toolCatalogEntries, toolPolicies, toolInvocations, toolCallEvents, toolActionRequests, promptInjectionInvocations, costEvents, budgetReservations } from "@simplexy/db";
+import { startEmbeddedPostgresTestDatabase } from "@simplexy/db/test-embedded-postgres";
+import { PROMPT_INJECTION_DEFAULT_MODEL } from "@simplexy/shared";
 import { createToolGatewayService } from "../services/tool-gateway.js";
 import { toolGatewayRoutes } from "../routes/tool-gateway.js";
 import { initializeRunIdentity } from "../services/run-identity.js";

@@ -8,7 +8,7 @@ import {
   caseHandoffs, caseIssueLinks, caseLabels, cases, companies, createDb,
   documentAnnotationAnchorSnapshots, documentAnnotationComments, documentAnnotationThreads,
   documentRevisions, documents, heartbeatRuns, issues,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { createLocalAgentJwt } from "../agent-auth-jwt.js";
 import { actorMiddleware } from "../middleware/auth.js";

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { appearanceForPalette, type AgentConfigurationSource } from "@paperclipai/shared";
+import { appearanceForPalette, type AgentConfigurationSource } from "@simplexy/shared";
 import { agentConfigurationPatch, parseAgentConfigurationYaml, serializeAgentConfiguration } from "./agent-configuration-yaml";
 
 export const configuration: AgentConfigurationSource = {

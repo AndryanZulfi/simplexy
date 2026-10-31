@@ -5,7 +5,7 @@ import {
   activityLog, agents, applyPendingMigrations, companies, companyMemberships, companySecrets,
   connectionGrants, createDb, ensurePostgresDatabase, heartbeatRuns, issues, issueThreadInteractions,
   toolAccessAuditEvents, toolActionRequests, toolApplications, toolCatalogEntries, toolConnections, toolInvocations, userSecretDeclarations,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { toolAccessService } from "../services/tool-access.js";
 import { createToolGatewayService } from "../services/tool-gateway.js";
 import { summarizeToolValue } from "../services/tool-content-guards.js";

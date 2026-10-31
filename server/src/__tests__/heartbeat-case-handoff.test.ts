@@ -6,8 +6,8 @@ import { hostname } from "node:os";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { and, eq } from "drizzle-orm";
 import { agents, agentWakeupRequests, authSessions, authUsers, caseEvents, caseHandoffs, cases, companies, companyMemberships,
-  createDb, heartbeatRunEvents, heartbeatRuns, issueComments, issues } from "@paperclipai/db";
-import { issueRecoveryActions, issueRelations } from "@paperclipai/db";
+  createDb, heartbeatRunEvents, heartbeatRuns, issueComments, issues } from "@simplexy/db";
+import { issueRecoveryActions, issueRelations } from "@simplexy/db";
 import { startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { heartbeatService } from "../services/heartbeat.js";
 import { runningProcesses } from "../adapters/index.js";

@@ -6,8 +6,8 @@ import { execFile as execFileCallback } from "node:child_process";
 import { promisify } from "node:util";
 import { and, eq, ne, or, sql } from "drizzle-orm";
 import { executionWorkspaces, projectWorkspaces, workspaceRuntimeServices, heartbeatRuns, nativeRunFinalizations, environmentLeases,
-  withDedicatedDbConnection, type Db } from "@paperclipai/db";
-import { PROJECT_REPOSITORIES_DIR } from "@paperclipai/adapter-utils/git-workspace-sync";
+  withDedicatedDbConnection, type Db } from "@simplexy/db";
+import { PROJECT_REPOSITORIES_DIR } from "@simplexy/adapter-utils/git-workspace-sync";
 import { IsolatedRepositorySourceBusy, isolatedRemoteSourcePath, verifiedRecordedIsolatedRemoteSource, withIsolatedRepositorySourceLock } from "./isolated-remote-workspace-source.js";
 import { acquireGitExpirationLocks, recoverGitExpirationLocks, type GitExpirationLockLocation } from "./git-workspace-expiration-locks.js";
 import { allocatedBytes, describeGitExpirationFailure, expirationScope, gitExpirationSkipReason, withAnonymousGitFallback, type GitExpirationFailure } from "./git-workspace-expiration.js";

@@ -1,4 +1,4 @@
-import type { AskUserQuestionsInteraction, IssueThreadInteraction } from "@paperclipai/shared";
+import type { AskUserQuestionsInteraction, IssueThreadInteraction } from "@simplexy/shared";
 
 export function chatInteractionPresentation(interaction: IssueThreadInteraction, options: { compactChoices?: boolean; nativeCustomAnswer?: boolean } = {}) {
   const context = [interaction.summary].filter((value): value is string => Boolean(value?.trim()));

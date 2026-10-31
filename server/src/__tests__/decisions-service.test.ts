@@ -20,13 +20,13 @@ import {
   issueComments,
   issueRelations,
   issues,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { attentionService } from "../services/attention.js";
 import { decisionService } from "../services/decisions.js";
 import * as retentionModule from "../services/decision-retention.js";
 import { hashAttentionArchiveManifest } from "../services/decision-retention.js";
-import type { AttentionArchiveManifestEntry, AttentionArchiveTargetSnapshot } from "@paperclipai/shared";
+import type { AttentionArchiveManifestEntry, AttentionArchiveTargetSnapshot } from "@simplexy/shared";
 
 import { resolveExternalTestDatabaseUrl } from "./helpers/external-test-database.js";
 import { decisionContinuationService } from "../services/decision-continuations.js";

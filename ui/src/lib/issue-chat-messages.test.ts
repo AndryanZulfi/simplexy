@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { Agent } from "@paperclipai/shared";
+import type { Agent } from "@simplexy/shared";
 import {
   buildAssistantPartsFromTranscript,
   buildIssueChatMessages,

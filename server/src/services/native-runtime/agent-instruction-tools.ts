@@ -1,6 +1,6 @@
-import type { AgentInstructionCommitReceipt } from "@paperclipai/shared";
+import type { AgentInstructionCommitReceipt } from "@simplexy/shared";
 import { z } from "zod";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import { badRequest, notFound } from "../../errors.js";
 import { agentInstructionRevisionService } from "../agent-instruction-revisions.js";
 import { agentInstructionWorkingCopyService } from "../agent-instruction-working-copies.js";

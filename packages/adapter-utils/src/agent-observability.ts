@@ -1,4 +1,4 @@
-import type { AgentObservabilityCapture } from "@paperclipai/shared";
+import type { AgentObservabilityCapture } from "@simplexy/shared";
 
 /** Secret-bearing, controller-owned launch material. Never persist or merge into adapter config. */
 export type ProviderObservabilityLaunch = {

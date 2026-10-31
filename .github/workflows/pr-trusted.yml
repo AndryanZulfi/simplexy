@@ -228,7 +228,7 @@ jobs:
             pnpm install --frozen-lockfile
           fi
 
-      # typecheck:build-gaps builds @paperclipai/server, whose build script
+      # typecheck:build-gaps builds @simplexy/server, whose build script
       # rebuilds the Runner release binary; without the shared Rust cache that
       # is a ~3m40s cold compile of all third-party crates (run 35036001734,
       # 2026-09-15). Same restore-only contract as Verify Paperclip Runner.
@@ -854,7 +854,7 @@ jobs:
         # so the vitest lanes' --shard lands on `vitest run`. Do not add a
         # `--` separator: pnpm forwards it literally and vitest would then
         # read the shard flag as a test filter.
-        run: pnpm --filter @paperclipai/paperclip-runner ${{ matrix.command }}
+        run: pnpm --filter @simplexy/paperclip-runner ${{ matrix.command }}
 
       - name: Upload CI profile timings
         continue-on-error: true
@@ -1067,7 +1067,7 @@ jobs:
         run: node scripts/runner-release-crate-cache.mjs mark-current
 
       - name: Build Runner Evalbook viewer
-        run: pnpm --filter @paperclipai/paperclip-runner build:issue-thread
+        run: pnpm --filter @simplexy/paperclip-runner build:issue-thread
 
       - name: Build
         run: pnpm build
@@ -1078,7 +1078,7 @@ jobs:
       # instance, and wait for /api/health to report ok.
       - name: Boot the production runtime bundle
         run: |
-          pnpm --filter @paperclipai/server build:runtime
+          pnpm --filter @simplexy/server build:runtime
           scripts/server-boot-smoke.sh node server/dist-runtime/index.mjs
 
       # This verification only needs `pnpm build` output (the verifier stages

@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
-import type { Db, agents, agentTaskSessions, heartbeatRuns, issueComments } from "@paperclipai/db";
-import { FAST_RESPONSE_AGENT_GUIDANCE, fastResponseHistoryBody } from "@paperclipai/shared";
-import type { PaperclipTurnContext } from "@paperclipai/adapter-utils/server-utils";
+import type { Db, agents, agentTaskSessions, heartbeatRuns, issueComments } from "@simplexy/db";
+import { FAST_RESPONSE_AGENT_GUIDANCE, fastResponseHistoryBody } from "@simplexy/shared";
+import type { PaperclipTurnContext } from "@simplexy/adapter-utils/server-utils";
 import { parseObject } from "../../adapters/utils.js";
 import { isConversation } from "../agent-conversations.js";
 import { chatCompletionInstruction } from "../chat-completion-delivery.js";

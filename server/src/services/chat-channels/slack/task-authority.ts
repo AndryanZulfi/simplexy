@@ -21,7 +21,7 @@ import {
   sql,
 } from "drizzle-orm";
 
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 
 import {
   chatActions,
@@ -34,7 +34,7 @@ import {
   companyMemberships,
   issueComments,
   issues,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 
 import {
   forbidden,

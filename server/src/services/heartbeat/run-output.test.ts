@@ -2,7 +2,7 @@ import { promises as fs } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { Readable } from "node:stream";
-import type { Db, heartbeatRuns } from "@paperclipai/db";
+import type { Db, heartbeatRuns } from "@simplexy/db";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createDurableRunLogStore } from "../run-log-store.js";
 import type { StorageProvider } from "../../storage/types.js";

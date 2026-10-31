@@ -1,4 +1,4 @@
-import { chatDeliveries, type Db } from "@paperclipai/db";
+import { chatDeliveries, type Db } from "@simplexy/db";
 import { eq } from "drizzle-orm";
 import { notifyChatDeliveryWork } from "../../chat-work-notifications.js";
 

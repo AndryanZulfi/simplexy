@@ -1,7 +1,7 @@
 import {
   agentConfigurationSpec, canonicalAgentConfiguration,
   type AgentConfigurationDocument, type AgentInstructionsFileDetail, type ToolProfileWithDetails, type ToolPolicy,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { agentsApi } from "../../api/agents";
 import { toolsApi } from "../../api/tools";
 import { chatEndpointsApi } from "../../api/chatEndpoints";

@@ -4,7 +4,7 @@ import {
   DEFAULT_AGENT_OBSERVABILITY_CAPTURE, updateAgentObservabilitySchema, isSameOtlpOrigin,
   type AgentObservabilityCapture, type AgentObservabilitySettings, type AgentObservabilitySettingsResponse,
   type AgentObservabilityTestReceipt, type UpdateAgentObservabilityRequest,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { agentObservabilityApi } from "@/api/agent-observability";
 import { ApiError } from "@/api/client";
 import { Button } from "@/components/ui/button";

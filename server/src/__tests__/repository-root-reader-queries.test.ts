@@ -7,7 +7,7 @@ import { and, eq, inArray } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
 import { afterAll, beforeAll, expect, it, vi } from "vitest";
 import { agents, authUsers, companies, companyMemberships, createDb, executionWorkspaceRepositoryAccess,
-  executionWorkspaces, heartbeatRuns, issues, projects, projectAccessMembers, EMBEDDED_POSTGRES_TEST_TIMEOUT_MS } from "@paperclipai/db";
+  executionWorkspaces, heartbeatRuns, issues, projects, projectAccessMembers, EMBEDDED_POSTGRES_TEST_TIMEOUT_MS } from "@simplexy/db";
 import { executionWorkspaceRepositoryService } from "../services/execution-workspace-repositories.js";
 import { runRetainsIssueIdentity } from "../services/task-repository-acquisition.js";
 import { authorizationService, type AuthorizationActor } from "../services/authorization.js";

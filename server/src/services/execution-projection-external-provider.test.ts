@@ -4,7 +4,7 @@ import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import {
   agents, companies, createDb, dotAgentBindings, dotRunnerAssignments, dotRunnerOperations, heartbeatRuns,
   issues, museAgentBindings, museRunnerAssignments, museRunnerOperations, nativeRunFinalizations,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "../__tests__/helpers/embedded-postgres.js";
 import { executionProjectionsForRuns } from "./execution-projection.js";
 

@@ -293,7 +293,7 @@ pnpm storybook
 pnpm build-storybook
 ```
 
-These run the `@paperclipai/ui` Storybook on port `6006` and build the static output to `ui/storybook-static/`.
+These run the `@simplexy/ui` Storybook on port `6006` and build the static output to `ui/storybook-static/`.
 
 **Task chat → Failure notices** covers compact run errors and adjacent recovery
 notices in both presentation modes, with expanded details, fixture retry
@@ -541,7 +541,7 @@ the Tailwind `font-sans` token to those bundled files before system fallbacks.
 Linux screenshot or Storybook capture jobs should not install host Inter packages
 or inject external font CSS to make Simplexy text render correctly.
 
-Font assets live in Vite's public directory so `pnpm --filter @paperclipai/ui build`
+Font assets live in Vite's public directory so `pnpm --filter @simplexy/ui build`
 emits them under `ui/dist/fonts/`. The server package copies the same output into
 `server/ui-dist/fonts/` through `scripts/prepare-server-ui-dist.sh`.
 
@@ -665,7 +665,7 @@ Primary-instance rebuilds that restart `paperclip.service` can request one-shot 
 
 ```sh
 old_main_pid="$(systemctl show paperclip.service -p MainPID --value)"
-pnpm --filter @paperclipai/server exec tsx ../scripts/request-hot-restart.ts --server-pid "$old_main_pid"
+pnpm --filter @simplexy/server exec tsx ../scripts/request-hot-restart.ts --server-pid "$old_main_pid"
 systemctl restart paperclip.service
 ```
 
@@ -707,7 +707,7 @@ drain-and-retry path:
 
 ```sh
 old_main_pid="$(systemctl show paperclip.service -p MainPID --value)"
-pnpm --filter @paperclipai/server exec tsx ../scripts/request-hot-restart.ts \
+pnpm --filter @simplexy/server exec tsx ../scripts/request-hot-restart.ts \
   --server-pid "$old_main_pid" --drain-required
 systemctl restart paperclip.service
 ```
@@ -850,7 +850,7 @@ For normal issue work, start with the smallest targeted check that proves the ch
 
 #### Embedded Postgres template cache
 
-Suites that call `startEmbeddedPostgresTestDatabase` (from `@paperclipai/db`)
+Suites that call `startEmbeddedPostgresTestDatabase` (from `@simplexy/db`)
 get their own embedded Postgres cluster. The first such suite on a host builds
 one fully migrated cluster and publishes its data directory under
 `$TMPDIR/paperclip-embedded-postgres-templates-<uid>/<key>`. Every later suite
@@ -900,8 +900,8 @@ runs leaves no stamp, so the next consumer rebuilds.
 stamp is for this platform, every recorded output is still there at its
 recorded size, and the current digest matches. Anything else (no stamp, a
 changed input, a deleted or truncated output, a stamp from another platform)
-runs `pnpm --filter @paperclipai/paperclip-runner build` exactly as before, so
-a standalone `pnpm --filter @paperclipai/server build` on a fresh checkout
+runs `pnpm --filter @simplexy/paperclip-runner build` exactly as before, so
+a standalone `pnpm --filter @simplexy/server build` on a fresh checkout
 still builds the Runner itself. Inside `pnpm build` the Runner has just been
 built by the same command, and the step skips a 12-16s rebuild. The step
 prints one `paperclip.runner-vendor.timing.v1` line saying which it did.
@@ -931,7 +931,7 @@ Measure native skill preparation through the production service, real PostgreSQL
 and an in-memory OpenTelemetry exporter:
 
 ```sh
-pnpm --filter @paperclipai/server exec tsx scripts/benchmark-native-skill-preparation.ts
+pnpm --filter @simplexy/server exec tsx scripts/benchmark-native-skill-preparation.ts
 ```
 
 The default fixture has a 208-file repository of about 10.8 MB. The report includes
@@ -965,7 +965,7 @@ not reuse an application database.
 Measure a fresh checkout with and without the repository object cache:
 
 ```sh
-pnpm --filter @paperclipai/server exec tsx ../scripts/benchmark-repository-object-cache.ts
+pnpm --filter @simplexy/server exec tsx ../scripts/benchmark-repository-object-cache.ts
 ```
 
 This uses a synthetic 32 MiB repository and the real `file://` Git transport.
@@ -977,8 +977,8 @@ measurement.
 Measure cold sandbox staging with a disposable 10,000-file Git repository:
 
 ```sh
-pnpm --filter @paperclipai/server exec tsx ../scripts/benchmark-workspace-staging.ts --baseline-ref=origin/master
-pnpm --filter @paperclipai/server exec tsx ../scripts/benchmark-workspace-staging.ts --baseline-ref=origin/master --transfer-delay-ms=3000
+pnpm --filter @simplexy/server exec tsx ../scripts/benchmark-workspace-staging.ts --baseline-ref=origin/master
+pnpm --filter @simplexy/server exec tsx ../scripts/benchmark-workspace-staging.ts --baseline-ref=origin/master --transfer-delay-ms=3000
 ```
 
 The benchmark alternates the baseline and current implementations. Both pack,
@@ -1535,7 +1535,7 @@ guards. Close readiness derives ancestry from its existing ahead/behind
 comparison, avoiding a second history walk with `merge-base`.
 
 Measure the avoided reads on synthetic workspaces with
-`pnpm --filter @paperclipai/server exec tsx ../scripts/benchmark-workspace-record-reads.ts`.
+`pnpm --filter @simplexy/server exec tsx ../scripts/benchmark-workspace-record-reads.ts`.
 The benchmark checks identical persisted fields and reports wall time and actual
 Git command counts. Use `--resident-mib=1536` to exercise a large Node process on
 Linux. It measures workspace reads, not end-to-end agent latency.
@@ -1991,7 +1991,7 @@ and quarantined-cleanup proofs parse the exact saved execution input. Other run
 and dispatch paths retain their existing reads.
 
 Measure these two admission queries with
-`pnpm --filter @paperclipai/server exec tsx ../scripts/benchmark-continuation-run-reads.ts --baseline-ref=<pre-fix-commit>`.
+`pnpm --filter @simplexy/server exec tsx ../scripts/benchmark-continuation-run-reads.ts --baseline-ref=<pre-fix-commit>`.
 The synthetic PostgreSQL fixture compares the admission result and reports exact
 text-format DataRow frame bytes, SQL samples, and execution plans. It excludes
 TLS and protocol metadata. To use an isolated external database, set
@@ -2003,7 +2003,7 @@ conversation/workspace recovery fields used to choose the prior terminal run.
 Every completed receipt keeps its full result. Receipt order, company/agent/task
 scope, and the complete retained history stay unchanged. Saved results remain
 available to detail, recovery, and execution paths.
-Use `pnpm --filter @paperclipai/server exec tsx ../scripts/benchmark-continuation-history.ts --baseline-ref=<pre-fix-commit>`
+Use `pnpm --filter @simplexy/server exec tsx ../scripts/benchmark-continuation-history.ts --baseline-ref=<pre-fix-commit>`
 to compare generated SQL, complete continuation envelopes, and DataRow bytes.
 The benchmark includes a large required-receipt control. Its external database
 option is `PAPERCLIP_CONTINUATION_HISTORY_BENCHMARK_DATABASE_URL`, with the same
@@ -2544,9 +2544,9 @@ successful warm-session retention or admit another provider turn.
 Run the credential-free real-process restart suite with:
 
 ```sh
-pnpm --filter @paperclipai/paperclip-runner build:runner-binaries
+pnpm --filter @simplexy/paperclip-runner build:runner-binaries
 pnpm exec vitest run server/src/services/native-runtime/native-runner-restart-recovery.integration.test.ts
-pnpm --filter @paperclipai/paperclip-runner exec vitest run src/live/runnerd-codex-transport.test.ts -t 'adopts a live runner'
+pnpm --filter @simplexy/paperclip-runner exec vitest run src/live/runnerd-codex-transport.test.ts -t 'adopts a live runner'
 ```
 
 The suite uses isolated PostgreSQL state, isolated `PAPERCLIP_HOME` roots, real
@@ -2568,7 +2568,7 @@ stored inputs remain complete.
 Run the synthetic HTTP comparison through the production skills router:
 
 ```sh
-pnpm --filter @paperclipai/server exec tsx scripts/benchmark-skill-list.ts --samples=5 --network-delay-ms=3.5
+pnpm --filter @simplexy/server exec tsx scripts/benchmark-skill-list.ts --samples=5 --network-delay-ms=3.5
 ```
 
 The harness starts disposable PostgreSQL, synthetic skills and agents, and a
@@ -2652,18 +2652,18 @@ still resolve their operational and feedback skills.
 Validate the catalog without writing the manifest:
 
 ```sh
-pnpm --filter @paperclipai/skills-catalog validate
+pnpm --filter @simplexy/skills-catalog validate
 ```
 
 Regenerate `generated/catalog.json` after editing any catalog `SKILL.md`,
 frontmatter, file inventory, category, or slug:
 
 ```sh
-pnpm --filter @paperclipai/skills-catalog build:manifest
+pnpm --filter @simplexy/skills-catalog build:manifest
 ```
 
 The package's `build` script runs `build:manifest` and then `tsc`; tests live
-under `pnpm --filter @paperclipai/skills-catalog test`. Validation fails when:
+under `pnpm --filter @simplexy/skills-catalog test`. Validation fails when:
 
 - a catalog entry is not under `catalog/bundled/<category>/<slug>` or
   `catalog/optional/<category>/<slug>`
@@ -2680,7 +2680,7 @@ only), `assets` (other non-script files), or `scripts_executables` (any
 executable script). The build contract is documented in
 `doc/plans/2026-05-26-skills-cli-catalog-contract.md`.
 
-CI runs `pnpm --filter @paperclipai/skills-catalog validate` and the package's
+CI runs `pnpm --filter @simplexy/skills-catalog validate` and the package's
 vitest suite, so always regenerate the manifest in the same commit as the
 catalog change.
 
@@ -2761,13 +2761,13 @@ packages/teams-catalog/
 Validate without writing the manifest:
 
 ```sh
-pnpm --filter @paperclipai/teams-catalog validate
+pnpm --filter @simplexy/teams-catalog validate
 ```
 
 Regenerate `generated/catalog.json` after editing catalog team files:
 
 ```sh
-pnpm --filter @paperclipai/teams-catalog build:manifest
+pnpm --filter @simplexy/teams-catalog build:manifest
 ```
 
 Team install/preview APIs enforce source policy. External skill sources require
@@ -3210,7 +3210,7 @@ filters linked issues without loading the run's prompt, output, or result.
 Run the deterministic native event replay with the normal server test runner:
 
 ```sh
-pnpm --filter @paperclipai/server exec vitest run src/__tests__/native-observer-replay.test.ts
+pnpm --filter @simplexy/server exec vitest run src/__tests__/native-observer-replay.test.ts
 ```
 
 The test uses disposable PostgreSQL and the production event persistence and
@@ -3581,7 +3581,7 @@ replaced with remote clones because of historical file ownership.
 The disposable workspace-preparation performance harness is:
 
 ```sh
-pnpm --filter @paperclipai/server exec tsx ../scripts/benchmark-workspace-preparation-history.ts --baseline-ref=df80616d98119cbf5abd40549794d9980a5fabf6
+pnpm --filter @simplexy/server exec tsx ../scripts/benchmark-workspace-preparation-history.ts --baseline-ref=df80616d98119cbf5abd40549794d9980a5fabf6
 ```
 
 It compares actual preparation guards with synthetic history. Local timings are
@@ -3599,7 +3599,7 @@ still run in the service.
 Run the synthetic PostgreSQL comparison with a pinned pre-change revision:
 
 ```sh
-PAPERCLIP_LOG_LEVEL=error SIDEBAR_REQUIRE_BYTE_REDUCTION=1 pnpm --filter @paperclipai/server exec tsx ../scripts/benchmark-sidebar-badges.ts --baseline-ref=bf3ef12f3a78d0b15a32ad57f7e16520fbf6cd5e
+PAPERCLIP_LOG_LEVEL=error SIDEBAR_REQUIRE_BYTE_REDUCTION=1 pnpm --filter @simplexy/server exec tsx ../scripts/benchmark-sidebar-badges.ts --baseline-ref=bf3ef12f3a78d0b15a32ad57f7e16520fbf6cd5e
 ```
 
 The harness starts disposable embedded PostgreSQL by default. To use an existing
@@ -3639,8 +3639,8 @@ policy controls admission until their terminal charge is known.
 Use a disposable real PostgreSQL database to compare cost evaluation and complete admission:
 
 ```sh
-pnpm --filter @paperclipai/server exec tsx ../scripts/benchmark-budget-enforcement.ts --baseline-ref=6c9b87d0922f1ebfc43e8b0c36889ac5ba7b9837 > /tmp/budget-forward.json
-pnpm --filter @paperclipai/server exec tsx ../scripts/benchmark-budget-enforcement.ts --baseline-ref=6c9b87d0922f1ebfc43e8b0c36889ac5ba7b9837 --reverse > /tmp/budget-reverse.json
+pnpm --filter @simplexy/server exec tsx ../scripts/benchmark-budget-enforcement.ts --baseline-ref=6c9b87d0922f1ebfc43e8b0c36889ac5ba7b9837 > /tmp/budget-forward.json
+pnpm --filter @simplexy/server exec tsx ../scripts/benchmark-budget-enforcement.ts --baseline-ref=6c9b87d0922f1ebfc43e8b0c36889ac5ba7b9837 --reverse > /tmp/budget-reverse.json
 ```
 
 The cost comparison keeps one company policy and no active runs while adding 0,

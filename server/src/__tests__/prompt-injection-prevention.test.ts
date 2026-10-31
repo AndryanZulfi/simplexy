@@ -6,9 +6,9 @@ import path from "node:path";
 import { and, eq, sql } from "drizzle-orm";
 import { createDb, companies, agents, companyMemberships, companyPromptInjectionPrevention, costEvents, promptInjectionInvocations,
   connectionGrants, connectionGrantMembers, toolConnectionInstalls, toolConnections, budgetPolicies, budgetReservations,
-  issues, projects, secretAccessEvents, companySecrets } from "@paperclipai/db";
-import { startEmbeddedPostgresTestDatabase } from "@paperclipai/db/test-embedded-postgres";
-import { PROMPT_INJECTION_DEFAULT_MODEL, updatePromptInjectionPreventionSchema } from "@paperclipai/shared";
+  issues, projects, secretAccessEvents, companySecrets } from "@simplexy/db";
+import { startEmbeddedPostgresTestDatabase } from "@simplexy/db/test-embedded-postgres";
+import { PROMPT_INJECTION_DEFAULT_MODEL, updatePromptInjectionPreventionSchema } from "@simplexy/shared";
 import { aiConnectionService } from "../services/ai-connections.js";
 import { promptInjectionPreventionService, type PromptInjectionContext } from "../services/prompt-injection-prevention.js";
 import { type PromptInjectionProviderOutcome } from "../services/prompt-injection-provider.js";

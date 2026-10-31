@@ -1,5 +1,5 @@
-import type { AdapterEnvironmentTestResult } from "@paperclipai/shared";
-import { ADAPTER_AUTH_MISSING_CHECK_CODE } from "@paperclipai/shared";
+import type { AdapterEnvironmentTestResult } from "@simplexy/shared";
+import { ADAPTER_AUTH_MISSING_CHECK_CODE } from "@simplexy/shared";
 import { agentsApi } from "../api/agents";
 
 /** Readiness alone does not authenticate a provider. Reuse the provider's key
@@ -8,10 +8,10 @@ export async function testAgentSetup(input: {
   companyId: string;
   agentId?: string;
   adapterType: string;
-  runner?: import("@paperclipai/shared").AgentRunnerChoice;
+  runner?: import("@simplexy/shared").AgentRunnerChoice;
   providerAdapter: string;
   adapterConfig: Record<string, unknown>;
-  aiConnection?: import("@paperclipai/shared").AiRuntimeConnectionBinding;
+  aiConnection?: import("@simplexy/shared").AiRuntimeConnectionBinding;
   testCredentials?: Record<string, string>;
   environmentId: string | null;
 }): Promise<AdapterEnvironmentTestResult> {

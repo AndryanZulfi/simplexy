@@ -15,7 +15,7 @@ import { eq, sql } from "drizzle-orm";
 import { authUsers, companyMemberships, companySkillSources, heartbeatRuns, projects, projectSkillSources,
   companies, companySkills, companySkillVersions, companySkillRepositorySnapshots,
   applyPendingMigrations, closeRegisteredClients, createDb, startEmbeddedPostgresTestDatabase } from "../../packages/db/src/index.js";
-import type { CompanySkillVersionFileInventoryEntry } from "@paperclipai/shared";
+import type { CompanySkillVersionFileInventoryEntry } from "@simplexy/shared";
 import { createRunPreparationTiming, withRunExecutionTiming } from "../src/services/execution-preparation-timing.js";
 import { repositorySkillProjection } from "../src/services/skill-repository-package.js";
 import { skillFileBytes, skillSnapshotHash } from "../src/services/skill-snapshot.js";

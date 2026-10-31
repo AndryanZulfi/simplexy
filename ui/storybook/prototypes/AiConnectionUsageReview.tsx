@@ -6,7 +6,7 @@ import type {
   AiManagedConnectionSummary,
   ConnectionGrantsResponse,
   ToolConnection,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { ManagedAiConnectionDetails } from "@/components/ai-connections/ManagedAiConnectionDetails";
 
 const companyId = "company-storybook";

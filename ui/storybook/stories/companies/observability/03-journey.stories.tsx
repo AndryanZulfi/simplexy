@@ -2,7 +2,7 @@ import { useLayoutEffect, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, waitFor, within } from "storybook/test";
 import { useQueryClient } from "@tanstack/react-query";
-import type { AgentObservabilitySettings, UpdateAgentObservabilityRequest } from "@paperclipai/shared";
+import type { AgentObservabilitySettings, UpdateAgentObservabilityRequest } from "@simplexy/shared";
 import { Route, Routes } from "@/lib/router";
 import { Layout } from "@/components/Layout";
 import { CompanySettings } from "@/pages/CompanySettings";

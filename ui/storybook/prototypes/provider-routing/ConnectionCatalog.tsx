@@ -4,7 +4,7 @@ import {
   APP_STORE_DEFINITIONS,
   aiProviderSetupPreset,
   type ToolConnection,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AiProviderSetup } from "@/components/ai-connections/AiProviderSetup";
 import { appDefinitionLogoUrl } from "@/pages/apps/app-definition-display";

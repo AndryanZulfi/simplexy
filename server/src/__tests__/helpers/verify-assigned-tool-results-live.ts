@@ -1,5 +1,5 @@
 /** Opt-in paid smoke:
- * PAPERCLIP_LIVE_TOOL_RESULTS=true pnpm --filter @paperclipai/server exec vitest run src/services/native-runtime/runner-tool-results.live.test.ts
+ * PAPERCLIP_LIVE_TOOL_RESULTS=true pnpm --filter @simplexy/server exec vitest run src/services/native-runtime/runner-tool-results.live.test.ts
  * Requires a built native runner and an existing Codex login. Uses disposable
  * database/storage and a private credential copy. The app response is synthetic;
  * Codex, Runner, PRP, persistence and authenticated asset reads are real.
@@ -11,7 +11,7 @@ import { homedir, tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { eq } from "drizzle-orm";
-import { agents, heartbeatRuns, issues } from "@paperclipai/db";
+import { agents, heartbeatRuns, issues } from "@simplexy/db";
 import { startRunnerApiTestServer } from "./runner-api-server.js";
 import { createAssignedMcpTools } from "../../services/native-runtime/assigned-mcp-tools.js";
 import { PaperclipRunnerToolAuthority } from "../../services/native-runtime/paperclip-runner-tool-authority.js";

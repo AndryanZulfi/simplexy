@@ -10,7 +10,7 @@ import {
   EMBEDDED_POSTGRES_TEST_TIMEOUT_MS,
   heartbeatRuns,
   issues,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,

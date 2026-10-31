@@ -170,7 +170,7 @@ must use a Dot/account without those broader connections.
 
 ```mermaid
 sequenceDiagram
-  participant App as Paperclip scheduler/controller
+  participant App as Simplexy scheduler/controller
   participant Runner as Rust runnerd: Dot provider
   participant Broker as Durable Dot mailbox + public MCP
   participant Dot as OpenAI Dot
@@ -869,7 +869,7 @@ pnpm -r typecheck
 pnpm test:run
 pnpm build
 pnpm check:token-gates # when UI changes are present
-pnpm --filter @paperclipai/paperclip-runner verify
+pnpm --filter @simplexy/paperclip-runner verify
 ```
 
 Browser/product suites are opt-in and required for the onboarding/live acceptance

@@ -1,5 +1,5 @@
 import { and, asc, eq, inArray, sql } from "drizzle-orm";
-import { agentWakeupRequests, environmentLeases, heartbeatRuns, issues, issueRecoveryActions, type Db } from "@paperclipai/db";
+import { agentWakeupRequests, environmentLeases, heartbeatRuns, issues, issueRecoveryActions, type Db } from "@simplexy/db";
 import { adoptSystemRecovery } from "./system-recovery.js";
 import { terminalWorkspaceRunStates, workspaceExportCauses } from "./workspace-recovery-source.js";
 

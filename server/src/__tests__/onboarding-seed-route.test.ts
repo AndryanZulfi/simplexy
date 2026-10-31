@@ -9,7 +9,7 @@ import {
   goals,
   issues,
   projects,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { onboardingSeedRoutes } from "../routes/onboarding-seed.js";
 import { logActivity } from "../services/activity-log.js";
 import {

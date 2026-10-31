@@ -1,4 +1,4 @@
-import { normalizeClaudeRunnerOptions } from "@paperclipai/shared";
+import { normalizeClaudeRunnerOptions } from "@simplexy/shared";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, within, waitFor } from "storybook/test";
 import { Route, Routes } from "@/lib/router";

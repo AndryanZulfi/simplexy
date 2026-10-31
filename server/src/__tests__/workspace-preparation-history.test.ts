@@ -7,7 +7,7 @@ import request from "supertest";
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from "vitest";
-import { createDb, executionWorkspaceRepositories, executionWorkspaceRepositoryRoots, executionWorkspaces, heartbeatRuns, issues, projects, projectWorkspaces, EMBEDDED_POSTGRES_TEST_TIMEOUT_MS } from "@paperclipai/db";
+import { createDb, executionWorkspaceRepositories, executionWorkspaceRepositoryRoots, executionWorkspaces, heartbeatRuns, issues, projects, projectWorkspaces, EMBEDDED_POSTGRES_TEST_TIMEOUT_MS } from "@simplexy/db";
 import { authorizationService, canActorReadExecutionWorkspace } from "../services/authorization.js";
 import { assertExecutionWorkspaceRecordAccess, assertTaskWorkspaceExecutionAccess } from "../services/task-workspace-access.js";
 import { executionWorkspaceRepositoryService } from "../services/execution-workspace-repositories.js";

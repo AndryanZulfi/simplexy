@@ -1,5 +1,5 @@
 import { performance } from "node:perf_hooks";
-import { parseJson } from "@paperclipai/adapter-utils/server-utils";
+import { parseJson } from "@simplexy/adapter-utils/server-utils";
 
 /**
  * Stateful JSONL compaction for Pi `--mode json` stdout before it enters

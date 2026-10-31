@@ -1,4 +1,4 @@
-import { heartbeatRuns, type Db } from "@paperclipai/db";
+import { heartbeatRuns, type Db } from "@simplexy/db";
 import { and, eq, getTableColumns, sql } from "drizzle-orm";
 
 type Run = typeof heartbeatRuns.$inferSelect;

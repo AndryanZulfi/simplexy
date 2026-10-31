@@ -1,5 +1,5 @@
-import { heartbeatRuns, type Db } from "@paperclipai/db";
-import { isUuidLike } from "@paperclipai/shared";
+import { heartbeatRuns, type Db } from "@simplexy/db";
+import { isUuidLike } from "@simplexy/shared";
 import { and, eq, sql } from "drizzle-orm";
 import type { BudgetEnforcementScope } from "../budgets.js";
 

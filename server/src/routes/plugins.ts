@@ -29,7 +29,7 @@ import { fileURLToPath } from "node:url";
 import { Router } from "express";
 import type { Request, Response } from "express";
 import { and, desc, eq, gte, inArray } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import {
   agents,
   companies,
@@ -37,17 +37,17 @@ import {
   pluginLogs,
   pluginWebhookDeliveries,
   projects,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import type {
   PluginApiRouteDeclaration,
   PluginStatus,
   PaperclipPluginManifestV1,
   PluginBridgeErrorCode,
   PluginLauncherRenderContextSnapshot,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   PLUGIN_STATUSES,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { pluginRegistryService } from "../services/plugin-registry.js";
 import { pluginLifecycleManager } from "../services/plugin-lifecycle.js";
 import {
@@ -65,8 +65,8 @@ import type { PluginWorkerManager } from "../services/plugin-worker-manager.js";
 import type { PluginStreamBus } from "../services/plugin-stream-bus.js";
 import type { PluginToolDispatcher } from "../services/plugin-tool-dispatcher.js";
 import { ToolGatewayHttpError, type ToolGatewayService } from "../services/tool-gateway.js";
-import type { PluginPerformActionActorContext, ToolRunContext } from "@paperclipai/plugin-sdk";
-import { JsonRpcCallError, PLUGIN_RPC_ERROR_CODES } from "@paperclipai/plugin-sdk";
+import type { PluginPerformActionActorContext, ToolRunContext } from "@simplexy/plugin-sdk";
+import { JsonRpcCallError, PLUGIN_RPC_ERROR_CODES } from "@simplexy/plugin-sdk";
 import {
   assertAuthenticated,
   assertBoard,
@@ -184,9 +184,9 @@ const PLUGIN_SCOPED_API_RESPONSE_HEADER_ALLOWLIST = new Set([
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const EXPERIMENTAL_BUNDLED_PLUGIN_PACKAGE_NAMES = new Set([
-  "@paperclipai/plugin-llm-wiki",
-  "@paperclipai/plugin-modal",
-  "@paperclipai/plugin-workspace-diff",
+  "@simplexy/plugin-llm-wiki",
+  "@simplexy/plugin-modal",
+  "@simplexy/plugin-workspace-diff",
 ]);
 /**
  * Cached bundled-plugin discovery. Static metadata (name, key, display, paths)

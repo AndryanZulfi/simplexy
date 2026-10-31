@@ -23,7 +23,7 @@ import {
   inferBindModeFromHost,
   resolveRuntimeBind,
   validateConfiguredBindMode,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   resolveDefaultBackupDir,
   resolveDefaultEmbeddedPostgresDir,
@@ -49,11 +49,19 @@ if (shouldLoadWorkingDirectoryEnv({
   loadDotenv({ path: CWD_ENV_PATH, override: false, quiet: true });
 }
 
-// Automatically mirror any SIMPLEXY_* environment variable to PAPERCLIP_*.
+// Rebranding alias: bidirectional environment variable mirroring (SIMPLEXY_* <-> PAPERCLIP_*)
 for (const [key, value] of Object.entries(process.env)) {
-  if (key.startsWith("SIMPLEXY_") && value !== undefined) {
-    const aliased = "PAPERCLIP_" + key.slice(9);
-    process.env[aliased] = value;
+  if (value === undefined) continue;
+  if (key.startsWith("SIMPLEXY_")) {
+    const targetKey = "PAPERCLIP_" + key.slice("SIMPLEXY_".length);
+    if (process.env[targetKey] === undefined) {
+      process.env[targetKey] = value;
+    }
+  } else if (key.startsWith("PAPERCLIP_")) {
+    const targetKey = "SIMPLEXY_" + key.slice("PAPERCLIP_".length);
+    if (process.env[targetKey] === undefined) {
+      process.env[targetKey] = value;
+    }
   }
 }
 

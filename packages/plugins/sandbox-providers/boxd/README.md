@@ -1,4 +1,4 @@
-# `@paperclipai/plugin-boxd`
+# `@simplexy/plugin-boxd`
 
 boxd sandbox provider for Paperclip. [boxd](https://boxd.sh) runs each sandbox
 as an isolated KVM microVM. This package lives alongside E2B, Daytona and the

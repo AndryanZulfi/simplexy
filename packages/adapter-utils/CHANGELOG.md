@@ -1,4 +1,4 @@
-# @paperclipai/adapter-utils
+# @simplexy/adapter-utils
 
 ## Unreleased
 

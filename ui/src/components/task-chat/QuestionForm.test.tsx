@@ -2,7 +2,7 @@
 import { act } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { PaperclipQuestionResponse, PaperclipQuestionSet } from "@paperclipai/adapter-utils";
+import type { PaperclipQuestionResponse, PaperclipQuestionSet } from "@simplexy/adapter-utils";
 import { QuestionForm } from "./QuestionForm";
 
 vi.mock("./TaskChatRichInput", () => ({

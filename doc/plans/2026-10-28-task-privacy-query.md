@@ -48,7 +48,7 @@ moved after pagination.
 Run the real service benchmark with a pinned source baseline:
 
 ```sh
-pnpm --filter @paperclipai/server exec tsx scripts/benchmark-task-privacy.ts \
+pnpm --filter @simplexy/server exec tsx scripts/benchmark-task-privacy.ts \
   --baseline-ref=71b448b9cb841e6fa18fe883585430c5081245da \
   --evidence-dir=/tmp/task-privacy-proof
 ```

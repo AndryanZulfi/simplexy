@@ -58,8 +58,8 @@ function usage() {
       "environment, so codes never appear on a command line.",
       "",
       "Examples:",
-      "  node scripts/bootstrap-npm-package.mjs @paperclipai/new-package",
-      "  node scripts/bootstrap-npm-package.mjs @paperclipai/new-package --publish",
+      "  node scripts/bootstrap-npm-package.mjs @simplexy/new-package",
+      "  node scripts/bootstrap-npm-package.mjs @simplexy/new-package --publish",
       "",
     ].join("\n"),
   );

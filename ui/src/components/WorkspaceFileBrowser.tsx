@@ -26,7 +26,7 @@ import type {
   WorkspaceFileListFileItem,
   WorkspaceFileListMode,
   WorkspaceFileSelector,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 
 type BrowserSource = "current" | "other";
 

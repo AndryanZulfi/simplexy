@@ -1,3 +1,4 @@
+import { AttachmentIcon } from "@/components/AttachmentIcon";
 import { useCurrentAccountGuard } from "../hooks/useAccountBoundMutation";
 import { resolveIssueChatHumanAuthor } from "@/lib/issue-chat-human-author";
 import { useCurrentWorkspaceRetry, useWorkspaceBaseRefRecovery, useWorkspaceRetry } from "./WorkspaceBaseRefRecovery";
@@ -56,15 +57,15 @@ import type {
   IssueWorkMode,
   IssueWorkProduct,
   IssueAssigneeAdapterOverrides,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import type { ActiveRunForIssue, LiveRunForIssue } from "../api/heartbeats";
 import { findUIAdapter } from "../adapters/registry";
 import { useLiveRunTranscripts } from "./transcript/useLiveRunTranscripts";
 import { useSecondTick } from "../hooks/useSecondTick";
 import {
-  usePaperclipIssueRuntime,
-  type PaperclipIssueRuntimeReassignment,
-} from "../hooks/usePaperclipIssueRuntime";
+  useSimplexyIssueRuntime,
+  type SimplexyIssueRuntimeReassignment,
+} from "../hooks/useSimplexyIssueRuntime";
 import { useOptionalToastActions } from "../context/ToastContext";
 import { copyTextToClipboard } from "../lib/clipboard";
 import {
@@ -215,7 +216,7 @@ import type {
   IssueCommentMetadata,
   IssueCommentPresentation,
   SourceTrustMetadata,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   describeToolInput,
   displayToolName,
@@ -225,7 +226,7 @@ import {
   summarizeToolInput,
   summarizeToolResult,
 } from "../lib/transcriptPresentation";
-import { buildAgentMentionHref } from "@paperclipai/shared";
+import { buildAgentMentionHref } from "@simplexy/shared";
 import { useComposerStop } from "@/hooks/useComposerStop";
 import { cn, formatDateTime, formatShortDate } from "../lib/utils";
 import { liveBlueBadge } from "../lib/status-colors";
@@ -256,7 +257,6 @@ import {
   Hammer,
   Loader2,
   MoreHorizontal,
-  Paperclip,
   PauseCircle,
   Search,
   Square,
@@ -553,10 +553,10 @@ interface IssueChatComposerProps {
 
 interface IssueChatThreadProps {
   executionBlocked?: boolean;
-  interruption?: import("@paperclipai/shared").TaskInterruptionPresentation | null;
+  interruption?: import("@simplexy/shared").TaskInterruptionPresentation | null;
   retryPreparing?: boolean;
   /** Browser sessions are placed chronologically by the default task thread. */
-  browsers?: import("@paperclipai/shared").TaskBrowser[];
+  browsers?: import("@simplexy/shared").TaskBrowser[];
   onOpenBrowser?: (browserId: string) => void;
   hasOlderComments?: boolean;
   comments: IssueChatComment[];
@@ -1037,7 +1037,7 @@ function toValidIsoString(
 
 function parseReassignment(
   target: string,
-): PaperclipIssueRuntimeReassignment | null {
+): SimplexyIssueRuntimeReassignment | null {
   if (!target || target === "__none__") {
     return { assigneeAgentId: null, assigneeUserId: null };
   }
@@ -3682,7 +3682,7 @@ function SystemNoticeCommentContent({
               {copiedLink ? (
                 <Check className="h-3.5 w-3.5" />
               ) : (
-                <Paperclip className="h-3.5 w-3.5" />
+                <AttachmentIcon className="h-3.5 w-3.5" />
               )}
             </button>
           ) : null}
@@ -5493,7 +5493,7 @@ const IssueChatComposer = forwardRef<
         >
           <div className="flex max-w-md items-center gap-3 rounded-md bg-background/80 px-3 py-2 text-left shadow-sm ring-1 ring-border/60">
             <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
-              <Paperclip className="h-4 w-4" />
+              <AttachmentIcon className="h-4 w-4" />
             </span>
             <div className="min-w-0">
               <div className="text-sm font-medium text-foreground">
@@ -6188,7 +6188,7 @@ export function IssueChatThread({
     },
     [onAdd, beginSubmission, rejectSubmission],
   );
-  const runtime = usePaperclipIssueRuntime({
+  const runtime = useSimplexyIssueRuntime({
     messages,
     isRunning,
     onSend: ({ body, reopen, reassignment, attachmentIds }) =>

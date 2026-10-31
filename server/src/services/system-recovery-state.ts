@@ -1,7 +1,7 @@
 import { createHash, randomUUID } from "node:crypto";
 import { z } from "zod";
 import { ENVIRONMENT_LEASE_POLICIES, WORKSPACE_SOURCE_VERIFICATION_REASONS,
-  type WorkspaceSourceVerificationFailure } from "@paperclipai/shared";
+  type WorkspaceSourceVerificationFailure } from "@simplexy/shared";
 
 export const SYSTEM_RECOVERY_POLICY_VERSION = 1;
 export const SYSTEM_RECOVERY_MAX_RETRIES = 5;

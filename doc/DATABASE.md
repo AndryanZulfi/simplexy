@@ -57,7 +57,7 @@ profiles. Wrong runtime, nonterminal status, process identity, provider events,
 invalid but non-null checkpoints, and future checkpoint barriers retain their
 existing selection rules. Stored run payloads and history reads stay complete.
 Run the synthetic PostgreSQL comparison with a pinned pre-change revision:
-`pnpm --filter @paperclipai/server exec tsx ../scripts/benchmark-native-session-resume-reads.ts --baseline-ref=<commit>`.
+`pnpm --filter @simplexy/server exec tsx ../scripts/benchmark-native-session-resume-reads.ts --baseline-ref=<commit>`.
 An optional `PAPERCLIP_SESSION_RESUME_BENCHMARK_DATABASE_URL` must name a dedicated
 test database ending in `_test`; otherwise the harness starts disposable PostgreSQL.
 
@@ -164,7 +164,7 @@ wakeup-history index.
 To compare all three queries on the same disposable local PostgreSQL fixture:
 
 ```sh
-pnpm --filter @paperclipai/server exec tsx ../scripts/benchmark-slow-queries.ts --baseline-ref=origin/master
+pnpm --filter @simplexy/server exec tsx ../scripts/benchmark-slow-queries.ts --baseline-ref=origin/master
 ```
 
 Use a revision before these fixes for `--baseline-ref` after they merge. The
@@ -282,7 +282,7 @@ complete; no recovery decision is cached.
 To measure authentication query responses on disposable synthetic data:
 
 ```sh
-pnpm --filter @paperclipai/server exec tsx ../scripts/benchmark-agent-authentication.ts --baseline-ref=06689c1b3410000bcd65ff40cb469e600209c4db
+pnpm --filter @simplexy/server exec tsx ../scripts/benchmark-agent-authentication.ts --baseline-ref=06689c1b3410000bcd65ff40cb469e600209c4db
 ```
 
 This compares the current query with the original query in that revision. It
@@ -293,7 +293,7 @@ or fleet-wide savings.
 To compare the real summary and full history queries with an earlier revision:
 
 ```sh
-pnpm --filter @paperclipai/server exec tsx ../scripts/benchmark-run-history.ts --baseline-ref=1e731520bb
+pnpm --filter @simplexy/server exec tsx ../scripts/benchmark-run-history.ts --baseline-ref=1e731520bb
 ```
 
 The fixture has 1,400 synthetic runs with 192 KiB contexts. Both queries return
@@ -315,7 +315,7 @@ suite checks both plans and verifies the attached and retained source results.
 To compare this query on a disposable fixture with 13,429 tasks:
 
 ```sh
-pnpm --filter @paperclipai/server exec tsx ../scripts/benchmark-workspace-authorization.ts --baseline-ref=5c7a025032
+pnpm --filter @simplexy/server exec tsx ../scripts/benchmark-workspace-authorization.ts --baseline-ref=5c7a025032
 ```
 
 The benchmark loads the baseline authorization module with current dependencies,
@@ -712,7 +712,7 @@ connection, before enabling the new server and UI.
 
 `drizzle-kit generate` diffs `packages/db/src/schema/` against the newest snapshot in `packages/db/src/migrations/meta/`. That snapshot must describe the schema that every migration produces when they run in order. A snapshot that drifts from the schema makes the *next* migration wrong, because `generate` folds the drift into it. The drift can add a column that an earlier migration already created, which makes that migration fail on a fresh database. It can also drop a column that the schema still uses.
 
-- Create every migration with `pnpm --filter @paperclipai/db generate`. Do not hand-write a snapshot.
+- Create every migration with `pnpm --filter @simplexy/db generate`. Do not hand-write a snapshot.
 - Do not hand-edit a snapshot to resolve a merge conflict. Renumber your migration and run `generate` again, as `packages/db/.gitattributes` describes.
 - The repo keeps only the newest 5 snapshots. `generate` runs `prune:snapshots` afterwards to delete older ones. Drizzle only reads the newest snapshot, and each snapshot is a full copy of the schema (over 1 MB each). Older snapshots are still in git history.
 - `packages/db/src/migration-snapshot-drift.test.ts` is the enforcement backstop. It repeats the diff that `generate` performs and fails when the newest snapshot no longer matches `packages/db/src/schema/`.
@@ -1326,7 +1326,7 @@ These service measurements exclude network acquisition, copying, environment
 acquisition, and provider startup. Reproduce with:
 
 ```sh
-pnpm --filter @paperclipai/server exec tsx ../scripts/benchmark-workspace-preparation-history.ts --baseline-ref=df80616d98119cbf5abd40549794d9980a5fabf6
+pnpm --filter @simplexy/server exec tsx ../scripts/benchmark-workspace-preparation-history.ts --baseline-ref=df80616d98119cbf5abd40549794d9980a5fabf6
 ```
 
 Workspace-record and workspace-operation `_issuePrivacySources` /
@@ -1361,7 +1361,7 @@ indexes can filter candidates before reading large contexts. Native bindings
 continue to override legacy context IDs. No new index or migration is needed.
 
 ```sh
-pnpm --filter @paperclipai/server exec tsx ../scripts/benchmark-recovery-queries.ts --baseline-ref=1e731520bb
+pnpm --filter @simplexy/server exec tsx ../scripts/benchmark-recovery-queries.ts --baseline-ref=1e731520bb
 ```
 
 This disposable fixture compares the real ownership, recovery-action and status
@@ -1443,7 +1443,7 @@ The synthetic PostgreSQL benchmark captures the service-generated baseline and
 treatment queries, compares complete outputs, and measures raw DataRow bytes:
 
 ```sh
-pnpm --filter @paperclipai/server exec tsx ../scripts/benchmark-github-review-wait.ts --baseline-ref=663fe667d66d3863d0919a8724f1d99500feef0b
+pnpm --filter @simplexy/server exec tsx ../scripts/benchmark-github-review-wait.ts --baseline-ref=663fe667d66d3863d0919a8724f1d99500feef0b
 ```
 
 It uses disposable embedded PostgreSQL by default. A disposable local database

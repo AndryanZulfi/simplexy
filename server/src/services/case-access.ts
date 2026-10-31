@@ -1,6 +1,6 @@
 import { and, eq, inArray, or, sql, type SQL } from "drizzle-orm";
-import { agents, cases, caseAccessSources, caseDocuments, caseEvents, companyMemberships, documentRevisions, documents, heartbeatRuns, issues, projects, type Db } from "@paperclipai/db";
-import { isUuidLike } from "@paperclipai/shared";
+import { agents, cases, caseAccessSources, caseDocuments, caseEvents, companyMemberships, documentRevisions, documents, heartbeatRuns, issues, projects, type Db } from "@simplexy/db";
+import { isUuidLike } from "@simplexy/shared";
 import { forbidden, notFound } from "../errors.js";
 import { authorizationService, issueReadSqlCondition, projectReadSqlCondition, type AuthorizationActor } from "./authorization.js";
 import { isLowTrustQuarantined, resolveActorSourceTrustForIssue } from "./source-trust.js";

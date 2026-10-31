@@ -1,7 +1,7 @@
 import {
   PAPERCLIP_RUNNER_DEFAULT_MODELS,
-} from "@paperclipai/adapter-utils";
-import { PAPERCLIP_RUNNER_MINIMUM_GLIBC_VERSION } from "@paperclipai/shared";
+} from "@simplexy/adapter-utils";
+import { PAPERCLIP_RUNNER_MINIMUM_GLIBC_VERSION } from "@simplexy/shared";
 
 export const type = "codex_local";
 export const label = "Codex";

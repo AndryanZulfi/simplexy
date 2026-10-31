@@ -360,8 +360,8 @@ regressions. Removing only the existing-session binding makes those real API
 requests reject instead of resolve; the source was restored after the probe.
 The bounded-backfill and restart probes were also restored before final acceptance.
 
-Commands use `pnpm --filter @paperclipai/server exec vitest run` for the ten named
-server suites, `pnpm --filter @paperclipai/db exec vitest run` for the two database
+Commands use `pnpm --filter @simplexy/server exec vitest run` for the ten named
+server suites, `pnpm --filter @simplexy/db exec vitest run` for the two database
 cases, and each affected package's `typecheck` and `build` scripts. Evidence logs:
 `/tmp/sleep23-final-voice-consumers.log`,
 `/tmp/sleep23-final-lifecycle-consumers.log`,

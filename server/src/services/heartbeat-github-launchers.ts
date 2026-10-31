@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
-import { githubBrokerEnvironment } from "@paperclipai/adapter-utils/github-launcher";
-import { cleanupGitHubOperationLaunchers, prepareGitHubOperationLaunchers } from "@paperclipai/adapter-utils/execution-target";
+import { githubBrokerEnvironment } from "@simplexy/adapter-utils/github-launcher";
+import { cleanupGitHubOperationLaunchers, prepareGitHubOperationLaunchers } from "@simplexy/adapter-utils/execution-target";
 
 type LauncherInput = Parameters<typeof prepareGitHubOperationLaunchers>[0];
 

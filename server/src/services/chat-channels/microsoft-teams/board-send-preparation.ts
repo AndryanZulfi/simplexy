@@ -1,6 +1,6 @@
 import { and, eq } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
-import { chatActions, chatPublications } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
+import { chatActions, chatPublications } from "@simplexy/db";
 import type { EndpointRow, EndpointRecord } from "../runtime-types.js";
 import type { ChatEndpointRuntime } from "../../voice/voice-runtime.js";
 type BoardPreparationOptions = { endpointRecord: (endpointId: string) => Promise<EndpointRecord | null>; runtimeFor: (endpoint: EndpointRow) => Promise<ChatEndpointRuntime> };

@@ -249,7 +249,7 @@ are rejected. This command performs no network requests or model calls and does
 not run the Linux executable on the Mac.
 
 The destination is the private `remote-companions/linux-x64` directory beneath
-the actual installed `@paperclipai/server` package. It must be writable by the
+the actual installed `@simplexy/server` package. It must be writable by the
 operator, outside the task workspace, and protected with the same host access
 controls as the server installation. It is not an agent workspace or a remote
 image's self-reported authority. An existing different or damaged installation

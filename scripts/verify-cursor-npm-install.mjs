@@ -33,13 +33,13 @@ const cliManifestPath = join(repo, 'cli/package.json'); const original = readFil
 const generatedManifest = join(root, 'cli-manifest.json');
 run(process.execPath, [join(repo, 'scripts/generate-npm-package-json.mjs'), '--output', generatedManifest], repo);
 const publishedCli = JSON.parse(readFileSync(generatedManifest));
-publishedCli.dependencies['@paperclipai/server'] = releaseVersion;
+publishedCli.dependencies['@simplexy/server'] = releaseVersion;
 packages.set('paperclipai', { dir: 'cli', manifest: publishedCli });
 const needed = new Set();
 function visit(name) {
  if (needed.has(name)) return;
  const entry = packages.get(name); assert.ok(entry, `Missing public package ${name}`); needed.add(name);
- for (const [dependency, version] of Object.entries({...entry.manifest.dependencies, ...entry.manifest.optionalDependencies})) if (version.startsWith('workspace:') || dependency === '@paperclipai/server' && name === 'paperclipai') visit(dependency);
+ for (const [dependency, version] of Object.entries({...entry.manifest.dependencies, ...entry.manifest.optionalDependencies})) if (version.startsWith('workspace:') || dependency === '@simplexy/server' && name === 'paperclipai') visit(dependency);
 }
 visit('paperclipai');
 // Run after the candidate build, including its required standalone adapters.
@@ -76,7 +76,7 @@ const lock = readFileSync(join(consumer,'package-lock.json'),'utf8');
 // Cursor itself must still remain absent until its explicit setup command.
 isolated(GROK_PUBLIC_INSTALL_LIFECYCLE, { download: true });
 assert.equal(readFileSync(sentinel,'utf8'),'ok'); assert.equal(readFileSync(join(consumer,'package-lock.json'),'utf8'),lock);
-const installedRunner = join(consumer,'node_modules/@paperclipai/server/dist/vendor/paperclip-runner');
+const installedRunner = join(consumer,'node_modules/@simplexy/server/dist/vendor/paperclip-runner');
 assert.equal(existsSync(join(installedRunner,'provider-assets/cursor')),false,'npm must never download Cursor');
 assert.equal(existsSync(join(account.home,'.paperclip/runtimes/cursor')),false,'npm must not provision the account runtime cache');
 const setupOutput = isolated(['node','node_modules/paperclipai/dist/index.js','runtime','setup','cursor'],{download:true,readOnlyConsumer:true}).toString();
@@ -88,14 +88,14 @@ import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { userInfo } from 'node:os';
 import { join } from 'node:path';
-import { defaultCapabilityRunnerdBinary } from '/consumer/node_modules/@paperclipai/server/dist/vendor/paperclip-runner/live/runnerd-codex-transport.js';
-import { resolvePaperclipRunnerBinary } from '/consumer/node_modules/@paperclipai/server/dist/services/native-runtime/native-codex-runner.js';
-import { requireServerAdapter } from '/consumer/node_modules/@paperclipai/server/dist/adapters/registry.js';
-import { runnerBinaryTarget } from '/consumer/node_modules/@paperclipai/server/dist/vendor/paperclip-runner/live/runner-binary.js';
-import { bundledRemoteRunnerBinary, bundledRemoteProviderPackManifestPath } from '/consumer/node_modules/@paperclipai/server/dist/vendor/paperclip-runner/live/bundled-remote-provider-pack.js';
-import { verifyAcpxProfileInstallation } from '/consumer/node_modules/@paperclipai/server/dist/vendor/paperclip-runner/drivers/acpx/profile-installation.js';
-import { resolveQualifiedAcpxProfile } from '/consumer/node_modules/@paperclipai/server/dist/vendor/paperclip-runner/drivers/acpx/qualified-profiles.js';
-import { CURSOR_DISTRIBUTION_PINS } from '/consumer/node_modules/@paperclipai/server/dist/vendor/paperclip-runner/drivers/acpx/generated-profiles.js';
+import { defaultCapabilityRunnerdBinary } from '/consumer/node_modules/@simplexy/server/dist/vendor/paperclip-runner/live/runnerd-codex-transport.js';
+import { resolvePaperclipRunnerBinary } from '/consumer/node_modules/@simplexy/server/dist/services/native-runtime/native-codex-runner.js';
+import { requireServerAdapter } from '/consumer/node_modules/@simplexy/server/dist/adapters/registry.js';
+import { runnerBinaryTarget } from '/consumer/node_modules/@simplexy/server/dist/vendor/paperclip-runner/live/runner-binary.js';
+import { bundledRemoteRunnerBinary, bundledRemoteProviderPackManifestPath } from '/consumer/node_modules/@simplexy/server/dist/vendor/paperclip-runner/live/bundled-remote-provider-pack.js';
+import { verifyAcpxProfileInstallation } from '/consumer/node_modules/@simplexy/server/dist/vendor/paperclip-runner/drivers/acpx/profile-installation.js';
+import { resolveQualifiedAcpxProfile } from '/consumer/node_modules/@simplexy/server/dist/vendor/paperclip-runner/drivers/acpx/qualified-profiles.js';
+import { CURSOR_DISTRIBUTION_PINS } from '/consumer/node_modules/@simplexy/server/dist/vendor/paperclip-runner/drivers/acpx/generated-profiles.js';
 const profile = resolveQualifiedAcpxProfile('cursor', 'gpt-5.6-luna[context=272k,reasoning=medium,fast=false]');
 const installation = await verifyAcpxProfileInstallation(profile);
 assert.equal(userInfo().homedir, '/home/paperclip');
@@ -106,7 +106,7 @@ await (await installation.openCommand()).close();
 const readiness = await requireServerAdapter('paperclip_runner').testEnvironment({ companyId: 'installation-probe', adapterType: 'paperclip_runner', config: { provider: 'acpx', acpxAgent: 'cursor', model: profile.reportedModelId } });
 assert.equal(readiness.status, 'pass', JSON.stringify(readiness));
 assert.equal(readiness.checks[0]?.code, 'acpx_runtime_ready');
-const binaryRoot = '/consumer/node_modules/@paperclipai/server/dist/vendor/paperclip-runner/bin';
+const binaryRoot = '/consumer/node_modules/@simplexy/server/dist/vendor/paperclip-runner/bin';
 const manifest = JSON.parse(readFileSync(binaryRoot + '/release-manifest.json', 'utf8'));
 assert.equal(manifest.schema, 'paperclip.runner.release-binaries.v1');
 assert.deepEqual(Object.keys(manifest.platforms).sort(), ['darwin-arm64', 'darwin-x64', 'linux-x64']);

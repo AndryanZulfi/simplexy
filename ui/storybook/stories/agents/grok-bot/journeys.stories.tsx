@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, waitFor, within } from "storybook/test";
-import type { CreateGrokInvitation, GrokConnection } from "@paperclipai/shared";
+import type { CreateGrokInvitation, GrokConnection } from "@simplexy/shared";
 import { GrokBotSetupContent, type GrokSetupStep } from "@/components/new-agent/GrokBotSetupContent";
 import { AnimatedDialogContent } from "@/components/AnimatedDialogContent";
 import { Dialog } from "@/components/ui/dialog";

@@ -31,7 +31,7 @@ import {
   startEmbeddedPostgresTestDatabase,
   toolApplications,
   toolConnections,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   installTeamsFileConsentHook,
   restoreTeamsFileConsentBinding,

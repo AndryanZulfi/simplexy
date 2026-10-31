@@ -24,7 +24,7 @@ import {
   issueThreadInteractions,
   issues,
   type Db,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   normalizePrpResultSignals,
   type PrpStructuredRunResult,

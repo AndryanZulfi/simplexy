@@ -8,7 +8,7 @@ import {
   agents, authUsers, companies, companyMemberships, executionWorkspaceRepositories,
   executionWorkspaceRepositoryAccess, executionWorkspaceRepositoryRoots, executionWorkspaces,
   heartbeatRuns, issueAccessGrants, issues, type Db,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import type { AuthorizationActor } from "../../services/authorization.js";
 
 const exec = promisify(execFile);

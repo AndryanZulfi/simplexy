@@ -49,8 +49,8 @@ the connection only. Actions use the metro hosts above.
 ```mermaid
 sequenceDiagram
     actor Operator
-    participant UI as Paperclip UI
-    participant Server as Paperclip server
+    participant UI as Simplexy UI
+    participant Server as Simplexy server
     participant Vault as Instance vault
     participant Metro as Unikraft metro API
     actor Agent

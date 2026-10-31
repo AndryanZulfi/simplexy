@@ -1,4 +1,4 @@
-import { JsonRpcCallError } from "@paperclipai/plugin-sdk";
+import { JsonRpcCallError } from "@simplexy/plugin-sdk";
 import { collectRunFailureDiagnostics } from "../services/run-failure-diagnostics.js";
 import { createSandboxOrphanCleanupSpool } from "../services/sandbox-orphan-cleanup-spool.js";
 import { idleWorkSnapshot } from "../services/task-admission.js";
@@ -13,7 +13,7 @@ import {
   getSshEnvLabSupport,
   startSshEnvLabFixture,
   stopSshEnvLabFixture,
-} from "@paperclipai/adapter-utils/ssh";
+} from "@simplexy/adapter-utils/ssh";
 import {
   activityLog,
   costEvents,
@@ -30,7 +30,7 @@ import {
   issues,
   plugins,
   projects,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,
@@ -56,7 +56,7 @@ import {
   getActiveStepContext,
   runWithRuntimeParent,
   type StartupSpanContext,
-} from "@paperclipai/adapter-utils/acpx-engine/startup-timing";
+} from "@simplexy/adapter-utils/acpx-engine/startup-timing";
 import { traceparentFromContextToken } from "../instrumentation.ts";
 import { ROOT_CONTEXT, trace } from "@opentelemetry/api";
 import { buildNativeHarnessBackupManifest } from "../services/native-runtime/native-session-executor.ts";
@@ -262,7 +262,7 @@ describeEmbeddedPostgres("environmentRuntimeService", () => {
     return db.insert(plugins).values({
       id: pluginId,
       pluginKey,
-      packageName: input.packageName ?? "@paperclipai/plugin-fake-sandbox",
+      packageName: input.packageName ?? "@simplexy/plugin-fake-sandbox",
       version: "1.0.0",
       apiVersion: 1,
       categories: ["automation"],
@@ -3165,7 +3165,7 @@ describeEmbeddedPostgres("environmentRuntimeService", () => {
     });
     await insertSandboxProviderPlugin(pluginId, {
       pluginKey: "paperclip.fake-plugin-ready-sandbox-provider",
-      packageName: "@paperclipai/plugin-fake-ready-sandbox",
+      packageName: "@simplexy/plugin-fake-ready-sandbox",
       displayName: "Fake Plugin Ready Sandbox Provider",
       description: "Test fake plugin provider readiness",
       environmentDrivers: [
@@ -3248,7 +3248,7 @@ describeEmbeddedPostgres("environmentRuntimeService", () => {
     });
     await insertSandboxProviderPlugin(pluginId, {
       pluginKey: "paperclip.fake-plugin-reload-sandbox-provider",
-      packageName: "@paperclipai/plugin-fake-reload-sandbox",
+      packageName: "@simplexy/plugin-fake-reload-sandbox",
       displayName: "Fake Plugin Reload Sandbox Provider",
       description: "Test fake plugin provider reload readiness",
       environmentDrivers: [
@@ -3350,7 +3350,7 @@ describeEmbeddedPostgres("environmentRuntimeService", () => {
     // provider and the probe reports ready.
     await insertSandboxProviderPlugin(pluginId, {
       pluginKey: "paperclip.fake-plugin-missing-sandbox-provider",
-      packageName: "@paperclipai/plugin-fake-missing-sandbox",
+      packageName: "@simplexy/plugin-fake-missing-sandbox",
       displayName: "Fake Plugin Missing Sandbox Provider",
       description: "Test fake plugin provider missing readiness",
       environmentDrivers: [
@@ -3468,7 +3468,7 @@ describeEmbeddedPostgres("environmentRuntimeService", () => {
     await db.insert(plugins).values({
       id: pluginId,
       pluginKey: SECRET_REF_PLUGIN_KEY,
-      packageName: "@paperclipai/plugin-secret-sandbox",
+      packageName: "@simplexy/plugin-secret-sandbox",
       version: "1.0.0",
       apiVersion: 1,
       categories: ["automation"],

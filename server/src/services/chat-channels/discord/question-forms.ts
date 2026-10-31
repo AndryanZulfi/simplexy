@@ -6,17 +6,17 @@ import {
   and,
   eq,
 } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import {
   chatConversations,
   chatExternalPrincipals,
   chatPublications,
   issueThreadInteractions,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import type {
   SafeChatPublicationPayload,
   AskUserQuestionsInteraction,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 
 import {
   forbidden,

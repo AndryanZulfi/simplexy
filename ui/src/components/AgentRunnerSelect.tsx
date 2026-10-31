@@ -1,4 +1,4 @@
-import type { AgentRunner, AgentRunnerChoice } from "@paperclipai/shared";
+import type { AgentRunner, AgentRunnerChoice } from "@simplexy/shared";
 import { Field } from "./agent-config-primitives";
 import { SelectPopover } from "./ui/select";
 import { Button } from "./ui/button";

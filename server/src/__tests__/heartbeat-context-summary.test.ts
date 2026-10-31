@@ -5,7 +5,7 @@ import {
   summarizeHeartbeatRunContextSnapshot,
   summarizeHeartbeatRunListResultJson,
 } from "../services/heartbeat.js";
-import { renderPaperclipWakePrompt } from "@paperclipai/adapter-utils/server-utils";
+import { renderPaperclipWakePrompt } from "@simplexy/adapter-utils/server-utils";
 
 describe("buildPaperclipTaskMarkdown", () => {
   it("treats retained questions as conversation data in fresh and resumed task prompts", () => {

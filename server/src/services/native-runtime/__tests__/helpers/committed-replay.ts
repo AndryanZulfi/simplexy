@@ -1,5 +1,5 @@
-import { heartbeatRuns, type Db } from "@paperclipai/db";
-import { createDatabaseResponseCapture, installDatabaseResponseCapture } from "@paperclipai/db/response-capture";
+import { heartbeatRuns, type Db } from "@simplexy/db";
+import { createDatabaseResponseCapture, installDatabaseResponseCapture } from "@simplexy/db/response-capture";
 import { eq } from "drizzle-orm";
 import { expect } from "vitest";
 

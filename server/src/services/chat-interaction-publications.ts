@@ -6,7 +6,7 @@ import { notifyChatPublicationWork } from "./chat-work-notifications.js";
 import { nativePhotonInteraction } from "./photon/interactions.js";
 import { randomBytes } from "node:crypto";
 import { and, eq, inArray, sql } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import {
   chatActions,
   chatConversations,
@@ -14,7 +14,7 @@ import {
   chatPublications,
   heartbeatRuns,
   issues,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import type {
   AskUserQuestionsInteraction,
   AskUserQuestionsQuestion,
@@ -23,7 +23,7 @@ import type {
   RequestCheckboxConfirmationInteraction,
   SuggestTasksInteraction,
   SafeExternalChatCardAction,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { projectSafeChatPublication } from "./chat-publication-projection.js";
 import { publicChatTaskUrl } from "./chat-task-url.js";
 import {

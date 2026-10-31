@@ -1,4 +1,4 @@
-import type { WorkspaceOperation, WorkspaceRuntimeService } from "@paperclipai/shared";
+import type { WorkspaceOperation, WorkspaceRuntimeService } from "@simplexy/shared";
 import { describe, expect, it } from "vitest";
 import {
   describeWorkspaceReadinessCause,

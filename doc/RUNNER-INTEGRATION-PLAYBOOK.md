@@ -298,8 +298,8 @@ For ACPX, `acpx-profiles.json` owns release declarations. Generate the language
 representations instead of maintaining handwritten TypeScript/Rust tuples:
 
 ```sh
-pnpm --filter @paperclipai/paperclip-runner generate:acpx-profiles
-pnpm --filter @paperclipai/paperclip-runner check:acpx-profiles
+pnpm --filter @simplexy/paperclip-runner generate:acpx-profiles
+pnpm --filter @simplexy/paperclip-runner check:acpx-profiles
 ```
 
 The existing native Runner serialized field `qualificationModel` contains the selected
@@ -802,9 +802,9 @@ complete even when a contributor has no access to earlier campaigns.
 Start with targeted checks. Existing command entry points include:
 
 ```sh
-pnpm --filter @paperclipai/paperclip-runner check:acpx-profiles
-pnpm --filter @paperclipai/paperclip-runner typecheck
-pnpm --filter @paperclipai/paperclip-runner check:runner
+pnpm --filter @simplexy/paperclip-runner check:acpx-profiles
+pnpm --filter @simplexy/paperclip-runner typecheck
+pnpm --filter @simplexy/paperclip-runner check:runner
 pnpm test:e2e:runner:typecheck
 pnpm test:e2e:runner:unit
 pnpm test:e2e:runner -- --list

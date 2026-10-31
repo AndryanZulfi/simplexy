@@ -1,6 +1,6 @@
 import { and, eq, inArray, isNull, type SQL } from "drizzle-orm";
-import { issues, type Db } from "@paperclipai/db";
-import { ISSUE_SUMMARIES_MAX_IDS } from "@paperclipai/shared";
+import { issues, type Db } from "@simplexy/db";
+import { ISSUE_SUMMARIES_MAX_IDS } from "@simplexy/shared";
 import { externalConversationStateSql } from "./slack-conversation-state.js";
 
 /** A bounded projection with the columns needed by task-read authorization. */

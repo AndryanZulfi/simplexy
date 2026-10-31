@@ -50,8 +50,8 @@ function makeRepo() {
     "pnpm-workspace.yaml": "packages:\n  - packages/*\n  - server\n",
     "tsconfig.base.json": "{}\n",
     "patches/acpx@0.13.1.patch": "--- a\n+++ b\n",
-    "server/package.json": '{"name":"@paperclipai/server"}\n',
-    "packages/paperclip-runner/package.json": '{"name":"@paperclipai/paperclip-runner"}\n',
+    "server/package.json": '{"name":"@simplexy/server"}\n',
+    "packages/paperclip-runner/package.json": '{"name":"@simplexy/paperclip-runner"}\n',
     "packages/paperclip-runner/src/index.ts": "export const one = 1;\n",
     "packages/paperclip-runner/dist/index.js": "export const one = 1;\n",
     "packages/paperclip-runner/dist/live/index.js": "export {};\n",
@@ -132,9 +132,9 @@ describe("resolvePnpmInvocation", () => {
 
 describe("prepareRunnerVendor", () => {
   it("still runs the Runner build the server build has always run", () => {
-    // The Dockerfile's standalone `pnpm --filter @paperclipai/server build`
+    // The Dockerfile's standalone `pnpm --filter @simplexy/server build`
     // depends on this exact command producing a current vendored Runner.
-    expect(RUNNER_VENDOR_BUILD_COMMAND).toBe("pnpm --filter @paperclipai/paperclip-runner build");
+    expect(RUNNER_VENDOR_BUILD_COMMAND).toBe("pnpm --filter @simplexy/paperclip-runner build");
   });
 
   it("skips the rebuild when the recorded build is current and reports the check time", () => {
@@ -285,7 +285,7 @@ describe("prepareRunnerVendor", () => {
       const calls = () => readFileSync(argvLog, "utf8").split("\n").filter(Boolean);
 
       const first = await run();
-      expect(calls()).toEqual(["--filter @paperclipai/paperclip-runner build"]);
+      expect(calls()).toEqual(["--filter @simplexy/paperclip-runner build"]);
       expect(first.stdout).toMatch(/action:rebuild,reason:no_stamp,/);
       expect(assessRunnerBuild({ repoRoot, packageRoot }).current).toBe(true);
 

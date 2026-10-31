@@ -257,7 +257,7 @@ import {
   prepareConversationTurn,
   settleConversationTurn,
 } from "./agent-conversations.js";
-import { withAdapterExecutionPhase } from "@paperclipai/adapter-utils/execution-phase";
+import { withAdapterExecutionPhase } from "@simplexy/adapter-utils/execution-phase";
 import {
   recordNativeLocalProcessStop,
   settleNativeRunProcess,
@@ -273,7 +273,7 @@ import {
   prepareManagedAiRuntime,
   assertManagedAiProjectAuth,
 } from "./ai-connection-runtime.js";
-import { aiConnectionBindingSchema, aiRuntimeConnectionBindingSchema, type AiConnectionRouterSelection } from "@paperclipai/shared";
+import { aiConnectionBindingSchema, aiRuntimeConnectionBindingSchema, type AiConnectionRouterSelection } from "@simplexy/shared";
 import { aiConnectionRouterService, AiConnectionPoolExhausted, applyAiConnectionRouterTaskSettings } from "./ai-connection-router.js";
 import {
   getExecutionBlocker,
@@ -293,7 +293,7 @@ import { executionFailureRetryCount } from "./execution-recovery-attempt.js";
 import { buildHeartbeatRunStatusLiveEventPayload } from "./heartbeat-run-status-payload.js";
 export { buildHeartbeatRunStatusLiveEventPayload } from "./heartbeat-run-status-payload.js";
 import { StaleExecutionContinuationError } from "./execution-continuation.js";
-import { renderPaperclipWakePrompt } from "@paperclipai/adapter-utils/server-utils";
+import { renderPaperclipWakePrompt } from "@simplexy/adapter-utils/server-utils";
 
 import {
   initializeRunIdentity,
@@ -306,7 +306,7 @@ import {
   cleanupGitHubOperationLaunchers,
   prepareGitHubExecutionEnvironment,
   startAdapterExecutionTargetPaperclipBridge,
-} from "@paperclipai/adapter-utils/execution-target";
+} from "@simplexy/adapter-utils/execution-target";
 import { agentInstructionWorkingCopyService } from "./agent-instruction-working-copies.js";
 
 import fs from "node:fs/promises";
@@ -323,12 +323,12 @@ import {
   or,
   sql,
 } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import {
   CHAT_PROVIDERS,
   ISSUE_DISPOSITION_REPAIR_RETRY_REASON,
   isEnvironmentDriverSupportedForAdapter,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   agents,
   agentWakeupRequests,
@@ -340,7 +340,7 @@ import {
   nativeRunFinalizations,
   projects,
   projectWorkspaces,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { conflict, HttpError, notFound } from "../errors.js";
 
 import { logger } from "../middleware/logger.js";

@@ -1,5 +1,5 @@
 import { Router, type Request } from "express";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import {
   createRoutineSchema,
   createDocumentAnnotationCommentSchema,
@@ -10,8 +10,8 @@ import {
   updateDocumentAnnotationThreadSchema,
   updateRoutineSchema,
   updateRoutineTriggerSchema,
-} from "@paperclipai/shared";
-import { trackRoutineCreated } from "@paperclipai/shared/telemetry";
+} from "@simplexy/shared";
+import { trackRoutineCreated } from "@simplexy/shared/telemetry";
 import { validate, validateIssueMutationBody } from "../middleware/validate.js";
 import { accessService, documentAnnotationService, logActivity, routineService } from "../services/index.js";
 import { assertCompanyAccess, getAccessibleResource, getActorInfo, hasCompanyAccess } from "./authz.js";

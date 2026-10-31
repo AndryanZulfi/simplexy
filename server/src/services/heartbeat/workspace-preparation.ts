@@ -1,11 +1,11 @@
 import { reserveFreshPluginTaskWorkspace, stageProviderFreshWorkspace } from "../provider-fresh-workspace.js";
-import { freshWorkspaceSchema, type PluginFreshWorkspace } from "@paperclipai/plugin-sdk";
+import { freshWorkspaceSchema, type PluginFreshWorkspace } from "@simplexy/plugin-sdk";
 import { pluginRegistryService } from "../plugin-registry.js";
 import { attachPreservedWorkspaceSnapshots } from "../workspace-recovery-snapshot.js";
 import { materializeFreshWorkspaceSeed } from "../fresh-workspace-seed.js";
 import { assertTaskWorkspaceExecutionAccess } from "../task-workspace-access.js";
 import { preparePluginWorkspace, type WorkspaceWorkers } from "../plugin-workspaces.js";
-import { readWorkspaceProviderBinding } from "@paperclipai/shared";
+import { readWorkspaceProviderBinding } from "@simplexy/shared";
 import { nativeExecutionUsesTaskWorkspace } from "./external-provider.js";
 import { readGitCacheRestoration } from "../git-workspace-restoration.js";
 import { createHeartbeatPreparationTiming } from "./preparation-timing.js";
@@ -29,8 +29,8 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { CONTROLLER_PROVISION_COPY_ONLY, workspaceRequiresCopyOnlyProvisioning } from "../workspace-host-provision.js";
 import { and, asc, eq } from "drizzle-orm";
-import { type ExecutionWorkspace } from "@paperclipai/shared";
-import { executionWorkspaces as executionWorkspacesTable, heartbeatRuns, issues, projectWorkspaces } from "@paperclipai/db";
+import { type ExecutionWorkspace } from "@simplexy/shared";
+import { executionWorkspaces as executionWorkspacesTable, heartbeatRuns, issues, projectWorkspaces } from "@simplexy/db";
 import { getStartupTracer } from "../../instrumentation.js";
 import { createHostDuplexObservabilityRecorder } from "../duplex-observability-recorder.js";
 import { incrementToolRuntimeMetricCounter } from "../tool-runtime-metrics.js";
@@ -59,12 +59,12 @@ import {
   resolveEffectiveWorkspaceStrategyType,
 } from "../execution-workspace-policy.js";
 import { evaluateExecutionAllowlist } from "../execution-allowlist.js";
-import type { Db, agents } from "@paperclipai/db";
+import type { Db, agents } from "@simplexy/db";
 import type {
   Environment,
   IssueExecutionWorkspaceSettings,
   ProjectExecutionWorkspacePolicy,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import type { NativeExecutionInput } from "../../vendor/paperclip-runner/index.js";
 import type { NativeRunHistoricalSpan } from "../native-runtime/native-run-trace.js";
 import type { NativeRestartRecoveryClaim } from "../native-runtime/index.js";
@@ -104,7 +104,7 @@ export interface HeartbeatWorkspacePreparationInput {
     responsibleUserId: string | null;
     previousSessionParams: Record<string, unknown> | null;
     freshWorkspace?: import("../fresh-workspace-continuation.js").ContinuationReadiness | null;
-    workspaceSelection?: import("@paperclipai/shared").TaskWorkspaceIntent | null;
+    workspaceSelection?: import("@simplexy/shared").TaskWorkspaceIntent | null;
   };
   policy: {
     trustPreset: TrustPresetResolution;
@@ -741,7 +741,7 @@ async function prepareHeartbeatWorkspaceLocked(db: Db, input: HeartbeatWorkspace
       issueId, sourceRunIds: [input.task.freshWorkspace.sourceRunId], cwd: executionWorkspace.cwd }))
       .map(snapshot => ({ ...snapshot, path: path.relative(executionWorkspace.cwd, snapshot.path) }));
     context.recoveredWorkspaceFiles = recoveredFiles;
-    const continuation = context.executionContinuation as import("@paperclipai/shared").ExecutionContinuationEnvelope | null;
+    const continuation = context.executionContinuation as import("@simplexy/shared").ExecutionContinuationEnvelope | null;
     if (continuation) {
       continuation.recoveredFiles = recoveredFiles;
       // The wake was assembled before filesystem preparation. Update that same

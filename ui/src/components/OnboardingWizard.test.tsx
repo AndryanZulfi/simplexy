@@ -2,8 +2,8 @@
 
 import { act, StrictMode } from "react";
 import { buildClaudeLocalConfig } from "../../../packages/adapters/claude-local/src/ui/build-config";
-import type { CreateConfigValues } from "@paperclipai/adapter-utils";
-import type { LocalAiLoginStatus } from "@paperclipai/shared";
+import type { CreateConfigValues } from "@simplexy/adapter-utils";
+import type { LocalAiLoginStatus } from "@simplexy/shared";
 import { createRoot } from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -41,7 +41,7 @@ vi.mock("@/api/ai-connections", () => ({ aiConnectionsApi: managedApi }));
 // exercises its real token storage and default selection.
 vi.mock("./ai-connections/AiConnectionField", async (importOriginal) => {
   const actual = await importOriginal<typeof import("./ai-connections/AiConnectionField")>();
-  return { ...actual, AiConnectionField: (props: { environmentId?: string; onChange: (value: import("@paperclipai/shared").AiConnectionBinding) => void }) => (
+  return { ...actual, AiConnectionField: (props: { environmentId?: string; onChange: (value: import("@simplexy/shared").AiConnectionBinding) => void }) => (
     <button data-environment={props.environmentId} onClick={() => props.onChange({ provider: "github", method: "api_key", mode: "responsible_user" })}>Use saved Copilot connection</button>
   ) };
 });
@@ -83,7 +83,7 @@ const mockAgentsApi = vi.hoisted(() => ({
   update: vi.fn(async (_id: string, input: Record<string, unknown>) => input),
   adapterModels: vi.fn(async () => [] as Array<{ id: string; label: string }>),
   testEnvironment: vi.fn(
-    async (): Promise<import("@paperclipai/shared").AdapterEnvironmentTestResult> => ({
+    async (): Promise<import("@simplexy/shared").AdapterEnvironmentTestResult> => ({
       adapterType: "claude_local",
       status: "pass",
       checks: [],
@@ -102,7 +102,7 @@ const mockAgentsApi = vi.hoisted(() => ({
   // under test checks with `instanceof`.
   getClaudeOAuthTokenStatus: vi.fn(),
   getAdapterAuthSignal: vi.fn(
-    async (): Promise<import("@paperclipai/shared").AdapterAuthSignalResponse> => ({
+    async (): Promise<import("@simplexy/shared").AdapterAuthSignalResponse> => ({
       status: "present",
     }),
   ),
@@ -152,11 +152,11 @@ const mockAdapterBuild = vi.hoisted(() => ({
 // the probe dies on "Could not load environment settings" and the hire never
 // runs — which reads as a mysterious 0-call assertion, not an error.
 const mockEnvironmentsApi = vi.hoisted(() => ({
-  probe: vi.fn(async (): Promise<import("@paperclipai/shared").EnvironmentProbeResult> => ({ ok: true, driver: "sandbox", summary: "Measured image", details: { platformQualificationRecorded: true, leaseId: "platform-lease" } })),
+  probe: vi.fn(async (): Promise<import("@simplexy/shared").EnvironmentProbeResult> => ({ ok: true, driver: "sandbox", summary: "Measured image", details: { platformQualificationRecorded: true, leaseId: "platform-lease" } })),
   list: vi.fn(async () => [] as Array<Record<string, unknown>>),
   capabilities: vi.fn(
-    async (): Promise<import("@paperclipai/shared").EnvironmentCapabilities> =>
-      (await import("@paperclipai/shared")).getEnvironmentCapabilities([]),
+    async (): Promise<import("@simplexy/shared").EnvironmentCapabilities> =>
+      (await import("@simplexy/shared")).getEnvironmentCapabilities([]),
   ),
 }));
 const mockInstanceSettingsApi = vi.hoisted(() => ({
@@ -273,7 +273,7 @@ vi.mock("./AgentCapsule", () => ({ AgentCapsule: () => null }));
 
 import { ApiError } from "../api/client";
 import { queryKeys } from "../lib/queryKeys";
-import { ADAPTER_AUTH_MISSING_CHECK_CODE, getEnvironmentCapabilities } from "@paperclipai/shared";
+import { ADAPTER_AUTH_MISSING_CHECK_CODE, getEnvironmentCapabilities } from "@simplexy/shared";
 import { CLAUDE_OAUTH_TOKEN_ENV_KEY } from "./environment-variables-editor/model";
 import { ONBOARDING_STORAGE_KEY, OnboardingWizard } from "./OnboardingWizard";
 import { CONNECTED_HOLD_MS } from "./onboarding/onboarding-motion";
@@ -1440,7 +1440,7 @@ describe("OnboardingWizard restore-gate (stale localStorage across accounts)", (
                 testedAt: new Date().toISOString(),
               };
         }) as unknown as () => Promise<
-          import("@paperclipai/shared").AdapterEnvironmentTestResult
+          import("@simplexy/shared").AdapterEnvironmentTestResult
         >,
       );
       const { root } = await openConnectStep();
@@ -2231,7 +2231,7 @@ describe("OnboardingWizard restore-gate (stale localStorage across accounts)", (
     }
 
     it.each([["successful refresh", false], ["failed refresh and retry", true]] as const)("saves a custom gateway without probing, then explicitly tests and hires with its selected model: %s", async (_scenario, failRefresh) => {
-      const gatewayAccounts: import("@paperclipai/shared").AiConnectionList = {
+      const gatewayAccounts: import("@simplexy/shared").AiConnectionList = {
         currentUserId: "user-1", canManageConnections: true, connections: [],
       };
       let lookupFails = false;
@@ -2402,7 +2402,7 @@ describe("OnboardingWizard restore-gate (stale localStorage across accounts)", (
       await act(async () => handles.queryClient.setQueryData(["ai-connections", "company-new"], {
         currentUserId: "user-1", connections: [{ id: "saved", grantId: "grant", companyId: "company-new", provider: "anthropic", method: "subscription", name: "My subscription", ownership: "personal", ownerUserId: "user-1", status: "connected", isDefault: true }],
       }));
-      let finish!: (value: import("@paperclipai/shared").EnvironmentProbeResult) => void;
+      let finish!: (value: import("@simplexy/shared").EnvironmentProbeResult) => void;
       mockEnvironmentsApi.probe.mockReturnValue(new Promise(resolve => { finish = resolve; }));
       try {
         await pickSource(/Claude/);
@@ -3857,7 +3857,7 @@ describe("OnboardingWizard restore-gate (stale localStorage across accounts)", (
       });
 
       it.each(["back", "environment-config"])("does not test or hire after a held probe is abandoned by %s", async change => {
-        let finish!: (value: import("@paperclipai/shared").EnvironmentProbeResult) => void;
+        let finish!: (value: import("@simplexy/shared").EnvironmentProbeResult) => void;
         const handles = await openManaged();
         mockEnvironmentsApi.probe.mockReturnValue(new Promise(resolve => { finish = resolve; }));
         try {

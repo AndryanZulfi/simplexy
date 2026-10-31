@@ -11,9 +11,9 @@ import { WebSocket } from "ws";
 import {
   agents, authUsers, companies, companyMemberships, completionContracts,
   createDb, heartbeatRunEvents, heartbeatRuns, issues, type Db,
-} from "@paperclipai/db";
-import * as schema from "@paperclipai/db/schema/index";
-import type { LiveEvent } from "@paperclipai/shared";
+} from "@simplexy/db";
+import * as schema from "@simplexy/db/schema/index";
+import type { LiveEvent } from "@simplexy/shared";
 import type { PrpEvent } from "../vendor/paperclip-runner/index.js";
 import { setupLiveEventsWebSocketServer } from "../realtime/live-events-ws.js";
 import { PaperclipControlPlanePort } from "../services/native-runtime/paperclip-control-plane-port.js";

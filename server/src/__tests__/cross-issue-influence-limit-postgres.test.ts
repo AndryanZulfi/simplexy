@@ -7,7 +7,7 @@ import {
   companies,
   createDb,
   heartbeatRuns,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,

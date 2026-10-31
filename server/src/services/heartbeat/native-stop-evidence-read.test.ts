@@ -1,6 +1,6 @@
 import { randomBytes, randomUUID } from "node:crypto";
-import { heartbeatRuns, issues, type Db } from "@paperclipai/db";
-import { createDatabaseResponseCapture, installDatabaseResponseCapture } from "@paperclipai/db/response-capture";
+import { heartbeatRuns, issues, type Db } from "@simplexy/db";
+import { createDatabaseResponseCapture, installDatabaseResponseCapture } from "@simplexy/db/response-capture";
 import { eq, sql } from "drizzle-orm";
 import { describe, expect, it, vi } from "vitest";
 import { isAcknowledgedNativeStop } from "../acknowledged-native-stop.js";

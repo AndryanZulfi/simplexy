@@ -417,7 +417,7 @@ The default scripts use port 6006; launch these in separate terminals with
 explicit overrides:
 
 ```sh
-# From the Paperclip repository's ui/ directory:
+# From the Simplexy repository's ui/ directory:
 pnpm exec storybook dev --port 6106 --config-dir storybook/.storybook --no-open
 
 # From the paperclip-cloud repository's web/ directory:

@@ -13,11 +13,11 @@ import {
   or,
   sql,
 } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import {
   type BillingType,
   type CostStatus,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   agents,
   agentConfigRevisions,
@@ -26,7 +26,7 @@ import {
   heartbeatRunEvents,
   heartbeatRuns,
   issues,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { notFound } from "../../errors.js";
 import { logger } from "../../middleware/logger.js";
 import { getServerAdapter } from "../../adapters/index.js";
@@ -49,9 +49,9 @@ import {
   hasSessionCompactionThresholds,
   resolveSessionCompactionPolicy,
   type SessionCompactionPolicy,
-} from "@paperclipai/adapter-utils";
-import { isUuidLike } from "@paperclipai/shared";
-import { HEARTBEAT_RUN_LIST_DEFAULT_LIMIT, HEARTBEAT_RUN_LIST_MAX_LIMIT } from "@paperclipai/shared";
+} from "@simplexy/adapter-utils";
+import { isUuidLike } from "@simplexy/shared";
+import { HEARTBEAT_RUN_LIST_DEFAULT_LIMIT, HEARTBEAT_RUN_LIST_MAX_LIMIT } from "@simplexy/shared";
 import { isUnsafeSessionWorkspaceCwd } from "../session-workspace-cwd.js";
 
 export const EXECUTION_REVIEW_PARTICIPANT_RECOVERY_WAKE_REASON =

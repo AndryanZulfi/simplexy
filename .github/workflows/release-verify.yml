@@ -430,14 +430,14 @@ jobs:
         run: |
           set -euo pipefail
           for check in $RUNNER_CHECKS; do
-            pnpm --filter @paperclipai/paperclip-runner "$check"
+            pnpm --filter @simplexy/paperclip-runner "$check"
           done
 
       - name: Warm debug dependencies for the shared Runner cache
         # Protocol tests need debug binaries. Populate their dependencies in
         # the sole cache writer, so a cold save also serves the protocol lane.
         if: ${{ matrix.lane == 'rust' && github.repository == 'paperclipai/paperclip' && github.event_name == 'push' && github.ref == 'refs/heads/master' && inputs.ref == github.sha }}
-        run: pnpm --filter @paperclipai/paperclip-runner build:rust
+        run: pnpm --filter @simplexy/paperclip-runner build:rust
 
       # The dependency cache above deliberately leaves the Runner's own crate
       # out, so every pull request build compiled paperclip-runner-core in
@@ -673,7 +673,7 @@ jobs:
           let failure;
           try {
             for (const [name, args, cwd] of [
-              ['typescript', ['--filter', '@paperclipai/paperclip-runner', 'build:typescript'], root],
+              ['typescript', ['--filter', '@simplexy/paperclip-runner', 'build:typescript'], root],
               ['native', ['build:binary'], join(root, 'packages/paperclip-runner')],
             ]) {
               builds.push(startPrefetch({ name, cmd: 'pnpm', args, cwd, env: process.env, logPath: join(logs, name + '.log') }));

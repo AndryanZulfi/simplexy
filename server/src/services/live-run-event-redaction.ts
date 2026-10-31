@@ -1,5 +1,5 @@
-import type { Db } from "@paperclipai/db";
-import type { LiveEvent } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import type { LiveEvent } from "@simplexy/shared";
 import { redactCurrentUserValue } from "../log-redaction.js";
 import { redactEventPayload } from "../redaction.js";
 import { instanceSettingsService } from "./instance-settings.js";

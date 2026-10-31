@@ -1,4 +1,4 @@
-import type { AdapterConfigSchema } from "@paperclipai/adapter-utils";
+import type { AdapterConfigSchema } from "@simplexy/adapter-utils";
 
 import {
   DEFAULT_GRACE_SEC,

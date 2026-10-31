@@ -1,4 +1,4 @@
-import type { ToolConnectionOwnership, ToolConnectionTransport, OAuthEndpointKind } from "@paperclipai/shared";
+import type { ToolConnectionOwnership, ToolConnectionTransport, OAuthEndpointKind } from "@simplexy/shared";
 
 export type OAuthProviderEndpoints = {
   provider: string;

@@ -1,4 +1,4 @@
-import { aiConnectionBindingSchema, type Agent } from "@paperclipai/shared";
+import { aiConnectionBindingSchema, type Agent } from "@simplexy/shared";
 
 /** Task overrides must discover models through the assignee's saved connection. */
 export function copilotTaskModelCatalogOptions(agent: Agent | null | undefined) {

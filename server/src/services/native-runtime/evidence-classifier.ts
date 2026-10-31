@@ -1,5 +1,5 @@
 import { and, eq, or } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import {
   approvals,
   caseHandoffs,
@@ -9,7 +9,7 @@ import {
   issueAttachments,
   issueThreadInteractions,
   issueWorkProducts,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   normalizePrpResultSignals,
   type PrpIgnoredAttentionRequest,

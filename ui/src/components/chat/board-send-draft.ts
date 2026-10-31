@@ -2,7 +2,7 @@ import {
   CHAT_PUBLICATION_STATES,
   type ChatPublicationSummary,
   type ChatPublicationBatchStatus,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { ApiError } from "@/api/client";
 
 export type BoardSendRejection = {

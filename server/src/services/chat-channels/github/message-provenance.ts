@@ -1,9 +1,9 @@
 import type { ChatEndpointRuntime } from "../../voice/voice-runtime.js";
-import type { GitHubReviewEventContext, GitHubIssueEventContext, GitHubReviewPolicy } from "@paperclipai/shared";
+import type { GitHubReviewEventContext, GitHubIssueEventContext, GitHubReviewPolicy } from "@simplexy/shared";
 
 import {
   chatDeliveries,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 
 import type {
   Message,

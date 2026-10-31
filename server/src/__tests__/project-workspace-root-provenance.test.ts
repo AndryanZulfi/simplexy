@@ -7,7 +7,7 @@ import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { eq } from "drizzle-orm";
 import { agents, authUsers, companies, companyMemberships, createDb, executionWorkspaceRepositoryAccess,
   executionWorkspaces, issues, projects, projectWorkspaces, projectAccessMembers, principalPermissionGrants,
-  EMBEDDED_POSTGRES_TEST_TIMEOUT_MS } from "@paperclipai/db";
+  EMBEDDED_POSTGRES_TEST_TIMEOUT_MS } from "@simplexy/db";
 import { projectService } from "../services/projects.js";
 import { assertTaskWorkspaceExecutionAccess, assertTaskWorkspaceSourceProjectAccess } from "../services/task-workspace-access.js";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";

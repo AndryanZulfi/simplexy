@@ -7,7 +7,7 @@ import { toolAccessService } from "../services/tool-access.js";
 import { randomUUID } from "node:crypto";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { and, eq, ne, sql } from "drizzle-orm";
-import { applyPendingMigrations, companies, createDb, subscribeDatabaseWork, toolApplications, toolConnections } from "@paperclipai/db";
+import { applyPendingMigrations, companies, createDb, subscribeDatabaseWork, toolApplications, toolConnections } from "@simplexy/db";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { resolveExternalTestDatabaseUrl } from "./helpers/external-test-database.js";
 import { connectionHealthSchedule } from "../services/tool-access/catalog/health-schedule.js";

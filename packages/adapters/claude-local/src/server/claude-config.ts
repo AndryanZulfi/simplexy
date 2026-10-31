@@ -6,7 +6,7 @@ import type {
   AdapterExecutionContext,
   AdapterEnvironmentCheck,
   AdapterRuntimeMcpServer,
-} from "@paperclipai/adapter-utils";
+} from "@simplexy/adapter-utils";
 import {
   adapterExecutionTargetUsesManagedHome,
   maybeRunSandboxInstallCommand,
@@ -14,9 +14,9 @@ import {
   runAdapterExecutionTargetShellCommand,
   type AdapterExecutionTarget,
   type AdapterExecutionTargetShellOptions,
-} from "@paperclipai/adapter-utils/execution-target";
-import { resolvePaperclipInstanceRootForAdapter } from "@paperclipai/adapter-utils/server-utils";
-import { shellQuote } from "@paperclipai/adapter-utils/ssh";
+} from "@simplexy/adapter-utils/execution-target";
+import { resolvePaperclipInstanceRootForAdapter } from "@simplexy/adapter-utils/server-utils";
+import { shellQuote } from "@simplexy/adapter-utils/ssh";
 import { classifyThrownErrorClass, logSandboxProbeDiagnostic } from "./probe-diagnostics.js";
 
 const SEEDED_SHARED_FILES = ["settings.json", "CLAUDE.md"] as const;

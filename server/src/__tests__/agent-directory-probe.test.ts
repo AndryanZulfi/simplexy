@@ -4,9 +4,9 @@ import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { createRequire } from "node:module";
 import childProcess, { execFileSync } from "node:child_process";
-import { prepareAdapterExecutionTargetRuntime } from "@paperclipai/adapter-utils/execution-target";
-import { captureDirectorySnapshot } from "@paperclipai/adapter-utils/workspace-restore-merge";
-import { prepareSandboxManagedRuntime } from "@paperclipai/adapter-utils/sandbox-managed-runtime";
+import { prepareAdapterExecutionTargetRuntime } from "@simplexy/adapter-utils/execution-target";
+import { captureDirectorySnapshot } from "@simplexy/adapter-utils/workspace-restore-merge";
+import { prepareSandboxManagedRuntime } from "@simplexy/adapter-utils/sandbox-managed-runtime";
 import { agentDirectoryBaselineDigest, agentDirectoryProbeProgram, observeLocalAgentDirectory, probeAgentDirectory, retireAgentDirectoryTransferScratch, agentDirectoryTransferCleanupProgram } from "../services/agent-directory-probe.js";
 
 describe("stable live agent directory observation", () => {
@@ -81,7 +81,7 @@ describe("stable live agent directory observation", () => {
     const remote = `${root}-remote`;
     fs.mkdirSync(remote);
     const target = { kind: "remote" as const, transport: "sandbox" as const, remoteCwd: remote,
-      runner: { execute: async (input: Parameters<import("@paperclipai/adapter-utils/command-managed-runtime").CommandManagedRuntimeRunner["execute"]>[0]) => ({
+      runner: { execute: async (input: Parameters<import("@simplexy/adapter-utils/command-managed-runtime").CommandManagedRuntimeRunner["execute"]>[0]) => ({
         stdout: execFileSync(input.command, input.args ?? [], { cwd: input.cwd, input: input.stdin, encoding: "utf8",
           env: { PATH: process.env.PATH, ...input.env }, timeout: input.timeoutMs, maxBuffer: 32 * 1024 * 1024 }),
         stderr: "", exitCode: 0, signal: null, timedOut: false, pid: null, startedAt: new Date().toISOString(),
@@ -117,7 +117,7 @@ describe("stable live agent directory observation", () => {
     fs.mkdirSync(agentHome, { recursive: true });
     if (recovering) fs.cpSync(root, agentHome, { recursive: true });
     const target = { kind: "remote" as const, transport: "sandbox" as const, remoteCwd,
-      runner: { execute: async (input: Parameters<import("@paperclipai/adapter-utils/command-managed-runtime").CommandManagedRuntimeRunner["execute"]>[0]) => ({
+      runner: { execute: async (input: Parameters<import("@simplexy/adapter-utils/command-managed-runtime").CommandManagedRuntimeRunner["execute"]>[0]) => ({
         stdout: execFileSync(input.command, input.args ?? [], { cwd: input.cwd, input: input.stdin, encoding: "utf8",
           env: { PATH: process.env.PATH, ...input.env }, timeout: input.timeoutMs, maxBuffer: 32 * 1024 * 1024 }),
         stderr: "", exitCode: 0, signal: null, timedOut: false, pid: null, startedAt: new Date().toISOString(),
@@ -151,7 +151,7 @@ describe("stable live agent directory observation", () => {
     const target = { kind: "remote" as const, transport: "sandbox" as const, remoteCwd,
       // A newly bound controller target may have no native sync hooks. Exercise
       // the production command/base64 fallback rather than a transport mock.
-      runner: { execute: async (input: Parameters<import("@paperclipai/adapter-utils/command-managed-runtime").CommandManagedRuntimeRunner["execute"]>[0]) => ({
+      runner: { execute: async (input: Parameters<import("@simplexy/adapter-utils/command-managed-runtime").CommandManagedRuntimeRunner["execute"]>[0]) => ({
         stdout: execFileSync(input.command, input.args ?? [], { cwd: input.cwd, input: input.stdin, encoding: "utf8",
           env: { PATH: process.env.PATH, ...input.env }, timeout: input.timeoutMs, maxBuffer: 32 * 1024 * 1024 }),
         stderr: "", exitCode: 0, signal: null, timedOut: false, pid: null, startedAt: new Date().toISOString(),

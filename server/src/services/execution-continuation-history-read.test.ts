@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { randomBytes, randomUUID } from "node:crypto";
 import { eq } from "drizzle-orm";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { agents, applyPendingMigrations, companies, createDb, heartbeatRuns, issues, type Db } from "@paperclipai/db";
+import { agents, applyPendingMigrations, companies, createDb, heartbeatRuns, issues, type Db } from "@simplexy/db";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "../__tests__/helpers/embedded-postgres.js";
 import { resolveExternalTestDatabaseUrl } from "../__tests__/helpers/external-test-database.js";
 import { buildExecutionContinuation } from "./execution-continuation.js";

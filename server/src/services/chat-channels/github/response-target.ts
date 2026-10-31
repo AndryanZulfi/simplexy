@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { and, asc, eq } from "drizzle-orm";
-import { chatActions, chatConversations, chatDeliveries, chatEndpoints, type Db } from "@paperclipai/db";
+import { chatActions, chatConversations, chatDeliveries, chatEndpoints, type Db } from "@simplexy/db";
 import { forbidden, HttpError } from "../../../errors.js";
 
 export type GitHubResponseSource = {

@@ -1,7 +1,7 @@
 import type { ConnectionManagementContext } from "./connection-management.js";
 import { githubBotCredentials } from "./chat-github-client.js";
 import { toolAccessPolicyService } from "./tool-access-policy.js";
-import { agents, toolCatalogEntries } from "@paperclipai/db";
+import { agents, toolCatalogEntries } from "@simplexy/db";
 import { GITHUB_BOT_TOOLS, syncGitHubBotTools } from "./chat-github-tools.js";
 import { and, desc, eq, sql } from "drizzle-orm";
 import {
@@ -15,12 +15,12 @@ import {
   connectionGrants,
   toolConnections,
   type Db,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   defaultGitHubReviewPolicy,
   updateGitHubChatConfigurationSchema,
   type GitHubChatConfiguration,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { HttpError, badRequest, conflict, forbidden, notFound, unprocessable } from "../errors.js";
 import { toolAccessService } from "./tool-access.js";
 import { logActivity } from "./activity-log.js";

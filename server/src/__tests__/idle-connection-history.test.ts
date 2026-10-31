@@ -4,7 +4,7 @@ import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import {
   agents, agentWakeupRequests, chatEndpoints, chatSlackRegistrations, companies, connectionEventDeliveries, connectionGrants, connectionIntentDeliveries,
   createDb, environmentLeases, environments, heartbeatRuns, issues, issueThreadInteractions, toolApplications, toolConnections,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { beginIdleTrackedWork } from "../services/task-admission.js";
 import { connectionIntentDeliveryService } from "../services/connection-intent-delivery.js";
 import { readIdleSleepSafety, type IdleSleepDrainStatus } from "../services/idle-sleep-safety.js";

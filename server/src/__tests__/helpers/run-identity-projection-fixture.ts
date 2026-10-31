@@ -1,5 +1,5 @@
 import { randomBytes, randomUUID } from "node:crypto";
-import { agents, companies, heartbeatRuns, issueComments, issues, type Db } from "@paperclipai/db";
+import { agents, companies, heartbeatRuns, issueComments, issues, type Db } from "@simplexy/db";
 import { initializeRunIdentity } from "../../services/run-identity.js";
 
 export async function seedIdentityProjection(db: Db) {

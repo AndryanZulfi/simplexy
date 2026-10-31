@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { eq } from "drizzle-orm";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
-import { chatConversations, chatDeliveries, chatEndpointResources, chatEndpoints, chatPublications, createDb, heartbeatRuns, issues, subscribeDatabaseWork } from "@paperclipai/db";
+import { chatConversations, chatDeliveries, chatEndpointResources, chatEndpoints, chatPublications, createDb, heartbeatRuns, issues, subscribeDatabaseWork } from "@simplexy/db";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { resolveExternalTestDatabaseUrl } from "./helpers/external-test-database.js";
 import { createChatMilestoneFixtures } from "./helpers/chat-milestone-fixtures.js";

@@ -34,7 +34,7 @@ stores returned credentials as secret references, and handles the callback at
 ```mermaid
 sequenceDiagram
     actor A as Administrator
-    participant P as Paperclip
+    participant P as Simplexy
     participant M as mcp.posthog.com
     participant O as oauth.posthog.com
 

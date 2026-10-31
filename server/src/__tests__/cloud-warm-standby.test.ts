@@ -3,7 +3,7 @@ import { createServer, request as httpRequest } from "node:http";
 import express from "express";
 import request from "supertest";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import { installDatabaseWorkSignals } from "../../../packages/db/src/work-signals.js";
 import { cloudWarmStandbyMiddleware, cloudWarmStandbyServerOptions } from "../middleware/cloud-warm-standby.js";
 import { healthRoutes } from "../routes/health.js";

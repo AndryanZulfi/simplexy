@@ -1,4 +1,4 @@
-import { reconcileDatabaseWork } from "@paperclipai/db";
+import { reconcileDatabaseWork } from "@simplexy/db";
 import { idleWorkSnapshot } from "./task-admission.js";
 import { DELIVERY_QUEUES, notifyDeliveryWork } from "./delivery-work-notifications.js";
 import { discordCommandSchedule } from "./chat-channels/discord/command-schedule.js";
@@ -27,7 +27,7 @@ import {
   startEmbeddedPostgresTestDatabase,
   toolApplications,
   toolConnections,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { discordPaperclipCommandDefinition } from "./chat-discord-command-registration.js";
 import {
   readDiscordCommandRegistrationDeadline,

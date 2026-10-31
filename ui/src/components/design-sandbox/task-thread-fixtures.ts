@@ -1,5 +1,5 @@
 import { revealWordProgress } from "./word-reveal";
-import type { HeartbeatRunEvent } from "@paperclipai/shared";
+import type { HeartbeatRunEvent } from "@simplexy/shared";
 import type { TranscriptEntry } from "../../adapters";
 import { nativeRunEventsToTranscript } from "../transcript/native-run-events";
 import type { TaskChatMessageItem } from "../task-chat/task-chat-model";

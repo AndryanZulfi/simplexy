@@ -78,7 +78,7 @@ clarification records static checks, not a new local runtime or mutation run.
 Use isolated PAPERCLIP_HOME, PAPERCLIP_CONFIG and TMPDIR values and the checked-in root/server Vitest configuration:
 
 ```sh
-node node_modules/vitest/vitest.mjs run --project @paperclipai/server \
+node node_modules/vitest/vitest.mjs run --project @simplexy/server \
   server/src/__tests__/heartbeat-process-recovery.test.ts --exclude '**/dist/**'
 ```
 

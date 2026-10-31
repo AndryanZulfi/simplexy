@@ -1,7 +1,7 @@
 import { createHash, randomUUID } from "node:crypto";
 import { constants } from "node:fs";
 import { open, readFile } from "node:fs/promises";
-import type { CommandManagedRuntimeRunner } from "@paperclipai/adapter-utils/command-managed-runtime";
+import type { CommandManagedRuntimeRunner } from "@simplexy/adapter-utils/command-managed-runtime";
 import type { NativeRunTrace } from "./native-run-trace.js";
 import { readProviderPackLayers, stageProviderPackLayers } from "./provider-pack-layers.js";
 import { providerPackExtractionProbe } from "./provider-pack-extraction.js";

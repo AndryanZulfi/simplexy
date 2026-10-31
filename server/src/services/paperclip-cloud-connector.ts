@@ -1,4 +1,4 @@
-import { SLACK_MANAGER_SCOPES, ASANA_CONNECTOR_SCOPES, isAsanaConnectorProfileId, type AsanaConnectorProfileId } from "@paperclipai/shared";
+import { SLACK_MANAGER_SCOPES, ASANA_CONNECTOR_SCOPES, isAsanaConnectorProfileId, type AsanaConnectorProfileId } from "@simplexy/shared";
 import {
   createDecipheriv,
   createHash,
@@ -20,7 +20,7 @@ import {
   isGoogleWorkspaceScopeGrant,
   type GitHubConnectorProfileId,
   type GoogleWorkspaceConnectorProfileId,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   loadPaperclipCloudConnectorIdentity,
   paperclipCloudConnectorEnrollmentStatus,
@@ -379,7 +379,7 @@ export function createPaperclipCloudConnector(input: {
       return response.active === true && response.githubApps?.version === 2;
     },
     async githubApp(values: { subject: string; companyId: string; binding: Record<string, unknown> }) {
-      return await call("github-app", values, { field: "binding", value: JSON.stringify(values.binding) }) as unknown as import("@paperclipai/shared").GitHubAppCloudState;
+      return await call("github-app", values, { field: "binding", value: JSON.stringify(values.binding) }) as unknown as import("@simplexy/shared").GitHubAppCloudState;
     },
     async claimGitHubApp(values: { subject: string; companyId: string; claimId: string; redemptionId: string }) {
       const response = await call("claim", { ...values, profile: "github.bot" });

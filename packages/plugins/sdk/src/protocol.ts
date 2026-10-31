@@ -1,8 +1,8 @@
 import type { PluginWorkspaceParams, PluginWorkspaceResult } from "./workspace-provider.js";
 import type { PluginEnvironmentTaskParams, PluginEnvironmentTaskResult } from "./environment-tasks.js";
 import type { PluginAgentRuntimeState, PluginAgentRuntimeIdentity } from "./types.js";
-import type { AgentLifecycleRequest, AgentLifecycleResult } from "@paperclipai/shared";
-import type { AiConnectionRouterRequest, AiConnectionRouterResult } from "@paperclipai/shared";
+import type { AgentLifecycleRequest, AgentLifecycleResult } from "@simplexy/shared";
+import type { AiConnectionRouterRequest, AiConnectionRouterResult } from "@simplexy/shared";
 /**
  * JSON-RPC 2.0 message types and protocol helpers for the host ↔ worker IPC
  * channel.
@@ -53,8 +53,8 @@ import type {
   ExternalObjectMentionConfidence,
   ExternalObjectMentionSourceKind,
   EnvSecretRefBinding,
-} from "@paperclipai/shared";
-export type { PluginLauncherRenderContextSnapshot } from "@paperclipai/shared";
+} from "@simplexy/shared";
+export type { PluginLauncherRenderContextSnapshot } from "@simplexy/shared";
 
 import type {
   PluginEvent,

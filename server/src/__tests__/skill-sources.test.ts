@@ -1,5 +1,5 @@
 import { resolveExternalTestDatabaseUrl } from './helpers/external-test-database.js';
-import { applyPendingMigrations } from '@paperclipai/db';
+import { applyPendingMigrations } from '@simplexy/db';
 import { randomUUID } from 'node:crypto';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
@@ -7,7 +7,7 @@ import { promises as fs } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
-import { agents, folders, companySkillSources, companySkillSourceEntries, companies, companySkills, companySkillVersions, companySkillRepositorySnapshots, resourceLifecycleEvents, createDb } from '@paperclipai/db';
+import { agents, folders, companySkillSources, companySkillSourceEntries, companies, companySkills, companySkillVersions, companySkillRepositorySnapshots, resourceLifecycleEvents, createDb } from '@simplexy/db';
 import { and, eq, sql } from 'drizzle-orm';
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from './helpers/embedded-postgres.js';
 import { unprocessable } from '../errors.js';

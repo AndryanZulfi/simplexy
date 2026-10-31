@@ -3,7 +3,7 @@ import { createHash, randomBytes, randomUUID, timingSafeEqual } from "node:crypt
 import { and, asc, desc, eq, inArray, isNull, isNotNull, lte, or, sql } from "drizzle-orm";
 import { z } from "zod";
 import { companies, dotAgentBindings as bindings, dotRunnerAssignments as assignments,
-  grokBotRoutines as routines, grokBotDispatches as dispatches, mcpOauthGrants, type Db } from "@paperclipai/db";
+  grokBotRoutines as routines, grokBotDispatches as dispatches, mcpOauthGrants, type Db } from "@simplexy/db";
 import { authorizeExternalBotBinding, authorizeExternalBotOperator, externalBotEnabled } from "../external-bot-authority.js";
 import { McpOAuthError, type McpPrincipal } from "../public-mcp/oauth.js";
 import { secretService } from "../secrets.js";

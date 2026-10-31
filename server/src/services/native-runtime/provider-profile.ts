@@ -1,5 +1,5 @@
 import { resolveGrokDisableWebSearch } from "../../vendor/paperclip-runner/index.js";
-import { agentHarnessType, normalizeClaudeRunnerOptions } from "@paperclipai/shared";
+import { agentHarnessType, normalizeClaudeRunnerOptions } from "@simplexy/shared";
 import { resolveClaudeEffort, resolveGrokEffort, resolveQualifiedAcpxProfile } from "../../vendor/paperclip-runner/index.js";
 import {
   isPaperclipRunnerProvider,
@@ -9,11 +9,11 @@ import {
   resolvePaperclipRunnerCursorMode,
   resolvePaperclipRunnerPiThinkingLevel,
   type PaperclipRunnerProvider,
-} from "@paperclipai/adapter-utils";
+} from "@simplexy/adapter-utils";
 import {
   codexLocalReasoningEffortsForModel,
   isCodexLocalKnownModel,
-} from "@paperclipai/adapter-codex-local";
+} from "@simplexy/adapter-codex-local";
 import {
   AGENTCORE_QUALIFIED_MODEL,
   CLAUDE_MANAGED_QUALIFIED_MODEL,

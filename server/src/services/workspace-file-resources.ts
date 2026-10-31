@@ -2,8 +2,8 @@ import { issueReadSqlCondition, projectReadSqlCondition, type AuthorizationActor
 import fs from "node:fs/promises";
 import path from "node:path";
 import { and, desc, eq, inArray, isNull } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
-import { executionWorkspaces, issues, projects, projectWorkspaces } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
+import { executionWorkspaces, issues, projects, projectWorkspaces } from "@simplexy/db";
 import type {
   NormalizedWorkspaceFileAvailabilityQuery,
   ResolvedWorkspaceResource,
@@ -17,7 +17,7 @@ import type {
   WorkspaceFilePreviewKind,
   WorkspaceFileSelector,
   WorkspaceFileWorkspaceKind,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import { HttpError, notFound, unprocessable } from "../errors.js";
 import {
   isWorkspaceGitScanError,

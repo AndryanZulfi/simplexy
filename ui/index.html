@@ -18,11 +18,12 @@
     <link rel="manifest" href="/site.webmanifest" crossorigin="use-credentials" />
     <script>
       (() => {
-        const key = "paperclip.theme";
+        const key = "simplexy.theme";
+        const legacyKey = "paperclip.theme";
         const darkThemeColor = "#18181b";
         const lightThemeColor = "#ffffff";
         try {
-          const stored = window.localStorage.getItem(key);
+          const stored = window.localStorage.getItem(key) || window.localStorage.getItem(legacyKey);
           const prefersDark =
             typeof window.matchMedia === "function" &&
             window.matchMedia("(prefers-color-scheme: dark)").matches;

@@ -3,7 +3,7 @@
 import { act } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import type { Agent } from "@paperclipai/shared";
+import type { Agent } from "@simplexy/shared";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { storybookAgents } from "../../../storybook/fixtures/paperclipData";
 import { TooltipProvider } from "../ui/tooltip";

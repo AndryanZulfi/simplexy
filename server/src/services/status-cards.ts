@@ -10,15 +10,15 @@ import {
   statusCards,
   statusCardUpdates,
   type Db,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import type {
   CompanySearchIssueSummary,
   CreateStatusCard,
   PatchStatusCard,
   WriteStatusCardQuery,
   WriteStatusCardSummary,
-} from "@paperclipai/shared";
-import { companySearchQuerySchema, STATUS_CARD_AGENT_MAX_CARDS } from "@paperclipai/shared";
+} from "@simplexy/shared";
+import { companySearchQuerySchema, STATUS_CARD_AGENT_MAX_CARDS } from "@simplexy/shared";
 import { conflict, forbidden, notFound, unprocessable } from "../errors.js";
 import { logger } from "../middleware/logger.js";
 import { readBuiltInAgentMarker } from "../lib/built-in-agent-metadata.js";

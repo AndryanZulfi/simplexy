@@ -1,4 +1,4 @@
-import { EXTERNAL_AGENT_TOOL_GUIDANCE } from "@paperclipai/shared/external-agent-guidance";
+import { EXTERNAL_AGENT_TOOL_GUIDANCE } from "@simplexy/shared/external-agent-guidance";
 
 export type AgentOnboardingPromptInput = {
   onboardingTextUrl: string;

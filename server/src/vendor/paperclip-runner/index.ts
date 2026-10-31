@@ -7,7 +7,7 @@
  * tree so published server packages have no workspace runtime dependency.
  * Keep server imports pointed at this relative boundary.
  */
-type RunnerModule = typeof import("@paperclipai/paperclip-runner");
+type RunnerModule = typeof import("@simplexy/paperclip-runner");
 
 export type {
   DotHarnessDriver,
@@ -74,11 +74,11 @@ export type {
   RunnerProcessLaunchSpec,
   StrictCompletionContractInput,
   TransportCloseReason,
-} from "@paperclipai/paperclip-runner";
+} from "@simplexy/paperclip-runner";
 export type DurablePrpControlPlane =
-  import("@paperclipai/paperclip-runner").DurablePrpControlPlane;
+  import("@simplexy/paperclip-runner").DurablePrpControlPlane;
 export type PaperclipSemanticDispatcher =
-  import("@paperclipai/paperclip-runner").PaperclipSemanticDispatcher;
+  import("@simplexy/paperclip-runner").PaperclipSemanticDispatcher;
 
 const sourceUrl = new URL(
   "../../../../packages/paperclip-runner/src/index.ts",
@@ -123,8 +123,8 @@ export const describeRunnerdNativeSessionBackend = runner.describeRunnerdNativeS
 export const createPaperclipRunnerAuthorizedToolSet =
   runner.createPaperclipRunnerAuthorizedToolSet;
 export const createRunnerdCodexTransport: (
-  options?: import("@paperclipai/paperclip-runner").RunnerdCodexTransportOptions,
-) => import("@paperclipai/paperclip-runner").RunnerdCodexTransport =
+  options?: import("@simplexy/paperclip-runner").RunnerdCodexTransportOptions,
+) => import("@simplexy/paperclip-runner").RunnerdCodexTransport =
   runner.createRunnerdCodexTransport;
 export const defaultCapabilityRunnerdBinary =
   runner.defaultCapabilityRunnerdBinary;

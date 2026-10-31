@@ -31,7 +31,7 @@ pnpm dev --tailscale-auth
 
 ## 2. Find your reachable Tailscale address
 
-From the machine running Paperclip:
+From the machine running Simplexy:
 
 ```sh
 tailscale ip -4
@@ -39,9 +39,9 @@ tailscale ip -4
 
 You can also use your Tailscale MagicDNS hostname (for example `my-macbook.tailnet.ts.net`).
 
-## 3. Open Paperclip from another device
+## 3. Open Simplexy from another device
 
-Use the Tailscale IP or MagicDNS host with the Paperclip port:
+Use the Tailscale IP or MagicDNS host with the Simplexy port:
 
 ```txt
 http://<tailscale-host-or-ip>:3100
@@ -55,7 +55,7 @@ http://my-macbook.tailnet.ts.net:3100
 
 ## 4. Allow custom private hostnames when needed
 
-If you access Paperclip with a custom private hostname, add it to the allowlist:
+If you access Simplexy with a custom private hostname, add it to the allowlist:
 
 ```sh
 npx simplexy allowed-hostname my-macbook.tailnet.ts.net

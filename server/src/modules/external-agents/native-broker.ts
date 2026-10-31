@@ -3,7 +3,7 @@ import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import { sql, and, eq, isNull, gt, inArray } from "drizzle-orm";
 import { agents, companies, issues, authUsers, companyMemberships, heartbeatRuns, nativeRunFinalizations, mcpOauthGrants,
-  dotAgentBindings, dotRunnerOperations, grokBotRoutines, museAgentBindings, museRunnerOperations, externalAgentHolds, type Db } from "@paperclipai/db";
+  dotAgentBindings, dotRunnerOperations, grokBotRoutines, museAgentBindings, museRunnerOperations, externalAgentHolds, type Db } from "@simplexy/db";
 import { issueReadSqlCondition } from "../../services/authorization.js";
 import { getNativeReviewAssignment, readNativeReviewAssignmentContext } from "../../services/native-runtime/native-review-participant.js";
 import { conflict, forbidden } from "../../errors.js";

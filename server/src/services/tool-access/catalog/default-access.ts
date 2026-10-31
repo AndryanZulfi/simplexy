@@ -2,9 +2,9 @@ import { connectionActorUserId } from "../actor.js";
 import { lockManagedAppPolicies, lockToolAssignmentAgents } from "../assignment-locks.js";
 import type { ActorInfo, ToolAccessMutationDb } from "../types.js";
 import { and, eq, inArray } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
-import { toolCatalogEntries, toolConnections, toolPolicies, toolProfileBindings, toolProfileEntries, toolProfiles } from "@paperclipai/db";
-import type { ToolPolicy } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import { toolCatalogEntries, toolConnections, toolPolicies, toolProfileBindings, toolProfileEntries, toolProfiles } from "@simplexy/db";
+import type { ToolPolicy } from "@simplexy/shared";
 
 function asRecord(value: unknown): Record<string, unknown> {
   if (value && typeof value === "object" && !Array.isArray(value))

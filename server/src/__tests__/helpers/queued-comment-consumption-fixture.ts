@@ -1,6 +1,6 @@
 import { randomBytes, randomUUID } from "node:crypto";
 import { getTableName } from "drizzle-orm";
-import { agents, agentWakeupRequests, companies, heartbeatRuns, issueComments, issueRecoveryActions, issues, type Db } from "@paperclipai/db";
+import { agents, agentWakeupRequests, companies, heartbeatRuns, issueComments, issueRecoveryActions, issues, type Db } from "@simplexy/db";
 import { getExecutionBlocker } from "../../services/execution-blocker.js";
 
 export type BlockerFactory = typeof getExecutionBlocker;

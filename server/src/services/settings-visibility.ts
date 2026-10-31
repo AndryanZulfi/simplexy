@@ -1,4 +1,4 @@
-import { experimentalSettingKey, INSTANCE_FEATURE_KEYS, parseHiddenSettingsList } from "@paperclipai/shared";
+import { experimentalSettingKey, INSTANCE_FEATURE_KEYS, parseHiddenSettingsList } from "@simplexy/shared";
 import { logger } from "../middleware/logger.js";
 import { isCloudStagingExperimentalSetting, isCloudStagingInstance } from "./cloud-instance.js";
 

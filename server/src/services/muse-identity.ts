@@ -1,7 +1,7 @@
 import { createHash, randomBytes, randomUUID } from "node:crypto";
 import { and, eq, gt, inArray, isNotNull, isNull, sql } from "drizzle-orm";
-import { agents, companies, companyMemberships, authUsers, mcpOauthGrants, mcpOauthTokens, museAgentBindings as bindings, museCredentials as credentials, museRunnerAssignments as assignments, museMailboxItems as mailbox, externalAgentHolds as holds, type Db } from "@paperclipai/db";
-import { MUSE_ACCESS_TTL_MS, MUSE_REFRESH_INACTIVITY_MS, MUSE_RESOURCE_PATH, MUSE_CLEANUP_TTL_MS, type AgentConnectionSubject, type MuseCredentials } from "@paperclipai/shared";
+import { agents, companies, companyMemberships, authUsers, mcpOauthGrants, mcpOauthTokens, museAgentBindings as bindings, museCredentials as credentials, museRunnerAssignments as assignments, museMailboxItems as mailbox, externalAgentHolds as holds, type Db } from "@simplexy/db";
+import { MUSE_ACCESS_TTL_MS, MUSE_REFRESH_INACTIVITY_MS, MUSE_RESOURCE_PATH, MUSE_CLEANUP_TTL_MS, type AgentConnectionSubject, type MuseCredentials } from "@simplexy/shared";
 import { instanceSettingsService } from "./instance-settings.js";
 import { musePublicOrigin } from "./muse-setup.js";
 import { unauthorized, forbidden } from "../errors.js";
@@ -115,7 +115,7 @@ export async function inspectMuseConnectionCredential(db:MuseIdentityDatabase,b:
     const [refresh]=await db.select({expiresAt:mcpOauthTokens.expiresAt}).from(mcpOauthTokens).where(and(eq(mcpOauthTokens.grantId,grant.id),
       eq(mcpOauthTokens.kind,"refresh"),isNull(mcpOauthTokens.usedAt),gt(mcpOauthTokens.expiresAt,now))).limit(1);
     if(refresh)return result("active",refresh.expiresAt);
-    const {mcpOauthRequests}=await import("@paperclipai/db");
+    const {mcpOauthRequests}=await import("@simplexy/db");
     const [code]=await db.select({id:mcpOauthRequests.id}).from(mcpOauthRequests).where(and(eq(mcpOauthRequests.grantId,grant.id),
       eq(mcpOauthRequests.resource,grant.resource),isNotNull(mcpOauthRequests.codeHash),isNotNull(mcpOauthRequests.decidedAt),isNull(mcpOauthRequests.consumedAt),gt(mcpOauthRequests.expiresAt,now))).limit(1);
     return result(code?"pending":"expired");

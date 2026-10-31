@@ -1,7 +1,7 @@
 import { randomBytes, randomUUID } from "node:crypto";
 import { EventEmitter } from "node:events";
 import { eq } from "drizzle-orm";
-import { companies, createDb, companySecrets, projects, pluginConfig, plugins, resourceLifecycleEvents, type Db } from "@paperclipai/db";
+import { companies, createDb, companySecrets, projects, pluginConfig, plugins, resourceLifecycleEvents, type Db } from "@simplexy/db";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";
 import { logger } from "../middleware/logger.js";

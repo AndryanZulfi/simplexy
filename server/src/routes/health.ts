@@ -2,10 +2,10 @@ import { supportsLocalAiLogin } from "../services/local-ai-login-policy.js";
 import { isLocalWorkspaceAgentsEnabled } from "../services/local-workspace-agents.js";
 import { randomUUID, timingSafeEqual } from "node:crypto";
 import { Router } from "express";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import { and, count, eq, gt, inArray, isNull, sql } from "drizzle-orm";
-import { heartbeatRuns, instanceUserRoles, invites } from "@paperclipai/db";
-import type { DeploymentExposure, DeploymentMode } from "@paperclipai/shared";
+import { heartbeatRuns, instanceUserRoles, invites } from "@simplexy/db";
+import type { DeploymentExposure, DeploymentMode } from "@simplexy/shared";
 import {
   readPersistedDevServerStatus,
   removeDevServerRestartRequest,

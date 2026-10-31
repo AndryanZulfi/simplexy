@@ -1,4 +1,4 @@
-import type { AgentRunner, AgentRunnerChoice, Environment, EnvironmentProbeResult } from "@paperclipai/shared";
+import type { AgentRunner, AgentRunnerChoice, Environment, EnvironmentProbeResult } from "@simplexy/shared";
 import type { AdapterInfo } from "../api/adapters";
 
 export function needsClaudeSetupQualification(input: {

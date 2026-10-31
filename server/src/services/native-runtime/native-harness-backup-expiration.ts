@@ -10,7 +10,7 @@ import {
   nativeRunFinalizations,
   nativeRunnerCheckpoints,
   type Db,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { logger } from "../../middleware/logger.js";
 import { nativeHarnessStateBase } from "./native-harness-backup-stamp.js";
 import { nativeSessionScopeDigestIsBusy } from "./native-session-executor.js";

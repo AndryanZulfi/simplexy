@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { agentWakeupRequests, chatActions, chatDeliveries, chatEndpoints, type Db } from "@paperclipai/db";
+import { agentWakeupRequests, chatActions, chatDeliveries, chatEndpoints, type Db } from "@simplexy/db";
 import { and, eq, inArray, or, sql, type SQLWrapper } from "drizzle-orm";
 import { HttpError } from "../errors.js";
 

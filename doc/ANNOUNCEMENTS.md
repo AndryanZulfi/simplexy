@@ -24,7 +24,7 @@ The shared `announcementManifestSchema` defines the format:
   "schemaVersion": 1,
   "announcement": {
     "id": "2026-09-projects",
-    "eyebrow": "New in Paperclip",
+    "eyebrow": "New in Simplexy",
     "title": "Your next idea starts here",
     "description": "Bring your agents and work together in a project.",
     "secondaryLink": { "kind": "external", "label": "Learn more", "url": "https://paperclip.ing" },

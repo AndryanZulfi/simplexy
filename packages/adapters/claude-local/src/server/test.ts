@@ -2,7 +2,7 @@ import type {
   AdapterEnvironmentCheck,
   AdapterEnvironmentTestContext,
   AdapterEnvironmentTestResult,
-} from "@paperclipai/adapter-utils";
+} from "@simplexy/adapter-utils";
 import {
   asString,
   asBoolean,
@@ -10,14 +10,14 @@ import {
   asStringArray,
   parseObject,
   ensurePathInEnv,
-} from "@paperclipai/adapter-utils/server-utils";
+} from "@simplexy/adapter-utils/server-utils";
 import {
   ensureAdapterExecutionTargetCommandResolvable,
   ensureAdapterExecutionTargetDirectory,
   runAdapterExecutionTargetProcess,
   resolveAdapterExecutionTargetCwd,
   resolveAdapterExecutionTargetCommandForLogs,
-} from "@paperclipai/adapter-utils/execution-target";
+} from "@simplexy/adapter-utils/execution-target";
 import {
   detectClaudeLoginRequired,
   isClaudeProviderQuotaError,

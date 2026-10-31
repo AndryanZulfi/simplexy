@@ -2,9 +2,9 @@ import { notifyRetentionWork } from "../../retention-work-notifications.js";
 import { createHash, randomBytes } from "node:crypto";
 import { and, desc, eq, gt, or, sql } from "drizzle-orm";
 
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 
-import { authUsers, chatActions, chatEndpoints, chatIdentityLinks, invites, joinRequests } from "@paperclipai/db";
+import { authUsers, chatActions, chatEndpoints, chatIdentityLinks, invites, joinRequests } from "@simplexy/db";
 
 import { conflict, forbidden, unprocessable } from "../../../errors.js";
 

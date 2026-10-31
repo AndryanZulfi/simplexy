@@ -23,11 +23,11 @@ import type {
   DecisionHistoryItem,
   ConversationTaskHandoff,
   AttentionItem,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import type {
   PaperclipQuestionResponse,
   PaperclipQuestionSet,
-} from "@paperclipai/adapter-utils";
+} from "@simplexy/adapter-utils";
 
 export type { PaperclipQuestionResponse, PaperclipQuestionSet };
 

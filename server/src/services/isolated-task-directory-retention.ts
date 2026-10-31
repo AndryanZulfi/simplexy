@@ -3,7 +3,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { and, eq, inArray, or, sql } from "drizzle-orm";
 import { environmentLeases, executionWorkspaceRestorePoints, executionWorkspaces, issueRecoveryActions, issues, nativeRunFinalizations,
-  projectWorkspaces, withDedicatedDbConnection, workspaceRuntimeServices, type Db } from "@paperclipai/db";
+  projectWorkspaces, withDedicatedDbConnection, workspaceRuntimeServices, type Db } from "@simplexy/db";
 import type { StoredSecretVersionMaterial } from "../secrets/types.js";
 import type { StorageService } from "../storage/types.js";
 import { resolvePaperclipInstanceRoot } from "../home-paths.js";

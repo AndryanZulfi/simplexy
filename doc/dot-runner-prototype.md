@@ -36,7 +36,7 @@ Fresh-worktree preparation (use the repository's pinned pnpm version):
 
 ```sh
 pnpm install --no-frozen-lockfile
-pnpm --filter '@paperclipai/server^...' --filter '!@paperclipai/paperclip-runner' --filter '!@paperclipai/ui' build
+pnpm --filter '@simplexy/server^...' --filter '!@simplexy/paperclip-runner' --filter '!@simplexy/ui' build
 ```
 
 The local callback uses an injected transport restricted to one fixed synthetic
@@ -99,7 +99,7 @@ and encryption key. It never opens the user's existing Simplexy database.
 
 ```mermaid
 sequenceDiagram
-  participant Host as Paperclip host
+  participant Host as Simplexy host
   participant Runner as Dot runner bridge
   participant MCP as OAuth MCP + event outbox
   participant Dot as OpenAI Dot
@@ -113,8 +113,8 @@ sequenceDiagram
   Dot->>MCP: Call projected tools / report progress / propose result
   MCP->>Runner: Check current authority; deduplicate request ID
   Runner-->>Host: PRP progress and structured result
-  Note over Host: Paperclip decides final task disposition
-  Dot->>MCP: Personal Paperclip reads/writes while idle
+  Note over Host: Simplexy decides final task disposition
+  Dot->>MCP: Personal Simplexy reads/writes while idle
   Note over MCP: These retain the consenting person's identity
 ```
 
@@ -204,8 +204,8 @@ and [app review](https://developers.openai.com/plugins/deploy/app-review).
 ## Verification
 
 ```sh
-pnpm --filter @paperclipai/paperclip-runner exec vitest run src/drivers/dot/dot-harness-driver.test.ts
-pnpm --filter @paperclipai/server exec vitest run src/__tests__/public-mcp.test.ts
+pnpm --filter @simplexy/paperclip-runner exec vitest run src/drivers/dot/dot-harness-driver.test.ts
+pnpm --filter @simplexy/server exec vitest run src/__tests__/public-mcp.test.ts
 pnpm prototype:dot
 ```
 

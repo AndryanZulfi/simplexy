@@ -3,7 +3,7 @@ import { flushSync } from "react-dom";
 import { createRoot, type Root } from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { AttentionItem } from "@paperclipai/shared";
+import type { AttentionItem } from "@simplexy/shared";
 import { createIssue } from "../../storybook/fixtures/paperclipData";
 import { coordinatorAttentionQueryKey } from "@/lib/coordinator-attention";
 import { MemoryRouter } from "@/lib/router";

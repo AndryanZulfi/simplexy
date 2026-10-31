@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { buildNewAgentHirePayload } from "./new-agent-hire-payload";
 import { defaultCreateValues } from "../components/agent-config-defaults";
 import { codexLocalUIAdapter } from "../adapters/codex-local";
-import { resolveCodexLocalCliPolicy } from "@paperclipai/adapter-codex-local";
+import { resolveCodexLocalCliPolicy } from "@simplexy/adapter-codex-local";
 
 describe("buildNewAgentHirePayload", () => {
   it.each([false, true])("preserves explicit automatic Legacy sandbox choice %s through the actual CLI policy", (bypass) => {

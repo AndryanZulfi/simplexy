@@ -14,7 +14,7 @@ import { createRoot } from "react-dom/client";
 import { MemoryRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { Agent } from "@paperclipai/shared";
+import type { Agent } from "@simplexy/shared";
 import { CommentSubmissionUnknownError } from "../lib/comment-submit-result";
 import { loadDraft, saveDraft, saveDraftSubmission, loadDraftSubmission, preserveDraftInTab, settleDraftSubmission } from "../lib/composer-draft";
 import { queryKeys } from "../lib/queryKeys";

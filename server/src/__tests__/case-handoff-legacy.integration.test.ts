@@ -7,7 +7,7 @@ import path from "node:path";
 import express from "express";
 import { and, eq, sql } from "drizzle-orm";
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from "vitest";
-import { agentWakeupRequests, agents, authUsers, caseHandoffs, companies, companyMemberships, createDb, heartbeatRunEvents, heartbeatRuns, issues } from "@paperclipai/db";
+import { agentWakeupRequests, agents, authUsers, caseHandoffs, companies, companyMemberships, createDb, heartbeatRunEvents, heartbeatRuns, issues } from "@simplexy/db";
 import { actorMiddleware } from "../middleware/auth.js";
 import { errorHandler } from "../middleware/error-handler.js";
 import { caseRoutes } from "../routes/cases.js";

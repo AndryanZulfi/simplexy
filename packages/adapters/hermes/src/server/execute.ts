@@ -25,7 +25,7 @@ import type {
   AdapterExecutionContext,
   AdapterExecutionResult,
   UsageSummary,
-} from "@paperclipai/adapter-utils";
+} from "@simplexy/adapter-utils";
 
 import {
   runChildProcess,
@@ -38,7 +38,7 @@ import {
   selectPaperclipPromptSections,
   stringifyPaperclipWakePayload,
   isPaperclipRecoveryWakePayload,
-} from "@paperclipai/adapter-utils/server-utils";
+} from "@simplexy/adapter-utils/server-utils";
 
 import {
   HERMES_CLI,

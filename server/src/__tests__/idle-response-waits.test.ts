@@ -5,7 +5,7 @@ import {
   agents, companies, createDb, heartbeatRuns, issues, issueRecoveryActions,
   issueThreadInteractions, routines, routineTriggers,
   toolApplications, toolConnections,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { readIdleSleepSafety, type IdleSleepDrainStatus } from "../services/idle-sleep-safety.js";
 import { getMergeConfirmationPullRequestReferences } from "../services/issue-thread-interactions.js";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "./helpers/embedded-postgres.js";

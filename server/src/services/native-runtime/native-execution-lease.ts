@@ -1,5 +1,5 @@
-import type { Db } from "@paperclipai/db";
-import { livenessDb, nativeRunFinalizations } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
+import { livenessDb, nativeRunFinalizations } from "@simplexy/db";
 import { and, eq, gt, sql } from "drizzle-orm";
 import { currentNativeControllerIdentity, type NativeControllerIdentity } from "./native-restart-recovery.js";
 import { REMOTE_CONTROLLER_LEASE_MS } from "./native-runner-recovery-contract.js";

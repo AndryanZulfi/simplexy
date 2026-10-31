@@ -77,7 +77,7 @@ Create security groups:
 # ALB security group — inbound HTTPS
 ALB_SG=$(aws ec2 create-security-group \
   --group-name paperclip-alb \
-  --description "Paperclip ALB" \
+  --description "Simplexy ALB" \
   --vpc-id $VPC_ID \
   --query 'GroupId' --output text)
 
@@ -93,7 +93,7 @@ aws ec2 authorize-security-group-ingress \
 # ECS task security group — inbound from ALB only
 ECS_SG=$(aws ec2 create-security-group \
   --group-name paperclip-ecs \
-  --description "Paperclip ECS tasks" \
+  --description "Simplexy ECS tasks" \
   --vpc-id $VPC_ID \
   --query 'GroupId' --output text)
 
@@ -105,7 +105,7 @@ aws ec2 authorize-security-group-ingress \
 # RDS security group — inbound from ECS only
 RDS_SG=$(aws ec2 create-security-group \
   --group-name paperclip-rds \
-  --description "Paperclip RDS" \
+  --description "Simplexy RDS" \
   --vpc-id $VPC_ID \
   --query 'GroupId' --output text)
 
@@ -117,7 +117,7 @@ aws ec2 authorize-security-group-ingress \
 # EFS security group — inbound NFS from ECS only
 EFS_SG=$(aws ec2 create-security-group \
   --group-name paperclip-efs \
-  --description "Paperclip EFS" \
+  --description "Simplexy EFS" \
   --vpc-id $VPC_ID \
   --query 'GroupId' --output text)
 
@@ -134,7 +134,7 @@ aws ec2 authorize-security-group-ingress \
 # that spans our two subnets so RDS can place the instance.
 aws rds create-db-subnet-group \
   --db-subnet-group-name paperclip-db-subnet \
-  --db-subnet-group-description "Paperclip RDS subnets" \
+  --db-subnet-group-description "Simplexy RDS subnets" \
   --subnet-ids $SUBNET_1 $SUBNET_2
 
 aws rds create-db-instance \

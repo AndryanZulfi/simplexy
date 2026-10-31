@@ -41,13 +41,13 @@ With a parser, the UI renders:
                                                        │ plugin-loader reads at startup
                                                        ▼
 ┌──────────────────┐   GET /api/:type/ui-parser.js   ┌──────────────────┐
-│  Paperclip Server  │◄────────────────────────────────│  uiParserCache    │
+│  Simplexy Server  │◄────────────────────────────────│  uiParserCache    │
 │  (in-memory)      │                                 └──────────────────┘
 └────────┬─────────┘
          │ serves JS to browser
          ▼
 ┌──────────────────┐   fetch() + eval   ┌──────────────────┐
-│  Paperclip UI     │─────────────────────→│  parseStdoutLine │
+│  Simplexy UI     │─────────────────────→│  parseStdoutLine │
 │  (dynamic loader) │   registers parser  │  (per-adapter)   │
 └──────────────────┘                     └──────────────────┘
 ```

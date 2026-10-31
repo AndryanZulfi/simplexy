@@ -159,16 +159,16 @@ describe("plugin install and upgrade authz", () => {
     const byPackageName = new Map(
       res.body.map((plugin: { packageName: string; experimental: boolean; hasBuiltEntrypoints: boolean }) => [plugin.packageName, plugin]),
     );
-    expect(packageNames).toContain("@paperclipai/plugin-workspace-diff");
-    expect(packageNames).toContain("@paperclipai/plugin-llm-wiki");
-    expect(packageNames).toContain("@paperclipai/plugin-modal");
-    expect(packageNames).toContain("@paperclipai/plugin-authoring-smoke-example");
-    expect(packageNames).not.toContain("@paperclipai/plugin-sdk");
-    expect(byPackageName.get("@paperclipai/plugin-workspace-diff")?.experimental).toBe(true);
-    expect(byPackageName.get("@paperclipai/plugin-llm-wiki")?.experimental).toBe(true);
-    expect(byPackageName.get("@paperclipai/plugin-modal")?.experimental).toBe(true);
-    expect(byPackageName.get("@paperclipai/plugin-authoring-smoke-example")?.experimental).toBe(false);
-    expect(typeof byPackageName.get("@paperclipai/plugin-workspace-diff")?.hasBuiltEntrypoints).toBe("boolean");
+    expect(packageNames).toContain("@simplexy/plugin-workspace-diff");
+    expect(packageNames).toContain("@simplexy/plugin-llm-wiki");
+    expect(packageNames).toContain("@simplexy/plugin-modal");
+    expect(packageNames).toContain("@simplexy/plugin-authoring-smoke-example");
+    expect(packageNames).not.toContain("@simplexy/plugin-sdk");
+    expect(byPackageName.get("@simplexy/plugin-workspace-diff")?.experimental).toBe(true);
+    expect(byPackageName.get("@simplexy/plugin-llm-wiki")?.experimental).toBe(true);
+    expect(byPackageName.get("@simplexy/plugin-modal")?.experimental).toBe(true);
+    expect(byPackageName.get("@simplexy/plugin-authoring-smoke-example")?.experimental).toBe(false);
+    expect(typeof byPackageName.get("@simplexy/plugin-workspace-diff")?.hasBuiltEntrypoints).toBe("boolean");
   }, 20_000);
 
   it("rejects plugin installation for non-admin board users", async () => {
@@ -1120,7 +1120,7 @@ describe("operator-hidden plugin management floor", () => {
     readyPlugin();
 
     const attempts: Array<[string, request.Test]> = [
-      ["install", request(app).post("/api/plugins/install").send({ packageName: "@paperclipai/plugin-modal" })],
+      ["install", request(app).post("/api/plugins/install").send({ packageName: "@simplexy/plugin-modal" })],
       ["uninstall", request(app).delete(`/api/plugins/${pluginId}`)],
       ["enable", request(app).post(`/api/plugins/${pluginId}/enable`)],
       ["disable", request(app).post(`/api/plugins/${pluginId}/disable`).send({})],

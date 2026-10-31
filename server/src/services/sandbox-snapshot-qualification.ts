@@ -1,4 +1,4 @@
-import type { Environment, SandboxEnvironmentConfig } from "@paperclipai/shared";
+import type { Environment, SandboxEnvironmentConfig } from "@simplexy/shared";
 import { fingerprintEnvironmentSandboxProviderConfig, SANDBOX_PLATFORM_PROBE_METADATA_KEY } from "./environment-custom-image-runtime.js";
 import { isCloudManagedInstance } from "./cloud-instance.js";
 import { getManagedInstanceConfig } from "./managed-config.js";

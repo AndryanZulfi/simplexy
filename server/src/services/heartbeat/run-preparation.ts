@@ -25,7 +25,7 @@ import {
   isNull,
   sql,
 } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import {
   CHAT_PROVIDERS,
   CONNECTION_INTENT_AGENT_GUIDANCE,
@@ -35,7 +35,7 @@ import {
   type ChatProvider,
   type RoutineRevisionSnapshotV1,
   type SourceTrustMetadata,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   agents,
   assets,
@@ -66,7 +66,7 @@ import {
   toolConnections,
   toolProfileEntries,
   toolProfiles,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { HttpError } from "../../errors.js";
 import { filterResolvedGitHubConnectionsForRun } from "../git-credentials.js";
 import type {
@@ -113,12 +113,12 @@ import { createRunSecretRedactionRegistry } from "../run-secret-redaction.js";
 import {
   readPaperclipSkillSyncPreference,
   writePaperclipSkillSyncPreference,
-} from "@paperclipai/adapter-utils/server-utils";
+} from "@simplexy/adapter-utils/server-utils";
 import {
   extractSkillMentionIds,
   isUuidLike,
-} from "@paperclipai/shared";
-import { evaluateCodexCredentialReadiness } from "@paperclipai/adapter-codex-local/server";
+} from "@simplexy/shared";
+import { evaluateCodexCredentialReadiness } from "@simplexy/adapter-codex-local/server";
 import type { TrustPresetResolution } from "../trust-preset-resolver.js";
 
 const EXTERNAL_ATTACHMENT_OMISSIONS_KEY = "externalAttachmentOmissions";

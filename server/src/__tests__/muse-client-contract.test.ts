@@ -1,11 +1,11 @@
 import { execFileSync } from "node:child_process";
-import { parsePaperclipQuestionResponse } from "@paperclipai/paperclip-runner";
+import { parsePaperclipQuestionResponse } from "@simplexy/paperclip-runner";
 import { buildMuseSetupInstruction, museReceiverAssets } from "../services/muse-setup.js";
 import { fileURLToPath } from "node:url";
 import { describe, it, expect, vi } from "vitest";
 import express from "express";
 import request from "supertest";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import { museTransportRoutes } from "../routes/muse.js";
 
 // Asset routing must not create a credential, touch a DB or start a receiver.

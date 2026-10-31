@@ -1,5 +1,5 @@
-import type { Db } from "@paperclipai/db";
-import { agents, heartbeatRuns, issues, dotRunnerAssignments, externalAgentHolds, museRunnerAssignments } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
+import { agents, heartbeatRuns, issues, dotRunnerAssignments, externalAgentHolds, museRunnerAssignments } from "@simplexy/db";
 import { and, eq, inArray, isNull, or, sql } from "drizzle-orm";
 import { conflict, forbidden } from "../../errors.js";
 export type ExternalAdmissionTransaction = Parameters<Parameters<Db["transaction"]>[0]>[0];

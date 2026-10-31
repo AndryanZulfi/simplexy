@@ -1,10 +1,11 @@
+import { AttachmentIcon } from "@/components/AttachmentIcon";
 import { taskChatHashAnchor } from "@/components/task-chat/scroll-navigation";
 import { useCoordinatorWorkspaceEnabled } from "@/hooks/useCoordinatorWorkspaceEnabled";
 import { CoordinatorAgentSwitcher } from "@/components/CoordinatorAgentSwitcher";
 import { TaskDecisionRecord } from "@/components/TaskDecisionRecord";
 import { useAccountBoundMutation } from "@/hooks/useAccountBoundMutation";
 import { mergeWindowComments, useIssueHistoryWindow } from "../hooks/useIssueHistoryWindow";
-import type { IssueQueuedCommentQueue } from "@paperclipai/shared";
+import type { IssueQueuedCommentQueue } from "@simplexy/shared";
 import { useTaskRunLiveUpdates } from "../context/LiveUpdatesProvider";
 import { liveRunRefetchInterval } from "../lib/live-runs-cache";
 import { useTaskRetry } from "../hooks/useTaskRetry";
@@ -357,7 +358,6 @@ import {
   MessageSquare,
   MoreHorizontal,
   MoreVertical,
-  Paperclip,
   Plus,
   Repeat,
   SlidersHorizontal,
@@ -392,7 +392,7 @@ import {
   type IssueTreeControlMode,
   type WorkspaceFileRef,
   workspaceFileRefSchema,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 
 // Stable empty array for React Query `data` defaults. A literal `= []` default
 // creates a new array reference on every render while `data` is undefined
@@ -1229,7 +1229,7 @@ type IssueDetailChatTabProps = {
   retryPreparing?: boolean;
   queryIssueId?: string;
   hasLiveConnection: boolean;
-  browsers?: import("@paperclipai/shared").TaskBrowser[];
+  browsers?: import("@simplexy/shared").TaskBrowser[];
   onOpenBrowser?: (browserId: string) => void;
   onOpenSkill?: (skillId: string, name: string) => void;
   issueId: string;
@@ -7356,7 +7356,7 @@ export function TaskDetailSurface({ conversation, tasksTab }: { tasksTab?: TaskS
           attachmentDragActive && "border-primary bg-primary/5",
         )}
       >
-        <Paperclip className="h-3.5 w-3.5 mr-1.5" />
+        <AttachmentIcon className="h-3.5 w-3.5 mr-1.5" />
         {uploadAttachment.isPending || importMarkdownDocument.isPending ? (
           "Uploading..."
         ) : (

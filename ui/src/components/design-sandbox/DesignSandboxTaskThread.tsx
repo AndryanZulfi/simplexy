@@ -5,7 +5,7 @@ import { ConversationPlayback } from "./ConversationPlayback";
 import { settledPreviewReply as settledReply } from "./settled-preview-reply";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { useSearchParams } from "react-router-dom";
-import type { Agent, FeedbackVoteValue, IssueWorkMode } from "@paperclipai/shared";
+import type { Agent, FeedbackVoteValue, IssueWorkMode } from "@simplexy/shared";
 import { useStreamlinedUiEnabled } from "../../hooks/useStreamlinedUiEnabled";
 import { Button } from "../ui/button";
 import { NativeSelect } from "../ui/select";

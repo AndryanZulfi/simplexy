@@ -1,4 +1,4 @@
-import type { AiConnectionList, AiConnectionUsage, CreateAiConnection, AiConnectionLoginIntent, LocalAiLoginAttempt, LocalAiLoginStatus } from "@paperclipai/shared";
+import type { AiConnectionList, AiConnectionUsage, CreateAiConnection, AiConnectionLoginIntent, LocalAiLoginAttempt, LocalAiLoginStatus } from "@simplexy/shared";
 import { api } from "./client";
 export const aiConnectionsApi = {
   loginSetup: (companyId: string, sessionId: string) => api.get<{ sessionId: string; intent: AiConnectionLoginIntent; environmentId: string; status: string; connectionId: string | null; grantId: string | null }>(`/companies/${companyId}/ai-connections/login/${encodeURIComponent(sessionId)}/setup`),

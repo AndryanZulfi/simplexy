@@ -19,7 +19,7 @@ The fixture-helper tests remain unchanged, including `publishes a complete templ
 ## Verification
 
 ```sh
-node_modules/.bin/vitest run --project @paperclipai/db packages/db/src/client.test.ts packages/db/src/test-embedded-postgres.test.ts
+node_modules/.bin/vitest run --project @simplexy/db packages/db/src/client.test.ts packages/db/src/test-embedded-postgres.test.ts
 ```
 
 Complete owner replay: **2 files passed, 35 tests passed, 0 failed, 0 skipped; 26.77 seconds**. Real embedded PostgreSQL executed, including the fresh and template fixture-owner tests. The first sandboxed invocation encountered `listen EPERM` on localhost and was interrupted; the successful identical command ran with local socket access. No baseline timing comparison was run.

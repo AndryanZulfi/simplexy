@@ -1,12 +1,13 @@
 import { TaskVoiceLauncher } from "@/components/voice/TaskVoiceLauncher";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { ExternalLink, Paperclip, Radio } from "lucide-react";
+import { ExternalLink, Radio } from "lucide-react";
+import { AttachmentIcon } from "@/components/AttachmentIcon";
 import type {
   ChatPublicationState,
   ChatFileTransferPhase,
   IssueAttachment,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   chatEndpointsApi,
   type ChatProvider,
@@ -632,7 +633,7 @@ function ConnectedTaskComposer({
               disabled={uploadDisabled}
               onClick={() => fileInput.current?.click()}
             >
-              <Paperclip />
+              <AttachmentIcon />
               {uploading ? "Uploading…" : "Attach file"}
             </Button>
             <p className="text-xs text-muted-foreground">
@@ -700,7 +701,7 @@ function ConnectedTaskComposer({
                           publish.reset();
                         }}
                       />
-                      <Paperclip className="h-3.5 w-3.5 text-muted-foreground" />
+                      <AttachmentIcon className="h-3.5 w-3.5 text-muted-foreground" />
                       <span className="truncate">{label}</span>
                     </label>
                   );

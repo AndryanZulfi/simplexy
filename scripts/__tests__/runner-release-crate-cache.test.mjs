@@ -47,7 +47,7 @@ const RUST_RESTORE_STEP = "Restore Runner Rust dependencies (read only)";
 // one runs cargo through. The crate must be restored and marked before it.
 const READERS = [
   ["typecheck_release_registry", "run: pnpm run typecheck:build-gaps"],
-  ["verify_paperclip_runner", "run: pnpm --filter @paperclipai/paperclip-runner ${{ matrix.command }}"],
+  ["verify_paperclip_runner", "run: pnpm --filter @simplexy/paperclip-runner ${{ matrix.command }}"],
   ["build", "run: pnpm build"],
   ["canary_dry_run", "- name: Release canary dry run via release.sh internal build"],
 ];

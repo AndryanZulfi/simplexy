@@ -2,9 +2,9 @@ import { spawn, type ChildProcessWithoutNullStreams } from "node:child_process";
 import { open } from "node:fs/promises";
 import { constants } from "node:fs";
 import path from "node:path";
-import { runSetupTokenLogin } from "@paperclipai/adapter-claude-local/server";
-import { runDeviceLogin } from "@paperclipai/adapter-codex-local/server";
-import { ensureCommandResolvable, resolveCommandForLogs } from "@paperclipai/adapter-utils/server-utils";
+import { runSetupTokenLogin } from "@simplexy/adapter-claude-local/server";
+import { runDeviceLogin } from "@simplexy/adapter-codex-local/server";
+import { ensureCommandResolvable, resolveCommandForLogs } from "@simplexy/adapter-utils/server-utils";
 import { resolveCodexCommand } from "../vendor/paperclip-runner/index.js";
 
 export type LocalBrowserLoginState = {

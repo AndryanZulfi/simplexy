@@ -1,5 +1,5 @@
 import { and, eq, inArray, sql } from "drizzle-orm";
-import { chatConversations, chatEndpoints, heartbeatRuns, issues, statusDecisions, type Db } from "@paperclipai/db";
+import { chatConversations, chatEndpoints, heartbeatRuns, issues, statusDecisions, type Db } from "@simplexy/db";
 import { readInheritedGitHubReviewWait } from "../chat-channels/github/review-wait.js";
 import { authorizeChatConversationForBoundRun } from "./chat-attachment-reuse.js";
 import { EXTERNAL_CHAT_QUESTION_RESPONSE_KEY } from "./external-chat-question-response.js";

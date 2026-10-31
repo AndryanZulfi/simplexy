@@ -45,7 +45,7 @@ import type { ServerAdapterModule, AdapterConfigSchema } from "../adapters/types
 import type {
   AdapterLoginPanelMode,
   AdapterLoginTimeoutPolicy,
-} from "@paperclipai/adapter-utils";
+} from "@simplexy/adapter-utils";
 import { loadExternalAdapterPackage, getUiParserSource, getOrExtractUiParserSource, reloadExternalAdapter } from "../adapters/plugin-loader.js";
 import { logger } from "../middleware/logger.js";
 import { badRequest, forbidden } from "../errors.js";
@@ -54,7 +54,7 @@ import { getHiddenSettings } from "../services/settings-visibility.js";
 import { assertBoardOrgAccess, assertCompanyAccess, assertInstanceAdmin } from "./authz.js";
 import { BUILTIN_ADAPTER_TYPES } from "../adapters/builtin-adapter-types.js";
 import { agentRunnerAvailability, type RunnerTarget } from "../services/agent-runner-selection.js";
-import type { AgentRunnerAvailability } from "@paperclipai/shared";
+import type { AgentRunnerAvailability } from "@simplexy/shared";
 
 const execFileAsync = promisify(execFile);
 

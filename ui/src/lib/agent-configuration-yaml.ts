@@ -5,7 +5,7 @@ import {
   canonicalAgentConfiguration,
   type AgentConfigurationDocument,
   type AgentConfigurationSource,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 
 export function serializeAgentConfiguration(agent: AgentConfigurationSource): string {
   return serializeAgentConfigurationDocument({ apiVersion: "paperclip/v1", kind: "Agent", spec: agentConfigurationSpec(agent) } as AgentConfigurationDocument);

@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
-import type { Db } from "@paperclipai/db";
-import { defaultGitHubReviewPolicy } from "@paperclipai/shared";
+import type { Db } from "@simplexy/db";
+import { defaultGitHubReviewPolicy } from "@simplexy/shared";
 import { resolveGitHubReviewInstructions } from "./review-instructions.js";
 
 const policy = { ...defaultGitHubReviewPolicy(), instructions: "REVIEW_POLICY" };

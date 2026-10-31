@@ -3,7 +3,7 @@
 //
 // The server build (and typecheck) used to run the Runner's full `build`
 // unconditionally here. That is what lets a standalone
-// `pnpm --filter @paperclipai/server build` produce a current vendored Runner
+// `pnpm --filter @simplexy/server build` produce a current vendored Runner
 // on its own, which the Dockerfile relies on. But inside `pnpm -r build` the
 // Runner has just been built by the same command, and repeating it cost
 // 12-16s on the CI Build job's critical path (six master runs, 2026-10-11)
@@ -33,7 +33,7 @@ import {
 } from "../../packages/paperclip-runner/scripts/build-inputs.mjs";
 
 /** The command the server build has always run here; the rebuild path is unchanged. */
-export const RUNNER_VENDOR_BUILD_COMMAND = "pnpm --filter @paperclipai/paperclip-runner build";
+export const RUNNER_VENDOR_BUILD_COMMAND = "pnpm --filter @simplexy/paperclip-runner build";
 export const FORCE_REBUILD_VARIABLE = "PAPERCLIP_RUNNER_VENDOR_REBUILD";
 export const TIMING_SCHEMA = "paperclip.runner-vendor.timing.v1";
 

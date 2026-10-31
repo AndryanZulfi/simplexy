@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@simplexy/db";
 import { z } from "zod";
 import { logger } from "../middleware/logger.js";
 import { getCloudStackContext } from "./cloud-instance.js";

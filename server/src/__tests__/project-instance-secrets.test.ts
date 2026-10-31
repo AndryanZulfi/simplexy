@@ -14,7 +14,7 @@ import {
   projectWorkspaces,
   createDb,
   type Db,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import {
   getEmbeddedPostgresTestSupport,
   startEmbeddedPostgresTestDatabase,

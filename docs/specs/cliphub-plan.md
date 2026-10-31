@@ -113,7 +113,7 @@ interface Listing {
   // Compatibility
   compatibleAdapters: string[];    // ['claude_local', 'codex_local', ...]
   requiredModels: string[];        // ['claude-opus-4-6', 'claude-sonnet-4-6']
-  paperclipVersionMin: string;     // Minimum Paperclip version
+  paperclipVersionMin: string;     // Minimum Simplexy version
 
   // Social proof
   installCount: number;
@@ -218,7 +218,7 @@ interface Purchase {
   id: string;
   listingId: string;
   buyerUserId: string;
-  buyerCompanyId: string | null;    // Target Paperclip company
+  buyerCompanyId: string | null;    // Target Simplexy company
   pricePaidCents: number;
   paymentIntentId: string | null;   // Stripe
   installedAt: string | null;       // When deployed to company
@@ -306,14 +306,14 @@ Homepage → Browse marketplace → Filter by type/category
   → Click listing → Read details, reviews, preview org chart
   → Click "Buy" → Stripe checkout (or free install)
   → Post-purchase: "Install to Company" button
-  → Select target Paperclip company (or create new)
-  → ClipHub API calls Paperclip API to:
+  → Select target Simplexy company (or create new)
+  → ClipHub API calls Simplexy API to:
       1. Create agents with configs from blueprint
       2. Set up reporting chains
       3. Create projects with workspace configs
       4. Apply governance rules
       5. Deploy skill files to agent instruction paths
-  → Redirect to Paperclip dashboard with new team running
+  → Redirect to Simplexy dashboard with new team running
 ```
 
 ### 5.2 Creator: Build → Publish → Earn
@@ -334,8 +334,8 @@ Sign up as creator → Connect Stripe
 ### 5.3 Creator: Export from Simplexy → Publish
 
 ```
-Running Paperclip company → "Export as Blueprint" (CLI or UI)
-  → Paperclip exports:
+Running Simplexy company → "Export as Blueprint" (CLI or UI)
+  → Simplexy exports:
       - Agent configs (sanitized — no secrets)
       - Org chart / reporting chains
       - Governance rules
@@ -409,7 +409,7 @@ When a buyer clicks "Install to Company":
 ```
 POST /api/listings/:id/install
 {
-  "targetCompanyId": "uuid",         // Existing Paperclip company
+  "targetCompanyId": "uuid",         // Existing Simplexy company
   "overrides": {                      // Optional customization
     "agentModel": "claude-sonnet-4-6", // Override default model
     "budgetScale": 0.5,               // Scale budgets

@@ -8,7 +8,7 @@ import { CompanySettings } from "@/pages/CompanySettings";
 import { Costs } from "@/pages/Costs";
 import { PluginLauncherProvider } from "@/plugins/launchers";
 import { choices, companyId, configured, entry, result, unconfigured } from "../../../support/decision-models/fixtures";
-import type { DecisionHistoryEntry } from "@paperclipai/shared";
+import type { DecisionHistoryEntry } from "@simplexy/shared";
 
 /** Production pages and shell; only API responses and paid provider execution are simulated. */
 function Journey({ alreadyConfigured = false }: { alreadyConfigured?: boolean }) {

@@ -1,4 +1,4 @@
-import type { TaskInterruptionPresentation } from "@paperclipai/shared";
+import type { TaskInterruptionPresentation } from "@simplexy/shared";
 import { Button } from "./ui/button";
 import { cn } from "../lib/utils";
 import { useSecondTick } from "../hooks/useSecondTick";

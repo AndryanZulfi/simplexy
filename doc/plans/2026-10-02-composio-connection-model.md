@@ -32,11 +32,11 @@ That is a proxy of the upstream tool catalog. It does **not** turn every app in 
 
 ```mermaid
 flowchart LR
-    Agent --> Policy[Paperclip gateway access and tool policy]
+    Agent --> Policy[Simplexy gateway access and tool policy]
     Policy --> Tools[Composio MCP tools]
     Tools --> Accounts[Composio authorized app accounts]
     Accounts --> Circleback[Circleback]
-    Apps[Paperclip Apps page] --> Check[Read account status through saved gateway]
+    Apps[Simplexy Apps page] --> Check[Read account status through saved gateway]
     Check --> Accounts
     Check --> Cache[Safe account observations]
     Cache --> Apps

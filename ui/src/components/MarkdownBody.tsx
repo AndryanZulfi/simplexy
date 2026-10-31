@@ -52,7 +52,7 @@ import type {
   Agent,
   ExternalObjectLivenessState,
   ExternalObjectStatusCategory,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 
 function MarkdownAgentMention({ agentId, children, style }: {
   agentId: string;

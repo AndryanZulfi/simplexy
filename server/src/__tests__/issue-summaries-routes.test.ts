@@ -5,7 +5,7 @@ import { eq } from "drizzle-orm";
 import { afterAll, beforeAll, expect, it, vi } from "vitest";
 import {
   agents, chatConversations, chatEndpoints, issues, toolApplications, toolConnections,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { issueRoutes } from "../routes/issues.js";
 import * as issueServices from "../services/issues.js";
 import { errorHandler } from "../middleware/index.js";

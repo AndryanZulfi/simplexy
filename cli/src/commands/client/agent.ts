@@ -12,11 +12,11 @@ import {
   type Agent,
   type AgentWakeupResponse,
   type Issue,
-} from "@paperclipai/shared";
+} from "@simplexy/shared";
 import {
   removeMaintainerOnlySkillSymlinks,
   resolvePaperclipSkillsDir,
-} from "@paperclipai/adapter-utils/server-utils";
+} from "@simplexy/adapter-utils/server-utils";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";

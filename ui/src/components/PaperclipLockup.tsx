@@ -26,3 +26,6 @@ export function PaperclipLockup({
     </div>
   );
 }
+
+export const SimplexyLockup = PaperclipLockup;
+export type SimplexyLockupProps = PaperclipLockupProps;

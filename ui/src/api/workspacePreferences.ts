@@ -1,4 +1,4 @@
-import type { UpdateWorkspacePreference, WorkspacePreference } from "@paperclipai/shared";
+import type { UpdateWorkspacePreference, WorkspacePreference } from "@simplexy/shared";
 import { api, detachInflightGet } from "./client";
 
 export const workspacePreferencesApi = {

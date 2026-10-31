@@ -15,7 +15,7 @@ import {
   runIdentityContexts,
   toolApplications,
   toolConnections,
-} from "@paperclipai/db";
+} from "@simplexy/db";
 import { getEmbeddedPostgresTestSupport, startEmbeddedPostgresTestDatabase } from "../__tests__/helpers/embedded-postgres.js";
 import { githubGuestBotConnectionForSession } from "./chat-github-tools.js";
 

@@ -3,7 +3,7 @@ import { environmentRuntimeService } from "../services/environment-runtime.js";
 import type { PluginWorkerManager } from "../services/plugin-worker-manager.js";
 const mocks = vi.hoisted(() => ({ metadata: vi.fn(), command: vi.fn(), environment: vi.fn(), bindings: vi.fn(), acquire: vi.fn(), realize: vi.fn(), release: vi.fn(), resolve: vi.fn(), general: vi.fn(), experimental: vi.fn(), defaults: vi.fn(), kubernetes: vi.fn(), managed: vi.fn(), supportsTasks: vi.fn(), updateLeaseMetadata: vi.fn() }));
 vi.mock("../vendor/paperclip-runner/live/index.js", async importOriginal => ({ ...await importOriginal<object>(), probeCopilotMetadata: mocks.metadata }));
-vi.mock("@paperclipai/adapter-utils/execution-target", () => ({ runAdapterExecutionTargetShellCommand: mocks.command }));
+vi.mock("@simplexy/adapter-utils/execution-target", () => ({ runAdapterExecutionTargetShellCommand: mocks.command }));
 vi.mock("../middleware/logger.js", () => ({ logger: { warn: vi.fn() } }));
 vi.mock("../services/environments.js", () => ({ environmentService: () => ({ getById: mocks.environment, listBoundCompanyIds: mocks.bindings, findKubernetesEnvironment: mocks.kubernetes, findManagedSandboxEnvironment: mocks.managed, updateLeaseMetadata: mocks.updateLeaseMetadata }) }));
 vi.mock("../services/instance-settings.js", () => ({ instanceSettingsService: () => ({ get: mocks.defaults, getGeneral: mocks.general, getExperimental: mocks.experimental }) }));
@@ -12,8 +12,8 @@ vi.mock("../services/environment-execution-target.js", () => ({ resolveEnvironme
 import { logger } from "../middleware/logger.js";
 import { probeCopilotConnection, probeCopilotExecutionTarget } from "../services/copilot-connection-probe.js";
 import { QUALIFIED_ACPX_PROFILES } from "../../../packages/paperclip-runner/src/drivers/acpx/qualified-profiles.js";
-import type { Db } from "@paperclipai/db";
-import type { AdapterExecutionTarget } from "@paperclipai/adapter-utils/execution-target";
+import type { Db } from "@simplexy/db";
+import type { AdapterExecutionTarget } from "@simplexy/adapter-utils/execution-target";
 const verified = { status: "verified", version: "1.0.88", profileDigest: QUALIFIED_ACPX_PROFILES.copilot.commandDigest, promptSent: false, models: [{ id: "gpt-5.6-luna", label: "GPT" }] };
 const remote = { kind: "remote", remoteCwd: "/workspace" } as AdapterExecutionTarget;
 beforeEach(() => {

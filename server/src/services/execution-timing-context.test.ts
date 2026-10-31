@@ -1,4 +1,4 @@
-import { getActiveStepContext } from "@paperclipai/adapter-utils/acpx-engine/startup-timing";
+import { getActiveStepContext } from "@simplexy/adapter-utils/acpx-engine/startup-timing";
 import { createHash } from "node:crypto";
 import { context, trace, TraceFlags } from "@opentelemetry/api";
 import { AsyncLocalStorageContextManager } from "@opentelemetry/context-async-hooks";
