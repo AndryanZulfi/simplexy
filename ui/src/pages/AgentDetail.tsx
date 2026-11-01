@@ -1878,7 +1878,7 @@ export function AgentOverview({
                       )}
                     >
                       <span className="block font-semibold">Pi CLI</span>
-                      <span className="block text-[11px] text-muted-foreground">Sandbox proses lokal</span>
+                      <span className="block text-(length:--text-micro) text-muted-foreground">Sandbox proses lokal</span>
                     </button>
                     <button
                       type="button"
@@ -1892,7 +1892,7 @@ export function AgentOverview({
                       )}
                     >
                       <span className="block font-semibold">Hermes Agent</span>
-                      <span className="block text-[11px] text-muted-foreground">CLI Hermes lokal terisolasi</span>
+                      <span className="block text-(length:--text-micro) text-muted-foreground">CLI Hermes lokal terisolasi</span>
                     </button>
                   </div>
                 </div>

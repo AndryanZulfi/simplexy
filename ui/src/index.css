@@ -1776,38 +1776,55 @@ html:has(:is(.simplexy-app-shell, .paperclip-app-shell)[data-mobile="true"] [dat
 
 :is(.simplexy-thinking-icon, .paperclip-thinking-icon) {
   transform-origin: 50% 50%;
+  animation: simplexy-breathe 2.4s ease-in-out infinite;
+}
+
+@keyframes simplexy-breathe {
+  0%, 100% {
+    transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.simplexy-lobe-a {
+  animation: simplexy-lobe-flow-a 2.4s ease-in-out infinite;
+}
+
+.simplexy-lobe-b {
+  animation: simplexy-lobe-flow-b 2.4s ease-in-out infinite;
+}
+
+@keyframes simplexy-lobe-flow-a {
+  0%, 100% {
+    opacity: 0.95;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@keyframes simplexy-lobe-flow-b {
+  0%, 100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.95;
+  }
 }
 
 @keyframes paperclip-thinking-draw {
-  0% {
-    stroke-dasharray: 0 85.717;
-    stroke-dashoffset: -85.717;
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
     opacity: 1;
-    animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  }
-  39.0625% {
-    stroke-dasharray: 85.717 85.717;
-    stroke-dashoffset: 0;
-    opacity: 1;
-    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-  }
-  78.125% {
-    stroke-dasharray: 0 85.717;
-    stroke-dashoffset: 0;
-    opacity: 1;
-  }
-  78.225% {
-    opacity: 0;
-  }
-  100% {
-    stroke-dasharray: 0 85.717;
-    stroke-dashoffset: 0;
-    opacity: 0;
   }
 }
 
 :is(.simplexy-thinking-icon-path, .paperclip-thinking-icon-path) {
-  animation: paperclip-thinking-draw 1s linear infinite;
+  animation: paperclip-thinking-draw 1.2s ease-in-out infinite;
 }
 
 /* Muted variant (task-chat v7 activity rows): the sweep runs over the
@@ -1863,11 +1880,13 @@ html:has(:is(.simplexy-app-shell, .paperclip-app-shell)[data-mobile="true"] [dat
     background: none;
   }
 
+  :is(.simplexy-thinking-icon, .paperclip-thinking-icon),
+  .simplexy-lobe-a,
+  .simplexy-lobe-b,
   :is(.simplexy-thinking-icon-path, .paperclip-thinking-icon-path) {
     animation: none;
     opacity: 1;
-    stroke-dasharray: 85.717 85.717;
-    stroke-dashoffset: 0;
+    transform: none;
   }
 }
 
