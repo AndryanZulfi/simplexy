@@ -87,7 +87,7 @@ packages/db/     Drizzle schema, migrations, DB clients
 packages/shared/ Shared types, constants, validators
 packages/adapters/ Agent adapter implementations
 packages/google-sheets-mcp-server/ Google Sheets MCP integration
-cli/             simplixy CLI
+cli/             simplexy CLI
 doc/             Docs teknis dan product specs
 ```
 

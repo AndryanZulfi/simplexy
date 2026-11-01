@@ -90,9 +90,9 @@ export function resolveHermesCommand(config: Record<string, unknown>): string {
 // ---------------------------------------------------------------------------
 
 const HERMES_RUNTIME_IDENTITY_TEMPLATE = [
-  'You are "{{agent.name}}", an AI agent employee in a Paperclip-managed company.',
+  'You are "{{agent.name}}", an AI agent employee in a Simplexy-managed company.',
   "",
-  "Paperclip runtime identity:",
+  "Simplexy runtime identity:",
   "- Agent ID: {{agent.id}}",
   "- Company ID: {{agent.companyId}}",
   "- Run ID: {{run.id}}",
@@ -371,12 +371,12 @@ export async function execute(
       if (selectedSkills.length > 0) {
         await ctx.onLog(
           "stdout",
-          `[hermes] Reconciled ${selectedSkills.length} Paperclip-managed skill(s) into the Hermes skills home.\n`,
+          `[hermes] Reconciled ${selectedSkills.length} Simplexy-managed skill(s) into the Hermes skills home.\n`,
         );
       }
     } catch (err) {
       const reason = err instanceof Error ? err.message : String(err);
-      await ctx.onLog("stderr", `[hermes] Cannot start without the required Paperclip-managed skills: ${reason}\n`);
+      await ctx.onLog("stderr", `[hermes] Cannot start without the required Simplexy-managed skills: ${reason}\n`);
       throw err;
     }
   }

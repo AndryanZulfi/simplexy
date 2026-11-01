@@ -99,7 +99,7 @@ tools, persistent memory, session persistence, skills, and MCP support.
 
 | Field | Type | Default | Description |
 |-------|------|---------|-------------|
-| cwd | string | (assigned task workspace) | Absolute working directory override; otherwise use Paperclip's resolved task workspace |
+| cwd | string | (assigned task workspace) | Absolute working directory override; otherwise use Simplexy's resolved task workspace |
 | persistSession | boolean | true | Resume sessions across heartbeats |
 | worktreeMode | boolean | false | Use git worktree for isolated changes |
 | checkpoints | boolean | false | Enable filesystem checkpoints |
@@ -114,7 +114,7 @@ tools, persistent memory, session persistence, skills, and MCP support.
 | env | object | {} | Extra environment variables |
 | promptTemplate | string | (default) | Custom prompt template with {{variable}} placeholders |
 
-Managed \`instructionsFilePath\` bundles and standard Paperclip API guidance use
+Managed \`instructionsFilePath\` bundles and standard Simplexy API guidance use
 Hermes's native \`HERMES_EPHEMERAL_SYSTEM_PROMPT\` overlay on every run, including
 resume and reset. They are applied at request time and are not appended to user
 history. The query keeps current runtime identity, wake/task content, and custom
@@ -122,24 +122,24 @@ templates. Use a Hermes CLI that supports this environment hook. An explicit
 overlay in \`env\` is preserved; the hook takes precedence over Hermes's configured
 profile personality/system prompt.
 
-## Hermes-Originated Paperclip Tasks
+## Hermes-Originated Simplexy Tasks
 
-This adapter package also ships a Hermes-facing Paperclip task bridge skill:
+This adapter package also ships a Hermes-facing Simplexy task bridge skill:
 \`paperclip-task-bridge\`. Use it when a user starts in Hermes and asks Hermes
-to create, comment on, update, or list Paperclip tasks.
+to create, comment on, update, or list Simplexy tasks.
 
 Configure credentials through Hermes env/profile secrets, never in prompt text:
 
-- \`PAPERCLIP_API_URL\` - Paperclip base URL, with or without \`/api\`
-- \`PAPERCLIP_BRIDGE_API_KEY\` - Paperclip agent API key created with \`scope.kind = "task_bridge"\`
+- \`PAPERCLIP_API_URL\` - Simplexy base URL, with or without \`/api\`
+- \`PAPERCLIP_BRIDGE_API_KEY\` - Simplexy agent API key created with \`scope.kind = "task_bridge"\`
 - optional fallback \`PAPERCLIP_API_KEY\` - must still be a task_bridge key, never a normal claimed agent key
 - optional \`PAPERCLIP_COMPANY_ID\`, \`PAPERCLIP_AGENT_ID\`, and \`PAPERCLIP_RUN_ID\`
 
 The bridge is separate from adapter execution:
 
-- \`hermes_local\` means Paperclip shells out to local \`hermes chat\`.
-- \`hermes_gateway\` means Paperclip wakes remote Hermes through Hermes's API server.
-- \`paperclip-task-bridge\` means Hermes calls Paperclip's REST API to manage tasks.
+- \`hermes_local\` means Simplexy shells out to local \`hermes chat\`.
+- \`hermes_gateway\` means Simplexy wakes remote Hermes through Hermes's API server.
+- \`paperclip-task-bridge\` means Hermes calls Simplexy's REST API to manage tasks.
 
 Create task bridge keys with a parent issue or project boundary. Do not expose
 normal claimed Paperclip agent API keys to internet-facing Hermes chat/webhook

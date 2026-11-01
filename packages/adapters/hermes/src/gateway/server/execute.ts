@@ -355,13 +355,13 @@ function buildInput(ctx: AdapterExecutionContext, paperclipApiUrl: string | null
   const sessionHandoff = nonEmpty(ctx.context.paperclipSessionHandoffMarkdown);
   const issueWorkMode = readPaperclipIssueWorkModeFromContext(ctx.context);
   const lines = [
-    `You are ${ctx.agent.name}, an AI agent employee in a Paperclip-managed company.`,
+    `You are ${ctx.agent.name}, an AI agent employee in a Simplexy-managed company.`,
     "",
-    "Paperclip runtime identity:",
+    "Simplexy runtime identity:",
     `- Agent ID: ${ctx.agent.id}`,
     `- Company ID: ${ctx.agent.companyId}`,
     `- Run ID: ${ctx.runId}`,
-    ...(paperclipApiUrl ? [`- Paperclip API URL: ${paperclipApiUrl}`] : []),
+    ...(paperclipApiUrl ? [`- Simplexy API URL: ${paperclipApiUrl}`] : []),
     ...(issueWorkMode ? [`- Issue work mode: ${issueWorkMode}`] : []),
     "",
     ...(ctx.context.conversationMode === true || isPaperclipRecoveryWakePayload(ctx.context.paperclipWake)
@@ -371,7 +371,7 @@ function buildInput(ctx: AdapterExecutionContext, paperclipApiUrl: string | null
           "- Take concrete action in this run when the task is actionable.",
           "- Do not stop at a plan unless the issue asks for planning only.",
           "- Leave durable progress and update the issue to a clear final disposition.",
-          "- Use X-Paperclip-Run-Id on mutating Paperclip API requests when a Paperclip API key is available.",
+          "- Use X-Paperclip-Run-Id on mutating Simplexy API requests when a Simplexy API key is available.",
           "",
         ]),
     wakePrompt,
@@ -400,7 +400,7 @@ function buildRunBody(ctx: AdapterExecutionContext, sessionKey: string | null): 
   const instructions =
     nonEmpty(ctx.config.instructions) ??
     nonEmpty(payloadTemplate.instructions) ??
-    "Follow the Paperclip wake instructions exactly. Do not expose secrets in logs, comments, or final output.";
+    "Follow the Simplexy wake instructions exactly. Do not expose secrets in logs, comments, or final output.";
   return {
     ...payloadTemplate,
     input,
@@ -865,7 +865,7 @@ function errorResult(err: unknown, baseUrl: URL, redactText: TextRedactor = sani
   const errorMessage = code === "hermes_gateway_auth_failed"
     ? `${redactErrorMessage(err, redactText)}. Check adapterConfig.apiKey matches the Hermes API_SERVER_KEY for the running gateway.`
     : loopbackRefused
-      ? `${redactErrorMessage(err, redactText)}. The configured loopback gateway refers to the Paperclip server, not an agent sandbox or your browser's machine. Check that the Hermes API server is running there, or set adapterConfig.apiBaseUrl to its address reachable from the Paperclip server. Hermes Gateway connects to an already-running gateway; use hermes_local if Paperclip should launch the local Hermes CLI.`
+      ? `${redactErrorMessage(err, redactText)}. The configured loopback gateway refers to the Simplexy server, not an agent sandbox or your browser's machine. Check that the Hermes API server is running there, or set adapterConfig.apiBaseUrl to its address reachable from the Simplexy server. Hermes Gateway connects to an already-running gateway; use hermes_local if Simplexy should launch the local Hermes CLI.`
       : redactErrorMessage(err, redactText);
   return {
     exitCode: 1,

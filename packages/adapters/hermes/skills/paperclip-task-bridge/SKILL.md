@@ -1,11 +1,11 @@
 ---
 name: paperclip-task-bridge
-description: Create, comment on, update, and list Paperclip tasks from Hermes using scoped Paperclip API credentials.
+description: Create, comment on, update, and list Simplexy tasks from Hermes using scoped Simplexy API credentials.
 ---
 
-# Paperclip Task Bridge
+# Simplexy Task Bridge
 
-Use this skill when a Hermes-originated request needs to create or update Paperclip work directly. This is the Hermes-to-Paperclip direction, separate from Paperclip waking Hermes through the `hermes_local` or `hermes_gateway` adapter.
+Use this skill when a Hermes-originated request needs to create or update Simplexy work directly. This is the Hermes-to-Simplexy direction, separate from Simplexy waking Hermes through the `hermes_local` or `hermes_gateway` adapter.
 
 ## Required Environment
 

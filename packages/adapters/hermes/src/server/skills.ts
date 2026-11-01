@@ -30,9 +30,18 @@ function resolveHermesHome(config: Record<string, unknown>): string {
     typeof config.env === "object" && config.env !== null && !Array.isArray(config.env)
       ? (config.env as Record<string, unknown>)
       : {};
+  const configuredHermesHome = asString(env.HERMES_HOME);
+  if (configuredHermesHome) return path.resolve(configuredHermesHome);
   const configuredHome = asString(env.HOME);
-  const hermesHome = asString(env.HERMES_HOME);
-  return hermesHome ? path.resolve(hermesHome) : path.join(configuredHome ? path.resolve(configuredHome) : os.homedir(), ".hermes");
+  if (configuredHome) return path.join(path.resolve(configuredHome), ".hermes");
+
+  const envHermesHome = asString(process.env.HERMES_HOME);
+  if (envHermesHome) return path.resolve(envHermesHome);
+  const envHome =
+    asString(process.env.SIMPLEXY_HOME) ??
+    asString(process.env.PAPERCLIP_HOME) ??
+    asString(process.env.HOME);
+  return path.join(envHome ? path.resolve(envHome) : os.homedir(), ".hermes");
 }
 
 interface SkillFrontmatter {
@@ -158,7 +167,7 @@ async function buildHermesSkillSnapshot(config: Record<string, unknown>): Promis
       managed: true,
       state: desired ? "configured" : "available",
       origin: "company_managed",
-      originLabel: "Managed by Paperclip",
+      originLabel: "Managed by Simplexy",
       readOnly: false,
       sourcePath: entry.source,
       targetPath: null,
@@ -170,7 +179,7 @@ async function buildHermesSkillSnapshot(config: Record<string, unknown>): Promis
 
   // Hermes-installed skills (read-only, always loaded)
   for (const entry of hermesSkillEntries) {
-    // Skip if Paperclip already manages a skill with the same key
+    // Skip if Simplexy already manages a skill with the same key
     if (availableByKey.has(entry.key)) continue;
     entries.push(entry);
   }
@@ -179,7 +188,7 @@ async function buildHermesSkillSnapshot(config: Record<string, unknown>): Promis
   for (const desiredSkill of desiredSkills) {
     if (availableByKey.has(desiredSkill) || hermesKeys.has(desiredSkill)) continue;
     warnings.push(
-      `Desired skill "${desiredSkill}" is not available in Paperclip or Hermes skills.`,
+      `Desired skill "${desiredSkill}" is not available in Simplexy or Hermes skills.`,
     );
     entries.push({
       key: desiredSkill,
@@ -193,7 +202,7 @@ async function buildHermesSkillSnapshot(config: Record<string, unknown>): Promis
       sourcePath: null,
       targetPath: null,
       detail:
-        "Cannot find this skill in Paperclip or ~/.hermes/skills/.",
+        "Cannot find this skill in Simplexy or ~/.hermes/skills/.",
     });
   }
 

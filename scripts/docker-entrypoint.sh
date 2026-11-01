@@ -51,11 +51,16 @@ case "$node_home" in
         ;;
 esac
 
+app_home="${SIMPLEXY_HOME:-${PAPERCLIP_HOME:-/simplexy}}"
+if [ "$node_home" = "/simplixy" ] || [ -z "$node_home" ] || [ ! -d "$node_home" ]; then
+    usermod -d "$app_home" node 2>/dev/null || true
+    node_home="$app_home"
+fi
+
 remap_uid=0
 remap_gid=0
 [ "$(id -u node)" -ne "$PUID" ] && remap_uid=1
 [ "$(id -g node)" -ne "$PGID" ] && remap_gid=1
-app_home="${PAPERCLIP_HOME:-/paperclip}"
 move_home=0
 if { [ "$remap_uid" -eq 1 ] || [ "$remap_gid" -eq 1 ]; } \
     && [ -n "$node_home" ] && [ "${node_home%/}" = "${app_home%/}" ]; then
@@ -98,7 +103,14 @@ fi
 # Any mismatch repairs the whole tree. After a clean probe or a repair, the
 # marker records the verified node UID/GID, so later boots skip the full
 # walk. Delete the marker to force a full probe on the next boot.
-home_dir="${PAPERCLIP_HOME:-/paperclip}"
+home_dir="${SIMPLEXY_HOME:-${PAPERCLIP_HOME:-/simplexy}}"
+if [ ! -d "$home_dir" ]; then
+    mkdir -p "$home_dir"
+    chown node:node "$home_dir"
+fi
+if [ ! -e /paperclip ] && [ "$home_dir" != "/paperclip" ]; then
+    ln -sfn "$home_dir" /paperclip 2>/dev/null || true
+fi
 ownership_marker="$home_dir/.paperclip-ownership-verified"
 ownership_shallow_depth=3
 

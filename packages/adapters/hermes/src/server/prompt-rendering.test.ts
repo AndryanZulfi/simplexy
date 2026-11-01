@@ -273,7 +273,7 @@ test("preserves custom prompt templates while exposing runtime and wake variable
   expect(prompt).toContain('"reason":"issue_assigned"');
   expect(prompt).toContain("## Paperclip Wake Payload");
   expect(prompt).toContain("Issue description:\n```text\nUse the wake payload as runtime authority.\n```");
-  expect(prompt).toContain("Paperclip runtime identity:");
+  expect(prompt).toContain("Simplexy runtime identity:");
 });
 
 test("keeps historical task markdown available to custom templates while automatic context uses assignment markdown", () => {

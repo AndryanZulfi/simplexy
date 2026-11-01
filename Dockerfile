@@ -10,7 +10,7 @@ RUN apt-get update \
 # Modify the existing node user/group to have the specified UID/GID to match host user
 RUN usermod -u $USER_UID --non-unique node \
   && groupmod -g $USER_GID --non-unique node \
-  && usermod -g $USER_GID -d /simplixy node
+  && usermod -g $USER_GID -d /simplexy node
 
 FROM base AS deps
 WORKDIR /app
@@ -182,12 +182,16 @@ WORKDIR /app
 # (the single most expensive layer: four CLI toolchains + apt, per arch) can
 # never hit the layer cache and rebuilds on every build.
 RUN echo "cli-tools-epoch: ${CLI_TOOLS_CACHE_EPOCH}" \
-  && npm install --global --omit=dev @anthropic-ai/claude-code@latest @openai/codex@latest opencode-ai @google/gemini-cli@latest @moonshot-ai/kimi-code@latest \
   && apt-get update \
   && apt-get install -y --no-install-recommends openssh-client jq \
-  && rm -rf /var/lib/apt/lists/* \
-  && mkdir -p /paperclip \
-  && chown node:node /paperclip
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/* \
+  && npm install --global --omit=dev @anthropic-ai/claude-code@latest @openai/codex@latest opencode-ai @google/gemini-cli@latest @moonshot-ai/kimi-code@latest \
+  && npm cache clean --force \
+  && rm -rf /root/.npm \
+  && mkdir -p /simplexy \
+  && ln -sfn /simplexy /paperclip \
+  && chown -h node:node /simplexy /paperclip
 
 COPY scripts/docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
@@ -214,17 +218,18 @@ ENV PAPERCLIP_RUNNER_REMOTE_PROVIDER_PACK_PATH=/opt/paperclip-runner/provider-pa
 ARG PAPERCLIP_BUILD_VERSION=""
 ARG PAPERCLIP_BUILD_COMMIT=""
 ENV NODE_ENV=production \
-  HOME=/paperclip \
+  HOME=/simplexy \
   HOST=0.0.0.0 \
   PORT=3100 \
   SERVE_UI=true \
-  PAPERCLIP_HOME=/paperclip \
+  SIMPLEXY_HOME=/simplexy \
+  PAPERCLIP_HOME=/simplexy \
   PAPERCLIP_INSTANCE_ID=default \
   PAPERCLIP_BUILD_VERSION=${PAPERCLIP_BUILD_VERSION} \
   PAPERCLIP_BUILD_COMMIT=${PAPERCLIP_BUILD_COMMIT} \
   USER_UID=${USER_UID} \
   USER_GID=${USER_GID} \
-  PAPERCLIP_CONFIG=/paperclip/instances/default/config.json \
+  PAPERCLIP_CONFIG=/simplexy/instances/default/config.json \
   PAPERCLIP_DEPLOYMENT_MODE=authenticated \
   PAPERCLIP_DEPLOYMENT_EXPOSURE=private \
   OPENCODE_ALLOW_ALL_MODELS=true \
