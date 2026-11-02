@@ -121,10 +121,10 @@ export async function provisionLocalWorkspaceAgent(db: Db, companyId: string, us
   const lifecycle = createAgentLifecycle(db);
   const existing = await lifecycle.get(id);
   if (existing) {
-    if (existing.status === "paused") {
+    if (existing.lifecycleState === "paused") {
       await lifecycle.resumeAgent(id).catch(() => undefined);
       const resumed = await lifecycle.get(id);
-      if (resumed && resumed.status !== "paused") return resumed;
+      if (resumed && resumed.lifecycleState !== "paused") return resumed;
     }
     return existing;
   }
