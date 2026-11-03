@@ -103,13 +103,17 @@ fi
 # Any mismatch repairs the whole tree. After a clean probe or a repair, the
 # marker records the verified node UID/GID, so later boots skip the full
 # walk. Delete the marker to force a full probe on the next boot.
-home_dir="${SIMPLEXY_HOME:-${PAPERCLIP_HOME:-/simplexy}}"
+if [ -d /paperclip ] && [ ! -L /paperclip ] && [ ! -d /simplexy/instances ]; then
+    rm -rf /simplexy 2>/dev/null || true
+    ln -sfn /paperclip /simplexy
+fi
+if [ -d /simplexy ] && [ ! -e /paperclip ]; then
+    ln -sfn /simplexy /paperclip
+fi
+home_dir="/simplexy"
 if [ ! -d "$home_dir" ]; then
     mkdir -p "$home_dir"
     chown node:node "$home_dir"
-fi
-if [ ! -e /paperclip ] && [ "$home_dir" != "/paperclip" ]; then
-    ln -sfn "$home_dir" /paperclip 2>/dev/null || true
 fi
 ownership_marker="$home_dir/.paperclip-ownership-verified"
 ownership_shallow_depth=3
