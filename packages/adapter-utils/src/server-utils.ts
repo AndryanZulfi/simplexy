@@ -4388,7 +4388,10 @@ export async function ensurePaperclipSkillSymlink(
     .stat(resolvedLinkedPath)
     .then(() => true)
     .catch(() => false);
-  if (linkedPathExists) {
+  const isPaperclipManaged =
+    resolvedLinkedPath.includes(`${path.sep}.paperclip${path.sep}`) ||
+    resolvedLinkedPath.includes(`${path.sep}__versions__${path.sep}`);
+  if (linkedPathExists && !isPaperclipManaged) {
     return "skipped";
   }
 

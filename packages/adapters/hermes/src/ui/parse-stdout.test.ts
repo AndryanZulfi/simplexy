@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { parseHermesStdoutLine } from "./parse-stdout.js";
+import { parseHermesStdoutLine, createHermesStdoutParser } from "./parse-stdout.js";
 
 const TS = "2026-06-29T12:00:00.000Z";
 
@@ -77,5 +77,25 @@ describe("parseHermesStdoutLine — ANSI stripping", () => {
   it("handles empty lines after ANSI stripping", () => {
     const result = parseHermesStdoutLine("\x1b[0m", TS);
     expect(result).toHaveLength(0);
+  });
+
+  it("filters out Query: echo and wake payload prompt lines", () => {
+    expect(parseHermesStdoutLine("Query: You are 'zulfi', an AI agent...", TS)).toHaveLength(0);
+    expect(parseHermesStdoutLine("Simplexy runtime identity:", TS)).toHaveLength(0);
+    expect(parseHermesStdoutLine("Agent ID: 1234", TS)).toHaveLength(0);
+    expect(parseHermesStdoutLine("Paperclip Wake Payload", TS)).toHaveLength(0);
+    expect(parseHermesStdoutLine("────────────────────────────────────────", TS)).toHaveLength(0);
+  });
+
+  it("createHermesStdoutParser suppresses all lines between Query: and the divider", () => {
+    const parser = createHermesStdoutParser();
+    expect(parser.parseLine("Query: custom multiline query", TS)).toEqual([]);
+    expect(parser.parseLine("arbitrary line inside query payload", TS)).toEqual([]);
+    expect(parser.parseLine("another line", TS)).toEqual([]);
+    expect(parser.parseLine("────────────────────────────────────────", TS)).toEqual([]);
+    // Normal output after divider should pass through
+    const output = parser.parseLine("Hello, I am ready to work.", TS);
+    expect(output).toHaveLength(1);
+    expect(output[0]).toMatchObject({ kind: "assistant", text: "Hello, I am ready to work." });
   });
 });

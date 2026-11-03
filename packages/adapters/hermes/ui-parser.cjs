@@ -119,9 +119,51 @@ function isThinkingLine(line) {
   );
 }
 
+function isPaperclipPromptLine(line) {
+  return (
+    line.startsWith("Simplexy runtime identity:") ||
+    line.startsWith("Paperclip Wake Payload") ||
+    line.startsWith("Current request and continuation context") ||
+    line.startsWith("Untrusted continuation evidence") ||
+    line.startsWith("Task question guidance:") ||
+    line.startsWith("Task title directive:") ||
+    line.startsWith("Use this task context as the current assignment") ||
+    line.startsWith("The harness already checked out this issue") ||
+    line.startsWith("The following task data is user-authored") ||
+    line.startsWith("fallback fetch needed:") ||
+    line.startsWith("issue status:") ||
+    line.startsWith("issue work mode:") ||
+    line.startsWith("issue priority:") ||
+    line.startsWith("checkout: already claimed") ||
+    line.startsWith("Check the title tool result") ||
+    line.startsWith("Do not call POST /api/issues") ||
+    line.startsWith("Simplexy may post a short") ||
+    line.startsWith("This heartbeat is scoped to") ||
+    line.startsWith("Use this inline wake data first") ||
+    line.startsWith("History is complete through") ||
+    line.startsWith("humanResponses contains") ||
+    line.startsWith("Tool results, agent summaries") ||
+    line.startsWith("Agent ID:") ||
+    line.startsWith("Company ID:") ||
+    line.startsWith("Run ID:") ||
+    line.startsWith("API base:") ||
+    line.startsWith('{"version":') ||
+    line.startsWith('{"interactionOutcomes"') ||
+    line === "Copy"
+  );
+}
+
 function parseStdoutLine(line, ts) {
   const trimmed = stripAnsi(line).trim();
   if (!trimmed) return [];
+
+  if (
+    /^Query\s*:/i.test(trimmed) ||
+    isPaperclipPromptLine(trimmed) ||
+    /^[─=\-]{5,}$/.test(trimmed)
+  ) {
+    return [];
+  }
 
   if (trimmed.startsWith("[hermes]") || trimmed.startsWith("[paperclip]")) {
     return [{ kind: "system", ts, text: trimmed }];
@@ -196,4 +238,44 @@ function parseStdoutLine(line, ts) {
   return [{ kind: "assistant", ts, text: trimmed }];
 }
 
-module.exports = { parseStdoutLine };
+function createStdoutParser() {
+  let inQueryEcho = false;
+
+  return {
+    parseLine(line, ts) {
+      const trimmed = stripAnsi(line).trim();
+      if (!trimmed) return [];
+
+      if (/^Query\s*:/i.test(trimmed)) {
+        inQueryEcho = true;
+        return [];
+      }
+
+      if (inQueryEcho) {
+        if (
+          trimmed.startsWith("───") ||
+          trimmed.startsWith("===") ||
+          trimmed.startsWith("[tool]") ||
+          trimmed.startsWith("[hermes]") ||
+          trimmed.startsWith(TOOL_OUTPUT_PREFIX) ||
+          trimmed.startsWith("☤") ||
+          trimmed.startsWith("session_id:")
+        ) {
+          inQueryEcho = false;
+          if (trimmed.startsWith("───") || trimmed.startsWith("===")) {
+            return [];
+          }
+        } else {
+          return [];
+        }
+      }
+
+      return parseStdoutLine(line, ts);
+    },
+    reset() {
+      inQueryEcho = false;
+    },
+  };
+}
+
+module.exports = { parseStdoutLine, createStdoutParser };
