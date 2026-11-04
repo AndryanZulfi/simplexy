@@ -3,6 +3,7 @@ import type { IncomingHttpHeaders } from "node:http";
 import { betterAuth, type Auth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { toNodeHandler } from "better-auth/node";
+import { passwordRecoveryPlugin } from "./password-recovery.js";
 import type { Db } from "@simplexy/db";
 import {
   authAccounts,
@@ -281,6 +282,7 @@ export function createBetterAuthInstance(db: Db, config: Config, trustedOrigins:
       enabled: true,
       requireEmailVerification: false,
       disableSignUp: config.authDisableSignUp,
+      revokeSessionsOnPasswordReset: true,
     },
     rateLimit: buildBetterAuthRateLimitOptions({
       deploymentMode: config.deploymentMode,
@@ -288,12 +290,12 @@ export function createBetterAuthInstance(db: Db, config: Config, trustedOrigins:
       override: process.env.PAPERCLIP_AUTH_RATE_LIMIT_ENABLED,
     }),
     advanced: buildBetterAuthAdvancedOptions({ disableSecureCookies }),
+    plugins: [passwordRecoveryPlugin(),
     // Registered only for a managed workspace instance: the plugin is what makes
     // `Open workspace` password-independent, and a control-plane instance that
     // was never handed a workspace key must not expose the exchange at all.
     ...(resolveWorkspaceHandoffIdentity(config)
-      ? {
-          plugins: [
+      ? [
             workspaceLoginHandoffPlugin({
               db,
               // Re-resolved per exchange so a hot restart cannot keep validating
@@ -307,9 +309,9 @@ export function createBetterAuthInstance(db: Db, config: Config, trustedOrigins:
                   origin: null,
                 },
             }),
-          ],
-        }
-      : {}),
+          ]
+      : []),
+    ],
   };
 
   if (!baseUrl) {

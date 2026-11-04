@@ -160,6 +160,12 @@ async function authPatch<T>(path: string, body: Record<string, unknown>, parse: 
 }
 
 export const authApi = {
+  requestPasswordReset: async (email: string) => {
+    await authPost("/email-otp/request-password-reset", { email });
+  },
+  resetPassword: async (input: { email: string; otp: string; password: string }) => {
+    await authPost("/email-otp/reset-password", input);
+  },
   getSession: async (): Promise<AuthSession | null> => {
     const res = await apiFetch("/api/auth/get-session", {
       credentials: "include",

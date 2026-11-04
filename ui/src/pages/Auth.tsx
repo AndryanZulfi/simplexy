@@ -13,6 +13,7 @@ import { AsciiArtAnimation } from "@/components/AsciiArtAnimation";
 import { SimplexyLoading } from "@/components/AnimatedPaperclipIcon";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { SimplexyLockup } from "../components/SimplexyLockup";
+import { PasswordRecovery } from "./PasswordRecovery";
 
 type AuthMode = "sign_in" | "sign_up";
 
@@ -21,6 +22,7 @@ export function AuthPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [mode, setMode] = useState<AuthMode>("sign_in");
+  const [recovering, setRecovering] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -111,6 +113,7 @@ export function AuthPage() {
             <SimplexyLockup className="h-8 w-auto" />
           </div>
 
+          {recovering ? <PasswordRecovery initialEmail={email} onBack={() => { setRecovering(false); setPassword(""); setError(null); }} /> : <>
           <h1 className="text-xl font-semibold">
             {mode === "sign_in" ? "Sign in to Simplexy" : "Create your Simplexy account"}
           </h1>
@@ -203,6 +206,7 @@ export function AuthPage() {
                   : "Create Account"}
             </Button>
           </form>
+          {mode === "sign_in" && <button type="button" className="mt-4 text-sm underline underline-offset-2" disabled={mutation.isPending} onClick={() => { setRecovering(true); setPassword(""); setError(null); }}>Lupa kata sandi?</button>}
 
           <div className="mt-5 text-sm text-muted-foreground">
             {mode === "sign_in" ? "Need an account?" : "Already have an account?"}{" "}
@@ -217,6 +221,7 @@ export function AuthPage() {
               {mode === "sign_in" ? "Create one" : "Sign in"}
             </button>
           </div>
+          </>}
         </div>
       </div>
 
