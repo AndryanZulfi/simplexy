@@ -44,7 +44,6 @@ import {
   HERMES_CLI,
   DEFAULT_TIMEOUT_SEC,
   DEFAULT_GRACE_SEC,
-  DEFAULT_MODEL,
   VALID_PROVIDERS,
 } from "../shared/constants.js";
 
@@ -349,7 +348,7 @@ export async function execute(
 
   // ── Resolve configuration ──────────────────────────────────────────────
   const hermesCmd = resolveHermesCommand(config);
-  const model = cfgString(config.model) || DEFAULT_MODEL;
+  const model = cfgString(config.model);
   const timeoutSec = cfgNumber(config.timeoutSec) || DEFAULT_TIMEOUT_SEC;
   const graceSec = cfgNumber(config.graceSec) || DEFAULT_GRACE_SEC;
   const maxTurns = cfgNumber(config.maxTurnsPerRun);
