@@ -5028,6 +5028,8 @@ const issueListSelect = {
   completedAt: issues.completedAt,
   cancelledAt: issues.cancelledAt,
   hiddenAt: issues.hiddenAt,
+  sourceChatSessionId: issues.sourceChatSessionId,
+  sourceChatMessageId: issues.sourceChatMessageId,
   createdAt: issues.createdAt,
   updatedAt: issues.updatedAt,
 };
