@@ -1,5 +1,6 @@
 import { useCoordinatorWorkspaceEnabled } from "./hooks/useCoordinatorWorkspaceEnabled";
 import { AgentChats } from "./pages/AgentChats";
+import { DirectChatPage } from "./pages/DirectChatPage";
 import { lazy, Suspense, useEffect, type ReactNode } from "react";
 import type { ToolConnectionCredentialSource } from "@simplexy/shared";
 import { Navigate, Outlet, Route, Routes, useActiveCompanyPrefix, useLocation, useParams } from "@/lib/router";
@@ -328,7 +329,8 @@ function boardRoutes(streamlinedUiEnabled: boolean, combinedInboxTasksEnabled: b
           <Route path="issues/recent" element={<Navigate to="/issues" replace />} />
         </>
       )}
-      <Route path="chats" element={<AgentChats />} />
+      <Route path="chats" element={<DirectChatPage />} />
+      <Route path="chats/legacy" element={<AgentChats />} />
       <Route path="chats/:agentRef" element={<AgentChat />} />
       <Route path="issues/:issueId" element={<IssueDetail />} />
       {import.meta.env.DEV ? (

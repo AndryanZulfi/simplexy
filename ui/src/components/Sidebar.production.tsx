@@ -1,5 +1,6 @@
 import {
   Inbox,
+  MessageCircle,
   ListChecks,
   CircleDot,
   Target,
@@ -179,6 +180,7 @@ export function Sidebar() {
         </div>
 
         <SidebarSection label="Work" collapsible={{ open: workOpen, onOpenChange: setWorkOpen }}>
+          <SidebarNavItem to="/chats" label="Chat" icon={MessageCircle} />
           <SidebarNavItem to="/issues" label="Tasks" icon={CircleDot} />
           {showCases ? (
             <SidebarNavItem to="/cases" label="Cases" icon={Layers} textBadge="beta" />
