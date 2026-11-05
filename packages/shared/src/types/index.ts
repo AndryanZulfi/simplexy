@@ -105,6 +105,7 @@ export type {
   FeedbackTraceBundleFile,
   FeedbackTraceBundle,
 } from "./feedback.js";
+export * from "./agent-direct-chat.js";
 export type {
   InstanceExecutionMode,
   InstanceExperimentalSettings,

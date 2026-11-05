@@ -60,6 +60,8 @@ import { useDesignSandbox } from "../context/DesignSandboxContext";
 import { StatusGlyph } from "../components/StatusGlyph";
 import { MembershipAction } from "../components/MembershipAction";
 import { StarToggle } from "../components/StarToggle";
+import { AgentChatDrawer } from "../components/AgentChatDrawer";
+import { MessageSquare } from "lucide-react";
 import { Identity } from "../components/Identity";
 import { PageSkeleton } from "../components/PageSkeleton";
 import { QueryErrorState, queryViewKind, useQueryView } from "../components/QueryView";
@@ -788,6 +790,7 @@ export function AgentDetail() {
   const location = useLocation();
   const [actionError, setActionError] = useState<string | null>(null);
   const [dismissedLeftAgentIds, setDismissedLeftAgentIds] = useState<Set<string>>(() => new Set());
+  const [directChatOpen, setDirectChatOpen] = useState(false);
   const activeView: AgentDetailView = urlRunId ? "run-detail"
     : parseAgentDetailView(urlTab ?? null);
   const legacyAuditSection = !urlRunId ? agentLegacyAuditSection(urlTab ?? null) : null;
@@ -1288,6 +1291,15 @@ export function AgentDetail() {
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-2">
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() => setDirectChatOpen(true)}
+            className="flex items-center gap-1.5"
+          >
+            <MessageSquare className="h-4 w-4" />
+            <span>Kirim Pesan</span>
+          </Button>
           <StarToggle
             size="button"
             starred={agentStarred}
@@ -1343,6 +1355,15 @@ export function AgentDetail() {
           </AgentActionButtons>
         </div>
       </header>
+
+      {currentAgent && resolvedCompanyId && (
+        <AgentChatDrawer
+          open={directChatOpen}
+          onOpenChange={setDirectChatOpen}
+          companyId={resolvedCompanyId}
+          agent={currentAgent}
+        />
+      )}
 
       {builtInState && (
         <InlineBanner

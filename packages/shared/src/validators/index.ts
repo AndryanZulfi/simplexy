@@ -327,6 +327,7 @@ export {
   type CompanyPortabilityPreview,
   type CompanyPortabilityImport,
 } from "./company-portability.js";
+export * from "./agent-direct-chat.js";
 
 export {
   trustPresetSchema,

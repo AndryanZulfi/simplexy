@@ -268,4 +268,6 @@ export { workflows } from "./workflows.js";
 
 export { userWorkspacePreferences } from "./user_workspace_preferences.js";
 
+export { agentChatSessions, agentChatMessages } from "./agent_direct_chats.js";
+
 export { issueThreadInteractionIdempotencyKeys } from "./issue_thread_interaction_idempotency_keys.js";
