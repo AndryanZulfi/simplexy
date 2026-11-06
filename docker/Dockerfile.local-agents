@@ -22,3 +22,9 @@ RUN apt-get update \
 ENV HOME=/simplexy \
     HERMES_HOME=/simplexy/.hermes \
     PATH=/opt/hermes-build-home/.local/bin:$PATH
+# Hermes resolves dependency facts under its active home, separate from user config.
+RUN chown -R node:node /opt/hermes /opt/hermes-build-home \
+    && install -d -o node -g node /simplexy/.hermes \
+    && ln -s /opt/hermes-build-home/installs /simplexy/.hermes/installs \
+    && ln -s /opt/hermes-build-home/tools /simplexy/.hermes/tools \
+    && gosu node hermes --version
