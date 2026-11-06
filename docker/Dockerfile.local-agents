@@ -3,18 +3,18 @@ ARG SIMPLEXY_BASE_IMAGE=simplexy-core:0b79435e3
 FROM ${SIMPLEXY_BASE_IMAGE}
 USER root
 ARG HERMES_COMMIT=ca4360692055bdb4df3a695c164646e528891da8
-ARG PI_VERSION=0.73.1
+ARG PI_VERSION=0.74.0
 ENV HOME=/opt/hermes-build-home \
     HERMES_INSTALL_DIR=/opt/hermes \
     HERMES_HOME=/opt/hermes-build-home
-RUN mkdir -p /opt/hermes-build-home && chown node:node /opt/hermes-build-home
+RUN mkdir -p /opt/hermes-build-home && chmod 755 /opt/hermes-build-home
 RUN apt-get update \
     && apt-get install -y --no-install-recommends bash build-essential python3-venv libffi-dev libssl-dev \
     && rm -rf /var/lib/apt/lists/* \
     && curl -fsSL --retry 3 "https://raw.githubusercontent.com/NousResearch/hermes-agent/${HERMES_COMMIT}/scripts/install.sh" -o /tmp/install-hermes.sh \
     && bash /tmp/install-hermes.sh --non-interactive --skip-browser --skip-computer-use --channel main --commit "${HERMES_COMMIT}" --dir /opt/hermes \
     && ln -s /opt/hermes/.hermes/bin/hermes /usr/local/bin/hermes \
-    && npm install --global "@mariozechner/pi-coding-agent@${PI_VERSION}" \
+    && npm install --global "@earendil-works/pi-coding-agent@${PI_VERSION}" \
     && npm cache clean --force \
     && rm /tmp/install-hermes.sh \
     && chmod -R a+rX /opt/hermes /opt/hermes-build-home \

@@ -38,6 +38,10 @@ Start with:
 docker compose -p simplexy -f docker/compose.local-agents.yml up -d
 ```
 
+On Linux, leave `SIMPLEXY_LOCAL_AGENTS_ENABLED=false` and use ordinary `pi_local`/`hermes_local` adapters without `managedLocalWorkspace=true`. The managed Pi workspace runtime currently requires macOS `sandbox-exec`. Ordinary local agents share the application container's filesystem and privileges; they are not isolated from one another.
+
+Pi is pinned to `@earendil-works/pi-coding-agent@0.74.0`, matching the local adapter's install contract.
+
 Configure Hermes with `hermes config set` as the application user. Keep secrets in environment files, not in the image or repository. Agent workspace files, instructions and credentials from another machine are not automatically migrated.
 
 ## Acceptance checks
