@@ -27,6 +27,10 @@ export function DirectChatPage() {
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    setStreamingContent("");
+  }, [selectedCompanyId, selectedAgentId, selectedSessionId]);
+
   // 1. Fetch available agents in the company
   const { data: agents = [], isLoading: loadingAgents } = useQuery({
     queryKey: queryKeys.agents.list(selectedCompanyId ?? ""),
@@ -84,7 +88,7 @@ export function DirectChatPage() {
   // 4. Create new session mutation
   const createSessionMutation = useMutation({
     mutationFn: (title?: string) => {
-      if (!selectedCompanyId || !selectedAgentId) throw new Error("Agent belum dipilih");
+      if (!selectedCompanyId || !selectedAgentId) throw new Error("No agent selected");
       return agentDirectChatsApi.createSession(selectedCompanyId, selectedAgentId, { title });
     },
     onSuccess: (newSession) => {
@@ -146,7 +150,7 @@ export function DirectChatPage() {
       },
       (err) => {
         setIsStreaming(false);
-        setStreamingContent(`\n[Terjadi kesalahan: ${err}]`);
+        setStreamingContent(`\n[Error: ${err}]`);
       },
     );
   }
@@ -159,7 +163,7 @@ export function DirectChatPage() {
       priority: "low" | "medium" | "high" | "urgent";
     }) => {
       if (!selectedMessageForTask || !selectedSessionId || !selectedCompanyId || !selectedAgentId) {
-        throw new Error("Pesan tidak dipilih");
+        throw new Error("No message selected");
       }
       return agentDirectChatsApi.promoteToTask(
         selectedCompanyId,
@@ -187,27 +191,27 @@ export function DirectChatPage() {
       <div className="w-64 border-r border-border flex flex-col bg-muted/20">
         <div className="p-3 border-b border-border flex items-center justify-between">
           <span className="text-sm font-semibold flex items-center gap-2">
-            <MessageSquare className="size-4" /> Obrolan Agent
+            <MessageSquare className="size-4" /> Agent Chat
           </span>
           <Button
             size="sm"
             variant="outline"
             className="h-7 text-xs px-2"
-            onClick={() => createSessionMutation.mutate("Percakapan Baru")}
+            onClick={() => createSessionMutation.mutate("New conversation")}
             disabled={createSessionMutation.isPending || !selectedAgentId || isStreaming}
           >
-            <Plus className="size-3 mr-1" /> Baru
+            <Plus className="size-3 mr-1" /> New
           </Button>
         </div>
 
         {/* Daftar Agent */}
         <div className="p-2 border-b border-border">
-          <label className="text-xs text-muted-foreground px-2 pb-1 block">Pilih Agent</label>
+          <label className="text-xs text-muted-foreground px-2 pb-1 block">Select agent</label>
           <div className="space-y-1">
             {loadingAgents ? (
-              <p className="text-xs text-muted-foreground p-2">Memuat agent...</p>
+              <p className="text-xs text-muted-foreground p-2">Loading agents...</p>
             ) : availableAgents.length === 0 ? (
-              <p className="text-xs text-muted-foreground p-2">Tidak ada agent aktif</p>
+              <p className="text-xs text-muted-foreground p-2">No active agents</p>
             ) : (
               availableAgents.map((a) => (
                 <button
@@ -230,11 +234,11 @@ export function DirectChatPage() {
 
         {/* Daftar Sesi Obrolan */}
         <div className="flex-1 overflow-y-auto p-2 space-y-1">
-          <label className="text-xs text-muted-foreground px-2 pb-1 block">Riwayat Sesi</label>
+          <label className="text-xs text-muted-foreground px-2 pb-1 block">Session history</label>
           {loadingSessions ? (
-            <p className="text-xs text-muted-foreground p-2">Memuat sesi...</p>
+            <p className="text-xs text-muted-foreground p-2">Loading sessions...</p>
           ) : sessions.length === 0 ? (
-            <p className="text-xs text-muted-foreground p-2">Belum ada percakapan</p>
+            <p className="text-xs text-muted-foreground p-2">No conversations yet</p>
           ) : (
             sessions.map((s) => (
               <button
@@ -271,7 +275,7 @@ export function DirectChatPage() {
               </div>
             </div>
           ) : (
-            <span className="text-sm text-muted-foreground">Pilih agent untuk memulai obrolan</span>
+            <span className="text-sm text-muted-foreground">Select an agent to start chatting</span>
           )}
         </div>
 
@@ -279,18 +283,18 @@ export function DirectChatPage() {
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
           {!currentAgent ? (
             <div className="flex items-center justify-center h-full text-muted-foreground text-sm">
-              Pilih salah satu agent di sebelah kiri untuk mengobrol
+              Select an agent on the left to start chatting
             </div>
           ) : loadingMessages ? (
             <div className="flex items-center justify-center h-32 text-muted-foreground text-sm">
-              <Loader2 className="h-4 w-4 animate-spin mr-2" /> Memuat pesan...
+              <Loader2 className="h-4 w-4 animate-spin mr-2" /> Loading messages...
             </div>
           ) : messages.length === 0 && !isStreaming ? (
             <div className="flex flex-col items-center justify-center h-full text-center text-muted-foreground text-sm space-y-2 p-6">
               <MessageSquare className="size-8 text-muted-foreground/50 mb-2" />
-              <p className="font-medium text-foreground">Obrolan Langsung dengan {currentAgent.name}</p>
+              <p className="font-medium text-foreground">Chat directly with {currentAgent.name}</p>
               <p className="text-xs max-w-sm">
-                Ajukan pertanyaan, klarifikasi instruksi, atau minta rekomendasi teknis. Jawaban dialirkan langsung tanpa antrean task.
+                Ask questions, clarify instructions, or get technical advice. Replies stream directly without entering the task queue.
               </p>
             </div>
           ) : (
@@ -315,13 +319,13 @@ export function DirectChatPage() {
                     <div className="mt-2 pt-2 border-t border-border/60 text-xs flex items-center justify-between gap-2">
                       <span className="font-medium flex items-center gap-1">
                         <CheckSquare className="size-3 text-primary" />
-                        {msg.createdTaskIdentifier || "Tugas"}: {msg.createdTaskTitle || "Lihat tugas"}
+                        {msg.createdTaskIdentifier || "Task"}: {msg.createdTaskTitle || "View task"}
                       </span>
                       <Link
                         to={`/issues/${msg.createdTaskId}`}
                         className="underline underline-offset-2 hover:text-primary"
                       >
-                        Buka Task
+                        Open task
                       </Link>
                     </div>
                   )}
@@ -337,7 +341,7 @@ export function DirectChatPage() {
                       setPromoteModalOpen(true);
                     }}
                   >
-                    <CheckSquare className="size-3" /> Jadikan Tugas
+                    <CheckSquare className="size-3" /> Create task
                   </button>
                 )}
               </div>
@@ -345,11 +349,11 @@ export function DirectChatPage() {
           )}
 
           {/* Streaming Bubble */}
-          {isStreaming && (
+          {(isStreaming || streamingContent) && (
             <div className="flex flex-col items-start">
               <div className="max-w-xs sm:max-w-xl rounded-lg px-3.5 py-2.5 text-sm bg-muted text-foreground border">
-                <p className="whitespace-pre-wrap">
-                  {streamingContent || "Mengetik..."}
+                <p role={isStreaming ? "status" : "alert"} className="whitespace-pre-wrap">
+                  {streamingContent || "Typing..."}
                 </p>
               </div>
             </div>
@@ -373,8 +377,8 @@ export function DirectChatPage() {
             }}
             placeholder={
               currentAgent
-                ? `Tulis pesan ke ${currentAgent.name}... (Enter kirim, Shift+Enter baris baru)`
-                : "Pilih agent terlebih dahulu..."
+                ? `Message ${currentAgent.name}... (Enter to send, Shift+Enter for a new line)`
+                : "Select an agent first..."
             }
             disabled={!currentAgent || isStreaming}
             className="min-h-11 max-h-32 resize-none text-sm"

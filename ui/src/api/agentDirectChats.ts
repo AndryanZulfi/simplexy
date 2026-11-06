@@ -63,12 +63,14 @@ export const agentDirectChatsApi = {
       );
 
       if (!response.ok || !response.body) {
-        throw new Error(`Gagal mengirim pesan: HTTP ${response.status}`);
+        throw new Error(`Failed to send message: HTTP ${response.status}`);
       }
 
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
       let buffer = "";
+      let currentEvent = "";
+      let receivedTerminalEvent = false;
 
       while (true) {
         const { done, value } = await reader.read();
@@ -77,7 +79,6 @@ export const agentDirectChatsApi = {
         const lines = buffer.split("\n");
         buffer = lines.pop() ?? "";
 
-        let currentEvent = "";
         for (const line of lines) {
           const trimmed = line.trim();
           if (trimmed.startsWith("event: ")) {
@@ -88,9 +89,11 @@ export const agentDirectChatsApi = {
               if (currentEvent === "token" && payload.delta) {
                 onToken(payload.delta);
               } else if (currentEvent === "done") {
+                receivedTerminalEvent = true;
                 onDone(payload);
               } else if (currentEvent === "error") {
-                onError(payload.error || "Terjadi kesalahan stream");
+                receivedTerminalEvent = true;
+                onError(payload.error || "An error occurred while streaming the response");
               }
             } catch {
               // ignore malformed SSE
@@ -98,6 +101,7 @@ export const agentDirectChatsApi = {
           }
         }
       }
+      if (!receivedTerminalEvent) onError("The response stream ended before completion. Please try again.");
     } catch (err: unknown) {
       if (err instanceof Error && err.name === "AbortError") return;
       onError(err instanceof Error ? err.message : String(err));

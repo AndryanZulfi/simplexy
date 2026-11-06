@@ -92,7 +92,7 @@ export function agentDirectChatRoutes(db: Db) {
       } catch (err) {
         res.write(
           `event: error\ndata: ${JSON.stringify({
-            error: err instanceof Error ? err.message : "Terjadi kesalahan pada stream",
+            error: err instanceof Error ? err.message : "An error occurred while streaming the response",
           })}\n\n`,
         );
       } finally {

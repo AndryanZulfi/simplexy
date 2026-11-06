@@ -38,6 +38,10 @@ export function AgentChatDrawer({
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    setStreamingContent("");
+  }, [companyId, agent.id, selectedSessionId]);
+
   // 1. Fetch sessions
   const { data: sessions = [], isLoading: loadingSessions } = useQuery({
     queryKey: ["agent-chats", companyId, agent.id, "sessions"],
@@ -132,7 +136,7 @@ export function AgentChatDrawer({
       },
       (err) => {
         setIsStreaming(false);
-        setStreamingContent(`\n[Terjadi kesalahan: ${err}]`);
+        setStreamingContent(`\n[Error: ${err}]`);
       },
     );
   }
@@ -145,7 +149,7 @@ export function AgentChatDrawer({
       priority: "low" | "medium" | "high" | "urgent";
     }) => {
       if (!selectedMessageForTask || !selectedSessionId) {
-        throw new Error("Pesan tidak dipilih");
+        throw new Error("No message selected");
       }
       return agentDirectChatsApi.promoteToTask(
         companyId,
@@ -180,15 +184,15 @@ export function AgentChatDrawer({
                   {agent.role}
                 </Badge>
               </SheetTitle>
-              <span className="text-xs text-muted-foreground">Obrolan Langsung</span>
+              <span className="text-xs text-muted-foreground">Direct chat</span>
             </div>
             <Button
               size="sm"
               variant="outline"
-              onClick={() => createSessionMutation.mutate("Percakapan Baru")}
+              onClick={() => createSessionMutation.mutate("New conversation")}
               disabled={createSessionMutation.isPending || isStreaming}
             >
-              <Plus className="h-4 w-4 mr-1" /> Obrolan Baru
+              <Plus className="h-4 w-4 mr-1" /> New chat
             </Button>
           </SheetHeader>
 
@@ -196,13 +200,13 @@ export function AgentChatDrawer({
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
             {loadingSessions || (selectedSessionId && loadingMessages) ? (
               <div className="flex items-center justify-center h-32 text-muted-foreground text-sm">
-                <Loader2 className="h-4 w-4 animate-spin mr-2" /> Memuat obrolan...
+                <Loader2 className="h-4 w-4 animate-spin mr-2" /> Loading chat...
               </div>
             ) : messages.length === 0 && !isStreaming ? (
               <div className="flex flex-col items-center justify-center h-full text-center text-muted-foreground text-sm space-y-2 p-6">
-                <p className="font-medium text-foreground">Mulai Obrolan dengan {agent.name}</p>
+                <p className="font-medium text-foreground">Start chatting with {agent.name}</p>
                 <p className="text-xs">
-                  Ajukan pertanyaan, klarifikasi instruksi, atau diskusikan ide. Respon langsung dialirkan secara instan.
+                  Ask questions, clarify instructions, or discuss ideas. Replies stream as they arrive.
                 </p>
               </div>
             ) : (
@@ -227,13 +231,13 @@ export function AgentChatDrawer({
                       <div className="mt-2 pt-2 border-t border-border/60 text-xs flex items-center justify-between gap-2">
                         <span className="font-medium flex items-center gap-1">
                           <CheckSquare className="h-3 w-3 text-primary" />
-                          {msg.createdTaskIdentifier || "Tugas"}: {msg.createdTaskTitle || "Lihat tugas"}
+                          {msg.createdTaskIdentifier || "Task"}: {msg.createdTaskTitle || "View task"}
                         </span>
                         <Link
                           to={`/issues/${msg.createdTaskId}`}
                           className="underline underline-offset-2 hover:text-primary"
                         >
-                          Buka
+                          Open
                         </Link>
                       </div>
                     )}
@@ -249,7 +253,7 @@ export function AgentChatDrawer({
                         setPromoteModalOpen(true);
                       }}
                     >
-                      <CheckSquare className="h-3 w-3" /> Jadikan Tugas
+                      <CheckSquare className="h-3 w-3" /> Create task
                     </button>
                   )}
                 </div>
@@ -257,11 +261,11 @@ export function AgentChatDrawer({
             )}
 
             {/* Live Streaming Bubble */}
-            {isStreaming && (
+            {(isStreaming || streamingContent) && (
               <div className="flex flex-col items-start">
                 <div className="max-w-xs sm:max-w-md rounded-lg px-3 py-2 text-sm bg-muted text-foreground border">
-                  <p className="whitespace-pre-wrap">
-                    {streamingContent || "Mengetik..."}
+                  <p role={isStreaming ? "status" : "alert"} className="whitespace-pre-wrap">
+                    {streamingContent || "Typing..."}
                   </p>
                 </div>
               </div>
@@ -283,7 +287,7 @@ export function AgentChatDrawer({
                   handleSendMessage();
                 }
               }}
-              placeholder={`Tulis pesan ke ${agent.name}...`}
+              placeholder={`Message ${agent.name}...`}
               className="min-h-11 max-h-32 resize-none text-sm"
               rows={1}
             />

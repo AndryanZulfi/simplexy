@@ -9,6 +9,7 @@ import {
 } from "@simplexy/db";
 import { notFound, unprocessable } from "../errors.js";
 import { issueService } from "./issues.js";
+import { logger } from "../middleware/logger.js";
 import {
   resolveLocalWorkspaceGatewayApiKey,
   resolveLocalWorkspaceGatewayUrl,
@@ -54,7 +55,7 @@ export function agentDirectChatService(db: Db) {
       .select()
       .from(agents)
       .where(and(eq(agents.companyId, companyId), eq(agents.id, agentId)));
-    if (!agent) throw notFound("Agent tidak ditemukan");
+    if (!agent) throw notFound("Agent not found");
 
     const [session] = await db
       .insert(agentChatSessions)
@@ -62,7 +63,7 @@ export function agentDirectChatService(db: Db) {
         companyId,
         agentId,
         userId,
-        title: title?.trim() || "Percakapan Baru",
+        title: title?.trim() || "New conversation",
       })
       .returning();
     return session!;
@@ -113,7 +114,7 @@ export function agentDirectChatService(db: Db) {
       .select()
       .from(agents)
       .where(and(eq(agents.companyId, companyId), eq(agents.id, agentId)));
-    if (!agent) throw notFound("Agent tidak ditemukan");
+    if (!agent) throw notFound("Agent not found");
 
     const [company] = await db
       .select()
@@ -141,7 +142,7 @@ export function agentDirectChatService(db: Db) {
     onChunk: (chunk: string) => Promise<void> | void,
   ) {
     const session = await getSession(companyId, agentId, sessionId);
-    if (!session) throw notFound("Sesi percakapan tidak ditemukan");
+    if (!session) throw notFound("Chat session not found");
 
     // 1. Save user message
     await db.insert(agentChatMessages).values({
@@ -210,34 +211,36 @@ export function agentDirectChatService(db: Db) {
 
       while (true) {
         const { done, value } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
+        buffer += done ? decoder.decode() : decoder.decode(value, { stream: true });
         const lines = buffer.split("\n");
-        buffer = lines.pop() ?? "";
+        buffer = done ? "" : lines.pop() ?? "";
 
         for (const line of lines) {
           const trimmed = line.trim();
           if (!trimmed || trimmed.startsWith(":")) continue;
           if (trimmed === "data: [DONE]") continue;
           if (trimmed.startsWith("data: ")) {
+            let data;
             try {
-              const data = JSON.parse(trimmed.slice(6));
-              const delta = data.choices?.[0]?.delta?.content;
-              if (delta) {
-                fullAgentResponse += delta;
-                await onChunk(delta);
-              }
+              data = JSON.parse(trimmed.slice(6));
             } catch {
               // ignore malformed SSE line
+              continue;
+            }
+            if (data.error) throw new Error("Gateway returned an error");
+            const delta = data.choices?.[0]?.delta?.content;
+            if (delta) {
+              fullAgentResponse += delta;
+              await onChunk(delta);
             }
           }
         }
+        if (done) break;
       }
+      if (!fullAgentResponse.trim()) throw new Error("Gateway returned an empty response");
     } catch (err) {
-      if (!fullAgentResponse) {
-        fullAgentResponse = "Maaf, terjadi gangguan saat menghubungi model agent.";
-        await onChunk(fullAgentResponse);
-      }
+      logger.warn({ companyId, agentId, sessionId, model, error: err instanceof Error ? err.message : "Unknown error" }, "Direct chat model request failed");
+      throw new Error("Unable to reach the chat model. Try again shortly.");
     }
 
     // 3. Save assistant message
@@ -280,9 +283,9 @@ export function agentDirectChatService(db: Db) {
         ),
       );
 
-    if (!message) throw notFound("Pesan obrolan tidak ditemukan");
+    if (!message) throw notFound("Chat message not found");
     if (message.createdTaskId) {
-      throw unprocessable("Pesan ini sudah pernah dijadikan task");
+      throw unprocessable("This message has already been converted to a task");
     }
 
     // Compile background context from chat message
@@ -290,7 +293,7 @@ export function agentDirectChatService(db: Db) {
       input.description?.trim() || "",
       "",
       "---",
-      "### Konteks Obrolan Langsung:",
+      "### Direct chat context:",
       `> ${message.content.split("\n").join("\n> ")}`,
     ]
       .filter(Boolean)

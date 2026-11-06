@@ -42,7 +42,7 @@ export function PromoteChatToTaskModal({
       .split("\n")[0]
       ?.replace(/^#+\s*/, "")
       .slice(0, 60)
-      .trim() || "Tugas dari Obrolan";
+      .trim() || "Task from chat";
 
   const [title, setTitle] = useState(defaultTitle);
   const [description, setDescription] = useState(initialContent);
@@ -62,33 +62,33 @@ export function PromoteChatToTaskModal({
       <DialogContent className="sm:max-w-md">
         <form onSubmit={handleSubmit} className="space-y-4">
           <DialogHeader>
-            <DialogTitle>Buat Tugas dari Obrolan</DialogTitle>
+            <DialogTitle>Create task from chat</DialogTitle>
           </DialogHeader>
 
           <div className="space-y-2">
-            <Label htmlFor="task-title">Judul Tugas</Label>
+            <Label htmlFor="task-title">Task title</Label>
             <Input
               id="task-title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="Contoh: Analisa dan perbaikan bug"
+              placeholder="Example: Investigate and fix a bug"
               required
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="task-desc">Deskripsi</Label>
+            <Label htmlFor="task-desc">Description</Label>
             <Textarea
               id="task-desc"
               rows={4}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Rincian instruksi tugas"
+              placeholder="Detailed task instructions"
             />
           </div>
 
           <div className="space-y-2">
-            <Label>Prioritas</Label>
+            <Label>Priority</Label>
             <Select
               value={priority}
               onValueChange={(val: "low" | "medium" | "high" | "urgent") =>
@@ -99,10 +99,10 @@ export function PromoteChatToTaskModal({
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="low">Rendah (Low)</SelectItem>
-                <SelectItem value="medium">Sedang (Medium)</SelectItem>
-                <SelectItem value="high">Tinggi (High)</SelectItem>
-                <SelectItem value="urgent">Mendesak (Urgent)</SelectItem>
+                <SelectItem value="low">Low</SelectItem>
+                <SelectItem value="medium">Medium</SelectItem>
+                <SelectItem value="high">High</SelectItem>
+                <SelectItem value="urgent">Urgent</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -114,10 +114,10 @@ export function PromoteChatToTaskModal({
               disabled={loading}
               onClick={() => onOpenChange(false)}
             >
-              Batal
+              Cancel
             </Button>
             <Button type="submit" disabled={loading || !title.trim()}>
-              {loading ? "Menyimpan..." : "Buat Tugas"}
+              {loading ? "Saving..." : "Create task"}
             </Button>
           </DialogFooter>
         </form>
