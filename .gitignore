@@ -13,6 +13,8 @@ ui/storybook/generated/
 ui/storybook/.storybook/preview.tsx
 maps/generated/
 .env
+.env.local-agents
+.env.local-agents.db
 *.tsbuildinfo
 drizzle/meta/
 .vite/

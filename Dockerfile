@@ -145,7 +145,10 @@ RUN pnpm --filter @simplexy/plugin-sdk build
 # next RUN as an environment variable. The production stage below declares the
 # same ARG again for the runtime fallback; an ARG goes out of scope at the
 # end of its stage. Empty for local `docker build`, which then writes no stamp.
-ENV NODE_OPTIONS=--max-old-space-size=4096
+# TypeScript 7 uses a Go compiler; bound its GC target on shared build hosts.
+ENV NODE_OPTIONS=--max-old-space-size=4096 \
+    GOMEMLIMIT=5GiB \
+    GOGC=50
 RUN pnpm --filter @simplexy/server build
 RUN test -f server/dist/index.js || (echo "ERROR: server build output missing" && exit 1)
 RUN pnpm --filter @simplexy/server build:runtime \
